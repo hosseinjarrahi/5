@@ -1,0 +1,20 @@
+$red: #df0000;
+$gray: #a4b0be;
+$darkGray: #2f3542;
+
+.bg-gray
+{
+  background: $gray;
+}
+
+.bg-red
+{
+  background: $red;
+  color: white;
+}
+
+.bg-dark-gray
+{
+  background: $darkGray;
+  color: white;
+}
