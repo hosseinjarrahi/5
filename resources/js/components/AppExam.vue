@@ -16,12 +16,6 @@
       @change="handleSelecting"
     ></app-exam-card>
 
-    <div class="loading" v-if="isUploading">
-      <div class="spinner-border text-light" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-11 col-md-6 p-3 bg-light shadow rounded my-2">
@@ -44,8 +38,7 @@
   export default {
   data() {
     return {
-      selected: [],
-      isUploading: false
+      selected: []
     };
   },
   props: {
@@ -59,7 +52,7 @@
   },
   methods: {
     complete(){
-      this.isUploading = true;
+      this.$emit('loading');
 
       axios.post("/complete", {data:this.selected,id:this.id})
         .then(function(response) {
@@ -82,7 +75,7 @@
           });
         })
         .then(() => {
-          this.isUploading = false;
+          this.$emit('notLoading');
         });
     },
     handleSelecting() {
@@ -92,7 +85,7 @@
       this.selected.push(arguments[0]);
     },
     uploadFile() {
-      this.isUploading = true;
+      this.$emit('loading');
       this.file = this.$refs.file.files[0];
 
       let formData = new FormData();
@@ -116,7 +109,7 @@
           console.log(error);
         })
         .then(() => {
-          this.isUploading = false;
+          this.$emit('notLoading');
         });
     }
   }
@@ -167,18 +160,7 @@
   background: #2a476b;
   color: #ffffff;
 }
-.loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 10, 10, 0.8);
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
+
 @media only screen and (max-width: 980px) {
   .block-btn {
     text-align: center;
@@ -187,7 +169,5 @@
     display: block;
   }
 }
-.loading{
-  z-index:100;
-}
+
 </style>

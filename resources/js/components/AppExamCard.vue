@@ -101,5 +101,10 @@ ul{
   li{
     color: $darkGray;
   }
+  li::before {
+    counter-increment: section;
+    content: counter(section) ": ";
+  }
+  counter-reset: section;
 }
 </style>

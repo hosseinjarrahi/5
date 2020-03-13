@@ -84,11 +84,10 @@ class QuizController extends Controller
     {
         $norm = 0;
         $data = collect($data);
-        $qs = Question::find($data->pluck('id'));
-        dd($data->pluck('id')->values());
+        $qs = Question::find($data->pluck('id')->values());
         foreach ($data as $d) {
             $q = $qs->where('id', $d['id'])->first();
-            if ($d['selected'] == ($q['selected'] ?? '')) {
+            if ($d['selected'] == ($q->answer ?? '')) {
                 $norm += $q['norm'];
             }
         }

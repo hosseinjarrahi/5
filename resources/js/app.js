@@ -29,6 +29,7 @@ Vue.component('app-exam-card', require('./components/AppExamCard.vue').default);
 Vue.component('app-exam', require('./components/AppExam.vue').default);
 Vue.component('app-footer', require('./components/AppFooter.vue').default);
 Vue.component('app-modal', require('./components/AppModal.vue').default);
+Vue.component('app-loading', require('./components/AppLoading.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
