@@ -17,10 +17,10 @@
             }
         },
         created() {
-            this.$on('loading',()=>{
+            window.EventBus.$on('loading',()=>{
                 this.loading = true;
             });
-            this.$on('notLoading',()=>{
+            window.EventBus.$on('notLoading',()=>{
                 this.loading = false;
             });
         }

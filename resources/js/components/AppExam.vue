@@ -1,6 +1,5 @@
 <template>
   <div class="col-12">
-
     <app-exam-card
       v-for="(q,index) in quests"
       :key="index"
@@ -52,8 +51,8 @@
   },
   methods: {
     complete(){
-      this.$emit('loading');
-
+      this.load();
+      let id = this.id;
       axios.post("/complete", {data:this.selected,id:this.id})
         .then(function(response) {
             Swal.fire({
@@ -63,6 +62,9 @@
               confirmButtonText: 'بسیار خوب',
               timer:5000
             });
+            setTimeout(()=>{
+                window.location = `/results/${id}`;
+            },3000);
         })
         .catch(function(error) {
           console.log(error.message);
@@ -71,11 +73,12 @@
             text: error.message,
             icon: error.type,
             confirmButtonText: 'بسیار خوب',
+
             timer:5000
           });
         })
         .then(() => {
-          this.$emit('notLoading');
+          this.closeLoad();
         });
     },
     handleSelecting() {
@@ -85,7 +88,7 @@
       this.selected.push(arguments[0]);
     },
     uploadFile() {
-      this.$emit('loading');
+      this.load();
       this.file = this.$refs.file.files[0];
 
       let formData = new FormData();
@@ -100,16 +103,28 @@
         })
         .then(function(response) {
           if (!response.data) {
-            alert("File not uploaded.");
+              Swal.fire({
+                  // title: 'Error!',
+                  text: 'فایل شما ارسال نشد.',
+                  icon: 'error',
+                  confirmButtonText: 'بسیار خوب',
+                  timer:5000
+              });
           } else {
-            alert("File uploaded successfully.");
+              Swal.fire({
+                  // title: 'Error!',
+                  text: 'فایل شما با موفقیت ارسال شد.',
+                  icon: 'success',
+                  confirmButtonText: 'بسیار خوب',
+                  timer:5000
+              });
           }
         })
         .catch(function(error) {
           console.log(error);
         })
         .then(() => {
-          this.$emit('notLoading');
+          this.closeLoad();
         });
     }
   }

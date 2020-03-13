@@ -1986,7 +1986,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2011,7 +2010,8 @@ __webpack_require__.r(__webpack_exports__);
     complete: function complete() {
       var _this = this;
 
-      this.$emit('loading');
+      this.load();
+      var id = this.id;
       axios.post("/complete", {
         data: this.selected,
         id: this.id
@@ -2023,6 +2023,9 @@ __webpack_require__.r(__webpack_exports__);
           confirmButtonText: 'بسیار خوب',
           timer: 5000
         });
+        setTimeout(function () {
+          window.location = "/results/".concat(id);
+        }, 3000);
       })["catch"](function (error) {
         console.log(error.message);
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
@@ -2033,7 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
           timer: 5000
         });
       }).then(function () {
-        _this.$emit('notLoading');
+        _this.closeLoad();
       });
     },
     handleSelecting: function handleSelecting() {
@@ -2048,7 +2051,7 @@ __webpack_require__.r(__webpack_exports__);
     uploadFile: function uploadFile() {
       var _this3 = this;
 
-      this.$emit('loading');
+      this.load();
       this.file = this.$refs.file.files[0];
       var formData = new FormData();
       formData.append("file", this.file);
@@ -2059,14 +2062,26 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         if (!response.data) {
-          alert("File not uploaded.");
+          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+            // title: 'Error!',
+            text: 'فایل شما ارسال نشد.',
+            icon: 'error',
+            confirmButtonText: 'بسیار خوب',
+            timer: 5000
+          });
         } else {
-          alert("File uploaded successfully.");
+          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+            // title: 'Error!',
+            text: 'فایل شما با موفقیت ارسال شد.',
+            icon: 'success',
+            confirmButtonText: 'بسیار خوب',
+            timer: 5000
+          });
         }
       })["catch"](function (error) {
         console.log(error);
       }).then(function () {
-        _this3.$emit('notLoading');
+        _this3.closeLoad();
       });
     }
   }
@@ -2250,6 +2265,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2292,10 +2309,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$on('loading', function () {
+    window.EventBus.$on('loading', function () {
       _this.loading = true;
     });
-    this.$on('notLoading', function () {
+    window.EventBus.$on('notLoading', function () {
       _this.loading = false;
     });
   }
@@ -24715,15 +24732,22 @@ var render = function() {
     "div",
     { staticClass: "container-fluid p-0 fix" },
     [
-      _vm.openModal
-        ? _c("app-modal", {
-            on: {
-              close: function($event) {
-                _vm.openModal = false
-              }
-            }
-          })
-        : _vm._e(),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _vm.openModal
+            ? _c("app-modal", {
+                on: {
+                  close: function($event) {
+                    _vm.openModal = false
+                  }
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid head-color" }, [
         _c(
@@ -37795,27 +37819,15 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _globalMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globalMixin */ "./resources/js/globalMixin.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 Vue.component('app-header', __webpack_require__(/*! ./components/AppHeader.vue */ "./resources/js/components/AppHeader.vue")["default"]);
 Vue.component('app-taklif', __webpack_require__(/*! ./components/AppTaklif.vue */ "./resources/js/components/AppTaklif.vue")["default"]);
 Vue.component('app-taklif-card', __webpack_require__(/*! ./components/AppTaklifCard.vue */ "./resources/js/components/AppTaklifCard.vue")["default"]);
@@ -37827,12 +37839,9 @@ Vue.component('app-exam', __webpack_require__(/*! ./components/AppExam.vue */ ".
 Vue.component('app-footer', __webpack_require__(/*! ./components/AppFooter.vue */ "./resources/js/components/AppFooter.vue")["default"]);
 Vue.component('app-modal', __webpack_require__(/*! ./components/AppModal.vue */ "./resources/js/components/AppModal.vue")["default"]);
 Vue.component('app-loading', __webpack_require__(/*! ./components/AppLoading.vue */ "./resources/js/components/AppLoading.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.EventBus = new Vue();
 
+Vue.mixin(_globalMixin__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var app = new Vue({
   el: '#app'
 });
@@ -38788,6 +38797,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppTaklifCard_vue_vue_type_template_id_4dbe6681_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/globalMixin.js":
+/*!*************************************!*\
+  !*** ./resources/js/globalMixin.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    load: function load() {
+      window.EventBus.$emit('loading');
+    },
+    closeLoad: function closeLoad() {
+      window.EventBus.$emit('notLoading');
+    }
+  }
+});
 
 /***/ }),
 

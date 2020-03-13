@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title','تیزویران | کلاس ها')
 
 @section('content')
     <div class="container-fluid">
@@ -11,17 +12,17 @@
                 </div>
             </div>
 
-        <app-quiz quizzes="{{ $quizzes }}"></app-quiz>
-{{-- 
-            <app-taklif>
-                <app-taklif-card
-                    desc="توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات "
-                    to="link"
-                    file="link"
-                    day="50"
-                    id="5"
-                ></app-taklif-card>
-            </app-taklif> --}}
+            <app-quiz quizzes="{{ $quizzes }}"></app-quiz>
+            {{--
+                        <app-taklif>
+                            <app-taklif-card
+                                desc="توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات "
+                                to="link"
+                                file="link"
+                                day="50"
+                                id="5"
+                            ></app-taklif-card>
+                        </app-taklif> --}}
 
         </div>
     </div>

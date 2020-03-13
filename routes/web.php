@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','HomeController@index');
+Route::get('/results/{quiz}','HomeController@result');
 
 Route::resource('/quiz','QuizController');
 Route::resource('/question','QuestionController');
