@@ -24,4 +24,10 @@ Route::resource('/answer','AnswerController');
 
 Route::post('/complete','QuizController@complete');
 Route::post('/message/{message}','HomeController@showMessage')->name('message');
+Route::post('/login','RegisterController@login');
+Route::get('/logout','RegisterController@logout');
+Route::post('/send-code','RegisterController@sendCode');
+Route::post('/register','RegisterController@register');
+Route::post('/verify','RegisterController@verify');
+Route::post('/check-auth','RegisterController@checkAuth');
 

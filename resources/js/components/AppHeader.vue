@@ -28,7 +28,7 @@
           </div>
 
           <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" height="30" class="d-inline-block align-top" alt />
+            <img src="/img/logo.png" height="30" class="d-inline-block align-top" alt/>
           </a>
 
           <ul class="navbar-nav d-none d-md-flex align-items-center">
@@ -42,55 +42,55 @@
               <a class="nav-link text-white" href="http://forum.tizviran.com">انجمن</a>
             </li>
           </ul>
-          
+
         </div>
       </nav>
-        <ul class="navbar-nav d-flex flex-column p-3" v-if="opened">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://tizviran.com">خانه</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://quiz.tizviran.com">صفحه اصلی</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://forum.tizviran.com">انجمن</a>
-            </li>
-          </ul> 
+      <ul class="navbar-nav d-flex flex-column p-3" v-if="opened">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="http://tizviran.com">خانه</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="http://quiz.tizviran.com">صفحه اصلی</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="http://forum.tizviran.com">انجمن</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      opened: false,
-      openModal: false,
-      scroll:false
+    export default {
+        data() {
+            return {
+                opened: false,
+                openModal: false,
+                scroll: false
+            };
+        },
+        methods: {},
     };
-  },
-  methods: {
-    
-  },
-};
 </script>
 
 <style scoped lang="scss">
-@import "./../../sass/app.scss";
+  @import "./../../sass/app.scss";
 
-@media screen and (max-width: 768px) {
-}
+  @media screen and (max-width: 768px) {
+  }
 
-.red {
-  color: $red !important;
-}
-.head-color {
-  background: $darkGray;
-}
-.fix{
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-}
+  .red {
+    color: $red !important;
+  }
+
+  .head-color {
+    background: $darkGray;
+  }
+
+  .fix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
 </style>

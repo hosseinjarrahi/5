@@ -14,11 +14,21 @@ Vue.component('app-footer', require('./components/AppFooter.vue').default);
 Vue.component('app-modal', require('./components/AppModal.vue').default);
 Vue.component('app-loading', require('./components/AppLoading.vue').default);
 
-window.EventBus = new Vue();
-
 import globalMixin from './globalMixin';
-Vue.mixin(globalMixin);
+window.EventBus = new Vue({});
 
-const app = new Vue({
-    el: '#app',
-});
+function checkAuth(){
+    return axios.post('check-auth')
+        .then(res => res.data)
+        .catch(err => console.log(err));
+}
+
+async function init(){
+    window.EventBus.auth = await checkAuth();
+    Vue.mixin(globalMixin);
+    const app = new Vue({
+        el: '#app',
+    });
+};
+
+init()

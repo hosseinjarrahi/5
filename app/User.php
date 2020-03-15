@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -13,6 +12,8 @@ class User extends Authenticatable
     protected $table = 'qa_users';
 
     protected $primaryKey = 'userid';
+
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *

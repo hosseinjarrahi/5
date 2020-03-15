@@ -4,10 +4,14 @@
       <div class="modal-content">
         <div class="modal-header">
 
-          <transition name="fade">
+          <transition name="fade" v-if="!auth">
+
             <h5 class="modal-title" key="a" v-if="login">فرم ورود</h5>
+
             <h5 class="modal-title" key="b" v-else-if="register">فرم ثبت نام</h5>
+
             <h5 class="modal-title" key="c" v-else-if="recovery">فرم بازیابی</h5>
+
             <h5 class="modal-title" key="d" v-else-if="recoveryCode">کد تایید</h5>
           </transition>
 
@@ -19,19 +23,19 @@
 
         <div class="modal-body">
 
-          <transition name="fade" mode="out-in">
+          <transition name="fade" mode="out-in" v-if="!auth">
             <div v-if="login" key="login">
               <form>
                 <div class="form-group">
-                  <lable>ایمیل:</lable>
+                  <span>نام کاربری:</span>
                   <input v-model="login.username" type="text" name="username" class="form-control"/>
                 </div>
                 <div class="form-group">
-                  <lable>رمز عبور:</lable>
+                  <span>رمز عبور:</span>
                   <input v-model="login.password" type="password" name="password" class="form-control"/>
                 </div>
                 <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">فراموشی رمز عبور</a>
-                <button class="btn btn-primary btn-block my-2">ورود</button>
+                <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin()">ورود</button>
               </form>
 
               <div class="modal-footer">
@@ -39,59 +43,67 @@
               </div>
             </div>
 
-
-            <div v-else-if="register" key="register">
+            <div v-if="register" key="register">
               <form>
-                <div class="form-group">
-                  <label>شماره تلفن</label>
-                  <input v-model="register.phone" name="phone" class="form-control" type="text" required min="10">
+                <div class="my-2 text-danger">
+                  <p class="alert-danger alert" v-for="(error,index) in errors" :key="index">{{ error[0] }}</p>
                 </div>
                 <div class="form-group">
-                  <label>نام و نام خانوادگی</label>
-                  <input v-model="register.name" name="name" class="form-control" type="text" required>
+                  <span>شماره تلفن</span>
+                  <input v-model="registerForm.phone" name="phone" class="form-control" type="text" required min="10">
                 </div>
                 <div class="form-group">
-                  <label>نام کاربری</label>
-                  <input v-model="register.handle" name="handle" class="form-control" type="text" required min="4" max="36">
+                  <span>نام و نام خانوادگی</span>
+                  <input v-model="registerForm.name" name="name" class="form-control" type="text" required>
                 </div>
                 <div class="form-group">
-                  <label>رمز عبور</label>
-                  <input v-model="register.password" name="password" class="form-control" type="password" required min="8" max="36">
+                  <span>نام کاربری</span>
+                  <input v-model="registerForm.handle" name="handle" class="form-control" type="text" required min="4" max="36">
                 </div>
                 <div class="form-group">
-                  <label>تکرار رمز عبور</label>
-                  <input v-model="register.confirm" name="confirm" class="form-control" type="password" required min="8" max="36">
+                  <span>رمز عبور</span>
+                  <input v-model="registerForm.password" name="password" class="form-control" type="password" required min="8" max="36">
                 </div>
-                <button class="btn btn-primary">ارسال کد تایید</button>
+                <div class="form-group">
+                  <span>تکرار رمز عبور</span>
+                  <input v-model="registerForm.confirm" name="confirm" class="form-control" type="password" required min="8" max="36">
+                </div>
+                <button class="btn btn-primary" @click.prevent="doRegister">ارسال کد تایید</button>
               </form>
             </div>
 
-            <div v-else-if="registerCode" key="registerCode">
+            <div v-if="registerCode" key="registerCode">
               <form>
                 <p class="text-center">
                   <span>کد ارسال شده به شماره </span>
-                  <b>{{ phone }}</b>
+                  <b>{{ registerForm.phone }}</b>
                   <span> را وارد کنید </span>
                 </p>
                 <div class="form-group">
-                  <label>کد تایید</label>
-                  <input name="verify" class="form-control" type="text" required>
+                  <span>کد تایید</span>
+                  <input v-model="verifyCode" name="verify" class="form-control" type="text" required>
                 </div>
-                <button class="btn btn-primary">ثبت نام</button>
+                <button @click.prevent="verify" class="btn btn-primary">ارسال کد تایید</button>
               </form>
             </div>
 
-            <div v-else-if="recovery" key="recovery">
+            <div v-if="recovery" key="recovery">
               <form>
                 <div class="form-group">
-                  <lable>تلفن:</lable>
-                  <input type="text" name="username" class="form-control"/>
+                  <b>در هر روز تنها یکبار امکان بازیابی رمز را دارید.</b>
+                  <hr>
+                  <span>تلفن:</span>
+                  <input v-model="phone" type="text" name="username" class="form-control"/>
                 </div>
-                <button class="btn btn-primary btn-block my-2">ارسال کد</button>
+                <button class="btn btn-primary btn-block my-2" @click.prevent="sendCode">ارسال کد</button>
               </form>
             </div>
 
           </transition>
+
+          <div v-if="auth" key="recovery">
+            <a href="/logout" class="btn btn-dark btn-block">خروج از حساب کاربری</a>
+          </div>
 
         </div>
       </div>
@@ -100,34 +112,101 @@
 </template>
 
 <script>
+    import Swal from 'sweetalert2';
+
     export default {
+        created() {
+            this.auth = window.EventBus.auth;
+        },
         data() {
             return {
-                phone:'',
+                auth: null,
                 login: true,
                 register: false,
                 recovery: false,
                 registerCode: false,
                 recoveryCode: false,
-                register:{
-                    phone:'',
-                    name:'',
-                    handle:'',
-                    password:'',
-                    confirm:'',
+                verifyCode: '',
+                phone: '',
+                registerForm: {
+                    phone: '',
+                    name: '',
+                    handle: '',
+                    password: '',
+                    confirm: '',
                 },
-                login:{
-                    username:'',
-                    password:''
-                }
+                login: {
+                    username: '',
+                    password: ''
+                },
+                errors: []
             }
         },
         methods: {
             close() {
                 this.$emit('close');
             },
-            login() {
+            doLogin() {
+                axios.post('/login', this.login)
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: response.data.type,
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        (response.data.type == 'success') ? location.reload() : '';
+                    })
+                    .catch(err => console.log(err));
+            },
+            doRegister() {
+                this.load();
+                axios.post('/register', this.registerForm)
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: response.data.type,
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        if (response.data.type == 'success') {
+                            this.changeState('registerCode');
+                        }
+                    })
+                    .catch(err => {
+                        this.errors = err.response.data.errors;
+                    });
+                this.closeLoad();
+            },
+            verify() {
+                axios.post('/verify', {verify: this.verifyCode})
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: response.data.type,
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        response.data.type == 'success' ? this.changeState('login') : null;
 
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            },
+            sendCode() {
+                this.load();
+                axios.post('/send-code', {phone: this.phone})
+                    .then(res => {
+                        Swal.fire({
+                            text: 'اگر شماره تلفن را درست وارد کرده باشید کد برای شما ارسال شده است.',
+                            icon: 'success',
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        this.$emit('close');
+                    });
+                this.closeLoad()
             },
             changeState(s) {
                 switch (s) {
@@ -180,6 +259,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 100050;
+    overflow: auto;
   }
 </style>
