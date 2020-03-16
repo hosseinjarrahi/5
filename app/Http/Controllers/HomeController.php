@@ -26,7 +26,6 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $users = $quiz->users()->withPivot('norm')->get()->sortByDesc('pivot.norm');
-
-        return view('results', compact('users', 'user'));
+        return view('results', compact('users', 'user','quiz'));
     }
 }

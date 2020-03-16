@@ -147,8 +147,10 @@
                 this.$emit('close');
             },
             doLogin() {
+                this.load();
                 axios.post('/login', this.login)
                     .then(response => {
+                        console.log(response.data.message);
                         Swal.fire({
                             text: response.data.message,
                             icon: response.data.type,
@@ -158,6 +160,7 @@
                         (response.data.type == 'success') ? location.reload() : '';
                     })
                     .catch(err => console.log(err));
+                this.closeLoad();
             },
             doRegister() {
                 this.load();

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
@@ -15,6 +14,42 @@ class RegisterController extends Controller
     private $token = '39796B4F63394667334B777230544D3451622F357159697169382F6368754B7674664B6B2F7A63707845553D';
 
     private $sender = '10003334444';
+
+    private $messages = [
+        'loginError' => [
+            'message' => 'نام کاربری و یا رمز عبور اشتباه است.',
+            'type' => 'error',
+        ],
+        'loginSuccess' => [
+            'message' => 'با موفقیت وارد شدید.',
+            'type' => 'success',
+        ],
+        'sendCodeSuccess' => [
+            'message' => 'کد تایید با موفقیت ارسال شد.',
+            'type' => 'success',
+        ],
+        'verifyError' => [
+            'message' => 'کد وارده شده اشتباه است.',
+            'type' => 'error',
+        ],
+        'registerSuccess' => [
+            'message' => 'با موفقیت ثبت نام شدید.',
+            'type' => 'success',
+        ],
+        'recoveryError' => [
+            'message' => 'کاربری با این اطلاعات وجود ندارد.',
+            'type' => 'error',
+        ],
+        'recoverNotComplete' => [
+            'message' => 'متاسفانه مشکلی در انجام عملیات به وجود آمده است.',
+            'type' => 'error',
+        ],
+        'recoverSuccess' => [
+            'message' => 'رمز عبور جدید شما تا لحظاتی دیگر ارسال می شود.',
+            'type' => 'success',
+        ],
+
+    ];
 
     public function checkAuth()
     {
@@ -24,13 +59,13 @@ class RegisterController extends Controller
     public function login(LoginRequest $request)
     {
         $user = User::where('handle', $request->username)->first();
-        if ($user && Hash::check($request->password, $user->passhash)) {
-            auth()->login($user);
-
-            return response(['message' => 'با موفقیت وارد شدید.', 'type' => 'success']);
+        if (! $user || ! Hash::check($request->password, $user->passhash)) {
+            return response($this->messages['loginError']);
         }
 
-        return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.', 'type' => 'error']);
+        auth()->login($user);
+
+        return response($this->messages['loginSuccess']);
     }
 
     public function logout()
@@ -43,56 +78,42 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $random = random_int(10000, 99999);
-        // send to phone number and then
-        session([
-            'data' => $request->only('handle', 'phone', 'password', 'name'),
-            'code' => $random,
-        ]);
+        $this->setSession($request, $random);
         $this->sms();
-        return response(['message'=>'کد تایید با موفقیت ارسال شد.','type'=>'success']);
+
+        return response($this->messages['sendCodeSuccess']);
     }
 
     public function verify(Request $request)
     {
         if ($request->verify != session('code')) {
-            return response(['message' => 'کد وارده شده اشتباه است.','type' => 'error']);
+            return response($this->messages['verifyError']);
         }
         $user = $this->createUser();
         if (! $user->save()) {
-            return response(['message' => 'مشکلی در ثبت نام به وجود آمده لطفا دوباره امتحان کنید.','type' => 'error']);
+            return response($this->messages['verifyError']);
         }
         session()->forget('code');
 
-        return response(['message' => 'با موفقیت ثبت نام شدید.','type' => 'success']);
+        return response($this->messages['registerSuccess']);
     }
 
-    public function sendCode(Request $request)
+    public function sendCode(RecoverRequest $request)
     {
-        $request->validate([
-            'phone' => 'required|string|min:10',
-        ]);
-        $user = User::where('phone', $request->phone)->first();
+        $user = $this->getUserByPhone($request->phone);
         if (! $user) {
-            return response(['alert' => 'کاربری با این اطلاعات وجود ندارد.']);
-        }
-        $pass = random_int(100000000, 999999999);
-        $user->passhash = Hash::make($pass);
-        if ($user->save()) {
-            $this->sendSms($request, $pass);
-
-            return response(['alert' => 'رمز عبور جدید شما تا لحظاتی دیگر ارسال می شود.']);
+            return response($this->messages['recoveryError']);
         }
 
-        return response(['alert' => 'متاسفانه مشکلی در انجام عملیات به وجود آمده است.']);
+        return $this->modifyUser($user,$request);
     }
 
     private function sms()
     {
         $receptor = (string)session('data')['phone'];
         $message = "کد تایید شما : " . session('code') . " تیزویران ";
-        Log::info($message);
-//        $api = new \Kavenegar\KavenegarApi($this->token);
-//        $api->Send($this->sender, $receptor, $message);
+        $api = new \Kavenegar\KavenegarApi($this->token);
+        $api->Send($this->sender, $receptor, $message);
     }
 
     private function createUser(): \App\User
@@ -119,5 +140,30 @@ class RegisterController extends Controller
         $message = "رمز جدید شما : " . $pass . " تیزویران ";
         $api = new \Kavenegar\KavenegarApi($this->token);
         $api->Send($this->sender, $receptor, $message);
+    }
+
+    private function getUserByPhone(&$phone)
+    {
+        return User::where('phone', $phone)->first();
+    }
+
+    private function setSession($request,$random)
+    {
+        session([
+            'data' => $request->only('handle', 'phone', 'password', 'name'),
+            'code' => $random,
+        ]);
+    }
+
+    private function modifyUser($user,$request)
+    {
+        // TODO: every user just onceee get recovery code
+        $pass = random_int(100000000, 999999999);
+        $user->passhash = Hash::make($pass);
+        if ($user->save()) {
+                $this->sendSms($request, $pass);
+            return response($this->messages['recoverSuccess']);
+        }
+        return response($this->messages['recoverNotComplete']);
     }
 }

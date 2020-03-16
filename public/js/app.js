@@ -2492,7 +2492,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit('close');
     },
     doLogin: function doLogin() {
+      this.load();
       axios.post('/login', this.login).then(function (response) {
+        console.log(response.data.message);
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
           icon: response.data.type,
@@ -2503,6 +2505,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (err) {
         return console.log(err);
       });
+      this.closeLoad();
     },
     doRegister: function doRegister() {
       var _this = this;
@@ -26466,15 +26469,29 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "time p-2 rounded shadow block-btn" }, [
-          _c("span", { staticStyle: { "font-size": "0.9rem" } }, [
-            _vm._v("زمان شروع: ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticStyle: { "font-size": "0.9rem" } }, [
+        _vm.enterToExam
+          ? _c(
+              "a",
+              {
+                staticClass: "block-btn btn btn-outline-primary",
+                attrs: { href: "/results/" + _vm.id }
+              },
+              [_vm._v("نتایج")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "time p-2 rounded shadow block-btn",
+            staticStyle: { "font-size": "0.9rem" }
+          },
+          [
+            _c("span", [_vm._v("زمان شروع: ")]),
+            _vm._v(" "),
             _c("span", [_vm._v(_vm._s(_vm.start))])
-          ])
-        ])
+          ]
+        )
       ])
     ]
   )

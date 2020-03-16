@@ -3,19 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b8fd9dcd-f6c3-454d-82db-faa59d56daaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/AppModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppQuizCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppQuizCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/results.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,12 +146,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\quiz\public\img" />
       <recent name="E:\web\quiz\resources\views" />
     </key>
   </component>
@@ -174,6 +168,7 @@
       <command value="a make:request" />
       <command value="a make:request RegisterRequest" />
       <command value="a make:request  LoginRequest" />
+      <command value="a make:request  RecoverRequest" />
     </option>
   </component>
   <component name="RunManager">
@@ -199,7 +194,8 @@
       <workItem from="1584004792955" duration="11479000" />
       <workItem from="1584073217060" duration="17155000" />
       <workItem from="1584204660027" duration="2337000" />
-      <workItem from="1584277702466" duration="13763000" />
+      <workItem from="1584277702466" duration="13822000" />
+      <workItem from="1584337884637" duration="6073000" />
     </task>
     <servers />
   </component>
@@ -223,38 +219,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="399" y="349" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1536.834@0.0.1536.834" timestamp="1584013471311" />
-    <state x="730" y="35" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1584094403645">
+    <state x="730" y="35" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1584338596933">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="730" y="35" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0/0.0.1536.834@0.0.1536.834" timestamp="1584094403645" />
-    <state x="510" y="0" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1584094231453">
+    <state x="730" y="35" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0/0.0.1536.834@0.0.1536.834" timestamp="1584338596933" />
+    <state x="510" y="0" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1" timestamp="1584339249714">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="510" y="0" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1536.834@0.0.1536.834" timestamp="1584094231453" />
+    <state x="510" y="0" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1536.834@0.0.1536.834" timestamp="1584339249714" />
     <state x="549" y="159" key="FileChooserDialogImpl" timestamp="1584013583335">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="159" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584013583335" />
-    <state width="1493" height="253" key="GridCell.Tab.0.bottom" timestamp="1584291657853">
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom" timestamp="1584338038070">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584291657853" />
-    <state width="1493" height="253" key="GridCell.Tab.0.center" timestamp="1584291657853">
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584338038070" />
+    <state width="1493" height="253" key="GridCell.Tab.0.center" timestamp="1584338038070">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584291657853" />
-    <state width="1493" height="253" key="GridCell.Tab.0.left" timestamp="1584291657853">
+    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584338038070" />
+    <state width="1493" height="253" key="GridCell.Tab.0.left" timestamp="1584338038069">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584291657853" />
-    <state width="1493" height="253" key="GridCell.Tab.0.right" timestamp="1584291657853">
+    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584338038069" />
+    <state width="1493" height="253" key="GridCell.Tab.0.right" timestamp="1584338038070">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584291657853" />
-    <state x="118" y="116" width="981" height="707" key="SettingsEditor" timestamp="1584013652319">
+    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584338038070" />
+    <state x="118" y="116" width="981" height="707" key="SettingsEditor" timestamp="1584342845436">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="118" y="116" width="981" height="707" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1584013652319" />
+    <state x="118" y="116" width="981" height="707" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1584342845436" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1584013869553">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -275,13 +271,13 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="452" y="21" width="631" height="792" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1584287770837" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1584291654863">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1584338036159">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584291654863" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584294680323">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584338036159" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584344984300">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584294680323" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584344984300" />
   </component>
 </project>

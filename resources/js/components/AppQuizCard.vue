@@ -4,14 +4,14 @@
     <p class="mb-5  text-justify">{{ desc }}</p>
     <div class="w-100 mt-3 position-relative">
       <a :href="to" class="block-btn btn btn-outline-primary" v-if="enterToExam">ورود به مسابقه</a>
+      <a :href="'/results/'+id" class="block-btn btn btn-outline-primary" v-if="enterToExam">نتایج</a>
 
-      <div class="time p-2 rounded shadow block-btn">
-        <span style="font-size:0.9rem">زمان شروع: </span>
-        <span style="font-size:0.9rem">
-          <span>{{ start }}</span>
-        </span>
+      <div class="time p-2 rounded shadow block-btn" style="font-size:0.9rem">
+        <span>زمان شروع: </span>
+        <span>{{ start }}</span>
       </div>
     </div>
+
   </div>
 </template>
 
