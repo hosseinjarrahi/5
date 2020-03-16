@@ -23,6 +23,12 @@
 
 <div id="app">
     <app-loading></app-loading>
+
+    @if(auth()->check() && auth()->user()->isAdmin())
+        <a class="d-block text-white bg-gray p-1 text-center admin-panel"
+           href="{{ url('admin') }}">مدیریت</a>
+    @endif
+
     <app-header></app-header>
     <div class="mt-5"></div>
     @yield('content')
@@ -32,4 +38,5 @@
 </div>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
 </html>

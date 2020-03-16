@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/','HomeController@index');
 Route::get('/results/{quiz}','HomeController@result');
 
@@ -24,10 +13,17 @@ Route::resource('/answer','AnswerController');
 
 Route::post('/complete','QuizController@complete');
 Route::post('/message/{message}','HomeController@showMessage')->name('message');
+// auth
 Route::post('/login','RegisterController@login');
 Route::get('/logout','RegisterController@logout');
 Route::post('/send-code','RegisterController@sendCode');
 Route::post('/register','RegisterController@register');
 Route::post('/verify','RegisterController@verify');
 Route::post('/check-auth','RegisterController@checkAuth');
-
+//admin
+Route::group(['prefix' => 'admin'],function(){
+    Route::get('/','AdminController@index');
+    Route::get('add-question','QuizController@addQuestion')->name('question.add');
+    Route::post('add-question','QuizController@add')->name('question.add.post');
+    Route::get('quiz/detail/{quiz}','QuizController@quizDetail');
+});

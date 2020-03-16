@@ -1,6 +1,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import persianDatePicker from 'vue-persian-datetime-picker';
+
+import VueMathjax from 'vue-mathjax';
+Vue.use(VueMathjax);
 
 Vue.component('app-header', require('./components/AppHeader.vue').default);
 Vue.component('app-taklif', require('./components/AppTaklif.vue').default);
@@ -13,12 +17,15 @@ Vue.component('app-exam', require('./components/AppExam.vue').default);
 Vue.component('app-footer', require('./components/AppFooter.vue').default);
 Vue.component('app-modal', require('./components/AppModal.vue').default);
 Vue.component('app-loading', require('./components/AppLoading.vue').default);
+Vue.component('app-quiz-make', require('./components/admin/AppQuizMake.vue').default);
+Vue.component('app-latex', require('./components/admin/AppLatex.vue').default);
+Vue.component('date-picker', persianDatePicker);
 
 import globalMixin from './globalMixin';
 window.EventBus = new Vue({});
 
 function checkAuth(){
-    return axios.post('check-auth')
+    return axios.post('/check-auth')
         .then(res => res.data)
         .catch(err => console.log(err));
 }

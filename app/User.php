@@ -63,4 +63,10 @@ class User extends Authenticatable
     {
         return $this->quizzes()->where('id',$quizId)->get()->isEmpty();
     }
+
+    public function isAdmin()
+    {
+        if($this->userid == 1) return true;
+        return false;
+    }
 }

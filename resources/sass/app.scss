@@ -41,3 +41,11 @@ $darkGray: #2f3542;
 *::-webkit-scrollbar {
   display: none;
 }
+
+.admin-panel{
+  margin-top: 40px
+}
+
+@media only screen and (max-width: 900px) {
+  .admin-panel{margin-top: 55px !important;}
+}

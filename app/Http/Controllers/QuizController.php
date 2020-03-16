@@ -21,12 +21,22 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+        $quiz = new Quiz();
+        $quiz->name = $request->name;
+        $quiz->duration = $request->duration;
+        $quiz->start = $request->start;
+        $quiz->show = 1;
+        if ($quiz->save()) {
+            return response(['ok']);
+        }
+
+        return response(['error']);
     }
 
     public function show(Quiz $quiz)
     {
-        if (! $quiz->isInTime()) {
-            return back();
+        if ( ! $quiz->show || ! $quiz->isInTime()) {
+            return redirect(url('/'));
         }
         $questions = ($quiz->questions)->toJson();
         $quiz = new QuizResourse($quiz);
@@ -47,7 +57,10 @@ class QuizController extends Controller
 
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->show = 0;
+        $quiz->save();
+
+        return back();
     }
 
     public function complete(Request $request)
@@ -93,5 +106,19 @@ class QuizController extends Controller
         }
 
         return $norm;
+    }
+
+    public function addQuestion(Request $request)
+    {
+        $quiz = Quiz::findOrFail($request->id);
+        return view('admin.questionAdd',compact('quiz'));
+    }
+
+    public function add(Request $request)
+    {
+        dd($request->all());
+
+        $quiz = Quiz::findOrFail($request->id);
+        return view('admin.questionAdd',compact('quiz'));
     }
 }
