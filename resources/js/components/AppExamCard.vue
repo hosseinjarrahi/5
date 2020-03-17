@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-11 col-md-6 p-3 bg-dark-gray shadow rounded my-2">
-        <img :src="img" class="w-100" />
+        <img :src="'/'+img" class="w-100" />
 
         <h4 class="border border-white rounded p-2 shadow text-center">{{ type == 'test' ? 'تستی' : 'تشریحی' }}</h4>
 

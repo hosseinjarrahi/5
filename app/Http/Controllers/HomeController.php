@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $quizzes = Quiz::where('show', '1')->get();
+        $quizzes = Quiz::where('show', '1')->orderByDesc('id')->get();
         $quizzes = QuizResourse::collection($quizzes)->toJson();
 
         return view('home', compact('quizzes'));

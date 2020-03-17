@@ -35,7 +35,7 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
-        if ( ! $quiz->show || ! $quiz->isInTime()) {
+        if (! $quiz->show || ! $quiz->isInTime()) {
             return redirect(url('/'));
         }
         $questions = ($quiz->questions)->toJson();
@@ -111,14 +111,42 @@ class QuizController extends Controller
     public function addQuestion(Request $request)
     {
         $quiz = Quiz::findOrFail($request->id);
-        return view('admin.questionAdd',compact('quiz'));
+
+        return view('admin.questionAdd', compact('quiz'));
     }
 
     public function add(Request $request)
     {
-        dd($request->all());
+        $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
+        $quiz = Quiz::findOrFail($request->quizId);
+        $question = $this->createQuestion($request);
+        $quiz->questions()->save($question);
+        return back();
+    }
 
-        $quiz = Quiz::findOrFail($request->id);
-        return view('admin.questionAdd',compact('quiz'));
+    private function createQuestion(Request $request)
+    {
+        $question = new Question;
+        $question->A = $request->A;
+        $question->B = $request->B;
+        $question->D = $request->D;
+        $question->C = $request->C;
+        $question->answer = $request->answer;
+        $question->desc = $request->desc;
+        $question->type = $request->type;
+        $question->norm = $request->norm;
+        $question->pic = $this->uploadImgQuestion($request);
+        return $question;
+    }
+
+    private function uploadImgQuestion(Request &$request)
+    {
+        $img = $request->file('img');
+        $path = null;
+        if ($request->hasFile('img') && ! is_null($request->img)) {
+            $path = time() . random_int(10, 5000) . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('upload'), $path);
+        }
+        return $path ? 'upload/' . $path : null;
     }
 }

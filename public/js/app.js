@@ -44310,7 +44310,7 @@ var render = function() {
         "div",
         { staticClass: "col-11 col-md-6 p-3 bg-dark-gray shadow rounded my-2" },
         [
-          _c("img", { staticClass: "w-100", attrs: { src: _vm.img } }),
+          _c("img", { staticClass: "w-100", attrs: { src: "/" + _vm.img } }),
           _vm._v(" "),
           _c(
             "h4",

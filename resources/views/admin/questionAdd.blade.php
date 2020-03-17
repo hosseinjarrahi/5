@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <div class="alert alert-info">{{ $quiz->name }}</div>
-                <form method="post" enctype="multipart/form-data" action="{{ route('question.add') }}">
+                <form method="post" enctype="multipart/form-data" action="{{ route('question.add.post') }}">
                     @csrf
                     <div class="form-group">
                         <select name="type" class="form-control">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>امتیاز سوال</label>
-                        <input class="form-control" name="norm">
+                        <input required class="form-control" name="norm">
                     </div>
                     <div class="form-group">
                         <label>جواب</label>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">تصویر</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
                     </div>
 
                     <input type="hidden" name="quizId" value="{{ $quiz->id }}">
