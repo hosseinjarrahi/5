@@ -208,6 +208,14 @@
                             timer: 5000
                         });
                         this.$emit('close');
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            text: 'تعداد درخواست های شما بیش از حد مجاز است.',
+                            icon: 'error',
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
                     });
                 this.closeLoad()
             },

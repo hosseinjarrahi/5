@@ -4,16 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <style>
-        @font-face {
-            font-family: vazir;
-            src: url({{ asset('fonts/Vazir.ttf') }});
-        }
-    </style>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body style="direction: rtl !important;font-family: vazir;">
+<body style="direction: rtl !important;">
 <div id="pageLoader" class="pageLoader d-flex justify-content-center align-items-center" style="z-index: 500">
     <img src="{{ asset('img/logo.png') }}"
          alt="tizviran logo"

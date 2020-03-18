@@ -122,7 +122,6 @@ class QuizController extends Controller
         $question->type = $request->type;
         $question->norm = $request->norm;
         $question->pic = $this->uploadImgQuestion($request);
-        dd($question,$request->all());
         return $question;
     }
 

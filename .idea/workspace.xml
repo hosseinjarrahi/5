@@ -4,9 +4,13 @@
     <list default="true" id="b8fd9dcd-f6c3-454d-82db-faa59d56daaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppExam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/questionAdd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +43,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -161,6 +166,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
@@ -194,6 +200,7 @@
       <command value="a route:list" />
       <command value="a migrate:refresh" />
       <command value="a db:seed" />
+      <command value="a make:middleware admin" />
     </option>
   </component>
   <component name="RunManager">
@@ -224,7 +231,7 @@
       <workItem from="1584350984707" duration="3491000" />
       <workItem from="1584363675019" duration="10208000" />
       <workItem from="1584463199989" duration="4098000" />
-      <workItem from="1584527922719" duration="7927000" />
+      <workItem from="1584527922719" duration="10918000" />
     </task>
     <servers />
   </component>
@@ -264,22 +271,22 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="159" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584348371921" />
-    <state width="1493" height="541" key="GridCell.Tab.0.bottom" timestamp="1584531708938">
+    <state width="1493" height="541" key="GridCell.Tab.0.bottom" timestamp="1584538128027">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="541" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584531708938" />
-    <state width="1493" height="541" key="GridCell.Tab.0.center" timestamp="1584531708938">
+    <state width="1493" height="541" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584538128027" />
+    <state width="1493" height="541" key="GridCell.Tab.0.center" timestamp="1584538128027">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="541" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584531708938" />
-    <state width="1493" height="541" key="GridCell.Tab.0.left" timestamp="1584531708938">
+    <state width="1493" height="541" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584538128027" />
+    <state width="1493" height="541" key="GridCell.Tab.0.left" timestamp="1584538128027">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="541" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584531708938" />
-    <state width="1493" height="541" key="GridCell.Tab.0.right" timestamp="1584531708938">
+    <state width="1493" height="541" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584538128027" />
+    <state width="1493" height="541" key="GridCell.Tab.0.right" timestamp="1584538128027">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="541" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584531708938" />
+    <state width="1493" height="541" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584538128027" />
     <state x="118" y="116" width="981" height="707" key="SettingsEditor" timestamp="1584342845436">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -304,14 +311,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="452" y="21" width="631" height="792" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1584372084907" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1584531705355">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1584538126397">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584531705355" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584538010212">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584538126397" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584543069179">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584538010212" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584543069179" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -320,6 +327,11 @@
           <url>file://$PROJECT_DIR$/resources/js/app.js</url>
           <line>2</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/RegisterController.php</url>
+          <line>102</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

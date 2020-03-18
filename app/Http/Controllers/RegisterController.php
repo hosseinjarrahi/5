@@ -100,12 +100,12 @@ class RegisterController extends Controller
 
     public function sendCode(RecoverRequest $request)
     {
-        $user = $this->getUserByPhone($request->phone);
+        $user = User::where('phone', $request->phone)->first();
         if (! $user) {
             return response($this->messages['recoveryError']);
         }
 
-        return $this->modifyUser($user,$request);
+        return $this->modifyUser($user, $request);
     }
 
     private function sms()
@@ -142,12 +142,7 @@ class RegisterController extends Controller
         $api->Send($this->sender, $receptor, $message);
     }
 
-    private function getUserByPhone(&$phone)
-    {
-        return User::where('phone', $phone)->first();
-    }
-
-    private function setSession($request,$random)
+    private function setSession($request, $random)
     {
         session([
             'data' => $request->only('handle', 'phone', 'password', 'name'),
@@ -155,15 +150,16 @@ class RegisterController extends Controller
         ]);
     }
 
-    private function modifyUser($user,$request)
+    private function modifyUser($user, $request)
     {
-        // TODO: every user just onceee get recovery code
         $pass = random_int(100000000, 999999999);
         $user->passhash = Hash::make($pass);
         if ($user->save()) {
-                $this->sendSms($request, $pass);
+            $this->sendSms($request, $pass);
+
             return response($this->messages['recoverSuccess']);
         }
+
         return response($this->messages['recoverNotComplete']);
     }
 }
