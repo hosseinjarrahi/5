@@ -25,15 +25,15 @@
                     </div>
                     <div class="form-group">
                         <label>گزینه B</label>
-                        <input class="form-control" name="A">
+                        <input class="form-control" name="B">
                     </div>
                     <div class="form-group">
                         <label>گزینه C</label>
-                        <input class="form-control" name="A">
+                        <input class="form-control" name="C">
                     </div>
                     <div class="form-group">
                         <label>گزینه D</label>
-                        <input class="form-control" name="A">
+                        <input class="form-control" name="D">
                     </div>
                     <div class="form-group">
                         <label>امتیاز سوال</label>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label>جواب</label>
-                        <select name="type" class="form-control">
+                        <select name="answer" class="form-control">
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>

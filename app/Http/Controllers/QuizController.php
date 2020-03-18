@@ -9,14 +9,10 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    public function index()
+    public function quizDetail(Quiz $quiz)
     {
-
-    }
-
-    public function create()
-    {
-
+        $users = $quiz->users()->withPivot(['norm'])->get();
+        return view('quizDetail',compact('users','quiz'));
     }
 
     public function store(Request $request)
@@ -43,16 +39,6 @@ class QuizController extends Controller
         $quiz = json_decode($quiz->toJson());
 
         return view('quiz', compact('quiz', 'questions'));
-    }
-
-    public function edit(Quiz $quiz)
-    {
-        //
-    }
-
-    public function update(Request $request, Quiz $quiz)
-    {
-        //
     }
 
     public function destroy(Quiz $quiz)
@@ -136,6 +122,7 @@ class QuizController extends Controller
         $question->type = $request->type;
         $question->norm = $request->norm;
         $question->pic = $this->uploadImgQuestion($request);
+        dd($question,$request->all());
         return $question;
     }
 

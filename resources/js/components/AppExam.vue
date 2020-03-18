@@ -9,7 +9,7 @@
       :B="q.B"
       :C="q.C"
       :D="q.D"
-      type="test"
+      :type="q.type"
       :number="index"
       :id="q.id"
       @change="handleSelecting"

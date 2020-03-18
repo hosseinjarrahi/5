@@ -70,4 +70,8 @@ class User extends Authenticatable
         return false;
     }
 
+    public function fileInQuiz($quiz_id)
+    {
+        return File::where('quiz_id',$quiz_id)->where('user_id',$this->userid);
+    }
 }

@@ -26,5 +26,5 @@ Route::group(['prefix' => 'admin'],function(){
     Route::get('/','AdminController@index');
     Route::get('add-question','QuizController@addQuestion')->name('question.add');
     Route::post('add-question','QuizController@add')->name('question.add.post');
-    Route::get('quiz/detail/{quiz}','QuizController@quizDetail'); // TODO: this is main todo for now
+    Route::get('quiz/detail/{quiz}','QuizController@quizDetail');
 });

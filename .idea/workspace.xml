@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b8fd9dcd-f6c3-454d-82db-faa59d56daaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/AppExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppExam.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/questionAdd.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,24 +163,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\quiz\resources\views" />
       <recent name="E:\web\quiz\public\js" />
       <recent name="E:\web\quiz\resources\js\components\admin" />
       <recent name="E:\web\quiz\resources\views\admin" />
       <recent name="E:\web\quiz\public\img" />
-      <recent name="E:\web\quiz\resources\views" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="a list" />
-      <command value="a migrate:refresh" />
       <command value="seed" />
       <command value="a make:controller" />
       <command value="a make:controller RegisterController" />
@@ -190,10 +189,11 @@
       <command value="a make:request  LoginRequest" />
       <command value="a make:request  RecoverRequest" />
       <command value="a make:controller  AdminController" />
-      <command value="a db:seed" />
       <command value="a make:controller  FileController" />
       <command value="a make:request UploadRequest" />
       <command value="a route:list" />
+      <command value="a migrate:refresh" />
+      <command value="a db:seed" />
     </option>
   </component>
   <component name="RunManager">
@@ -224,7 +224,7 @@
       <workItem from="1584350984707" duration="3491000" />
       <workItem from="1584363675019" duration="10208000" />
       <workItem from="1584463199989" duration="4098000" />
-      <workItem from="1584527922719" duration="3680000" />
+      <workItem from="1584527922719" duration="7927000" />
     </task>
     <servers />
   </component>
@@ -308,10 +308,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584531705355" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584531610530">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584538010212">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584531610530" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584538010212" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
