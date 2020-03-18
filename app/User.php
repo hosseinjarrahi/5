@@ -69,4 +69,5 @@ class User extends Authenticatable
         if($this->userid == 1) return true;
         return false;
     }
+
 }

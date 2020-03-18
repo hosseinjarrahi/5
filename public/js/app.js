@@ -2061,40 +2061,31 @@ __webpack_require__.r(__webpack_exports__);
       this.selected.push(arguments[0]);
     },
     uploadFile: function uploadFile() {
-      var _this3 = this;
-
       this.load();
       this.file = this.$refs.file.files[0];
       var formData = new FormData();
       formData.append("file", this.file);
       formData.append("id", this.id);
-      axios.post("/send", formData, {
+      axios.post("/file", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       }).then(function (response) {
-        if (!response.data) {
-          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-            // title: 'Error!',
-            text: 'فایل شما ارسال نشد.',
-            icon: 'error',
-            confirmButtonText: 'بسیار خوب',
-            timer: 5000
-          });
-        } else {
-          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-            // title: 'Error!',
-            text: 'فایل شما با موفقیت ارسال شد.',
-            icon: 'success',
-            confirmButtonText: 'بسیار خوب',
-            timer: 5000
-          });
-        }
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: response.data.message,
+          icon: 'success',
+          confirmButtonText: 'بسیار خوب',
+          timer: 5000
+        });
       })["catch"](function (error) {
-        console.log(error);
-      }).then(function () {
-        _this3.closeLoad();
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: error.response.data.errors.file || error.response.data.errors.max,
+          icon: 'error',
+          confirmButtonText: 'بسیار خوب',
+          timer: 5000
+        });
       });
+      this.closeLoad();
     }
   }
 });
@@ -3012,7 +3003,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.time {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  color: white;\r\n  background: #ff416c; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */\r\n  background: linear-gradient(\r\n    to right,\r\n    #ff4b2b,\r\n    #ff416c\r\n  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\r\n\r\n/* Give custom look and feel to file upload*/\n.btn-file input[type=\"file\"] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  min-width: 100%;\r\n  min-height: 100%;\r\n  opacity: 0;\r\n  outline: none;\r\n  cursor: pointer;\r\n  display: block;\n}\n.btn-file {\r\n  position: relative;\r\n  overflow: hidden;\r\n  color: #2a476b;\r\n  font-weight: bold;\r\n  background-color: #f1f1ef;\r\n  box-shadow: 1px 10px 20px 0px rgba(218, 215, 206, 0.8);\r\n  border: 2px solid #2a476b;\n}\n.btn-file:hover {\r\n  background: #2a476b;\r\n  color: #ffffff;\n}\n@media only screen and (max-width: 980px) {\n.block-btn {\r\n    text-align: center;\r\n    position: relative;\r\n    margin: 10px 0px;\r\n    display: block;\n}\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.btn-file input[type=\"file\"] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  opacity: 0;\n  outline: none;\n  cursor: pointer;\n  display: block;\n}\n.btn-file {\n  position: relative;\n  overflow: hidden;\n  color: #2a476b;\n  font-weight: bold;\n  background-color: #f1f1ef;\n  box-shadow: 1px 10px 20px 0px rgba(218, 215, 206, 0.8);\n  border: 2px solid #2a476b;\n}\n.btn-file:hover {\n  background: #2a476b;\n  color: #ffffff;\n}\n@media only screen and (max-width: 980px) {\n.block-btn {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n\n", ""]);
 
 // exports
 

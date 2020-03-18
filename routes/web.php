@@ -10,6 +10,7 @@ Route::resource('/question','QuestionController');
 Route::resource('/work','WorkController');
 Route::resource('/send','SendController');
 Route::resource('/answer','AnswerController');
+Route::resource('/file','FileController');
 
 Route::post('/complete','QuizController@complete');
 Route::post('/message/{message}','HomeController@showMessage')->name('message');
@@ -25,5 +26,5 @@ Route::group(['prefix' => 'admin'],function(){
     Route::get('/','AdminController@index');
     Route::get('add-question','QuizController@addQuestion')->name('question.add');
     Route::post('add-question','QuizController@add')->name('question.add.post');
-    Route::get('quiz/detail/{quiz}','QuizController@quizDetail');
+    Route::get('quiz/detail/{quiz}','QuizController@quizDetail'); // TODO: this is main todo for now
 });
