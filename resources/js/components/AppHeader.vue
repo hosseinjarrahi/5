@@ -9,7 +9,7 @@
           class="collapse position-relative navbar-collapse navbar-expand-md align-items-center justify-content-start"
           id="navbarNav"
         >
-          <a class="position-absolute" style="left:40px" href="/">
+          <a class="position-absolute" style="left:40px">
             <img
               src="/img/user.png"
               height="50"
@@ -27,7 +27,7 @@
             <span>|||</span>
           </div>
 
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img src="/img/logo.png" height="30" class="d-inline-block align-top" alt/>
           </a>
 

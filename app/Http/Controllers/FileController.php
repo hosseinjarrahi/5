@@ -11,9 +11,7 @@ class FileController extends Controller
     public function store(UploadRequest $request)
     {
         $id = auth()->id();
-        $file = new File(['user_id' => $id,'quiz_id' => $request->id]);
-        $file->file = $this->uploadFile($request);
-        $file->save();
+        $this->createFile($request, $id);
         return response(['message' => 'با موفقیت ارسال شد.']);
     }
 
@@ -26,5 +24,15 @@ class FileController extends Controller
             $file->move(public_path('upload'), $path);
         }
         return $path ? 'upload/' . $path : null;
+    }
+
+    private function createFile(UploadRequest $request, $id): void
+    {
+        $file = new File([
+            'user_id' => $id,
+            'quiz_id' => $request->id
+        ]);
+        $file->file = $this->uploadFile($request);
+        $file->save();
     }
 }

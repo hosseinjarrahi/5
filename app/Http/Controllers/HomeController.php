@@ -9,14 +9,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-//         $this->middleware('auth')->only('result');
-    }
-
     public function index()
     {
-        $quizzes = Quiz::where('show', '1')->orderByDesc('id')->get();
+        $quizzes = $this->getShowableQuizzes();
         $quizzes = QuizResourse::collection($quizzes)->toJson();
 
         return view('home', compact('quizzes'));
@@ -25,7 +20,13 @@ class HomeController extends Controller
     public function result(Quiz $quiz)
     {
         $user = auth()->user();
-        $users = $quiz->users()->withPivot('norm')->get()->sortByDesc('pivot.norm');
+        $users = $quiz->getQuizUsersWithNorms();
         return view('results', compact('users', 'user','quiz'));
     }
+
+    private function getShowableQuizzes()
+    {
+        return Quiz::where('show', '1')->orderByDesc('id')->get();
+    }
+
 }
