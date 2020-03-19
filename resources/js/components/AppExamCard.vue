@@ -2,20 +2,20 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-11 col-md-6 p-3 bg-dark-gray shadow rounded my-2">
-        <img :src="'/'+img" class="w-100" />
+        <img :src="'/'+img" class="w-100" v-if="img"/>
 
         <h4 class="border border-white rounded p-2 shadow text-center">{{ type == 'test' ? 'تستی' : 'تشریحی' }}</h4>
 
         <p class="text-justify p-3">
           <span>{{ number }}-</span>
-          <span>{{ desc }}</span>
+          <vue-mathjax :formula="desc"></vue-mathjax>
         </p>
 
         <ul class="list-group" v-if="type == 'test'">
-          <li :class="['list-group-item',{'select':selected == 'A'}]" @click="select('A')">{{ A }}</li>
-          <li :class="['list-group-item',{'select':selected == 'B'}]" @click="select('B')">{{ B }}</li>
-          <li :class="['list-group-item',{'select':selected == 'C'}]" @click="select('C')">{{ C }}</li>
-          <li :class="['list-group-item',{'select':selected == 'D'}]" @click="select('D')">{{ D }}</li>
+          <li :class="['list-group-item',{'select':selected == 'A'}]" @click="select('A')" v-html="A"></li>
+          <li :class="['list-group-item',{'select':selected == 'B'}]" @click="select('B')" v-html="B"></li>
+          <li :class="['list-group-item',{'select':selected == 'C'}]" @click="select('C')" v-html="C"></li>
+          <li :class="['list-group-item',{'select':selected == 'D'}]" @click="select('D')" v-html="D"></li>
         </ul>
       </div>
     </div>
@@ -37,26 +37,20 @@ export default {
   },
   data() {
     return {
-      selected: null
+        selected: null,
+        description:null
     };
   },
   methods: {
     select(witchOne){
       let id = this.id;
       if(this.selected != witchOne)
-      this.$emit('change',{ 
+      this.$emit('change',{
         id:id ,
         selected:witchOne ,
         });
 
       this.selected = witchOne;
-    }
-
-  },
-  computed: {
-    enterToExam() {
-      return true;
-      day == 0;
     }
   }
 };

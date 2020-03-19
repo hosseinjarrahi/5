@@ -9,7 +9,7 @@
           class="collapse position-relative navbar-collapse navbar-expand-md align-items-center justify-content-start"
           id="navbarNav"
         >
-          <a class="position-absolute" style="left:40px" href="#">
+          <a class="position-absolute" style="left:40px" href="/">
             <img
               src="/img/user.png"
               height="50"

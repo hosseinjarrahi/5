@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('quizDetail');
+    }
+
     public function quizDetail(Quiz $quiz)
     {
         $users = $quiz->users()->withPivot(['norm'])->get();

@@ -34,8 +34,9 @@ async function init(){
     window.EventBus.auth = await checkAuth();
     Vue.mixin(globalMixin);
     const app = new Vue({
-        el: '#app',
+        el: '#app'
     });
+
 };
 
 init()

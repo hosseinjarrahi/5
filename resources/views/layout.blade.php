@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body style="direction: rtl !important;">
-<div id="pageLoader" class="pageLoader d-flex justify-content-center align-items-center" style="z-index: 500">
+<div id="pageLoader" class="pageLoader flex-column d-flex justify-content-center align-items-center" style="z-index: 500">
     <img src="{{ asset('img/logo.png') }}"
          alt="tizviran logo"
          class="img-fluid"
          style="max-width: 200px">
+
+    <div class="spinner-border text-white" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+
 </div>
 
 <div id="app">
