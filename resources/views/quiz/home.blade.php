@@ -2,9 +2,6 @@
 @section('title','تیزویران | کلاس ها')
 
 @section('content')
-    <human-icon></human-icon>
-
-    {{ exit() }}
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 my-5">

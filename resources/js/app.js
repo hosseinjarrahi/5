@@ -21,6 +21,10 @@ Vue.component('app-quiz-make', require('./components/admin/AppQuizMake.vue').def
 Vue.component('app-latex', require('./components/admin/AppLatex.vue').default);
 Vue.component('date-picker', persianDatePicker);
 
+//main
+Vue.component('app-slider', require('./components/main/AppSlider.vue').default);
+
+
 import globalMixin from './globalMixin';
 window.EventBus = new Vue({});
 

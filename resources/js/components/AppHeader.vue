@@ -9,13 +9,13 @@
           class="collapse position-relative navbar-collapse navbar-expand-md align-items-center justify-content-start"
           id="navbarNav"
         >
-          <a class="position-absolute" style="left:40px">
+          <a class="position-absolute" @click="openModal =!openModal" style="left:40px;cursor:pointer">
+            <span class="text-white" v-if="!auth">ورود / ثبت نام</span>
             <img
               src="/img/user.png"
               height="50"
               class="d-inline-block"
               alt="user avatar"
-              @click="openModal =!openModal"
             />
           </a>
 
@@ -66,7 +66,8 @@
             return {
                 opened: false,
                 openModal: false,
-                scroll: false
+                scroll: false,
+                auth:window.EventBus.auth
             };
         },
         methods: {},

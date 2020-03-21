@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\main;
 
 use App\Category;
 use App\Download;
@@ -14,6 +14,7 @@ use App\User;
 use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -25,16 +26,16 @@ class HomeController extends Controller
 	public function home ()
 	{
 
-        $myfile = fopen(public_path('img/banner.txt'), "r") or die("Unable to open file!");
-        $src = fread($myfile,100000);
-
-		$table = Table::first();
-		$posts = Forum::lastThreePosts();
-		$products = Product::latest()->limit(6)->get();
-		$videos = Video::latest()->limit(6)->get();
-		$text = (Setting::first())->text ?? '';
-		$news = News::latest()->limit(3)->get();
-		return view('home' , compact('posts' , 'src','products' , 'videos' , 'text','news','table'));
+//        $myfile = fopen(public_path('img/banner.txt'), "r") or die("Unable to open file!");
+//        $src = fread($myfile,100000);
+//
+//		$table = Table::first();
+//		$posts = Forum::lastThreePosts();
+//		$products = Product::latest()->limit(6)->get();
+//		$videos = Video::latest()->limit(6)->get();
+//		$text = (Setting::first())->text ?? '';
+//		$news = News::latest()->limit(3)->get();
+		return view('main.home');
 	}
 
 	public function news()
