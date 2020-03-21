@@ -23,7 +23,6 @@ class CreateQuestionsTable extends Migration
             $table->string('answer')->nullable();
             $table->string('pic')->nullable();
             $table->longText('desc')->nullable();
-            $table->longText('quiz_id')->nullable();
             $table->string('norm')->default(1);
             $table->timestamps();
         });
