@@ -3,21 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/Controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/admin/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/admin/questionAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/quiz.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quizDetail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/quizDetail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/results.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppSlider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppSlider.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,23 +162,23 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\public\img" />
+      <recent name="E:\web\bigBag\quiz\resources\js\components\main" />
+      <recent name="E:\web\bigBag\quiz\public" />
+      <recent name="E:\web\bigBag\quiz\public\css" />
+      <recent name="E:\web\bigBag\quiz\resources\views\main" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\web\bigBag\quiz\resources\sass" />
       <recent name="E:\web\bigBag\quiz\resources\views" />
       <recent name="E:\web\bigBag\quiz\resources\views\quiz" />
       <recent name="E:\web\bigBag\quiz\app\Models\Main" />
       <recent name="E:\web\bigBag\quiz\app\Models" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\public" />
-      <recent name="E:\web\bigBag\quiz\public\css" />
-      <recent name="E:\web\bigBag\quiz\public\img" />
-      <recent name="E:\web\bigBag\quiz\resources\views\main" />
-      <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -211,7 +203,8 @@
       <option name="presentableId" value="Default" />
       <updated>1584779862189</updated>
       <workItem from="1584779868145" duration="10459000" />
-      <workItem from="1584805583901" duration="9409000" />
+      <workItem from="1584805583901" duration="9504000" />
+      <workItem from="1584883717176" duration="5284000" />
     </task>
     <servers />
   </component>
@@ -219,22 +212,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="214" key="GridCell.Tab.0.bottom" timestamp="1584806459007">
+    <state width="1493" height="214" key="GridCell.Tab.0.bottom" timestamp="1584815178226">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584806459007" />
-    <state width="1493" height="214" key="GridCell.Tab.0.center" timestamp="1584806459007">
+    <state width="1493" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1584815178226" />
+    <state width="1493" height="214" key="GridCell.Tab.0.center" timestamp="1584815178226">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584806459007" />
-    <state width="1493" height="214" key="GridCell.Tab.0.left" timestamp="1584806459006">
+    <state width="1493" height="214" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1584815178226" />
+    <state width="1493" height="214" key="GridCell.Tab.0.left" timestamp="1584815178225">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584806459006" />
-    <state width="1493" height="214" key="GridCell.Tab.0.right" timestamp="1584806459007">
+    <state width="1493" height="214" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1584815178225" />
+    <state width="1493" height="214" key="GridCell.Tab.0.right" timestamp="1584815178226">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584806459007" />
+    <state width="1493" height="214" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1584815178226" />
+    <state x="249" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584885057737">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="249" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1584885057737" />
     <state x="463" y="149" width="609" height="536" key="find.popup" timestamp="1584782809375">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -243,9 +240,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1584812898515" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584811455610">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1584887820872">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584811455610" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1584887820872" />
   </component>
 </project>

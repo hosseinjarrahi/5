@@ -14,7 +14,7 @@
             </div>
 
             <app-slider></app-slider>
-
+            <app-course></app-course>
         </div>
     </div>
 @endsection

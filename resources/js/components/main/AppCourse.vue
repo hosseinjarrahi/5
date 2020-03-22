@@ -1,38 +1,39 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-between">
+  <div class="container my-4">
+    <div class="row justify-content-center">
 
-      <div class="col-12 col-md-8">
+      <div class="col-12">
+        <div class="bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row">
 
-        <div class="bg-gray slider overflow-hidden shadow">
-
-          <transition name="fade">
-
-            <a v-for="(slide,index) in slides"
-               :key="index"
-               v-if="selected == index"
-               href=""
-               class="item"
-               style="background-image: url('/img/test.jpg');background-size:contain;">
-            </a>
-
-          </transition>
-
-          <div class="controlls p-2">
-            <span class="prev" @click="next()"><span class="fas fa-angle-right"></span></span>
-            <span class="next" @click="previous()"><span class="fas fa-angle-left"></span></span>
+          <div class="col-12 col-md-3">
+            <img src="/img/courses.png" class="img-fluid" alt="">
           </div>
-        </div>
 
+          <div class="col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around">
+
+            <div class="p-2 col-12 col-md-4">
+              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
+            </div>
+
+            <div class="p-2 col-12 col-md-4">
+              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
+            </div>
+
+            <div class="p-2 col-12 col-md-4">
+              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
+            </div>
+
+
+          </div>
+
+        </div>
       </div>
 
-      <div class="col-12 col-md-4">
-
-        <div class="my-1 my-md-0 bg-dark-gray aside-slider overflow-hidden shadow">
-
+      <a href="" class="my-2 col-12 text-center text-white">
+        <div class="courses overflow-hidden shadow p-1" style="background-color: #57606f">
+          دوره های بیشتر ...
         </div>
-
-      </div>
+      </a>
 
     </div>
   </div>
@@ -100,52 +101,9 @@
 </script>
 
 <style scoped>
-  .slider {
+  .courses {
     border-radius: 20px;
     width: 100%;
-    padding-top: 50%;
     position: relative;
-  }
-
-  .aside-slider {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: all 1s;
-  }
-
-  .fade-enter
-  {
-    transform: translateX(100%);
-  }
-
-  .fade-leave-to {
-    opacity: 0;
-  }
-
-  .prev, .next {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    cursor: pointer;
-  }
-
-  .controlls, .item {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: center;
-    top: 0;
   }
 </style>
