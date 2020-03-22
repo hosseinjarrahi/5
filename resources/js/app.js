@@ -24,6 +24,7 @@ Vue.component('date-picker', persianDatePicker);
 //main
 Vue.component('app-slider', require('./components/main/AppSlider.vue').default);
 Vue.component('app-course', require('./components/main/AppCourse.vue').default);
+Vue.component('app-course-card', require('./components/main/AppCourseCard.vue').default);
 
 
 import globalMixin from './globalMixin';

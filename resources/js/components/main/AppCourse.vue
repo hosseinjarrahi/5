@@ -3,26 +3,17 @@
     <div class="row justify-content-center">
 
       <div class="col-12">
-        <div class="bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row">
+        <div class="bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row align-items-center">
 
           <div class="col-12 col-md-3">
             <img src="/img/courses.png" class="img-fluid" alt="">
           </div>
 
-          <div class="col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around">
+          <div class="col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around align-items-center">
 
-            <div class="p-2 col-12 col-md-4">
-              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
-            </div>
-
-            <div class="p-2 col-12 col-md-4">
-              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
-            </div>
-
-            <div class="p-2 col-12 col-md-4">
-              <div class="my-2 p-2 rounded" style="background-color: #57606f;">s</div>
-            </div>
-
+            <app-course-card></app-course-card>
+            <app-course-card></app-course-card>
+            <app-course-card></app-course-card>
 
           </div>
 
