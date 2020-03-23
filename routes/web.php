@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 //main
 Route::get('/','main\HomeController@home');
+Route::get('/category/{category?}','main\HomeController@category');
+Route::get('/product/{product?}','main\HomeController@product');
 
 //quiz
 Route::group(['prefix'=>'quiz'],function(){

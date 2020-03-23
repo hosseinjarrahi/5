@@ -32,28 +32,16 @@
           </a>
 
           <ul class="navbar-nav d-none d-md-flex align-items-center">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://tizviran.com">خانه</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://quiz.tizviran.com">صفحه اصلی</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="http://forum.tizviran.com">انجمن</a>
+            <li class="nav-item" v-for="(link,index) in links" :key="index">
+              <a class="nav-link text-white" :href="link.to">{{  link.title }}</a>
             </li>
           </ul>
 
         </div>
       </nav>
       <ul class="navbar-nav d-flex flex-column p-3" v-if="opened">
-        <li class="nav-item">
-          <a class="nav-link text-white" href="http://tizviran.com">خانه</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="http://quiz.tizviran.com">صفحه اصلی</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="http://forum.tizviran.com">انجمن</a>
+        <li class="nav-item" v-for="(link,index) in links" :key="index">
+          <a class="nav-link text-white" :href="link.to">{{  link.title }}</a>
         </li>
       </ul>
     </div>
@@ -67,7 +55,13 @@
                 opened: false,
                 openModal: false,
                 scroll: false,
-                auth:window.EventBus.auth
+                auth:window.EventBus.auth,
+                links:[
+                  {to:'',title:'خانه'},
+                  {to:'',title:'کوییزویران'},
+                  {to:'',title:'فروشگاه'},
+                  {to:'',title:'انجمن'},
+                ]
             };
         },
         methods: {},

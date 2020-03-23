@@ -67,3 +67,11 @@ body {
   background-color: #f5f5f5;
 }
 
+.circle {
+  border-radius: 100%;
+}
+
+.white-shadow {
+  box-shadow: 0px 0px 20px #f5f5f5;
+}
+

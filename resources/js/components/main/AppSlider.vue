@@ -7,15 +7,14 @@
         <div class="bg-gray slider overflow-hidden shadow">
 
           <transition name="fade">
-
-            <a v-for="(slide,index) in slides"
-               :key="index"
-               v-if="selected == index"
-               href=""
-               class="item"
-               style="background-image: url('/img/test.jpg');background-size:contain;">
-            </a>
-
+              <a 
+                v-for="(slide,index) in slides" 
+                :key="index"
+                v-if="selected == index"
+                href=""
+                class="item"
+                style="background-image: url('/img/test.jpg');background-size:contain;">
+              </a>
           </transition>
 
           <div class="controlls p-2">
