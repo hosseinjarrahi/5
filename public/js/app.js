@@ -2956,10 +2956,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppSlider",
+  props: {
+    'mainImage': {
+      "default": null
+    },
+    'moreText': {
+      "default": null
+    }
+  },
   data: function data() {
     return {
       slides: [{
@@ -3022,6 +3028,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -46080,7 +46089,12 @@ var render = function() {
               "bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row align-items-center"
           },
           [
-            _vm._m(0),
+            _c("div", { staticClass: "col-12 col-md-3" }, [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: _vm.mainImage, alt: "" }
+              })
+            ]),
             _vm._v(" "),
             _c(
               "div",
@@ -46088,58 +46102,34 @@ var render = function() {
                 staticClass:
                   "col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around align-items-center"
               },
-              [
-                _c("app-course-card"),
-                _vm._v(" "),
-                _c("app-course-card"),
-                _vm._v(" "),
-                _c("app-course-card")
-              ],
-              1
+              [_vm._t("default")],
+              2
             )
           ]
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "a",
+        {
+          staticClass: "my-2 col-12 text-center text-white",
+          attrs: { href: "" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "courses overflow-hidden shadow p-1",
+              staticStyle: { "background-color": "#57606f" }
+            },
+            [_vm._v("\n        " + _vm._s(_vm.moreText) + "\n      ")]
+          )
+        ]
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-3" }, [
-      _c("img", {
-        staticClass: "img-fluid",
-        attrs: { src: "/img/courses.png", alt: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "my-2 col-12 text-center text-white",
-        attrs: { href: "" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "courses overflow-hidden shadow p-1",
-            staticStyle: { "background-color": "#57606f" }
-          },
-          [_vm._v("\n        دوره های بیشتر ...\n      ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46161,27 +46151,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "p-2 col-12 col-md-4",
-        staticStyle: { cursor: "pointer" }
-      },
-      [
-        _c("div", { staticClass: "my-2 rounded shadow course-card" }, [
-          _c("div", {
-            staticClass: "course-header shadow rounded",
-            staticStyle: { "background-image": "url('/img/course-test.jpg')" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "p-3" }, [
+  return _c(
+    "div",
+    { staticClass: "p-2 col-12 col-md-4", staticStyle: { cursor: "pointer" } },
+    [
+      _c("div", { staticClass: "my-2 rounded shadow course-card" }, [
+        _c("div", {
+          staticClass: "course-header shadow rounded",
+          staticStyle: { "background-image": "url('/img/course-test.jpg')" }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "p-3" },
+          [
             _c(
               "p",
               {
@@ -46195,43 +46178,58 @@ var staticRenderFns = [
               ]
             ),
             _vm._v(" "),
-            _c("p", { staticClass: "border-bottom border-light pb-2" }, [
-              _c("span", [
-                _c("img", {
-                  staticClass: "shadow",
-                  staticStyle: {
-                    width: "30px",
-                    height: "30px",
-                    "border-radius": "100%"
-                  },
-                  attrs: { src: "/img/avatar.png", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("span", [_vm._v("استاد:")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("جعفری")])
-              ])
-            ]),
+            _vm._t("avatar", [_vm._m(0)]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "d-flex flex-row justify-content-between align-items-center"
-              },
-              [
-                _c("span", [
-                  _c("span", { staticClass: "fas fa-clock" }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("12:40:20")])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "btn bg-dark-gray" }, [
-                  _c("span", [_vm._v("19.000")])
-                ])
-              ]
-            )
-          ])
+            _vm._t("footer", [_vm._m(1)])
+          ],
+          2
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "border-bottom border-light pb-2" }, [
+      _c("span", [
+        _c("img", {
+          staticClass: "shadow",
+          staticStyle: {
+            width: "30px",
+            height: "30px",
+            "border-radius": "100%"
+          },
+          attrs: { src: "/img/avatar.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("span", [_vm._v("استاد:")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("جعفری")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-flex flex-row justify-content-between align-items-center"
+      },
+      [
+        _c("span", [
+          _c("span", { staticClass: "fas fa-clock" }),
+          _vm._v(" "),
+          _c("span", [_vm._v("12:40:20")])
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "btn bg-dark-gray" }, [
+          _c("span", [_vm._v("19.000")])
         ])
       ]
     )

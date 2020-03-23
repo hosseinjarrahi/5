@@ -6,15 +6,13 @@
         <div class="bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row align-items-center">
 
           <div class="col-12 col-md-3">
-            <img src="/img/courses.png" class="img-fluid" alt="">
+            <img :src="mainImage" class="img-fluid" alt="">
           </div>
 
           <div class="col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around align-items-center">
 
-            <app-course-card></app-course-card>
-            <app-course-card></app-course-card>
-            <app-course-card></app-course-card>
-
+            <slot></slot>
+            
           </div>
 
         </div>
@@ -22,7 +20,7 @@
 
       <a href="" class="my-2 col-12 text-center text-white">
         <div class="courses overflow-hidden shadow p-1" style="background-color: #57606f">
-          دوره های بیشتر ...
+          {{ moreText }}
         </div>
       </a>
 
@@ -33,6 +31,10 @@
 <script>
     export default {
         name: "AppSlider",
+        props:{
+          'mainImage':{default:null},
+          'moreText':{default:null},
+        },
         data() {
             return {
                 slides: [

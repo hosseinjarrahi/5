@@ -14,7 +14,24 @@
             </div>
 
             <app-slider></app-slider>
-            <app-course></app-course>
+            <app-course
+                main-image="/img/courses.png"
+                more-text="مشاهده تمامی دوره ها"
+            >
+
+            <app-course-card></app-course-card>
+            <app-course-card></app-course-card>
+            <app-course-card></app-course-card>
+
+        </app-course>
+            <app-course
+            main-image="/img/jozavat.png"
+            more-text="مشاهده تمامی جزوات و نمونه سوالات"
+            >
+            <app-course-card><template #avatar>a</template></app-course-card>
+            <app-course-card><template #avatar>a</template></app-course-card>
+            <app-course-card><template #avatar>a</template></app-course-card>
+        </app-course>
         </div>
     </div>
 @endsection

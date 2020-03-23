@@ -11,17 +11,20 @@
           دوره آموزش متوسط ریاضی هشتم بدون در نظر گرفتم عدد جرمی
         </p>
 
-        <p class="border-bottom border-light pb-2">
-          <span>
-            <img src="/img/avatar.png"
-                 class="shadow"
-                 style="width:30px;height:30px;border-radius: 100%;"
-                 alt="">
-            <span>استاد:</span>
-            <span>جعفری</span>
-          </span>
-        </p>
-
+        <slot name="avatar">
+          <p class="border-bottom border-light pb-2">
+            <span>
+              <img src="/img/avatar.png"
+                  class="shadow"
+                  style="width:30px;height:30px;border-radius: 100%;"
+                  alt="">
+              <span>استاد:</span>
+              <span>جعفری</span>
+            </span>
+          </p>
+        </slot>
+        
+        <slot name="footer">
         <div class="d-flex flex-row justify-content-between align-items-center">
 
           <span>
@@ -34,9 +37,9 @@
           </span>
 
         </div>
-
+        </slot>
       </div>
-
+      
     </div>
 
   </div>
