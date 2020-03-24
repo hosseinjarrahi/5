@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','main\HomeController@home');
 Route::get('/category/{category?}','main\HomeController@category');
 Route::get('/product/{product?}','main\HomeController@product');
+Route::post('/login','RegisterController@login');
+Route::get('/logout','RegisterController@logout')->middleware('auth');
+Route::post('/send-code','RegisterController@sendCode')->middleware('throttle:1,3600');
+Route::post('/register','RegisterController@register')->middleware('throttle:5,3600');
+Route::post('/verify','RegisterController@verify');
+Route::post('/check-auth','RegisterController@checkAuth');
 
 //quiz
 Route::group(['prefix'=>'quiz'],function(){
@@ -19,13 +25,6 @@ Route::group(['prefix'=>'quiz'],function(){
     Route::resource('/file','quiz\FileController');
 
     Route::post('/complete','QuizController@complete')->middleware('auth');
-// auth
-    Route::post('/login','quiz\RegisterController@login');
-    Route::get('/logout','quiz\RegisterController@logout')->middleware('auth');
-    Route::post('/send-code','quiz\RegisterController@sendCode')->middleware('throttle:1,3600');
-    Route::post('/register','quiz\RegisterController@register')->middleware('throttle:5,3600');
-    Route::post('/verify','quiz\RegisterController@verify');
-    Route::post('/check-auth','quiz\RegisterController@checkAuth');
 //admin
     Route::group(['prefix' => 'admin','middleware' => ['admin','auth']],function(){
         Route::get('/','quiz\AdminController@index');

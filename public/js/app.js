@@ -59571,7 +59571,11 @@ function _init() {
             window.EventBus.auth = _context.sent;
             Vue.mixin(_globalMixin__WEBPACK_IMPORTED_MODULE_3__["default"]);
             app = new Vue({
-              el: '#app'
+              el: '#app',
+              mounted: function mounted() {
+                document.getElementById('pageLoader').classList.remove('d-flex');
+                document.getElementById('pageLoader').classList.add('d-none');
+              }
             });
 
           case 5:
@@ -59599,11 +59603,6 @@ init();
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-window.onload = function () {
-  document.getElementById('pageLoader').classList.remove('d-flex');
-  document.getElementById('pageLoader').classList.add('d-none');
-};
 
 /***/ }),
 

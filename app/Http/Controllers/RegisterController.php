@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\quiz;
+namespace App\Http\Controllers;
 
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Quiz\User;
 
 class RegisterController extends Controller
 {
@@ -116,7 +117,7 @@ class RegisterController extends Controller
         $api->Send($this->sender, $receptor, $message);
     }
 
-    private function createUser(): \App\User
+    private function createUser()
     {
         $user = new User;
         $data = session('data');
@@ -134,7 +135,7 @@ class RegisterController extends Controller
         return $user;
     }
 
-    private function sendSms(Request &$request, int &$pass): void
+    private function sendSms(Request &$request, int &$pass)
     {
         $receptor = (string)$request->phone;
         $message = "رمز جدید شما : " . $pass . " تیزویران ";
