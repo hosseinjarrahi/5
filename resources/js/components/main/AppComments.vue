@@ -11,19 +11,14 @@
             style="overflow:hidden"
           >یک مرد تنهسسسسسسسسسسسسای شب</span>
           <div class="my-3 p-3 bg-dark-gray rounded">
-            <p style="white-space:pre">
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-              چرا اینجا اونجوری شد؟
-            </p>
+          
+            <div class="tool-box p-0 m-0">
+              <span class="mx-1">1396/2/3</span> 
+              <span class="fas fa-calendar"></span>
+            </div>
+            
+            <p class="px-2" style="white-space:pre">سلام دنیا چه جوری هستی؟
+            من نمیدوم؟</p>
 
             <div class="tool-box">
               <span class="pointer fas fa-edit p-1 mx-1"></span>

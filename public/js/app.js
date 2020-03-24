@@ -3020,11 +3020,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -46694,11 +46689,17 @@ var staticRenderFns = [
             ),
             _vm._v(" "),
             _c("div", { staticClass: "my-3 p-3 bg-dark-gray rounded" }, [
-              _c("p", { staticStyle: { "white-space": "pre" } }, [
-                _vm._v(
-                  "\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n            چرا اینجا اونجوری شد؟\n          "
-                )
+              _c("div", { staticClass: "tool-box p-0 m-0" }, [
+                _c("span", { staticClass: "mx-1" }, [_vm._v("1396/2/3")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "fas fa-calendar" })
               ]),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "px-2", staticStyle: { "white-space": "pre" } },
+                [_vm._v("سلام دنیا چه جوری هستی؟\n          من نمیدوم؟")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "tool-box" }, [
                 _c("span", { staticClass: "pointer fas fa-edit p-1 mx-1" }),

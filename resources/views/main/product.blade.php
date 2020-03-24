@@ -27,6 +27,11 @@
                         <video src="/upload/test.mp4" controls class="w-100 rounded"></video>
                         <div style="margin-bottom:100px;margin-top:50px">
                             <app-title>توضیحات دوره</app-title>
+                            <p class="p-2" style="white-space:pre;">اب یبایستابستیبستیاب سییاب ستیا تسیا باسیل بایاسی سی ی سی سی  ی تس ی
+تا سیلتایس اتل یسا سیاتلیتل
+1-ییاب ی ایسب
+2-
+                            </p>
                         </div>
                         <div class="my-5">
                             <app-title>سرفصل های دوره</app-title>
