@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .parent-title{
   border-bottom: 2px solid #f5f5f5;
   position: relative;

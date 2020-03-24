@@ -29,6 +29,8 @@ Vue.component('app-categories', require('./components/main/AppCategories.vue').d
 Vue.component('app-product-desc', require('./components/main/AppProductDesc.vue').default);
 Vue.component('app-title', require('./components/main/AppTitle.vue').default);
 Vue.component('app-product-course-item', require('./components/main/AppProductCourseItem.vue').default);
+Vue.component('app-content-border-box', require('./components/main/AppContentBorderBox.vue').default);
+Vue.component('app-comments', require('./components/main/AppComments.vue').default);
 
 
 import globalMixin from './globalMixin';

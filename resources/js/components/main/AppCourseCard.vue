@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 col-12 col-md-4 position-relative" style="cursor: pointer">
+  <div class="col-12 col-md-4 p-2 w-100 position-relative" style="cursor: pointer">
     <div class="offer" v-if="offer">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
