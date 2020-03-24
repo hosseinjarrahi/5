@@ -3,7 +3,7 @@
     <div class="offer" v-if="offer">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
-    <div class="my-2 rounded shadow course-card">
+    <div class="my-2 rounded shadow course-card overflow-hidden">
       <div
         class="course-header shadow rounded"
         style="background-image:url('/img/course-test.jpg');"
@@ -17,7 +17,7 @@
 
         <slot name="avatar">
           <p class="border-bottom border-light pb-2 text-white">
-            <span>
+            <span style="font-size:0.8rem">
               <img src="/img/avatar.png" class="shadow avatar" alt />
               <span>استاد:</span>
               <span>جعفری</span>
@@ -26,7 +26,8 @@
         </slot>
 
         <slot name="footer">
-          <div class="d-flex flex-row justify-content-between align-items-center">
+          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+
             <span>
               <span class="fas fa-clock"></span>
               <span>12:40:20</span>
@@ -39,7 +40,6 @@
               <span class="btn bg-dark-gray py-0">
                 <span :class="{'line-throgh':offer}">19.000</span>
               </span>
-
             </span>
             
 

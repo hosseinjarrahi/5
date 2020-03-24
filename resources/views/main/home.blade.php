@@ -5,13 +5,24 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 my-5">
-                <div class="row justify-content-center m">
-                    <div class="col-11 col-md-4">
-                        <img src="{{ asset('img/mainLandingLogo.png') }}" alt="logo" class="img-fluid">
+            <div class="col-12 header-home w-100">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-11 col-md-4">
+                            <img src="{{ asset('img/landing.png') }}" alt="logo" class="img-fluid">
+                        </div>
+                        <div class="col-11">
+                            <div class="row justify-content-center">
+                                <div class="col-11 col-md-4">
+                                    <app-search-box></app-search-box>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}
+
 
             <app-slider></app-slider>
             <app-course

@@ -28,7 +28,6 @@
     @endif
 
     <app-header></app-header>
-    <div class="mt-5"></div>
     @yield('content')
     <app-footer>
         تمامی حقوق سایت متعلق به تیزویران می باشد.

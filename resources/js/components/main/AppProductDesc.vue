@@ -11,8 +11,8 @@
 
       <div class="my-2 border-bottom-dark p-2">
         <span class="fas fa-file-video"></span>
-        <span>جلسات منتشر شده : </span>
-        <span>50 قسمت</span>
+        <span>فایل های منتشر شده : </span>
+        <span>50</span>
       </div>
 
       <div class="my-2 border-bottom-dark p-2">
@@ -23,7 +23,7 @@
 
       <div class="my-2 border-bottom-dark p-2">
         <span class="fas fa-user-graduate"></span>
-        <span>تعداد شرکت کنندگان : </span>
+        <span>تعداد دانلود ها : </span>
         <span>20</span>
         <span>نفر</span>
       </div>

@@ -31,6 +31,8 @@ Vue.component('app-title', require('./components/main/AppTitle.vue').default);
 Vue.component('app-product-course-item', require('./components/main/AppProductCourseItem.vue').default);
 Vue.component('app-content-border-box', require('./components/main/AppContentBorderBox.vue').default);
 Vue.component('app-comments', require('./components/main/AppComments.vue').default);
+Vue.component('app-comment-dialog', require('./components/main/AppCommentDialog.vue').default);
+Vue.component('app-search-box', require('./components/main/AppSearchBox.vue').default);
 
 
 import globalMixin from './globalMixin';

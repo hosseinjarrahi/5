@@ -4528,10 +4528,17 @@ readers do not read off random characters that represent icons */
 
 * {
   font-family: vazir;
+  word-wrap: break-word;
 }
 
 a:hover {
   text-decoration: unset;
+}
+
+a,
+a:hover,
+a:active {
+  color: unset;
 }
 
 body {
@@ -4552,5 +4559,10 @@ body {
 
 .pointer {
   cursor: pointer;
+}
+
+.header-home {
+  padding: 100px 0px;
+  padding-bottom: 30px;
 }
 
