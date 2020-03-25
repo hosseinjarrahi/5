@@ -27,4 +27,9 @@ class Product extends Model
     {
         return $this->morphToMany(Tag::class, 'tagable');
     }
+
+    // TODO: addd this method
+    public function LastThreeStore($query){
+        return $query->where('');
+    }
 }

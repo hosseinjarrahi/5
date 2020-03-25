@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','تیزویران | کلاس ها')
+@section('title','تیزویران | خانه')
 
 @section('content')
 
@@ -24,7 +24,7 @@
             {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}
 
 
-            <app-slider></app-slider>
+            <app-slider :slides="{{ $slides }}"></app-slider>
             <app-course
                 main-image="/img/courses.png"
                 more-text="مشاهده تمامی دوره ها"

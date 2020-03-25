@@ -11,9 +11,9 @@
                 v-for="(slide,index) in slides" 
                 :key="index"
                 v-if="selected == index"
-                href=""
+                :href="slide.link"
                 class="item"
-                style="background-image: url('/img/test.jpg');background-size:contain;">
+                :style="{backgroundImage:`url(${slide.pic})`}">
               </a>
           </transition>
 
@@ -40,30 +40,11 @@
 <script>
     export default {
         name: "AppSlider",
+        props:{
+          slides:{default:[]}
+        },
         data() {
             return {
-                slides: [
-                    {
-                        to: 'Slide 1',
-                        id: 1
-                    },
-                    {
-                        to: 'Slide 2',
-                        id: 2
-                    },
-                    {
-                        to: 'Slide 3',
-                        id: 3
-                    },
-                    {
-                        to: 'Slide 4',
-                        id: 4
-                    },
-                    {
-                        to: 'Slide 5',
-                        id: 5
-                    }
-                ],
                 selected: 0,
                 timer: null,
                 duration: 5
@@ -136,6 +117,7 @@
     height: 30px;
     border-radius: 100%;
     cursor: pointer;
+    z-index: 2;
   }
 
   .controlls, .item {
@@ -146,5 +128,9 @@
     justify-content: space-between;
     align-items: center;
     top: 0;
+  }
+  .item{
+    background-size:contain;
+    z-index: 1;
   }
 </style>

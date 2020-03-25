@@ -3464,24 +3464,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppSlider",
+  props: {
+    slides: {
+      "default": []
+    }
+  },
   data: function data() {
     return {
-      slides: [{
-        to: 'Slide 1',
-        id: 1
-      }, {
-        to: 'Slide 2',
-        id: 2
-      }, {
-        to: 'Slide 3',
-        id: 3
-      }, {
-        to: 'Slide 4',
-        id: 4
-      }, {
-        to: 'Slide 5',
-        id: 5
-      }],
       selected: 0,
       timer: null,
       duration: 5
@@ -3911,7 +3900,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slider[data-v-5df6f277] {\n  border-radius: 20px;\n  width: 100%;\n  padding-top: 50%;\n  position: relative;\n}\n.aside-slider[data-v-5df6f277] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n}\n.fade-enter-active[data-v-5df6f277], .fade-leave-active[data-v-5df6f277] {\n  transition: all 1s;\n}\n.fade-enter[data-v-5df6f277]\n{\n  transform: translateX(100%);\n}\n.fade-leave-to[data-v-5df6f277] {\n  opacity: 0;\n}\n.prev[data-v-5df6f277], .next[data-v-5df6f277] {\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.5);\n  padding: 10px;\n  width: 30px;\n  height: 30px;\n  border-radius: 100%;\n  cursor: pointer;\n}\n.controlls[data-v-5df6f277], .item[data-v-5df6f277] {\n  position: absolute;\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: space-between;\n  align-items: center;\n  top: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slider[data-v-5df6f277] {\n  border-radius: 20px;\n  width: 100%;\n  padding-top: 50%;\n  position: relative;\n}\n.aside-slider[data-v-5df6f277] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n}\n.fade-enter-active[data-v-5df6f277], .fade-leave-active[data-v-5df6f277] {\n  transition: all 1s;\n}\n.fade-enter[data-v-5df6f277]\n{\n  transform: translateX(100%);\n}\n.fade-leave-to[data-v-5df6f277] {\n  opacity: 0;\n}\n.prev[data-v-5df6f277], .next[data-v-5df6f277] {\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.5);\n  padding: 10px;\n  width: 30px;\n  height: 30px;\n  border-radius: 100%;\n  cursor: pointer;\n  z-index: 2;\n}\n.controlls[data-v-5df6f277], .item[data-v-5df6f277] {\n  position: absolute;\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: space-between;\n  align-items: center;\n  top: 0;\n}\n.item[data-v-5df6f277]{\n  background-size:contain;\n  z-index: 1;\n}\n", ""]);
 
 // exports
 
@@ -47550,11 +47539,8 @@ var render = function() {
                   ? _c("a", {
                       key: index,
                       staticClass: "item",
-                      staticStyle: {
-                        "background-image": "url('/img/test.jpg')",
-                        "background-size": "contain"
-                      },
-                      attrs: { href: "" }
+                      style: { backgroundImage: "url(" + slide.pic + ")" },
+                      attrs: { href: slide.link }
                     })
                   : _vm._e()
               }),

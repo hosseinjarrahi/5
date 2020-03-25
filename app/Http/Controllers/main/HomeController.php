@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Slide;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,9 @@ class HomeController extends Controller
 		//		$videos = Video::latest()->limit(6)->get();
 		//		$text = (Setting::first())->text ?? '';
 		//		$news = News::latest()->limit(3)->get();
-		return view('main.home');
+		$slides = Slide::all()->toJson();
+		
+		return view('main.home',compact('slides'));
 	}
 
 	public function category(/*Category*/$category = null)
