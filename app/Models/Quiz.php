@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Quiz;
+namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;

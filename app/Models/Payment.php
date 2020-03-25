@@ -2,7 +2,7 @@
 
 namespace App\Models\Main;
 
-use App\Models\Quiz\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model

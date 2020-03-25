@@ -9,6 +9,7 @@
             
         <div class="col-12 col-md-4 mb-5">
             <app-product-desc></app-product-desc>
+            <app-bio></app-bio>
         </div>
 
         <div class="col-12 col-md-8">
@@ -31,12 +32,12 @@
                                 این جا جایی است که متنن را وارد میکنیم تا از دست شیزان رجیم در امان باشیم اما چرا اباید؟
                             </p>
                         </div>
-                        {{-- <div class="my-5">
+                        <div class="my-5">
                             <app-title>سرفصل ها</app-title>
                             <app-product-course-item></app-product-course-item>
                             <app-product-course-item></app-product-course-item>
                             <app-product-course-item></app-product-course-item>
-                        </div> --}}
+                        </div>
                         <div class="my-2 rounded " style="border:1px solid #f5f5f5">
                             <div class="d-flex flex-column flex-md-row">
                                 <span class="m-2 p-2 text-white">

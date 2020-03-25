@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Quiz;
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,10 +22,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function sends(){
-        return $this->hasMany(Send::class);
-    }
 
     public function quizzes()
     {
@@ -60,4 +56,8 @@ class User extends Authenticatable
         ]);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);    
+    }
 }

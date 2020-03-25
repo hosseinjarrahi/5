@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Main;
+namespace App\Models;
 
-use App\Models\Quiz\Question;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model

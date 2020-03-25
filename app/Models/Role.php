@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Main;
+namespace App\Models;
 
-use App\Models\Quiz\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model

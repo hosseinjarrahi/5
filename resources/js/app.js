@@ -33,6 +33,7 @@ Vue.component('app-content-border-box', require('./components/main/AppContentBor
 Vue.component('app-comments', require('./components/main/AppComments.vue').default);
 Vue.component('app-comment-dialog', require('./components/main/AppCommentDialog.vue').default);
 Vue.component('app-search-box', require('./components/main/AppSearchBox.vue').default);
+Vue.component('app-bio', require('./components/main/AppBio.vue').default);
 
 
 import globalMixin from './globalMixin';

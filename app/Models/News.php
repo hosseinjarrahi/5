@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Models\Main;
+namespace App\Models;
 
-use App\Models\Quiz\User;
+use AliBayat\LaravelCategorizable\Categorizable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
+    use Categorizable;
+
     public function tags()
     {
         return $this->morphToMany(Tag::class,'tagable');

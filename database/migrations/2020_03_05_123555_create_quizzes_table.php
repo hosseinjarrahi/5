@@ -16,10 +16,12 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('type',['private','public']);
+            $table->char('duration',5);
+            $table->boolean('show');
+            $table->text('password')->nullable();
             $table->string('desc')->nullable();
             $table->timestamp('start');
-            $table->string('duration');
-            $table->string('show');
             $table->timestamps();
         });
     }

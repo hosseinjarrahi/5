@@ -1,0 +1,49 @@
+<template>
+  <div class="text-white bg-dark-gray shadow rounded position-relative" style="margin-top:60px;padding-top:50px;">
+    <div class="px-4" style="font-size:0.9rem">
+        <div class="my-2 border-bottom-dark p-2">
+          <span class="fas fa-chalkboard-teacher"></span>
+          <span>نام استاد :</span>
+          <span>محمد رضا فهیمی</span>
+        </div>
+
+        <div class="my-2 border-bottom-dark p-2">
+          <slot></slot>
+        </div>
+    </div>
+
+    <slot name="avatar">
+      <div class="avatar-parent">
+        <div class="avatar circle bg-dark-gray shadow" style="background-image:url(/img/avatar.png)"></div>
+      </div>
+    </slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "AppProductDesc"
+};
+</script>
+
+<style scoped>
+.avatar-parent {
+  position: absolute;
+  top: -50px;
+  width: 100%;
+  display: flex;
+  left: 0;
+  right: 0;
+  justify-content: center;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #57606f;
+}
+.border-bottom-dark {
+  border-bottom: 2px solid #57606f;
+}
+</style>

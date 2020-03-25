@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Quiz\Quiz;
-use App\Models\Main\News;
-use App\Models\Quiz\Homework;
+use App\Models\Quiz;
+use App\Models\News;
+use App\Models\Homework;
+use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -22,6 +23,7 @@ class DbServiceProvider extends ServiceProvider
             Quiz::class => 'quiz',
             Homework::class => 'homework',
             News::class => 'news',
+            Product::class => 'product',
         ]);
     }
 }

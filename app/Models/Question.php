@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models\Quiz;
+namespace App\Models;
 
-use App\Models\Main\Tag;
+use AliBayat\LaravelCategorizable\Categorizable;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $table = 'app_questions';
+    use Categorizable;
 
     public function quizzes()
     {
