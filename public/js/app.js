@@ -3481,13 +3481,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     next: function next() {
-      if (this.selected == this.slides.length - 1) this.selected = 0;
-      this.selected++;
+      if (this.selected == this.slides.length - 1) this.selected = 0;else this.selected++;
+      console.log(this.selected);
       this.resetTimer();
     },
     previous: function previous() {
-      if (this.selected == 0) this.selected = this.slides.length;
-      this.selected--;
+      if (this.selected == 0) this.selected = this.slides.length - 1;else this.selected--;
+      console.log(this.selected);
       this.resetTimer();
     },
     initSlider: function initSlider() {
