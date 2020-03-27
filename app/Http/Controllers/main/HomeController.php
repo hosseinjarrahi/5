@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\main;
 
-use App\Category;
+use AliBayat\LaravelCategorizable\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use App\Slide;
 
 class HomeController extends Controller
@@ -28,22 +30,23 @@ class HomeController extends Controller
 		//		$text = (Setting::first())->text ?? '';
 		//		$news = News::latest()->limit(3)->get();
 		$slides = Slide::all()->toJson();
-		
-		return view('main.home',compact('slides'));
+        $lastProducts = ProductResource::collection(Product::lastThreeProductWith('فروشگاه'))->toJson();
+        $lastJozavat = ProductResource::collection(Product::lastThreeProductWith('جزوات'))->toJson();
+		return view('main.home',compact('slides','lastProducts','lastJozavat'));
 	}
 
-	public function category(/*Category*/$category = null)
+	public function category(Category $category)
 	{
-		// $products = $category->products();
-
-		return view('main.category' /*, compact('products' , 'category')*/);
+		$products = $category->entries(Product::class)->paginate(9);
+        (!$products->isEmpty()) ?: abort(404);
+		$links = $products->links();
+		$products = ProductResource::collection($products)->toJson();
+		return view('main.category' , compact('products' , 'category','links'));
 	}
 
-	public function product(/*Category*/$category = null)
+	public function product($category,Product $product)
 	{
-		// $products = $category->products();
-
-		return view('main.product' /*, compact('products' , 'category')*/);
+		return view('main.product' , compact('product'));
 	}
 
 

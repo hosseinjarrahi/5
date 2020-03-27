@@ -11,6 +11,7 @@ $factory->define(Product::class, function (Faker $faker) {
     'title' => $faker->realText(10),
     'desc' => $faker->realText(5000),
     'status' => 'تکمیل',
+    'slug' => \Str::of($faker->realText(100))->slug(),
     'percentage' => '90',
     'pic' => 'img/course-test.jpg',
     'course_items' => [],

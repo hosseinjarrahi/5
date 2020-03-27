@@ -1,24 +1,24 @@
 <template>
-  <div class="col-12 col-md-4 p-2 w-100 position-relative" style="cursor: pointer">
+  <div class="col-12 col-md-4 p-2 w-100 position-relative" style="cursor: pointer" @click="redirect">
     <div class="offer" v-if="offer">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
     <div class="my-2 rounded shadow course-card overflow-hidden">
       <div
         class="course-header shadow rounded"
-        style="background-image:url('/img/course-test.jpg');"
+        :style="{backgroundImage:`url('${product.pic}')`}"
       ></div>
 
       <div class="p-3">
         <p
           class="text-justify"
           style="color:#f5f5f5;"
-        >دوره آموزش متوسط ریاضی هشتم بدون در نظر گرفتم عدد جرمی</p>
+        >{{ product.title }}</p>
 
         <slot name="avatar">
           <p class="border-bottom border-light pb-2 text-white">
             <span style="font-size:0.8rem">
-              <img src="/img/avatar.png" class="shadow avatar" alt />
+              <img :src="product.pic" class="shadow avatar" alt />
               <span>استاد:</span>
               <span>جعفری</span>
             </span>
@@ -34,11 +34,11 @@
             </span>
 
             <span>
-              <span class="btn btn-success py-0" v-if="offer">
-                <span>{{  offer }}</span>
+              <span class="btn btn-success py-0" v-if="product.offer">
+                <span>{{ product.offer }}</span>
               </span>
               <span class="btn bg-dark-gray py-0">
-                <span :class="{'line-throgh':offer}">19.000</span>
+                <span :class="{'line-throgh':product.offer}">{{ product.price }}</span>
               </span>
             </span>
             
@@ -54,8 +54,14 @@
 export default {
   name: "AppCourseCard",
   props: {
-    offer: { default: null }
-  }
+    offer: { default: null },
+    product: { default: null },
+  },
+  methods: {
+    redirect(){
+      return window.location = this.product.url;
+    }
+  },
 };
 </script>
 

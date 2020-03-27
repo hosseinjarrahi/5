@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use AliBayat\LaravelCategorizable\Categorizable;
+use AliBayat\LaravelCategorizable\Category;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use Categorizable;
+    protected $with = [
+        'categories'
+    ];
 
     protected $guarded = ['id'];
 
@@ -28,8 +32,10 @@ class Product extends Model
         return $this->morphToMany(Tag::class, 'tagable');
     }
 
-    // TODO: addd this method
-    public function LastThreeStore($query){
-        return $query->where('');
+    public static function lastThreeProductWith($subject){
+        
+        $category = Category::where('name',$subject)->first();
+        return $category->entries(self::class)->orderByDesc('id')->limit('3')->get();
     }
+
 }

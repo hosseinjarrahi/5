@@ -3159,6 +3159,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     'moreText': {
       "default": null
+    },
+    'moreLink': {
+      "default": null
     }
   },
   data: function data() {
@@ -3280,6 +3283,14 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     offer: {
       "default": null
+    },
+    product: {
+      "default": null
+    }
+  },
+  methods: {
+    redirect: function redirect() {
+      return window.location = this.product.url;
     }
   }
 });
@@ -3383,7 +3394,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AppProductDesc"
+  props: {
+    product: {
+      "default": null
+    }
+  },
+  name: "AppProductDesc",
+  created: function created() {
+    console.log(this.product);
+  }
 });
 
 /***/ }),
@@ -47099,13 +47118,13 @@ var render = function() {
         "a",
         {
           staticClass: "my-2 col-12 text-center text-white",
-          attrs: { href: "" }
+          attrs: { href: _vm.moreLink }
         },
         [
           _c(
             "div",
             {
-              staticClass: "courses overflow-hidden shadow p-1",
+              staticClass: "courses overflow-hidden shadow p-1 pointer",
               staticStyle: { "background-color": "#57606f" }
             },
             [_vm._v("\n        " + _vm._s(_vm.moreText) + "\n      ")]
@@ -47141,7 +47160,8 @@ var render = function() {
     "div",
     {
       staticClass: "col-12 col-md-4 p-2 w-100 position-relative",
-      staticStyle: { cursor: "pointer" }
+      staticStyle: { cursor: "pointer" },
+      on: { click: _vm.redirect }
     },
     [
       _vm.offer
@@ -47159,7 +47179,7 @@ var render = function() {
         [
           _c("div", {
             staticClass: "course-header shadow rounded",
-            staticStyle: { "background-image": "url('/img/course-test.jpg')" }
+            style: { backgroundImage: "url('" + _vm.product.pic + "')" }
           }),
           _vm._v(" "),
           _c(
@@ -47172,14 +47192,27 @@ var render = function() {
                   staticClass: "text-justify",
                   staticStyle: { color: "#f5f5f5" }
                 },
-                [
-                  _vm._v(
-                    "دوره آموزش متوسط ریاضی هشتم بدون در نظر گرفتم عدد جرمی"
-                  )
-                ]
+                [_vm._v(_vm._s(_vm.product.title))]
               ),
               _vm._v(" "),
-              _vm._t("avatar", [_vm._m(0)]),
+              _vm._t("avatar", [
+                _c(
+                  "p",
+                  { staticClass: "border-bottom border-light pb-2 text-white" },
+                  [
+                    _c("span", { staticStyle: { "font-size": "0.8rem" } }, [
+                      _c("img", {
+                        staticClass: "shadow avatar",
+                        attrs: { src: _vm.product.pic, alt: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("استاد:")]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("جعفری")])
+                    ])
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _vm._t("footer", [
                 _c(
@@ -47189,19 +47222,21 @@ var render = function() {
                       "d-flex flex-column flex-lg-row justify-content-between align-items-center"
                   },
                   [
-                    _vm._m(1),
+                    _vm._m(0),
                     _vm._v(" "),
                     _c("span", [
-                      _vm.offer
+                      _vm.product.offer
                         ? _c("span", { staticClass: "btn btn-success py-0" }, [
-                            _c("span", [_vm._v(_vm._s(_vm.offer))])
+                            _c("span", [_vm._v(_vm._s(_vm.product.offer))])
                           ])
                         : _vm._e(),
                       _vm._v(" "),
                       _c("span", { staticClass: "btn bg-dark-gray py-0" }, [
-                        _c("span", { class: { "line-throgh": _vm.offer } }, [
-                          _vm._v("19.000")
-                        ])
+                        _c(
+                          "span",
+                          { class: { "line-throgh": _vm.product.offer } },
+                          [_vm._v(_vm._s(_vm.product.price))]
+                        )
                       ])
                     ])
                   ]
@@ -47216,27 +47251,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "border-bottom border-light pb-2 text-white" },
-      [
-        _c("span", { staticStyle: { "font-size": "0.8rem" } }, [
-          _c("img", {
-            staticClass: "shadow avatar",
-            attrs: { src: "/img/avatar.png", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v("استاد:")]),
-          _vm._v(" "),
-          _c("span", [_vm._v("جعفری")])
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -47360,95 +47374,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "text-white bg-dark-gray shadow rounded position-relative",
+      staticStyle: { "padding-top": "150px" }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "px-4", staticStyle: { "font-size": "0.9rem" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.product.courseItems.length
+            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+                _c("span", { staticClass: "fas fa-file-video" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("فایل های منتشر شده :")]),
+                _vm._v(" "),
+                _c("span", [_vm._v("50")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.product.time
+            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+                _c("span", { staticClass: "fas fa-clock" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("زمان دوره :")]),
+                _vm._v(" "),
+                _c("span", [_vm._v("20:50:10")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.product.downloadCount
+            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+                _c("span", { staticClass: "fas fa-user-graduate" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("تعداد دانلود ها :")]),
+                _vm._v(" "),
+                _c("span", [_vm._v("20")]),
+                _vm._v(" "),
+                _c("span", [_vm._v("نفر")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.product.status
+            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+                _c("span", { staticClass: "fas fa-spinner" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("وضعیت دوره :")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.product.status))])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+            _c("span", { staticClass: "fas fa-percentage" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("درصد تکمیل :")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "my-2" }, [
+              _c("div", { staticClass: "progress" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "progress-bar",
+                    style: { width: _vm.product.percentage + "%" }
+                  },
+                  [_vm._v(_vm._s(_vm.product.percentage) + "%")]
+                )
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "text-white bg-dark-gray shadow rounded position-relative",
-        staticStyle: { "padding-top": "150px" }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "px-4", staticStyle: { "font-size": "0.9rem" } },
-          [
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("نام استاد :")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("محمد رضا فهیمی")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-file-video" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("فایل های منتشر شده :")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("50")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-clock" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("زمان دوره :")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("20:50:10")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-user-graduate" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("تعداد دانلود ها :")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("20")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("نفر")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-spinner" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("وضعیت دوره :")]),
-              _vm._v(" "),
-              _c("span", [_vm._v("کامل")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-              _c("span", { staticClass: "fas fa-percentage" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("درصد تکمیل :")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "my-2" }, [
-                _c("div", { staticClass: "progress" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress-bar",
-                      staticStyle: { width: "25%" }
-                    },
-                    [_vm._v("25%")]
-                  )
-                ])
-              ])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "avatar-parent" }, [
-          _c("div", {
-            staticClass: "pic rounded bg-dark-gray shadow",
-            staticStyle: { "background-image": "url(/img/back.jpg)" }
-          })
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+      _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("نام استاد :")]),
+      _vm._v(" "),
+      _c("span", [_vm._v("محمد رضا فهیمی")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "avatar-parent" }, [
+      _c("div", {
+        staticClass: "pic rounded bg-dark-gray shadow",
+        staticStyle: { "background-image": "url(/img/back.jpg)" }
+      })
+    ])
   }
 ]
 render._withStripped = true

@@ -5,14 +5,15 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 //main
 Route::get('/', 'main\HomeController@home');
-Route::get('/category/{category?}', 'main\HomeController@category');
-Route::get('/product/{product?}', 'main\HomeController@product');
+// Route::get('/product/{product?}', 'main\HomeController@product');
 Route::post('/login', 'RegisterController@login');
 Route::get('/logout', 'RegisterController@logout')->middleware('auth');
 Route::post('/send-code', 'RegisterController@sendCode')->middleware('throttle:1,3600');
 Route::post('/register', 'RegisterController@register')->middleware('throttle:5,3600');
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
+Route::get('/{category}/{product:slug}', 'main\HomeController@product');
+Route::get('/{category:slug}', 'main\HomeController@category');
 
 //quiz
 Route::group(['prefix' => 'quiz'], function () {

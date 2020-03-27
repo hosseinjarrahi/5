@@ -8,7 +8,7 @@
         <div class="row justify-content-center  align-items-center align-items-md-start">
             
         <div class="col-12 col-md-4 mb-5">
-            <app-product-desc></app-product-desc>
+        <app-product-desc :product="{{ $product->toJson() }}"></app-product-desc>
             <app-bio></app-bio>
         </div>
 
@@ -28,16 +28,16 @@
                         <video src="/upload/test.mp4" controls class="w-100 rounded"></video>
                         <div style="margin-bottom:50px;margin-top:50px">
                             <app-title>توضیحات</app-title>
-                            <p class="p-2 w-100" style="white-space:pre-wrap;">
-                                این جا جایی است که متنن را وارد میکنیم تا از دست شیزان رجیم در امان باشیم اما چرا اباید؟
-                            </p>
+                            <p class="p-2 text-justify w-100" style="white-space:pre-wrap;">{{ $product->desc }}</p>
                         </div>
+                        @if($product->vourseItems)
                         <div class="my-5">
                             <app-title>سرفصل ها</app-title>
                             <app-product-course-item></app-product-course-item>
                             <app-product-course-item></app-product-course-item>
                             <app-product-course-item></app-product-course-item>
                         </div>
+                        @else
                         <div class="my-2 rounded " style="border:1px solid #f5f5f5">
                             <div class="d-flex flex-column flex-md-row">
                                 <span class="m-2 p-2 text-white">
@@ -56,6 +56,9 @@
                                 </span>
                             </div>
                         </div>
+                        @endif
+                        
+                        
                     </div>
                 </div>
 

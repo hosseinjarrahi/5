@@ -25,24 +25,15 @@
 
 
             <app-slider :slides="{{ $slides }}"></app-slider>
-            <app-course
-                main-image="/img/courses.png"
-                more-text="مشاهده تمامی دوره ها"
-            >
 
-            <app-course-card></app-course-card>
-            <app-course-card></app-course-card>
-            <app-course-card></app-course-card>
+            <app-course main-image="/img/courses.png" more-text="مشاهده تمامی دوره ها" more-link="/فروشگاه">
+                <app-course-card v-for="product in {{ $lastProducts }}" :product="product"></app-course-card>
+            </app-course>
 
-        </app-course>
-            <app-course
-            main-image="/img/jozavat.png"
-            more-text="مشاهده تمامی جزوات و نمونه سوالات"
-            >
-            <app-course-card><template #avatar>a</template></app-course-card>
-            <app-course-card><template #avatar>a</template></app-course-card>
-            <app-course-card><template #avatar>a</template></app-course-card>
-        </app-course>
+            <app-course main-image="/img/jozavat.png" more-text="مشاهده تمامی جزوات و نمونه سوالات" more-link="/جزوات">
+                <app-course-card v-for="product in {{ $lastJozavat }}" :product="product"></app-course-card>
+            </app-course>
+
         </div>
     </div>
 @endsection

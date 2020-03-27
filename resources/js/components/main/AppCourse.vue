@@ -18,8 +18,8 @@
         </div>
       </div>
 
-      <a href="" class="my-2 col-12 text-center text-white">
-        <div class="courses overflow-hidden shadow p-1" style="background-color: #57606f">
+      <a :href="moreLink" class="my-2 col-12 text-center text-white">
+        <div class="courses overflow-hidden shadow p-1 pointer" style="background-color: #57606f">
           {{ moreText }}
         </div>
       </a>
@@ -34,6 +34,7 @@
         props:{
           'mainImage':{default:null},
           'moreText':{default:null},
+          'moreLink':{default:null},
         },
         data() {
             return {

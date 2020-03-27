@@ -7,29 +7,29 @@
           <span>محمد رضا فهیمی</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.courseItems.length">
           <span class="fas fa-file-video"></span>
           <span>فایل های منتشر شده :</span>
           <span>50</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.time">
           <span class="fas fa-clock"></span>
           <span>زمان دوره :</span>
           <span>20:50:10</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.downloadCount">
           <span class="fas fa-user-graduate"></span>
           <span>تعداد دانلود ها :</span>
           <span>20</span>
           <span>نفر</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.status">
           <span class="fas fa-spinner"></span>
           <span>وضعیت دوره :</span>
-          <span>کامل</span>
+          <span>{{ product.status }}</span>
         </div>
 
         <div class="my-2 border-bottom-dark p-2">
@@ -37,7 +37,7 @@
           <span>درصد تکمیل :</span>
           <span class="my-2">
             <div class="progress">
-              <div class="progress-bar" style="width: 25%">25%</div>
+              <div class="progress-bar" :style="{width: `${product.percentage}%`}">{{ product.percentage }}%</div>
             </div>
           </span>
         </div>
@@ -51,7 +51,13 @@
 
 <script>
 export default {
-  name: "AppProductDesc"
+  props:{
+    product:{default:null}
+  },
+  name: "AppProductDesc",
+  created() {
+    console.log(this.product);
+  },
 };
 </script>
 
