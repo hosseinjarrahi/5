@@ -57,10 +57,10 @@
                 scroll: false,
                 auth:window.EventBus.auth,
                 links:[
-                  {to:'',title:'خانه'},
-                  {to:'',title:'کوییزویران'},
-                  {to:'',title:'فروشگاه'},
-                  {to:'',title:'انجمن'},
+                  {to:'/',title:'خانه'},
+                  {to:'/quizviran',title:'کوییزویران'},
+                  {to:'/فروشگاه',title:'فروشگاه'},
+                  {to:'http://forum.tizviran.com',title:'انجمن'},
                 ]
             };
         },

@@ -4,16 +4,17 @@
       class="row position-relative p-2 align-items-center"
       style="border-bottom:1px solid #f5f5f5;margin-top:20px;"
     >
-      <div class="test-center item-circle circle d-flex align-items-center justify-content-center">1</div>
-      <div class="col-12 col-md-8 px-5" style="height:30px;overflow:auto;">
-        <a class="text-white" href="#">فصل اول - توابع ریاضی</a>
+      <div class="test-center item-circle circle d-flex align-items-center justify-content-center">{{ index }}</div>
+      <div class="col-12 col-md-8 px-5 my-3 my-md-0">
+        <a class="text-white" href="#">{{ item.title }}</a>
+        <span class="text-white bg-success p-1 rounded">رایگان</span>
       </div>
       <div class="col-6 col-md-2 text-right" style="height:30px;overflow:auto;">
         <span class="fas fa-clock"></span>
-        <span>10:50</span>
+        <span>{{ item.time }}</span>
       </div>
       <div class="col-6 col-md-2 text-right" style="height:30px;overflow:auto;">
-        <span class="btn bg-gray py-0">
+        <span class="btn bg-gray py-0" @click="window.location = item.link">
           <span class="fas fa-download"></span>
         </span>
       </div>
@@ -22,7 +23,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+    props:{
+        item:{default:''},
+        index:{default:''},
+    }
+};
 </script>
 
 <style scoped>

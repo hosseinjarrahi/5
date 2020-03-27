@@ -1,5 +1,5 @@
 <template>
-  <div class="col-11 col-md-6 p-3 my-4">
+  <div class="col-11 col-md-6 p-3 my-4" v-if>
     <div class="container-fluid bg p-3 shadow rounded posisoin-relative">
       <div class="w-100 parent d-flex justify-content-center">
         <div class="title p-2 px-4 shadow rounded">
@@ -8,7 +8,7 @@
       </div>
       <div class="my-4">
         <app-quiz-card
-          v-for="(quiz,index) in quizz"
+          v-for="(quiz,index) in quizzes"
           :title="quiz.name"
           :desc="quiz.desc"
           :to="quiz.link"
@@ -25,11 +25,6 @@
 export default {
   props: {
     quizzes: { default: "" }
-  },
-  computed: {
-    quizz() {
-      return JSON.parse(this.quizzes);
-    }
   }
 };
 </script>

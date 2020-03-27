@@ -6,7 +6,7 @@ use App\Models\Profile;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\User;
-use App\Slide;
+use App\Models\Slide;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,9 +25,13 @@ class DatabaseSeeder extends Seeder
         Profile::truncate();
         User::truncate();
         // factory(Quiz::class,5)->create();
-        factory(Profile::class,2)->create();
-        factory(Category::class,2)->create();
-        factory(Product::class,50)->create();
-        factory(Slide::class,5)->create();
+        factory(Category::class, 2)->create();
+        factory(Product::class, 50)->create();
+        factory(User::class, 5)
+            ->create()
+            ->each(function ($user) {
+                $user->profile()->save(factory(Profile::class, 1)->make()->first());
+            });
+        factory(Slide::class, 5)->create();
     }
 }

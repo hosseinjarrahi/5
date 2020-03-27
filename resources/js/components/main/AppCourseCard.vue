@@ -1,22 +1,21 @@
 <template>
   <div class="col-12 col-md-4 p-2 w-100 position-relative" style="cursor: pointer" @click="redirect">
-    <div class="offer" v-if="offer">
+    <div class="offer" v-if="product.offer">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
     <div class="my-2 rounded shadow course-card overflow-hidden">
       <div
-        class="course-header shadow rounded"
+        class="course-header shadow "
         :style="{backgroundImage:`url('${product.pic}')`}"
       ></div>
 
       <div class="p-3">
         <p
           class="text-justify"
-          style="color:#f5f5f5;"
         >{{ product.title }}</p>
 
         <slot name="avatar">
-          <p class="border-bottom border-light pb-2 text-white">
+          <p class="pb-2">
             <span style="font-size:0.8rem">
               <img :src="product.pic" class="shadow avatar" alt />
               <span>استاد:</span>
@@ -26,19 +25,19 @@
         </slot>
 
         <slot name="footer">
-          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+          <div class="d-flex flex-column justify-content-between align-items-center dark-top-border">
 
-            <span>
+            <span v-if="product.course_items.length">
               <span class="fas fa-clock"></span>
               <span>12:40:20</span>
             </span>
 
             <span>
               <span class="btn btn-success py-0" v-if="product.offer">
-                <span>{{ product.offer }}</span>
+                <span>{{ product.offer }} تومان</span>
               </span>
               <span class="btn bg-dark-gray py-0">
-                <span :class="{'line-throgh':product.offer}">{{ product.price }}</span>
+                <span :class="{'line-throgh':product.offer}">{{ product.price }} تومان</span>
               </span>
             </span>
             
@@ -54,7 +53,6 @@
 export default {
   name: "AppCourseCard",
   props: {
-    offer: { default: null },
     product: { default: null },
   },
   methods: {
@@ -62,6 +60,9 @@ export default {
       return window.location = this.product.url;
     }
   },
+    created() {
+      console.log(product);
+    }
 };
 </script>
 
@@ -72,15 +73,16 @@ export default {
   background-size: cover;
 }
 .course-card {
-  background-color: #57606f;
-  border: 1px dashed #f5f5f5;
+  background-color: #f7f1e3;
+  border: 1px dashed #2f3542;
+  color:#2f3542 !important;
 }
 .offer {
   position: absolute;
   top: 1px;
   left: 1px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .avatar {
   width: 30px;
@@ -90,4 +92,8 @@ export default {
 .line-throgh{
   text-decoration: line-through red;
 }
+  .dark-top-border{
+    border-top: 1px #e2e2e2 solid;
+    padding-top: 5px;
+  }
 </style>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
-use App\Slide;
+use App\Models\Slide;
 
 class HomeController extends Controller
 {
@@ -20,15 +20,6 @@ class HomeController extends Controller
 	public function home()
 	{
 
-		//        $myfile = fopen(public_path('img/banner.txt'), "r") or die("Unable to open file!");
-		//        $src = fread($myfile,100000);
-		//
-		//		$table = Table::first();
-		//		$posts = Forum::lastThreePosts();
-		//		$products = Product::latest()->limit(6)->get();
-		//		$videos = Video::latest()->limit(6)->get();
-		//		$text = (Setting::first())->text ?? '';
-		//		$news = News::latest()->limit(3)->get();
 		$slides = Slide::all()->toJson();
         $lastProducts = ProductResource::collection(Product::lastThreeProductWith('فروشگاه'))->toJson();
         $lastJozavat = ProductResource::collection(Product::lastThreeProductWith('جزوات'))->toJson();
@@ -37,7 +28,7 @@ class HomeController extends Controller
 
 	public function category(Category $category)
 	{
-		$products = $category->entries(Product::class)->paginate(9);
+		$products = $category->entries(Product::class)->orderByDesc('id')->paginate(9);
         (!$products->isEmpty()) ?: abort(404);
 		$links = $products->links();
 		$products = ProductResource::collection($products)->toJson();
@@ -46,41 +37,9 @@ class HomeController extends Controller
 
 	public function product($category,Product $product)
 	{
-		return view('main.product' , compact('product'));
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public function news()
-	{
-		$news = News::paginate(12);
-		return view('news', compact('news'));
-	}
-
-	public function new(News $news, $title)
-	{
-		$new = $news;
-		return view('new', compact('new'));
-	}
-
-	public function alert(Request $request)
-	{
-		$alert = $request->alert ?? '';
-		return view('alert', compact('alert'));
+	    $files = $product->files;
+	    $sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
+		return view('main.product' , compact('product','files','sames'));
 	}
 
 	// public function showQuestion(Product $question)

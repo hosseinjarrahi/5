@@ -34,6 +34,7 @@ Vue.component('app-comments', require('./components/main/AppComments.vue').defau
 Vue.component('app-comment-dialog', require('./components/main/AppCommentDialog.vue').default);
 Vue.component('app-search-box', require('./components/main/AppSearchBox.vue').default);
 Vue.component('app-bio', require('./components/main/AppBio.vue').default);
+Vue.component('app-download-box', require('./components/main/AppDownloadBox.vue').default);
 
 
 import globalMixin from './globalMixin';

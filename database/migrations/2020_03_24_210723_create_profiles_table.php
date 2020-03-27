@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->text('bio');
             $table->timestamp('birth');
+            $table->unsignedInteger('user_id')->unique();
             $table->timestamps();
         });
     }

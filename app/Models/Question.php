@@ -12,7 +12,7 @@ class Question extends Model
 
     public function quizzes()
     {
-        return $this->belongsTo(Quiz::class);
+        return $this->belongsToMany(Quiz::class);
     }
 
     public function tags()

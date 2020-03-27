@@ -4,15 +4,15 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 my-5">
+            <div class="col-12 mt-5 mb-2">
                 <div class="row justify-content-center m">
                     <div class="col-11 col-md-4">
-                        <img src="{{ asset('img/landing.png') }}" alt="logo" class="img-fluid">
+                        <img src="{{ asset('img/quizviran.png') }}" alt="logo" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <app-quiz quizzes="{{ $quizzes }}"></app-quiz>
+            <app-quiz :quizzes="{{ $quizzes }}"></app-quiz>
             {{--
                         <app-taklif>
                             <app-taklif-card

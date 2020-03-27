@@ -4,10 +4,10 @@
         <div class="my-2 border-bottom-dark p-2">
           <span class="fas fa-chalkboard-teacher"></span>
           <span>نام استاد :</span>
-          <span>محمد رضا فهیمی</span>
+          <span>{{ product.user.name }}</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2" v-if="product.courseItems.length">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.course_items.length">
           <span class="fas fa-file-video"></span>
           <span>فایل های منتشر شده :</span>
           <span>50</span>

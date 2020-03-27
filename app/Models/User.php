@@ -11,6 +11,10 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
+    public $with = [
+        'profile'
+    ];
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -59,5 +63,10 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);    
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

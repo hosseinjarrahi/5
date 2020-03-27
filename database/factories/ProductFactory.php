@@ -13,10 +13,14 @@ $factory->define(Product::class, function (Faker $faker) {
     'status' => 'تکمیل',
     'slug' => \Str::of($faker->realText(100))->slug(),
     'percentage' => '90',
-    'pic' => 'img/course-test.jpg',
-    'course_items' => [],
+    'pic' => '/img/course-test.jpg',
+    'course_items' => [
+        ['title' => 'فصل اول - توابع ریاضی هشتم','time' => '10:50','link'=>'/link/to/file.mp4'],
+        ['title' => 'فصل دوم - توابع ریاضی هشتم','time' => '10:50','link'=>'/link/to/file.mp4'],
+        ['title' => 'فصل سوم - توابع ریاضی هشتم','time' => '10:50','link'=>'/link/to/file.mp4'],
+    ],
     'price' => random_int(0,100),
-    'off' => random_int(0,100),
+    'offer' => random_int(0,100),
     'user_id' => '1',
     'meta' => ['description' => 'description' , 'title' => 'page title' ,'keywords' => 'keywords'],
     ];

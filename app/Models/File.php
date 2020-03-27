@@ -8,9 +8,9 @@ class File extends Model
 {
     protected $guarded = ['id'];
 
-    public function user()
+    public function fileable()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 
 }

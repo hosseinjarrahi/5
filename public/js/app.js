@@ -2261,16 +2261,16 @@ __webpack_require__.r(__webpack_exports__);
       scroll: false,
       auth: window.EventBus.auth,
       links: [{
-        to: '',
+        to: '/',
         title: 'خانه'
       }, {
-        to: '',
+        to: '/quizviran',
         title: 'کوییزویران'
       }, {
-        to: '',
+        to: '/فروشگاه',
         title: 'فروشگاه'
       }, {
-        to: '',
+        to: 'http://forum.tizviran.com',
         title: 'انجمن'
       }]
     };
@@ -2641,11 +2641,6 @@ __webpack_require__.r(__webpack_exports__);
     quizzes: {
       "default": ""
     }
-  },
-  computed: {
-    quizz: function quizz() {
-      return JSON.parse(this.quizzes);
-    }
   }
 });
 
@@ -2947,10 +2942,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AppProductDesc"
+  name: "AppProductDesc",
+  props: {
+    teacher: {
+      "default": ''
+    }
+  }
 });
 
 /***/ }),
@@ -3277,13 +3275,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
-    offer: {
-      "default": null
-    },
     product: {
       "default": null
     }
@@ -3292,7 +3286,46 @@ __webpack_require__.r(__webpack_exports__);
     redirect: function redirect() {
       return window.location = this.product.url;
     }
+  },
+  created: function created() {
+    console.log(product);
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AppDownloadBox"
 });
 
 /***/ }),
@@ -3329,7 +3362,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    item: {
+      "default": ''
+    },
+    index: {
+      "default": ''
+    }
+  }
+});
 
 /***/ }),
 
@@ -3501,12 +3544,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     next: function next() {
       if (this.selected == this.slides.length - 1) this.selected = 0;else this.selected++;
-      console.log(this.selected);
       this.resetTimer();
     },
     previous: function previous() {
       if (this.selected == 0) this.selected = this.slides.length - 1;else this.selected--;
-      console.log(this.selected);
       this.resetTimer();
     },
     initSlider: function initSlider() {
@@ -3862,7 +3903,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #57606f;\r\n  border: 1px dashed #f5f5f5;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 50px;\r\n  height: 50px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e]{\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\r\n", ""]);
+exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #f7f1e3;\r\n  border: 1px dashed #2f3542;\r\n  color:#2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e]{\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e]{\r\n    border-top: 1px #e2e2e2 solid;\r\n    padding-top: 5px;\n}\r\n", ""]);
 
 // exports
 
@@ -46357,7 +46398,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "my-4" },
-          _vm._l(_vm.quizz, function(quiz, index) {
+          _vm._l(_vm.quizzes, function(quiz, index) {
             return _c("app-quiz-card", {
               key: index,
               attrs: {
@@ -46784,35 +46825,30 @@ var render = function() {
         "div",
         { staticClass: "px-4", staticStyle: { "font-size": "0.9rem" } },
         [
-          _vm._m(0),
+          _c(
+            "div",
+            { staticClass: "my-2 border-bottom-dark p-2 text-center" },
+            [_c("span", [_vm._v(_vm._s(_vm.teacher.name))])]
+          ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "my-2 border-bottom-dark p-2" },
-            [_vm._t("default")],
-            2
+            { staticClass: "my-2 border-bottom-dark p-2 text-justify" },
+            [
+              _vm._v(
+                "\n        " + _vm._s(_vm.teacher.profile.bio) + "\n      "
+              )
+            ]
           )
         ]
       ),
       _vm._v(" "),
-      _vm._t("avatar", [_vm._m(1)])
+      _vm._t("avatar", [_vm._m(0)])
     ],
     2
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-      _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("نام استاد :")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("محمد رضا فهیمی")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -47164,7 +47200,7 @@ var render = function() {
       on: { click: _vm.redirect }
     },
     [
-      _vm.offer
+      _vm.product.offer
         ? _c("div", { staticClass: "offer" }, [
             _c("img", {
               staticClass: "img-fluid",
@@ -47178,7 +47214,7 @@ var render = function() {
         { staticClass: "my-2 rounded shadow course-card overflow-hidden" },
         [
           _c("div", {
-            staticClass: "course-header shadow rounded",
+            staticClass: "course-header shadow ",
             style: { backgroundImage: "url('" + _vm.product.pic + "')" }
           }),
           _vm._v(" "),
@@ -47186,32 +47222,23 @@ var render = function() {
             "div",
             { staticClass: "p-3" },
             [
-              _c(
-                "p",
-                {
-                  staticClass: "text-justify",
-                  staticStyle: { color: "#f5f5f5" }
-                },
-                [_vm._v(_vm._s(_vm.product.title))]
-              ),
+              _c("p", { staticClass: "text-justify" }, [
+                _vm._v(_vm._s(_vm.product.title))
+              ]),
               _vm._v(" "),
               _vm._t("avatar", [
-                _c(
-                  "p",
-                  { staticClass: "border-bottom border-light pb-2 text-white" },
-                  [
-                    _c("span", { staticStyle: { "font-size": "0.8rem" } }, [
-                      _c("img", {
-                        staticClass: "shadow avatar",
-                        attrs: { src: _vm.product.pic, alt: "" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("استاد:")]),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("جعفری")])
-                    ])
-                  ]
-                )
+                _c("p", { staticClass: "pb-2" }, [
+                  _c("span", { staticStyle: { "font-size": "0.8rem" } }, [
+                    _c("img", {
+                      staticClass: "shadow avatar",
+                      attrs: { src: _vm.product.pic, alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("استاد:")]),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("جعفری")])
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _vm._t("footer", [
@@ -47219,15 +47246,23 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "d-flex flex-column flex-lg-row justify-content-between align-items-center"
+                      "d-flex flex-column justify-content-between align-items-center dark-top-border"
                   },
                   [
-                    _vm._m(0),
+                    _vm.product.course_items.length
+                      ? _c("span", [
+                          _c("span", { staticClass: "fas fa-clock" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("12:40:20")])
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("span", [
                       _vm.product.offer
                         ? _c("span", { staticClass: "btn btn-success py-0" }, [
-                            _c("span", [_vm._v(_vm._s(_vm.product.offer))])
+                            _c("span", [
+                              _vm._v(_vm._s(_vm.product.offer) + " تومان")
+                            ])
                           ])
                         : _vm._e(),
                       _vm._v(" "),
@@ -47235,7 +47270,7 @@ var render = function() {
                         _c(
                           "span",
                           { class: { "line-throgh": _vm.product.offer } },
-                          [_vm._v(_vm._s(_vm.product.price))]
+                          [_vm._v(_vm._s(_vm.product.price) + " تومان")]
                         )
                       ])
                     ])
@@ -47250,16 +47285,67 @@ var render = function() {
     ]
   )
 }
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("span", { staticClass: "fas fa-clock" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("12:40:20")])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "my-2 rounded ",
+        staticStyle: { border: "1px solid #f5f5f5" }
+      },
+      [
+        _c("div", { staticClass: "d-flex flex-column flex-md-row" }, [
+          _c("span", { staticClass: "m-2 p-2 text-white" }, [
+            _c("span", { staticClass: "fas fa-download" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "" } }, [_vm._v(" دانلود ")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "m-2 p-2 text-white" }, [
+            _c("span", { staticClass: "fas fa-file" }),
+            _vm._v(" "),
+            _c("span", [_vm._v(" نوع فایل: ")]),
+            _vm._v(" "),
+            _c("span", [_vm._v(" pdf ")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "m-2 p-2 text-white" }, [
+            _c("span", { staticClass: "fas fa-box" }),
+            _vm._v(" "),
+            _c("span", [_vm._v(" حجم: ")]),
+            _vm._v(" "),
+            _c("span", [_vm._v(" 2Mb ")])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -47283,76 +47369,75 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        staticClass: "row position-relative p-2 align-items-center",
+        staticStyle: {
+          "border-bottom": "1px solid #f5f5f5",
+          "margin-top": "20px"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "test-center item-circle circle d-flex align-items-center justify-content-center"
+          },
+          [_vm._v(_vm._s(_vm.index))]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-md-8 px-5 my-3 my-md-0" }, [
+          _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
+            _vm._v(_vm._s(_vm.item.title))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-white bg-success p-1 rounded" }, [
+            _vm._v("رایگان")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-6 col-md-2 text-right",
+            staticStyle: { height: "30px", overflow: "auto" }
+          },
+          [
+            _c("span", { staticClass: "fas fa-clock" }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.item.time))])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-6 col-md-2 text-right",
+            staticStyle: { height: "30px", overflow: "auto" }
+          },
+          [
+            _c(
+              "span",
+              {
+                staticClass: "btn bg-gray py-0",
+                on: {
+                  click: function($event) {
+                    _vm.window.location = _vm.item.link
+                  }
+                }
+              },
+              [_c("span", { staticClass: "fas fa-download" })]
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        {
-          staticClass: "row position-relative p-2 align-items-center",
-          staticStyle: {
-            "border-bottom": "1px solid #f5f5f5",
-            "margin-top": "20px"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "test-center item-circle circle d-flex align-items-center justify-content-center"
-            },
-            [_vm._v("1")]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-12 col-md-8 px-5",
-              staticStyle: { height: "30px", overflow: "auto" }
-            },
-            [
-              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-                _vm._v("فصل اول - توابع ریاضی")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-6 col-md-2 text-right",
-              staticStyle: { height: "30px", overflow: "auto" }
-            },
-            [
-              _c("span", { staticClass: "fas fa-clock" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("10:50")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-6 col-md-2 text-right",
-              staticStyle: { height: "30px", overflow: "auto" }
-            },
-            [
-              _c("span", { staticClass: "btn bg-gray py-0" }, [
-                _c("span", { staticClass: "fas fa-download" })
-              ])
-            ]
-          )
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -47385,9 +47470,15 @@ var render = function() {
         "div",
         { staticClass: "px-4", staticStyle: { "font-size": "0.9rem" } },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+            _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("نام استاد :")]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.product.user.name))])
+          ]),
           _vm._v(" "),
-          _vm.product.courseItems.length
+          _vm.product.course_items.length
             ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
                 _c("span", { staticClass: "fas fa-file-video" }),
                 _vm._v(" "),
@@ -47450,23 +47541,11 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(0)
     ]
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-      _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("نام استاد :")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("محمد رضا فهیمی")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -59911,6 +59990,7 @@ Vue.component('app-comments', __webpack_require__(/*! ./components/main/AppComme
 Vue.component('app-comment-dialog', __webpack_require__(/*! ./components/main/AppCommentDialog.vue */ "./resources/js/components/main/AppCommentDialog.vue")["default"]);
 Vue.component('app-search-box', __webpack_require__(/*! ./components/main/AppSearchBox.vue */ "./resources/js/components/main/AppSearchBox.vue")["default"]);
 Vue.component('app-bio', __webpack_require__(/*! ./components/main/AppBio.vue */ "./resources/js/components/main/AppBio.vue")["default"]);
+Vue.component('app-download-box', __webpack_require__(/*! ./components/main/AppDownloadBox.vue */ "./resources/js/components/main/AppDownloadBox.vue")["default"]);
 
 window.EventBus = new Vue({});
 
@@ -61656,6 +61736,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCourseCard_vue_vue_type_template_id_0f71613e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCourseCard_vue_vue_type_template_id_0f71613e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppDownloadBox.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/main/AppDownloadBox.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true& */ "./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true&");
+/* harmony import */ var _AppDownloadBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppDownloadBox.vue?vue&type=script&lang=js& */ "./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AppDownloadBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "648fd87d",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/main/AppDownloadBox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppDownloadBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppDownloadBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppDownloadBox.vue?vue&type=template&id=648fd87d&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

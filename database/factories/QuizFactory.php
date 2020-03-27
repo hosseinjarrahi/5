@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Question;
-use App\Quiz;
 use Carbon\Carbon;
+use App\Models\Quiz;
+use App\Models\Question;
 use Faker\Generator as Faker;
 
 $factory->define(Quiz::class, function (Faker $faker) {
@@ -13,7 +13,9 @@ $factory->define(Quiz::class, function (Faker $faker) {
         'start' => Carbon::now(),
         'duration' => 60,
         'desc' => 'آزمون جدید ریاضی شامل 80 سوال و برنده 500 هزار تومن میبره چون که زیرا وگرنه نه خیر اصلا هم نمیشه.',
-        'show' => 1
+        'show' => 1,
+        'type' => 'public',
+        'user_id' => '1',
     ];
 });
 

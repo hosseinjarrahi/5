@@ -10,8 +10,6 @@ $categories = [
     ['name' => 'جزوات و نمونه سوال','slug'=>'فروشگاه','pic' => 'img/jozavat.png'],
 ];
 
-$counter = 0;
-
-$factory->define(Category::class, function (Faker $faker) use ($categories,$counter) {
-    return $categories[$counter++];
+$factory->define(Category::class, function (Faker $faker) use ($categories) {
+    return $categories[random_int(0,1)];
 });

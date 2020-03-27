@@ -12,7 +12,8 @@ class Product extends Model
 {
     use Categorizable;
     protected $with = [
-        'categories'
+        'categories',
+        'user'
     ];
 
     protected $guarded = ['id'];
@@ -26,16 +27,21 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
-    public function tags()
+
+    public function files()
     {
-        return $this->morphToMany(Tag::class, 'tagable');
+        return $this->morphMany(File::class,'fileable');
     }
 
     public static function lastThreeProductWith($subject){
         
-        $category = Category::where('name',$subject)->first();
+        $category = Category::where('name',$subject)->firstOrFail();
         return $category->entries(self::class)->orderByDesc('id')->limit('3')->get();
     }
 
+    public static function randomByCategory($category)
+    {
+        $category = Category::where('name',$category)->firstOrFail();
+        return $category->entries(self::class)->inRandomOrder()->limit(3)->get();
+    }
 }

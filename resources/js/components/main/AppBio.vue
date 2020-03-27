@@ -1,14 +1,12 @@
 <template>
   <div class="text-white bg-dark-gray shadow rounded position-relative" style="margin-top:60px;padding-top:50px;">
     <div class="px-4" style="font-size:0.9rem">
-        <div class="my-2 border-bottom-dark p-2">
-          <span class="fas fa-chalkboard-teacher"></span>
-          <span>نام استاد :</span>
-          <span>محمد رضا فهیمی</span>
+        <div class="my-2 border-bottom-dark p-2 text-center">
+          <span>{{ teacher.name }}</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
-          <slot></slot>
+        <div class="my-2 border-bottom-dark p-2 text-justify">
+          {{ teacher.profile.bio }}
         </div>
     </div>
 
@@ -22,7 +20,10 @@
 
 <script>
 export default {
-  name: "AppProductDesc"
+  name: "AppProductDesc",
+    props:{
+      teacher:{default:''}
+    }
 };
 </script>
 

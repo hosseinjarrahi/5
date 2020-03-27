@@ -1,22 +1,9 @@
 <?php
 
-use AliBayat\LaravelCategorizable\Category;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-//main
-Route::get('/', 'main\HomeController@home');
-// Route::get('/product/{product?}', 'main\HomeController@product');
-Route::post('/login', 'RegisterController@login');
-Route::get('/logout', 'RegisterController@logout')->middleware('auth');
-Route::post('/send-code', 'RegisterController@sendCode')->middleware('throttle:1,3600');
-Route::post('/register', 'RegisterController@register')->middleware('throttle:5,3600');
-Route::post('/verify', 'RegisterController@verify');
-Route::post('/check-auth', 'RegisterController@checkAuth');
-Route::get('/{category}/{product:slug}', 'main\HomeController@product');
-Route::get('/{category:slug}', 'main\HomeController@category');
 
 //quiz
-Route::group(['prefix' => 'quiz'], function () {
+Route::group(['prefix' => 'quizviran'], function () {
     Route::get('/', 'quiz\HomeController@index');
     Route::get('/results/{quiz}', 'quiz\HomeController@result');
 
@@ -38,7 +25,6 @@ Route::group(['prefix' => 'quiz'], function () {
 });
 
 //admin
-
 Route::get('test', function () {
     $p = Product::first();
     $c = Category::create([
@@ -48,3 +34,14 @@ Route::get('test', function () {
     $c = Category::first();
     $p->attachCategory($c);
 });
+
+//main
+Route::get('/', 'main\HomeController@home');
+Route::post('/login', 'RegisterController@login');
+Route::get('/logout', 'RegisterController@logout')->middleware('auth');
+Route::post('/send-code', 'RegisterController@sendCode')->middleware('throttle:1,3600');
+Route::post('/register', 'RegisterController@register')->middleware('throttle:5,3600');
+Route::post('/verify', 'RegisterController@verify');
+Route::post('/check-auth', 'RegisterController@checkAuth');
+Route::get('/{category}/{product:slug}', 'main\HomeController@product');
+Route::get('/{category:slug}', 'main\HomeController@category');

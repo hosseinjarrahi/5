@@ -15,6 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->string('type');
             $table->string('A')->nullable();
             $table->string('B')->nullable();
@@ -24,6 +25,7 @@ class CreateQuestionsTable extends Migration
             $table->string('pic')->nullable();
             $table->longText('desc')->nullable();
             $table->string('norm')->default(1);
+            $table->enum('level',['hard','medium','easy'])->default('easy');
             $table->timestamps();
         });
 

@@ -15,6 +15,7 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->enum('type',['private','public']);
             $table->char('duration',5);

@@ -59,7 +59,6 @@
                   this.selected = 0;
                 else 
                   this.selected++;
-                console.log(this.selected);
                 this.resetTimer();
             },
             previous() {
@@ -67,7 +66,6 @@
                   this.selected = this.slides.length-1;
                 else
                   this.selected--;
-                console.log(this.selected);
 
                 this.resetTimer();
             },
