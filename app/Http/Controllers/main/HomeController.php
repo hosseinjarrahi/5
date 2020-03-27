@@ -39,7 +39,8 @@ class HomeController extends Controller
 	{
 	    $files = $product->files;
 	    $sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
-		return view('main.product' , compact('product','files','sames'));
+	    $meta = $product->meta;
+		return view('main.product' , compact('product','files','sames','meta'));
 	}
 
 	// public function showQuestion(Product $question)

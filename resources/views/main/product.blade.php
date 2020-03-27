@@ -1,5 +1,7 @@
 @extends('layout')
-@section('title','تیزویران | '. $product->title ?? 'محصول')
+@section('title','تیزویران | '. $meta['title'] ?? $product->title)
+@section('description',$meta['description'])
+@section('keywords',$meta['keywords'])
 
 @section('content')
     <div class="p-1 my-5"></div>
