@@ -39,6 +39,6 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    z-index: 5000;
+    z-index: 50000000;
 }
 </style>

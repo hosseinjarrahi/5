@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('pic');
             $table->longText('course_items')->nullable();
             $table->string('price')->nullable();
-            $table->string('offer')->nullable();
+            $table->string('offer')->default(0)->nullable();
             $table->unsignedInteger('user_id');
             $table->longText('meta')->nullable();
             $table->timestamps();

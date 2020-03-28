@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
             <div class="col-12 header-home w-100">
                 <div class="container-fluid">
                     <div class="row justify-content-center">
@@ -23,16 +23,20 @@
             </div>
             {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}
 
+            <div class="col-12 w-100">
+                <app-slider :slides="{{ $slides }}"></app-slider>
+            </div>
 
-            <app-slider :slides="{{ $slides }}"></app-slider>
-
-            <app-course main-image="/img/courses.png" more-text="مشاهده تمامی دوره ها" more-link="/فروشگاه">
-                <app-course-card v-for="product in {{ $lastProducts }}" :product="product"></app-course-card>
-            </app-course>
-
-            <app-course main-image="/img/jozavat.png" more-text="مشاهده تمامی جزوات و نمونه سوالات" more-link="/جزوات">
-                <app-course-card v-for="product in {{ $lastJozavat }}" :product="product"></app-course-card>
-            </app-course>
+            <div class="col-12 w-100">
+            @foreach($boxes as $box)
+                @php 
+                    $products = App\Http\Resources\ProductResource::collection(App\Models\Product::lastThreeProductWith($box->category))->toJson();
+                @endphp
+                <app-course main-image="{{ $box->pic }}" more-text="{{ $box->more_text }}" more-link="/{{ $box->category->slug }}">
+                    <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>
+                </app-course>  
+            @endforeach
+            <div class="col-12 w-100">
 
         </div>
     </div>

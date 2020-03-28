@@ -15,7 +15,7 @@ Vue.component('app-quiz-card', require('./components/AppQuizCard.vue').default);
 Vue.component('app-exam-card', require('./components/AppExamCard.vue').default);
 Vue.component('app-exam', require('./components/AppExam.vue').default);
 Vue.component('app-footer', require('./components/AppFooter.vue').default);
-Vue.component('app-modal', require('./components/AppModal.vue').default);
+Vue.component('app-login-modal', require('./components/AppLoginModal.vue').default);
 Vue.component('app-loading', require('./components/AppLoading.vue').default);
 Vue.component('app-quiz-make', require('./components/admin/AppQuizMake.vue').default);
 Vue.component('app-latex', require('./components/admin/AppLatex.vue').default);
@@ -35,6 +35,8 @@ Vue.component('app-comment-dialog', require('./components/main/AppCommentDialog.
 Vue.component('app-search-box', require('./components/main/AppSearchBox.vue').default);
 Vue.component('app-bio', require('./components/main/AppBio.vue').default);
 Vue.component('app-download-box', require('./components/main/AppDownloadBox.vue').default);
+Vue.component('app-buy-modal', require('./components/main/AppBuyModal.vue').default);
+Vue.component('app-modal', require('./components/AppModal.vue').default);
 
 
 import globalMixin from './globalMixin';

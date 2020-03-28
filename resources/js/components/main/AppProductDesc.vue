@@ -7,6 +7,19 @@
           <span>{{ product.user.name }}</span>
         </div>
 
+        <div class="my-2 border-bottom-dark p-2" v-if="product.price > 0">
+          <span class="fas fa-money-bill"></span>
+          <span>قیمت :</span>
+          <span>
+              <span class="p-1 rounded bg-gray py-0" v-if="product.offer > 0">
+                <span>{{ product.offer }} تومان</span>
+              </span>
+              <span class="p-1 bg-dark-gray py-0">
+                <span :class="{'line-throgh':product.offer > 0}">{{ product.price }} تومان</span>
+              </span>
+            </span>
+        </div>
+
         <div class="my-2 border-bottom-dark p-2" v-if="product.course_items.length">
           <span class="fas fa-file-video"></span>
           <span>فایل های منتشر شده :</span>
@@ -41,23 +54,48 @@
             </div>
           </span>
         </div>
+
+        <div class="my-2 border-bottom-dark p-2" v-if="product.price > 0">
+          <span class="my-2">
+            <div class="btn btn-block btn-success shadow" @click="buyModal = true">
+              <span class="fas fa-shopping-bag"></span>
+              <span>خرید دوره</span>
+            </div>
+          </span>
+        </div>
     </div>
 
     <div class="avatar-parent">
       <div class="pic rounded bg-dark-gray shadow" style="background-image:url(/img/back.jpg)"></div>
     </div>
+
+    <app-buy-modal 
+    @close="buyModal = false" 
+    v-if="buyModal" 
+    :productId="product.id"
+    :price="product.offer == 0 ? product.price : product.offer"
+    :showCouponBox="product.offer == 0"
+    ></app-buy-modal>
+
   </div>
 </template>
 
 <script>
 export default {
+  name: "AppProductDesc",
   props:{
     product:{default:null}
   },
-  name: "AppProductDesc",
-  created() {
-    console.log(this.product);
+  data(){
+    return {
+      buyModal:false
+    }
   },
+  methods:{
+    buy(){
+      
+    }
+  }
 };
 </script>
 
@@ -81,5 +119,8 @@ export default {
 }
 .border-bottom-dark {
   border-bottom: 2px solid #57606f;
+}
+.line-throgh{
+  text-decoration: red line-through;
 }
 </style>

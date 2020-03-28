@@ -17,7 +17,7 @@
         <slot name="avatar">
           <p class="pb-2">
             <span style="font-size:0.8rem">
-              <img :src="product.pic" class="shadow avatar" alt />
+              <img :src="product.pic" class="shadow avatar" :alt="product.title" />
               <span>استاد:</span>
               <span>جعفری</span>
             </span>
@@ -33,11 +33,11 @@
             </span>
 
             <span>
-              <span class="btn btn-success py-0" v-if="product.offer">
+              <span class="btn btn-success py-0" v-if="product.offer > 0">
                 <span>{{ product.offer }} تومان</span>
               </span>
               <span class="btn bg-dark-gray py-0">
-                <span :class="{'line-throgh':product.offer}">{{ product.price }} تومان</span>
+                <span :class="[{'line-throgh text-muted':product.offer > 0}]">{{ product.price }} تومان</span>
               </span>
             </span>
             
@@ -59,10 +59,7 @@ export default {
     redirect(){
       return window.location = this.product.url;
     }
-  },
-    created() {
-      console.log(product);
-    }
+  }
 };
 </script>
 

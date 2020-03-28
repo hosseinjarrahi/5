@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0 fix">
     <transition name="fade">
-      <app-modal v-if="openModal" @close="openModal = false"></app-modal>
+      <app-login-modal v-if="openModal" @close="openModal = false"></app-login-modal>
     </transition>
     <div class="container-fluid head-color">
       <nav class="container navbar navbar-expand text-center navbar-light py-md-0 py-2">

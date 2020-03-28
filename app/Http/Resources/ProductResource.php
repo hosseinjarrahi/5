@@ -16,7 +16,7 @@ class ProductResource extends JsonResource
     {
         return [
             'title' => $this->title,
-            'url' => url($this->categories[0]->name.'/'.$this->slug),
+            'url' => url($this->categories[0]->slug.'/'.$this->slug),
             'desc' => $this->desc,
             'status' => $this->status,
             'percentage' => $this->percentage,

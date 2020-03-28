@@ -19,8 +19,8 @@ $factory->define(Product::class, function (Faker $faker) {
         ['title' => 'فصل دوم - توابع ریاضی هشتم','time' => '10:50','link'=>'/link/to/file.mp4'],
         ['title' => 'فصل سوم - توابع ریاضی هشتم','time' => '10:50','link'=>'/link/to/file.mp4'],
     ],
-    'price' => random_int(0,100),
-    'offer' => random_int(0,100),
+    'price' => '100000',
+    'offer' => random_int(0,1),
     'user_id' => '1',
     'meta' => ['description' => 'description' , 'title' => 'page title' ,'keywords' => 'keywords'],
     ];

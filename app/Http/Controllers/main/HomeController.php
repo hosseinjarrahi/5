@@ -6,7 +6,10 @@ use AliBayat\LaravelCategorizable\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CouponRequest;
 use App\Http\Resources\ProductResource;
+use App\Models\Coupon;
+use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Slide;
 
@@ -21,26 +24,33 @@ class HomeController extends Controller
 	{
 
 		$slides = Slide::all()->toJson();
-        $lastProducts = ProductResource::collection(Product::lastThreeProductWith('فروشگاه'))->toJson();
-        $lastJozavat = ProductResource::collection(Product::lastThreeProductWith('جزوات'))->toJson();
-		return view('main.home',compact('slides','lastProducts','lastJozavat'));
+		$boxes = HomeBox::all();
+		return view('main.home', compact('slides', 'boxes'));
 	}
 
 	public function category(Category $category)
 	{
 		$products = $category->entries(Product::class)->orderByDesc('id')->paginate(9);
-        (!$products->isEmpty()) ?: abort(404);
+		(!$products->isEmpty()) ?: abort(404);
 		$links = $products->links();
 		$products = ProductResource::collection($products)->toJson();
-		return view('main.category' , compact('products' , 'category','links'));
+		return view('main.category', compact('products', 'category', 'links'));
 	}
 
-	public function product($category,Product $product)
+	public function product($category, Product $product)
 	{
-	    $files = $product->files;
-	    $sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
-	    $meta = $product->meta;
-		return view('main.product' , compact('product','files','sames','meta'));
+		$files = $product->files;
+		$sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
+		$meta = $product->meta;
+		return view('main.product', compact('product', 'files', 'sames', 'meta'));
+	}
+
+	public function checkCoupon(CouponRequest $request)
+	{
+		$coupon = Coupon::where('code', $request->coupon)->first();
+		if (!$coupon || !$coupon->valid($request->productId))
+			return response(['message' => 'کد تخفیف نامعتبر است.'],404);
+		return response(['message' => 'اعمال شد.','offer' => $coupon->offer]);
 	}
 
 	// public function showQuestion(Product $question)

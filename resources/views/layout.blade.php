@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body style="direction: rtl !important;">
+    
 <div id="pageLoader" class="pageLoader flex-column d-flex justify-content-center align-items-center" style="z-index: 500">
     <img src="{{ asset('img/logo.png') }}"
          alt="tizviran logo"
@@ -19,7 +20,6 @@
     <div class="spinner-border text-white" role="status">
         <span class="sr-only">Loading...</span>
     </div>
-
 </div>
 
 <div id="app">

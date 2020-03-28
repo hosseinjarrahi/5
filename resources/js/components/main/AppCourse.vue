@@ -6,7 +6,7 @@
         <div class="bg-dark-gray courses overflow-hidden shadow d-flex flex-column flex-md-row align-items-center">
 
           <div class="col-12 col-md-3">
-            <img :src="mainImage" class="img-fluid" alt="">
+            <img :src="mainImage" class="img-fluid" :alt="moreText">
           </div>
 
           <div class="col-md-9 col-12 d-flex flex-column flex-md-row justify-content-around align-items-center">
