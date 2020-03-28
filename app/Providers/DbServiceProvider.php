@@ -19,11 +19,11 @@ class DbServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Relation::morphMap([
-            Quiz::class => 'quiz',
-            Homework::class => 'homework',
-            News::class => 'news',
-            Product::class => 'product',
-        ]);
+        // Relation::morphMap([
+        //     Quiz::class => 'quiz',
+        //     Homework::class => 'homework',
+        //     News::class => 'news',
+        //     Product::class => 'product',
+        // ]);
     }
 }

@@ -40,9 +40,10 @@ class HomeController extends Controller
 	public function product($category, Product $product)
 	{
 		$files = $product->files;
+		$tags = $product->tags;
 		$sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
 		$meta = $product->meta;
-		return view('main.product', compact('product', 'files', 'sames', 'meta'));
+		return view('main.product', compact('product', 'files', 'sames', 'meta','tags'));
 	}
 
 	public function checkCoupon(CouponRequest $request)

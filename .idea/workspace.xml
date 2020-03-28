@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quiz.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/DbServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/DbServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +156,11 @@
       <path value="$PROJECT_DIR$/vendor/alibayat/laravel-categorizable" />
       <path value="$PROJECT_DIR$/vendor/kalnoy/nestedset" />
       <path value="$PROJECT_DIR$/vendor/rtconner/laravel-tagging" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-tags" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
+      <path value="$PROJECT_DIR$/vendor/spatie/eloquent-sortable" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZQmnuc1zDuLjGGLkYwM4ZKAnKv" />
@@ -207,6 +223,7 @@
       <workItem from="1585295191744" duration="5247000" />
       <workItem from="1585306270360" duration="8702000" />
       <workItem from="1585384061064" duration="546000" />
+      <workItem from="1585416505106" duration="2194000" />
     </task>
     <servers />
   </component>
@@ -234,17 +251,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1584885057737" />
-    <state x="463" y="149" width="609" height="536" key="find.popup" timestamp="1585310752879">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1585417923266">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="609" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1585310752879" />
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1585417923266" />
     <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1585308083658">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1585308083658" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1585384139010">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1585418661863">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1585384139010" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1585418661863" />
   </component>
 </project>

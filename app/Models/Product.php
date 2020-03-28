@@ -4,12 +4,14 @@ namespace App\Models;
 
 use AliBayat\LaravelCategorizable\Categorizable;
 use AliBayat\LaravelCategorizable\Category;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use \Spatie\Tags\HasTags;
 
 class Product extends Model
 {
     use Categorizable;
+    use HasTags;
+
     protected $with = [
         'categories',
         'user'

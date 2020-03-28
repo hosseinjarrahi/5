@@ -37,6 +37,7 @@ Vue.component('app-bio', require('./components/main/AppBio.vue').default);
 Vue.component('app-download-box', require('./components/main/AppDownloadBox.vue').default);
 Vue.component('app-buy-modal', require('./components/main/AppBuyModal.vue').default);
 Vue.component('app-modal', require('./components/AppModal.vue').default);
+Vue.component('app-tag', require('./components/AppTag.vue').default);
 
 
 import globalMixin from './globalMixin';

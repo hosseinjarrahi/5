@@ -64,7 +64,17 @@
                             @endforeach
                     </div>
                 </div>
-                
+                @if(!$tags->isEmpty())
+                <div class="col-12 mb-2 overflow-hidden">
+                    <div class="container-fluid bg-dark-gray shadow rounded py-2 px-3">
+                        <span class="fas fa-tags mx-1"></span>
+                        <span class="mx-1">برچسب ها : </span>
+
+                        <app-tag v-for="tag in {{ $tags }}" :link="tag.slug.fa">@{{ tag.name.fa }}</app-tag>
+
+                    </div>
+                </div>
+                @endif
                 <div class="col-12 my-4">
                     <div class="rounded px-3">
                         <app-content-border-box title="دوره های پیشنهادی">

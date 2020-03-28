@@ -25,15 +25,6 @@ Route::group(['prefix' => 'quizviran'], function () {
 });
 
 //admin
-Route::get('test', function () {
-    $p = Product::first();
-    $c = Category::create([
-        'name' => 'test',
-        'slug' => 'test',
-    ]);
-    $c = Category::first();
-    $p->attachCategory($c);
-});
 
 //main
 Route::get('/', 'main\HomeController@home');

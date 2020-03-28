@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-    'title' => $faker->realText(10),
+    'title' => $faker->realText(90),
     'desc' => $faker->realText(5000),
     'status' => 'تکمیل',
     'slug' => \Str::of($faker->realText(100))->slug(),
@@ -29,5 +29,6 @@ $factory->define(Product::class, function (Faker $faker) {
 
 $factory->afterCreating(Product::class, function (Product $product,Faker $faker) {
     $product->attachCategory(Category::inRandomOrder()->first());
+    $product->attachTag('تگ تستی');
 });
 
