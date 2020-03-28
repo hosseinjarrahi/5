@@ -27,19 +27,30 @@
             <div v-if="login" key="login">
               <form>
                 <div class="form-group">
+                  <span class="fas fa-user"></span>
                   <span>نام کاربری:</span>
                   <input v-model="login.username" type="text" name="username" class="form-control"/>
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-eye"></span>
                   <span>رمز عبور:</span>
                   <input v-model="login.password" type="password" name="password" class="form-control"/>
                 </div>
-                <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">فراموشی رمز عبور</a>
-                <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin()">ورود</button>
+                <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">
+                  <span class="fas fa-question"></span>
+                  <span>فراموشی رمز عبور</span>
+                </a>
+                <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin()">
+                  <span class="fas fa-door-open"></span>
+                  <span>ورود</span>
+                </button>
               </form>
 
               <div class="modal-footer">
-                <a href type="button" class="btn btn-primary" @click.prevent="changeState('register')">ثبت نام</a>
+                <a href type="button" class="btn btn-primary" @click.prevent="changeState('register')">
+                  <span class="fas fa-plus"></span>
+                  <span>ثبت نام</span>
+                </a>
               </div>
             </div>
 
@@ -49,22 +60,27 @@
                   <p class="alert-danger alert" v-for="(error,index) in errors" :key="index">{{ error[0] }}</p>
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-phone"></span>
                   <span>شماره تلفن</span>
                   <input v-model="registerForm.phone" name="phone" class="form-control" type="text" required min="10">
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-pen"></span>
                   <span>نام و نام خانوادگی</span>
                   <input v-model="registerForm.name" name="name" class="form-control" type="text" required>
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-user"></span>
                   <span>نام کاربری</span>
                   <input v-model="registerForm.handle" name="handle" class="form-control" type="text" required min="4" max="36">
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-eye"></span>
                   <span>رمز عبور</span>
                   <input v-model="registerForm.password" name="password" class="form-control" type="password" required min="8" max="36">
                 </div>
                 <div class="form-group">
+                  <span class="fas fa-eye"></span>
                   <span>تکرار رمز عبور</span>
                   <input v-model="registerForm.confirm" name="confirm" class="form-control" type="password" required min="8" max="36">
                 </div>
@@ -80,6 +96,7 @@
                   <span> را وارد کنید </span>
                 </p>
                 <div class="form-group">
+                  <span class="fas fa-check-circle"></span>
                   <span>کد تایید</span>
                   <input v-model="verifyCode" name="verify" class="form-control" type="text" required>
                 </div>
@@ -92,6 +109,7 @@
                 <div class="form-group">
                   <b>در هر روز تنها یکبار امکان بازیابی رمز را دارید.</b>
                   <hr>
+                  <span class="fas fa-phone"></span>
                   <span>تلفن:</span>
                   <input v-model="phone" type="text" name="username" class="form-control"/>
                 </div>

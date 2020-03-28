@@ -2445,6 +2445,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -45904,6 +45922,8 @@ var render = function() {
                         ? _c("div", { key: "login" }, [
                             _c("form", [
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-user" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("نام کاربری:")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -45934,6 +45954,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-eye" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("رمز عبور:")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -45975,7 +45997,13 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("فراموشی رمز عبور")]
+                                [
+                                  _c("span", {
+                                    staticClass: "fas fa-question"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("فراموشی رمز عبور")])
+                                ]
                               ),
                               _vm._v(" "),
                               _c(
@@ -45989,7 +46017,13 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("ورود")]
+                                [
+                                  _c("span", {
+                                    staticClass: "fas fa-door-open"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("ورود")])
+                                ]
                               )
                             ]),
                             _vm._v(" "),
@@ -46006,7 +46040,11 @@ var render = function() {
                                     }
                                   }
                                 },
-                                [_vm._v("ثبت نام")]
+                                [
+                                  _c("span", { staticClass: "fas fa-plus" }),
+                                  _vm._v(" "),
+                                  _c("span", [_vm._v("ثبت نام")])
+                                ]
                               )
                             ])
                           ])
@@ -46032,6 +46070,8 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-phone" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("شماره تلفن")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46067,6 +46107,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-pen" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("نام و نام خانوادگی")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46101,6 +46143,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-user" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("نام کاربری")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46137,6 +46181,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-eye" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("رمز عبور")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46175,6 +46221,8 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", { staticClass: "fas fa-eye" }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("تکرار رمز عبور")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46241,6 +46289,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "form-group" }, [
+                                _c("span", {
+                                  staticClass: "fas fa-check-circle"
+                                }),
+                                _vm._v(" "),
                                 _c("span", [_vm._v("کد تایید")]),
                                 _vm._v(" "),
                                 _c("input", {
@@ -46298,6 +46350,8 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("hr"),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "fas fa-phone" }),
                                 _vm._v(" "),
                                 _c("span", [_vm._v("تلفن:")]),
                                 _vm._v(" "),
