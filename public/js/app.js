@@ -3417,11 +3417,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
@@ -3483,6 +3478,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -4102,7 +4100,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #f7f1e3;\r\n  border: 1px dashed #2f3542;\r\n  color:#2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e]{\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e]{\r\n    border-top: 1px #e2e2e2 solid;\r\n    padding-top: 5px;\n}\r\n", ""]);
+exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #f7f1e3;\r\n  border: 1px dashed #2f3542;\r\n  color: #2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e] {\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e] {\r\n  border-top: 1px #e2e2e2 solid;\r\n  padding-top: 10px;\n}\n.floating[data-v-0f71613e]{\r\n  position:absolute;\r\n  top: -10px;\r\n  display: block;\r\n  text-align: center;\r\n  font-size: 0.8rem;\n}\r\n", ""]);
 
 // exports
 
@@ -47648,7 +47646,7 @@ var render = function() {
       on: { click: _vm.redirect }
     },
     [
-      _vm.product.offer
+      _vm.product.offer > 0
         ? _c("div", { staticClass: "offer" }, [
             _c("img", {
               staticClass: "img-fluid",
@@ -47662,7 +47660,7 @@ var render = function() {
         { staticClass: "my-2 rounded shadow course-card overflow-hidden" },
         [
           _c("div", {
-            staticClass: "course-header shadow ",
+            staticClass: "course-header shadow",
             style: { backgroundImage: "url('" + _vm.product.pic + "')" }
           }),
           _vm._v(" "),
@@ -47694,17 +47692,9 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "d-flex flex-column justify-content-between align-items-center dark-top-border"
+                      "d-flex position-relative flex-column justify-content-between align-items-center dark-top-border"
                   },
                   [
-                    _vm.product.course_items.length
-                      ? _c("span", [
-                          _c("span", { staticClass: "fas fa-clock" }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("12:40:20")])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
                     _c("span", [
                       _vm.product.offer > 0
                         ? _c("span", { staticClass: "btn btn-success py-0" }, [
@@ -47714,19 +47704,32 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("span", { staticClass: "btn bg-dark-gray py-0" }, [
-                        _c(
-                          "span",
-                          {
-                            class: [
-                              {
-                                "line-throgh text-muted": _vm.product.offer > 0
-                              }
-                            ]
-                          },
-                          [_vm._v(_vm._s(_vm.product.price) + " تومان")]
-                        )
-                      ])
+                      _c(
+                        "span",
+                        {
+                          class: [
+                            "py-0",
+                            {
+                              floating: _vm.product.offer > 0,
+                              "btn bg-dark-gray": _vm.product.offer <= 0
+                            }
+                          ]
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              class: [
+                                {
+                                  "line-throgh text-muted":
+                                    _vm.product.offer > 0
+                                }
+                              ]
+                            },
+                            [_vm._v(_vm._s(_vm.product.price) + " تومان")]
+                          )
+                        ]
+                      )
                     ])
                   ]
                 )
@@ -47823,73 +47826,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      {
-        staticClass: "row position-relative p-2 align-items-center",
-        staticStyle: {
-          "border-bottom": "1px solid #f5f5f5",
-          "margin-top": "20px"
-        }
-      },
-      [
+  return _vm.index != "demo"
+    ? _c("div", { staticClass: "container" }, [
         _c(
           "div",
           {
-            staticClass:
-              "test-center item-circle circle d-flex align-items-center justify-content-center"
-          },
-          [_vm._v(_vm._s(_vm.index))]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-md-8 px-5 my-3 my-md-0" }, [
-          _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-            _vm._v(_vm._s(_vm.item.title))
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-white bg-success p-1 rounded" }, [
-            _vm._v("رایگان")
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-6 col-md-2 text-right",
-            staticStyle: { height: "30px", overflow: "auto" }
-          },
-          [
-            _c("span", { staticClass: "fas fa-clock" }),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.item.time))])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-6 col-md-2 text-right",
-            staticStyle: { height: "30px", overflow: "auto" }
+            staticClass: "row position-relative p-2 align-items-center",
+            staticStyle: {
+              "border-bottom": "1px solid #f5f5f5",
+              "margin-top": "20px"
+            }
           },
           [
             _c(
-              "span",
+              "div",
               {
-                staticClass: "btn bg-gray py-0",
-                on: {
-                  click: function($event) {
-                    _vm.window.location = _vm.item.link
-                  }
-                }
+                staticClass:
+                  "test-center item-circle circle d-flex align-items-center justify-content-center"
               },
-              [_c("span", { staticClass: "fas fa-download" })]
+              [
+                _vm.item.free
+                  ? _c("span", [_vm._v(_vm._s(_vm.index))])
+                  : _c("span", { staticClass: "fas fa-lock" })
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 col-md-8 px-5 my-3 my-md-0" }, [
+              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
+                _vm._v(_vm._s(_vm.item.title))
+              ]),
+              _vm._v(" "),
+              _vm.item.free
+                ? _c(
+                    "span",
+                    { staticClass: "text-white bg-success p-1 rounded" },
+                    [_vm._v("رایگان")]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "col-6 col-md-2 text-right",
+                staticStyle: { height: "30px", overflow: "auto" }
+              },
+              [
+                _c("span", { staticClass: "fas fa-clock" }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.item.time))])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "col-6 col-md-2 text-right",
+                staticStyle: { height: "30px", overflow: "auto" }
+              },
+              [
+                _c(
+                  "span",
+                  {
+                    staticClass: "btn bg-gray py-0",
+                    on: {
+                      click: function($event) {
+                        _vm.window.location = _vm.item.link
+                      }
+                    }
+                  },
+                  [_c("span", { staticClass: "fas fa-download" })]
+                )
+              ]
             )
           ]
         )
-      ]
-    )
-  ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

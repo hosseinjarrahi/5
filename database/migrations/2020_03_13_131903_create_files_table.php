@@ -15,6 +15,7 @@ class CreateFilesTable extends Migration
             $table->text('fileable_type');
             $table->unsignedInteger('user_id');
             $table->text('file');
+            $table->timestamp('extime')->nullable();
             $table->timestamps();
         });
     }

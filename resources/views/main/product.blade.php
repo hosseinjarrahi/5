@@ -27,7 +27,13 @@
                     
                     <div class="col-12 mb-2 overflow-hidden">
                         <div class="container-fluid bg-dark-gray shadow rounded py-2 px-3">
-                            <video src="/upload/test.mp4" controls class="w-100 rounded"></video>
+
+                            @if($product->head)
+                                {!! $product->head !!}
+                            @elseif(isset($product->course_items['demo']['embed']))
+                                {!! $product->course_items['demo']['embed'] !!}
+                            @endif
+
                             <div style="margin-bottom:50px;margin-top:50px">
                                 <app-title>توضیحات</app-title>
                                 <p class="p-2 text-justify w-100" style="white-space:pre-wrap;">{{ $product->desc }}</p>
@@ -62,7 +68,7 @@
                 <div class="col-12 my-4">
                     <div class="rounded px-3">
                         <app-content-border-box title="دوره های پیشنهادی">
-                            <div class=" row justify-content-center align-items-center">
+                            <div class="row justify-content-center align-items-stretch">
                                 <app-course-card  v-for="product in {{ $sames }}" :product="product"></app-course-card>
                             </div>
                         </app-content-border-box>

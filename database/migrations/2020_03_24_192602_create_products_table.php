@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('status')->nullable();
             $table->string('percentage')->nullable();
             $table->string('pic');
+            $table->string('head')->nullable();
             $table->longText('course_items')->nullable();
             $table->string('price')->nullable();
             $table->string('offer')->default(0)->nullable();
