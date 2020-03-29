@@ -25,7 +25,7 @@ $backgroundColor: #f5f5f5;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
-  transform: translateX(-500px);
+  transform: scale(2);
 }
 
 .pageLoader{

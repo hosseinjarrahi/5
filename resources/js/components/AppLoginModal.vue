@@ -28,7 +28,7 @@
               <form>
                 <div class="form-group">
                   <span class="fas fa-user"></span>
-                  <span>نام کاربری:</span>
+                  <span>تلفن و یا ایمیل:</span>
                   <input v-model="login.username" type="text" name="username" class="form-control"/>
                 </div>
                 <div class="form-group">

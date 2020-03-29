@@ -4491,7 +4491,7 @@ readers do not read off random characters that represent icons */
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-  transform: translateX(-500px);
+  transform: scale(2);
 }
 
 .pageLoader {

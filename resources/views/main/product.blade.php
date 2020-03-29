@@ -99,9 +99,15 @@
                             </div>
                         </app-content-border-box>
                     </div>
-                    
-                    <app-comment-dialog class="mt-5"></app-comment-dialog>
-                    <span class="btn bg-dark-gray my-2">افزودن نظر</span>
+                    @if(auth()->check())
+                        <app-comment-dialog class="mt-5"></app-comment-dialog>
+                        <span class="btn bg-dark-gray my-2">افزودن نظر</span>
+                    @else
+                        <div class="alert alert-info mt-3">
+                            <span class="fas fa-info"> </span>
+                            <span>جهت ارسال دیدگاه خود ابتدا <ins class="pointer">وارد شوید</span>.</span>
+                        </div>
+                    @endif 
                 </div>
                 
             </div>
