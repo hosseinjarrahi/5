@@ -60,10 +60,12 @@ class HomeController extends Controller
 
 	public function tag($tag){
 		$tag  = Tag::where('slug->fa',$tag)->first();
-		$products = Product::withAnyTags([$tag])->orderByDesc('id')->paginate(9);
+		$products = Product::with('tags')->withAnyTags([$tag])->orderByDesc('id')->paginate(9);
 		$links = $products->links();
+		$relatedTags = $products->pluck('tags');
 		$products = ProductResource::collection($products)->toJson();
-		return view('main.tag',compact('products','tag','links'));
+		$relatedTags = $relatedTags->flatten()->pluck('name','slug')->toJson();
+		return view('main.tag',compact('products','tag','links','relatedTags'));
 	}
 
 

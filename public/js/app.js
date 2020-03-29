@@ -2468,9 +2468,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -46050,17 +46047,28 @@ var staticRenderFns = [
       "div",
       { staticClass: "dropdown-menu d-block", staticStyle: { left: "-50px" } },
       [
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-          _vm._v("Action")
+        _c(
+          "a",
+          { staticClass: "dropdown-item", attrs: { href: "/purchases" } },
+          [
+            _c("span", { staticClass: "fas fa-shopping-bag mr-1" }),
+            _vm._v("خرید ها")
+          ]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "dropdown-item", attrs: { href: "/profile" } }, [
+          _c("span", { staticClass: "fas fa-user-alt mr-1" }),
+          _vm._v("پروفایل")
         ]),
         _vm._v(" "),
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-          _vm._v("Another action")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-          _vm._v("Something else here")
-        ])
+        _c(
+          "a",
+          {
+            staticClass: "dropdown-item text-danger",
+            attrs: { href: "/logout" }
+          },
+          [_c("span", { staticClass: "fas fa-door-open mr-1" }), _vm._v("خروج")]
+        )
       ]
     )
   },
@@ -46674,19 +46682,6 @@ var render = function() {
                         : _vm._e()
                     ]
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.auth
-                ? _c("div", { key: "recovery" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-dark btn-block",
-                        attrs: { href: "/logout" }
-                      },
-                      [_vm._v("خروج از حساب کاربری")]
-                    )
-                  ])
                 : _vm._e()
             ],
             1
@@ -46923,7 +46918,7 @@ var render = function() {
   return _c(
     "a",
     {
-      staticClass: "badge shadow badge-light",
+      staticClass: "badge shadow badge-light mx-1",
       attrs: { href: "/tag/" + _vm.link }
     },
     [_vm._t("default")],

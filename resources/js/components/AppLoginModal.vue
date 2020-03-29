@@ -119,9 +119,6 @@
 
           </transition>
 
-          <div v-if="auth" key="recovery">
-            <a href="/logout" class="btn btn-dark btn-block">خروج از حساب کاربری</a>
-          </div>
         </div>
       </div>
     </div>

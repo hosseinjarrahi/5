@@ -20,9 +20,9 @@
             />
             <div class="dropdown" v-if="openModal && auth">
               <div class="dropdown-menu d-block" style="left:-50px">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>
+                <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
+                <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
               </div>
             </div>
           </a>

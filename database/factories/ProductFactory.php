@@ -29,6 +29,6 @@ $factory->define(Product::class, function (Faker $faker) {
 
 $factory->afterCreating(Product::class, function (Product $product,Faker $faker) {
     $product->attachCategory(Category::inRandomOrder()->first());
-    $product->attachTag('تگ تستی');
+    $product->attachTags(['تگ تستی',$faker->realText('10')]);
 });
 

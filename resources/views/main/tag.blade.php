@@ -25,7 +25,11 @@
             </div>
         </div>
 
-        <app-categories></app-categories>
+        <div class="row">
+            <div class="col-12 bg-dark-gray p-1">
+                <app-tag v-for="(tag , index) in {{ $relatedTags }}" :link='index' class="px-3 py-1">@{{ tag }}</app-tag>
+            </div>
+        </div>
 
         <div class="row justify-content-center p-2 p-md-0">
                 <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>

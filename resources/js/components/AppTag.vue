@@ -1,5 +1,5 @@
 <template>
-  <a class="badge shadow badge-light" :href="'/tag/'+link">
+  <a class="badge shadow badge-light mx-1" :href="'/tag/'+link">
     <slot></slot>
   </a>
 </template>
