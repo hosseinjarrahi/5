@@ -36,7 +36,7 @@
                     <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>
                 </app-course>  
             @endforeach
-            <div class="col-12 w-100">
+            </div>
 
         </div>
     </div>

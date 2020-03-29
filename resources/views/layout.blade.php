@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('description')">
-    <meta name="keywords" content="@yield('keywords')">
+    <meta name="description" content="@yield('description','تیزویران - آموزن ساز , آموزش رایگان هفتم هشتم نهم , بهترین سایت آموزش دروس متوسطه')">
+    <meta name="keywords" content="@yield('keywords','تیزویران - آموزن ساز , آموزش رایگان هفتم هشتم نهم , بهترین سایت آموزش دروس متوسطه')">
 
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -36,6 +36,7 @@
         تمامی حقوق سایت متعلق به تیزویران می باشد.
     </app-footer>
 </div>
+
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>

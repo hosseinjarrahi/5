@@ -3438,6 +3438,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
@@ -4121,7 +4123,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #f7f1e3;\r\n  border: 1px dashed #2f3542;\r\n  color: #2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e] {\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e] {\r\n  border-top: 1px #e2e2e2 solid;\r\n  padding-top: 10px;\n}\n.floating[data-v-0f71613e]{\r\n  position:absolute;\r\n  top: -10px;\r\n  display: block;\r\n  text-align: center;\r\n  font-size: 0.8rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  background-color: #f7f1e3;\r\n  border: 1px dashed #2f3542;\r\n  color: #2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e] {\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e] {\r\n  border-top: 1px #e2e2e2 solid;\r\n  padding-top: 10px;\n}\n.floating[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: -10px;\r\n  display: block;\r\n  text-align: center;\r\n  font-size: 0.8rem;\n}\r\n", ""]);
 
 // exports
 

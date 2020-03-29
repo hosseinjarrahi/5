@@ -31,7 +31,9 @@
               <span class="btn btn-success py-0" v-if="product.offer > 0">
                 <span>{{ product.offer }} تومان</span>
               </span>
-              <span :class="['py-0',{'floating':product.offer > 0,'btn bg-dark-gray':product.offer <= 0}]">
+              <span
+                :class="['py-0',{'floating':product.offer > 0,'btn bg-dark-gray':product.offer <= 0}]"
+              >
                 <span
                   :class="[{'line-throgh text-muted':product.offer > 0}]"
                 >{{ product.price }} تومان</span>
@@ -88,8 +90,8 @@ export default {
   border-top: 1px #e2e2e2 solid;
   padding-top: 10px;
 }
-.floating{
-  position:absolute;
+.floating {
+  position: absolute;
   top: -10px;
   display: block;
   text-align: center;
