@@ -7,7 +7,9 @@
     <div class="offer" v-if="product.offer>0">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
-    <div class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card overflow-hidden">
+    <div
+      class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card overflow-hidden"
+    >
       <div class="course-header shadow" :style="{backgroundImage:`url('${product.pic}')`}"></div>
 
       <div class="p-3 d-flex flex-column h-100">
@@ -24,24 +26,25 @@
         </slot>
 
         <slot name="footer">
-          <div
-            class="d-flex position-relative flex-column justify-content-between align-items-center dark-top-border"
+          <div class="d-flex h-100 w-100 flex-column justify-content-end align-items-center ">
+            <div
+              class="dark-top-border w-100 position-relative d-flex justify-content-center  "
             >
-            <span>
-              <span class="btn btn-success py-0" v-if="product.offer > 0">
-                <span>{{ product.offer }} تومان</span>
-              </span>
-              <span
-                :class="['py-0',{'floating':product.offer > 0,'btn bg-dark-gray':product.offer <= 0}]"
-              >
+              <span>
+                <span class="btn btn-success py-0" v-if="product.offer > 0">
+                  <span>{{ product.offer }} تومان</span>
+                </span>
                 <span
-                  :class="[{'line-throgh text-muted':product.offer > 0}]"
-                >{{ product.price }} تومان</span>
+                  :class="['py-0',{'floating':product.offer > 0,'btn bg-dark-gray':product.offer <= 0}]"
+                >
+                  <span
+                    :class="[{'line-throgh text-muted':product.offer > 0}]"
+                  >{{ product.price }} تومان</span>
+                </span>
               </span>
-            </span>
+            </div>
           </div>
         </slot>
-        
       </div>
     </div>
   </div>

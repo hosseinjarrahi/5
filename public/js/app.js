@@ -3449,6 +3449,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
@@ -47793,45 +47796,58 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "d-flex position-relative flex-column justify-content-between align-items-center dark-top-border"
+                      "d-flex h-100 w-100 flex-column justify-content-end align-items-center "
                   },
                   [
-                    _c("span", [
-                      _vm.product.offer > 0
-                        ? _c("span", { staticClass: "btn btn-success py-0" }, [
-                            _c("span", [
-                              _vm._v(_vm._s(_vm.product.offer) + " تومان")
-                            ])
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          class: [
-                            "py-0",
-                            {
-                              floating: _vm.product.offer > 0,
-                              "btn bg-dark-gray": _vm.product.offer <= 0
-                            }
-                          ]
-                        },
-                        [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "dark-top-border w-100 position-relative d-flex justify-content-center  "
+                      },
+                      [
+                        _c("span", [
+                          _vm.product.offer > 0
+                            ? _c(
+                                "span",
+                                { staticClass: "btn btn-success py-0" },
+                                [
+                                  _c("span", [
+                                    _vm._v(_vm._s(_vm.product.offer) + " تومان")
+                                  ])
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
                           _c(
                             "span",
                             {
                               class: [
+                                "py-0",
                                 {
-                                  "line-throgh text-muted":
-                                    _vm.product.offer > 0
+                                  floating: _vm.product.offer > 0,
+                                  "btn bg-dark-gray": _vm.product.offer <= 0
                                 }
                               ]
                             },
-                            [_vm._v(_vm._s(_vm.product.price) + " تومان")]
+                            [
+                              _c(
+                                "span",
+                                {
+                                  class: [
+                                    {
+                                      "line-throgh text-muted":
+                                        _vm.product.offer > 0
+                                    }
+                                  ]
+                                },
+                                [_vm._v(_vm._s(_vm.product.price) + " تومان")]
+                              )
+                            ]
                           )
-                        ]
-                      )
-                    ])
+                        ])
+                      ]
+                    )
                   ]
                 )
               ])
