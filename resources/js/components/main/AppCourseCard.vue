@@ -11,7 +11,7 @@
       <div class="course-header shadow" :style="{backgroundImage:`url('${product.pic}')`}"></div>
 
       <div class="p-3">
-        <p class="text-justify">{{ product.title }}</p>
+        <h2 style="font-size:1rem" class="text-justify p-1 m-1 mb-3">{{ product.title }}</h2>
 
         <slot name="avatar">
           <p class="pb-2">

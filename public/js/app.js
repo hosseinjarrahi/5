@@ -47721,9 +47721,14 @@ var render = function() {
             "div",
             { staticClass: "p-3" },
             [
-              _c("p", { staticClass: "text-justify" }, [
-                _vm._v(_vm._s(_vm.product.title))
-              ]),
+              _c(
+                "h2",
+                {
+                  staticClass: "text-justify p-1 m-1 mb-3",
+                  staticStyle: { "font-size": "1rem" }
+                },
+                [_vm._v(_vm._s(_vm.product.title))]
+              ),
               _vm._v(" "),
               _vm._t("avatar", [
                 _c("p", { staticClass: "pb-2" }, [

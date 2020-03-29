@@ -34,6 +34,7 @@ Route::post('/send-code', 'RegisterController@sendCode')->middleware('throttle:1
 Route::post('/register', 'RegisterController@register')->middleware('throttle:5,3600');
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
+Route::get('/tag/{tag}', 'main\HomeController@tag');
 Route::get('/{category:slug}/{product:slug}', 'main\HomeController@product');
 Route::get('/{category:slug}', 'main\HomeController@category');
 Route::post('/check-coupon', 'main\HomeController@checkCoupon');

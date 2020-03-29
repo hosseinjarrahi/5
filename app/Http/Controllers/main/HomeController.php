@@ -12,6 +12,7 @@ use App\Models\Coupon;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Slide;
+use Spatie\Tags\Tag;
 
 class HomeController extends Controller
 {
@@ -53,6 +54,35 @@ class HomeController extends Controller
 			return response(['message' => 'کد تخفیف نامعتبر است.'],404);
 		return response(['message' => 'اعمال شد.','offer' => $coupon->offer]);
 	}
+
+	public function tag($tag){
+		$tag  = Tag::where('slug->fa',$tag)->first();
+		$products = Product::withAnyTags([$tag])->orderByDesc('id')->paginate(9);
+		$links = $products->links();
+		$products = ProductResource::collection($products)->toJson();
+		return view('main.tag',compact('products','tag','links'));
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// public function showQuestion(Product $question)
 	// {
