@@ -1,6 +1,7 @@
 <?php
 
 use AliBayat\LaravelCategorizable\Category;
+use App\Models\Comment;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Profile;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Profile::truncate();
         HomeBox::truncate();
         User::truncate();
+        Comment::truncate();
         // factory(Quiz::class,5)->create();
         factory(Category::class, 2)->create();
         factory(Product::class, 50)->create();
@@ -36,5 +38,6 @@ class DatabaseSeeder extends Seeder
             });
         factory(Slide::class, 5)->create();
         factory(HomeBox::class, 3)->create();
+        factory(Comment::class, 100)->create();
     }
 }

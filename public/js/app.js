@@ -3249,10 +3249,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user']
+});
 
 /***/ }),
 
@@ -3644,12 +3643,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppProductDesc",
   props: {
     product: {
       "default": null
-    }
+    },
+    release: null
   },
   data: function data() {
     return {
@@ -4078,7 +4084,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.avatar-parent {\r\n  position: absolute;\r\n  top: -15px;\r\n  left: -5px;\r\n  width: 100%;\r\n  display: flex;\n}\n.avatar {\r\n  width: 50px;\r\n  height: 50px;\r\n  background-image: url(\"/img/avatar.png\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid #57606f;\n}\n.tool-box {\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: flex-end;\n}\r\n", ""]);
+exports.push([module.i, "\n.avatar-parent {\r\n  position: absolute;\r\n  top: -15px;\r\n  left: -5px;\r\n  width: 100%;\r\n  display: flex;\n}\n.avatar {\r\n  width: 50px;\r\n  height: 50px;\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid #57606f;\r\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: flex-end;\n}\r\n", ""]);
 
 // exports
 
@@ -47535,57 +47541,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "w-100" }, [
+          _c("div", { staticClass: "avatar-parent" }, [
+            _c("div", {
+              staticClass: "avatar bg-light circle p-2 white-shadow",
+              style: [
+                _vm.user.profile.avatar
+                  ? { backgroundImage: "url(" + _vm.user.profile.avatar + ")" }
+                  : ""
+              ]
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass:
+                "pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto",
+              staticStyle: { overflow: "hidden" }
+            },
+            [_vm._v(_vm._s(_vm.user.name))]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-3 p-3 bg-dark-gray rounded" }, [
+            _c("p", { staticClass: "px-2" }, [_vm._t("default")], 2),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "w-100" }, [
-            _c("div", { staticClass: "avatar-parent" }, [
-              _c("div", {
-                staticClass: "avatar bg-light circle p-2 white-shadow"
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto",
-                staticStyle: { overflow: "hidden" }
-              },
-              [_vm._v("یک مرد تنهسسسسسسسسسسسسای شب")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "my-3 p-3 bg-dark-gray rounded" }, [
-              _c("div", { staticClass: "tool-box p-0 m-0" }, [
-                _c("span", { staticClass: "mx-1" }, [_vm._v("1396/2/3")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "fas fa-calendar" })
-              ]),
-              _vm._v(" "),
-              _c(
-                "p",
-                { staticClass: "px-2", staticStyle: { "white-space": "pre" } },
-                [_vm._v("سلام دنیا چه جوری هستی؟\n          من نمیدوم؟")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "tool-box" }, [
-                _c("span", { staticClass: "pointer fas fa-edit p-1 mx-1" }),
-                _vm._v(" "),
-                _c("span", {
-                  staticClass: "pointer text-danger fas fa-trash p-1 mx-1"
-                })
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "tool-box" }, [
+      _c("span", { staticClass: "pointer fas fa-edit p-1 mx-1" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "pointer text-danger fas fa-trash p-1 mx-1" })
     ])
   }
 ]
@@ -48107,6 +48106,14 @@ var render = function() {
                 _c("span", [_vm._v("20:50:10")])
               ])
             : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+            _c("span", { staticClass: "fas fa-calendar-minus" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("تاریخ انتشار :")]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.release))])
+          ]),
           _vm._v(" "),
           _vm.product.downloadCount
             ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [

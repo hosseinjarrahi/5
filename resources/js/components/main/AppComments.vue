@@ -4,21 +4,18 @@
       <div class="col-12">
         <div class="w-100">
           <div class="avatar-parent">
-            <div class="avatar bg-light circle p-2 white-shadow"></div>
+            <div 
+            class="avatar bg-light circle p-2 white-shadow"
+            :style="[user.profile.avatar ? {backgroundImage: `url(${user.profile.avatar})`} : '']"    
+            ></div>
           </div>
           <span
             class="pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto"
             style="overflow:hidden"
-          >یک مرد تنهسسسسسسسسسسسسای شب</span>
+          >{{ user.name }}</span>
           <div class="my-3 p-3 bg-dark-gray rounded">
           
-            <div class="tool-box p-0 m-0">
-              <span class="mx-1">1396/2/3</span> 
-              <span class="fas fa-calendar"></span>
-            </div>
-            
-            <p class="px-2" style="white-space:pre">سلام دنیا چه جوری هستی؟
-            من نمیدوم؟</p>
+            <p class="px-2"><slot></slot></p>
 
             <div class="tool-box">
               <span class="pointer fas fa-edit p-1 mx-1"></span>
@@ -33,7 +30,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:['user']
+};
 </script>
 
 <style>
@@ -47,10 +46,10 @@ export default {};
 .avatar {
   width: 50px;
   height: 50px;
-  background-image: url("/img/avatar.png");
   background-size: cover;
   background-position: center;
   border: 2px solid #57606f;
+  background-image: url('/img/avatar.png');
 }
 .tool-box {
   width: 100%;

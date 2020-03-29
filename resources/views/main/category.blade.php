@@ -14,15 +14,17 @@
                 </div>
             </div>
         </div>
+        
+        <div class="col-12">
+            <app-categories></app-categories>
 
-        <app-categories></app-categories>
+            <div class="row justify-content-center p-2 p-md-0">
+                    <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>
+            </div>
 
-        <div class="row justify-content-center p-2 p-md-0">
-                <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>
-        </div>
-
-        <div class="row justify-content-center p-2 p-md-0">
-        {!! $links   !!}
+            <div class="row justify-content-center p-2 p-md-0">
+            {!! $links !!}
+            </div>
         </div>
 
     </div>

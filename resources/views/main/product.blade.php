@@ -10,7 +10,7 @@
         <div class="row justify-content-center  align-items-center align-items-md-start">
 
             <div class="col-12 col-md-4 mb-5">
-                <app-product-desc :product="{{ $product->toJson() }}"></app-product-desc>
+            <app-product-desc :product="{{ $product->toJson() }}" release="{{ $release }}"></app-product-desc>
                 <app-bio :teacher="{{ $product->user }}"></app-bio>
             </div>
             
@@ -90,7 +90,11 @@
                         <app-content-border-box title="نظرات">
                             <div class="container">
                                 <div class="mt-3 row justify-content-center align-items-center">
-                                    <app-comments></app-comments>
+
+                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :user="comment.user">
+                                    @{{ comment.comment }}
+                                </app-comments>
+                                
                                 </div>
                             </div>
                         </app-content-border-box>

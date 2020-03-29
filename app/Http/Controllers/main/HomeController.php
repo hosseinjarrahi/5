@@ -12,6 +12,7 @@ use App\Models\Coupon;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Slide;
+use Morilog\Jalali\Jalalian;
 use Spatie\Tags\Tag;
 
 class HomeController extends Controller
@@ -44,7 +45,9 @@ class HomeController extends Controller
 		$tags = $product->tags;
 		$sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
 		$meta = $product->meta;
-		return view('main.product', compact('product', 'files', 'sames', 'meta','tags'));
+		$release = Jalalian::forge($product->created_at)->format('Y/m/d');
+		$comments = $product->comments;
+		return view('main.product', compact('comments','product', 'files', 'sames', 'meta','tags','release'));
 	}
 
 	public function checkCoupon(CouponRequest $request)

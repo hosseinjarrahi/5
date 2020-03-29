@@ -32,6 +32,12 @@
           <span>20:50:10</span>
         </div>
 
+        <div class="my-2 border-bottom-dark p-2">
+          <span class="fas fa-calendar-minus"></span>
+          <span>تاریخ انتشار :</span>
+          <span>{{ release }}</span>
+        </div>
+
         <div class="my-2 border-bottom-dark p-2" v-if="product.downloadCount">
           <span class="fas fa-user-graduate"></span>
           <span>تعداد دانلود ها :</span>
@@ -84,7 +90,8 @@
 export default {
   name: "AppProductDesc",
   props:{
-    product:{default:null}
+    product:{default:null},
+    release:null
   },
   data(){
     return {

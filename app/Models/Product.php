@@ -39,6 +39,11 @@ class Product extends Model
         return $this->morphMany(File::class,'fileable');
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class,'commentable');
+    }
+
     public static function lastThreeProductWith(Category $category){
         
         return $category->entries(self::class)->orderByDesc('id')->limit('3')->get();
