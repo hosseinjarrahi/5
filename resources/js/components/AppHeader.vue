@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid p-0 fix">
     <transition name="fade">
-      <app-login-modal v-if="openModal" @close="openModal = false"></app-login-modal>
+      <app-login-modal v-if="openModal && !auth" @close="openModal = false"></app-login-modal>
     </transition>
     <div class="container-fluid head-color">
       <nav class="container navbar navbar-expand text-center navbar-light py-md-0 py-2">
@@ -11,12 +11,20 @@
         >
           <a class="position-absolute" @click="openModal =!openModal" style="left:40px;cursor:pointer">
             <span class="text-white" v-if="!auth">ورود / ثبت نام</span>
+            <span class="text-white" v-else><span class="fas fa-angle-down"></span></span>
             <img
               src="/img/user.png"
               height="50"
               class="d-inline-block"
               alt="user avatar"
             />
+            <div class="dropdown" v-if="openModal && auth">
+              <div class="dropdown-menu d-block" style="left:-50px">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
           </a>
 
           <div
@@ -68,18 +76,17 @@
     };
 </script>
 
-<style scoped lang="scss">
-  @import "./../../sass/app.scss";
+<style scoped>
 
   @media screen and (max-width: 768px) {
   }
 
   .red {
-    color: $red !important;
+    color: #df0000 !important;
   }
 
   .head-color {
-    background: $darkGray;
+    background: #2f3542;
   }
 
   .fix {

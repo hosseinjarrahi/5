@@ -8,7 +8,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Quiz\User;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -59,8 +59,10 @@ class RegisterController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user = User::where('handle', $request->username)->first();
-        if (! $user || ! Hash::check($request->password, $user->passhash)) {
+        $user = User::where('email', $request->username)
+                    ->orWhere('phone',$request->username)
+                    ->first();
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return response($this->messages['loginError']);
         }
 
