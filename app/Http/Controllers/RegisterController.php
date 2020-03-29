@@ -75,7 +75,7 @@ class RegisterController extends Controller
     {
         auth()->logout();
 
-        return redirect(url('/'));
+        return redirect('/');
     }
 
     public function register(RegisterRequest $request)

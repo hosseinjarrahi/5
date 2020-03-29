@@ -6,8 +6,8 @@ use AliBayat\LaravelCategorizable\Category;
 use Faker\Generator as Faker;
 
 $categories = [
-    ['name' => 'فروشگاه','slug'=>'فروشگاه','pic' => 'img/course.png'],
-    ['name' => 'جزوات و نمونه سوال','slug'=>'فروشگاه','pic' => 'img/jozavat.png'],
+    ['name' => 'فروشگاه','slug'=>'فروشگاه','pic' => '/img/courses.png'],
+    ['name' => 'جزوات و نمونه سوال','slug'=>'فروشگاه','pic' => '/img/jozavat.png'],
 ];
 
 $factory->define(Category::class, function (Faker $faker) use ($categories) {

@@ -3448,6 +3448,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
@@ -47732,7 +47733,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "col-12 col-md-4 p-2 w-100 position-relative",
+      staticClass:
+        "col-12 col-md-4 p-2 w-100 position-relative d-flex flex-column",
       staticStyle: { cursor: "pointer" },
       on: { click: _vm.redirect }
     },
@@ -47748,7 +47750,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "my-2 rounded shadow course-card overflow-hidden" },
+        {
+          staticClass:
+            "my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card overflow-hidden"
+        },
         [
           _c("div", {
             staticClass: "course-header shadow",
@@ -47757,7 +47762,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "p-3" },
+            { staticClass: "p-3 d-flex flex-column h-100" },
             [
               _c(
                 "h2",

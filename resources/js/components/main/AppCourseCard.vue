@@ -1,16 +1,16 @@
 <template>
   <div
-    class="col-12 col-md-4 p-2 w-100 position-relative"
+    class="col-12 col-md-4 p-2 w-100 position-relative d-flex flex-column"
     style="cursor: pointer"
     @click="redirect"
   >
     <div class="offer" v-if="product.offer>0">
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
-    <div class="my-2 rounded shadow course-card overflow-hidden">
+    <div class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card overflow-hidden">
       <div class="course-header shadow" :style="{backgroundImage:`url('${product.pic}')`}"></div>
 
-      <div class="p-3">
+      <div class="p-3 d-flex flex-column h-100">
         <h2 style="font-size:1rem" class="text-justify p-1 m-1 mb-3">{{ product.title }}</h2>
 
         <slot name="avatar">
@@ -26,7 +26,7 @@
         <slot name="footer">
           <div
             class="d-flex position-relative flex-column justify-content-between align-items-center dark-top-border"
-          >
+            >
             <span>
               <span class="btn btn-success py-0" v-if="product.offer > 0">
                 <span>{{ product.offer }} تومان</span>
@@ -41,6 +41,7 @@
             </span>
           </div>
         </slot>
+        
       </div>
     </div>
   </div>
