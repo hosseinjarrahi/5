@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'handle' => 'required|string|unique:qa_users|min:4',
-            'phone' => 'required|string|unique:qa_users|min:10',
+            'type' => 'required|string',
+            'phone' => 'required|string',
             'name' => 'required|string',
             'password' => 'required|string|max:36|min:8',
             'confirm' => 'required|string|same:password',
@@ -35,8 +35,8 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'handle.required' => 'وارد کردن نام کاربری الزامی است',
-            'phone.required'  => 'وارد کردن تلفن همراه الزامی است',
+            'type.required' => 'وارد کردن نوع کاربر الزامی است',
+            'phone.required'  => 'وارد کردن تلفن همراه و یا ایمیل الزامی است',
             'name.required'  => 'وارد کردن نام و نام خانوادگی الزامی است',
             'password.required'  => 'وارد کردن رمز الزامی است',
             'confirm.required'  => 'وارد کردن تکرار رمز الزامی است',

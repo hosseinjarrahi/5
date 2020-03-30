@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'تعداد درخواست های شما بیش از حد مجاز است لطفا :seconds ثانیه دیگر تلاش کنید.',
 
 ];

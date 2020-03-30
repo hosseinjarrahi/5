@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 //quiz
 Route::group(['prefix' => 'quizviran'], function () {
@@ -30,8 +31,8 @@ Route::group(['prefix' => 'quizviran'], function () {
 Route::get('/', 'main\HomeController@home');
 Route::post('/login', 'RegisterController@login');
 Route::get('/logout', 'RegisterController@logout')->middleware('auth');
-Route::post('/send-code', 'RegisterController@sendCode')->middleware('throttle:1,3600');
-Route::post('/register', 'RegisterController@register')->middleware('throttle:5,3600');
+Route::post('/reset-password', 'RegisterController@resetPassword')/*->middleware('throttle:1,3600')*/;
+Route::post('/register', 'RegisterController@register')/*->middleware('throttle:5,3600')*/;
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
 Route::get('/tag/{tag}', 'main\HomeController@tag');

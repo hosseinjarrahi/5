@@ -24,7 +24,14 @@ class RecoverRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|string|min:10',
+            'phone' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'phone.required' => 'وارد کردن تلفن همراه و یا ایمیل الزامی است',
         ];
     }
 }

@@ -28,4 +28,12 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'username.required' => 'وارد کردن نام کاربری الزامی است',
+            'password.required' => 'وارد کردن رمز عبور الزامی است',
+        ];
+    }
 }

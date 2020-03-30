@@ -2,56 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ResetPasswordEvent;
+use App\Events\SendVerificationCode;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\User;
+use App\Repositories\UserRepo;
 
 class RegisterController extends Controller
 {
-    private $token = '39796B4F63394667334B777230544D3451622F357159697169382F6368754B7674664B6B2F7A63707845553D';
-
-    private $sender = '10003334444';
-
-    private $messages = [
-        'loginError' => [
-            'message' => 'نام کاربری و یا رمز عبور اشتباه است.',
-            'type' => 'error',
-        ],
-        'loginSuccess' => [
-            'message' => 'با موفقیت وارد شدید.',
-            'type' => 'success',
-        ],
-        'sendCodeSuccess' => [
-            'message' => 'کد تایید با موفقیت ارسال شد.',
-            'type' => 'success',
-        ],
-        'verifyError' => [
-            'message' => 'کد وارده شده اشتباه است.',
-            'type' => 'error',
-        ],
-        'registerSuccess' => [
-            'message' => 'با موفقیت ثبت نام شدید.',
-            'type' => 'success',
-        ],
-        'recoveryError' => [
-            'message' => 'کاربری با این اطلاعات وجود ندارد.',
-            'type' => 'error',
-        ],
-        'recoverNotComplete' => [
-            'message' => 'متاسفانه مشکلی در انجام عملیات به وجود آمده است.',
-            'type' => 'error',
-        ],
-        'recoverSuccess' => [
-            'message' => 'رمز عبور جدید شما تا لحظاتی دیگر ارسال می شود.',
-            'type' => 'success',
-        ],
-
-    ];
-
     public function checkAuth()
     {
         return auth()->id();
@@ -59,16 +21,14 @@ class RegisterController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', $request->username)
-                    ->orWhere('phone',$request->username)
-                    ->first();
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response($this->messages['loginError']);
+        $user = UserRepo::findUserByPhoneOrEmail($request->var);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.'], 400);
         }
 
         auth()->login($user);
 
-        return response($this->messages['loginSuccess']);
+        return response(['message' => 'با موفقیت وارد شدید.']);
     }
 
     public function logout()
@@ -80,89 +40,51 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $random = random_int(10000, 99999);
-        $this->setSession($request, $random);
-        $this->sms();
+        $driver = $this->checkIsPhoneOrEmail($request->phone);
+        if(UserRepo::findByPhoneOrEmail($driver)){
+            return response(['message' => 'کاربری با شماره تلفن و یا ایمیل وجود دارد.'],400);
+        }
 
-        return response($this->messages['sendCodeSuccess']);
+        event(new SendVerificationCode($request, $driver));
+
+        return response(['message' => 'کد تایید با موفقیت ارسال شد.']);
     }
 
     public function verify(Request $request)
     {
         if ($request->verify != session('code')) {
-            return response($this->messages['verifyError']);
+            return response(['message' => 'کد وارده شده اشتباه است.'], 400);
         }
-        $user = $this->createUser();
-        if (! $user->save()) {
-            return response($this->messages['verifyError']);
+        UserRepo::createUserBySession();
+
+        return response(['message' => 'با موفقیت ثبت نام شدید.']);
+    }
+
+    public function resetPassword(RecoverRequest $request)
+    {
+        $user = UserRepo::findByPhoneOrEmail($request->phone);
+        if (!$user) {
+            return response(['message' => 'کاربری با این اطلاعات وجود ندارد.'], 400);
         }
-        session()->forget('code');
+        $user = UserRepo::modifyUser($user);
+        event(new ResetPasswordEvent(
+            $request->phone,
+            $user->password,
+            $this->checkIsPhoneOrEmail($request->phone)
+        ));
 
-        return response($this->messages['registerSuccess']);
+        return response(['message' => 'رمز عبور جدید شما تا لحظاتی دیگر ارسال می شود.']);
     }
 
-    public function sendCode(RecoverRequest $request)
+    private function checkIsPhoneOrEmail($var)
     {
-        $user = User::where('phone', $request->phone)->first();
-        if (! $user) {
-            return response($this->messages['recoveryError']);
-        }
+        $email = \Validator::make(['phone' => $var], ['phone' => 'email']);
+        $phone = \Validator::make(['phone' => $var], ['phone' =>  'numeric|digits:11']);
 
-        return $this->modifyUser($user, $request);
-    }
-
-    private function sms()
-    {
-        $receptor = (string)session('data')['phone'];
-        $message = "کد تایید شما : " . session('code') . " تیزویران ";
-        $api = new \Kavenegar\KavenegarApi($this->token);
-        $api->Send($this->sender, $receptor, $message);
-    }
-
-    private function createUser()
-    {
-        $user = new User;
-        $data = session('data');
-        $user->handle = $data['handle'];
-        $user->passhash = Hash::make($data['password']);
-        $user->phone = $data['phone'];
-        $user->name = $data['name'] ?? '';
-        $user->created = now();
-        $user->level = 0;
-        $user->loggedin = now();
-        $user->flags = 0;
-        $user->wallposts = 0;
-        $user->verified = 1;
-
-        return $user;
-    }
-
-    private function sendSms(Request &$request, int &$pass)
-    {
-        $receptor = (string)$request->phone;
-        $message = "رمز جدید شما : " . $pass . " تیزویران ";
-        $api = new \Kavenegar\KavenegarApi($this->token);
-        $api->Send($this->sender, $receptor, $message);
-    }
-
-    private function setSession($request, $random)
-    {
-        session([
-            'data' => $request->only('handle', 'phone', 'password', 'name'),
-            'code' => $random,
-        ]);
-    }
-
-    private function modifyUser($user, $request)
-    {
-        $pass = random_int(100000000, 999999999);
-        $user->passhash = Hash::make($pass);
-        if ($user->save()) {
-            $this->sendSms($request, $pass);
-
-            return response($this->messages['recoverSuccess']);
-        }
-
-        return response($this->messages['recoverNotComplete']);
+        if (!$email->fails())
+            return 'email';
+        elseif (!$phone->fails())
+            return 'sms';
+        return null;
     }
 }

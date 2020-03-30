@@ -70,7 +70,7 @@
                         <span class="fas fa-tags mx-1"></span>
                         <span class="mx-1">برچسب ها : </span>
 
-                        <app-tag v-for="tag in {{ $tags }}" :link="tag.slug.fa">@{{ tag.name.fa }}</app-tag>
+                        <app-tag v-for="tag in {{ $tags }}" :link="tag.slug.fa">@{{ tag.name.fas }}</app-tag>
 
                     </div>
                 </div>

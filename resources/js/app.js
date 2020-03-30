@@ -38,6 +38,7 @@ Vue.component('app-download-box', require('./components/main/AppDownloadBox.vue'
 Vue.component('app-buy-modal', require('./components/main/AppBuyModal.vue').default);
 Vue.component('app-modal', require('./components/AppModal.vue').default);
 Vue.component('app-tag', require('./components/AppTag.vue').default);
+Vue.component('app-error-list', require('./components/AppErrorList.vue').default);
 
 
 import globalMixin from './globalMixin';
