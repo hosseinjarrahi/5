@@ -19,4 +19,9 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isOwn($id)
+    {
+        return $this->user_id == $id;
+    }
 }

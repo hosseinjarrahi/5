@@ -43,7 +43,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100050;
+  z-index: 1000;
   overflow: auto;
   color: darkslategray;
 }

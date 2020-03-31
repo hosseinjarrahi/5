@@ -6,6 +6,7 @@ use App\Question;
 use App\Http\Resources\QuizResourse;
 use App\Quiz;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class QuizController extends Controller
 {

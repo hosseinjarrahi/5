@@ -45,7 +45,7 @@ class HomeController extends Controller
 		$sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
 		$meta = $product->meta;
 		$release = Jalalian::forge($product->created_at)->format('Y/m/d');
-		$comments = $product->comments;
+		$comments = $product->comments()->where('show',true)->get();
 		return view('main.product', compact('comments','product', 'files', 'sames', 'meta','tags','release'));
 	}
 
@@ -73,6 +73,10 @@ class HomeController extends Controller
 		return response($products);
 	}
 
+    public function notifications()
+    {
+        return view('main.notifications');
+	}
 
 
 

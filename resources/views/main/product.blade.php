@@ -70,14 +70,14 @@
                         <span class="fas fa-tags mx-1"></span>
                         <span class="mx-1">برچسب ها : </span>
 
-                        <app-tag v-for="tag in {{ $tags }}" :link="tag.slug.fa">@{{ tag.name.fas }}</app-tag>
+                        <app-tag v-for="tag in {{ $tags->toJson() }}" :link="tag.slug.fa">@{{ tag.name.fa }}</app-tag>
 
                     </div>
                 </div>
                 @endif
                 <div class="col-12 my-4">
                     <div class="rounded px-3">
-                        <app-content-border-box title="دوره های پیشنهادی">
+                        <app-content-border-box title="پیشنهادها">
                             <div class="row justify-content-center align-items-stretch">
                                 <app-course-card  v-for="product in {{ $sames }}" :product="product"></app-course-card>
                             </div>
@@ -91,9 +91,7 @@
                             <div class="container">
                                 <div class="mt-3 row justify-content-center align-items-center">
 
-                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :user="comment.user">
-                                    @{{ comment.comment }}
-                                </app-comments>
+                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :user="comment.user" :comment="comment"></app-comments>
                                 
                                 </div>
                             </div>
@@ -105,7 +103,7 @@
                     @else
                         <div class="alert alert-info mt-3">
                             <span class="fas fa-info"> </span>
-                            <span>جهت ارسال دیدگاه خود ابتدا <ins class="pointer">وارد شوید</span>.</span>
+                            <span>جهت ارسال دیدگاه خود ابتدا <ins>وارد شوید</ins></span>.</span>
                         </div>
                     @endif 
                 </div>

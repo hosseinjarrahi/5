@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-11 col-md-4">
-                            <img src="{{ asset('img/landing.png') }}" alt="logo" class="img-fluid">
+                            <img src="{{ asset('img/landing.png') }}" alt="لوگو-تیزویران" class="img-fluid">
                         </div>
                         <div class="col-11">
                             <div class="row justify-content-center">

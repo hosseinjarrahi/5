@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(Comment::class, function (Faker $faker) {
     return [
         'comment' => $faker->realText(200),
-        'user_id' => random_int(1,5),
+        'user_id' => 1,
         'commentable_id' => random_int(1,100),
         'commentable_type' => Product::class,
         'show' => true,

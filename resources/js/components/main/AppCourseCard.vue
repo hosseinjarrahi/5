@@ -8,7 +8,7 @@
       <img src="/img/offer.svg" class="img-fluid" alt="offer" />
     </div>
     <div
-      class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card overflow-hidden"
+      class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card bg-light overflow-hidden"
     >
       <div class="course-header shadow" :style="{backgroundImage:`url('${product.pic}')`}"></div>
 
@@ -71,7 +71,6 @@ export default {
   background-size: cover;
 }
 .course-card {
-  background-color: #f7f1e3;
   border: 1px dashed #2f3542;
   color: #2f3542 !important;
 }

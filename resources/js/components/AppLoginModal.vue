@@ -234,6 +234,7 @@
                             timer: 5000
                         });
                         this.changeState("registerCode");
+                        this.registerForm = {phone: "", name: "", type: "", password: "", confirm: ""};
                     })
                     .catch(err => {
                             this.errors = err.response.data.errors;

@@ -39,6 +39,7 @@ Vue.component('app-buy-modal', require('./components/main/AppBuyModal.vue').defa
 Vue.component('app-modal', require('./components/AppModal.vue').default);
 Vue.component('app-tag', require('./components/AppTag.vue').default);
 Vue.component('app-error-list', require('./components/AppErrorList.vue').default);
+Vue.component('app-event', require('./components/AppEvent.vue').default);
 
 
 import globalMixin from './globalMixin';
