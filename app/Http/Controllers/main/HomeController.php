@@ -24,7 +24,6 @@ class HomeController extends Controller
 
 	public function home()
 	{
-
 		$slides = Slide::all()->toJson();
 		$boxes = HomeBox::all();
 		return view('main.home', compact('slides', 'boxes'));
@@ -68,6 +67,12 @@ class HomeController extends Controller
 		return view('main.tag',compact('products','tag','links','relatedTags'));
 	}
 
+	public function search(Request $request){
+		$search = $request->search;
+		$products = Product::without(['categories','user'])->where('title','LIKE',"%{$search}%")->limit(5)->get();
+		return response($products);
+	}
+
 
 
 
@@ -99,15 +104,15 @@ class HomeController extends Controller
 	// 	return view('question', compact('question', 'files'));
 	// }
 
-	public function search(Request $request)
-	{
-		$search = $request->search;
-		$videos = Video::where('title', 'LIKE', "%$search%")->get();
-		$products = Product::where('title', 'LIKE', "%$search%")->get();
-		$all = $videos->merge($products);
-		$products = $all;
-		return view('search', compact('products'));
-	}
+//	public function search(Request $request)
+//	{
+//		$search = $request->search;
+//		$videos = Video::where('title', 'LIKE', "%$search%")->get();
+//		$products = Product::where('title', 'LIKE', "%$search%")->get();
+//		$all = $videos->merge($products);
+//		$products = $all;
+//		return view('search', compact('products'));
+//	}
 
 	public function shop()
 	{

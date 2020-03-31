@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-0 fix">
+  <header class="container-fluid p-0 fix">
     <transition name="fade">
       <app-login-modal v-if="openModal && !auth" @close="openModal = false"></app-login-modal>
     </transition>
@@ -53,7 +53,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>

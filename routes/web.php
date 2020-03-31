@@ -29,12 +29,15 @@ Route::group(['prefix' => 'quizviran'], function () {
 
 //main
 Route::get('/', 'main\HomeController@home');
+
 Route::post('/login', 'RegisterController@login');
 Route::get('/logout', 'RegisterController@logout')->middleware('auth');
 Route::post('/reset-password', 'RegisterController@resetPassword')/*->middleware('throttle:1,3600')*/;
 Route::post('/register', 'RegisterController@register')/*->middleware('throttle:5,3600')*/;
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
+
+Route::get('/search', 'main\HomeController@search');
 Route::get('/tag/{tag}', 'main\HomeController@tag');
 Route::get('/{category:slug}/{product:slug}', 'main\HomeController@product');
 Route::get('/{category:slug}', 'main\HomeController@category');
