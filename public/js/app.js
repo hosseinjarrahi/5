@@ -3788,6 +3788,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3800,9 +3806,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.load();
-      axios.get('/search', {
-        search: this.search
-      }).then(function (res) {
+      axios.get('/search?search=' + this.search).then(function (res) {
         return _this.results = res.data;
       }).then(function () {
         _this.closeLoad();
@@ -3937,7 +3941,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #a4b0be;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-98fac016]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #a4b0be;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-98fac016], .slide-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-98fac016], .slide-leave-to[data-v-98fac016] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-98fac016]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
 
 // exports
 
@@ -3956,7 +3960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #a4b0be;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-7489730a]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.bg[data-v-7489730a] {\n  background: #a4b0be;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #a4b0be;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-7489730a], .slide-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-7489730a], .slide-leave-to[data-v-7489730a] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-7489730a]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.bg[data-v-7489730a] {\n  background: #a4b0be;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
 
 // exports
 
@@ -3975,7 +3979,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray {\n  background: #a4b0be;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
+exports.push([module.i, ".bg-gray {\n  background: #a4b0be;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
 
 // exports
 
@@ -3994,7 +3998,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-c6a0fb3e] {\n  background: #a4b0be;\n}\n.bg-red[data-v-c6a0fb3e] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-c6a0fb3e] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-c6a0fb3e], .fade-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-c6a0fb3e], .fade-leave-to[data-v-c6a0fb3e] {\n  opacity: 0;\n  transform: scale(2);\n}\n.pageLoader[data-v-c6a0fb3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-c6a0fb3e]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-c6a0fb3e] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-c6a0fb3e] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-c6a0fb3e] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-c6a0fb3e]:hover {\n  text-decoration: unset;\n}\na[data-v-c6a0fb3e], a[data-v-c6a0fb3e]:hover, a[data-v-c6a0fb3e]:active {\n  color: unset;\n}\nbody[data-v-c6a0fb3e] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-c6a0fb3e] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-c6a0fb3e] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-c6a0fb3e] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-c6a0fb3e] {\n  cursor: pointer;\n}\n.header-home[data-v-c6a0fb3e] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-c6a0fb3e] {\n  background-color: #a4b0be;\n}\n.add-comment-bg[data-v-c6a0fb3e]:focus {\n  background-color: #a4b0be !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-c6a0fb3e] {\n  background: #a4b0be;\n}\n.bg-red[data-v-c6a0fb3e] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-c6a0fb3e] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-c6a0fb3e], .fade-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-c6a0fb3e], .fade-leave-to[data-v-c6a0fb3e] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-c6a0fb3e], .slide-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-c6a0fb3e], .slide-leave-to[data-v-c6a0fb3e] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-c6a0fb3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-c6a0fb3e]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-c6a0fb3e] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-c6a0fb3e] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-c6a0fb3e] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-c6a0fb3e]:hover {\n  text-decoration: unset;\n}\na[data-v-c6a0fb3e], a[data-v-c6a0fb3e]:hover, a[data-v-c6a0fb3e]:active {\n  color: unset;\n}\nbody[data-v-c6a0fb3e] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-c6a0fb3e] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-c6a0fb3e] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-c6a0fb3e] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-c6a0fb3e] {\n  cursor: pointer;\n}\n.header-home[data-v-c6a0fb3e] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-c6a0fb3e] {\n  background-color: #a4b0be;\n}\n.add-comment-bg[data-v-c6a0fb3e]:focus {\n  background-color: #a4b0be !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}", ""]);
 
 // exports
 
@@ -48480,37 +48484,68 @@ var render = function() {
           [_vm._m(0)]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "row justify-content-center droper" }, [
-          _vm.results.length > 0
-            ? _c("div", { staticClass: "col-12" }, [
-                _c(
-                  "div",
-                  { staticClass: "menu rounded shadow bg-light p-3" },
-                  [
-                    _vm._l(_vm.results, function(result) {
-                      return _c(
-                        "a",
-                        {
-                          staticClass: "menu-item text-justify",
-                          attrs: { href: "/purchases" }
-                        },
-                        [
-                          _c("span", { staticClass: "fas fa-arrow-left" }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v(_vm._s(result.title))]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "dropdown-divider" })
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ],
-                  2
-                )
-              ])
-            : _vm._e()
-        ])
+        _c(
+          "div",
+          { staticClass: "row justify-content-center droper" },
+          [
+            _c("transition", { attrs: { name: "slide" } }, [
+              _vm.results.length > 0
+                ? _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "div",
+                      { staticClass: "menu rounded shadow bg-light p-3" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "dropdown-item text-center text-danger border border-danger py-1",
+                            on: {
+                              click: function($event) {
+                                _vm.results = []
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v("×")])]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "dropdown-divider" }),
+                        _vm._v(" "),
+                        _vm._l(_vm.results, function(result) {
+                          return _c(
+                            "a",
+                            {
+                              staticClass: "menu-item text-justify",
+                              attrs: { href: "/purchases" }
+                            },
+                            [
+                              _c("span", { staticClass: "fas fa-arrow-left" }),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(result.title))]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "dropdown-divider" })
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "dropdown-item text-center border border-dark py-1",
+                            attrs: { href: "/purchases" }
+                          },
+                          [_c("span", [_vm._v("بیشتر ...")])]
+                        )
+                      ],
+                      2
+                    )
+                  ])
+                : _vm._e()
+            ])
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -48527,19 +48562,6 @@ var staticRenderFns = [
         staticStyle: { background: "#e20" }
       },
       [_c("span", { staticClass: "fas fa-search" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "dropdown-item text-center border border-dark py-1",
-        attrs: { href: "/purchases" }
-      },
-      [_c("span", [_vm._v("بیشتر ...")])]
     )
   }
 ]

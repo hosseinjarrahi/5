@@ -8,8 +8,13 @@
         </div>
 
         <div class="row justify-content-center droper">
+          <transition name="slide">
           <div class="col-12" v-if="results.length > 0">
             <div class="menu rounded shadow bg-light p-3">
+              <div class="dropdown-item text-center text-danger border border-danger py-1" @click="results=[]">
+                <span>&times;</span>
+              </div>
+              <div class="dropdown-divider"></div>
               <a class="menu-item text-justify" href="/purchases" v-for="result in results">
                 <span class="fas fa-arrow-left"></span>
                 <span>{{ result.title }}</span>
@@ -20,6 +25,7 @@
               </a>
             </div>
           </div>
+          </transition>
         </div>
 
       </div>
@@ -38,7 +44,7 @@
         methods: {
             find() {
                 this.load();
-                axios.get('/search', {search: this.search})
+                axios.get('/search?search='+this.search)
                     .then(res => this.results = res.data)
                     .then(() => {
                         this.closeLoad();

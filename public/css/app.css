@@ -4494,6 +4494,17 @@ readers do not read off random characters that represent icons */
   transform: scale(2);
 }
 
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}
+
 .pageLoader {
   position: fixed;
   top: 0;
