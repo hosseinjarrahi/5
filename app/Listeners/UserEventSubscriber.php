@@ -13,6 +13,18 @@ class UserEventSubscriber
 
     private $sender = '10003334444';
 
+    private function sndNewPasswordByEmail($phone, $password)
+    {
+        Log::info($phone . ' ' . $password);
+    }
+
+    private function sendEmail()
+    {
+        $receptor = (string)session('data')['phone'];
+        $message = "کد تایید شما : " . session('code') . " تیزویران ";
+        Log::info($message);
+    }
+
     private function sndNewPasswordBySMS($phone, $password)
     {
         $receptor = (string)$phone;
@@ -21,24 +33,12 @@ class UserEventSubscriber
         $api->Send($this->sender, $receptor, $message);
     }
 
-    private function sndNewPasswordByEmail($phone, $password)
-    {
-        Log::info($phone . ' ' . $password);
-    }
-
     private function sendVerifySMS()
     {
         $receptor = (string)session('data')['phone'];
         $message = "کد تایید شما : " . session('code') . " تیزویران ";
         $api = new \Kavenegar\KavenegarApi($this->token);
         $api->Send($this->sender, $receptor, $message);
-    }
-
-    private function sendEmail()
-    {
-        $receptor = (string)session('data')['phone'];
-        $message = "کد تایید شما : " . session('code') . " تیزویران ";
-        Log::info($message);
     }
 
     public function sendVerificationCode($event)
@@ -55,6 +55,7 @@ class UserEventSubscriber
             $data = session('data');
             $data['email'] = $data['phone'];
             unset($data['phone']);
+            session(['data' => $data]);
         } elseif ($event->driver == 'sms') {
             $this->sendVerifySMS();
         }

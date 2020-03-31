@@ -2524,6 +2524,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -2572,7 +2573,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (err) {
         _this.errors = err.response.data.errors;
 
-        if (err.response.data.message) {
+        if (!_this.errors && err.response.data.message) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
             icon: "error",
@@ -2598,6 +2599,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.changeState("registerCode");
       })["catch"](function (err) {
         _this2.errors = err.response.data.errors;
+
+        if (err.response.data.message) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+            text: err.response.data.message,
+            icon: "error",
+            confirmButtonText: "بسیار خوب",
+            timer: 5000
+          });
+        }
       });
       this.closeLoad();
     },
@@ -2610,7 +2620,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
-          icon: response.data.type,
+          icon: 'success',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
@@ -2618,7 +2628,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this3.changeState("login");
       })["catch"](function (err) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-          text: err.response.message,
+          text: 'error',
           icon: "error",
           confirmButtonText: "بسیار خوب",
           timer: 5000
@@ -4041,7 +4051,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.modaler[data-v-141ae6ea] {\r\n  width: 100%;\r\n  height: 100%;\r\n  background: rgba(50, 50, 50, 0.9);\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 100050;\r\n  overflow: auto;\n}\n.active[data-v-141ae6ea] {\r\n  background-color: #e20;\n}\r\n", ""]);
+exports.push([module.i, "\n.modaler[data-v-141ae6ea] {\n  width: 100%;\n  height: 100%;\n  background: rgba(50, 50, 50, 0.9);\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 100050;\n  overflow: auto;\n}\n.active[data-v-141ae6ea] {\n  background-color: #e20;\n}\n", ""]);
 
 // exports
 
@@ -46326,13 +46336,13 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.login.username,
-                                      expression: "login.username"
+                                      value: _vm.login.var,
+                                      expression: "login.var"
                                     }
                                   ],
                                   staticClass: "form-control",
                                   attrs: { type: "text" },
-                                  domProps: { value: _vm.login.username },
+                                  domProps: { value: _vm.login.var },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
@@ -46340,7 +46350,7 @@ var render = function() {
                                       }
                                       _vm.$set(
                                         _vm.login,
-                                        "username",
+                                        "var",
                                         $event.target.value
                                       )
                                     }
@@ -46638,7 +46648,7 @@ var render = function() {
                                         height: "30px"
                                       }
                                     },
-                                    [_vm._v("?")]
+                                    [_vm._v("?\n                ")]
                                   ),
                                   _vm._v(" "),
                                   _c(

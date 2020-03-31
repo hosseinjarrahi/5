@@ -19,7 +19,7 @@
         </div>
 
         <div class="modal-body">
-          <app-error-list :errors="errors" />
+          <app-error-list :errors="errors"/>
 
           <transition name="fade" mode="out-in" v-if="!auth">
             <div v-if="login" key="login">
@@ -27,12 +27,12 @@
                 <div class="form-group">
                   <span class="fas fa-user"></span>
                   <span>تلفن و یا ایمیل:</span>
-                  <input v-model="login.username" type="text" class="form-control" />
+                  <input v-model="login.var" type="text" class="form-control"/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
                   <span>رمز عبور:</span>
-                  <input v-model="login.password" type="password" class="form-control" />
+                  <input v-model="login.password" type="password" class="form-control"/>
                 </div>
                 <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">
                   <span class="fas fa-question"></span>
@@ -75,7 +75,7 @@
                 <div class="form-group">
                   <span class="fas fa-pen"></span>
                   <span>نام و نام خانوادگی</span>
-                  <input v-model="registerForm.name" class="form-control" type="text" required />
+                  <input v-model="registerForm.name" class="form-control" type="text" required/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
@@ -112,7 +112,8 @@
                   <div
                     class="circle bg-dark-gray d-flex justify-content-center align-items-center"
                     style="width:30px;height:30px;"
-                  >?</div>
+                  >?
+                  </div>
                   <div
                     :class="['btn bg-dark-gray',{active:registerForm.type == 'student'}]"
                     @click="registerForm.type = 'student'"
@@ -135,7 +136,7 @@
                 <div class="form-group">
                   <span class="fas fa-check-circle"></span>
                   <span>کد تایید</span>
-                  <input v-model="verifyCode" class="form-control" type="text" required />
+                  <input v-model="verifyCode" class="form-control" type="text" required/>
                 </div>
                 <button @click.prevent="verify" class="btn btn-primary">ارسال کد تایید</button>
               </form>
@@ -145,10 +146,10 @@
               <form>
                 <div class="form-group">
                   <b>در هر روز تنها یکبار از طریق تلفن امکان بازیابی وجود دارد.</b>
-                  <hr />
+                  <hr/>
                   <span class="fas fa-phone"></span>
                   <span>تلفن همراه و یا ایمیل:</span>
-                  <input v-model="phone" type="text" class="form-control" />
+                  <input v-model="phone" type="text" class="form-control"/>
                 </div>
                 <button class="btn btn-primary btn-block my-2" @click.prevent="sendCode">ارسال کد</button>
               </form>
@@ -161,192 +162,202 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
+    import Swal from "sweetalert2";
 
-export default {
-  created() {
-    this.auth = window.EventBus.auth;
-  },
-  data() {
-    return {
-      auth: null,
-      login: true,
-      register: false,
-      recovery: false,
-      registerCode: false,
-      recoveryCode: false,
-      verifyCode: "",
-      phone: "",
-      registerForm: {
-        phone: "",
-        name: "",
-        type: "",
-        password: "",
-        confirm: ""
-      },
-      login: {
-        var: "",
-        password: ""
-      },
-      errors: []
+    export default {
+        created() {
+            this.auth = window.EventBus.auth;
+        },
+        data() {
+            return {
+                auth: null,
+                login: true,
+                register: false,
+                recovery: false,
+                registerCode: false,
+                recoveryCode: false,
+                verifyCode: "",
+                phone: "",
+                registerForm: {
+                    phone: "",
+                    name: "",
+                    type: "",
+                    password: "",
+                    confirm: ""
+                },
+                login: {
+                    var: "",
+                    password: ""
+                },
+                errors: []
+            };
+        },
+        methods: {
+            close() {
+                this.$emit("close");
+            },
+            doLogin() {
+                this.load();
+                axios
+                    .post("/login", this.login)
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: "success",
+                            confirmButtonText: "بسیار خوب",
+                            timer: 5000
+                        });
+                        location.reload();
+                    })
+                    .catch(err => {
+                        this.errors = err.response.data.errors;
+                        if (!this.errors && err.response.data.message) {
+                            Swal.fire({
+                                text: err.response.data.message,
+                                icon: "error",
+                                confirmButtonText: "بسیار خوب",
+                                timer: 5000
+                            });
+                        }
+                    });
+                this.closeLoad();
+            },
+            doRegister() {
+                this.load();
+                axios
+                    .post("/register", this.registerForm)
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: response.data.type,
+                            confirmButtonText: "بسیار خوب",
+                            timer: 5000
+                        });
+                        this.changeState("registerCode");
+                    })
+                    .catch(err => {
+                            this.errors = err.response.data.errors;
+                            if (err.response.data.message) {
+                                Swal.fire({
+                                    text: err.response.data.message,
+                                    icon: "error",
+                                    confirmButtonText: "بسیار خوب",
+                                    timer: 5000
+                                });
+                            }
+                        }
+                    );
+                this.closeLoad();
+            },
+            verify() {
+                this.load();
+                axios
+                    .post("/verify", {verify: this.verifyCode})
+                    .then(response => {
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: 'success',
+                            confirmButtonText: "بسیار خوب",
+                            timer: 5000
+                        });
+                        this.changeState("login");
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            text: 'error',
+                            icon: "error",
+                            confirmButtonText: "بسیار خوب",
+                            timer: 5000
+                        });
+                    });
+                this.closeLoad();
+            },
+            sendCode() {
+                this.load();
+                axios
+                    .post("/reset-password", {phone: this.phone})
+                    .then(res => {
+                        Swal.fire({
+                            text:
+                                "اگر شماره تلفن را درست وارد کرده باشید کد برای شما ارسال شده است.",
+                            icon: "success",
+                            confirmButtonText: "بسیار خوب",
+                            timer: 5000
+                        });
+                        this.$emit("close");
+                    })
+                    .catch(err => {
+                        let message =
+                            err.response.data.message ?
+                                err.response.data.message :
+                                "تعداد درخواست های شما بیش از حد مجاز است.";
+                        this.errors = err.response.data.errors;
+                        if (!this.errors)
+                            Swal.fire({
+                                text: message,
+                                icon: "error",
+                                confirmButtonText: "بسیار خوب",
+                                timer: 5000
+                            });
+                    });
+                this.closeLoad();
+            },
+            changeState(s) {
+                switch (s) {
+                    case "login":
+                        this.login = true;
+                        this.register = false;
+                        this.recovery = false;
+                        this.registerCode = false;
+                        this.recoveryCode = false;
+                        break;
+                    case "register":
+                        this.login = false;
+                        this.register = true;
+                        this.recovery = false;
+                        this.registerCode = false;
+                        this.recoveryCode = false;
+                        break;
+                    case "recovery":
+                        this.login = false;
+                        this.register = false;
+                        this.recovery = true;
+                        this.registerCode = false;
+                        this.recoveryCode = false;
+                        break;
+                    case "registerCode":
+                        this.login = false;
+                        this.register = false;
+                        this.recovery = false;
+                        this.registerCode = true;
+                        this.recoveryCode = false;
+                        break;
+                    case "recoveryCode":
+                        this.login = false;
+                        this.register = false;
+                        this.recovery = false;
+                        this.registerCode = false;
+                        this.recoveryCode = true;
+                        break;
+                }
+            }
+        }
     };
-  },
-  methods: {
-    close() {
-      this.$emit("close");
-    },
-    doLogin() {
-      this.load();
-      axios
-        .post("/login", this.login)
-        .then(response => {
-          Swal.fire({
-            text: response.data.message,
-            icon: "success",
-            confirmButtonText: "بسیار خوب",
-            timer: 5000
-          });
-          location.reload();
-        })
-        .catch(err => {
-          this.errors = err.response.data.errors;
-          if (err.response.data.message) {
-            Swal.fire({
-              text: err.response.data.message,
-              icon: "error",
-              confirmButtonText: "بسیار خوب",
-              timer: 5000
-            });
-          }
-        });
-      this.closeLoad();
-    },
-    doRegister() {
-      this.load();
-      axios
-        .post("/register", this.registerForm)
-        .then(response => {
-          Swal.fire({
-            text: response.data.message,
-            icon: response.data.type,
-            confirmButtonText: "بسیار خوب",
-            timer: 5000
-          });
-          this.changeState("registerCode");
-        })
-        .catch(err => {
-          this.errors = err.response.data.errors;
-        });
-      this.closeLoad();
-    },
-    verify() {
-        this.load();
-        axios
-        .post("/verify", { verify: this.verifyCode })
-        .then(response => {
-          Swal.fire({
-            text: response.data.message,
-            icon: response.data.type,
-            confirmButtonText: "بسیار خوب",
-            timer: 5000
-          });
-          this.changeState("login");
-        })
-        .catch(err => {
-          Swal.fire({
-            text: err.response.message,
-            icon: "error",
-            confirmButtonText: "بسیار خوب",
-            timer: 5000
-          });
-        });
-        this.closeLoad();
-    },
-    sendCode() {
-      this.load();
-      axios
-        .post("/reset-password", { phone: this.phone })
-        .then(res => {
-          Swal.fire({
-            text:
-              "اگر شماره تلفن را درست وارد کرده باشید کد برای شما ارسال شده است.",
-            icon: "success",
-            confirmButtonText: "بسیار خوب",
-            timer: 5000
-          });
-          this.$emit("close");
-        })
-        .catch(err => {
-          let message =
-            err.response.data.message ?
-            err.response.data.message :
-            "تعداد درخواست های شما بیش از حد مجاز است.";
-            this.errors = err.response.data.errors;
-            if(!this.errors)
-              Swal.fire({
-                text: message,
-                icon: "error",
-                confirmButtonText: "بسیار خوب",
-                timer: 5000
-              });
-        });
-      this.closeLoad();
-    },
-    changeState(s) {
-      switch (s) {
-        case "login":
-          this.login = true;
-          this.register = false;
-          this.recovery = false;
-          this.registerCode = false;
-          this.recoveryCode = false;
-          break;
-        case "register":
-          this.login = false;
-          this.register = true;
-          this.recovery = false;
-          this.registerCode = false;
-          this.recoveryCode = false;
-          break;
-        case "recovery":
-          this.login = false;
-          this.register = false;
-          this.recovery = true;
-          this.registerCode = false;
-          this.recoveryCode = false;
-          break;
-        case "registerCode":
-          this.login = false;
-          this.register = false;
-          this.recovery = false;
-          this.registerCode = true;
-          this.recoveryCode = false;
-          break;
-        case "recoveryCode":
-          this.login = false;
-          this.register = false;
-          this.recovery = false;
-          this.registerCode = false;
-          this.recoveryCode = true;
-          break;
-      }
-    }
-  }
-};
 </script>
 
 <style scoped>
-.modaler {
-  width: 100%;
-  height: 100%;
-  background: rgba(50, 50, 50, 0.9);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100050;
-  overflow: auto;
-}
-.active {
-  background-color: #e20;
-}
+  .modaler {
+    width: 100%;
+    height: 100%;
+    background: rgba(50, 50, 50, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100050;
+    overflow: auto;
+  }
+
+  .active {
+    background-color: #e20;
+  }
 </style>

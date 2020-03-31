@@ -21,7 +21,7 @@ class RegisterController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user = UserRepo::findUserByPhoneOrEmail($request->var);
+        $user = UserRepo::findByPhoneOrEmail($request->var);
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.'], 400);
         }
@@ -41,8 +41,8 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $driver = $this->checkIsPhoneOrEmail($request->phone);
-        if(UserRepo::findByPhoneOrEmail($driver)){
-            return response(['message' => 'کاربری با شماره تلفن و یا ایمیل وجود دارد.'],400);
+        if(UserRepo::findByPhoneOrEmail($request->phone)){
+            return response(['message' => 'کاربری با این شماره تلفن و یا ایمیل وجود دارد.'],400);
         }
 
         event(new SendVerificationCode($request, $driver));

@@ -21,7 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => 'امیر رضا موسوی',
         'email' => $faker->unique()->safeEmail,
-        'phone' => '09033144565',
+        'phone' => $faker->unique()->phoneNumber,
         'verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),

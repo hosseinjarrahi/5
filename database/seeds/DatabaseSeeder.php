@@ -36,6 +36,14 @@ class DatabaseSeeder extends Seeder
             ->each(function ($user) {
                 $user->profile()->save(factory(Profile::class, 1)->make()->first());
             });
+        factory(User::class, 1)
+            ->create()
+            ->each(function ($user) {
+                $user->profile()->save(factory(Profile::class, 1)->make()->first());
+                $user->email = 'hj021hj@gmail.com';
+                $user->phone = '09023144565';
+                $user->save();
+            });
         factory(Slide::class, 5)->create();
         factory(HomeBox::class, 3)->create();
         factory(Comment::class, 100)->create();

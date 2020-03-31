@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required',
+            'var' => 'required',
             'password' => 'required',
         ];
     }
@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'وارد کردن نام کاربری الزامی است',
+            'var.required' => 'وارد کردن ایمیل و یا تلفن همراه الزامی است',
             'password.required' => 'وارد کردن رمز عبور الزامی است',
         ];
     }

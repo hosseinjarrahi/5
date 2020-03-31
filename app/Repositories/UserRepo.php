@@ -15,8 +15,8 @@ class UserRepo
     $data = session('data');
     $user->type = $data['type'];
     $user->password = Hash::make($data['password']);
-    $user->phone = $data['phone'];
-    $user->email = $data['email'];
+    $user->phone = $data['phone'] ?? null;
+    $user->email = $data['email'] ?? null;
     $user->name = $data['name'] ?? '';
     $user->verified_at = now();
     $user->save();
