@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','تیزویران | ' . $tag->name ?? 'دسته بندی')
+@section('title','تیزویران | ' . $search ?? 'جست و جو')
 
 @section('content')
 
@@ -13,21 +13,15 @@
                     style="font-size:1.5rem">
 
                     <div class="bg-dark-gray px-2 py-1 d-flex flex-row align-items-center justify-content-center" style="border-radius:200px;">
-                        <span class="fas fa-tag bg-light circle p-2" style="color:#2f3542"></span>
+                        <span class="fas fa-search bg-light circle p-2" style="color:#2f3542"></span>
                         <div class="text-white p-1  d-flex flex-row align-items-center justify-content-center">
-                            <span>برچسب : </span>
-                            <h1 class="p-0 m-0" style="font-size:1.5rem;">{{ $tag->name }}</h1>
+                            <span>جست و جو : </span>
+                            <h1 class="p-0 m-0" style="font-size:1.5rem;">{{ $search }}</h1>
                         </div>
                     </div>
 
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 bg-dark-gray p-1 rounded shadow">
-                <app-tag v-for="(tag , index) in {{ $relatedTags }}" :link='index' class="px-3 py-1">@{{ tag }}</app-tag>
             </div>
         </div>
 

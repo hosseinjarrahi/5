@@ -17,7 +17,7 @@
         <span>{{ item.time }}</span>
       </div>
       <div class="col-6 col-md-2 text-right" style="height:30px;overflow:auto;">
-        <span class="btn bg-gray py-0" @click="window.location = item.link">
+        <span class="btn bg-light py-0" @click="window.location = item.link">
           <span class="fas fa-download"></span>
         </span>
       </div>

@@ -3945,8 +3945,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4512,7 +4510,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.droper {\n  position: absolute;\n  left: 0;\n  right:0;\n  top: 45px;\n  z-index:5;\n}\n.menu{\n  padding-top: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n}\n", ""]);
+exports.push([module.i, "\n.droper {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 45px;\n  z-index: 5;\n}\n.menu {\n  padding-top: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  overflow: hidden;\n}\n", ""]);
 
 // exports
 
@@ -48693,7 +48691,7 @@ var render = function() {
                 _c(
                   "span",
                   {
-                    staticClass: "btn bg-gray py-0",
+                    staticClass: "btn bg-light py-0",
                     on: {
                       click: function($event) {
                         _vm.window.location = _vm.item.link
@@ -48926,100 +48924,109 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-100" }, [
-    _c("form", { attrs: { action: "" } }, [
-      _c("div", { staticClass: "input-group my-3 shadow position-relative" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.search,
-              expression: "search"
-            }
-          ],
-          staticClass: "form-control",
-          staticStyle: { padding: "20px !important" },
-          attrs: { type: "text", placeholder: "جست و جو..." },
-          domProps: { value: _vm.search },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.search = $event.target.value
-            }
+    _c("div", { staticClass: "input-group my-3 shadow position-relative" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.search,
+            expression: "search"
           }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "input-group-append", on: { click: _vm.find } },
-          [_vm._m(0)]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row justify-content-center droper" },
-          [
-            _c("transition", { attrs: { name: "slide" } }, [
-              _vm.results.length > 0
-                ? _c("div", { staticClass: "col-12" }, [
-                    _c(
-                      "div",
-                      { staticClass: "menu rounded shadow bg-light p-3" },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "dropdown-item text-center text-danger border border-danger py-1",
-                            on: {
-                              click: function($event) {
-                                _vm.results = []
-                              }
+        ],
+        staticClass: "form-control",
+        staticStyle: { padding: "20px !important" },
+        attrs: { type: "text", placeholder: "جست و جو..." },
+        domProps: { value: _vm.search },
+        on: {
+          keyup: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.find($event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.search = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "input-group-append", on: { click: _vm.find } },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row justify-content-center droper" },
+        [
+          _c("transition", { attrs: { name: "slide" } }, [
+            _vm.results.length > 0
+              ? _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "menu rounded shadow bg-light p-3" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "dropdown-item text-center text-danger border border-danger py-1",
+                          on: {
+                            click: function($event) {
+                              _vm.results = []
                             }
-                          },
-                          [_c("span", [_vm._v("×")])]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "dropdown-divider" }),
-                        _vm._v(" "),
-                        _vm._l(_vm.results, function(result) {
-                          return _c(
-                            "a",
-                            {
-                              staticClass: "menu-item text-justify",
-                              attrs: { href: "/purchases" }
-                            },
-                            [
-                              _c("span", { staticClass: "fas fa-arrow-left" }),
-                              _vm._v(" "),
-                              _c("span", [_vm._v(_vm._s(result.title))]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "dropdown-divider" })
-                            ]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c(
+                          }
+                        },
+                        [_c("span", [_vm._v("×")])]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "dropdown-divider" }),
+                      _vm._v(" "),
+                      _vm._l(_vm.results, function(result) {
+                        return _c(
                           "a",
                           {
-                            staticClass:
-                              "dropdown-item text-center border border-dark py-1",
-                            attrs: { href: "/purchases" }
+                            staticClass: "menu-item text-justify",
+                            attrs: { href: result.url }
                           },
-                          [_c("span", [_vm._v("بیشتر ...")])]
+                          [
+                            _c("span", { staticClass: "fas fa-arrow-left" }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v(_vm._s(result.title))]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "dropdown-divider" })
+                          ]
                         )
-                      ],
-                      2
-                    )
-                  ])
-                : _vm._e()
-            ])
-          ],
-          1
-        )
-      ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "dropdown-item text-center border border-dark py-1",
+                          attrs: {
+                            href: "/search?view=true&search=" + _vm.search
+                          }
+                        },
+                        [_c("span", [_vm._v("بیشتر ...")])]
+                      )
+                    ],
+                    2
+                  )
+                ])
+              : _vm._e()
+          ])
+        ],
+        1
+      )
     ])
   ])
 }
