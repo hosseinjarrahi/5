@@ -3703,6 +3703,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AppNotificationBox"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppProductCourseItem.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppProductCourseItem.vue?vue&type=script&lang=js& ***!
@@ -4060,7 +4094,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #a4b0be;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-98fac016], .slide-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-98fac016], .slide-leave-to[data-v-98fac016] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-98fac016]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #57606f;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-98fac016], .slide-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-98fac016], .slide-leave-to[data-v-98fac016] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-98fac016]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
 
 // exports
 
@@ -4079,7 +4113,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #a4b0be;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-7489730a], .slide-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-7489730a], .slide-leave-to[data-v-7489730a] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-7489730a]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.bg[data-v-7489730a] {\n  background: #a4b0be;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #57606f;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-7489730a], .slide-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-7489730a], .slide-leave-to[data-v-7489730a] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-7489730a]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.bg[data-v-7489730a] {\n  background: #57606f;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
 
 // exports
 
@@ -4098,7 +4132,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray {\n  background: #a4b0be;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
+exports.push([module.i, ".bg-gray {\n  background: #57606f;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
 
 // exports
 
@@ -4117,7 +4151,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-c6a0fb3e] {\n  background: #a4b0be;\n}\n.bg-red[data-v-c6a0fb3e] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-c6a0fb3e] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-c6a0fb3e], .fade-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-c6a0fb3e], .fade-leave-to[data-v-c6a0fb3e] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-c6a0fb3e], .slide-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-c6a0fb3e], .slide-leave-to[data-v-c6a0fb3e] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-c6a0fb3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-c6a0fb3e]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-c6a0fb3e] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-c6a0fb3e] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-c6a0fb3e] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-c6a0fb3e]:hover {\n  text-decoration: unset;\n}\na[data-v-c6a0fb3e], a[data-v-c6a0fb3e]:hover, a[data-v-c6a0fb3e]:active {\n  color: unset;\n}\nbody[data-v-c6a0fb3e] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-c6a0fb3e] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-c6a0fb3e] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-c6a0fb3e] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-c6a0fb3e] {\n  cursor: pointer;\n}\n.header-home[data-v-c6a0fb3e] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-c6a0fb3e] {\n  background-color: #a4b0be;\n}\n.add-comment-bg[data-v-c6a0fb3e]:focus {\n  background-color: #a4b0be !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-c6a0fb3e] {\n  background: #57606f;\n}\n.bg-red[data-v-c6a0fb3e] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-c6a0fb3e] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-c6a0fb3e], .fade-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-c6a0fb3e], .fade-leave-to[data-v-c6a0fb3e] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-c6a0fb3e], .slide-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-c6a0fb3e], .slide-leave-to[data-v-c6a0fb3e] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-c6a0fb3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n*[data-v-c6a0fb3e]::-webkit-scrollbar {\n  display: none;\n}\n.admin-panel[data-v-c6a0fb3e] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-c6a0fb3e] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-c6a0fb3e] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-c6a0fb3e]:hover {\n  text-decoration: unset;\n}\na[data-v-c6a0fb3e], a[data-v-c6a0fb3e]:hover, a[data-v-c6a0fb3e]:active {\n  color: unset;\n}\nbody[data-v-c6a0fb3e] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-c6a0fb3e] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-c6a0fb3e] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-c6a0fb3e] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-c6a0fb3e] {\n  cursor: pointer;\n}\n.header-home[data-v-c6a0fb3e] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-c6a0fb3e] {\n  background-color: #57606f;\n}\n.add-comment-bg[data-v-c6a0fb3e]:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}", ""]);
 
 // exports
 
@@ -4403,6 +4437,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.course-header[data-v-0f71613e] {\r\n  padding-top: 50%;\r\n  background-position: center;\r\n  background-size: cover;\n}\n.course-card[data-v-0f71613e] {\r\n  border: 1px dashed #2f3542;\r\n  color: #2f3542 !important;\n}\n.offer[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: 1px;\r\n  left: 1px;\r\n  width: 40px;\r\n  height: 40px;\n}\n.avatar[data-v-0f71613e] {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 100%;\n}\n.line-throgh[data-v-0f71613e] {\r\n  -webkit-text-decoration: line-through red;\r\n          text-decoration: line-through red;\n}\n.dark-top-border[data-v-0f71613e] {\r\n  border-top: 1px #e2e2e2 solid;\r\n  padding-top: 10px;\n}\n.floating[data-v-0f71613e] {\r\n  position: absolute;\r\n  top: -10px;\r\n  display: block;\r\n  text-align: center;\r\n  font-size: 0.8rem;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.box[data-v-59b1fc8c]{\r\n  border: 5px solid white;\r\n  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);\r\n  border-radius: 10px;\r\n  padding-top: 40px;\n}\n.avatar-parent[data-v-59b1fc8c],.time[data-v-59b1fc8c] {\r\n  position: absolute;\r\n  top: -30px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.avatar[data-v-59b1fc8c] {\r\n  width: 70px;\r\n  height: 70px;\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid white;\n}\n.time[data-v-59b1fc8c]{\r\n   top: 0px;\r\n   width: 100%;\r\n   display: flex;\r\n   left: 0;\r\n   padding-left: 10px;\r\n   padding-top: 10px;\r\n   justify-content: flex-end;\n}\r\n", ""]);
 
 // exports
 
@@ -42189,6 +42242,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppProductCourseItem.vue?vue&type=style&index=0&id=25e815f7&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppProductCourseItem.vue?vue&type=style&index=0&id=25e815f7&scoped=true&lang=css& ***!
@@ -48473,6 +48556,58 @@ var staticRenderFns = [
         ])
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-100 position-relative" }, [
+      _c(
+        "div",
+        { staticClass: "w-100 bg-dark-gray px-3 box text-justify text-white" },
+        [_c("p", [_vm._v("متن ما این است داداش")])]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "avatar-parent" }, [
+        _c("div", {
+          staticClass: "avatar circle bg-dark-gray shadow",
+          staticStyle: { "background-image": "url(/img/admin.png)" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "time" }, [
+        _c(
+          "div",
+          { staticClass: "time-item badge bg-gray text-white shadow" },
+          [_vm._v("\n      2 روز قبل\n    ")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -61289,6 +61424,7 @@ Vue.component('app-modal', __webpack_require__(/*! ./components/AppModal.vue */ 
 Vue.component('app-tag', __webpack_require__(/*! ./components/AppTag.vue */ "./resources/js/components/AppTag.vue")["default"]);
 Vue.component('app-error-list', __webpack_require__(/*! ./components/AppErrorList.vue */ "./resources/js/components/AppErrorList.vue")["default"]);
 Vue.component('app-event', __webpack_require__(/*! ./components/AppEvent.vue */ "./resources/js/components/AppEvent.vue")["default"]);
+Vue.component('app-notification-box', __webpack_require__(/*! ./components/main/AppNotificationBox.vue */ "./resources/js/components/main/AppNotificationBox.vue")["default"]);
 
 window.EventBus = new Vue({});
 
@@ -63484,6 +63620,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppDownloadBox_vue_vue_type_template_id_648fd87d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppNotificationBox.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/main/AppNotificationBox.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true& */ "./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true&");
+/* harmony import */ var _AppNotificationBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppNotificationBox.vue?vue&type=script&lang=js& */ "./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& */ "./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AppNotificationBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "59b1fc8c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/main/AppNotificationBox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppNotificationBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=style&index=0&id=59b1fc8c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_style_index_0_id_59b1fc8c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppNotificationBox.vue?vue&type=template&id=59b1fc8c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppNotificationBox_vue_vue_type_template_id_59b1fc8c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

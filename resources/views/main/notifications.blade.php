@@ -3,15 +3,22 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container-fluid"  style="margin-top: 80px;">
 
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 mt-5">
-                <div class="row justify-content-center my-3">
-                    <app-content-border-box class="w-100" title="سلام دنیا">
+            <div class="col-11 col-md-4">
+                <img src="{{ asset('img/notifications.png') }}" alt="اعلانات" class="img-fluid">
+            </div>
+        </div>
 
-                    </app-content-border-box>
-                </div>
+        <div class="row justify-content-center ">
+            <div class="col-12 col-md-6 header-home w-100 px-3">
+
+                <app-notification-box></app-notification-box>
+                <app-notification-box style="margin-top:40px"></app-notification-box>
+                <app-notification-box style="margin-top:40px"></app-notification-box>
+                <app-notification-box style="margin-top:40px"></app-notification-box>
+
             </div>
         </div>
 
