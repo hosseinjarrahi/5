@@ -25,7 +25,7 @@
               <div class="dropdown-menu d-block" style="left:-50px">
                 <a class="dropdown-item" href="/notifications">
                   <span class="fas fa-bell mr-1 position-relative">
-                    <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">5</span>
+                    <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
                   </span>اعلانات
                 </a>
                 <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>
@@ -66,6 +66,9 @@
 
 <script>
     export default {
+        props:{
+          notifications:{default:0}
+        },
         data() {
             return {
                 opened: false,

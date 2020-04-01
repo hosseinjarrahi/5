@@ -31,7 +31,7 @@
            href="{{ url('admin') }}">مدیریت</a>
     @endif
 
-    <app-header></app-header>
+    <app-header :notifications="{{ $notifications }}"></app-header>
     @yield('content')
     <app-footer>
         تمامی حقوق سایت متعلق به تیزویران می باشد.

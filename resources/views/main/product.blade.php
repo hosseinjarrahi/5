@@ -93,7 +93,7 @@
                             <div class="container">
                                 <div class="mt-3 row justify-content-center align-items-center">
 
-                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :user="comment.user" :comment="comment"></app-comments>
+                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :comment="comment"></app-comments>
                                 
                                 </div>
                             </div>

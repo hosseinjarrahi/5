@@ -2,7 +2,6 @@
 @section('title','تیزویران | خانه')
 
 @section('content')
-
     <div class="container-fluid">
         <div class="row justify-content-center ">
             <div class="col-12 header-home w-100">

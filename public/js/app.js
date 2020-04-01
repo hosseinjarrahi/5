@@ -2317,6 +2317,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    notifications: {
+      "default": 0
+    }
+  },
   data: function data() {
     return {
       opened: false,
@@ -3389,13 +3394,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user', 'comment'],
+  props: ['comment'],
   data: function data() {
     return {
       deleteModal: false,
       deleted: false,
       editing: false,
-      text: this.comment.comment
+      text: this.comment.comment,
+      auth: window.EventBus.auth
     };
   },
   methods: {
@@ -46466,7 +46472,55 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _vm.openModal && _vm.auth
-                      ? _c("div", { staticClass: "dropdown" }, [_vm._m(0)])
+                      ? _c("div", { staticClass: "dropdown" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "dropdown-menu d-block",
+                              staticStyle: { left: "-50px" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "/notifications" }
+                                },
+                                [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "fas fa-bell mr-1 position-relative"
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass:
+                                            "position-absolute badge badge-info",
+                                          staticStyle: {
+                                            top: "-10px",
+                                            right: "-5px",
+                                            "font-size": "0.6rem"
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(_vm.notifications))]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v("اعلانات\n              ")
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _vm._m(2)
+                            ]
+                          )
+                        ])
                       : _vm._e()
                   ]
                 ),
@@ -46490,7 +46544,7 @@ var render = function() {
                   [_c("span", [_vm._v("|||")])]
                 ),
                 _vm._v(" "),
-                _vm._m(1),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "ul",
@@ -46547,54 +46601,32 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
-      { staticClass: "dropdown-menu d-block", staticStyle: { left: "-50px" } },
+      "a",
+      { staticClass: "dropdown-item", attrs: { href: "/purchases" } },
       [
-        _c(
-          "a",
-          { staticClass: "dropdown-item", attrs: { href: "/notifications" } },
-          [
-            _c("span", { staticClass: "fas fa-bell mr-1 position-relative" }, [
-              _c(
-                "span",
-                {
-                  staticClass: "position-absolute badge badge-info",
-                  staticStyle: {
-                    top: "-10px",
-                    right: "-5px",
-                    "font-size": "0.6rem"
-                  }
-                },
-                [_vm._v("5")]
-              )
-            ]),
-            _vm._v("اعلانات\n              ")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          { staticClass: "dropdown-item", attrs: { href: "/purchases" } },
-          [
-            _c("span", { staticClass: "fas fa-shopping-bag mr-1" }),
-            _vm._v("خرید ها")
-          ]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "/profile" } }, [
-          _c("span", { staticClass: "fas fa-user-alt mr-1" }),
-          _vm._v("پروفایل")
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "dropdown-item text-danger",
-            attrs: { href: "/logout" }
-          },
-          [_c("span", { staticClass: "fas fa-door-open mr-1" }), _vm._v("خروج")]
-        )
+        _c("span", { staticClass: "fas fa-shopping-bag mr-1" }),
+        _vm._v("خرید ها")
       ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "dropdown-item", attrs: { href: "/profile" } },
+      [_c("span", { staticClass: "fas fa-user-alt mr-1" }), _vm._v("پروفایل")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "dropdown-item text-danger", attrs: { href: "/logout" } },
+      [_c("span", { staticClass: "fas fa-door-open mr-1" }), _vm._v("خروج")]
     )
   },
   function() {
@@ -48083,10 +48115,10 @@ var render = function() {
                 _c("div", {
                   staticClass: "avatar bg-light circle p-2 white-shadow",
                   style: [
-                    _vm.user.profile.avatar
+                    _vm.comment.user.profile.avatar
                       ? {
                           backgroundImage:
-                            "url(" + _vm.user.profile.avatar + ")"
+                            "url(" + _vm.comment.user.profile.avatar + ")"
                         }
                       : ""
                   ]
@@ -48100,7 +48132,7 @@ var render = function() {
                     "pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto",
                   staticStyle: { overflow: "hidden" }
                 },
-                [_vm._v(_vm._s(_vm.user.name))]
+                [_vm._v(_vm._s(_vm.comment.user.name))]
               ),
               _vm._v(" "),
               _c(
@@ -48138,7 +48170,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p"),
                   _vm._v(" "),
-                  _vm.user.id == _vm.comment.user_id && !_vm.editing
+                  _vm.auth == _vm.comment.user_id && !_vm.editing
                     ? _c("div", { staticClass: "tool-box" }, [
                         _c("span", {
                           staticClass: "pointer fas fa-edit p-1 mx-1",
@@ -48161,7 +48193,7 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.user.id == _vm.comment.user_id && _vm.editing
+                  _vm.auth == _vm.comment.user_id && _vm.editing
                     ? _c("div", { staticClass: "tool-box" }, [
                         _c("span", {
                           staticClass:

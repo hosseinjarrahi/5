@@ -6,13 +6,13 @@
           <div class="avatar-parent">
             <div
               class="avatar bg-light circle p-2 white-shadow"
-              :style="[user.profile.avatar ? {backgroundImage: `url(${user.profile.avatar})`} : '']"
+              :style="[comment.user.profile.avatar ? {backgroundImage: `url(${comment.user.profile.avatar})`} : '']"
             ></div>
           </div>
           <span
             class="pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto"
             style="overflow:hidden"
-          >{{ user.name }}</span>
+          >{{ comment.user.name }}</span>
           <div class="my-3 p-3 bg-dark-gray rounded">
 
             <p class="px-2">
@@ -20,12 +20,12 @@
             <textarea class="form-control" rows="5" v-if="editing" v-model="text"></textarea>
             </p>
 
-            <div class="tool-box" v-if="user.id == comment.user_id && !editing">
+            <div class="tool-box" v-if="auth == comment.user_id && !editing">
               <span class="pointer fas fa-edit p-1 mx-1" @click="editing = !editing"></span>
               <span class="pointer text-danger fas fa-trash p-1 mx-1" @click="deleteModal = true"></span>
             </div>
 
-            <div class="tool-box" v-if="user.id == comment.user_id && editing">
+            <div class="tool-box" v-if="auth == comment.user_id && editing">
               <span class="pointer fas fa-times text-danger p-1 mx-1" @click="editing = !editing"></span>
               <span class="pointer text-success fas fa-check-circle p-1 mx-1" @click="edit"></span>
             </div>
@@ -46,13 +46,14 @@
     import Swal from 'sweetalert2';
 
     export default {
-        props: ['user', 'comment'],
+        props: ['comment'],
         data() {
             return {
                 deleteModal: false,
                 deleted: false,
                 editing: false,
-                text: this.comment.comment
+                text: this.comment.comment,
+                auth:window.EventBus.auth
             }
         },
         methods: {
