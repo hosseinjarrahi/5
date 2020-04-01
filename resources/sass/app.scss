@@ -47,8 +47,17 @@ $backgroundColor: #f5f5f5;
   background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-*::-webkit-scrollbar {
-  display: none;
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $darkGray;
+  outline: 1px solid slategrey;
 }
 
 .admin-panel{

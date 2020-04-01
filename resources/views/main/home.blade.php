@@ -24,7 +24,7 @@
             {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}
 
             <div class="col-12 w-100">
-                <app-slider :slides="{{ $slides }}"></app-slider>
+                <app-slider :slides="{{ $slides }}" :event="{{ $mainEvent->toJson() }}"></app-slider>
             </div>
 
             <div class="col-12 w-100">

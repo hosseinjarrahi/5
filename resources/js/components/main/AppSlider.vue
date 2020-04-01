@@ -27,8 +27,8 @@
 
       <div class="col-12 col-md-4">
 
-        <div class="my-1 my-md-0 bg-dark-gray aside-slider overflow-hidden shadow">
-
+        <div class="my-1 my-md-0 bg-dark-gray aside-slider overflow-hidden shadow"
+        :style="{backgroundImage: `url(${event.body})`}">
         </div>
 
       </div>
@@ -40,8 +40,12 @@
 <script>
     export default {
         name: "AppSlider",
+        created(){
+          console.log(this.event);
+        },
         props:{
-          slides:{default:[]}
+          slides:{default:[]},
+            event:{default: ''}
         },
         data() {
             return {
@@ -94,6 +98,8 @@
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    background-size: cover;
+    background-position: center;
   }
 
   .fade-enter-active, .fade-leave-active {

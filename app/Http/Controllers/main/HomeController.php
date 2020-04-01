@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\main;
 
+use App\Models\Event;
 use AliBayat\LaravelCategorizable\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,8 +27,9 @@ class HomeController extends Controller
     {
         $slides = Slide::all()->toJson();
         $boxes = HomeBox::all();
-
-        return view('main.home', compact('slides', 'boxes'));
+        $events = Event::all();
+        $mainEvent = $events->where('type','main')->first();
+        return view('main.home', compact('slides', 'boxes','mainEvent'));
     }
 
     public function category(Category $category)
