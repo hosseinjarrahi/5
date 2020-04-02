@@ -1,5 +1,6 @@
 <?php
 
+use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
@@ -27,8 +28,8 @@ use Illuminate\Support\Facades\Validator;
 
 //admin
 Route::get('/test', function(){
-    $user = auth()->user();
-    $user->notify(new \App\Notifications\TestNotification());
+    return Jalalian::forge(date('y-m-d'))->format('y-m-d');
+
 });
 
 //main
@@ -41,6 +42,7 @@ Route::post('/register', 'RegisterController@register')/*->middleware('throttle:
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
 Route::get('/profile', 'RegisterController@profile');
+Route::post('/upload-avatar', 'RegisterController@uploadAvatar');
 
 Route::get('/search', 'main\HomeController@search');
 Route::get('/tag/{tag}', 'main\HomeController@tag');

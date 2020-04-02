@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Upload;
 use App\Events\ResetPasswordEvent;
 use App\Events\SendVerificationCode;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AvatarRequest;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Repositories\UserRepo;
@@ -93,5 +96,14 @@ class RegisterController extends Controller
         $user = auth()->user();
 
         return view('main.profile',compact('user'));
+    }
+
+    public function uploadAvatar(AvatarRequest $request)
+    {
+        $user = auth()->user();
+        $avatar = Upload::uploadFile(['avatar' => $request->file]);
+        File::delete(public_path($user->profile->avatar));
+        $user->profile()->update(['avatar' => $avatar['avatar']]);
+        return response(['message' => 'با موفقیت تغییر یافت.','avatar' => $avatar['avatar']]);
     }
 }

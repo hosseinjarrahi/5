@@ -42,6 +42,7 @@ Vue.component('app-error-list', require('./components/AppErrorList.vue').default
 Vue.component('app-event', require('./components/AppEvent.vue').default);
 Vue.component('app-notification-box', require('./components/main/AppNotificationBox.vue').default);
 Vue.component('app-profile-header', require('./components/main/AppProfileHeader.vue').default);
+Vue.component('app-profile-form', require('./components/main/AppProfileForm.vue').default);
 
 
 import globalMixin from './globalMixin';
