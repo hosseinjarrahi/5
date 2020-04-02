@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/TestNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/TestNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppNotificationBox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppNotificationBox.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/notifications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,19 +177,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
-      <recent name="E:\web\bigBag\quiz\app\Models" />
-      <recent name="E:\web\bigBag\quiz\resources\sass" />
-      <recent name="E:\web\bigBag\quiz\resources\views" />
-      <recent name="E:\web\bigBag\quiz\resources\views\quiz" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\web\bigBag\quiz\public\img" />
       <recent name="E:\web\bigBag\quiz\resources\views\main" />
       <recent name="E:\web\bigBag\quiz\resources\js\components\main" />
       <recent name="E:\web\bigBag\quiz\public" />
       <recent name="E:\web\bigBag\quiz\public\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
+      <recent name="E:\web\bigBag\quiz\app\Models" />
+      <recent name="E:\web\bigBag\quiz\resources\sass" />
+      <recent name="E:\web\bigBag\quiz\resources\views" />
+      <recent name="E:\web\bigBag\quiz\resources\views\quiz" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -225,7 +227,7 @@
       <workItem from="1585660330860" duration="11751000" />
       <workItem from="1585720525584" duration="4377000" />
       <workItem from="1585755188211" duration="8108000" />
-      <workItem from="1585809417965" duration="4475000" />
+      <workItem from="1585809417965" duration="10270000" />
     </task>
     <servers />
   </component>
@@ -265,9 +267,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1585813909208" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1585813905512">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1585823214168">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1585813905512" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1585823214168" />
   </component>
 </project>

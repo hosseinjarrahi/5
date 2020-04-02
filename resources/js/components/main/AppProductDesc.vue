@@ -75,9 +75,9 @@
       <div class="pic rounded bg-dark-gray shadow" style="background-image:url(/img/back.jpg)"></div>
     </div>
 
-    <app-buy-modal 
-    @close="buyModal = false" 
-    v-if="buyModal" 
+    <app-buy-modal
+    @close="buyModal = false"
+    v-if="buyModal"
     :productId="product.id"
     :price="product.offer == 0 ? product.price : product.offer"
     :showCouponBox="product.offer == 0"

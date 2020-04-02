@@ -40,6 +40,7 @@ Route::post('/reset-password', 'RegisterController@resetPassword')/*->middleware
 Route::post('/register', 'RegisterController@register')/*->middleware('throttle:5,3600')*/;
 Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
+Route::get('/profile', 'RegisterController@profile');
 
 Route::get('/search', 'main\HomeController@search');
 Route::get('/tag/{tag}', 'main\HomeController@tag');

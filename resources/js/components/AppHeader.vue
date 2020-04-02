@@ -21,18 +21,20 @@
               class="d-inline-block"
               alt="user avatar"
             />
-            <div class="dropdown" v-if="openModal && auth">
-              <div class="dropdown-menu d-block" style="left:-50px">
-                <a class="dropdown-item" href="/notifications">
-                  <span class="fas fa-bell mr-1 position-relative">
-                    <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
-                  </span>اعلانات
-                </a>
-                <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>
-                <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
-                <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
+            <transition name="slide">
+              <div class="dropdown" v-if="openModal && auth">
+                <div class="dropdown-menu d-block" style="left:-50px">
+                  <a class="dropdown-item" href="/notifications">
+                    <span class="fas fa-bell mr-1 position-relative">
+                      <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
+                    </span>اعلانات
+                  </a>
+                  <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>
+                  <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
+                  <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
+                </div>
               </div>
-            </div>
+            </transition>
           </a>
 
           <div

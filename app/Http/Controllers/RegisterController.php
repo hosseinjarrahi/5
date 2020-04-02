@@ -87,4 +87,11 @@ class RegisterController extends Controller
             return 'sms';
         return null;
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+
+        return view('main.profile',compact('user'));
+    }
 }
