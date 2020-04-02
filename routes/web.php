@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Validator;
 
 //admin
 Route::get('/test', function(){
-    $user = \App\Models\User::first();
+    $user = auth()->user();
     $user->notify(new \App\Notifications\TestNotification());
 });
 

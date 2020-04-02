@@ -24,7 +24,8 @@ class TestNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => 'test notification'
+            'body' => 'test notification',
+            'title' => 'title'
         ];
     }
 }

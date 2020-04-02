@@ -1,16 +1,12 @@
 <template>
-  <div class="w-100 position-relative">
+  <div class="w-100 position-relative my-2">
     <div class="w-100 bg-dark-gray px-3 box text-justify text-white">
-      <p>متن ما این است داداش</p>
-    </div>
-
-    <div class="avatar-parent">
-      <div class="avatar circle bg-dark-gray shadow" style="background-image:url(/img/admin.png)"></div>
+      <p>{{ notifis.data.body }}</p>
     </div>
 
     <div class="time">
       <div class="time-item badge bg-gray text-white shadow">
-        2 روز قبل
+        {{ notifis.created_at }}
       </div>
     </div>
 
@@ -19,7 +15,11 @@
 
 <script>
     export default {
-        name: "AppNotificationBox"
+        name: "AppNotificationBox",
+        props:['notifis'],
+        created(){
+            console.log(this.notifis)
+        }
     }
 </script>
 
@@ -40,6 +40,7 @@
   justify-content: center;
 }
 .avatar {
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);
   width: 70px;
   height: 70px;
   background-size: cover;

@@ -15,6 +15,7 @@ use App\Models\Product;
 use App\Models\Slide;
 use Morilog\Jalali\Jalalian;
 use Spatie\Tags\Tag;
+use App\Http\Resources\NotificationResource;
 
 class HomeController extends Controller
 {
@@ -95,7 +96,10 @@ class HomeController extends Controller
 
     public function notifications()
     {
-        return view('main.notifications');
+        $notifications = auth()->user()->notifications()->orderByDesc('id')->paginate(10);
+        $links = $notifications->links();
+        $notifis = NotificationResource::collection($notifications)->toJson();
+        return view('main.notifications',compact('notifis','links'));
     }
 
 
