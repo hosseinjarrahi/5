@@ -3733,6 +3733,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppNotificationBox",
   props: ['notifis'],
@@ -4467,7 +4469,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.box[data-v-59b1fc8c]{\r\n  border: 5px solid white;\r\n  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);\r\n  border-radius: 10px;\r\n  padding-top: 40px;\n}\n.avatar-parent[data-v-59b1fc8c],.time[data-v-59b1fc8c] {\r\n  position: absolute;\r\n  top: -30px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.avatar[data-v-59b1fc8c] {\r\n  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);\r\n  width: 70px;\r\n  height: 70px;\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid white;\n}\n.time[data-v-59b1fc8c]{\r\n   top: 0px;\r\n   width: 100%;\r\n   display: flex;\r\n   left: 0;\r\n   padding-left: 10px;\r\n   padding-top: 10px;\r\n   justify-content: flex-end;\n}\r\n", ""]);
+exports.push([module.i, "\n.box[data-v-59b1fc8c]{\r\n  border: 5px solid white;\r\n  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);\r\n  border-radius: 10px;\n}\n.avatar-parent[data-v-59b1fc8c],.time[data-v-59b1fc8c] {\r\n  position: absolute;\r\n  top: -30px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.avatar[data-v-59b1fc8c] {\r\n  box-shadow: 0px 5px 5px rgba(0,0,0,0.8);\r\n  width: 70px;\r\n  height: 70px;\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid white;\n}\n.time[data-v-59b1fc8c]{\r\n   top: 0px;\r\n   width: 100%;\r\n   display: flex;\r\n   left: 0;\r\n   padding-left: 10px;\r\n   padding-top: 10px;\r\n   justify-content: flex-end;\n}\r\n", ""]);
 
 // exports
 
@@ -48620,8 +48622,19 @@ var render = function() {
   return _c("div", { staticClass: "w-100 position-relative my-2" }, [
     _c(
       "div",
-      { staticClass: "w-100 bg-dark-gray px-3 box text-justify text-white" },
-      [_c("p", [_vm._v(_vm._s(_vm.notifis.data.body))])]
+      {
+        staticClass: "w-100 bg-dark-gray px-3 box pt-4 text-justify text-white"
+      },
+      [
+        _c("b", { staticStyle: { "font-size": "1.3rem" } }, [
+          _c("span", { staticClass: "fas fa-bell" }),
+          _vm._v(" " + _vm._s(_vm.notifis.data.title))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "dropdown-divider" }),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.notifis.data.body))])
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "time" }, [

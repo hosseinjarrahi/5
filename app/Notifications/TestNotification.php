@@ -24,8 +24,8 @@ class TestNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'body' => 'test notification',
-            'title' => 'title'
+            'body' => 'وضعیت شما در حالت آماده با مب یابدش  چرا که اینج ا دراد مامدهمیشودش.',
+            'title' => 'عناونی که میتواند باشد'
         ];
     }
 }

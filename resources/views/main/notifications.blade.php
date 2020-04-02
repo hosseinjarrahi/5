@@ -16,7 +16,7 @@
                 <app-notification-box v-for="notifis in {{ $notifis }}" :notifis="notifis"></app-notification-box>
 
             </div>
-            <div class="col-12">
+            <div class="col-12 d-flex flex-row justify-content-center   ">
                 {!! $links !!}
             </div>
         </div>

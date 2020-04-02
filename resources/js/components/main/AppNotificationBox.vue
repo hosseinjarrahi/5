@@ -1,6 +1,8 @@
 <template>
   <div class="w-100 position-relative my-2">
-    <div class="w-100 bg-dark-gray px-3 box text-justify text-white">
+    <div class="w-100 bg-dark-gray px-3 box pt-4 text-justify text-white">
+      <b style="font-size:1.3rem;"><span class="fas fa-bell"></span> {{ notifis.data.title }}</b>
+      <div class="dropdown-divider"></div>
       <p>{{ notifis.data.body }}</p>
     </div>
 
@@ -28,7 +30,6 @@
   border: 5px solid white;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.8);
   border-radius: 10px;
-  padding-top: 40px;
 }
 .avatar-parent,.time {
   position: absolute;
