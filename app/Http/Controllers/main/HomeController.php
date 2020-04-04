@@ -97,11 +97,18 @@ class HomeController extends Controller
     public function notifications()
     {
         $notifications = auth()->user()->notifications()->orderByDesc('id')->paginate(10);
+        auth()->user()->unreadNotifications->markAsRead();
         $links = $notifications->links();
         $notifis = NotificationResource::collection($notifications)->toJson();
         return view('main.notifications',compact('notifis','links'));
     }
 
+    private function markAsReadNotifications($notifications)
+    {
+        foreach ($notifications as $notification) {
+            $notification->markAsRead();
+        }
+    }
 
 
 
@@ -218,4 +225,5 @@ class HomeController extends Controller
     {
         return view('free');
     }
+
 }

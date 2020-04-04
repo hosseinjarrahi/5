@@ -2,7 +2,6 @@
 
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 
 ////quiz
 //Route::group(['prefix' => 'quizviran'], function () {
@@ -28,9 +27,10 @@ use Illuminate\Support\Facades\Validator;
 
 //admin
 Route::get('/test', function(){
-    return Jalalian::forge(date('y-m-d'))->format('y-m-d');
-
-});
+//    return Jalalian::forge(date('y-m-d'))->format('y-m-d');
+//    auth()->user()->notify(new \App\Notifications\TestNotification());
+    $jDate = Jalalian::fromFormat('Y-m-d H:i:s', '1397-01-18 00:00:00')->toCarbon();
+})->middleware('throttle:1,1');
 
 //main
 Route::get('/', 'main\HomeController@home');
@@ -43,6 +43,7 @@ Route::post('/verify', 'RegisterController@verify');
 Route::post('/check-auth', 'RegisterController@checkAuth');
 Route::get('/profile', 'RegisterController@profile');
 Route::post('/upload-avatar', 'RegisterController@uploadAvatar');
+Route::post('/profile-change', 'RegisterController@changeProfile');
 
 Route::get('/search', 'main\HomeController@search');
 Route::get('/tag/{tag}', 'main\HomeController@tag');

@@ -29,8 +29,8 @@ class NotificationServiceProvider extends ServiceProvider
             if (Cache::has('notification-count')) {
                 $count = Cache::get('notification-count');
             }else{
-                $count = (auth()->user() ? auth()->user()->notifications()->count() : 0);
-                Cache::add('notification-count', $count, 60);
+                $count = (auth()->user() ? auth()->user()->unReadNotifications()->count() : 0);
+                Cache::add('notification-count', $count, 30);
             }
 
             $view->with('notifications', Cache::get('notification-count'));

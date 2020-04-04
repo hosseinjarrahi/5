@@ -43,17 +43,13 @@ import Swal from "sweetalert2";
                     }
                 })
                     .then(function (response) {
-                        try {
-                            Swal.fire({
-                                text: response.data.message,
-                                icon: 'success',
-                                confirmButtonText: 'بسیار خوب',
-                                timer: 5000
-                            });
-                            return response.data.avatar;
-                        } catch (e) {
-                            console.log(e)
-                        }
+                        Swal.fire({
+                            text: response.data.message,
+                            icon: 'success',
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        return response.data.avatar;
                     })
                     .catch(function (error) {
                         Swal.fire({
@@ -64,7 +60,7 @@ import Swal from "sweetalert2";
                         });
                     })
                     .then(avatar => {
-                        this.avatar = avatar
+                        this.avatar = avatar ? avatar : this.avatar;
                         this.closeLoad();
                     });
             }
