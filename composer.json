@@ -39,7 +39,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Admin\\": "admin_panel/"
         },
         "classmap": [
             "database/seeds",
