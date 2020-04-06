@@ -10,8 +10,9 @@ class HomeController extends Controller
     {
     }
 
-    public function home()
+    public function dashboard()
     {
-        return 'home';
+        return view('Admin::index');
     }
+
 }

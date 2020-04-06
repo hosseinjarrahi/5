@@ -14,6 +14,7 @@ class AdminServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(__DIR__.'/routes.php');
+        $this->loadViewsFrom(__DIR__.'/resources/views','Admin');
 
     }
 
