@@ -7,31 +7,34 @@ use App\Models\Product;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Request;
 
 class ProductController extends Controller
 {
     public function index(){
-        return view('Admin::products');
+        $products = Product::orderByDesc('id')->paginate(9);
+        return view('Admin::products',compact('products'));
     }
 
-    public function give(\Request $request)
-    {
-        $products = Product::paginate(9);
-        $products = ProductResource::collection($products);
-        return $products;
+    public function create(){
+        return view('Admin::productAdd');
     }
 
-    public function upload(\Request $request)
-    {
-        dd($request->all());
-        $user = auth()->user();
-        $avatar = Upload::uploadFile(['pic' => $request->file]);
-        File::delete(public_path($user->profile->avatar));
-        $user->profile()->update(['avatar' => $avatar['avatar']]);
-
-        return response([
-            'message' => 'با موفقیت تغییر یافت.',
-            'avatar' => $avatar['avatar'],
-        ]);
+    public function store(){
+        dd(request()->all());
     }
+//
+//    public function upload()
+//    {
+//        dd(request()->all());
+//        $user = auth()->user();
+//        $avatar = Upload::uploadFile(['pic' => $request->file]);
+//        File::delete(public_path($user->profile->avatar));
+//        $user->profile()->update(['avatar' => $avatar['avatar']]);
+//
+//        return response([
+//            'message' => 'با موفقیت تغییر یافت.',
+//            'avatar' => $avatar['avatar'],
+//        ]);
+//    }
 }

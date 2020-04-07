@@ -1,70 +1,79 @@
 <template>
-  <v-navigation-drawer 
-  app right 
-  :value="drawer"
-  @input="x" 
-  >
-    <v-list dense nav class="py-0">
-      <v-list-item two-line class="miniVariant px-0">
-        <v-list-item-avatar>
-          <img src="https://randomuser.me/api/portraits/men/81.jpg"/>
-        </v-list-item-avatar>
+  <div style="z-index: 5000;">
+    <div :class="[menu ? 'menu' : 'menu close']" ref="menu">
+      <div class="mb-5 bg-info px-4 rounded shadow text-center">
+        پنل مدیریت
+      </div>
 
-        <v-list-item-content>
-          <v-list-item-title>پنل مدیریت</v-list-item-title>
-          <v-list-item-subtitle>تیزویران</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+      <ul class="m-0 p-0 d-flex flex-column justify-content-center text-center">
+        <li><a href="/manager/product">محصولات</a></li>
+        <li><a href="/manager/folan">اسلایدر</a></li>
+        <li><a href="/manager/folan">رویدادها</a></li>
+        <li><a href="/manager/folan">خریدها</a></li>
+        <li><a href="/manager/folan">کاربران</a></li>
+        <li><a href="/manager/folan">نظرات</a></li>
+        <li><a href="/manager/folan">تنظیمات</a></li>
+      </ul>
+    </div>
 
-      <v-divider></v-divider>
-
-      <v-list-item link v-for="(item,index) in items" :key="index">
-        <v-list-item-icon>
-          <v-icon>{{  item.icon }}</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-content>
-          <a :href="item.to">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </a>
-        </v-list-item-content>
-      </v-list-item>
-                               
-    </v-list>
-  </v-navigation-drawer>
+    <div class="button" @click="menu = !menu">
+      <span class="border border-dark">|||</span>
+    </div>
+  </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
-export default {
-  name: "AppMenu",
-  data(){
-    return {
-      items:[
-        {icon: 'mdi-view-dashboard',title: 'داشبرد',to:'/manager'},
-        {icon: 'mdi-archive',title: 'محصولات',to: '/manager/product'},
-        {icon: 'mdi-play-box-outline',title: 'اسلایدر',to: '/manager/slider'},
-        {icon: 'mdi-calendar-star',title: 'رویدادها',to: '/manager/event'},
-        {icon: 'mdi-credit-card-outline',title: 'خریدها',to: '/manager/payment'},
-        {icon: 'mdi-account-group',title: 'کاربران',to: '/manager/user'},
-        {icon: 'mdi-comment-multiple',title: 'نظرات',to: '/manager/comment'},
-        {icon: 'mdi-account-cog',title: 'تنظیمات سایت',to: '/manager/setting'},
-      ],
-      open:'',
-    }
-  },
-  computed:{
-    drawer(){ 
-      return this.$store.state.drawer;
-    }
-  },
-  methods:{
-    x(e){
-      this.$store.state.drawer = e;
-    }
-  }
-};
+    export default {
+        data() {
+            return {
+                menu: true
+            }
+        },
+    };
 </script>
 
-<style>
+<style scoped>
+  .menu {
+    transition: all 0.5s;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    right: 0;
+    top: 0;
+    width: 200px;
+    background: #34495e;
+    color: white;
+    padding: 10px;
+  }
+
+  li {
+    list-style-type: none;
+    margin-top: 20px;
+    transition: al 0.5s;
+    padding: 5px 30px;
+  }
+
+  li:hover {
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #f5f5f5;
+    color: #34495e;
+  }
+
+  .button {
+    cursor: pointer;
+    position: fixed;
+    left: 0px;
+    top: 0px;;
+    transform: rotate(90deg);
+    background-color:#2c3e50;
+    border-radius: 0px 50px 0px 0px;
+    padding:20px;
+    color:white;
+  }
+
+  .close {
+    padding: 0;
+    width: 0;
+  }
 </style>

@@ -6,19 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>پنل ادمین</title>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #f5f5f5">
 
 <div id="app">
-    <v-app class="font">
-        <app-menu></app-menu>
-        <app-bar></app-bar>
-
-        <v-content>
+    <main class="container">
         @yield('content')
-        </v-content>
-    </v-app>
+    </main>
+    <app-menu></app-menu>
+    <footer class="w-100 bg-dark text-center text-white">
+        تیزویران
+    </footer>
 </div>
 
 </body>

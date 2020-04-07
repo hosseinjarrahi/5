@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/AdminServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/AdminServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/css/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/css/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/components/AppBar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/components/AppLoad.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/components/AppMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/js/components/AppMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/components/AppProductTable.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/products.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/products.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +52,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -175,7 +184,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin_panel/resources/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin_panel/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -189,11 +198,11 @@
       <recent name="E:\web\bigBag\quiz\resources\views\quiz" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\css" />
       <recent name="E:\web\bigBag\quiz\admin_panel\resources\js" />
       <recent name="E:\web\bigBag\quiz\admin_panel\resources" />
       <recent name="E:\web\bigBag\quiz\admin_panel" />
-      <recent name="E:\web\bigBag\quiz\public\img" />
-      <recent name="E:\web\bigBag\quiz\resources\views\main" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -236,7 +245,10 @@
       <workItem from="1585994425830" duration="9566000" />
       <workItem from="1586058599726" duration="5132000" />
       <workItem from="1586065467156" duration="678000" />
-      <workItem from="1586144346404" duration="5085000" />
+      <workItem from="1586144346404" duration="5201000" />
+      <workItem from="1586161142041" duration="1739000" />
+      <workItem from="1586236135864" duration="9973000" />
+      <workItem from="1586247249500" duration="5161000" />
     </task>
     <servers />
   </component>
@@ -288,9 +300,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1585847701530" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586149812414">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586254412556">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586149812414" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586254412556" />
   </component>
 </project>
