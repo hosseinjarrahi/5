@@ -1993,8 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppEvent",
   props: {
-    url: {
-      "default": '/'
+    event: {
+      "default": ''
     }
   }
 });
@@ -2321,6 +2321,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     notifications: {
+      "default": 0
+    },
+    event: {
       "default": 0
     }
   },
@@ -46378,14 +46381,10 @@ var render = function() {
     "div",
     {
       staticClass:
-        "pointer w-100 event p-1 text-white d-flex justify-content-center align-items-center",
-      on: {
-        click: function($event) {
-          _vm.window.location = _vm.url
-        }
-      }
+        "pointer w-100 event p-1 text-white d-flex justify-content-center align-items-center"
     },
-    [_vm._v("\n  تخفیف نوروزی برای دوست داران سلامتی !!!\n")]
+    [_vm._t("default")],
+    2
   )
 }
 var staticRenderFns = []
@@ -46622,7 +46621,9 @@ var render = function() {
     "header",
     { staticClass: "container-fluid p-0 fix" },
     [
-      false ? undefined : _vm._e(),
+      _vm.event.show
+        ? _c("app-event", { domProps: { innerHTML: _vm._s(_vm.event.body) } })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "transition",

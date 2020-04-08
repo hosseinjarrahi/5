@@ -1,7 +1,7 @@
 <template>
   <header class="container-fluid p-0 fix">
 
-    <app-event v-if="false"></app-event>
+    <app-event v-if="event.show" v-html="event.body"></app-event>
 
     <transition name="fade">
       <app-login-modal v-if="openModal && !auth" @close="openModal = false"></app-login-modal>
@@ -51,7 +51,7 @@
 
           <ul class="navbar-nav d-none d-md-flex align-items-center">
             <li class="nav-item" v-for="(link,index) in links" :key="index">
-              <a class="nav-link text-white" :href="link.to">{{  link.title }}</a>
+              <a class="nav-link text-white" :href="link.to">{{ link.title }}</a>
             </li>
           </ul>
 
@@ -59,7 +59,7 @@
       </nav>
       <ul class="navbar-nav d-flex flex-column p-3" v-if="opened">
         <li class="nav-item" v-for="(link,index) in links" :key="index">
-          <a class="nav-link text-white" :href="link.to">{{  link.title }}</a>
+          <a class="nav-link text-white" :href="link.to">{{ link.title }}</a>
         </li>
       </ul>
     </div>
@@ -68,20 +68,21 @@
 
 <script>
     export default {
-        props:{
-          notifications:{default:0}
+        props: {
+            notifications: {default: 0},
+            event: {default: 0},
         },
         data() {
             return {
                 opened: false,
                 openModal: false,
                 scroll: false,
-                auth:window.EventBus.auth,
-                links:[
-                  {to:'/',title:'خانه'},
-                  {to:'/quizviran',title:'کوییزویران'},
-                  {to:'/فروشگاه',title:'فروشگاه'},
-                  {to:'http://forum.tizviran.com',title:'انجمن'},
+                auth: window.EventBus.auth,
+                links: [
+                    {to: '/', title: 'خانه'},
+                    {to: '/quizviran', title: 'کوییزویران'},
+                    {to: '/فروشگاه', title: 'فروشگاه'},
+                    {to: 'http://forum.tizviran.com', title: 'انجمن'},
                 ]
             };
         },

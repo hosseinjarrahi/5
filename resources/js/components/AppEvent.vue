@@ -1,6 +1,6 @@
 <template>
-  <div @click="window.location = url" class="pointer w-100 event p-1 text-white d-flex justify-content-center align-items-center">
-    تخفیف نوروزی برای دوست داران سلامتی !!!
+  <div class="pointer w-100 event p-1 text-white d-flex justify-content-center align-items-center">
+    <slot></slot>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
     export default {
         name: "AppEvent",
         props:{
-            url:{default:'/'}
+            event:{default:''}
         }
     }
 </script>

@@ -12,4 +12,10 @@ class EventController extends Controller
         $events = Event::all();
         return view('Admin::event',compact('events'));
     }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+        return back();
+    }
 }
