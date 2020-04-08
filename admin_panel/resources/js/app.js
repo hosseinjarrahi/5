@@ -2,6 +2,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import store from './store/store';
+///////////////////////////////////////////////
+import persianDatePicker from 'vue-persian-datetime-picker';
+Vue.component('date-picker', persianDatePicker);
 ////////////////////////////////////////////////
 Vue.component('app-menu',require('./components/AppMenu.vue').default);
 Vue.component('app-product-form',require('./components/AppProductForm.vue').default);

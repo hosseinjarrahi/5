@@ -4,6 +4,11 @@ Route::group(['prefix' => 'manager'], function () {
     Route::get('/','HomeController@dashboard');
 
     Route::resource('/product', 'ProductController');
+    Route::resource('/slide', 'SlideController');
+    Route::resource('/event', 'EventController');
+    Route::resource('/comment', 'SlideController');
+    Route::resource('/user', 'SlideController');
+    Route::resource('/setting', 'SlideController');
     Route::post('/products', 'ProductController@give');
     Route::post('/product/upload', 'ProductController@upload');
 });

@@ -7,12 +7,12 @@
 
       <ul class="m-0 p-0 d-flex flex-column justify-content-center text-center">
         <li><a href="/manager/product">محصولات</a></li>
-        <li><a href="/manager/folan">اسلایدر</a></li>
-        <li><a href="/manager/folan">رویدادها</a></li>
-        <li><a href="/manager/folan">خریدها</a></li>
-        <li><a href="/manager/folan">کاربران</a></li>
-        <li><a href="/manager/folan">نظرات</a></li>
-        <li><a href="/manager/folan">تنظیمات</a></li>
+        <li><a href="/manager/slide">اسلایدر</a></li>
+        <li><a href="/manager/event">رویدادها</a></li>
+        <li><a href="/manager/payment">خریدها</a></li>
+        <li><a href="/manager/user">کاربران</a></li>
+        <li><a href="/manager/comment">نظرات</a></li>
+        <li><a href="/manager/setting">تنظیمات</a></li>
       </ul>
     </div>
 
