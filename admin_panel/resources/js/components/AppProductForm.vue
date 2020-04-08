@@ -1,47 +1,64 @@
 <template>
   <div>
     <div class="form-group">
-      <span class="fas fa-user"></span>
       <span>عنوان :</span>
       <input name="title" class="form-control">
     </div>
+
     <div class="form-group">
-      <span class="fas fa-calendar"></span>
       <span>توضیحات :</span>
       <vue-editor name="desc" v-model="content"></vue-editor>
     </div>
+
     <div class="form-group">
-      <span class="fas fa-question"></span>
+      <span>قیمت :</span>
+      <input name="price" class="form-control">
+    </div>
+
+    <div class="form-group">
       <span>وضعیت :</span>
       <input name="status" class="form-control">
     </div>
+
     <div class="form-group">
-      <span class="fas fa-pen"></span>
       <span>درصد تکمیل :</span>
       <input name="percentage" class="form-control">
     </div>
+
     <div class="form-group">
-      <span class="fas fa-pen"></span>
       <span>برچسب ها را با خط فاصله از هم جدا کنید:</span>
       <input name="tags" class="form-control">
     </div>
+
     <div class="form-group">
-      <span class="fas fa-pen"></span>
       <span>کلمات کلیدی - موتور های جست و جو :</span>
       <input name="keywords" class="form-control">
     </div>
+
     <div class="form-group">
-      <span class="fas fa-pen"></span>
       <span>عنوان صفحه :</span>
       <input name="pageTitle" class="form-control">
     </div>
 
     <div class="form-group">
-      <span class="fas fa-pen"></span>
+      <span>توضیحات صفحه :</span>
+      <textarea name="pageDescription" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <span>نخفیف :</span>
+      <input name="offer" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <span>تصویر :</span>
+      <input type="file" name="pic" class="form-control">
+    </div>
+
+    <div class="form-group">
       <input type="checkbox" v-model="course">
       <span>میخواهم دوره ایجاد کنم</span>
     </div>
-
 
     <div v-if="course">
       <div class="btn btn-primary" @click="items++">افزودن آیتم</div>
@@ -51,24 +68,45 @@
         #{{ item }}
 
         <div class="form-group">
-          <span class="fas fa-eye"></span>
           <span>عنوان :</span>
-          <input :name="['course' + item]" class="form-control">
+          <input :name="'courseTitle' + item" class="form-control">
         </div>
         <div class="form-group">
-          <span class="fas fa-eye"></span>
           <span>فایل :</span>
-          <input type="file" :name="['course' + item]" class="form-control">
+          <input type="file" :name="'courseFile' + item" class="form-control">
         </div>
         <div class="form-group">
-          <span class="fas fa-eye"></span>
-          <input type="checkbox" :name="['course' + item]">
+          <input type="checkbox" :name="'courseFree' + item">
           <span>رایگان</span>
         </div>
         <div class="form-group">
-          <span class="fas fa-eye"></span>
-          <input type="checkbox" :name="['course' + item]">
+          <input type="checkbox" :name="'courseDemo' + item">
           <span>پیش نمایش</span>
+        </div>
+        <hr>
+      </div>
+
+    </div>
+
+    <input type="hidden" v-model="items" name="courseCount">
+    <input type="hidden" v-model="fileCount" name="fileCount">
+
+
+    <div class="form-group">
+      <input type="checkbox" v-model="fileCount">
+      <span>میخواهم فایل ایجاد کنم</span>
+    </div>
+
+    <div v-if="fileCount > 0">
+      <div class="btn btn-primary" @click="fileCount++">افزودن آیتم</div>
+      <div class="btn btn-primary" @click="fileCount--" v-if="fileCount>0">حذف آخرین آیتم</div>
+
+      <div v-for="n in fileCount" class="bg-dark text-white p-3 my-2 rounded">
+        #{{ n }}
+
+        <div class="form-group">
+          <span>فایل :</span>
+          <input type="file" :name="'file' + n" class="form-control">
         </div>
 
         <hr>
@@ -90,7 +128,8 @@
             return {
                 course: null,
                 items: 0,
-                content: ""
+                content: "",
+                fileCount:false
             }
         }
     }

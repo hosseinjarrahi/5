@@ -63,7 +63,7 @@
   .button {
     cursor: pointer;
     position: fixed;
-    left: 0px;
+    left: -3px;
     top: 0px;;
     transform: rotate(90deg);
     background-color:#2c3e50;

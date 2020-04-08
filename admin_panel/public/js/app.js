@@ -2046,6 +2046,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppProductForm",
@@ -2054,7 +2092,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       course: null,
       items: 0,
-      content: ""
+      content: "",
+      fileCount: false
     };
   }
 });
@@ -4039,7 +4078,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.menu[data-v-3fd6b6f6] {\n  transition: all 0.5s;\n  position: fixed;\n  height: 100%;\n  overflow: auto;\n  right: 0;\n  top: 0;\n  width: 200px;\n  background: #34495e;\n  color: white;\n  padding: 10px;\n}\nli[data-v-3fd6b6f6] {\n  list-style-type: none;\n  margin-top: 20px;\n  transition: al 0.5s;\n  padding: 5px 30px;\n}\nli[data-v-3fd6b6f6]:hover {\n  background: #f5f5f5;\n  border-radius: 10px;\n  box-shadow: 0px 0px 5px #f5f5f5;\n  color: #34495e;\n}\n.button[data-v-3fd6b6f6] {\n  cursor: pointer;\n  position: fixed;\n  left: 0px;\n  top: 0px;;\n  transform: rotate(90deg);\n  background-color:#2c3e50;\n  border-radius: 0px 50px 0px 0px;\n  padding:20px;\n  color:white;\n}\n.close[data-v-3fd6b6f6] {\n  padding: 0;\n  width: 0;\n}\n", ""]);
+exports.push([module.i, "\n.menu[data-v-3fd6b6f6] {\n  transition: all 0.5s;\n  position: fixed;\n  height: 100%;\n  overflow: auto;\n  right: 0;\n  top: 0;\n  width: 200px;\n  background: #34495e;\n  color: white;\n  padding: 10px;\n}\nli[data-v-3fd6b6f6] {\n  list-style-type: none;\n  margin-top: 20px;\n  transition: al 0.5s;\n  padding: 5px 30px;\n}\nli[data-v-3fd6b6f6]:hover {\n  background: #f5f5f5;\n  border-radius: 10px;\n  box-shadow: 0px 0px 5px #f5f5f5;\n  color: #34495e;\n}\n.button[data-v-3fd6b6f6] {\n  cursor: pointer;\n  position: fixed;\n  left: -3px;\n  top: 0px;;\n  transform: rotate(90deg);\n  background-color:#2c3e50;\n  border-radius: 0px 50px 0px 0px;\n  padding:20px;\n  color:white;\n}\n.close[data-v-3fd6b6f6] {\n  padding: 0;\n  width: 0;\n}\n", ""]);
 
 // exports
 
@@ -34786,8 +34825,6 @@ var render = function() {
       "div",
       { staticClass: "form-group" },
       [
-        _c("span", { staticClass: "fas fa-calendar" }),
-        _vm._v(" "),
         _c("span", [_vm._v("توضیحات :")]),
         _vm._v(" "),
         _c("vue-editor", {
@@ -34814,9 +34851,15 @@ var render = function() {
     _vm._v(" "),
     _vm._m(5),
     _vm._v(" "),
+    _vm._m(6),
+    _vm._v(" "),
+    _vm._m(7),
+    _vm._v(" "),
+    _vm._m(8),
+    _vm._v(" "),
+    _vm._m(9),
+    _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-pen" }),
-      _vm._v(" "),
       _c("input", {
         directives: [
           {
@@ -34895,45 +34938,175 @@ var render = function() {
                 [
                   _vm._v("\n      #" + _vm._s(item) + "\n\n      "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("span", { staticClass: "fas fa-eye" }),
-                    _vm._v(" "),
                     _c("span", [_vm._v("عنوان :")]),
                     _vm._v(" "),
                     _c("input", {
                       staticClass: "form-control",
-                      attrs: { name: ["course" + item] }
+                      attrs: { name: "courseTitle" + item }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("span", { staticClass: "fas fa-eye" }),
-                    _vm._v(" "),
                     _c("span", [_vm._v("فایل :")]),
                     _vm._v(" "),
                     _c("input", {
                       staticClass: "form-control",
-                      attrs: { type: "file", name: ["course" + item] }
+                      attrs: { type: "file", name: "courseFile" + item }
                     })
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("span", { staticClass: "fas fa-eye" }),
-                    _vm._v(" "),
                     _c("input", {
-                      attrs: { type: "checkbox", name: ["course" + item] }
+                      attrs: { type: "checkbox", name: "courseFree" + item }
                     }),
                     _vm._v(" "),
                     _c("span", [_vm._v("رایگان")])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("span", { staticClass: "fas fa-eye" }),
-                    _vm._v(" "),
                     _c("input", {
-                      attrs: { type: "checkbox", name: ["course" + item] }
+                      attrs: { type: "checkbox", name: "courseDemo" + item }
                     }),
                     _vm._v(" "),
                     _c("span", [_vm._v("پیش نمایش")])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr")
+                ]
+              )
+            })
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.items,
+          expression: "items"
+        }
+      ],
+      attrs: { type: "hidden", name: "courseCount" },
+      domProps: { value: _vm.items },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.items = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.fileCount,
+          expression: "fileCount"
+        }
+      ],
+      attrs: { type: "hidden", name: "fileCount" },
+      domProps: { value: _vm.fileCount },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.fileCount = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.fileCount,
+            expression: "fileCount"
+          }
+        ],
+        attrs: { type: "checkbox" },
+        domProps: {
+          checked: Array.isArray(_vm.fileCount)
+            ? _vm._i(_vm.fileCount, null) > -1
+            : _vm.fileCount
+        },
+        on: {
+          change: function($event) {
+            var $$a = _vm.fileCount,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false
+            if (Array.isArray($$a)) {
+              var $$v = null,
+                $$i = _vm._i($$a, $$v)
+              if ($$el.checked) {
+                $$i < 0 && (_vm.fileCount = $$a.concat([$$v]))
+              } else {
+                $$i > -1 &&
+                  (_vm.fileCount = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+              }
+            } else {
+              _vm.fileCount = $$c
+            }
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("میخواهم فایل ایجاد کنم")])
+    ]),
+    _vm._v(" "),
+    _vm.fileCount > 0
+      ? _c(
+          "div",
+          [
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-primary",
+                on: {
+                  click: function($event) {
+                    _vm.fileCount++
+                  }
+                }
+              },
+              [_vm._v("افزودن آیتم")]
+            ),
+            _vm._v(" "),
+            _vm.fileCount > 0
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        _vm.fileCount--
+                      }
+                    }
+                  },
+                  [_vm._v("حذف آخرین آیتم")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.fileCount, function(n) {
+              return _c(
+                "div",
+                { staticClass: "bg-dark text-white p-3 my-2 rounded" },
+                [
+                  _vm._v("\n      #" + _vm._s(n) + "\n\n      "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("span", [_vm._v("فایل :")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { type: "file", name: "file" + n }
+                    })
                   ]),
                   _vm._v(" "),
                   _c("hr")
@@ -34956,8 +35129,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-user" }),
-      _vm._v(" "),
       _c("span", [_vm._v("عنوان :")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "title" } })
@@ -34968,8 +35139,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-question" }),
+      _c("span", [_vm._v("قیمت :")]),
       _vm._v(" "),
+      _c("input", { staticClass: "form-control", attrs: { name: "price" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
       _c("span", [_vm._v("وضعیت :")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "status" } })
@@ -34980,8 +35159,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-pen" }),
-      _vm._v(" "),
       _c("span", [_vm._v("درصد تکمیل :")]),
       _vm._v(" "),
       _c("input", {
@@ -34995,8 +35172,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-pen" }),
-      _vm._v(" "),
       _c("span", [_vm._v("برچسب ها را با خط فاصله از هم جدا کنید:")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "tags" } })
@@ -35007,8 +35182,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-pen" }),
-      _vm._v(" "),
       _c("span", [_vm._v("کلمات کلیدی - موتور های جست و جو :")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "keywords" } })
@@ -35019,11 +35192,45 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", { staticClass: "fas fa-pen" }),
-      _vm._v(" "),
       _c("span", [_vm._v("عنوان صفحه :")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "pageTitle" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("توضیحات صفحه :")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: { name: "pageDescription" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("نخفیف :")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "form-control", attrs: { name: "offer" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("تصویر :")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "file", name: "pic" }
+      })
     ])
   }
 ]
