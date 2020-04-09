@@ -2404,8 +2404,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2575,11 +2573,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.auth = window.EventBus.auth;
   },
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       auth: null,
-      login: true,
+      loginer: true,
       register: false,
       recovery: false,
       registerCode: false,
@@ -2592,11 +2588,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         type: "",
         password: "",
         confirm: ""
-      }
-    }, _defineProperty(_ref, "login", {
-      "var": "",
-      password: ""
-    }), _defineProperty(_ref, "errors", []), _ref;
+      },
+      login: {
+        variable: "",
+        password: ""
+      },
+      errors: []
+    };
   },
   methods: {
     close: function close() {
@@ -2605,7 +2603,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     doLogin: function doLogin() {
       var _this = this;
 
+      this.errors = [];
       this.load();
+      console.log(this.login);
       axios.post("/login", this.login).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
@@ -2631,6 +2631,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     doRegister: function doRegister() {
       var _this2 = this;
 
+      this.errors = [];
       this.load();
       axios.post("/register", this.registerForm).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
@@ -2666,6 +2667,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     verify: function verify() {
       var _this3 = this;
 
+      this.errors = [];
       this.load();
       axios.post("/verify", {
         verify: this.verifyCode
@@ -2691,6 +2693,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     sendCode: function sendCode() {
       var _this4 = this;
 
+      this.errors = [];
       this.load();
       axios.post("/reset-password", {
         phone: this.phone
@@ -2716,9 +2719,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.closeLoad();
     },
     changeState: function changeState(s) {
+      this.errors = [];
+
       switch (s) {
         case "login":
-          this.login = true;
+          this.loginer = true;
           this.register = false;
           this.recovery = false;
           this.registerCode = false;
@@ -2726,7 +2731,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "register":
-          this.login = false;
+          this.loginer = false;
           this.register = true;
           this.recovery = false;
           this.registerCode = false;
@@ -2734,7 +2739,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "recovery":
-          this.login = false;
+          this.loginer = false;
           this.register = false;
           this.recovery = true;
           this.registerCode = false;
@@ -2742,7 +2747,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "registerCode":
-          this.login = false;
+          this.loginer = false;
           this.register = false;
           this.recovery = false;
           this.registerCode = true;
@@ -2750,7 +2755,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           break;
 
         case "recoveryCode":
-          this.login = false;
+          this.loginer = false;
           this.register = false;
           this.recovery = false;
           this.registerCode = false;
@@ -3927,8 +3932,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -46937,7 +46940,7 @@ var render = function() {
             [
               !_vm.auth
                 ? _c("transition", { attrs: { name: "fade" } }, [
-                    _vm.login
+                    _vm.loginer
                       ? _c("h5", { key: "a", staticClass: "modal-title" }, [
                           _vm._v("فرم ورود")
                         ])
@@ -46985,7 +46988,7 @@ var render = function() {
                     "transition",
                     { attrs: { name: "fade", mode: "out-in" } },
                     [
-                      _vm.login
+                      _vm.loginer
                         ? _c("div", { key: "login" }, [
                             _c("form", [
                               _c("div", { staticClass: "form-group" }, [
@@ -46998,13 +47001,13 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.login.var,
-                                      expression: "login.var"
+                                      value: _vm.login.variable,
+                                      expression: "login.variable"
                                     }
                                   ],
                                   staticClass: "form-control",
                                   attrs: { type: "text" },
-                                  domProps: { value: _vm.login.var },
+                                  domProps: { value: _vm.login.variable },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
@@ -47012,7 +47015,7 @@ var render = function() {
                                       }
                                       _vm.$set(
                                         _vm.login,
-                                        "var",
+                                        "variable",
                                         $event.target.value
                                       )
                                     }
@@ -48058,24 +48061,21 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._t("avatar", [_vm._m(0)])
+      _vm._t("avatar", [
+        _c("div", { staticClass: "avatar-parent" }, [
+          _c("div", {
+            staticClass: "avatar circle bg-dark-gray shadow",
+            style: {
+              backgroundImage: "url(" + _vm.teacher.profile.avatar + ")"
+            }
+          })
+        ])
+      ])
     ],
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar-parent" }, [
-      _c("div", {
-        staticClass: "avatar circle bg-dark-gray shadow",
-        staticStyle: { "background-image": "url(/img/avatar.png)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -48702,46 +48702,55 @@ var render = function() {
                           "dark-top-border w-100 position-relative d-flex justify-content-center  "
                       },
                       [
-                        _c("span", [
-                          _vm.product.offer > 0
-                            ? _c(
-                                "span",
-                                { staticClass: "btn btn-success py-0" },
-                                [
-                                  _c("span", [
-                                    _vm._v(_vm._s(_vm.product.offer) + " تومان")
-                                  ])
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              class: [
-                                "py-0",
-                                {
-                                  floating: _vm.product.offer > 0,
-                                  "btn bg-dark-gray": _vm.product.offer <= 0
-                                }
-                              ]
-                            },
-                            [
-                              _c(
-                                "span",
-                                {
-                                  class: [
-                                    {
-                                      "line-throgh text-muted":
-                                        _vm.product.offer > 0
-                                    }
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "d-flex flex-row justify-content-center"
+                          },
+                          [
+                            _vm.product.offer > 0
+                              ? _c(
+                                  "span",
+                                  { staticClass: "btn btn-success py-0" },
+                                  [
+                                    _c("span", [
+                                      _vm._v(
+                                        _vm._s(_vm.product.offer) + " تومان"
+                                      )
+                                    ])
                                   ]
-                                },
-                                [_vm._v(_vm._s(_vm.product.price) + " تومان")]
-                              )
-                            ]
-                          )
-                        ])
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                class: [
+                                  "py-0",
+                                  {
+                                    floating: _vm.product.offer > 0,
+                                    "btn bg-dark-gray": _vm.product.offer <= 0
+                                  }
+                                ]
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    class: [
+                                      {
+                                        "line-throgh text-muted":
+                                          _vm.product.offer > 0
+                                      }
+                                    ]
+                                  },
+                                  [_vm._v(_vm._s(_vm.product.price) + " تومان")]
+                                )
+                              ]
+                            )
+                          ]
+                        )
                       ]
                     )
                   ]
@@ -49000,7 +49009,7 @@ var render = function() {
           _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
             _c("span", { staticClass: "fas fa-chalkboard-teacher" }),
             _vm._v(" "),
-            _c("span", [_vm._v("نام استاد :")]),
+            _c("span", [_vm._v("منتشر کننده :")]),
             _vm._v(" "),
             _c("span", [_vm._v(_vm._s(_vm.product.user.name))])
           ]),
@@ -49031,13 +49040,13 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.product.course_items.length
+          _vm.product.course_items && _vm.product.course_items.length
             ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
                 _c("span", { staticClass: "fas fa-file-video" }),
                 _vm._v(" "),
                 _c("span", [_vm._v("فایل های منتشر شده :")]),
                 _vm._v(" "),
-                _c("span", [_vm._v("50")])
+                _c("span", [_vm._v(_vm._s(_vm.product.course_items.length))])
               ])
             : _vm._e(),
           _vm._v(" "),

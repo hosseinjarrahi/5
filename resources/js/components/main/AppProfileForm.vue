@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-import Swal from "sweetalert2";
 <template>
   <div class="w-100">
 

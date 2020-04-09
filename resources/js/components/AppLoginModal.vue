@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <transition name="fade" v-if="!auth">
-            <h5 class="modal-title" key="a" v-if="login">فرم ورود</h5>
+            <h5 class="modal-title" key="a" v-if="loginer">فرم ورود</h5>
 
             <h5 class="modal-title" key="b" v-else-if="register">فرم ثبت نام</h5>
 
@@ -22,12 +22,12 @@
           <app-error-list :errors="errors"/>
 
           <transition name="fade" mode="out-in" v-if="!auth">
-            <div v-if="login" key="login">
+            <div v-if="loginer" key="login">
               <form>
                 <div class="form-group">
                   <span class="fas fa-user"></span>
                   <span>تلفن و یا ایمیل:</span>
-                  <input v-model="login.var" type="text" class="form-control"/>
+                  <input v-model="login.variable" type="text" class="form-control"/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
@@ -171,7 +171,7 @@
         data() {
             return {
                 auth: null,
-                login: true,
+                loginer: true,
                 register: false,
                 recovery: false,
                 registerCode: false,
@@ -186,7 +186,7 @@
                     confirm: ""
                 },
                 login: {
-                    var: "",
+                    variable: "",
                     password: ""
                 },
                 errors: []
@@ -197,9 +197,10 @@
                 this.$emit("close");
             },
             doLogin() {
+                this.errors = [];
                 this.load();
-                axios
-                    .post("/login", this.login)
+                console.log(this.login);
+                axios.post("/login", this.login)
                     .then(response => {
                         Swal.fire({
                             text: response.data.message,
@@ -223,6 +224,7 @@
                 this.closeLoad();
             },
             doRegister() {
+                this.errors = [];
                 this.load();
                 axios
                     .post("/register", this.registerForm)
@@ -251,6 +253,7 @@
                 this.closeLoad();
             },
             verify() {
+                this.errors = [];
                 this.load();
                 axios
                     .post("/verify", {verify: this.verifyCode})
@@ -274,6 +277,7 @@
                 this.closeLoad();
             },
             sendCode() {
+                this.errors = [];
                 this.load();
                 axios
                     .post("/reset-password", {phone: this.phone})
@@ -304,37 +308,38 @@
                 this.closeLoad();
             },
             changeState(s) {
+                this.errors = [];
                 switch (s) {
                     case "login":
-                        this.login = true;
+                        this.loginer = true;
                         this.register = false;
                         this.recovery = false;
                         this.registerCode = false;
                         this.recoveryCode = false;
                         break;
                     case "register":
-                        this.login = false;
+                        this.loginer = false;
                         this.register = true;
                         this.recovery = false;
                         this.registerCode = false;
                         this.recoveryCode = false;
                         break;
                     case "recovery":
-                        this.login = false;
+                        this.loginer = false;
                         this.register = false;
                         this.recovery = true;
                         this.registerCode = false;
                         this.recoveryCode = false;
                         break;
                     case "registerCode":
-                        this.login = false;
+                        this.loginer = false;
                         this.register = false;
                         this.recovery = false;
                         this.registerCode = true;
                         this.recoveryCode = false;
                         break;
                     case "recoveryCode":
-                        this.login = false;
+                        this.loginer = false;
                         this.register = false;
                         this.recovery = false;
                         this.registerCode = false;

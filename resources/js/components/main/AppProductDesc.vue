@@ -3,7 +3,7 @@
     <div class="px-4" style="font-size:0.9rem">
         <div class="my-2 border-bottom-dark p-2">
           <span class="fas fa-chalkboard-teacher"></span>
-          <span>نام استاد :</span>
+          <span>منتشر کننده :</span>
           <span>{{ product.user.name }}</span>
         </div>
 
@@ -20,10 +20,10 @@
             </span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2" v-if="product.course_items.length">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.course_items && product.course_items.length">
           <span class="fas fa-file-video"></span>
           <span>فایل های منتشر شده :</span>
-          <span>50</span>
+          <span>{{ product.course_items.length }}</span>
         </div>
 
         <div class="my-2 border-bottom-dark p-2" v-if="product.time">

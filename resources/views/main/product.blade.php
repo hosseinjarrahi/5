@@ -40,7 +40,7 @@
                                 <app-title>توضیحات</app-title>
                                 <p class="p-2 text-justify w-100" style="white-space:pre-wrap;">{{ $product->desc }}</p>
                             </div>
-                            <div class="my-5">
+                            <div class="my-5" v-if="{{ json_encode($product->course_items) }}">
                                 <app-title>سرفصل ها</app-title>
                                 <app-product-course-item v-for="(item,index) in {{ json_encode($product->course_items) }}" :item="item" :index="index"></app-product-course-item>
                             </div>

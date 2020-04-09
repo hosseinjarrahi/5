@@ -4,11 +4,10 @@ namespace Admin\Http\Controllers;
 
 use App\Http\Upload;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Resources\ProductResource;
-use Illuminate\Support\Facades\Request;
 use AliBayat\LaravelCategorizable\Category;
 
 class ProductController extends Controller
@@ -22,15 +21,16 @@ class ProductController extends Controller
 
     public function create()
     {
-        $cats = Category::with('categories')->get();
-
-        dd($cats);
-        return view('Admin::productAdd');
+        $categories = Category::all();
+        
+        return view('Admin::productAdd',compact('categories'));
     }
 
     public function store()
     {
         $request = request();
+
+        $tags = explode('-',$request->tags);
 
         $meta = [
             'keywords' => $request->post('keywords', null),
@@ -39,11 +39,11 @@ class ProductController extends Controller
         ];
 
         $picPath = Upload::uploadFile(['pic' => $request->pic]);
-
         $items = $this->createCourse($request);
 
         $product = Product::create([
             'status' => $request->status,
+            'slug' => str_replace(' ','-',$request->title),
             'title' => $request->title,
             'percentage' => $request->percentage,
             'desc' => $request->desc ?? 'as',
@@ -51,27 +51,20 @@ class ProductController extends Controller
             'offer' => $request->offer,
             'meta' => $meta,
             'pic' => $picPath['pic'],
+            'user_id' => auth()->id() ?? 1,
             'course_items' => $items
         ]);
 
         $this->uploadFiles($request,$product);
 
+        $category = Category::findOrFail($request->category);
 
+        $product->attachTags($tags);
+
+        if($category)
+            $product->attachCategory($category);
+        return back();
     }
-//
-//    public function upload()
-//    {
-//        dd(request()->all());
-//        $user = auth()->user();
-//        $avatar = Upload::uploadFile(['pic' => $request->file]);
-//        File::delete(public_path($user->profile->avatar));
-//        $user->profile()->update(['avatar' => $avatar['avatar']]);
-//
-//        return response([
-//            'message' => 'با موفقیت تغییر یافت.',
-//            'avatar' => $avatar['avatar'],
-//        ]);
-//    }
 
     private function uploadCourses($request)
     {
@@ -106,6 +99,7 @@ class ProductController extends Controller
 
     private function createCourse($request)
     {
+        if($request->courseCount <= 0) return;
         $coursePath = $this->uploadCourses($request);
 
         $items = [];
@@ -128,4 +122,20 @@ class ProductController extends Controller
 
         return $items;
     }
+
+//
+//    public function upload()
+//    {
+//        dd(request()->all());
+//        $user = auth()->user();
+//        $avatar = Upload::uploadFile(['pic' => $request->file]);
+//        File::delete(public_path($user->profile->avatar));
+//        $user->profile()->update(['avatar' => $avatar['avatar']]);
+//
+//        return response([
+//            'message' => 'با موفقیت تغییر یافت.',
+//            'avatar' => $avatar['avatar'],
+//        ]);
+//    }
+
 }

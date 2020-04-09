@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Upload;
+use App\Models\Profile;
 use Morilog\Jalali\Jalalian;
 use App\Events\ResetPasswordEvent;
 use App\Events\SendVerificationCode;
@@ -26,7 +27,7 @@ class RegisterController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $user = UserRepo::findByPhoneOrEmail($request->var);
+        $user = UserRepo::findByPhoneOrEmail($request->variable);
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.'], 400);
         }
@@ -39,6 +40,7 @@ class RegisterController extends Controller
     public function logout()
     {
         auth()->logout();
+        session()->flush();
 
         return redirect('/');
     }
@@ -94,6 +96,13 @@ class RegisterController extends Controller
     public function profile()
     {
         $user = auth()->user();
+
+        $profile = $user->profile;
+        if (! $profile) {
+            $profile = new Profile();
+            $user->profile()->save($profile);
+            $user->profile = $profile;
+        }
         $user->profile->birth = $user->profile->birth ? Jalalian::forge($user->profile->birth)->format('Y/m/d') : null;
 
         return view('main.profile', compact('user'));
@@ -117,7 +126,9 @@ class RegisterController extends Controller
         $user = auth()->user();
         $profile = $user->profile;
         $birth = $profile->birth;
-        if(!$birth) $birth = Jalalian::fromFormat('Y/m/d H:i:s', $request->profile['birth'] . ' 00:00:00')->toCarbon();
+        if (! $birth) {
+            $birth = Jalalian::fromFormat('Y/m/d H:i:s', $request->profile['birth'] . ' 00:00:00')->toCarbon();
+        }
         $profile->update([
             'bio' => $request->profile['bio'],
             'birth' => $birth,

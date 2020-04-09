@@ -30,7 +30,7 @@
             <div
               class="dark-top-border w-100 position-relative d-flex justify-content-center  "
             >
-              <span>
+              <span class="d-flex flex-row justify-content-center">
                 <span class="btn btn-success py-0" v-if="product.offer > 0">
                   <span>{{ product.offer }} تومان</span>
                 </span>

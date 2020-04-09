@@ -10,20 +10,23 @@
             <form action="{{ url('manager/event') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <span>لینک</span>
-                    <input name="link" type="text" class="form-control">
-                </div>
-                <div class="form-group">
                     <span>بدنه</span>
                     <textarea name="body" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <span>تاریخ شروع</span>
-                    <date-picker name="start"></date-picker>
+                    <date-picker name="start" type="datetime"></date-picker>
                 </div>
                 <div class="form-group">
                     <span>تاریخ پایان</span>
-                    <date-picker name="end"></date-picker>
+                    <date-picker name="end" type="datetime"></date-picker>
+                </div>
+                <div class="form-group">
+                    <span>نوع</span>
+                    <select name="type" class="form-control">
+                        <option value="top">بالا</option>
+                        <option value="main">وسط</option>
+                    </select>
                 </div>
 
                 <button class="btn btn-primary">افزودن</button>

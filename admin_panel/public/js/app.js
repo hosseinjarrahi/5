@@ -2084,9 +2084,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppProductForm",
+  props: ['categories'],
   components: ['VueEditor'],
   data: function data() {
     return {
@@ -53639,6 +53647,22 @@ var render = function() {
     _vm._m(9),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("دسته بندی :")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { name: "category" } },
+        _vm._l(_vm.categories, function(category, index) {
+          return _c("option", {
+            key: index,
+            domProps: { value: category.id, textContent: _vm._s(category.name) }
+          })
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
       _c("input", {
         directives: [
           {
@@ -53873,10 +53897,13 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            _vm._l(_vm.fileCount, function(n) {
+            _vm._l(_vm.fileCount, function(n, index) {
               return _c(
                 "div",
-                { staticClass: "bg-dark text-white p-3 my-2 rounded" },
+                {
+                  key: index,
+                  staticClass: "bg-dark text-white p-3 my-2 rounded"
+                },
                 [
                   _vm._v("\n      #" + _vm._s(n) + "\n\n      "),
                   _c("div", { staticClass: "form-group" }, [

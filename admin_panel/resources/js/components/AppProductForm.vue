@@ -56,6 +56,13 @@
     </div>
 
     <div class="form-group">
+      <span>دسته بندی :</span>
+      <select class="form-control" name="category">
+        <option v-for="(category,index) in categories" :key="index" :value="category.id" v-text="category.name"></option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <input type="checkbox" v-model="course">
       <span>میخواهم دوره ایجاد کنم</span>
     </div>
@@ -101,7 +108,7 @@
       <div class="btn btn-primary" @click="fileCount++">افزودن آیتم</div>
       <div class="btn btn-primary" @click="fileCount--" v-if="fileCount>0">حذف آخرین آیتم</div>
 
-      <div v-for="n in fileCount" class="bg-dark text-white p-3 my-2 rounded">
+      <div v-for="(n,index) in fileCount" :key="index" class="bg-dark text-white p-3 my-2 rounded">
         #{{ n }}
 
         <div class="form-group">
@@ -123,6 +130,7 @@
 
     export default {
         name: "AppProductForm",
+        props:['categories'],
         components: ['VueEditor'],
         data() {
             return {

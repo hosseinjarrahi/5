@@ -10,7 +10,7 @@
 
                 <form action="/manager/product" method="post" enctype="multipart/form-data">
                     @csrf
-                    <app-product-form></app-product-form>
+                    <app-product-form :categories="{{ $categories->toJson() }}"></app-product-form>
                 </form>
 
             </div>

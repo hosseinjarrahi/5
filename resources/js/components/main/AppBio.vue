@@ -12,7 +12,7 @@
 
     <slot name="avatar">
       <div class="avatar-parent">
-        <div class="avatar circle bg-dark-gray shadow" style="background-image:url(/img/avatar.png)"></div>
+        <div class="avatar circle bg-dark-gray shadow" :style="{backgroundImage:`url(${teacher.profile.avatar})`}"></div>
       </div>
     </slot>
   </div>

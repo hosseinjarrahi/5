@@ -6,9 +6,10 @@ Route::group(['prefix' => 'manager'], function () {
     Route::resource('/product', 'ProductController');
     Route::resource('/slide', 'SlideController');
     Route::resource('/event', 'EventController');
-    Route::resource('/comment', 'SlideController');
-    Route::resource('/user', 'SlideController');
+    Route::resource('/comment', 'CommentController');
+    Route::resource('/user', 'UserController');
     Route::resource('/setting', 'SlideController');
+
     Route::post('/products', 'ProductController@give');
     Route::post('/product/upload', 'ProductController@upload');
 });

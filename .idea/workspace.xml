@@ -2,17 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_panel/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Slide.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Slide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/NotificationServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/NotificationServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EventFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EventFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/js/components/AppProductForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/js/components/AppProductForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/event.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/LoginRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_24_210723_create_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_24_210723_create_profiles_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppEvent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppEvent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15844683881576.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15845316351288.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15845317192794.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15845317283837.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/1584537158469.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15846093351480.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15846371422009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/15858496591112.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863278083132.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863282372840.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863282803291.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863282893840.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863283051714.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863283133530.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863283861647.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863283912155.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863284081004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863285532247.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863285711296.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863285902983.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863288293993.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863296844010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863297061054.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863297111519.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863297221179.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863297322696.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863297513753.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863312244107.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15863482514481.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppBio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppBio.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppCourseCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppCourseCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProfileForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProfileForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,15 +195,15 @@
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
-      <path value="$PROJECT_DIR$/vendor/alibayat/laravel-categorizable" />
-      <path value="$PROJECT_DIR$/vendor/kalnoy/nestedset" />
       <path value="$PROJECT_DIR$/vendor/rtconner/laravel-tagging" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-tags" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/spatie/eloquent-sortable" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
+      <path value="$PROJECT_DIR$/vendor/alibayat/laravel-categorizable" />
+      <path value="$PROJECT_DIR$/vendor/kalnoy/nestedset" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZQmnuc1zDuLjGGLkYwM4ZKAnKv" />
@@ -184,19 +225,19 @@
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\Http\Controllers" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources\css" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources\js" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
       <recent name="E:\web\bigBag\quiz\app\Models" />
       <recent name="E:\web\bigBag\quiz\resources\sass" />
       <recent name="E:\web\bigBag\quiz\resources\views" />
       <recent name="E:\web\bigBag\quiz\resources\views\quiz" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\Http\Controllers" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\css" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\js" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -245,7 +286,11 @@
       <workItem from="1586247249500" duration="5161000" />
       <workItem from="1586267283127" duration="2525000" />
       <workItem from="1586315572689" duration="9728000" />
-      <workItem from="1586346687881" duration="4928000" />
+      <workItem from="1586346687881" duration="4971000" />
+      <workItem from="1586354022869" duration="3000" />
+      <workItem from="1586412469357" duration="7331000" />
+      <workItem from="1586435161702" duration="3593000" />
+      <workItem from="1586450138774" duration="2753000" />
     </task>
     <servers />
   </component>
@@ -341,17 +386,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1584885057737" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1586350017131">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1586438402451">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1586350017131" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1585847701530">
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1586438402451" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1586452575381">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1585847701530" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586351621656">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1586452575381" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586452621147">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586351621656" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586452621147" />
   </component>
 </project>
