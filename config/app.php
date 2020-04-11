@@ -177,6 +177,7 @@ return [
         App\Providers\DbServiceProvider::class,
         App\Providers\NotificationServiceProvider::class,
         Admin\AdminServiceProvider::class,
+        Quizviran\QuizviranServiceProvider::class,
     ],
 
     /*

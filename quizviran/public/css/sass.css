@@ -1,0 +1,23 @@
+a,
+a:active,
+a:hover {
+  color: unset !important;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: samim;
+  src: url("/assets/font/Samim.eot");
+  src: url("/assets/font/Samim.eot#iefix") format("FontName-opentype"), url("/assets/font/Samim.woff") format("woff"), url("/assets/font/Samim.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: samim !important;
+}
+
+body {
+  direction: rtl;
+}
+
