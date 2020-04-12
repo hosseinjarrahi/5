@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function home()
     {
-        
+        return view('Quizviran::home');
     }
 }

@@ -1,18 +1,33 @@
-@extends('layout')
+@extends('Quizviran::layout')
 @section('title','تیزویران | کلاس ها')
 
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 mt-5 mb-2">
-                <div class="row justify-content-center m">
-                    <div class="col-11 col-md-4">
-                        <img src="{{ asset('img/quizviran.png') }}" alt="logo" class="img-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-md-4 d-flex justify-content-center">
+                        <img src="{{ asset('img/quizviran.png') }}" alt="لوگو-کوییزویران" class="img-fluid" style="margin-top: 38px">
                     </div>
                 </div>
             </div>
 
-            <app-quiz :quizzes="{{ $quizzes }}"></app-quiz>
+            <div class="col-12 my-2">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
+                        <a href="#" class="mx-1">
+                            <img src="{{ asset('quiz/assets/img/join-class.png') }}"
+                                 class="p-1 quiz-button img-fluid" alt="join-class">
+                        </a>
+                        <a href="#" class="mx-1">
+                            <img src="{{ asset('quiz/assets/img/dashboard.png') }}"
+                                 class="p-1 quiz-button img-fluid" alt="dashboard">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{--            <app-quiz :quizzes="{{ $quizzes }}"></app-quiz>--}}
             {{--
                         <app-taklif>
                             <app-taklif-card

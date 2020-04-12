@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'quiz'], function () {
-    Route::get('/','HomeController@dashboard');
+    Route::get('/','HomeController@home');
 });
 
 
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'quiz'], function () {
 
 Route::get('/quiz/assets/{folder}/{file}', [ function ( $folder, $file) {
 
-  $path = app_path("../admin_panel/public/$folder/$file");
+  $path = app_path("../quizviran/public/$folder/$file");
 
   if (!\File::exists($path)) {
     return response()->json(['not found'], 404);

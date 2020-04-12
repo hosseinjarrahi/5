@@ -6,8 +6,11 @@ import store from './store/store';
 import persianDatePicker from 'vue-persian-datetime-picker';
 Vue.component('date-picker', persianDatePicker);
 ////////////////////////////////////////////////
-Vue.component('app-menu',require('./components/AppMenu.vue').default);
-Vue.component('app-product-form',require('./components/AppProductForm.vue').default);
+Vue.component('app-header',require('./components/AppHeader.vue').default);
+Vue.component('app-footer',require('./components/AppFooter.vue').default);
+Vue.component('app-loading',require('./components/AppLoading.vue').default);
+Vue.component('app-modal',require('./components/AppModal.vue').default);
+Vue.component('app-login-modal',require('./components/AppLoginModal.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);
@@ -30,7 +33,8 @@ async function init(){
         el: '#app',
         store,
         mounted(){
-            this.$store.state.load = false;
+            document.getElementById('pageLoader').classList.remove('d-flex');
+            document.getElementById('pageLoader').classList.add('d-none');
         }
     });
 
