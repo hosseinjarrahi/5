@@ -7,6 +7,7 @@ use App\Models\User;
 
 class Room extends Model
 {
+    protected $with = ['user'];
     protected $guarded = ['id'];
 
     public function quizzes(){
@@ -14,10 +15,10 @@ class Room extends Model
     }
 
     public function members(){
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    public function admin(){
-        return $this->hasOne(User::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

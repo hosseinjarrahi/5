@@ -90,7 +90,13 @@
             <div class="row px-2 px-md-5 justify-content-center">
                 <div class="col-md-6 col-12 my-2 position-relative">
                     <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
-                        <app-main-box-last-classes teacher="فلانی" link="/asas" title="ریاضی 8/4"></app-main-box-last-classes>
+                        @if($rooms->isEmpty())
+                            <a class="btn btn-outline-light btn-block">
+                                <span class="fas fa-plus"></span>
+                                <span>عضویت در کلاس</span>
+                            </a>
+                        @endif
+                        <app-main-box-last-classes v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
                     </app-main-box>
                 </div>
 

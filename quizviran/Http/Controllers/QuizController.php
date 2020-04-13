@@ -2,6 +2,7 @@
 
 namespace Quizviran\Http\Controllers;
 
+use App\Models\User;
 use Quizviran\Models\Quiz;
 use Quizviran\Models\Question;
 use Illuminate\Http\Request;
@@ -12,13 +13,21 @@ class QuizController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth')->except(['result']);
     }
 
     public function quizDetail(Quiz $quiz)
     {
         $users = $quiz->users()->withPivot(['norm'])->get();
         return view('quizDetail',compact('users','quiz'));
+    }
+
+    public function result($quiz)
+    {
+        $quiz = Quiz::findOrFail($quiz);
+        $user = auth()->user();
+        $users = $quiz->getQuizUsersWithNorms();
+        return view('Quizviran::results', compact('users', 'user','quiz'));
     }
 
     public function store(Request $request)
@@ -61,8 +70,9 @@ class QuizController extends Controller
         return back();
     }
 
-    public function complete(Request $request)
+    public function complete()
     {
+        $request = request();
         $quiz = Quiz::findOrFail($request->id);
         $user = auth()->user();
         if (! $quiz->isInTime() || ! $user->canComplete($quiz->id)) {

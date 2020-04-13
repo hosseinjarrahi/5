@@ -5153,7 +5153,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.load();
       var id = this.id;
-      axios.post("/complete", {
+      axios.post("/quiz/complete", {
         data: this.selected,
         id: this.id
       }).then(function (response) {
@@ -5165,7 +5165,7 @@ __webpack_require__.r(__webpack_exports__);
           timer: 5000
         });
         setTimeout(function () {
-          window.location = "/results/".concat(id);
+          window.location = "/quiz/results/".concat(id);
         }, 3000);
       })["catch"](function (error) {
         console.log(error.message);
@@ -5986,13 +5986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppMainBoxLastQuiz",
   props: {
-    link: {
-      "default": ''
-    },
-    teacher: {
-      "default": ''
-    },
-    title: {
+    room: {
       "default": ''
     }
   }
@@ -6009,6 +6003,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -44376,19 +44371,6 @@ var render = function() {
             { staticClass: "col-11 col-md-6 p-3 bg-light shadow rounded my-2" },
             [
               _c(
-                "span",
-                { staticClass: "btn block-btn btn-block btn-file mb-5" },
-                [
-                  _vm._v("\n          ارسال فایل\n          "),
-                  _c("input", {
-                    ref: "file",
-                    attrs: { type: "file" },
-                    on: { change: _vm.uploadFile }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
                 "button",
                 {
                   staticClass: "btn btn-block btn-primary",
@@ -45618,14 +45600,14 @@ var render = function() {
         { staticClass: "d-flex flex-column ml-4 justify-content-center" },
         [
           _c("div", { staticClass: "row" }, [
-            _c("h4", [_vm._v(_vm._s(_vm.title))])
+            _c("h4", [_vm._v(_vm._s(_vm.room.name))])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("span", { staticClass: "badge badge-light mx-1" }, [
               _c("span", [_vm._v("استاد:")]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.teacher))])
+              _c("span", [_vm._v(_vm._s(_vm.room.user.name))])
             ])
           ])
         ]
@@ -45644,7 +45626,7 @@ var render = function() {
           {
             staticClass: "btn my-1 btn-light btn-block py-0",
             staticStyle: { color: "#2f3542 !important" },
-            attrs: { href: _vm.link }
+            attrs: { href: _vm.room.link }
           },
           [_vm._v("ورود به کلاس")]
         )
@@ -45681,7 +45663,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row flex-md-row flex-column bg-dark-gray py-3 rounded" },
+    { staticClass: "row flex-md-row flex-column bg-dark-gray py-1 rounded" },
     [
       _c("div", { staticClass: "col-md-9 d-flex flex-row" }, [
         _c("div", { staticClass: "bg-light p-1 rounded" }),
@@ -45715,6 +45697,15 @@ var render = function() {
             attrs: { href: _vm.quiz.link }
           },
           [_vm._v("ورود به آزمون")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-dark py-0 btn my-1 btn-light",
+            attrs: { href: "/quiz/results/" + _vm.quiz.id }
+          },
+          [_vm._v("نتایج")]
         ),
         _vm._v(" "),
         _c(

@@ -53,7 +53,7 @@
             complete() {
                 this.load();
                 let id = this.id;
-                axios.post("/complete", {data: this.selected, id: this.id})
+                axios.post("/quiz/complete", {data: this.selected, id: this.id})
                     .then(function (response) {
                         Swal.fire({
                             // title: 'Error!',
@@ -63,7 +63,7 @@
                             timer: 5000
                         });
                         setTimeout(() => {
-                            window.location = `/results/${id}`;
+                            window.location = `/quiz/results/${id}`;
                         }, 3000);
                     })
                     .catch(function (error) {

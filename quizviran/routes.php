@@ -3,6 +3,8 @@
 Route::group(['prefix' => 'quiz'], function () {
     Route::get('/', 'HomeController@home');
     Route::resource('/exam', 'QuizController');
+    Route::post('/complete', 'QuizController@complete');
+    Route::get('/results/{quiz}','QuizController@result');
 });
 
 

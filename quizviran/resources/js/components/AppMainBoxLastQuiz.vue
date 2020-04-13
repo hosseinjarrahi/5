@@ -1,5 +1,5 @@
 <template>
-  <div class="row flex-md-row flex-column bg-dark-gray py-3 rounded">
+  <div class="row flex-md-row flex-column bg-dark-gray py-1 rounded">
 
     <div class="col-md-9 d-flex flex-row">
 
@@ -23,6 +23,7 @@
     <div class="col-md-3 d-flex flex-column mt-2 mt-md-0">
 
       <a :href="quiz.link" class="text-dark py-0 btn my-1 btn-light">ورود به آزمون</a>
+      <a :href="'/quiz/results/' + quiz.id" class="text-dark py-0 btn my-1 btn-light">نتایج</a>
       <div class="my-1 border-light text-center rounded" style="border-bottom:2px solid">
         <span>زمان شروع:</span>
         <span>{{ quiz.start }}</span>
