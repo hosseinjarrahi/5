@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 1px" class="d-flex flex-row mx-2 align-items-center">
     <div class="circle bg-light"
-         style="width: 90px;height: 90px;background-image:url()"
+           :style="{width: '75px',height: '75px',backgroundImage: `url(${user.profile.avatar})`}"
     ></div>
     <div class="d-flex flex-column">
       <div class="ml-1">
@@ -9,7 +9,7 @@
       </div>
       <div class="badge badge-light ml-1">
         <span>امتیاز:</span>
-        <span>{{ user.point }}</span>
+        <span>{{ user.profile.point }}</span>
       </div>
     </div>
   </div>

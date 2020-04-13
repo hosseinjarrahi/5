@@ -80,7 +80,7 @@
                 auth: window.EventBus.auth,
                 links: [
                     {to: '/', title: 'خانه'},
-                    {to: '/quizviran', title: 'کوییزویران'},
+                    {to: '/quiz', title: 'کوییزویران'},
                     {to: '/فروشگاه', title: 'فروشگاه'},
                     {to: 'http://forum.tizviran.com', title: 'انجمن'},
                 ]
@@ -108,5 +108,13 @@
     top: 0;
     left: 0;
     z-index: 5;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: scale(2);
   }
 </style>

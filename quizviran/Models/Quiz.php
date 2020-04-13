@@ -44,4 +44,14 @@ class Quiz extends Model
         return $this->morphMany(File::class, 'fileable');
     }
 
+    public function scopePublic($query)
+    {
+        return $query->where('type','public');
+    }
+
+    public function scopeShow($query)
+    {
+        return $query->where('show',1);
+    }
+
 }

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Quizviran::layout')
 @section('title',$quiz->name)
 
 @section('content')
@@ -14,7 +14,7 @@
                 </p>
             </div>
 
-            <div class="p-2 px-4 shadow rounded my-2 bg-dark-gray  col-11 col-md-4 text-center">{{ $quiz->name }}</div>
+            <div class="p-2 px-4 shadow rounded my-2 bg-dark-gray col-11 col-md-4 text-center">{{ $quiz->name }}</div>
 
             <app-exam id="{{ $quiz->id }}" questions="{{ $questions }}"></app-exam>
 

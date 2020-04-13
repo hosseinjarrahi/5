@@ -16,11 +16,17 @@ Vue.component('app-main-box-last-quiz',require('./components/AppMainBoxLastQuiz.
 Vue.component('app-under-hand',require('./components/AppUnderHand.vue').default);
 Vue.component('app-best-users-item',require('./components/AppBestUsersItem.vue').default);
 Vue.component('app-main-box-last-classes',require('./components/AppMainBoxLastClasses.vue').default);
+Vue.component('app-event',require('./components/AppEvent.vue').default);
+Vue.component('app-count-down',require('./components/AppCountDown.vue').default);
+Vue.component('app-exam',require('./components/AppExam.vue').default);
+Vue.component('app-exam-card',require('./components/AppExamCard.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);
+Vue.component('app-latex', require('./components/AppLatex.vue').default);
 ////////////
 window.EventBus = new Vue({});
+import globalMixin from './globalMixin';
 //////////////
 function checkAuth(){
     return axios.post('/check-auth')
@@ -34,6 +40,7 @@ function redirect(url){
 };
 async function init(){
     window.EventBus.auth = await checkAuth();
+    Vue.mixin(globalMixin);
     const app = new Vue({
         el: '#app',
         store,

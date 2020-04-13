@@ -6,11 +6,15 @@
       <div class="bg-light p-1 rounded"></div>
       <div class="d-flex flex-column ml-4 justify-content-center">
         <div class="row">
-          <h2>آزمون بزرگ</h2>
+          <h3>{{ quiz.name }}</h3>
         </div>
         <div class="row">
-          <span class="badge badge-light mx-1">پایه هشتم</span>
-          <span class="badge badge-light mx-1">زمان آزمون : 45 دقیقه</span>
+          <!--          <span class="badge badge-light mx-1">پایه هشتم</span>-->
+          <span class="badge badge-light mx-1">
+            <span>زمان آزمون: </span>
+            <span>{{ quiz.time }}</span>
+            <span>دقیقه</span>
+          </span>
         </div>
       </div>
 
@@ -18,8 +22,11 @@
 
     <div class="col-md-3 d-flex flex-column mt-2 mt-md-0">
 
-      <div class="btn my-1 btn-light">ورود به آزمون</div>
-      <div class="my-1 border-light text-center rounded" style="border-bottom:2px solid">8 دقیقه تا شروع</div>
+      <a :href="quiz.link" class="text-dark py-0 btn my-1 btn-light">ورود به آزمون</a>
+      <div class="my-1 border-light text-center rounded" style="border-bottom:2px solid">
+        <span>زمان شروع:</span>
+        <span>{{ quiz.start }}</span>
+      </div>
 
     </div>
 
@@ -30,7 +37,10 @@
 
 <script>
     export default {
-        name: "AppMainBoxLastQuiz"
+        name: "AppMainBoxLastQuiz",
+        props: {
+            quiz: {default: ''}
+        }
     }
 </script>
 

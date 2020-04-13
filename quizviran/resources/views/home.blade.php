@@ -13,22 +13,29 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 my-2">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
-                        <a href="#" class="mx-1">
-                            <img src="{{ asset('quiz/assets/img/join-class.png') }}"
-                                 class="p-1 quiz-button img-fluid" alt="join-class">
-                        </a>
-                        <a href="#" class="mx-1">
-                            <img src="{{ asset('quiz/assets/img/dashboard.png') }}"
-                                 class="p-1 quiz-button img-fluid" alt="dashboard">
-                        </a>
+            @if(auth()->check())
+                <div class="col-12 my-2">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
+                            @if(auth()->user()->type == 'teacher')
+                                <a href="/create-class" class="mx-1">
+                                    <img src="{{ asset('quiz/assets/img/create-class.png') }}"
+                                         class="p-1 quiz-button img-fluid" alt="create-class">
+                                </a>
+                            @else
+                                <a href="/join-class" class="mx-1">
+                                    <img src="{{ asset('quiz/assets/img/join-class.png') }}"
+                                         class="p-1 quiz-button img-fluid" alt="join-class">
+                                </a>
+                            @endif
+                            <a href="/dashboard" class="mx-1">
+                                <img src="{{ asset('quiz/assets/img/dashboard.png') }}"
+                                     class="p-1 quiz-button img-fluid" alt="dashboard">
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            @endif
         </div>
 
         <div class="row justify-content-center align-items-center">
@@ -41,9 +48,7 @@
                     </div>
                     <div class="col-12 col-md-8 d-flex flex-row justify-content-center">
                         <app-main-box title="آخرین مسابقات" icon="flag-checkered">
-                            <app-main-box-last-quiz></app-main-box-last-quiz>
-                            <app-main-box-last-quiz></app-main-box-last-quiz>
-                            <app-main-box-last-quiz></app-main-box-last-quiz>
+                            <app-main-box-last-quiz v-for="quiz in {{ $quizzes->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
                         </app-main-box>
                     </div>
                 </div>
@@ -58,21 +63,20 @@
                         <div class="w-100  bg-dark-gray p-1 rounded"
                              style="height: 100px;overflow-x: auto;overflow-y: hidden">
 
-                            <div class=" d-flex flex-row justify-content-start justify-content-md-between">
+                            <div class="p-1 d-flex flex-row justify-content-start">
 
                                 <div><img src="/quiz/assets/img/medal.png"
                                           alt="دانش آموزان ممتاز"
-                                          style="height: 90px"
+                                          style="height: 85px"
                                     >
                                 </div>
 
                                 <div style="padding: 1px" class="bg-light mx-2 rounded"></div>
-
-                                <app-best-users-item></app-best-users-item>
-                                <app-best-users-item></app-best-users-item>
-                                <app-best-users-item></app-best-users-item>
-                                <app-best-users-item></app-best-users-item>
-                                <app-best-users-item></app-best-users-item>
+                                @if($bestStudents->isEmpty())
+                                    <div class="d-flex flex-row justify-content-center align-items-center w-100">شما اولین نفر باشید.</div>
+                                @else
+                                    <app-best-users-item v-for="user in {{ $bestStudents->toJson() }}" :user="user"></app-best-users-item>
+                                @endif
 
                             </div>
 
@@ -82,21 +86,21 @@
                 </div>
             </div>
         </div>
+        @if(auth()->check())
+            <div class="row px-2 px-md-5 justify-content-center">
+                <div class="col-md-6 col-12 my-2 position-relative">
+                    <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
+                        <app-main-box-last-classes teacher="فلانی" link="/asas" title="ریاضی 8/4"></app-main-box-last-classes>
+                    </app-main-box>
+                </div>
 
-        <div class="row px-2 px-md-5 justify-content-center">
-            <div class="col-md-6 col-12 my-2 position-relative">
-                <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
-                    <app-main-box-last-classes teacher="فلانی" link="/asas" title="ریاضی 8/4"></app-main-box-last-classes>
-                </app-main-box>
+                <div class="col-md-6 col-12 my-2">
+                    <app-main-box :dark="true" title="تکالیف" icon="scroll" color="">
+                        <app-under-hand></app-under-hand>
+                    </app-main-box>
+                </div>
             </div>
-
-            <div class="col-md-6 col-12 my-2">
-                <app-main-box :dark="true" title="تکالیف" icon="scroll" color="">
-                    <app-under-hand></app-under-hand>
-                </app-main-box>
-            </div>
-        </div>
-
+        @endif
     </div>
 @endsection
 <script>

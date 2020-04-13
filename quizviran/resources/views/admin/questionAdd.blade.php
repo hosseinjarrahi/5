@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Quizviran::layout')
 @section('title','مدیریت')
 
 @section('content')
