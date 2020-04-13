@@ -6,11 +6,12 @@ use App\Models\Comment;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Profile;
-use App\Models\Question;
-use App\Models\Quiz;
 use App\Models\User;
 use App\Models\Slide;
 use Illuminate\Database\Seeder;
+use Quizviran\Models\Question;
+use Quizviran\Models\Quiz;
+use Quizviran\Models\Room;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
     {
         Quiz::truncate();
         Question::truncate();
+        Room::truncate();
         Product::truncate();
         Category::truncate();
         Profile::truncate();
@@ -50,5 +52,18 @@ class DatabaseSeeder extends Seeder
         factory(HomeBox::class, 3)->create();
         factory(Comment::class, 100)->create();
         factory(Event::class, 1)->create();
+        factory(Question::class,10)->create();
+
+        factory(Quiz::class, 10)
+        ->create()
+        ->each(function ($quiz) {
+            $quiz->questions()->save(Question::first());
+        });
+        
+        factory(Room::class,1)->create()
+        ->create()
+        ->each(function ($room) {
+            $room->quizzes()->save(Quiz::first());
+        });
     }
 }

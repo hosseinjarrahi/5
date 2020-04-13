@@ -14,6 +14,8 @@ Vue.component('app-login-modal',require('./components/AppLoginModal.vue').defaul
 Vue.component('app-main-box',require('./components/AppMainBox.vue').default);
 Vue.component('app-main-box-last-quiz',require('./components/AppMainBoxLastQuiz.vue').default);
 Vue.component('app-under-hand',require('./components/AppUnderHand.vue').default);
+Vue.component('app-best-users-item',require('./components/AppBestUsersItem.vue').default);
+Vue.component('app-main-box-last-classes',require('./components/AppMainBoxLastClasses.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

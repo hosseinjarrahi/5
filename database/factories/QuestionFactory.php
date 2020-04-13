@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Question;
 use Faker\Generator as Faker;
+use Quizviran\Models\Question;
 
 $factory->define(Question::class, function (Faker $faker) {
     return [

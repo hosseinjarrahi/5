@@ -23,7 +23,7 @@
 
     </div>
 
-    <div class="container-fluid rounded my-3 bg-gray" style="padding-top:1px"></div>
+    <div class="container-fluid rounded my-1 bg-gray" style="padding-top:1px"></div>
 
   </div>
 </template>

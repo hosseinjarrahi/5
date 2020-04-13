@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Quizviran\Models;
 
 use AliBayat\LaravelCategorizable\Categorizable;
 use App\Models\Tag;
@@ -15,8 +15,10 @@ class Question extends Model
         return $this->belongsToMany(Quiz::class);
     }
 
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class,'tagable');
-    }
+    // public function tags()
+    // {
+    //     return $this->morphToMany(Tag::class,'tagable');
+    // }
+
+
 }

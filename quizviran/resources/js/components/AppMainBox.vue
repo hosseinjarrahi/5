@@ -1,18 +1,18 @@
 <template>
   <div class="col-12">
 
-    <div class="row text-danger flex-column mt-3">
+    <div :class="['row flex-column mt-3 ', dark ? '' : 'text-danger' ]">
       <div class="col-12 ">
         <h2 class="text-center">
           <span :class="[`fas fa-${icon}`]"></span>
           <span>{{ title }}</span>
         </h2>
-        <div class="bg-danger p-1 rounded"></div>
+        <div :class="[' rounded ',dark ? 'bg-dark-gray' : 'bg-danger']" style="padding: 3px;"></div>
       </div>
     </div>
 
     <div class="row mt-2">
-      <div class="col-12">
+      <div class="col-12 bg-dark-gray py-3 rounded">
 
         <slot></slot>
 
@@ -24,7 +24,11 @@
 
 <script>
     export default {
-        props:['title','icon'],
+        props: {
+            title: {default: ''},
+            icon: {default: ''},
+            dark: {default: false}
+        },
         name: "AppMainBox"
     }
 </script>

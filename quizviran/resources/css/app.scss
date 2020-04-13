@@ -1,4 +1,4 @@
-a,a:active,a:hover{
+a, a:active, a:hover {
   color: unset !important;
   text-decoration: none;
 }
@@ -6,4 +6,17 @@ a,a:active,a:hover{
 .quiz-button {
   border-radius: 10px !important;
   box-shadow: -0.2px 3px 7px 0px rgba(0, 0, 0, 0.9) !important;
+}
+
+.gray-gradient {
+  width: 100px;
+  tap: 0;
+  left: 15px;
+  position: absolute;
+  background: -moz-linear-gradient(to right,#2f3542,rgba(0,0,0,0));
+  background: linear-gradient(to right,#2f3542,rgba(0,0,0,0));
+}
+
+body{
+  color:#2f3542;
 }

@@ -10,3 +10,15 @@ a:hover {
   box-shadow: -0.2px 3px 7px 0px rgba(0, 0, 0, 0.9) !important;
 }
 
+.gray-gradient {
+  width: 100px;
+  tap: 0;
+  left: 15px;
+  position: absolute;
+  background: linear-gradient(to right, #2f3542, rgba(0, 0, 0, 0));
+}
+
+body {
+  color: #2f3542;
+}
+

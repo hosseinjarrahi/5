@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Quizviran\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Quiz extends Model
 {
@@ -15,7 +16,12 @@ class Quiz extends Model
 
     public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsToMany(Question::class);
+    }
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class);
     }
 
     public function users()
