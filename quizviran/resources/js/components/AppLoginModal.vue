@@ -26,7 +26,7 @@
               <form>
                 <div class="form-group">
                   <span class="fas fa-user"></span>
-                  <span>تلفن و یا ایمیل:</span>
+                  <span>شماره تلفن و یا ایمیل:</span>
                   <input v-model="login.variable" type="text" class="form-control"/>
                 </div>
                 <div class="form-group">
@@ -62,8 +62,7 @@
                 <div class="form-group">
                   <span class="fas fa-phone"></span>
                   <span>شماره تلفن</span>
-                  <span>|</span>
-                  <span>ویا ایمیل</span>
+                  <span>و یا ایمیل</span>
                   <input
                     v-model="registerForm.phone"
                     class="form-control"

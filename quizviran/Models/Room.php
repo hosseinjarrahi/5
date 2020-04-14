@@ -4,6 +4,7 @@ namespace Quizviran\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Comment;
 
 class Room extends Model
 {
@@ -20,5 +21,10 @@ class Room extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class,'commentable');
     }
 }

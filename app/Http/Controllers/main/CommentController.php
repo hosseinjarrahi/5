@@ -9,29 +9,16 @@ use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
     public function store(CommentRequest $request)
     {
-        //
-    }
+        Comment::create([
+            'comment' => $request->comment,
+            'commentable_id' => $request->id,
+            'commentable_type' => $request->type,
+            'user_id' => auth()->id()
+        ]);
 
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    public function edit(Comment $comment)
-    {
-        //
+        return response(['message' => 'پس از تایید ، نظر شما نمایش داده خواهد شد.']);
     }
 
     public function update(CommentRequest $request, Comment $comment)

@@ -29,7 +29,7 @@
                       <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
                     </span>اعلانات
                   </a>
-                  <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>
+                  <!-- <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a> -->
                   <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
                   <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
                 </div>
@@ -80,7 +80,7 @@
                 auth: window.EventBus.auth,
                 links: [
                     {to: '/', title: 'خانه'},
-                    {to: '/quizviran', title: 'کوییزویران'},
+                    {to: '/quiz', title: 'کوییزویران'},
                     {to: '/فروشگاه', title: 'فروشگاه'},
                     {to: 'http://forum.tizviran.com', title: 'انجمن'},
                 ]

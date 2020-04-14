@@ -1,38 +1,6 @@
 <?php
-
-use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Route;
 
-////quiz
-//Route::group(['prefix' => 'quizviran'], function () {
-//    Route::get('/', 'quiz\HomeController@index');
-//    Route::get('/results/{quiz}', 'quiz\HomeController@result');
-//
-//    Route::resource('/quiz', 'quiz\QuizController');
-//    Route::resource('/question', 'quiz\QuestionController');
-//    Route::resource('/work', 'quiz\WorkController');
-//    Route::resource('/send', 'quiz\SendController');
-//    Route::resource('/answer', 'quiz\AnswerController');
-//    Route::resource('/file', 'quiz\FileController');
-//
-//    Route::post('/complete', 'QuizController@complete')->middleware('auth');
-//    //admin
-//    Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function () {
-//        Route::get('/', 'quiz\AdminController@index');
-//        Route::get('add-question', 'quiz\QuizController@addQuestion')->name('question.add');
-//        Route::post('add-question', 'quiz\QuizController@add')->name('question.add.post');
-//        Route::get('quiz/detail/{quiz}', 'quiz\QuizController@quizDetail');
-//    });
-//});
-
-//admin
-Route::get('/test', function(){
-//    return Jalalian::forge(date('y-m-d'))->format('y-m-d');
-//    auth()->user()->notify(new \App\Notifications\TestNotification());
-    $jDate = Jalalian::fromFormat('Y-m-d H:i:s', '1397-01-18 00:00:00')->toCarbon();
-})->middleware('throttle:1,1');
-
-//main
 Route::get('/', 'main\HomeController@home');
 
 Route::post('/login', 'RegisterController@login');

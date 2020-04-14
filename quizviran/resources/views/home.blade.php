@@ -18,7 +18,7 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
                             @if(auth()->user()->type == 'teacher')
-                                <a href="/create-class" class="mx-1">
+                                <a href="/quiz/panel/room/create" class="mx-1">
                                     <img src="{{ asset('quiz/assets/img/create-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="create-class">
                                 </a>
@@ -28,10 +28,21 @@
                                          class="p-1 quiz-button img-fluid" alt="join-class">
                                 </a>
                             @endif
-                            <a href="/dashboard" class="mx-1">
+                            <a href="/quiz/panel/rooms" class="mx-1">
                                 <img src="{{ asset('quiz/assets/img/dashboard.png') }}"
                                      class="p-1 quiz-button img-fluid" alt="dashboard">
                             </a>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-12 my-2">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-3 d-flex flex-row justify-content-center px-3">
+                            <div @click="EventBus.$emit('openSignUp')" class="mx-1">
+                                <img src="{{ asset('quiz/assets/img/signup.png') }}"
+                                     class="p-1 quiz-button img-fluid" alt="dashboard">
+                            </div>
                         </div>
                     </div>
                 </div>

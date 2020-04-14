@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Quizviran\Models\Quiz;
+use Quizviran\Models\Room;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -65,6 +68,13 @@ class User extends Authenticatable
         return $this->hasMany(Product::class);    
     }
 
+    public function rooms()
+    {
+        if($this->type == 'teacher')
+            return $this->hasMany(Room::class); 
+        return $this->belongsToMany(Room::class);    
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
@@ -74,4 +84,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function hasQuiz()
+    {
+        // todo
+        return $this->hasOneThrough(Quiz::class,Room::class);
+    }
+
+    public function scopeStudents($query)
+    {
+        return $query->where('type','student');
+    }
+
+    public function scopeTeachers($query)
+    {
+        return $query->where('type','teacher');
+    }
+
+    public function scopeBestStudents($query)
+    {
+        return $query->students()->whereHas('profile',function(Builder $query){
+            $query->where('point','>',0)->orderByDesc('point');
+        });
+    }
+
 }

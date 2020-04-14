@@ -20,7 +20,7 @@
 
     <div class="col-md-3 d-flex align-items-center flex-column mt-2 mt-md-0">
 
-      <a :href="room.link" class="btn my-1 btn-light btn-block py-0" style="color:#2f3542 !important;">ورود به کلاس</a>
+      <a :href=" '/quiz/panel/room/' + room.link" class="btn my-1 btn-light btn-block py-0" style="color:#2f3542 !important;">ورود به کلاس</a>
 
     </div>
 

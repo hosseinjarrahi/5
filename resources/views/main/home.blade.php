@@ -18,6 +18,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 my-2">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-3 d-flex flex-row justify-content-center px-3">
+                                <a href="/quiz" class="mx-1">
+                                    <img src="{{ asset('img/go-to-quizviran.png') }}"
+                                         class="p-1 quiz-button img-fluid" alt="dashboard">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}

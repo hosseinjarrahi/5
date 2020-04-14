@@ -10,6 +10,8 @@ class Comment extends Model
 
     protected $with = ['user'];
 
+    protected $perPage = 20;
+
     public function commentable()
     {
         return $this->morphTo();

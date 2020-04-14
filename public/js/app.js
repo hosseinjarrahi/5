@@ -2337,7 +2337,7 @@ __webpack_require__.r(__webpack_exports__);
         to: '/',
         title: 'خانه'
       }, {
-        to: '/quizviran',
+        to: '/quiz',
         title: 'کوییزویران'
       }, {
         to: '/فروشگاه',
@@ -3335,6 +3335,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3342,8 +3344,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["type", "id"],
+  data: function data() {
+    return {
+      comment: ""
+    };
+  },
+  methods: {
+    send: function send() {
+      var _this = this;
+
+      this.load();
+      axios.post("/comment", {
+        comment: this.comment,
+        type: this.type,
+        id: this.id
+      }).then(function (res) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: 'پس از تایید ، نظر شما نمایش داده خواهد شد',
+          icon: 'success',
+          timer: 5000,
+          confirmButtonText: "بسیار خوب"
+        });
+      })["catch"](function (err) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: 'مشکلی در ثبت نظر شما به وجو آمده است.',
+          icon: 'success',
+          timer: 5000,
+          confirmButtonText: "بسیار خوب"
+        });
+      }).then(function () {
+        _this.closeLoad();
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4278,7 +4315,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #57606f;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-98fac016], .slide-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-98fac016], .slide-leave-to[data-v-98fac016] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody[data-v-98fac016]::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody[data-v-98fac016]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody[data-v-98fac016]::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-98fac016] {\n  background: #57606f;\n}\n.bg-red[data-v-98fac016] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-98fac016] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-98fac016], .fade-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-98fac016], .fade-leave-to[data-v-98fac016] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-98fac016], .slide-leave-active[data-v-98fac016] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-98fac016], .slide-leave-to[data-v-98fac016] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-98fac016] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody[data-v-98fac016]::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody[data-v-98fac016]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody[data-v-98fac016]::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel[data-v-98fac016] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-98fac016] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-98fac016] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-98fac016]:hover {\n  text-decoration: unset;\n}\na[data-v-98fac016], a[data-v-98fac016]:hover, a[data-v-98fac016]:active {\n  color: unset;\n}\nbody[data-v-98fac016] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-98fac016] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-98fac016] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-98fac016] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-98fac016] {\n  cursor: pointer;\n}\n.header-home[data-v-98fac016] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-98fac016] {\n  background-color: #57606f;\n}\n.add-comment-bg[data-v-98fac016]:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}\n.time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #df0000;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \": \";\n}", ""]);
 
 // exports
 
@@ -4297,7 +4334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #57606f;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-7489730a], .slide-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-7489730a], .slide-leave-to[data-v-7489730a] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody[data-v-7489730a]::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody[data-v-7489730a]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody[data-v-7489730a]::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.bg[data-v-7489730a] {\n  background: #57606f;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
+exports.push([module.i, ".bg-gray[data-v-7489730a] {\n  background: #57606f;\n}\n.bg-red[data-v-7489730a] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-7489730a] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-7489730a], .fade-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-7489730a], .fade-leave-to[data-v-7489730a] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-7489730a], .slide-leave-active[data-v-7489730a] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-7489730a], .slide-leave-to[data-v-7489730a] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-7489730a] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody[data-v-7489730a]::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody[data-v-7489730a]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody[data-v-7489730a]::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel[data-v-7489730a] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-7489730a] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-7489730a] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-7489730a]:hover {\n  text-decoration: unset;\n}\na[data-v-7489730a], a[data-v-7489730a]:hover, a[data-v-7489730a]:active {\n  color: unset;\n}\nbody[data-v-7489730a] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-7489730a] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-7489730a] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-7489730a] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-7489730a] {\n  cursor: pointer;\n}\n.header-home[data-v-7489730a] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-7489730a] {\n  background-color: #57606f;\n}\n.add-comment-bg[data-v-7489730a]:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}\n.bg[data-v-7489730a] {\n  background: #57606f;\n  /* fallback for old browsers */\n}\n.parent[data-v-7489730a] {\n  top: -10px;\n  left: 0;\n  position: absolute;\n}\n.title[data-v-7489730a] {\n  color: white;\n  background: #2f3542;\n  /* fallback for old browsers */\n  margin: auto;\n}", ""]);
 
 // exports
 
@@ -4316,26 +4353,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray {\n  background: #57606f;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".bg-gray[data-v-c6a0fb3e] {\n  background: #57606f;\n}\n.bg-red[data-v-c6a0fb3e] {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray[data-v-c6a0fb3e] {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active[data-v-c6a0fb3e], .fade-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.fade-enter[data-v-c6a0fb3e], .fade-leave-to[data-v-c6a0fb3e] {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active[data-v-c6a0fb3e], .slide-leave-active[data-v-c6a0fb3e] {\n  transition: all 0.5s;\n}\n.slide-enter[data-v-c6a0fb3e], .slide-leave-to[data-v-c6a0fb3e] {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader[data-v-c6a0fb3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody[data-v-c6a0fb3e]::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody[data-v-c6a0fb3e]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody[data-v-c6a0fb3e]::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel[data-v-c6a0fb3e] {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel[data-v-c6a0fb3e] {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n*[data-v-c6a0fb3e] {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na[data-v-c6a0fb3e]:hover {\n  text-decoration: unset;\n}\na[data-v-c6a0fb3e], a[data-v-c6a0fb3e]:hover, a[data-v-c6a0fb3e]:active {\n  color: unset;\n}\nbody[data-v-c6a0fb3e] {\n  background-color: #f5f5f5;\n}\n.circle[data-v-c6a0fb3e] {\n  border-radius: 100%;\n}\n.white-shadow[data-v-c6a0fb3e] {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box[data-v-c6a0fb3e] {\n  border: 1px solid #2f3542;\n}\n.pointer[data-v-c6a0fb3e] {\n  cursor: pointer;\n}\n.header-home[data-v-c6a0fb3e] {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg[data-v-c6a0fb3e] {\n  background-color: #57606f;\n}\n.add-comment-bg[data-v-c6a0fb3e]:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}", ""]);
+exports.push([module.i, ".bg-gray {\n  background: #57606f;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg {\n  background-color: #57606f;\n}\n.add-comment-bg:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
 
 // exports
 
@@ -41965,36 +41983,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppCountDown.vue?vue&type=style&index=0&id=5269a11b&scoped=true&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppCountDown.vue?vue&type=style&index=0&id=5269a11b&scoped=true&lang=css& ***!
@@ -46737,20 +46725,6 @@ var render = function() {
                                   "a",
                                   {
                                     staticClass: "dropdown-item",
-                                    attrs: { href: "/purchases" }
-                                  },
-                                  [
-                                    _c("span", {
-                                      staticClass: "fas fa-shopping-bag mr-1"
-                                    }),
-                                    _vm._v("خرید ها")
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "dropdown-item",
                                     attrs: { href: "/profile" }
                                   },
                                   [
@@ -48275,10 +48249,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e& ***!
+  \************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -48290,23 +48264,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "w-100 mt-5" }, [
+    _c("textarea", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.comment,
+          expression: "comment"
+        }
+      ],
+      staticClass: "form-control bg-gray",
+      attrs: { rows: "10" },
+      domProps: { value: _vm.comment },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.comment = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c(
+      "span",
+      { staticClass: "btn bg-dark-gray my-2", on: { click: _vm.send } },
+      [_vm._v("افزودن نظر")]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-100" }, [
-      _c("form", { attrs: { action: "" } }, [
-        _c("textarea", {
-          staticClass: "form-control add-comment-bg",
-          attrs: { name: "", id: "", rows: "10" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -63624,11 +63612,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true& */ "./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true&");
+/* harmony import */ var _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppCommentDialog.vue?vue&type=template&id=c6a0fb3e& */ "./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&");
 /* harmony import */ var _AppCommentDialog_vue_vue_type_script_scoped_true_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppCommentDialog.vue?vue&type=script&scoped=true&lang=js& */ "./resources/js/components/main/AppCommentDialog.vue?vue&type=script&scoped=true&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& */ "./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -63636,13 +63622,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _AppCommentDialog_vue_vue_type_script_scoped_true_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "c6a0fb3e",
+  null,
   null
   
 )
@@ -63668,35 +63654,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&":
-/*!*********************************************************************************************************************!*\
-  !*** ./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& ***!
-  \*********************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=style&index=0&id=c6a0fb3e&scoped=true&lang=scss&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_style_index_0_id_c6a0fb3e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true& ***!
-  \******************************************************************************************************/
+/***/ "./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e& ***!
+  \******************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppCommentDialog.vue?vue&type=template&id=c6a0fb3e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/main/AppCommentDialog.vue?vue&type=template&id=c6a0fb3e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppCommentDialog_vue_vue_type_template_id_c6a0fb3e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

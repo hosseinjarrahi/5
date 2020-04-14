@@ -10,6 +10,6 @@ $factory->define(Event::class, function (Faker $faker) {
         'body' => '<img class="w-100 h-100" src="/img/event.jpg">',
         'start' => now(),
         'type' => 'top',
-        'end' => now()->addYear(1)
+        'end' => now()
     ];
 });

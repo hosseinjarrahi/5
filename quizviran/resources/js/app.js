@@ -20,6 +20,10 @@ Vue.component('app-event',require('./components/AppEvent.vue').default);
 Vue.component('app-count-down',require('./components/AppCountDown.vue').default);
 Vue.component('app-exam',require('./components/AppExam.vue').default);
 Vue.component('app-exam-card',require('./components/AppExamCard.vue').default);
+Vue.component('app-error-list',require('./components/AppErrorList.vue').default);
+Vue.component('app-panel-links-header',require('./components/AppPanelLinksHeader.vue').default);
+Vue.component('app-content-border-box',require('./components/AppContentBorderBox.vue').default);
+Vue.component('app-comments',require('./components/AppComments.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);
@@ -44,6 +48,11 @@ async function init(){
     const app = new Vue({
         el: '#app',
         store,
+        data(){
+          return {
+              EventBus
+          }
+        },
         mounted(){
             document.getElementById('pageLoader').classList.remove('d-flex');
             document.getElementById('pageLoader').classList.add('d-none');

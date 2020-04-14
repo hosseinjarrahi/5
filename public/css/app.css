@@ -4586,3 +4586,13 @@ body {
   padding-bottom: 30px;
 }
 
+.add-comment-bg {
+  background-color: #57606f;
+}
+
+.add-comment-bg:focus {
+  background-color: #57606f !important;
+  border-color: #2f3542 !important;
+  box-shadow: 0px 2px 5px #2f3542;
+}
+

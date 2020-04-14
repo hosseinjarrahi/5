@@ -100,8 +100,7 @@
                         </app-content-border-box>
                     </div>
                     @if(auth()->check())
-                        <app-comment-dialog class="mt-5"></app-comment-dialog>
-                        <span class="btn bg-dark-gray my-2">افزودن نظر</span>
+                        <app-comment-dialog id='{{ $product->id }}' type='{{ get_class($product) }}'></app-comment-dialog>
                     @else
                         <div class="alert alert-info mt-3">
                             <span class="fas fa-info"> </span>

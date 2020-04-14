@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->text('bio')->nullable();
             $table->timestamp('birth')->nullable();
             $table->string('avatar')->nullable();
+            $table->unsignedInteger('point')->nullable();
             $table->unsignedInteger('user_id')->unique();
             $table->timestamps();
         });

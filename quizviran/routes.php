@@ -5,6 +5,13 @@ Route::group(['prefix' => 'quiz'], function () {
     Route::resource('/exam', 'QuizController');
     Route::post('/complete', 'QuizController@complete');
     Route::get('/results/{quiz}','QuizController@result');
+
+    Route::group(['prefix' => 'panel'], function () {
+        Route::get('/','PanelController@home');
+        Route::get('/rooms','PanelController@home');
+        Route::resource('/room','RoomController');
+    });
+
 });
 
 

@@ -82,22 +82,38 @@ a:hover{
 a,a:hover,a:active{
   color:unset;
 }
+
 body{
   background-color: $backgroundColor;
 }
+
 .circle{
   border-radius:100%;
 }
+
 .white-shadow{
   box-shadow: 0px 0px 20px $backgroundColor;
 }
+
 .app-border-box{
   border:1px solid #2f3542;
 }
+
 .pointer{
   cursor: pointer;
 }
+
 .header-home{
   padding: 100px 0px;
   padding-bottom: 30px;
+}
+
+.add-comment-bg{
+  background-color: $gray;
+}
+
+.add-comment-bg:focus{
+  background-color: $gray !important;
+  border-color: $darkGray !important;
+  box-shadow: 0px 2px 5px $darkGray;
 }

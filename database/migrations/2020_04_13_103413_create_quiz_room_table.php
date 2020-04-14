@@ -14,7 +14,7 @@ class CreateQuizRoomTable extends Migration
     public function up()
     {
         Schema::create('quiz_room', function (Blueprint $table) {
-            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('room_id');
             $table->unsignedBigInteger('quiz_id');
         });
     }
