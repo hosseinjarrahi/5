@@ -19,5 +19,6 @@ Route::post('/check-coupon', 'main\HomeController@checkCoupon');
 Route::get('/notifications', 'main\HomeController@notifications');
 
 Route::resource('/comment', 'main\CommentController');
+Route::resource('/file', 'FileController');
 Route::get('/{category:slug}/{product:slug}', 'main\HomeController@product');
 Route::get('/{category:slug}', 'main\HomeController@category');

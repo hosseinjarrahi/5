@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "001d04b3daf5176907cf101b722eb6e4",
+    "content-hash": "2416e39c776160c68f014dcd4618ec99",
     "packages": [
         {
             "name": "alibayat/laravel-categorizable",
@@ -4357,6 +4357,59 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "imanghafoori/laravel-microscope",
+            "version": "v0.1.53",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imanghafoori1/laravel-microscope.git",
+                "reference": "e103ca5ad820b0f898a390d85fc005dd20109dd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/e103ca5ad820b0f898a390d85fc005dd20109dd8",
+                "reference": "e103ca5ad820b0f898a390d85fc005dd20109dd8",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*|6.*|7.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Imanghafoori\\LaravelMicroscope\\LaravelMicroscopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Imanghafoori\\LaravelMicroscope\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Iman",
+                    "email": "imanghafoori1@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Auto test your laravel application",
+            "homepage": "https://github.com/imanghafoori1/laravel-microscope",
+            "keywords": [
+                "laravel-microscope",
+                "laravel-testing"
+            ],
+            "time": "2020-04-15T03:02:41+00:00"
         },
         {
             "name": "mockery/mockery",

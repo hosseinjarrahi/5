@@ -14,7 +14,10 @@
             <div class="col-md-6 col-12 my-2 position-relative">
                 <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
                     @if($rooms->isEmpty())
-                        <a class="btn btn-outline-light btn-block">
+                        <div class="p-3 text-center my-2">
+                            تا کنون کلاسی توسط شما ساخته نشده است.
+                        </div>
+                        <a href="{{ url('/quiz/panel/room/create') }}" class="btn btn-outline-light btn-block">
                             <span class="fas fa-plus"></span>
                             <span>ایجاد کلاس</span>
                         </a>

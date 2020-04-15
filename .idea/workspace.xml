@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quiz.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/css/sass.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/main/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quiz/AdminController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quiz/FileController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quiz/HomeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quiz/QuizController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quiz/SendController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UploadRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UploadRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_13_131903_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_13_131903_create_files_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppLoading.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppLoading.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/globalMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/globalMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,6 +188,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
       <path value="$PROJECT_DIR$/vendor/alibayat/laravel-categorizable" />
       <path value="$PROJECT_DIR$/vendor/kalnoy/nestedset" />
+      <path value="$PROJECT_DIR$/vendor/imanghafoori/laravel-microscope" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZQmnuc1zDuLjGGLkYwM4ZKAnKv" />
@@ -241,6 +277,8 @@
       <workItem from="1586435161702" duration="3593000" />
       <workItem from="1586450138774" duration="3080000" />
       <workItem from="1586538615789" duration="169000" />
+      <workItem from="1586931690518" duration="3391000" />
+      <workItem from="1586935701719" duration="6972000" />
     </task>
     <servers />
   </component>
@@ -336,17 +374,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1584885057737" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1586438402451">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1586941895975">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1586438402451" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1586452575381">
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1586941895975" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1586937780885">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1586452575381" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586452621147">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1586937780885" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586943649840">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586452621147" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1586943649840" />
   </component>
 </project>

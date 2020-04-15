@@ -13,4 +13,9 @@ class File extends Model
         return $this->morphTo();
     }
 
+    public function isOwn()
+    {
+        return auth()->id() == $this->user_id;
+    }
+
 }

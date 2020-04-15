@@ -17,13 +17,13 @@ class CommentController extends Controller
             'commentable_type' => $request->type,
             'user_id' => auth()->id()
         ]);
-
+    
         return response(['message' => 'پس از تایید ، نظر شما نمایش داده خواهد شد.']);
     }
 
     public function update(CommentRequest $request, Comment $comment)
     {
-        if($comment->isOwn(auth()->id()))
+        if($comment->isOwn())
         {
             $comment->comment = $request->comment;
             $comment->show = false;
@@ -36,7 +36,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
-        if ($comment->isOwn(auth()->id())) {
+        if ($comment->isOwn()) {
             $comment->delete();
             return response(['message' => 'با موفقیت حذف شد.']);
         }

@@ -10,6 +10,9 @@ Route::group(['prefix' => 'quiz'], function () {
         Route::get('/','PanelController@home');
         Route::get('/rooms','PanelController@home');
         Route::resource('/room','RoomController');
+        Route::post('/room/comment','RoomController@addComment');
+        Route::put('/room/comment/{comment}','RoomController@updateComment');
+        Route::delete('/room/comment/{comment}','RoomController@deleteComment');
     });
 
 });

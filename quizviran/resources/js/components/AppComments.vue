@@ -13,20 +13,21 @@
             class="pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto"
             style="overflow:hidden"
           >{{ comment.user.name }}</span>
+
           <div class="my-3 p-3 bg-dark-gray rounded">
 
-            <p class="px-2">
-            <div v-if="!editing">{{ comment.comment}}</div>
-            <textarea class="form-control" rows="5" v-if="editing" v-model="text"></textarea>
-            </p>
+            <div class="px-2">
+              <div v-if="!editing">{{ text }}</div>
+              <textarea class="form-control" rows="5" v-if="editing" v-model="text"></textarea>
+            </div>
 
-            <div class="tool-box" v-if="auth == comment.user_id && !editing">
+            <div class="tool-box" v-if="editable && !editing">
               <span class="pointer fas fa-edit p-1 mx-1" @click="editing = !editing"></span>
               <span class="pointer text-danger fas fa-trash p-1 mx-1" @click="deleteModal = true"></span>
             </div>
 
-            <div class="tool-box" v-if="auth == comment.user_id && editing">
-              <span class="pointer fas fa-times text-danger p-1 mx-1" @click="editing = !editing"></span>
+            <div class="tool-box" v-if="editable && editing">
+              <span class="pointer fas fa-times text-danger p-1 mx-1" @click="cancel"></span>
               <span class="pointer text-success fas fa-check-circle p-1 mx-1" @click="edit"></span>
             </div>
 
@@ -35,7 +36,12 @@
               <button class="btn btn-primary" @click="deleteModal=false">خیر</button>
             </app-modal>
 
+            <div class="w-100 p-2 rounded my-2 bg-gray" v-if="comment.files.length > 0">
+              <a class="d-block p-2" :href="file.file" v-for="(file,index) in comment.files">{{index+1}} <span class="fas fa-arrow-left"></span> <span class="fas fa-download"></span> <span>دانلود فایل پیوست شده</span></a>
+            </div>
+
           </div>
+
         </div>
       </div>
     </div>
@@ -46,20 +52,22 @@
     import Swal from 'sweetalert2';
 
     export default {
-        props: ['comment'],
+        props: {
+            'comment':{default:''},
+        },
         data() {
             return {
                 deleteModal: false,
                 deleted: false,
                 editing: false,
                 text: this.comment.comment,
-                auth:window.EventBus.auth
+                auth: window.EventBus.auth
             }
         },
         methods: {
             edit() {
                 this.load();
-                axios.put('/comment/' + this.comment.id, {comment: this.text})
+                axios.put('/quiz/panel/room/comment/' + this.comment.id, {comment: this.text})
                     .then(res => {
                         Swal.fire({
                             text: res.data.message,
@@ -67,7 +75,6 @@
                             timer: 5000,
                             confirmButtonText: 'بسیار خوب'
                         });
-
                     })
                     .catch(err => {
                         Swal.fire({
@@ -77,14 +84,14 @@
                             confirmButtonText: 'بسیار خوب'
                         });
                     })
-                .then(()=>{
-                    this.closeLoad();
-                    this.editing = false;
-                });
+                    .then(() => {
+                        this.closeLoad();
+                        this.editing = false;
+                    });
             },
             deleteComment() {
                 this.load();
-                axios.delete('/comment/' + this.comment.id)
+                axios.delete('/quiz/panel/room/comment/' + this.comment.id)
                     .then(res => {
                         Swal.fire({
                             text: res.data.message,
@@ -106,6 +113,15 @@
                     this.deleteModal = false;
                 });
             },
+            cancel(){
+                this.editing = !this.editing;
+                this.text = this.comment.comment;
+            }
+        },
+        computed:{
+            editable(){
+                return ((this.auth == this.comment.user_id) || comment.user.type == 'teacher');
+            }
         }
     };
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Quizviran\Models\Room;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -22,8 +23,20 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function isOwn($id)
+    public function files()
     {
-        return $this->user_id == $id;
+        return $this->morphMany(File::class,'fileable');
+    }
+
+    public function isOwn()
+    {
+        return $this->user_id == auth()->id();
+    }
+
+    public function isOwnMember()
+    {
+        if(auth()->user()->type != 'teacher')
+            return false;
+        return true;
     }
 }

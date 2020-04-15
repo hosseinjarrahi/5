@@ -1,7 +1,7 @@
 export default {
     methods:{
-        load(){
-            window.EventBus.$emit('loading');
+        load(complete){
+            window.EventBus.$emit('loading',complete);
         },
         closeLoad(){
             window.EventBus.$emit('notLoading');

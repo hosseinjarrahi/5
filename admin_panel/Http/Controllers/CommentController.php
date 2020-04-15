@@ -16,9 +16,11 @@ class CommentController extends Controller
 
     public function update(Comment $comment)
     {
+        if(!$comment->isOwn)
+            return response(['message' => 'امکان ویرایش این نظر برای شما فراهم نیست.']);
         $comment->show = !$comment->show;
         $comment->save();
-        return back();
+        return back(['message' => 'با موفقیت انجام شد']);
     }
 
     public function destroy(User $user)

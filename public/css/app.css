@@ -4596,3 +4596,8 @@ body {
   box-shadow: 0px 2px 5px #2f3542;
 }
 
+.quiz-button {
+  border-radius: 10px !important;
+  box-shadow: -0.2px 3px 7px 0px rgba(0, 0, 0, 0.9) !important;
+}
+
