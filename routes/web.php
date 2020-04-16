@@ -1,10 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'main\HomeController@home');
+Route::get('/', 'main\HomeController@home')->name('login');
 
 Route::post('/login', 'RegisterController@login');
-Route::get('/logout', 'RegisterController@logout')->middleware('auth');
+Route::get('/logout', 'RegisterController@logout')->name('logout')->middleware('auth');
 Route::post('/reset-password', 'RegisterController@resetPassword')/*->middleware('throttle:1,3600')*/;
 Route::post('/register', 'RegisterController@register')/*->middleware('throttle:5,3600')*/;
 Route::post('/verify', 'RegisterController@verify');

@@ -9,6 +9,11 @@ use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(CommentRequest $request)
     {
         Comment::create([

@@ -23,7 +23,7 @@
                                          class="p-1 quiz-button img-fluid" alt="create-class">
                                 </a>
                             @else
-                                <a href="/join-class" class="mx-1">
+                                <a href="/quiz/join-class" class="mx-1">
                                     <img src="{{ asset('quiz/assets/img/join-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="join-class">
                                 </a>
@@ -102,10 +102,18 @@
                 <div class="col-md-6 col-12 my-2 position-relative">
                     <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
                         @if($rooms->isEmpty())
-                            <a class="btn btn-outline-light btn-block">
-                                <span class="fas fa-plus"></span>
-                                <span>عضویت در کلاس</span>
-                            </a>
+                            @if(auth()->user()->type == 'teacher')
+                                <a href="/quiz/panel/room/create" class="btn btn-outline-light btn-block">
+                                    <span class="fas fa-plus"></span>
+                                    <span>ایجاد کلاس</span>
+                                </a>
+
+                            @else
+                                <a href="/quiz/panel/join-class" class="btn btn-outline-light btn-block">
+                                    <span class="fas fa-plus"></span>
+                                    <span>عضویت در کلاس</span>
+                                </a>
+                            @endif
                         @endif
                         <app-main-box-last-classes v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
                     </app-main-box>
@@ -120,10 +128,3 @@
         @endif
     </div>
 @endsection
-<script>
-    import AppBestUsersItem from "../js/components/AppBestUsersItem";
-
-    export default {
-        components: {AppBestUsersItem}
-    }
-</script>

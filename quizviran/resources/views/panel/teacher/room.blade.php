@@ -19,7 +19,9 @@
                     <h2 class="p-0 m-0">{{ $room->name }}</h2>
                     <div class="dropdown-divider d-block d-md-none"></div>
                     <div class="d-flex ml-md-auto align-items-center flex-column flex-md-row ">
-                        <div class="mx-3"><span>کد عضویت : </span><span>{{ $room->code }}</span></div>
+                        @if(auth()->user()->type == 'teacher')
+                            <div class="mx-3"><span>کد عضویت : </span><span>{{ $room->code }}</span></div>
+                        @endif
                         <div class="dropdown-divider d-block d-md-none"></div>
                         <div class="mx-3"><span>تعداد اعضاء : </span><span>{{ $room->members()->count() }}</span></div>
                         <div class="dropdown-divider d-block d-md-none"></div>
@@ -37,45 +39,67 @@
 
                     <div class="col-12 col-md-3">
                         <div class="rounded bg-dark-gray p-3">
+                            @if(auth()->user()->type == 'teacher')
+                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}">ایجاد آزمون</a>
+                                </div>
+                                <div class="dropdown-divider"></div>
 
-                            <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}">ایجاد آزمون</a>
-                            </div>
-                            <div class="dropdown-divider"></div>
+                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a href="/quiz/panel/room/{{$room->link}}/members">اعضاء کلاس</a>
+                                </div>
+                                <div class="dropdown-divider"></div>
 
-                            <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a href="/quiz/panel/room/{{$room->link}}/members">اعضاء کلاس</a>
-                            </div>
-                            <div class="dropdown-divider"></div>
-
-                            <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a>ایجاد تکلیف</a>
-                                <span class="badge badge-primary position-absolute"
-                                      style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a>ایجاد تکلیف</a>
+                                    <span class="badge badge-primary position-absolute"
+                                          style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                 </span>
-                            </div>
-                            <div class="dropdown-divider"></div>
+                                </div>
+                                <div class="dropdown-divider"></div>
 
-                            <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a>تکالیف ارسالی</a>
-                                <span class="badge badge-primary position-absolute"
-                                      style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a>تکالیف ارسالی</a>
+                                    <span class="badge badge-primary position-absolute"
+                                          style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
+                                    </span>
+                                </div>
+                            @else
+                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a href="/quiz/panel/room/{{$room->link}}/exams">آزمون ها</a>
+                                </div>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a>تکالیف</a>
+                                    <span class="badge badge-primary position-absolute"
+                                          style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                 </span>
-                            </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a>لیگ</a>
+                                    <span class="badge badge-primary position-absolute"
+                                          style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                     </div>
 
                     <div class="col-12 col-md-7">
                         <div class="row">
                             <div class="col-12 p-0 mt-5 my-md-0">
-                                    <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
+                                <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
                             </div>
                             <div class="col-12">
                                 <app-content-border-box title="گفت و گوها">
                                     <div class="container">
                                         <div class="mt-3 row justify-content-center align-items-center">
                                             @if(!$room->comments->isEmpty())
-                                                <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :comment="comment"></app-comments>
+                                                <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :comment="comment"
+                                                              type="{{ auth()->user()->type }}"></app-comments>
                                             @else
                                                 <div class="d-block">گفت و گویی وجود ندارد ...</div>
                                             @endif
@@ -101,7 +125,10 @@
                                         @endforeach
                                     @else
                                         <div class="d-block text-center">آزمونی وجود ندارد...</div>
-                                        <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}" class="d-block my-2 btn bg-dark-gray py-0 text-center"><span class="fas fa-plus mx-1"></span>ایجاد آزمون</a>
+                                        @if(auth()->user()->type == 'teacher')
+                                            <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}"
+                                               class="d-block my-2 btn bg-dark-gray py-0 text-center"><span class="fas fa-plus mx-1"></span>ایجاد آزمون</a>
+                                        @endif
                                     @endif
                                 </div>
                             </app-content-border-box>

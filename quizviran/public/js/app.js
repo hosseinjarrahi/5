@@ -2014,11 +2014,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    'comment': {
-      "default": ''
+    comment: {
+      "default": function _default() {
+        return {
+          'comment': ''
+        };
+      }
+    },
+    type: {
+      "default": null
     }
   },
   data: function data() {
@@ -2089,7 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     editable: function editable() {
-      return this.auth == this.comment.user_id || comment.user.type == 'teacher';
+      return this.auth == this.comment.user_id || this.type == 'teacher';
     }
   }
 });

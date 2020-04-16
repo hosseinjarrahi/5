@@ -110,6 +110,9 @@ class User extends Authenticatable
 
     public function hasRoom($room)
     {
-        return $this->id == $room->user->id;
+        if($this->type == 'teacher')
+            return $this->id == $room->user->id;
+        return !$room->members()->where('id',$this->id)->first()->isEmpty();
     }
+
 }

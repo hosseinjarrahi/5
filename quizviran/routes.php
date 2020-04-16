@@ -17,6 +17,9 @@ Route::group(['prefix' => 'quiz'], function () {
 
         Route::get('/room/{room}/quizzes', 'QuizController@quizzes');
 
+        Route::get('/join-class', 'StudentController@join');
+        Route::post('/join-class', 'StudentController@addStudent');
+
     });
 
 });

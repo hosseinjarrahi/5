@@ -37,7 +37,8 @@
             </app-modal>
 
             <div class="w-100 p-2 rounded my-2 bg-gray" v-if="comment.files.length > 0">
-              <a class="d-block p-2" :href="file.file" v-for="(file,index) in comment.files">{{index+1}} <span class="fas fa-arrow-left"></span> <span class="fas fa-download"></span> <span>دانلود فایل پیوست شده</span></a>
+              <a class="d-block p-2" :href="file.file" v-for="(file,index) in comment.files">{{index+1}} <span class="fas fa-arrow-left"></span> <span
+                class="fas fa-download"></span> <span>دانلود فایل پیوست شده</span></a>
             </div>
 
           </div>
@@ -53,7 +54,8 @@
 
     export default {
         props: {
-            'comment':{default:''},
+            comment: {default: function(){ return {'comment' : ''}}},
+            type:{default:null}
         },
         data() {
             return {
@@ -61,7 +63,7 @@
                 deleted: false,
                 editing: false,
                 text: this.comment.comment,
-                auth: window.EventBus.auth
+                auth: window.EventBus.auth,
             }
         },
         methods: {
@@ -113,14 +115,14 @@
                     this.deleteModal = false;
                 });
             },
-            cancel(){
+            cancel() {
                 this.editing = !this.editing;
                 this.text = this.comment.comment;
             }
         },
-        computed:{
-            editable(){
-                return ((this.auth == this.comment.user_id) || comment.user.type == 'teacher');
+        computed: {
+            editable() {
+                return ((this.auth == this.comment.user_id) || this.type == 'teacher');
             }
         }
     };

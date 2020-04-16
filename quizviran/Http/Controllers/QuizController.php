@@ -14,7 +14,8 @@ class QuizController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['result']);
+        if(!auth()->check())
+            return abort(404);
     }
 
     public function quizzes($room)
