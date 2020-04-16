@@ -73,8 +73,8 @@ class RegisterController extends Controller
         if (! $user) {
             return response(['message' => 'کاربری با این اطلاعات وجود ندارد.'], 400);
         }
-        $user = UserRepo::modifyUser($user);
-        event(new ResetPasswordEvent($request->phone, $user->password, $this->checkIsPhoneOrEmail($request->phone)));
+        $pass = UserRepo::modifyUser($user);
+        event(new ResetPasswordEvent($request->phone, $pass, $this->checkIsPhoneOrEmail($request->phone)));
 
         return response(['message' => 'رمز عبور جدید شما تا لحظاتی دیگر ارسال می شود.']);
     }

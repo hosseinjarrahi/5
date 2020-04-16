@@ -113,7 +113,7 @@
                         confirmButtonText: 'بسیار خوب',
                         timer: 5000
                     });
-                    window.reload();
+                    window.location.reload();
                 })
                 .catch(err => {
                     Swal.fire({

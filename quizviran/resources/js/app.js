@@ -25,6 +25,8 @@ Vue.component('app-panel-links-header',require('./components/AppPanelLinksHeader
 Vue.component('app-content-border-box',require('./components/AppContentBorderBox.vue').default);
 Vue.component('app-comments',require('./components/AppComments.vue').default);
 Vue.component('app-panel-room-add-gap',require('./components/AppPanelRoomAddGap.vue').default);
+Vue.component('app-question-make',require('./components/AppQuestionMake.vue').default);
+Vue.component('app-quiz-make',require('./components/AppQuizMake.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

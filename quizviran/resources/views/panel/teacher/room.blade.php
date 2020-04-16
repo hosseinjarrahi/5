@@ -39,12 +39,12 @@
                         <div class="rounded bg-dark-gray p-3">
 
                             <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a href="">ایجاد آزمون</a>
+                                <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}">ایجاد آزمون</a>
                             </div>
                             <div class="dropdown-divider"></div>
 
                             <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                <a href="">اعضاء کلاس</a>
+                                <a href="/quiz/panel/room/{{$room->link}}/members">اعضاء کلاس</a>
                             </div>
                             <div class="dropdown-divider"></div>
 
@@ -101,7 +101,7 @@
                                         @endforeach
                                     @else
                                         <div class="d-block text-center">آزمونی وجود ندارد...</div>
-                                        <div class="d-block my-2 btn bg-dark-gray py-0 text-center"><span class="fas fa-plus mx-1"></span>ایجاد آزمون</div>
+                                        <a href="{{ url("/quiz/panel/room/{$room->link}/quizzes") }}" class="d-block my-2 btn bg-dark-gray py-0 text-center"><span class="fas fa-plus mx-1"></span>ایجاد آزمون</a>
                                     @endif
                                 </div>
                             </app-content-border-box>

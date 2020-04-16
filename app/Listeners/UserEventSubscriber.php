@@ -2,10 +2,13 @@
 
 namespace App\Listeners;
 
+use App\Mail\ResetPassword;
+use App\Mail\VerificationCode;
 use App\Events\ResetPasswordEvent;
 use App\Events\SendVerificationCode;
 use App\Events\UserRegisterEvent;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class UserEventSubscriber
 {
@@ -13,19 +16,20 @@ class UserEventSubscriber
 
     private $sender = '10003334444';
 
-    private function sndNewPasswordByEmail($phone, $password)
+    private function sendNewPasswordByEmail($email, $password)
     {
-        Log::info($phone . ' ' . $password);
+        Mail::to($email)
+            ->send(new ResetPassword($password));
     }
 
     private function sendEmail()
     {
-        $receptor = (string)session('data')['phone'];
-        $message = "کد تایید شما : " . session('code') . " تیزویران ";
-        Log::info($message);
+        $receptor = (string)session('data')['email'];
+        Mail::to($receptor)
+        ->send(new VerificationCode());
     }
 
-    private function sndNewPasswordBySMS($phone, $password)
+    private function sendNewPasswordBySMS($phone, $password)
     {
         $receptor = (string)$phone;
         $message = "رمز جدید شما : " . $password . " تیزویران ";
@@ -51,11 +55,11 @@ class UserEventSubscriber
         ]);
 
         if ($event->driver == 'email') {
-            $this->sendEmail();
             $data = session('data');
             $data['email'] = $data['phone'];
             unset($data['phone']);
             session(['data' => $data]);
+            $this->sendEmail();
         } elseif ($event->driver == 'sms') {
             $this->sendVerifySMS();
         }
@@ -64,9 +68,9 @@ class UserEventSubscriber
     public function resetPassword($event)
     {
         if ($event->driver == 'email') {
-            $this->sndNewPasswordByEmail($event->phone, $event->password);
+            $this->sendNewPasswordByEmail($event->phone, $event->password);
         } elseif ($event->driver == 'sms') {
-            $this->sndNewPasswordBySMS($event->phone, $event->password);
+            $this->snedNewPasswordBySMS($event->phone, $event->password);
         }
     }
 

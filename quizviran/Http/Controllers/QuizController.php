@@ -4,6 +4,7 @@ namespace Quizviran\Http\Controllers;
 
 use App\Models\User;
 use Quizviran\Models\Quiz;
+use Quizviran\Models\Room;
 use Quizviran\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,6 +16,29 @@ class QuizController extends Controller
     {
         $this->middleware('auth')->except(['result']);
     }
+
+    public function quizzes($room)
+    {
+        $room = Room::with(['quizzes'])->where('link',$room)->first();
+
+        return view('Quizviran::panel.teacher.quizManage',compact('room'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function quizDetail(Quiz $quiz)
     {
@@ -32,12 +56,21 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+        $room = Room::with('user')->findOrFail($request->room);
+        if(!auth()->user()->hasRoom($room))
+            return response(['error']);
+
         $quiz = new Quiz();
         $quiz->name = $request->name;
         $quiz->duration = $request->duration;
         $quiz->start = $request->start;
+        $quiz->desc = $request->desc;
+        $quiz->type = 'private';
         $quiz->show = 1;
+        $quiz->user_id = auth()->id();
+
         if ($quiz->save()) {
+            $room->quizzes()->save($quiz);
             return response(['ok']);
         }
 

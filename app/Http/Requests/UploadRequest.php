@@ -22,7 +22,7 @@ class UploadRequest extends FormRequest
     {
         return [
             'file.mimes' => 'نوع فایل ارسال شده باید از نوع تصویر و یا فایل فشرده باشد.',
-            'file.max' => 'حجم فایل شما زیاد است.'
+            'file.max' => 'حجم فایل شما بیش از حد مجاز است.'
         ];
     }
 }

@@ -23,10 +23,9 @@ class RoomController extends Controller
     public function show($room)
     {
         $room = Room::where('link', $room)->with([
-            'members.count',
             'comments',
             'comments.files'
-        ])->firstOrFail();
+        ])->withCount('members')->firstOrFail();
         $room->created_at = Jalalian::forge($room->created_at);
         $quizzes = QuizResourse::collection($room->quizzes);
 
@@ -55,7 +54,6 @@ class RoomController extends Controller
         return view('Quizviran::panel.teacher.roomCreated', compact('room'));
     }
     public function addComment(Request $request)
-
     {
         $files = collect($request->post('files'));
         $files = File::find($files->pluck('id'));
@@ -86,6 +84,13 @@ class RoomController extends Controller
             return response(['message' => 'با موفقیت حذف شد.']);
         }
         return response(['message' => 'متاسفانه مشکلی رخ داده است.'],400);
+    }
+
+    public function members($room)
+    {
+        $room = Room::where('link',$room)->with('members')->firstOrFail();
+
+        return view('Quizviran::panel.teacher.members',compact('room'));
     }
 
 }

@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'var.required' => 'وارد کردن ایمیل و یا تلفن همراه الزامی است',
+            'variable.required' => 'وارد کردن ایمیل و یا تلفن همراه الزامی است',
             'password.required' => 'وارد کردن رمز عبور الزامی است',
         ];
     }

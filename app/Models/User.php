@@ -108,4 +108,8 @@ class User extends Authenticatable
         });
     }
 
+    public function hasRoom($room)
+    {
+        return $this->id == $room->user->id;
+    }
 }

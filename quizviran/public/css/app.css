@@ -31,3 +31,8 @@ body {
   border-bottom: 2px solid #f5f5f5;
 }
 
+.bg-cover {
+  background-position: center;
+  background-size: cover;
+}
+

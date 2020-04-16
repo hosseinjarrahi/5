@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Slide::class, function (Faker $faker) {
     return [
         'link' => url(''),
-        'pic' => '/img/slide'.random_int(0,1).'.jpg',
+        'pic' => '/img/slide'.random_int(1,2).'.png',
     ];
 });

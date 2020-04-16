@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         HomeBox::truncate();
         User::truncate();
         Comment::truncate();
+        Slide::truncate();
         Event::truncate();
         // factory(Quiz::class,5)->create();
         factory(Category::class, 2)->create();
@@ -59,11 +60,19 @@ class DatabaseSeeder extends Seeder
         ->each(function ($quiz) {
             $quiz->questions()->save(Question::first());
         });
-        
+
+        Event::create([
+            'body' => '/img/event.png',
+            'start' => now(),
+            'type' => 'main',
+            'end' => now()->addYear(1)
+        ]);
+
         factory(Room::class,1)->create()
         ->create()
         ->each(function ($room) {
             $room->quizzes()->save(Quiz::first());
         });
+
     }
 }

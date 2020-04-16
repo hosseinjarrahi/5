@@ -2566,7 +2566,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -2605,7 +2604,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.errors = [];
       this.load();
-      console.log(this.login);
       axios.post("/login", this.login).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
@@ -2617,7 +2615,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         _this.errors = err.response.data.errors;
 
-        if (!_this.errors && err.response.data.message) {
+        if (_this.errors.length > 0 && err.response.data.message) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
             icon: "error",
@@ -2625,8 +2623,9 @@ __webpack_require__.r(__webpack_exports__);
             timer: 5000
           });
         }
+      }).then(function () {
+        _this.closeLoad();
       });
-      this.closeLoad();
     },
     doRegister: function doRegister() {
       var _this2 = this;
@@ -2661,8 +2660,9 @@ __webpack_require__.r(__webpack_exports__);
             timer: 5000
           });
         }
+      }).then(function () {
+        _this2.closeLoad();
       });
-      this.closeLoad();
     },
     verify: function verify() {
       var _this3 = this;
@@ -2680,6 +2680,10 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this3.changeState("login");
+
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
       })["catch"](function (err) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: 'error',
@@ -2687,8 +2691,9 @@ __webpack_require__.r(__webpack_exports__);
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
+      }).then(function () {
+        _this3.closeLoad();
       });
-      this.closeLoad();
     },
     sendCode: function sendCode() {
       var _this4 = this;
@@ -2699,7 +2704,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: this.phone
       }).then(function (res) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-          text: "اگر شماره تلفن را درست وارد کرده باشید کد برای شما ارسال شده است.",
+          text: "اگر شماره تلفن و یا ایمیل را درست وارد کرده باشید کد برای شما ارسال شده است.",
           icon: "success",
           confirmButtonText: "بسیار خوب",
           timer: 5000
@@ -2715,8 +2720,9 @@ __webpack_require__.r(__webpack_exports__);
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
+      }).then(function () {
+        _this4.closeLoad();
       });
-      this.closeLoad();
     },
     changeState: function changeState(s) {
       this.errors = [];
@@ -4752,7 +4758,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slider[data-v-5df6f277] {\n  border-radius: 20px;\n  width: 100%;\n  padding-top: 50%;\n  position: relative;\n}\n.aside-slider[data-v-5df6f277] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  background-size: cover;\n  background-position: center;\n}\n.fade-enter-active[data-v-5df6f277], .fade-leave-active[data-v-5df6f277] {\n  transition: all 1s;\n}\n.fade-enter[data-v-5df6f277]\n{\n  transform: translateX(100%);\n}\n.fade-leave-to[data-v-5df6f277] {\n  opacity: 0;\n}\n.prev[data-v-5df6f277], .next[data-v-5df6f277] {\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.5);\n  padding: 10px;\n  width: 30px;\n  height: 30px;\n  border-radius: 100%;\n  cursor: pointer;\n  z-index: 2;\n}\n.controlls[data-v-5df6f277], .item[data-v-5df6f277] {\n  position: absolute;\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: space-between;\n  align-items: center;\n  top: 0;\n}\n.item[data-v-5df6f277]{\n  background-size:contain;\n  z-index: 1;\n}\n", ""]);
+exports.push([module.i, "\n.slider[data-v-5df6f277] {\n  border-radius: 20px;\n  width: 100%;\n  padding-top: 50%;\n  position: relative;\n}\n.aside-slider[data-v-5df6f277] {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  background-size: cover;\n  background-position: center;\n}\n.fade-enter-active[data-v-5df6f277], .fade-leave-active[data-v-5df6f277] {\n  transition: all 1s;\n}\n.fade-enter[data-v-5df6f277]\n{\n  transform: translateX(100%);\n}\n.fade-leave-to[data-v-5df6f277] {\n  opacity: 0;\n}\n.prev[data-v-5df6f277], .next[data-v-5df6f277] {\n  text-align: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.5);\n  padding: 10px;\n  width: 30px;\n  height: 30px;\n  border-radius: 100%;\n  cursor: pointer;\n  z-index: 2;\n}\n.controlls[data-v-5df6f277], .item[data-v-5df6f277] {\n  position: absolute;\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: space-between;\n  align-items: center;\n  top: 0;\n}\n.item[data-v-5df6f277]{\n  background-size:contain;\n  z-index: 1;\n}\n.pp[data-v-5df6f277]{\n  padding-top: 100%;\n}\n", ""]);
 
 // exports
 
@@ -47102,9 +47108,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("span", [_vm._v("شماره تلفن")]),
                                 _vm._v(" "),
-                                _c("span", [_vm._v("|")]),
-                                _vm._v(" "),
-                                _c("span", [_vm._v("ویا ایمیل")]),
+                                _c("span", [_vm._v("و یا ایمیل")]),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -49550,7 +49554,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-8" }, [
         _c(
           "div",
-          { staticClass: "bg-gray slider overflow-hidden shadow" },
+          { staticClass: "bg-gray slider overflow-hidden quiz-button" },
           [
             _c(
               "transition",
@@ -49603,7 +49607,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-4" }, [
         _c("div", {
           staticClass:
-            "my-1 my-md-0 bg-dark-gray aside-slider overflow-hidden shadow",
+            "my-2 my-md-0 bg-dark-gray aside-slider h-md-auto pp overflow-hidden quiz-button ",
           style: { backgroundImage: "url(" + _vm.event.body + ")" }
         })
       ])

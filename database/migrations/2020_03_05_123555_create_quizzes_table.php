@@ -19,6 +19,7 @@ class CreateQuizzesTable extends Migration
             $table->string('name');
             $table->enum('type',['private','public']);
             $table->char('duration',5);
+            $table->boolean('lock')->default(false);
             $table->boolean('show');
             $table->text('password')->nullable();
             $table->string('desc')->nullable();

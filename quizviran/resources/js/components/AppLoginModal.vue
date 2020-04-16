@@ -198,7 +198,6 @@
             doLogin() {
                 this.errors = [];
                 this.load();
-                console.log(this.login);
                 axios.post("/login", this.login)
                     .then(response => {
                         Swal.fire({
@@ -211,7 +210,8 @@
                     })
                     .catch(err => {
                         this.errors = err.response.data.errors;
-                        if (!this.errors && err.response.data.message) {
+                        console.log();
+                        if (!!!this.errors) {
                             Swal.fire({
                                 text: err.response.data.message,
                                 icon: "error",
@@ -219,8 +219,10 @@
                                 timer: 5000
                             });
                         }
+                    })
+                    .then( () => {
+                        this.closeLoad();
                     });
-                this.closeLoad();
             },
             doRegister() {
                 this.errors = [];
@@ -248,8 +250,10 @@
                                 });
                             }
                         }
-                    );
-                this.closeLoad();
+                    )
+                    .then( () => {
+                        this.closeLoad();
+                    });
             },
             verify() {
                 this.errors = [];
@@ -263,7 +267,9 @@
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
                         });
+
                         this.changeState("login");
+                        setTimeout(()=>{window.location.reload();},1000);
                     })
                     .catch(err => {
                         Swal.fire({
@@ -272,8 +278,10 @@
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
                         });
+                    })
+                    .then( () => {
+                        this.closeLoad();
                     });
-                this.closeLoad();
             },
             sendCode() {
                 this.errors = [];
@@ -283,7 +291,7 @@
                     .then(res => {
                         Swal.fire({
                             text:
-                                "اگر شماره تلفن را درست وارد کرده باشید کد برای شما ارسال شده است.",
+                                "اگر شماره تلفن و یا ایمیل را درست وارد کرده باشید کد برای شما ارسال شده است.",
                             icon: "success",
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
@@ -303,8 +311,10 @@
                                 confirmButtonText: "بسیار خوب",
                                 timer: 5000
                             });
+                    })
+                    .then( () => {
+                        this.closeLoad();
                     });
-                this.closeLoad();
             },
             changeState(s) {
                 this.errors = [];

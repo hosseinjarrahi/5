@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 1px" class="d-flex flex-row mx-2 align-items-center">
-    <div class="circle bg-light"
+    <div class="circle bg-light bg-cover"
            :style="{width: '75px',height: '75px',backgroundImage: `url(${user.profile.avatar})`}"
     ></div>
     <div class="d-flex flex-column">
