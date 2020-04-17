@@ -27,6 +27,8 @@ Vue.component('app-comments',require('./components/AppComments.vue').default);
 Vue.component('app-panel-room-add-gap',require('./components/AppPanelRoomAddGap.vue').default);
 Vue.component('app-question-make',require('./components/AppQuestionMake.vue').default);
 Vue.component('app-quiz-make',require('./components/AppQuizMake.vue').default);
+Vue.component('app-quiz-edit',require('./components/AppQuizEdit.vue').default);
+Vue.component('app-revival-button',require('./components/AppRevivalButton.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

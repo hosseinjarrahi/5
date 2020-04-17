@@ -231,7 +231,7 @@
                     .then(response => {
                         Swal.fire({
                             text: response.data.message,
-                            icon: response.data.type,
+                            icon: 'success',
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
                         });

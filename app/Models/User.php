@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Quizviran\Models\Question;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Quizviran\Models\Quiz;
@@ -38,6 +39,11 @@ class User extends Authenticatable
                 'user_id',
                 'quiz_id'
             )->withPivot('norm','answers');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
     public function checkForQuiz($id){
@@ -112,7 +118,7 @@ class User extends Authenticatable
     {
         if($this->type == 'teacher')
             return $this->id == $room->user->id;
-        return !$room->members()->where('id',$this->id)->first()->isEmpty();
+        return $room->members()->where('id',$this->id)->first();
     }
 
 }

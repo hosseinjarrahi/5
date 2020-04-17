@@ -2,7 +2,7 @@
 @section('title','تیزویران | پنل مدیریت')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom: 300px;">
 
         <div class="row justify-content-center">
             <div class="bg-dark-gray col-12" style="padding-top: 100px;">

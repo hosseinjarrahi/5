@@ -9,7 +9,7 @@ use App\Models\User;
 class Quiz extends Model
 {
     protected $guarded = ['id'];
-    protected $perPage = 10;
+    protected $perPage = 20;
     protected $casts = [
         'start' => 'datetime',
     ];
@@ -53,17 +53,17 @@ class Quiz extends Model
     {
         return $query->where('show',1);
     }
-
-    public function toArray()
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'link' => url("/quiz/exam/{$this->id}"),
-            'desc' => $this->desc,
-            'start' => $this->start->diffForHumans(),
-            'duration' => $this->duration - Carbon::now()->diffInMinutes($this->start),
-            'time' => $this->duration
-        ];
-    }
+//
+//    public function toArray()
+//    {
+//        return [
+//            'id' => $this->id,
+//            'name' => $this->name,
+//            'link' => url("/quiz/exam/{$this->id}"),
+//            'desc' => $this->desc,
+//            'start' => $this->start->diffForHumans(),
+//            'duration' => $this->duration - Carbon::now()->diffInMinutes($this->start),
+//            'time' => $this->duration
+//        ];
+//    }
 }

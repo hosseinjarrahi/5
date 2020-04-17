@@ -2892,7 +2892,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/login", this.login).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
-          icon: "success",
+          icon: 'success',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
@@ -2904,7 +2904,7 @@ __webpack_require__.r(__webpack_exports__);
         if (!!!_this.errors) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
-            icon: "error",
+            icon: 'error',
             confirmButtonText: "بسیار خوب",
             timer: 5000
           });
@@ -2921,7 +2921,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/register", this.registerForm).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
-          icon: response.data.type,
+          icon: 'success',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
@@ -2941,7 +2941,7 @@ __webpack_require__.r(__webpack_exports__);
         if (err.response.data.message) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
-            icon: "error",
+            icon: 'error',
             confirmButtonText: "بسیار خوب",
             timer: 5000
           });
@@ -2972,8 +2972,8 @@ __webpack_require__.r(__webpack_exports__);
         }, 1000);
       })["catch"](function (err) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-          text: 'error',
-          icon: "error",
+          text: 'مشکلی رخ داده است',
+          icon: 'error',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
@@ -3285,6 +3285,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPanelLinksHeader",
   props: ['type']
@@ -3517,6 +3518,74 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AppQuizMake",
+  props: ['quiz'],
+  data: function data() {
+    return {
+      edit: this.quiz
+    };
+  },
+  methods: {
+    update: function update() {
+      var _this = this;
+
+      this.load();
+      axios.put('/quiz/exam/' + this.edit.id, this.edit).then(function (res) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: res.data.message,
+          icon: 'success',
+          timer: 3000
+        });
+      })["catch"](function (err) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: 'مشکلی رخ داده',
+          icon: 'error',
+          timer: 3000
+        });
+      }).then(function () {
+        _this.closeLoad();
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizMake.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppQuizMake.vue?vue&type=script&lang=js& ***!
@@ -3584,6 +3653,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           text: 'مشکلی رخ داده',
           icon: 'error',
           timer: 3000
+        });
+      }).then(function () {
+        _this.closeLoad();
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['exam'],
+  name: "AppRevivalButton",
+  methods: {
+    revival: function revival() {
+      var _this = this;
+
+      this.load();
+      axios.post("/quiz/exam/" + this.exam + "/revival").then(function (res) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: 'با موفقیت انجام شد.',
+          icon: 'success',
+          confirmButtonText: 'بسیار خوب',
+          timer: 2000
+        });
+      })["catch"](function (err) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
+          text: 'مشکلی رخ داده است.',
+          icon: 'error',
+          confirmButtonText: 'بسیار خوب',
+          timer: 2000
         });
       }).then(function () {
         _this.closeLoad();
@@ -46853,32 +46969,38 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(0)
+    _vm.type == "student"
+      ? _c(
+          "a",
+          {
+            staticClass: "mb-1 link-hover p-2",
+            attrs: { href: "/quiz/panel/join-class" }
+          },
+          [_vm._v("عضویت در کلاس")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.type == "teacher"
+      ? _c("a", { staticClass: "mb-1 link-hover p-2 position-relative" }, [
+          _c("span", [_vm._v("گفت و گو ها")]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "badge badge-primary position-absolute",
+              staticStyle: {
+                top: "-7px",
+                left: "-15px",
+                transform: "rotate(-30deg)"
+              }
+            },
+            [_vm._v("به زودی\n    ")]
+          )
+        ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "mb-1 link-hover p-2 position-relative" }, [
-      _c("span", [_vm._v("گفت و گو ها")]),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          staticClass: "badge badge-primary position-absolute",
-          staticStyle: {
-            top: "-7px",
-            left: "-15px",
-            transform: "rotate(-30deg)"
-          }
-        },
-        [_vm._v("به زودی\n    ")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -47205,6 +47327,143 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("عنوان آزمون")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.edit.name,
+            expression: "edit.name"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.edit.name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.edit, "name", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("توضیحات آزمون")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.edit.desc,
+            expression: "edit.desc"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.edit.desc },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.edit, "desc", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group" },
+      [
+        _c("label", [_vm._v("زمان شروع مسابقه")]),
+        _vm._v(" "),
+        _c("date-picker", {
+          attrs: {
+            locale: "fa",
+            format: "YYYY/MM/DD HH:mm:ss",
+            type: "datetime"
+          },
+          model: {
+            value: _vm.edit.start,
+            callback: function($$v) {
+              _vm.$set(_vm.edit, "start", $$v)
+            },
+            expression: "edit.start"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("مدت زمان مسابقه به دقیقه")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.edit.duration,
+            expression: "edit.duration"
+          }
+        ],
+        staticClass: "form-control",
+        domProps: { value: _vm.edit.duration },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.edit, "duration", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary btn-block",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.update($event)
+          }
+        }
+      },
+      [_vm._v("ویرایش آزمون")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizMake.vue?vue&type=template&id=7dd56009&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppQuizMake.vue?vue&type=template&id=7dd56009&scoped=true& ***!
@@ -47334,6 +47593,42 @@ var render = function() {
       [_vm._v("ساخت آزمون")]
     )
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn btn-warning",
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.revival($event)
+        }
+      }
+    },
+    [_vm._v("تمدید")]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60724,7 +61019,9 @@ Vue.component('app-content-border-box', __webpack_require__(/*! ./components/App
 Vue.component('app-comments', __webpack_require__(/*! ./components/AppComments.vue */ "./resources/js/components/AppComments.vue")["default"]);
 Vue.component('app-panel-room-add-gap', __webpack_require__(/*! ./components/AppPanelRoomAddGap.vue */ "./resources/js/components/AppPanelRoomAddGap.vue")["default"]);
 Vue.component('app-question-make', __webpack_require__(/*! ./components/AppQuestionMake.vue */ "./resources/js/components/AppQuestionMake.vue")["default"]);
-Vue.component('app-quiz-make', __webpack_require__(/*! ./components/AppQuizMake.vue */ "./resources/js/components/AppQuizMake.vue")["default"]); ////////////////////////////////////////////////
+Vue.component('app-quiz-make', __webpack_require__(/*! ./components/AppQuizMake.vue */ "./resources/js/components/AppQuizMake.vue")["default"]);
+Vue.component('app-quiz-edit', __webpack_require__(/*! ./components/AppQuizEdit.vue */ "./resources/js/components/AppQuizEdit.vue")["default"]);
+Vue.component('app-revival-button', __webpack_require__(/*! ./components/AppRevivalButton.vue */ "./resources/js/components/AppRevivalButton.vue")["default"]); ////////////////////////////////////////////////
 
 
 Vue.use(vue_mathjax__WEBPACK_IMPORTED_MODULE_3__["default"]);
@@ -62385,6 +62682,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/AppQuizEdit.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/AppQuizEdit.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true& */ "./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true&");
+/* harmony import */ var _AppQuizEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppQuizEdit.vue?vue&type=script&lang=js& */ "./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AppQuizEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4a2f4bb6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AppQuizEdit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AppQuizEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppQuizEdit.vue?vue&type=template&id=4a2f4bb6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizEdit_vue_vue_type_template_id_4a2f4bb6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/AppQuizMake.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/AppQuizMake.vue ***!
@@ -62449,6 +62815,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizMake_vue_vue_type_template_id_7dd56009_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppQuizMake_vue_vue_type_template_id_7dd56009_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AppRevivalButton.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/AppRevivalButton.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true& */ "./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true&");
+/* harmony import */ var _AppRevivalButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppRevivalButton.vue?vue&type=script&lang=js& */ "./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AppRevivalButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1b35fc17",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AppRevivalButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppRevivalButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AppRevivalButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppRevivalButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppRevivalButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AppRevivalButton.vue?vue&type=template&id=1b35fc17&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppRevivalButton_vue_vue_type_template_id_1b35fc17_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

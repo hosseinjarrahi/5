@@ -2635,7 +2635,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/register", this.registerForm).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
-          icon: response.data.type,
+          icon: 'success',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });

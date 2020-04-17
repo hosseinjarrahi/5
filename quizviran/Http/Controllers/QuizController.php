@@ -14,52 +14,57 @@ class QuizController extends Controller
 {
     public function __construct()
     {
-        if(!auth()->check())
+        if (! auth()->check()) {
             return abort(404);
+        }
     }
 
-    public function quizzes($room)
+    public function exams($room)
     {
-        $room = Room::with(['quizzes'])->where('link',$room)->first();
+        $room = Room::with(['quizzes'])->where('link', $room)->first();
 
-        return view('Quizviran::panel.teacher.quizManage',compact('room'));
+        if (! (auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher')) {
+            return back();
+        }
+
+        return view('Quizviran::panel.teacher.quizManage', compact('room'));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function quizDetail(Quiz $quiz)
-    {
-        $users = $quiz->users()->withPivot(['norm'])->get();
-        return view('quizDetail',compact('users','quiz'));
-    }
-
-    public function result($quiz)
+    public function edit($quiz)
     {
         $quiz = Quiz::findOrFail($quiz);
-        $user = auth()->user();
-        $users = $quiz->getQuizUsersWithNorms();
-        return view('Quizviran::results', compact('users', 'user','quiz'));
+
+        return view('Quizviran::panel.teacher.quizEdit', compact('quiz'));
+    }
+
+    public function revival($quiz)
+    {
+        $quiz = Quiz::findOrFail($quiz);
+        $quiz->duration += 5;
+        $quiz->save();
+
+        return response(['message' => 'با موفقیت تمدید شد.']);
+    }
+
+    public function update($quiz)
+    {
+        $request = request();
+        $quiz = Quiz::findOrFail($quiz);
+        $quiz->name = $request->name;
+        $quiz->desc = $request->desc;
+        $quiz->start = $request->start;
+        $quiz->duration = $request->duration;
+        $quiz->save();
+
+        return response(['message' => 'با موفقیت ویرایش شد.']);
     }
 
     public function store(Request $request)
     {
         $room = Room::with('user')->findOrFail($request->room);
-        if(!auth()->user()->hasRoom($room))
+        if (! auth()->user()->hasRoom($room)) {
             return response(['error']);
+        }
 
         $quiz = new Quiz();
         $quiz->name = $request->name;
@@ -72,17 +77,47 @@ class QuizController extends Controller
 
         if ($quiz->save()) {
             $room->quizzes()->save($quiz);
+
             return response(['ok']);
         }
 
         return response(['error']);
     }
 
+    public function destroy($quiz)
+    {
+        $quiz = Quiz::findOrFail($quiz);
+        if (! (auth()->user()->type == 'teacher' && auth()->id() == $quiz->user_id)) {
+            return back();
+        }
+
+        $quiz->show = ! $quiz->show;
+        $quiz->save();
+
+        return back();
+    }
+
+    public function quizDetail(Quiz $quiz)
+    {
+        $users = $quiz->users()->withPivot(['norm'])->get();
+
+        return view('quizDetail', compact('users', 'quiz'));
+    }
+
+    public function result($quiz)
+    {
+        $quiz = Quiz::findOrFail($quiz);
+        $user = auth()->user();
+        $users = $quiz->getQuizUsersWithNorms();
+
+        return view('Quizviran::results', compact('users', 'user', 'quiz'));
+    }
+
     public function show($quiz)
     {
         $quiz = Quiz::findOrFail($quiz);
 
-        if (! $quiz->show || ! $quiz->isInTime()) {
+        if ((! $quiz->show || ! $quiz->isInTime()) && ! auth()->user()->type == 'teacher') {
             return back();
         }
 
@@ -91,21 +126,15 @@ class QuizController extends Controller
         $questions = $quiz->questions;
         $quiz = new QuizResourse($quiz);
         $quiz = json_decode($quiz->toJson());
+
         return view('Quizviran::quiz', compact('quiz', 'questions'));
-    }
-
-    public function destroy($quiz)
-    {
-        $quiz = Quiz::findOrFail($quiz);
-
-        $quiz->show = 0;
-        $quiz->save();
-
-        return back();
     }
 
     public function complete()
     {
+        if (auth()->user()->type == 'teacher') {
+            return response(['message' => 'شما به عنوان معلم نمی توانید امتیازی ثبت کنید. ']);
+        }
         $request = request();
         $quiz = Quiz::findOrFail($request->id);
         $user = auth()->user();
@@ -150,11 +179,20 @@ class QuizController extends Controller
         return $norm;
     }
 
-    public function addQuestion(Request $request)
+    public function addQuestion($request)
     {
+        $request = request();
         $quiz = Quiz::findOrFail($request->id);
 
         return view('admin.questionAdd', compact('quiz'));
+    }
+
+    public function manageQuestions($exam)
+    {
+        $quiz = Quiz::with('questions')->findOrFail($exam);
+        $allQuestions = auth()->user()->questions;
+
+        return view('Quizviran::panel.teacher.questionsManage', compact('quiz', 'allQuestions'));
     }
 
     public function add(Request $request)
@@ -163,6 +201,7 @@ class QuizController extends Controller
         $quiz = Quiz::findOrFail($request->quizId);
         $question = $this->createQuestion($request);
         $quiz->questions()->save($question);
+
         return back();
     }
 
@@ -178,6 +217,7 @@ class QuizController extends Controller
         $question->type = $request->type;
         $question->norm = $request->norm;
         $question->pic = $this->uploadImgQuestion($request);
+
         return $question;
     }
 
@@ -189,6 +229,7 @@ class QuizController extends Controller
             $path = time() . random_int(10, 5000) . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('upload'), $path);
         }
+
         return $path ? 'upload/' . $path : null;
     }
 }

@@ -6,7 +6,7 @@
 
         <div class="row justify-content-center">
             <div class="bg-dark-gray col-12" style="padding-top: 100px;">
-                <app-panel-links-header type="teacher"></app-panel-links-header>
+                <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
             </div>
         </div>
 
@@ -46,20 +46,32 @@
                         <td>نام آزمون</td>
                         <td>افزودن سوال</td>
                         <td>ویرایش</td>
-                        <td>جزییات(نتایج - تمدید - قفل کردن و...)</td>
+                        <td>مشاهده آزمون</td>
+                        <td>نتایج</td>
+                        <td>تمدید (5 دقیقه)</td>
                         <td>حذف</td>
                     </tr>
                     @forelse($room->quizzes ?? [] as $quiz)
                         <tr @if($quiz->show) class="bg-success text-white" @endif>
                             <td class="col-12">{{ $quiz->name }}</td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ route('question.add',['id'=>$quiz->id]) }}">افزودن سوال</a></td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('admin/quiz/detail/'.$quiz->id) }}">ویرایش</a></td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('admin/quiz/detail/'.$quiz->id) }}">بیشتر ...</a></td>
+                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/manage-questions') }}">افزودن سوال</a></td>
+                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/edit') }}">ویرایش</a></td>
+                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id) }}">مشاهده</a></td>
+                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/results') }}">جزییات</a></td>
                             <td class="col-1">
-                                <form method="post" action="{{ url('/quiz/'.$quiz->id) }}">
+                                <app-revival-button exam="{{ $quiz->id }}"></app-revival-button>
+                            </td>
+                            <td class="col-1">
+                                <form method="post" action="{{ url('/quiz/exam/'.$quiz->id) }}">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger">حذف</button>
+                                    <button class="btn btn-danger">
+                                        @if($quiz->show)
+                                            حذف
+                                        @else
+                                            نمایش
+                                        @endif
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -69,7 +81,7 @@
                         </tr>
                     @endforelse
                 </table>
-{{--                {{ $room->quizzes->links() }}--}}
+                {{--                {{ $room->quizzes->links() }}--}}
             </div>
         </div>
     </div>

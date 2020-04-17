@@ -3,6 +3,11 @@
 Route::group(['prefix' => 'quiz'], function () {
     Route::get('/', 'HomeController@home');
     Route::resource('/exam', 'QuizController');
+    Route::post('/exam/{exam}/revival', 'QuizController@revival');
+    Route::get('/exam/{exam}/manage-questions', 'QuizController@manageQuestions');
+
+    Route::resource('/question', 'QuestionController');
+
     Route::post('/complete', 'QuizController@complete');
     Route::get('/results/{quiz}','QuizController@result');
 
@@ -15,8 +20,11 @@ Route::group(['prefix' => 'quiz'], function () {
         Route::put('/room/comment/{comment}','RoomController@updateComment');
         Route::delete('/room/comment/{comment}','RoomController@deleteComment');
 
-        Route::get('/room/{room}/quizzes', 'QuizController@quizzes');
+        Route::get('/room/{room}/exams', 'QuizController@exams');
 
+        Route::get('/room/{room}/result', 'QuizController@exams');
+
+        Route::get('/room/{room}/lock', 'RoomController@lock');
         Route::get('/join-class', 'StudentController@join');
         Route::post('/join-class', 'StudentController@addStudent');
 

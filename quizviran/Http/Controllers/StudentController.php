@@ -17,7 +17,9 @@ class StudentController extends Controller
     public function addStudent()
     {
         $request = request();
-        $room = Room::where('code',$request->code)->first();
+        $room = Room::where('lock',false)->where('code',$request->code)->first();
+        if(!$room)
+            return back();
         auth()->user()->rooms()->save($room);
         return redirect(url('/quiz/panel/room',['room' => $room->link]));
     }

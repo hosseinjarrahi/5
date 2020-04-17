@@ -14,8 +14,9 @@ class RoomController extends Controller
 {
     public function __construct()
     {
-        if (!auth()->check())
+        if (! auth()->check()) {
             return abort(404);
+        }
     }
 
     public function create()
@@ -27,21 +28,25 @@ class RoomController extends Controller
     {
         $room = Room::where('link', $room)->with([
             'comments',
-            'comments.files'
+            'comments.files',
         ])->withCount('members')->firstOrFail();
 
-        if(!auth()->user()->hasRoom($room))
+        if (! auth()->user()->hasRoom($room)) {
             return abort(404);
+        }
 
         $room->created_at = Jalalian::forge($room->created_at);
-        $quizzes = QuizResourse::collection($room->quizzes);
-        return view('Quizviran::panel.teacher.room', compact('room', 'quizzes'));
+
+        $room->quizzes = $room->quizzes()->orderByDesc('id')->get();
+
+        return view('Quizviran::panel.teacher.room', compact('room'));
     }
 
     public function store()
     {
-        if(auth()->user()->type != 'teacher')
-            return abort(404);
+        if (auth()->user()->type != 'teacher') {
+            return back();
+        }
 
         $request = request();
 
@@ -62,6 +67,7 @@ class RoomController extends Controller
 
         return view('Quizviran::panel.teacher.roomCreated', compact('room'));
     }
+
     public function addComment(Request $request)
     {
         $files = collect($request->post('files'));
@@ -74,36 +80,52 @@ class RoomController extends Controller
             'user_id' => auth()->id(),
         ]);
         $comment->files()->saveMany($files);
+
         return response(['message' => 'با موفقیت اضافه شد']);
     }
 
-    public function updateComment(Comment $comment,Request $request)
+    public function updateComment(Comment $comment, Request $request)
     {
-        if(!$comment->isOwn())
-            return response(['message' => 'این نظر قابل ویرایش نیست.'],400);
+        if (! $comment->isOwn()) {
+            return response(['message' => 'این نظر قابل ویرایش نیست.'], 400);
+        }
         $comment->comment = $request->comment;
         $comment->save();
+
         return response(['message' => 'با موفقیت انجام شد.']);
     }
 
     public function deleteComment(Comment $comment)
     {
         if ($comment->isOwn() || $comment->isOwnMember()) {
+            \Illuminate\Support\Facades\File::delete(public_path($comment->files->pluck('file')));
             $comment->delete();
+
             return response(['message' => 'با موفقیت حذف شد.']);
         }
-        return response(['message' => 'متاسفانه مشکلی رخ داده است.'],400);
+
+        return response(['message' => 'متاسفانه مشکلی رخ داده است.'], 400);
     }
 
     public function members($room)
     {
-        $room = Room::where('link',$room)->with('members')->firstOrFail();
+        $room = Room::where('link', $room)->with('members')->firstOrFail();
         $room->created_at = Jalalian::forge($room->created_at);
 
-        if(!(auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher'))
+        if (! (auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher')) {
             return abort(404);
+        }
 
-        return view('Quizviran::panel.teacher.members',compact('room'));
+        return view('Quizviran::panel.teacher.members', compact('room'));
     }
 
+    public function lock($room)
+    {
+        $room = Room::findOrFail($room);
+        if(!(auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher'))
+            return back();
+       $room->lock = !$room->lock;
+       $room->save();
+       return back();
+    }
 }
