@@ -79,9 +79,8 @@ class QuestionController extends Controller
 
     private function createQuestion($request)
     {
-        $pic = Upload::uploadFile(['pic' => $request->pic]);
-        $pic = $pic ? $pic : null;
-
+        $pic = Upload::uploadFile(['pic' => $request->img]);
+        $pic = $pic ? $pic['pic'] : null;
         $question = new Question;
         $question->A = $request->A;
         $question->B = $request->B;
