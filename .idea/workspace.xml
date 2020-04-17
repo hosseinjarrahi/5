@@ -3,44 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_13_103057_create_rooms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_13_103057_create_rooms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Upload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15858502232995.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15860016021637.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/1586328190550.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/1586451464594.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/1586452479742.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15864528253833.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15869374531283.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15869380201986.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15869427081207.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15869434732969.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/1586943484631.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15870232391553.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15870232853634.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/158702715769.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/99-01/15870384963722.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Resources/QuizResourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Resources/QuizResourse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Models/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Quiz.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppLoginModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelLinksHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelLinksHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/members.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/members.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppLatex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppLatex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/admin/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionAdd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/roomCreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/roomCreate.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/roomCreated.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/roomCreated.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AppLatex.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AppQuestionMake.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/admin/AppQuizMake.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,22 +184,22 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/quizviran/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/quizviran/resources/views/panel/teacher" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\resources\views" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
+      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel" />
+      <recent name="E:\web\bigBag\quiz\resources\views" />
       <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
       <recent name="E:\web\bigBag\quiz\app\Models" />
-      <recent name="E:\web\bigBag\quiz\resources\sass" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\quizviran\Http\Controllers" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
+      <recent name="E:\web\bigBag\quiz\quizviran\Http\Controllers" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\js\components" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\student" />
       <recent name="E:\web\bigBag\quiz\resources\views\mails" />
@@ -282,7 +259,7 @@
       <workItem from="1586538615789" duration="169000" />
       <workItem from="1586931690518" duration="3391000" />
       <workItem from="1586935701719" duration="15315000" />
-      <workItem from="1587006017084" duration="40602000" />
+      <workItem from="1587006017084" duration="46915000" />
     </task>
     <servers />
   </component>
@@ -330,10 +307,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1587018851412" />
-    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587035008320">
+    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587114433384">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1587035008320" />
+    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1587114433384" />
     <state x="510" y="33" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1586326498791">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -382,18 +359,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" width="1183" height="820" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1587106257214" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1587037843601">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1587119588540">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1587037843601" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1587110624187">
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1587119588540" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1587116904775">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1587110624187" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587110415169">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1587116904775" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587119833104">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587110415169" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587119833104" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

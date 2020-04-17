@@ -43,7 +43,7 @@
                                     @if($room->lock)
                                         <span class="fas fa-lock-open"></span>
                                         <a href="{{ url("/quiz/panel/room/{$room->id}/lock") }}">
-                                             باز کردن کلاس
+                                            باز کردن کلاس
                                         </a>
                                     @else
                                         <span class="fas fa-lock"></span>
@@ -132,17 +132,22 @@
                                             <div class="mt-3 row flex-column justify-content-center align-items-center">
                                                 <div>{{ $quiz->name }}</div>
                                                 <p class="text-justify">{{ $quiz->desc }}</p>
-                                                <div class="badge bg-dark-gray my-1">زمان شروع : <span>{{ \Morilog\Jalali\Jalalian::forge($quiz->start)->format('H:i Y/m/d') }}</span></div>
-                                                <div class="badge bg-dark-gray my-1">زمان آزمون : <span>{{  $quiz->duration - \Carbon\Carbon::now()->diffInMinutes($quiz->start) }}</span> دقیقه</div>
+                                                <div class="badge bg-dark-gray my-1">زمان شروع :
+                                                    <span>{{ \Morilog\Jalali\Jalalian::forge($quiz->start)->format('H:i Y/m/d') }}</span></div>
+                                                <div class="badge bg-dark-gray my-1">زمان آزمون :
+                                                    <span>{{ $quiz->duration }}</span> دقیقه
+                                                </div>
                                                 @if(auth()->user()->type=='teacher' || ((auth())->user()->type=='student') && $quiz->isInTime())
-                                                    <a href="{{ url('/quiz/exam',['exam' => $quiz->id]) }}" class="btn btn-primary py-0 text-light my-1">ورود به آزمون</a>
+                                                    <a href="{{ url('/quiz/exam',['exam' => $quiz->id]) }}" class="btn btn-primary py-0 text-light my-1">ورود به
+                                                        آزمون</a>
                                                 @endif
                                             </div>
                                             <hr>
+                                        @endforeach
+                                        @if(auth()->user()->type=='teacher')
                                             <a href="{{ url("/quiz/panel/room/{$room->link}/exams") }}"
                                                class="d-block my-2 btn bg-dark-gray py-0 text-center">مدیریت آزمون ها</a>
-
-                                        @endforeach
+                                        @endif
                                     @else
                                         <div class="d-block text-center">آزمونی وجود ندارد...</div>
                                         @if(auth()->user()->type == 'teacher')

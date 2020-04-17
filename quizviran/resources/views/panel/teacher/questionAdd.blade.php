@@ -1,18 +1,33 @@
 @extends('Quizviran::layout')
-@section('title','مدیریت')
+@section('title','نیزویران | افزودن سوال')
 
 @section('content')
-    .
-    <div class="container my-5">
+
+    <div class="container-fluid">
+
         <div class="row justify-content-center">
+            <div class="bg-dark-gray col-12" style="padding-top: 100px;">
+                <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="px-5 text-right bg-gray col-12 py-2">
+                <a href="{{ url()->previous() }}" class="w-100 text-light">
+                    <span>بازگشت</span>
+                    <span class="fas fa-arrow-left"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
             <div class="col-12 col-md-8">
-                <div class="alert alert-info">{{ $quiz->name }}</div>
-                <form method="post" enctype="multipart/form-data" action="{{ route('question.add.post') }}">
+                <form method="post" enctype="multipart/form-data" action="{{ url('/quiz/question') }}">
                     @csrf
                     <div class="form-group">
                         <select name="type" class="form-control">
                             <option value="test">تستی</option>
-                            <option value="descriptive">تشریحی</option>
+{{--                            <option value="descriptive">تشریحی</option>--}}
                         </select>
                     </div>
                     <div class="form-group">
@@ -52,8 +67,6 @@
                         <label for="exampleFormControlFile1">تصویر</label>
                         <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
                     </div>
-
-                    <input type="hidden" name="quizId" value="{{ $quiz->id }}">
 
                     <button class="btn btn-primary btn-block">افزودن سوال</button>
                 </form>

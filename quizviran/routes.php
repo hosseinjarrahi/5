@@ -7,6 +7,8 @@ Route::group(['prefix' => 'quiz'], function () {
     Route::get('/exam/{exam}/manage-questions', 'QuizController@manageQuestions');
 
     Route::resource('/question', 'QuestionController');
+    Route::get('/question/{question}/add-to-exam', 'QuestionController@addToExam');
+    Route::get('/question/{question}/delete-from-exam', 'QuestionController@deleteFromExam');
 
     Route::post('/complete', 'QuizController@complete');
     Route::get('/results/{quiz}','QuizController@result');

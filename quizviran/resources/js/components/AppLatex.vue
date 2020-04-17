@@ -7,9 +7,12 @@
 
 <script>
     export default {
+        props:{
+            input:{default:''}
+        },
         data() {
             return {
-                formula: '$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$',
+                formula: this.input,
             }
         }
     }

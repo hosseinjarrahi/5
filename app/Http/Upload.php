@@ -16,6 +16,8 @@ class Upload
         $path = null;
         $allPath = [];
         foreach ($files as $key => $file) {
+            if(is_null($file))
+                continue;
             $fileName =  time() . random_int(10, 5000) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path(self::BASE_PATH . '/' . $folder), $fileName);
             $allPath[$key] = '/upload/'. $folder . '/' . $fileName;

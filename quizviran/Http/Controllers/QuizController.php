@@ -195,41 +195,4 @@ class QuizController extends Controller
         return view('Quizviran::panel.teacher.questionsManage', compact('quiz', 'allQuestions'));
     }
 
-    public function add(Request $request)
-    {
-        $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
-        $quiz = Quiz::findOrFail($request->quizId);
-        $question = $this->createQuestion($request);
-        $quiz->questions()->save($question);
-
-        return back();
-    }
-
-    private function createQuestion(Request $request)
-    {
-        $question = new Question;
-        $question->A = $request->A;
-        $question->B = $request->B;
-        $question->D = $request->D;
-        $question->C = $request->C;
-        $question->answer = $request->answer;
-        $question->desc = $request->desc;
-        $question->type = $request->type;
-        $question->norm = $request->norm;
-        $question->pic = $this->uploadImgQuestion($request);
-
-        return $question;
-    }
-
-    private function uploadImgQuestion(Request &$request)
-    {
-        $img = $request->file('img');
-        $path = null;
-        if ($request->hasFile('img') && ! is_null($request->img)) {
-            $path = time() . random_int(10, 5000) . '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('upload'), $path);
-        }
-
-        return $path ? 'upload/' . $path : null;
-    }
 }
