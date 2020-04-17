@@ -12,10 +12,18 @@
         </p>
 
         <ul class="list-group" v-if="type == 'test'">
-          <li :class="['list-group-item',{'select':selected == 'A'}]" @click="select('A')" v-html="A"></li>
-          <li :class="['list-group-item',{'select':selected == 'B'}]" @click="select('B')" v-html="B"></li>
-          <li :class="['list-group-item',{'select':selected == 'C'}]" @click="select('C')" v-html="C"></li>
-          <li :class="['list-group-item',{'select':selected == 'D'}]" @click="select('D')" v-html="D"></li>
+          <li :class="['list-group-item',{'select':selected == 'A'}]" @click="select('A')">
+            <vue-mathjax :formula="A"></vue-mathjax>
+          </li>
+          <li :class="['list-group-item',{'select':selected == 'B'}]" @click="select('B')">
+            <vue-mathjax :formula="B"></vue-mathjax>
+          </li>
+          <li :class="['list-group-item',{'select':selected == 'C'}]" @click="select('C')">
+            <vue-mathjax :formula="C"></vue-mathjax>
+          </li>
+          <li :class="['list-group-item',{'select':selected == 'D'}]" @click="select('D')">
+            <vue-mathjax :formula="D"></vue-mathjax>
+          </li>
         </ul>
       </div>
     </div>

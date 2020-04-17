@@ -29,6 +29,7 @@ Vue.component('app-question-make',require('./components/AppQuestionMake.vue').de
 Vue.component('app-quiz-make',require('./components/AppQuizMake.vue').default);
 Vue.component('app-quiz-edit',require('./components/AppQuizEdit.vue').default);
 Vue.component('app-revival-button',require('./components/AppRevivalButton.vue').default);
+Vue.component('app-result-list',require('./components/AppResultList.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

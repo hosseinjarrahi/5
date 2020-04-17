@@ -95,4 +95,41 @@ import Swal from "sweetalert2";
     border: 5px solid #2f3542;
     box-shadow: 0px 5px 5px #2f3542;
   }
+
+  .btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    outline: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+    color: #2a476b;
+    font-weight: bold;
+    background-color: #f1f1ef;
+    box-shadow: 1px 10px 20px 0px rgba(218, 215, 206, 0.8);
+    border: 2px solid #2a476b;
+  }
+
+  .btn-file:hover {
+    background: #2a476b;
+    color: #ffffff;
+  }
+
+  @media only screen and (max-width: 980px) {
+    .block-btn {
+      text-align: center;
+      position: relative;
+      margin: 10px 0px;
+      display: block;
+    }
+  }
+
 </style>

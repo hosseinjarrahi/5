@@ -10,12 +10,20 @@ class StudentController extends Controller
 {
     public function join()
     {
+        if (! auth()->check()) {
+            return abort(404);
+        }
+
         return view('Quizviran::panel.student.join');
     }
 
 
     public function addStudent()
     {
+        if (! auth()->check()) {
+            return abort(404);
+        }
+
         $request = request();
         $room = Room::where('lock',false)->where('code',$request->code)->first();
         if(!$room)

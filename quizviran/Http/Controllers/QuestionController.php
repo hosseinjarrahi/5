@@ -41,6 +41,8 @@ class QuestionController extends Controller
         $request = request();
         $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
         $this->updateQuestion($request, $question);
+
+        return back();
     }
 
     public function addToExam($question)

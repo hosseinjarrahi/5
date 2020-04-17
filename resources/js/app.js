@@ -2,6 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import persianDatePicker from 'vue-persian-datetime-picker';
+Vue.component('date-picker', persianDatePicker);
 
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

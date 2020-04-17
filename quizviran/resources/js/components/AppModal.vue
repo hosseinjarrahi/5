@@ -1,6 +1,6 @@
 <template>
   <div class="modaler">
-    <div class="modal-dialog" style="overflow: hidden" role="document">
+    <div class="modal-dialog overflow-hidden" role="document" :style="{maxWidth: fluid ? '90% !important' : '' }">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark-gray text-white">
           <h5 class="modal-title">
@@ -23,10 +23,11 @@
 
 <script>
 export default {
-  props:[
-    'title',
-    'icon',
-  ],
+  props:{
+      'title':{default:''},
+      'icon':{default:''},
+      'fluid':{default:false},
+  },
   methods: {
     close() {
       this.$emit("close");

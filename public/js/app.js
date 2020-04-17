@@ -4014,7 +4014,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.profile-header[data-v-cb4a7820] {\n  height: 220px;\n  background: #2f3542;\n  background-image: -ms-radial-gradient(50% 50%, circle closest-side, rgb(121, 127, 142) 0%, rgb(121, 127, 142) 0%, rgb(84, 90, 104) 59%, rgb(47, 53, 66) 100%);\n}\n.avatar-parent2[data-v-cb4a7820] {\n  top: 130px;\n  position: absolute;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.avatar2[data-v-cb4a7820] {\n  width: 150px;\n  height: 150px;\n  background-size: cover;\n  background-position: center;\n  border: 5px solid #2f3542;\n  box-shadow: 0px 5px 5px #2f3542;\n}\n", ""]);
+exports.push([module.i, "\n.profile-header[data-v-cb4a7820] {\n  height: 220px;\n  background: #2f3542;\n  background-image: -ms-radial-gradient(50% 50%, circle closest-side, rgb(121, 127, 142) 0%, rgb(121, 127, 142) 0%, rgb(84, 90, 104) 59%, rgb(47, 53, 66) 100%);\n}\n.avatar-parent2[data-v-cb4a7820] {\n  top: 130px;\n  position: absolute;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.avatar2[data-v-cb4a7820] {\n  width: 150px;\n  height: 150px;\n  background-size: cover;\n  background-position: center;\n  border: 5px solid #2f3542;\n  box-shadow: 0px 5px 5px #2f3542;\n}\n.btn-file input[type=\"file\"][data-v-cb4a7820] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  opacity: 0;\n  outline: none;\n  cursor: pointer;\n  display: block;\n}\n.btn-file[data-v-cb4a7820] {\n  position: relative;\n  overflow: hidden;\n  color: #2a476b;\n  font-weight: bold;\n  background-color: #f1f1ef;\n  box-shadow: 1px 10px 20px 0px rgba(218, 215, 206, 0.8);\n  border: 2px solid #2a476b;\n}\n.btn-file[data-v-cb4a7820]:hover {\n  background: #2a476b;\n  color: #ffffff;\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-cb4a7820] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -60315,6 +60315,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
+Vue.component('date-picker', vue_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 Vue.use(vue_mathjax__WEBPACK_IMPORTED_MODULE_2__["default"]);
 Vue.component('app-header', __webpack_require__(/*! ./components/AppHeader.vue */ "./resources/js/components/AppHeader.vue")["default"]);

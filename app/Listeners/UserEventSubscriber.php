@@ -70,7 +70,7 @@ class UserEventSubscriber
         if ($event->driver == 'email') {
             $this->sendNewPasswordByEmail($event->phone, $event->password);
         } elseif ($event->driver == 'sms') {
-            $this->snedNewPasswordBySMS($event->phone, $event->password);
+            $this->sendNewPasswordBySMS($event->phone, $event->password);
         }
     }
 

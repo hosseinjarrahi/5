@@ -17,6 +17,12 @@
             </a>
         </div>
 
+        <div class="row justify-content-center my-3">
+            <div class="bg-danger text-light p-2 text-center col-12">
+                جهت سهولت در ساخت سوالات آزمون ، ابتدا سوالات را اضافه کرده و سپس اقدام به افزودن سوال به آزمون نمایید
+            </div>
+        </div>
+
         <div class="row px-5 my-3 justify-content-around justify-content-center">
             <div class="px-1 my-4 px-md-5 col-12 col-md-6">
                 <app-content-border-box title="سوالات آزمون">

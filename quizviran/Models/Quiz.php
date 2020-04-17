@@ -39,6 +39,11 @@ class Quiz extends Model
         return $this->users()->withPivot('norm')->get()->sortByDesc('pivot.norm');
     }
 
+    public function getQuizUsersWithPivot()
+    {
+        return $this->users()->withPivot(['norm','answers'])->get()->sortByDesc('pivot.norm');
+    }
+
     public function files()
     {
         return $this->morphMany(File::class, 'fileable');

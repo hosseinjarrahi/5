@@ -25,6 +25,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setLocale('fa');
-        auth()->loginUsingId(1);
     }
 }
