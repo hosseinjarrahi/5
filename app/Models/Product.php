@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Conner\Tagging\Taggable;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -43,8 +42,7 @@ class Product extends Model
     }
 
     public static function lastThreeProductWith(Category $category){
-        
-        return $category->entries(self::class)->orderByDesc('id')->limit('3')->get();
+        return $category->products()->orderByDesc('id')->limit('3')->get();
     }
 
     public static function randomByCategory($category)

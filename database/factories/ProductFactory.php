@@ -2,8 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use AliBayat\LaravelCategorizable\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
@@ -28,7 +28,7 @@ $factory->define(Product::class, function (Faker $faker) {
 
 
 $factory->afterCreating(Product::class, function (Product $product,Faker $faker) {
-    $product->attachCategory(Category::inRandomOrder()->first());
+    $product->categories()->attach(Category::inRandomOrder()->first());
     $product->tag(['تگ تستی',$faker->realText('10')]);
 });
 

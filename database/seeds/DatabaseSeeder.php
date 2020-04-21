@@ -1,13 +1,13 @@
 <?php
 
 use App\Models\Event;
-use AliBayat\LaravelCategorizable\Category;
 use App\Models\Comment;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\Slide;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Quizviran\Models\Question;
 use Quizviran\Models\Quiz;
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         Slide::truncate();
         Event::truncate();
         // factory(Quiz::class,5)->create();
-        factory(Category::class, 2)->create();
+        factory(Category::class, 1)->create();
         factory(Product::class, 50)->create();
         factory(User::class, 5)
             ->create()
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 $user->save();
             });
         factory(Slide::class, 5)->create();
-        factory(HomeBox::class, 3)->create();
+        factory(HomeBox::class, 1)->create();
         factory(Comment::class, 100)->create();
         factory(Event::class, 1)->create();
         factory(Question::class,10)->create();
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'body' => '/img/event.png',
             'start' => now(),
             'type' => 'main',
-            'end' => now()->addYear(1)
+            'end' => now()
         ]);
 
         factory(Room::class,1)->create()

@@ -73,8 +73,8 @@ class HomeController extends Controller
 
     public function tag($tag)
     {
-        $tag = Tag::where('slug->fa', $tag)->first();
-        $products = Product::with('tags')->withAnyTags([$tag])->orderByDesc('id')->paginate(9);
+        $tag = Tag::where('slug', $tag)->first();
+        $products = Product::with('tagged')->withAnyTag([$tag->name])->orderByDesc('id')->paginate(9);
         $links = $products->links();
         $relatedTags = $products->pluck('tags');
         $products = ProductResource::collection($products)->toJson();
