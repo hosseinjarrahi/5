@@ -51,7 +51,7 @@
           <span>{{ product.status }}</span>
         </div>
 
-        <div class="my-2 border-bottom-dark p-2">
+        <div class="my-2 border-bottom-dark p-2" v-if="product.percentage">
           <span class="fas fa-percentage"></span>
           <span>درصد تکمیل :</span>
           <span class="my-2">
@@ -71,8 +71,8 @@
         </div>
     </div>
 
-    <div class="avatar-parent">
-      <div class="pic rounded bg-dark-gray shadow" style="background-image:url(/img/back.jpg)"></div>
+    <div class="avatar-parent" v-if="product.pic">
+      <div class="pic bg-cover rounded bg-dark-gray shadow" :style="`background-image:url(${product.pic})`"></div>
     </div>
 
     <app-buy-modal
@@ -129,5 +129,9 @@ export default {
 }
 .line-throgh{
   text-decoration: red line-through;
+}
+.bg-cover{
+  background-position:center;
+  background-size:cover;
 }
 </style>

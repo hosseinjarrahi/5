@@ -23,13 +23,9 @@ class CommentController extends Controller
         return back(['message' => 'با موفقیت انجام شد']);
     }
 
-    public function destroy(User $user)
+    public function destroy(Comment $comment)
     {
-        if($user->profile) {
-            File::delete(public_path($user->profile->avatar));
-            $user->profile()->delete();
-        }
-        $user->delete();
+        $comment->delete();
         return back();
     }
 }

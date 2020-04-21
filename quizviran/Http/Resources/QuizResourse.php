@@ -16,7 +16,8 @@ class QuizResourse extends JsonResource
             'desc' => $this->desc,
             'start' => $this->start->diffForHumans(),
             'duration' => $this->duration - Carbon::now()->diffInMinutes($this->start),
-            'time' => $this->duration
+            'time' => $this->duration,
+            'isInTime' => $this->isInTime(),
         ];
     }
 }

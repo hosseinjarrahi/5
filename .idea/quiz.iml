@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/quizviran" isTestSource="false" packagePrefix="Quizviran\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/alibayat/laravel-categorizable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
@@ -32,7 +31,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/imanghafoori/laravel-microscope" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakub-onderka/php-console-highlighter" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/kalnoy/nestedset" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kavenegar/php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/tinker" />
@@ -87,10 +85,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/setasign/fpdi" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/eloquent-sortable" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-sluggable" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-tags" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-translatable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/css-selector" />

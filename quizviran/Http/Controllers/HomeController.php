@@ -4,9 +4,7 @@ namespace Quizviran\Http\Controllers;
 
 use App\Models\User;
 use Quizviran\Models\Quiz;
-use Quizviran\Models\Room;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
 use Quizviran\Http\Resources\QuizResourse;
 
 class HomeController extends Controller
@@ -21,5 +19,23 @@ class HomeController extends Controller
             $rooms = auth()->user()->rooms;
         }
         return view('Quizviran::home', compact('quizzes', 'bestStudents', 'rooms'));
+    }
+
+
+    public function asset($folder, $file)
+    {
+        $path = app_path("../quizviran/public/$folder/$file");
+
+        if (! \File::exists($path)) {
+            return response()->json(['not found'], 404);
+        }
+        if (\File::extension($path) == 'css') {
+            return response()->file($path, ['Content-Type' => 'text/css']);
+        }
+        if (\File::extension($path) == 'svg') {
+            return response()->file($path, ['Content-Type' => 'image/svg+xml']);
+        }
+
+        return response()->download($path, "$file");
     }
 }

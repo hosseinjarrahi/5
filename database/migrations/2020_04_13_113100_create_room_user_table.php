@@ -14,8 +14,8 @@ class CreateRoomUserTable extends Migration
     public function up()
     {
         Schema::create('room_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('room_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('room_id');
             $table->unique(['user_id','room_id']);
         });
     }

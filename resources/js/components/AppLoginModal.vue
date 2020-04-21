@@ -202,7 +202,7 @@
                     .then(response => {
                         Swal.fire({
                             text: response.data.message,
-                            icon: "success",
+                            icon: 'success',
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
                         });
@@ -210,10 +210,11 @@
                     })
                     .catch(err => {
                         this.errors = err.response.data.errors;
-                        if (this.errors.length > 0 && err.response.data.message) {
+                        console.log();
+                        if (!!!this.errors) {
                             Swal.fire({
                                 text: err.response.data.message,
-                                icon: "error",
+                                icon: 'error',
                                 confirmButtonText: "بسیار خوب",
                                 timer: 5000
                             });
@@ -243,7 +244,7 @@
                             if (err.response.data.message) {
                                 Swal.fire({
                                     text: err.response.data.message,
-                                    icon: "error",
+                                    icon: 'error',
                                     confirmButtonText: "بسیار خوب",
                                     timer: 5000
                                 });
@@ -272,8 +273,8 @@
                     })
                     .catch(err => {
                         Swal.fire({
-                            text: 'error',
-                            icon: "error",
+                            text: 'مشکلی رخ داده است',
+                            icon: 'error',
                             confirmButtonText: "بسیار خوب",
                             timer: 5000
                         });

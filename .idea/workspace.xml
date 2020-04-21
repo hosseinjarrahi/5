@@ -2,31 +2,72 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quiz.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/UserEventSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/UserEventSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/css/sass.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeBoxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeBoxController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SlideController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SlideController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/AdminController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/AskController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/CategoryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/NewsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/PayController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/ProductController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/main/TableController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/HomeBox.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/HomeBox.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/News.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/DbServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/DbServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/tags.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_24_213054_create_categories_tables.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_28_205325_create_tag_tables.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_13_103057_create_rooms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_13_103057_create_rooms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_13_103413_create_quiz_room_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_13_103413_create_quiz_room_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_13_113100_create_room_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_13_113100_create_room_user_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/PanelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/PanelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuizController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/HomeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Resources/QuizResourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Resources/QuizResourse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Question.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Models/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Quiz.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppMainBoxLastQuiz.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppMainBoxLastQuiz.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/pdf.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppExamCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppExamCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProfileHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProfileHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppCategories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppCategories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/401.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/403.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/419.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/429.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/500.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,12 +213,6 @@
       <path value="$PROJECT_DIR$/vendor/rtconner/laravel-tagging" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-tags" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
-      <path value="$PROJECT_DIR$/vendor/spatie/eloquent-sortable" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-sluggable" />
-      <path value="$PROJECT_DIR$/vendor/alibayat/laravel-categorizable" />
-      <path value="$PROJECT_DIR$/vendor/kalnoy/nestedset" />
       <path value="$PROJECT_DIR$/vendor/imanghafoori/laravel-microscope" />
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
@@ -197,25 +232,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/quizviran/resources/views/panel/teacher" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/errors" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\app\Http\Controllers" />
+      <recent name="E:\web\bigBag\quiz\public\img" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel" />
       <recent name="E:\web\bigBag\quiz\resources\views" />
-      <recent name="E:\web\bigBag\quiz\app\Http\Controllers\main" />
-      <recent name="E:\web\bigBag\quiz\app\Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\resources\views\errors" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
       <recent name="E:\web\bigBag\quiz\quizviran\Http\Controllers" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\js\components" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\student" />
-      <recent name="E:\web\bigBag\quiz\resources\views\mails" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -273,7 +308,13 @@
       <workItem from="1586931690518" duration="3391000" />
       <workItem from="1586935701719" duration="15315000" />
       <workItem from="1587006017084" duration="54490000" />
-      <workItem from="1587131631174" duration="3537000" />
+      <workItem from="1587131631174" duration="4696000" />
+      <workItem from="1587188377881" duration="10942000" />
+      <workItem from="1587211829785" duration="247000" />
+      <workItem from="1587212101090" duration="954000" />
+      <workItem from="1587280055096" duration="1233000" />
+      <workItem from="1587444872054" duration="2339000" />
+      <workItem from="1587447256492" duration="5802000" />
     </task>
     <servers />
   </component>
@@ -361,10 +402,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="604" y="341" key="NewPhpFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1586002737285" />
-    <state x="636" y="128" key="RollbackChangesDialog" timestamp="1586347860296">
+    <state x="636" y="128" key="RollbackChangesDialog" timestamp="1587451732508">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="636" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1586347860296" />
+    <state x="636" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1587451732508" />
+    <state x="277" y="60" key="SettingsEditor" timestamp="1587212038907">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="277" y="60" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1587212038907" />
     <state x="540" y="151" key="VcsDiffUtil.ChangesDialog" timestamp="1586347844082">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -373,18 +418,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" width="1183" height="820" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1587106257214" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1587135212025">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1587451992589">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1587135212025" />
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1587451992589" />
     <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1587134867722">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1587134867722" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587135204274">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587454242122">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587135204274" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587454242122" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -393,6 +438,11 @@
           <url>file://$PROJECT_DIR$/quizviran/resources/js/components/AppLoginModal.vue</url>
           <line>162</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/quizviran/Http/Controllers/HomeController.php</url>
+          <line>29</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

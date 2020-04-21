@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title','تیزویران | ' . $category->name ?? 'دسته بندی')
+@section('title','تیزویران | ' . $category->name)
 
 @section('content')
 
@@ -16,7 +16,7 @@
         </div>
         
         <div class="col-12">
-            <app-categories></app-categories>
+            <app-categories :categories="{{ $children->toJson() }}"></app-categories>
 
             <div class="row justify-content-center p-2 p-md-0">
                     <app-course-card v-for="product in {{ $products }}" :product="product"></app-course-card>

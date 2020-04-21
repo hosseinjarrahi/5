@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\HomeBox;
+use App\Models\HomeBox;
 use Illuminate\Http\Request;
 
 class HomeBoxController extends Controller

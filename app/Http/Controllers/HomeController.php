@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\main;
+namespace App\Http\Controllers;
 
 use App\Models\Event;
-use AliBayat\LaravelCategorizable\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CouponRequest;
-use App\Http\Resources\ProductResource;
 use App\Models\Coupon;
 use App\Models\HomeBox;
 use App\Models\Product;
 use App\Models\Slide;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Conner\Tagging\Model\Tag;
+use App\Http\Requests\CouponRequest;
+use App\Http\Resources\ProductResource;
 use Morilog\Jalali\Jalalian;
-use Spatie\Tags\Tag;
 use App\Http\Resources\NotificationResource;
 
 class HomeController extends Controller
@@ -35,12 +33,17 @@ class HomeController extends Controller
 
     public function category(Category $category)
     {
-        $products = $category->entries(Product::class)->orderByDesc('id')->paginate(9);
+        $products = $category->products()->orderByDesc('id')->paginate(9);
+
+        $children = $category->children;
+
         (! $products->isEmpty()) ?: abort(404);
+
         $links = $products->links();
+
         $products = ProductResource::collection($products)->toJson();
 
-        return view('main.category', compact('products', 'category', 'links'));
+        return view('main.category', compact('products', 'category', 'links','children'));
     }
 
     public function product($category, Product $product)

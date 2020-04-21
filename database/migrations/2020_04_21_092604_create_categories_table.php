@@ -1,31 +1,24 @@
 <?php
 
-declare(strict_types=1);
-
-/**
- * Laravel Categorizable Package by Ali Bayat.
- */
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Kalnoy\Nestedset\NestedSet;
+use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTables extends Migration
+class CreateCategoriesTable extends Migration
 {
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->string('pic')->nullable();
-            $table->string('type')->default('default');
-            NestedSet::columns($table);
             $table->timestamps();
         });
 
         Schema::create('categories_models', function (Blueprint $table) {
-            $table->integer('category_id');
+            $table->unsignedInteger('category_id');
             $table->morphs('model');
         });
     }

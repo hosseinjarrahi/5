@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use AliBayat\LaravelCategorizable\Categorizable;
-use AliBayat\LaravelCategorizable\Category;
+use Conner\Tagging\Taggable;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
-use \Spatie\Tags\HasTags;
 
 class Product extends Model
 {
-    use Categorizable;
-    use HasTags;
+    use Taggable;
 
     protected $with = [
         'categories',
@@ -52,6 +50,12 @@ class Product extends Model
     public static function randomByCategory($category)
     {
         $category = Category::where('slug',$category)->firstOrFail();
-        return $category->entries(self::class)->inRandomOrder()->limit(3)->get();
+        return $category->products()->inRandomOrder()->limit(3)->get();
     }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'model','categories_models');
+    }
+
 }

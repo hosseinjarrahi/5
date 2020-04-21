@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->boolean('lock')->default(false);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

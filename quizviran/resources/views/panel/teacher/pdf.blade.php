@@ -46,9 +46,9 @@
     </div>
     <div>
         <span>پاسخ های کاربر : </span>
-        @foreach($user->pivot->answers)
-            <span>{{  }}</span>
-        @endforeach
+{{--        @foreach($user->pivot->answers)--}}
+{{--            <span>{{  }}</span>--}}
+{{--        @endforeach--}}
     </div>
 @endforeach
 </body>

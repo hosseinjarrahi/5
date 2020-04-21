@@ -4,11 +4,10 @@ namespace Admin\Http\Controllers;
 
 use App\Http\Upload;
 use App\Models\Product;
-use Illuminate\Support\Str;
+use App\Models\Category;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
-use AliBayat\LaravelCategorizable\Category;
 
 class ProductController extends Controller
 {
@@ -92,7 +91,7 @@ class ProductController extends Controller
             $file = new File();
             $file->file = $request->file('file' . $count)->storeAs('files/' . Jalalian::forge(date('y-m-d'))->format('y-m'),
                 time() . random_int(0, 100) . '.' . $request->file('file' . $count)->extension());
-            $files[] = $file;
+            $files[] = \App\Models\File::create(['file' => $file->file,'user_id' => auth()->id() ?? 1]);
         }
         $product->files()->saveMany($files);
     }

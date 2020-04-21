@@ -2343,18 +2343,19 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/login", this.login).then(function (response) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: response.data.message,
-          icon: "success",
+          icon: 'success',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
         location.reload();
       })["catch"](function (err) {
         _this.errors = err.response.data.errors;
+        console.log();
 
-        if (_this.errors.length > 0 && err.response.data.message) {
+        if (!!!_this.errors) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
-            icon: "error",
+            icon: 'error',
             confirmButtonText: "بسیار خوب",
             timer: 5000
           });
@@ -2391,7 +2392,7 @@ __webpack_require__.r(__webpack_exports__);
         if (err.response.data.message) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
             text: err.response.data.message,
-            icon: "error",
+            icon: 'error',
             confirmButtonText: "بسیار خوب",
             timer: 5000
           });
@@ -2422,8 +2423,8 @@ __webpack_require__.r(__webpack_exports__);
         }, 1000);
       })["catch"](function (err) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-          text: 'error',
-          icon: "error",
+          text: 'مشکلی رخ داده است',
+          icon: 'error',
           confirmButtonText: "بسیار خوب",
           timer: 5000
         });
@@ -2722,38 +2723,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      categories: [{
-        name: 'one',
-        to: 'to'
-      }, {
-        name: 'one',
-        to: 'to'
-      }, {
-        name: 'one',
-        to: 'to'
-      }, {
-        name: 'one',
-        to: 'to'
-      }, {
-        name: 'one',
-        to: 'to'
-      }, {
-        name: 'one',
-        to: 'to'
-      }]
-    };
+  props: {
+    categories: {
+      "default": []
+    }
   }
 });
 
@@ -3995,7 +3969,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.avatar-parent[data-v-e3d29c0c] {\r\n  position: absolute;\r\n  top: -50px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.pic[data-v-e3d29c0c] {\r\n  width: 90%;\r\n  height: 200px;\r\n  background-image: url(\"/img/avatar.png\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid #57606f;\n}\n.border-bottom-dark[data-v-e3d29c0c] {\r\n  border-bottom: 2px solid #57606f;\n}\n.line-throgh[data-v-e3d29c0c]{\r\n  -webkit-text-decoration: red line-through;\r\n          text-decoration: red line-through;\n}\r\n", ""]);
+exports.push([module.i, "\n.avatar-parent[data-v-e3d29c0c] {\r\n  position: absolute;\r\n  top: -50px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.pic[data-v-e3d29c0c] {\r\n  width: 90%;\r\n  height: 200px;\r\n  background-image: url(\"/img/avatar.png\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid #57606f;\n}\n.border-bottom-dark[data-v-e3d29c0c] {\r\n  border-bottom: 2px solid #57606f;\n}\n.line-throgh[data-v-e3d29c0c]{\r\n  -webkit-text-decoration: red line-through;\r\n          text-decoration: red line-through;\n}\n.bg-cover[data-v-e3d29c0c]{\r\n  background-position:center;\r\n  background-size:cover;\n}\r\n", ""]);
 
 // exports
 
@@ -46636,59 +46610,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _vm.categories.length
+    ? _c(
+        "div",
+        {
+          staticClass:
+            "w-100 text-center shadow bg-dark-gray rounded d-flex justify-content-center flex-column flex-md-row"
+        },
+        _vm._l(_vm.categories, function(cat, index) {
+          return _c("a", {
+            key: index,
+            staticClass: "item px-3 py-3 py-md-2 text-white",
+            attrs: { href: "/" + cat.slug },
+            domProps: { textContent: _vm._s(cat.name) }
+          })
+        }),
+        0
+      )
+    : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "w-100 text-center shadow bg-dark-gray rounded d-flex justify-content-center flex-column flex-md-row"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "item px-3 py-3 py-md-2 text-white",
-            attrs: { href: "#" }
-          },
-          [_vm._v("\n      ریاضی هفتم\n  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "item px-3 py-3 py-md-2 text-white",
-            attrs: { href: "#" }
-          },
-          [_vm._v("\n      ریاضی هفتم\n  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "item px-3 py-3 py-md-2 text-white",
-            attrs: { href: "#" }
-          },
-          [_vm._v("\n      ریاضی هفتم\n  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "item px-3 py-3 py-md-2 text-white",
-            attrs: { href: "#" }
-          },
-          [_vm._v("\n      ریاضی هفتم\n  ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -47524,24 +47465,26 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-            _c("span", { staticClass: "fas fa-percentage" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("درصد تکمیل :")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "my-2" }, [
-              _c("div", { staticClass: "progress" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "progress-bar",
-                    style: { width: _vm.product.percentage + "%" }
-                  },
-                  [_vm._v(_vm._s(_vm.product.percentage) + "%")]
-                )
+          _vm.product.percentage
+            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
+                _c("span", { staticClass: "fas fa-percentage" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("درصد تکمیل :")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "my-2" }, [
+                  _c("div", { staticClass: "progress" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "progress-bar",
+                        style: { width: _vm.product.percentage + "%" }
+                      },
+                      [_vm._v(_vm._s(_vm.product.percentage) + "%")]
+                    )
+                  ])
+                ])
               ])
-            ])
-          ]),
+            : _vm._e(),
           _vm._v(" "),
           _vm.product.price > 0
             ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
@@ -47568,7 +47511,14 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _vm.product.pic
+        ? _c("div", { staticClass: "avatar-parent" }, [
+            _c("div", {
+              staticClass: "pic bg-cover rounded bg-dark-gray shadow",
+              style: "background-image:url(" + _vm.product.pic + ")"
+            })
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.buyModal
         ? _c("app-buy-modal", {
@@ -47589,19 +47539,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar-parent" }, [
-      _c("div", {
-        staticClass: "pic rounded bg-dark-gray shadow",
-        staticStyle: { "background-image": "url(/img/back.jpg)" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

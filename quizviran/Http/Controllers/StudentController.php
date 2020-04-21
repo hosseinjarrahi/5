@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function join()
     {
         if (! auth()->check()) {
-            return abort(404);
+            return abort(401);
         }
 
         return view('Quizviran::panel.student.join');
@@ -21,7 +21,7 @@ class StudentController extends Controller
     public function addStudent()
     {
         if (! auth()->check()) {
-            return abort(404);
+            return abort(401);
         }
 
         $request = request();

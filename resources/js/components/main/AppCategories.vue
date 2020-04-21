@@ -1,20 +1,11 @@
 <template>
-  <div class="w-100 text-center shadow bg-dark-gray rounded d-flex justify-content-center flex-column flex-md-row">
+  <div v-if="categories.length" class="w-100 text-center shadow bg-dark-gray rounded d-flex justify-content-center flex-column flex-md-row">
 
-    <a href="#" class="item px-3 py-3 py-md-2 text-white">
-        ریاضی هفتم
-    </a>
-
-    <a href="#" class="item px-3 py-3 py-md-2 text-white">
-        ریاضی هفتم
-    </a>
-
-    <a href="#" class="item px-3 py-3 py-md-2 text-white">
-        ریاضی هفتم
-    </a>
-
-    <a href="#" class="item px-3 py-3 py-md-2 text-white">
-        ریاضی هفتم
+    <a v-for="(cat,index) in categories"
+       :key="index"
+       :href="'/'+cat.slug"
+       class="item px-3 py-3 py-md-2 text-white"
+       v-text="cat.name">
     </a>
 
     </div>
@@ -22,18 +13,9 @@
 
 <script>
 export default {
-  data(){
-    return{
-      categories:[
-        {name:'one',to:'to'},
-        {name:'one',to:'to'},
-        {name:'one',to:'to'},
-        {name:'one',to:'to'},
-        {name:'one',to:'to'},
-        {name:'one',to:'to'},
-      ]
+    props:{
+        categories:{default:[]}
     }
-  }
 }
 </script>
 

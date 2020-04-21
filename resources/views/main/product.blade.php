@@ -8,12 +8,11 @@
     <div class="p-1 my-5"></div>
     <div class="container mt-5">
         <div class="row justify-content-center  align-items-center align-items-md-start">
-
             <div class="col-12 col-md-4 mb-5">
             <app-product-desc :product="{{ $product->toJson() }}" release="{{ $release }}"></app-product-desc>
                 <app-bio :teacher="{{ $product->user }}"></app-bio>
             </div>
-            
+
             <div class="col-12 col-md-8">
                 
                 <div class="row">
@@ -49,22 +48,22 @@
                                 <div class="d-flex flex-column flex-md-row">
                                     <span class="m-2 p-2 text-white">
                                         <span class="fas fa-download"></span>
-                                        <a href="{{ url($file->file) }}"> دانلود </a>
+                                        <a href="{{ url('file?file='.$file->file) }}"> دانلود </a>
                                     </span>
-                                    <span class="m-2 p-2 text-white">
-                                    <span class="fas fa-file"></span>
-                                    <span> نوع فایل: </span>
-                                    <span> {{ pathinfo($file->file) }} </span>
-                                    </span>
-                                    <span class="m-2 p-2 text-white">
-                                        <span class="fas fa-box"></span>
-                                        <span> حجم: </span>
-                                        <span> {{ filesize(asset($file->file)) }} </span>
-                                    </span>
+{{--                                    <span class="m-2 p-2 text-white">--}}
+{{--                                    <span class="fas fa-file"></span>--}}
+{{--                                    <span> نوع فایل: </span>--}}
+{{--                                    <span> {{ pathinfo($file->file) }} </span>--}}
+{{--                                    </span>--}}
+{{--                                    <span class="m-2 p-2 text-white">--}}
+{{--                                        <span class="fas fa-box"></span>--}}
+{{--                                        <span> حجم: </span>--}}
+{{--                                        <span> {{ filesize(asset($file->file)) }} </span>--}}
+{{--                                    </span>--}}
                                 </div>
                             </div>
                             @endforeach
-                    </div>
+                        </div>
                 </div>
                 @if(!$tags->isEmpty())
                 <div class="col-12 mb-2 overflow-hidden">
@@ -72,7 +71,7 @@
                         <span class="fas fa-tags mx-1"></span>
                         <span class="mx-1">برچسب ها : </span>
 
-                        <app-tag v-for="tag in {{ $tags->toJson() }}" :link="tag.slug.fa">@{{ tag.name.fa }}</app-tag>
+                        <app-tag v-for="tag in {{ $tags->toJson() }}" :link="tag.slug">@{{ tag.name }}</app-tag>
 
                     </div>
                 </div>

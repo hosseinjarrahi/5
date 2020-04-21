@@ -1,5 +1,5 @@
 @extends('Admin::layout')
 
 @section('content')
-    s
+    به نام خدا
 @endsection

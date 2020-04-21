@@ -3,6 +3,7 @@
 namespace Quizviran\Models;
 
 use Carbon\Carbon;
+use App\Models\File;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 

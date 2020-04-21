@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use AliBayat\LaravelCategorizable\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class HomeBox extends Model
