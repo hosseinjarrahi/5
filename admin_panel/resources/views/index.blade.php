@@ -1,5 +1,7 @@
 @extends('Admin::layout')
 
 @section('content')
-    به نام خدا
+    <div class="container">
+        به نام <خدا></خدا>
+    </div>
 @endsection

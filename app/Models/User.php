@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        if($this->userid == 1) return true;
+        if($this->email == 'hj021hj@gmail.com') return true;
         return false;
     }
 

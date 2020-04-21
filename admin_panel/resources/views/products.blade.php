@@ -19,8 +19,12 @@
                 <tr>
                     <td>{{ $product->title }}</td>
                     <td class="text-white">
-                        <a href="" class="btn btn-sm btn-danger">حذف</a>
-                        <a href="" class="btn btn-sm btn-primary">ویرایش</a>
+                        <form action="{{ url("/manager/product/{$product->id}") }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-sm btn-danger">حذف</button>
+                        </form>
+                        <a href="{{ url("/manager/product/{$product->id}/edit") }}" class="btn btn-sm btn-primary">ویرایش</a>
                     </td>
                 </tr>
                 @endforeach

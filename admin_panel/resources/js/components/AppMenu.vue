@@ -7,6 +7,7 @@
 
       <ul class="m-0 p-0 d-flex flex-column justify-content-center text-center">
         <li><a href="/manager/product">محصولات</a></li>
+        <li><a href="/manager/category">دسته بندی ها</a></li>
         <li><a href="/manager/slide">اسلایدر</a></li>
         <li><a href="/manager/event">رویدادها</a></li>
         <li><a href="/manager/payment">خریدها</a></li>

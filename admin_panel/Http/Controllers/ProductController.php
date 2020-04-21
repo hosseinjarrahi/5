@@ -122,19 +122,24 @@ class ProductController extends Controller
         return $items;
     }
 
-//
-//    public function upload()
-//    {
-//        dd(request()->all());
-//        $user = auth()->user();
-//        $avatar = Upload::uploadFile(['pic' => $request->file]);
-//        File::delete(public_path($user->profile->avatar));
-//        $user->profile()->update(['avatar' => $avatar['avatar']]);
-//
-//        return response([
-//            'message' => 'با موفقیت تغییر یافت.',
-//            'avatar' => $avatar['avatar'],
-//        ]);
-//    }
+    public function edit(Product $product)
+    {
+        $categories = Category::all();
 
+        return view('Admin::productEdit',compact('categories','product'));
+    }
+
+    public function update()
+    {
+        $request = request();
+
+        return back();
+    }
+
+    public function destroy(Product $product)
+    {
+        File::delete(public_path($product->pic));
+        $product->delete();
+        return back();
+    }
 }
