@@ -6,6 +6,7 @@ use App\Http\Upload;
 use App\Models\Product;
 use App\Models\Category;
 use Morilog\Jalali\Jalalian;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 
@@ -25,10 +26,8 @@ class ProductController extends Controller
         return view('Admin::productAdd',compact('categories'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $request = request();
-
         $tags = explode('-',$request->tags);
 
         $meta = [
@@ -42,7 +41,7 @@ class ProductController extends Controller
 
         $product = Product::create([
             'status' => $request->status,
-            'slug' => str_replace(' ','-',$request->title),
+            'slug' => $request->slug ?? str_replace(' ','-',$request->title),
             'title' => $request->title,
             'percentage' => $request->percentage,
             'desc' => $request->desc ?? 'as',
@@ -58,10 +57,10 @@ class ProductController extends Controller
 
         $category = Category::findOrFail($request->category);
 
-        $product->attachTags($tags);
+        $product->tag($tags);
 
         if($category)
-            $product->attachCategory($category);
+            $product->categories()->attach($category);
         return back();
     }
 

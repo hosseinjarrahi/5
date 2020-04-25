@@ -10,25 +10,18 @@ class StudentController extends Controller
 {
     public function join()
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         return view('Quizviran::panel.student.join');
     }
 
 
     public function addStudent()
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $request = request();
         $room = Room::where('lock',false)->where('code',$request->code)->first();
         if(!$room)
             return back();
-        auth()->user()->rooms()->save($room);
+        if(!auth()->user()->hasRoom($room))
+            auth()->user()->rooms()->save($room);
         return redirect(url('/quiz/panel/room',['room' => $room->link]));
     }
 }

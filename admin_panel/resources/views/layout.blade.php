@@ -14,9 +14,6 @@
         @yield('content')
     </main>
     <app-menu></app-menu>
-    <footer class="w-100 bg-dark text-center text-white">
-        تیزویران
-    </footer>
 </div>
 
 </body>

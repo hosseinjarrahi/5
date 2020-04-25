@@ -2076,7 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
         to: '/quiz',
         title: 'کوییزویران'
       }, {
-        to: '/فروشگاه',
+        to: '/shop',
         title: 'فروشگاه'
       }, {
         to: 'http://forum.tizviran.com',

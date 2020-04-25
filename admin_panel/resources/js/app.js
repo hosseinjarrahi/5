@@ -8,6 +8,7 @@ Vue.component('date-picker', persianDatePicker);
 ////////////////////////////////////////////////
 Vue.component('app-menu',require('./components/AppMenu.vue').default);
 Vue.component('app-product-form',require('./components/AppProductForm.vue').default);
+Vue.component('app-product-form-edit',require('./components/AppProductFormEdit.vue').default);
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

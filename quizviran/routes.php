@@ -1,5 +1,8 @@
 <?php
 
+use App\Payment\Idpay;
+use Illuminate\Support\Facades\Http;
+
 Route::group(['prefix' => 'quiz'], function () {
     Route::get('/', 'HomeController@home');
     Route::resource('/exam', 'QuizController');
@@ -16,7 +19,7 @@ Route::group(['prefix' => 'quiz'], function () {
     Route::post('/complete', 'QuizController@complete');
     Route::get('/results/{quiz}','QuizController@result');
 
-    Route::group(['prefix' => 'panel'], function () {
+    Route::group(['prefix' => 'panel','middleware' => ['auth']], function () {
         Route::get('/','PanelController@home');
         Route::get('/rooms','PanelController@home');
         Route::resource('/room','RoomController');

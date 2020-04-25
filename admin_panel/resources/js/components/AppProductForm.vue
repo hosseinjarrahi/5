@@ -51,6 +51,11 @@
     </div>
 
     <div class="form-group">
+      <span>slug :</span>
+      <input name="slug" class="form-control">
+    </div>
+
+    <div class="form-group">
       <span>تصویر :</span>
       <input type="file" name="pic" class="form-control">
     </div>

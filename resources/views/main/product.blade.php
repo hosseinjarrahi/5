@@ -41,7 +41,7 @@
                             </div>
                             <div class="my-5" v-if="{{ json_encode($product->course_items) }}">
                                 <app-title>سرفصل ها</app-title>
-                                <app-product-course-item v-for="(item,index) in {{ json_encode($product->course_items) }}" :item="item" :index="index"></app-product-course-item>
+                                <app-product-course-item v-for="(item,index) in {{ json_encode($product->course_items) }}" :item="item" :index="index+1"></app-product-course-item>
                             </div>
                             @foreach($files as $file)
                             <div class="my-2 rounded " style="border:1px solid #f5f5f5">

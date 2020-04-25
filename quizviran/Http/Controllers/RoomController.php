@@ -13,19 +13,11 @@ class RoomController extends Controller
 {
     public function create()
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         return view('Quizviran::panel.teacher.roomCreate');
     }
 
     public function show($room)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $room = Room::where('link', $room)->with([
             'comments',
             'comments.files',
@@ -44,10 +36,6 @@ class RoomController extends Controller
 
     public function store()
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         if (auth()->user()->type != 'teacher') {
             return back();
         }
@@ -74,10 +62,6 @@ class RoomController extends Controller
 
     public function addComment(Request $request)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $files = collect($request->post('files'));
         $files = File::find($files->pluck('id'));
         $comment = Comment::create([
@@ -94,10 +78,6 @@ class RoomController extends Controller
 
     public function updateComment(Comment $comment, Request $request)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         if (! $comment->isOwn()) {
             return response(['message' => 'این نظر قابل ویرایش نیست.'], 400);
         }
@@ -109,10 +89,6 @@ class RoomController extends Controller
 
     public function deleteComment(Comment $comment)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         if ($comment->isOwn() || $comment->isOwnMember()) {
             \Illuminate\Support\Facades\File::delete(public_path($comment->files->pluck('file')));
             $comment->delete();
@@ -125,10 +101,6 @@ class RoomController extends Controller
 
     public function members($room)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $room = Room::where('link', $room)->with('members')->firstOrFail();
         $room->created_at = Jalalian::forge($room->created_at);
 
@@ -141,10 +113,6 @@ class RoomController extends Controller
 
     public function lock($room)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $room = Room::findOrFail($room);
         if(!(auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher'))
             return back();

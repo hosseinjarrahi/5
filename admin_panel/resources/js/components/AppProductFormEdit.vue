@@ -62,8 +62,17 @@
       </select>
     </div>
 
+    <div class="d-flex flex-column my-3 bg-light rounded p-1 shadow" v-if="product.course_items">
+
+      <div class="py-2 justify-content-between d-flex flex-row" v-for="(course,index) in courses" :key="index">
+        <div><a :href="`/manager/course/${course.title}/edit`" >>> {{ course.title }}</a></div>
+        <div @click="deleteCourse(index)" class="px-5 bg-danger text-white">&times;</div>
+      </div>
+
+    </div>
+
     <div class="form-group">
-      <input type="checkbox" :checked="product.courses.length" v-model="course">
+      <input type="checkbox" :checked="items>0" v-model="course">
       <span>میخواهم دوره ایجاد کنم</span>
     </div>
 
@@ -129,7 +138,7 @@
     import {VueEditor} from "vue2-editor";
 
     export default {
-        name: "AppProductForm",
+        name: "AppProductFormEdit",
         props:{
             categories:{default:[]},
             product:{default:null}
@@ -138,16 +147,21 @@
         data() {
             return {
                 course: null,
-                items: product.courses.length,
+                items: 0,
                 content: this.product ? this.product.desc : '',
-                fileCount:false
+                fileCount:false,
+                courses:this.product.course_items
             }
         },
         methods:{
             isInCats(category){
-              return this.products.categories.find((c) => {
+              return this.product.categories.some((c) => {
                   return c.id == category.id
               })
+            },
+            deleteCourse(courseIndex){
+                delete this.courses[courseIndex];
+                this.$forceUpdate();
             }
         }
     }

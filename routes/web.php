@@ -3,6 +3,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@home')->name('home');
 
+Route::get('/complete', 'PaymentController@complete');
+Route::post('/complete/reply', 'PaymentController@reply');
+
 Route::post('/login', 'RegisterController@login');
 Route::get('/logout', 'RegisterController@logout')->name('logout')->middleware('auth');
 Route::post('/reset-password', 'RegisterController@resetPassword')->middleware('throttle:5,1440');

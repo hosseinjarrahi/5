@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use App\Facades\PayFacade;
+use Shetabit\Payment\Invoice;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+//        PayFacade::choose(Invoice::class);
     }
 
     /**
@@ -25,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setLocale('fa');
+        auth()->loginUsingId(6);
     }
 }

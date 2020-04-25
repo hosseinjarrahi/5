@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        به نام <خدا></خدا>
+        به نام خدا
     </div>
 @endsection

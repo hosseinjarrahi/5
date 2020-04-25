@@ -15,10 +15,6 @@ class QuizController extends Controller
 {
     public function exams($room)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $room = Room::with(['quizzes'])->where('link', $room)->first();
 
         if (! (auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher')) {
@@ -30,10 +26,6 @@ class QuizController extends Controller
 
     public function edit($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::findOrFail($quiz);
 
         return view('Quizviran::panel.teacher.quizEdit', compact('quiz'));
@@ -41,10 +33,6 @@ class QuizController extends Controller
 
     public function revival($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::findOrFail($quiz);
         $quiz->duration += 5;
         $quiz->save();
@@ -54,10 +42,6 @@ class QuizController extends Controller
 
     public function update($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $request = request();
         $quiz = Quiz::findOrFail($quiz);
         $quiz->name = $request->name;
@@ -71,10 +55,6 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $room = Room::with('user')->findOrFail($request->room);
         if (! auth()->user()->hasRoom($room)) {
             return response(['error']);
@@ -100,10 +80,6 @@ class QuizController extends Controller
 
     public function destroy($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::findOrFail($quiz);
         if (! (auth()->user()->type == 'teacher' && auth()->id() == $quiz->user_id)) {
             return back();
@@ -117,10 +93,6 @@ class QuizController extends Controller
 
     public function quizDetail(Quiz $quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $users = $quiz->users()->withPivot(['norm'])->get();
 
         return view('Quizviran::quizDetail', compact('users', 'quiz'));
@@ -128,10 +100,6 @@ class QuizController extends Controller
 
     public function result($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::findOrFail($quiz);
         $user = auth()->user();
         $users = $quiz->getQuizUsersWithNorms();
@@ -141,10 +109,6 @@ class QuizController extends Controller
 
     public function show($quiz)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::findOrFail($quiz);
 
         if ((! $quiz->show || ! $quiz->isInTime()) && ! auth()->user()->type == 'teacher') {
@@ -162,10 +126,6 @@ class QuizController extends Controller
 
     public function complete()
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         if (auth()->user()->type == 'teacher') {
             return response(['message' => 'شما به عنوان معلم نمی توانید امتیازی ثبت کنید. ']);
         }
@@ -200,10 +160,6 @@ class QuizController extends Controller
 
     private function getNorm($data)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $norm = 0;
         $data = collect($data);
         $qs = Question::find($data->pluck('id')->values());
@@ -219,10 +175,6 @@ class QuizController extends Controller
 
     public function manageQuestions($exam)
     {
-        if (! auth()->check()) {
-            return abort(401);
-        }
-
         $quiz = Quiz::with('questions')->findOrFail($exam);
         $allQuestions = auth()->user()->questions;
 

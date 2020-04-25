@@ -9,13 +9,6 @@ use Illuminate\Routing\Controller;
 
 class QuestionController extends Controller
 {
-    public function __construct()
-    {
-        if (! auth()->check()) {
-            return redirect('/');
-        }
-    }
-
     public function show($question)
     {
         $question = Question::findOrFail($question);

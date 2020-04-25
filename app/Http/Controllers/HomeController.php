@@ -86,7 +86,8 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $products = Product::without(['categories', 'user'])->where('title', 'LIKE', "%{$search}%");
+        $products = Product::whereHas('categories')->without(['categories', 'user'])->where('title', 'LIKE', "%{$search}%");
+
         if ($request->view) {
             $products = $products->paginate(9);
             $links = $products->appends(request()->except('page'))->links();
@@ -94,6 +95,7 @@ class HomeController extends Controller
             return view('main.search', compact('products', 'search','links'));
         }
         $products = ProductResource::collection($products->limit(5)->get())->toJson();
+
         return response($products);
     }
 
