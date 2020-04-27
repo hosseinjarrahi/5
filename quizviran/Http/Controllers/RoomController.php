@@ -6,11 +6,21 @@ use App\Models\File;
 use App\Models\Comment;
 use Quizviran\Models\Room;
 use Illuminate\Http\Request;
+use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
 use Morilog\Jalali\Jalalian;
+use Quizviran\Repositories\RoomRepo;
 
 class RoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('has.room')->except([
+            'create',
+            'store',
+        ]);
+    }
+
     public function create()
     {
         return view('Quizviran::panel.teacher.roomCreate');
@@ -18,10 +28,7 @@ class RoomController extends Controller
 
     public function show($room)
     {
-        $room = Room::where('link', $room)->with([
-            'comments',
-            'comments.files',
-        ])->withCount('members')->firstOrFail();
+        $room = RoomRepo::withCommentAndMemberCount($room);
 
         if (! auth()->user()->hasRoom($room)) {
             return abort(401);
@@ -29,33 +36,23 @@ class RoomController extends Controller
 
         $room->created_at = Jalalian::forge($room->created_at);
 
-        $room->quizzes = $room->quizzes()->orderByDesc('id')->get();
+        $room->quizzes = $room->quizzes()->orderByDesc('id')->paginate(10);
 
         return view('Quizviran::panel.teacher.room', compact('room'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        if (auth()->user()->type != 'teacher') {
+        if (! auth()->user()->isTeacher()) {
             return back();
         }
 
-        $request = request();
+        [
+            $link,
+            $code,
+        ] = $this->generateCode($room2);
 
-        $room1 = true;
-        while ($room1 || $room2) {
-            $link = \Str::random(10);
-            $code = random_int(100000, 999999);
-            $room1 = Room::where('link', $link)->first();
-            $room2 = Room::where('code', $code)->first();
-        }
-
-        $room = Room::create([
-            'name' => $request->name,
-            'link' => $link,
-            'user_id' => auth()->id(),
-            'code' => $code,
-        ]);
+        $room = RoomRepo::create($request->name, $link, $code);
 
         return view('Quizviran::panel.teacher.roomCreated', compact('room'));
     }
@@ -63,14 +60,11 @@ class RoomController extends Controller
     public function addComment(Request $request)
     {
         $files = collect($request->post('files'));
+
         $files = File::find($files->pluck('id'));
-        $comment = Comment::create([
-            'comment' => $request->comment,
-            'commentable_type' => $request->type,
-            'commentable_id' => $request->id,
-            'show' => true,
-            'user_id' => auth()->id(),
-        ]);
+
+        $comment = CommentRepo::create($request);
+
         $comment->files()->saveMany($files);
 
         return response(['message' => 'با موفقیت اضافه شد']);
@@ -101,10 +95,11 @@ class RoomController extends Controller
 
     public function members($room)
     {
-        $room = Room::where('link', $room)->with('members')->firstOrFail();
+        $room = RoomRepo::withMembersBylink($room);
+
         $room->created_at = Jalalian::forge($room->created_at);
 
-        if (! (auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher')) {
+        if (! auth()->user()->isTeacher()) {
             return abort(401);
         }
 
@@ -113,11 +108,42 @@ class RoomController extends Controller
 
     public function lock($room)
     {
-        $room = Room::findOrFail($room);
-        if(!(auth()->user()->hasRoom($room) && auth()->user()->type == 'teacher'))
+        $room = RoomRepo::findOrFail($room);
+
+        if (! auth()->user()->isTeacher()) {
             return back();
-       $room->lock = !$room->lock;
-       $room->save();
-       return back();
+        }
+
+        RoomRepo::toggleLock($room);
+
+        return back();
+    }
+
+    public function gapLock($room)
+    {
+        $room = Room::findOrFail($room);
+        if (! auth()->user()->isTeacher()) {
+            return back();
+        }
+
+        RoomRepo::toggleGap($room);
+
+        return back();
+    }
+
+    private function generateCode($room2): array
+    {
+        $room1 = true;
+        while ($room1 || $room2) {
+            $link = \Str::random(10);
+            $code = random_int(100000, 999999);
+            $room1 = RoomRepo::findByLink($link);
+            $room2 = RoomRepo::findByCode($code);
+        }
+
+        return [
+            $link,
+            $code,
+        ];
     }
 }

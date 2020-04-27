@@ -23,9 +23,9 @@
                                          class="p-1 quiz-button img-fluid" alt="create-class">
                                 </a>
                             @else
-                                <a href="/quiz/panel/join-class" class="mx-1">
+                                <a href="/quiz/panel/join-room" class="mx-1">
                                     <img src="{{ asset('quiz/assets/img/join-class.png') }}"
-                                         class="p-1 quiz-button img-fluid" alt="join-class">
+                                         class="p-1 quiz-button img-fluid" alt="join-room">
                                 </a>
                             @endif
                             <a href="/quiz/panel/rooms" class="mx-1">
@@ -109,7 +109,7 @@
                                 </a>
 
                             @else
-                                <a href="/quiz/panel/join-class" class="btn btn-outline-light btn-block">
+                                <a href="/quiz/panel/join-room" class="btn btn-outline-light btn-block">
                                     <span class="fas fa-plus"></span>
                                     <span>عضویت در کلاس</span>
                                 </a>

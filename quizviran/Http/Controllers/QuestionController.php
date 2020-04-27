@@ -2,16 +2,21 @@
 
 namespace Quizviran\Http\Controllers;
 
-use App\Http\Upload;
-use Quizviran\Models\Quiz;
-use Quizviran\Models\Question;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Quizviran\Repositories\ExamRepo;
+use Quizviran\Repositories\QuestionRepo;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['has.question'])->except(['store','create']);
+    }
+
     public function show($question)
     {
-        $question = Question::findOrFail($question);
+        $question = QuestionRepo::findOrFail($question);
 
         return view('Quizviran::panel.teacher.question', compact('question'));
     }
@@ -23,46 +28,29 @@ class QuestionController extends Controller
 
     public function edit($question)
     {
-        $question = Question::find($question);
+        $question = QuestionRepo::findOrFail($question);
 
         return view('Quizviran::panel.teacher.questionEdit', compact('question'));
     }
 
-    public function update($question)
+    public function update($question, Request $request)
     {
-        $question = Question::findOrFail($question);
-        $request = request();
+        // todo : change validate for better ui
         $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
+
+        $question = QuestionRepo::findOrFail($question);
+
         $this->updateQuestion($request, $question);
 
         return back();
     }
 
-    public function addToExam($question)
+    public function store(Request $request)
     {
-        $question = Question::findOrFail($question);
-        $exam = Quiz::findOrFail(request()->exam);
-
-        $exam->questions()->attach($question);
-
-        return back();
-    }
-
-    public function deleteFromExam($question)
-    {
-        $question = Question::findOrFail($question);
-        $exam = Quiz::findOrFail(request()->exam);
-
-        $exam->questions()->detach($question);
-
-        return back();
-    }
-
-    public function store()
-    {
-        $request = request();
+        // todo : this
         $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
-        $this->createQuestion($request);
+
+        QuestionRepo::create($request);
 
         return back();
     }
@@ -72,40 +60,35 @@ class QuestionController extends Controller
         return view('Quizviran::panel.teacher.questionAdd');
     }
 
-    private function createQuestion($request)
-    {
-        $pic = Upload::uploadFile(['pic' => $request->img]);
-        $pic = $pic ? $pic['pic'] : null;
-        $question = new Question;
-        $question->A = $request->A;
-        $question->B = $request->B;
-        $question->D = $request->D;
-        $question->C = $request->C;
-        $question->answer = $request->answer;
-        $question->desc = $request->desc;
-        $question->type = $request->type;
-        $question->norm = $request->norm;
-        $question->pic = $pic;
-        $question->user_id = auth()->id();
-
-        $question->save();
-    }
-
     private function updateQuestion($request, $question)
     {
-        $pic = Upload::uploadFile(['pic' => $request->pic]);
-        $pic = $pic ? $pic : null;
+        QuestionRepo::update($request,$question);
 
-        $question->A = $request->A;
-        $question->B = $request->B;
-        $question->D = $request->D;
-        $question->C = $request->C;
-        $question->answer = $request->answer;
-        $question->desc = $request->desc;
-        $question->type = $request->type;
-        $question->norm = $request->norm;
-        $question->pic = $pic ?? $question->pic;
-
-        $question->save();
+        return back();
     }
+
+    public function addToExam($question)
+    {
+        $question = QuestionRepo::findOrFail($question);
+
+        $exam = ExamRepo::findOrFail(request()->exam);
+
+        if (!$exam->questions->contains($question->id)) {
+            $exam->questions()->attach($question);
+        }
+
+        return back();
+    }
+
+    public function deleteFromExam($question)
+    {
+        $question = QuestionRepo::findOrFail($question);
+
+        $exam = ExamRepo::findOrFail(request()->exam);
+
+        $exam->questions()->detach($question);
+
+        return back();
+    }
+
 }

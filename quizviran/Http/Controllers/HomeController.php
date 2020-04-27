@@ -5,15 +5,18 @@ namespace Quizviran\Http\Controllers;
 use App\Models\User;
 use Quizviran\Models\Quiz;
 use Illuminate\Routing\Controller;
+use Quizviran\Repositories\ExamRepo;
+use App\Repositories\UserRepo;
 use Quizviran\Http\Resources\QuizResourse;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $quizzes = Quiz::public()->show()->get();
+        $quizzes = ExamRepo::publicShow();
         $quizzes = QuizResourse::collection($quizzes);
-        $bestStudents = User::bestStudents()->get();
+        $bestStudents = UserRepo::bestStudents();
+
         $rooms = collect([]);
         if (auth()->check()) {
             $rooms = auth()->user()->rooms;

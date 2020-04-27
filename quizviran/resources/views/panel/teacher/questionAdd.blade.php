@@ -31,31 +31,31 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <lable>توضیحات</lable>
+                        <lable><span class="fas fa-paragraph"></span>توضیحات </lable>
                         <app-latex></app-latex>
                     </div>
                     <div class="form-group">
-                        <label>گزینه A</label>
+                        <label><span class="fas fa-check-square"></span> گزینه A </label>
                         <input class="form-control" name="A">
                     </div>
                     <div class="form-group">
-                        <label>گزینه B</label>
+                        <label><span class="fas fa-check-square"></span> گزینه B </label>
                         <input class="form-control" name="B">
                     </div>
                     <div class="form-group">
-                        <label>گزینه C</label>
+                        <label><span class="fas fa-check-square"></span> گزینه C </label>
                         <input class="form-control" name="C">
                     </div>
                     <div class="form-group">
-                        <label>گزینه D</label>
+                        <label><span class="fas fa-check-square"></span> گزینه D </label>
                         <input class="form-control" name="D">
                     </div>
                     <div class="form-group">
-                        <label>امتیاز سوال</label>
-                        <input required class="form-control" name="norm">
+                        <label><span class="fas fa-star"></span> امتیاز سوال </label>
+                        <input required type="number" class="form-control" name="norm">
                     </div>
                     <div class="form-group">
-                        <label>جواب</label>
+                        <label><span class="fas fa-check"></span> جواب </label>
                         <select name="answer" class="form-control">
                             <option value="A">A</option>
                             <option value="B">B</option>
@@ -64,7 +64,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">تصویر</label>
+                        <label for="exampleFormControlFile1"><span class="fas fa-image"></span> تصویر </label>
                         <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
                     </div>
 

@@ -26,6 +26,7 @@ class CreateQuestionsTable extends Migration
             $table->longText('desc')->nullable();
             $table->string('norm')->default(1);
             $table->enum('level',['hard','medium','easy'])->default('easy');
+            $table->softDeletes();
             $table->timestamps();
         });
 

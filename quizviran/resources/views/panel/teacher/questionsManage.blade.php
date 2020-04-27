@@ -25,7 +25,7 @@
 
         <div class="row px-5 my-3 justify-content-around justify-content-center">
             <div class="px-1 my-4 px-md-5 col-12 col-md-6">
-                <app-content-border-box title="سوالات آزمون">
+                <app-content-border-box title="سوالات آزمون" icon="question">
                     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
                         @foreach($quiz->questions as $index => $question)
                             <div class="">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="px-1 my-4 px-md-5 col-12 col-md-6">
-                <app-content-border-box title="تمامی سوالات شما">
+                <app-content-border-box title="تمامی سوالات شما" icon="question-circle">
                     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
                         @foreach($allQuestions as $index => $question)
                             <div class="">

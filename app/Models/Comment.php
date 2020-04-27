@@ -35,7 +35,7 @@ class Comment extends Model
 
     public function isOwnMember()
     {
-        if(auth()->user()->type != 'teacher')
+        if(!auth()->user()->isTeacher())
             return false;
         return true;
     }

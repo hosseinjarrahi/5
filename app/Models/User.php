@@ -16,15 +16,18 @@ class User extends Authenticatable
     public $timestamps = false;
 
     public $with = [
-        'profile'
+        'profile',
     ];
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     protected $casts = [
@@ -33,12 +36,7 @@ class User extends Authenticatable
 
     public function quizzes()
     {
-        return $this
-            ->belongsToMany(Quiz::class,
-                'quiz_user',
-                'user_id',
-                'quiz_id'
-            )->withPivot('norm','answers');
+        return $this->belongsToMany(Quiz::class, 'quiz_user', 'user_id', 'quiz_id')->withPivot('norm', 'answers');
     }
 
     public function questions()
@@ -46,18 +44,22 @@ class User extends Authenticatable
         return $this->hasMany(Question::class);
     }
 
-    public function checkForQuiz($id){
-        return !$this->query()->quizzes()->has();
+    public function checkForQuiz($id)
+    {
+        return ! $this->query()->quizzes()->has();
     }
 
     public function canComplete($quizId)
     {
-        return $this->quizzes()->where('id',$quizId)->get()->isEmpty();
+        return $this->quizzes()->where('id', $quizId)->get()->isEmpty();
     }
 
     public function isAdmin()
     {
-        if($this->email == 'hj021hj@gmail.com') return true;
+        if ($this->email == 'hj021hj@gmail.com') {
+            return true;
+        }
+
         return false;
     }
 
@@ -71,14 +73,16 @@ class User extends Authenticatable
 
     public function products()
     {
-        return $this->hasMany(Product::class);    
+        return $this->hasMany(Product::class);
     }
 
     public function rooms()
     {
-        if($this->type == 'teacher')
-            return $this->hasMany(Room::class); 
-        return $this->belongsToMany(Room::class);    
+        if ($this->type == 'teacher') {
+            return $this->hasMany(Room::class);
+        }
+
+        return $this->belongsToMany(Room::class);
     }
 
     public function profile()
@@ -94,31 +98,64 @@ class User extends Authenticatable
     public function hasQuiz()
     {
         // todo
-        return $this->hasOneThrough(Quiz::class,Room::class);
+        return $this->hasOneThrough(Quiz::class, Room::class);
     }
 
     public function scopeStudents($query)
     {
-        return $query->where('type','student');
+        return $query->where('type', 'student');
     }
 
     public function scopeTeachers($query)
     {
-        return $query->where('type','teacher');
+        return $query->where('type', 'teacher');
     }
 
     public function scopeBestStudents($query)
     {
-        return $query->students()->whereHas('profile',function(Builder $query){
-            $query->where('point','>',0)->orderByDesc('point');
+        return $query->students()->whereHas('profile', function (Builder $query) {
+            $query->where('point', '>', 0)->orderByDesc('point');
         });
     }
 
     public function hasRoom($room)
     {
-        if($this->type == 'teacher')
-            return $this->id == $room->user->id;
-        return $room->members()->where('id',$this->id)->first();
+        if ($this->type == 'teacher') {
+            return $this->id == $room->user_id;
+        }
+
+        return $room->members()->where('id', $this->id)->first();
     }
 
+    public function isTeacher()
+    {
+        return $this->type == 'teacher';
+    }
+
+    public function hasExam($exam)
+    {
+        if ($this->isTeacher()) {
+            return $exam->user_id == $this->id;
+        }
+
+        $room = $exam->rooms()->whereHas('members', function ($query) {
+            $query->where('user_id', $this->id);
+        })->first();
+
+        return $room;
+    }
+
+    public function hasQuestion($questionUserId)
+    {
+        if ($this->isTeacher() && $questionUserId == $this->id) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function teacherHasRoom($room)
+    {
+        return $this->hasRoom($room) && $this->isTeacher();
+    }
 }

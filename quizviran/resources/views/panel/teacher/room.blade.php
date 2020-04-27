@@ -56,6 +56,21 @@
                                 <div class="dropdown-divider"></div>
 
                                 <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    @if($room->gapLock)
+                                        <span class="fas fa-lock-open"></span>
+                                        <a href="{{ url("/quiz/panel/room/{$room->id}/gap-lock") }}">
+                                            باز کردن گفت و گو
+                                        </a>
+                                    @else
+                                        <span class="fas fa-lock"></span>
+                                        <a href="{{ url("/quiz/panel/room/{$room->id}/gap-lock") }}">
+                                            قفل کردن گفت و گو
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="dropdown-divider"></div>
+
+                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
                                     <a href="{{ url("/quiz/panel/room/{$room->link}/exams") }}">ایجاد آزمون</a>
                                 </div>
                                 <div class="dropdown-divider"></div>
@@ -103,11 +118,16 @@
 
                     <div class="col-12 col-md-7">
                         <div class="row">
-                            <div class="col-12 p-0 mt-5 my-md-0">
-                                <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
-                            </div>
+
+                            @if(!$room->gapLock)
+                                <div class="col-12 p-0 mt-5 my-md-0">
+                                    <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
+                                </div>
+                            @endif
+
                             <div class="col-12">
-                                <app-content-border-box title="گفت و گوها">
+                                <div class="mt-3">
+                                <app-content-border-box title="گفت و گوها" icon="comments">
                                     <div class="container">
                                         <div class="mt-3 row justify-content-center align-items-center">
                                             @if(!$room->comments->isEmpty())
@@ -120,12 +140,13 @@
                                     </div>
                                 </app-content-border-box>
                             </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-2 mt-5 mt-md-0">
                         <div class="p-0 p-md-3">
-                            <app-content-border-box title="آزمون ها">
+                            <app-content-border-box title="آزمون ها" icon="sticky-note">
                                 <div class="container" style="word-break: break-word">
                                     @if(!$room->quizzes->isEmpty())
                                         @foreach($room->quizzes as $quiz)

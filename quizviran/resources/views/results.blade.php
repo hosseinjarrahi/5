@@ -38,7 +38,7 @@
                                     <td>امتیاز</td>
                                 </tr>
                                 @foreach($users as $user)
-                                    <tr>
+                                    <tr @if(auth()->id() == $user->id) class="bg-info" @endif>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $user->name ?? $user->handle }}</td>
                                         <td>{{ $user->pivot->norm }}</td>

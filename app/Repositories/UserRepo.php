@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Profile;
-use App\Events\ResetPasswordEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,5 +36,15 @@ class UserRepo
     public static function findByPhoneOrEmail($var)
     {
         return User::where('email', $var)->orWhere('phone', $var)->first();
+    }
+
+    public static function getWithNormFromExam($exam)
+    {
+        return $exam->users()->withPivot(['norm'])->get();
+    }
+
+    public static function bestStudents()
+    {
+        return User::bestStudents()->get();
     }
 }

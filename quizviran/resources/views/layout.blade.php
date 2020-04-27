@@ -29,8 +29,8 @@
     <app-loading></app-loading>
 
     @if(auth()->check() && auth()->user()->isAdmin())
-        <a class="d-block text-white bg-gray p-1 text-center admin-panel"
-           href="{{ url('admin') }}">مدیریت</a>
+        <a class="d-block text-white bg-gray p-1 text-center" style="position:fixed;bottom: 10px;left: 10px;"
+           href="{{ url('/manager') }}">مدیریت</a>
     @endif
 
     <app-header :event="{{ $topEvent->toJson() }}" :notifications="{{ $notifications }}"></app-header>

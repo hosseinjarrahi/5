@@ -11,6 +11,6 @@ class PayFacade extends Facade {
     }
 
     public function choose($class){
-        app()->singleton(slef::getFacadeAccessor(),$class);
+        app()->singleton(self::getFacadeAccessor(),$class);
     }
 }
