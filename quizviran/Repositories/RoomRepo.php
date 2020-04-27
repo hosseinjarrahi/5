@@ -70,4 +70,9 @@ class RoomRepo
         $room->gapLock = ! $room->gapLock;
         $room->save();
     }
+
+    public static function findOpenedRoomWithCode($code)
+    {
+        return Room::where('lock',false)->where('code',$code)->first();
+    }
 }

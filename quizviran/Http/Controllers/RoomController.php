@@ -3,12 +3,10 @@
 namespace Quizviran\Http\Controllers;
 
 use App\Models\File;
-use App\Models\Comment;
-use Quizviran\Models\Room;
 use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
 use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
-use Morilog\Jalali\Jalalian;
 use Quizviran\Repositories\RoomRepo;
 
 class RoomController extends Controller
@@ -50,7 +48,7 @@ class RoomController extends Controller
         [
             $link,
             $code,
-        ] = $this->generateCode($room2);
+        ] = $this->generateCode();
 
         $room = RoomRepo::create($request->name, $link, $code);
 
@@ -63,26 +61,34 @@ class RoomController extends Controller
 
         $files = File::find($files->pluck('id'));
 
-        $comment = CommentRepo::create($request);
+        $comment = CommentRepo::create($request->only([
+            'comment',
+            'type',
+            'id'
+        ]));
 
         $comment->files()->saveMany($files);
 
         return response(['message' => 'با موفقیت اضافه شد']);
     }
 
-    public function updateComment(Comment $comment, Request $request)
+    public function updateComment($comment, Request $request)
     {
+        $comment = CommentRepo::findOrFail($comment);
+
         if (! $comment->isOwn()) {
             return response(['message' => 'این نظر قابل ویرایش نیست.'], 400);
         }
-        $comment->comment = $request->comment;
-        $comment->save();
+
+        CommentRepo::update($comment,$request);
 
         return response(['message' => 'با موفقیت انجام شد.']);
     }
 
-    public function deleteComment(Comment $comment)
+    public function deleteComment($comment)
     {
+        $comment = CommentRepo::findOrFail($comment);
+
         if ($comment->isOwn() || $comment->isOwnMember()) {
             \Illuminate\Support\Facades\File::delete(public_path($comment->files->pluck('file')));
             $comment->delete();
@@ -121,7 +127,7 @@ class RoomController extends Controller
 
     public function gapLock($room)
     {
-        $room = Room::findOrFail($room);
+        $room = RoomRepo::findOrFail($room);
         if (! auth()->user()->isTeacher()) {
             return back();
         }
@@ -131,7 +137,7 @@ class RoomController extends Controller
         return back();
     }
 
-    private function generateCode($room2): array
+    private function generateCode()
     {
         $room1 = true;
         while ($room1 || $room2) {

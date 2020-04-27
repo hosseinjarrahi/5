@@ -29,7 +29,7 @@
                     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
                         @foreach($quiz->questions as $index => $question)
                             <div class="">
-                                <div>{{ ($index+1).' - '.$question->desc }}</div>
+                                <vue-mathjax formula="{{ ($index+1).' - '.$question->desc }}"></vue-mathjax>
                                 <div class="d-flex flex-row justify-content-center mt-3 bg-gray rounded align-items-center py-1">
 
                                     <div class="mx-1"><a class="badge badge-info" href="{{ url("/quiz/question/{$question->id}/edit") }}"
@@ -50,7 +50,7 @@
                     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
                         @foreach($allQuestions as $index => $question)
                             <div class="">
-                                <div>{{ ($index+1).' - '.$question->desc }}</div>
+                                <vue-mathjax formula="{{ ($index+1).' - '.$question->desc }}"></vue-mathjax>
                                 <div class="d-flex flex-row justify-content-center mt-3 bg-gray rounded align-items-center py-1">
 
                                     <div class="mx-1"><a class="badge badge-info" href="{{ url("/quiz/question/{$question->id}/edit") }}"

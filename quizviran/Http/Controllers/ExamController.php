@@ -21,15 +21,19 @@ class ExamController extends Controller
         ]);
     }
 
-    public function exams($room)
+    public function show($exam)
     {
-        $room = RoomRepo::getWithQuizzes($room);
-
-        if (! $this->teacherHasRoom($room)) {
+        $quiz = ExamRepo::findOrFail($exam);
+        if (! $quiz->showableForMembers()) {
             return back();
         }
 
-        return view('Quizviran::panel.teacher.quizManage', compact('room'));
+        $questions = $quiz->questions;
+        $questions = $questions->shuffile();
+        $quiz = new QuizResourse($quiz);
+        $quiz = json_decode($quiz->toJson());
+
+        return view('Quizviran::quiz', compact('quiz', 'questions'));
     }
 
     public function edit($exam)
@@ -37,15 +41,6 @@ class ExamController extends Controller
         $quiz = ExamRepo::findOrFail($exam);
 
         return view('Quizviran::panel.teacher.quizEdit', compact('quiz'));
-    }
-
-    public function revival($exam)
-    {
-        $exam = ExamRepo::findOrFail($exam);
-
-        ExamRepo::addDuration5Min($exam);
-
-        return response(['message' => 'با موفقیت تمدید شد.']);
     }
 
     public function update($exam, Request $request)
@@ -64,7 +59,7 @@ class ExamController extends Controller
     {
         $room = RoomRepo::withUserFindOrFail($request->room);
 
-        if (! $this->teacherHasRoom($room)) {
+        if (! auth()->user()->teacherHasRoom($room)) {
             return abort(404);
         }
 
@@ -98,20 +93,6 @@ class ExamController extends Controller
         $users = $quiz->getQuizUsersWithNorms();
 
         return view('Quizviran::results', compact('users', 'user', 'quiz'));
-    }
-
-    public function show($exam)
-    {
-        $quiz = ExamRepo::findOrFail($exam);
-        if (! $quiz->showableForMembers()) {
-            return back();
-        }
-
-        $questions = $quiz->questions;
-        $quiz = new QuizResourse($quiz);
-        $quiz = json_decode($quiz->toJson());
-
-        return view('Quizviran::quiz', compact('quiz', 'questions'));
     }
 
     public function complete(Request $request)
@@ -180,6 +161,26 @@ class ExamController extends Controller
         return $pdf->stream('document.pdf');
     }
 
+    public function revival($exam)
+    {
+        $exam = ExamRepo::findOrFail($exam);
+
+        ExamRepo::addDuration5Min($exam);
+
+        return response(['message' => 'با موفقیت تمدید شد.']);
+    }
+
+    public function exams($room)
+    {
+        $room = RoomRepo::getWithQuizzes($room);
+
+        if (! auth()->user()->teacherHasRoom($room)) {
+            return back();
+        }
+
+        return view('Quizviran::panel.teacher.quizManage', compact('room'));
+    }
+
     private function getNorm($data)
     {
         $norm = 0;
@@ -198,4 +199,5 @@ class ExamController extends Controller
     {
         return ($quiz->isInTime() && auth()->user()->canComplete($quiz->id));
     }
+
 }

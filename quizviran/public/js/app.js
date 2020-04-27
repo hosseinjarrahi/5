@@ -2622,6 +2622,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     input: {
@@ -46127,7 +46129,21 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("vue-mathjax", { attrs: { formula: _vm.formula } })
+      _c(
+        "app-content-border-box",
+        {
+          staticClass: "mx-auto",
+          staticStyle: { width: "90%" },
+          attrs: { title: "پیش نمایش سوال" }
+        },
+        [
+          _c("vue-mathjax", {
+            staticStyle: { "white-space": "pre" },
+            attrs: { formula: _vm.formula }
+          })
+        ],
+        1
+      )
     ],
     1
   )

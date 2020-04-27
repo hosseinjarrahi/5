@@ -19,20 +19,20 @@ class ExamRepo
     public static function update($exam,$update)
     {
         $quiz = self::findOrFail($exam);
-        $quiz->name = $request->name;
-        $quiz->desc = $request->desc;
-        $quiz->start = $request->start;
-        $quiz->duration = $request->duration;
+        $quiz->name = $request['name'];
+        $quiz->desc = $request['desc'];
+        $quiz->start = $request['start'];
+        $quiz->duration = $request['duration'];
         $quiz->save();
     }
 
     public static function create($request)
     {
         $quiz = new Quiz();
-        $quiz->name = $request->name;
-        $quiz->duration = $request->duration;
-        $quiz->start = $request->start;
-        $quiz->desc = $request->desc;
+        $quiz->name = $request['name'];
+        $quiz->duration = $request['duration'];
+        $quiz->start = $request['start'];
+        $quiz->desc = $request['desc'];
         $quiz->type = 'private';
         $quiz->show = 1;
         $quiz->user_id = auth()->id();
