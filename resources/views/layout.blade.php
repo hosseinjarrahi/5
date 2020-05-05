@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/img/favicon.png" type="image/png" sizes="50x50">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    
+
     <title>@yield('title')</title>
 </head>
 <body style="direction: rtl !important;">
-    
+
 <div id="pageLoader" class="pageLoader flex-column d-flex justify-content-center align-items-center" style="z-index: 500">
     <img src="{{ asset('img/logo.png') }}"
          alt="tizviran logo"

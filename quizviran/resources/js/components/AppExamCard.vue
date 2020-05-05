@@ -18,7 +18,7 @@
           <vue-mathjax :formula="desc"></vue-mathjax>
         </p>
 
-        <ul class="list-group" v-if="type == 'test'">
+        <ul class="list-group" ref="ul" v-if="type == 'test'">
           <li :class="['list-group-item',{'select':selected == 'A'}]" @click="select('A')">
             <vue-mathjax :formula="A"></vue-mathjax>
           </li>
@@ -40,6 +40,11 @@
 
 <script>
     export default {
+
+        mounted() {
+            this.makeRandom();
+        },
+
         props: {
             desc: {default: ""},
             img: {default: ""},
@@ -52,12 +57,16 @@
             number: {default: ""},
             zoom:false
         },
+
         data() {
             return {
+
                 selected: null,
                 description: null
+
             };
         },
+
         methods: {
             select(witchOne) {
                 let id = this.id;
@@ -68,7 +77,16 @@
                     });
 
                 this.selected = witchOne;
+            },
+
+            makeRandom(){
+                let ul = this.$refs.ul;
+
+                for (let i = ul.children.length; i >= 0; i--) {
+                    ul.appendChild(ul.children[Math.random() * i | 0]);
+                }
             }
+
         }
     };
 </script>
@@ -115,13 +133,6 @@
     li {
       color: #2f3542;
     }
-
-    li::before {
-      counter-increment: section;
-      content: counter(section) "- ";
-    }
-
-    counter-reset: section;
   }
   .zoom{
     position: absolute;

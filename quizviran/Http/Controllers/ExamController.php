@@ -29,7 +29,7 @@ class ExamController extends Controller
         }
 
         $questions = $quiz->questions;
-        $questions = $questions->shuffile();
+        $questions = $questions->shuffle();
         $quiz = new QuizResourse($quiz);
         $quiz = json_decode($quiz->toJson());
 

@@ -3,16 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CommentRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CommentRepo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Repositories/ExamRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Repositories/ExamRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Repositories/RoomRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Repositories/RoomRepo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppLatex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppLatex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/student/join.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/student/join.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppExamCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppExamCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppExam.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppExamCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppQuiz.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppQuizCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppTaklif.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppTaklifCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,25 +181,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin_panel/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\Http\Controllers" />
-      <recent name="E:\web\bigBag\quiz\admin_panel\resources\js\components" />
-      <recent name="E:\web\bigBag\quiz\resources\views\errors" />
-      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\web\bigBag\quiz\app\Http\Controllers" />
       <recent name="E:\web\bigBag\quiz\public\img" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher" />
       <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel" />
       <recent name="E:\web\bigBag\quiz\resources\views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\public\js" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\Http\Controllers" />
+      <recent name="E:\web\bigBag\quiz\admin_panel\resources\js\components" />
+      <recent name="E:\web\bigBag\quiz\resources\views\errors" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -272,7 +273,8 @@
       <workItem from="1587729665943" duration="5850000" />
       <workItem from="1587793757746" duration="17208000" />
       <workItem from="1587910205585" duration="3182000" />
-      <workItem from="1587967914967" duration="14611000" />
+      <workItem from="1587967914967" duration="15904000" />
+      <workItem from="1588687037087" duration="905000" />
     </task>
     <servers />
   </component>
@@ -392,10 +394,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1587975464995" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587986859349">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1587987238153">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587986859349" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1587987238153" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2418,6 +2418,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.makeRandom();
+  },
   props: {
     desc: {
       "default": ""
@@ -2462,6 +2465,13 @@ __webpack_require__.r(__webpack_exports__);
         selected: witchOne
       });
       this.selected = witchOne;
+    },
+    makeRandom: function makeRandom() {
+      var ul = this.$refs.ul;
+
+      for (var i = ul.children.length; i >= 0; i--) {
+        ul.appendChild(ul.children[Math.random() * i | 0]);
+      }
     }
   }
 });
@@ -3876,7 +3886,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #dc3545;\n  color: white;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul[data-v-98fac016] {\n  counter-reset: section;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\nul li[data-v-98fac016]::before {\n  counter-increment: section;\n  content: counter(section) \"- \";\n}\n.zoom[data-v-98fac016] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 500;\n  width: 100%;\n}", ""]);
+exports.push([module.i, ".time[data-v-98fac016] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  color: white;\n  background: #ff416c;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #ff4b2b, #ff416c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n@media only screen and (max-width: 980px) {\n.block-btn[data-v-98fac016] {\n    text-align: center;\n    position: relative;\n    margin: 10px 0px;\n    display: block;\n}\n}\n.select[data-v-98fac016] {\n  background-color: #dc3545;\n  color: white;\n}\n.type[data-v-98fac016] {\n  background: #ede574;\n}\nul li[data-v-98fac016] {\n  color: #2f3542;\n}\n.zoom[data-v-98fac016] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  z-index: 500;\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -45740,7 +45750,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _vm.type == "test"
-            ? _c("ul", { staticClass: "list-group" }, [
+            ? _c("ul", { ref: "ul", staticClass: "list-group" }, [
                 _c(
                   "li",
                   {

@@ -13,7 +13,7 @@
     <title>@yield('title')</title>
 </head>
 <body style="direction: rtl !important;">
-    
+
 <div id="pageLoader" class="pageLoader flex-column d-flex justify-content-center align-items-center" style="z-index: 500">
     <img src="{{ asset('img/logo.png') }}"
          alt="tizviran logo"
