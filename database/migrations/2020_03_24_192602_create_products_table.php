@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
@@ -21,6 +16,7 @@ class CreateProductsTable extends Migration
             $table->string('status')->nullable();
             $table->string('percentage')->nullable();
             $table->string('pic');
+            $table->string('video')->nullable();
             $table->string('head')->nullable();
             $table->longText('course_items')->nullable();
             $table->string('price')->nullable();

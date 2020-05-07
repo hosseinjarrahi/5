@@ -14,9 +14,9 @@
             </div>
 
             <div class="col-12 col-md-8">
-                
+
                 <div class="row">
-                    
+
                     <div class="col-12 mb-2">
                         <div class="bg-dark-gray shadow rounded py-2 px-3">
                             <h2 style="font-size:1.3rem;display:inline-block;">
@@ -25,14 +25,15 @@
                             </h2>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 mb-2 overflow-hidden">
                         <div class="container-fluid bg-dark-gray shadow rounded py-2 px-3">
 
-                            @if($product->head)
-                                {!! $product->head !!}
-                            @elseif(isset($product->course_items['demo']['embed']))
-                                {!! $product->course_items['demo']['embed'] !!}
+                            @if($product->video)
+                                <video src="https://www.radiantmediaplayer.com/media/bbb-360p.mp4"
+                                       controls
+                                       class="w-100">
+                                </video>
                             @endif
 
                             <div style="margin-bottom:50px;margin-top:50px">
@@ -48,7 +49,7 @@
                                 <div class="d-flex flex-column flex-md-row">
                                     <span class="m-2 p-2 text-white">
                                         <span class="fas fa-download"></span>
-                                        <a href="{{ url('file?file='.$file->file) }}"> دانلود </a>
+                                        <a href="{{ url('file?hash='.$file->hash) }}"> دانلود </a>
                                     </span>
 {{--                                    <span class="m-2 p-2 text-white">--}}
 {{--                                    <span class="fas fa-file"></span>--}}
@@ -85,7 +86,7 @@
                         </app-content-border-box>
                     </div>
                 </div>
-                
+
                 <div class="col-12 my-4">
                     <div class="rounded px-3">
                         <app-content-border-box title="نظرات">
@@ -93,7 +94,7 @@
                                 <div class="mt-3 row justify-content-center align-items-center">
 
                                 <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :comment="comment"></app-comments>
-                                
+
                                 </div>
                             </div>
                         </app-content-border-box>
@@ -105,14 +106,13 @@
                             <span class="fas fa-info"> </span>
                             <span>جهت ارسال دیدگاه خود ابتدا <ins>وارد شوید</ins></span>.</span>
                         </div>
-                    @endif 
+                    @endif
                 </div>
-                
+
             </div>
-            
+
         </div>
-        
+
     </div>
 </div>
 @endsection
-    

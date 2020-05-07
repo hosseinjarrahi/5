@@ -47270,83 +47270,72 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.index != "demo"
-    ? _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        staticClass: "row position-relative p-2 align-items-center",
+        staticStyle: {
+          "border-bottom": "1px solid #f5f5f5",
+          "margin-top": "20px"
+        }
+      },
+      [
         _c(
           "div",
           {
-            staticClass: "row position-relative p-2 align-items-center",
-            staticStyle: {
-              "border-bottom": "1px solid #f5f5f5",
-              "margin-top": "20px"
-            }
+            staticClass:
+              "test-center item-circle circle d-flex align-items-center justify-content-center"
           },
           [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "test-center item-circle circle d-flex align-items-center justify-content-center"
-              },
-              [
-                _vm.item.free
-                  ? _c("span", [_vm._v(_vm._s(_vm.index))])
-                  : _c("span", { staticClass: "fas fa-lock" })
-              ]
-            ),
+            _vm.item.free
+              ? _c("span", [_vm._v(_vm._s(_vm.index))])
+              : _c("span", { staticClass: "fas fa-lock" })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-md-8 px-5 my-3 my-md-0" }, [
+          _c("span", { staticClass: "text-white" }, [
+            _vm._v(_vm._s(_vm.item.title))
+          ]),
+          _vm._v(" "),
+          _vm.item.free
+            ? _c("span", { staticClass: "text-white bg-success p-1 rounded" }, [
+                _vm._v("رایگان")
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-6 col-md-2 text-right",
+            staticStyle: { height: "30px", overflow: "auto" }
+          },
+          [
+            _c("span", { staticClass: "fas fa-clock" }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12 col-md-8 px-5 my-3 my-md-0" }, [
-              _c("a", { staticClass: "text-white", attrs: { href: "#" } }, [
-                _vm._v(_vm._s(_vm.item.title))
-              ]),
-              _vm._v(" "),
-              _vm.item.free
-                ? _c(
-                    "span",
-                    { staticClass: "text-white bg-success p-1 rounded" },
-                    [_vm._v("رایگان")]
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-6 col-md-2 text-right",
-                staticStyle: { height: "30px", overflow: "auto" }
-              },
-              [
-                _c("span", { staticClass: "fas fa-clock" }),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.item.time))])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-6 col-md-2 text-right",
-                staticStyle: { height: "30px", overflow: "auto" }
-              },
-              [
-                _c(
-                  "span",
-                  {
-                    staticClass: "btn bg-light py-0",
-                    on: {
-                      click: function($event) {
-                        _vm.window.location = _vm.item.link
-                      }
-                    }
-                  },
-                  [_c("span", { staticClass: "fas fa-download" })]
-                )
-              ]
-            )
+            _c("span", [_vm._v(_vm._s(_vm.item.time))])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-6 col-md-2 text-right",
+            staticStyle: { height: "30px", overflow: "auto" }
+          },
+          [
+            _c("span", { staticClass: "btn bg-light py-0" }, [
+              _c("a", { attrs: { href: "/file?hash=" + _vm.item.hash } }, [
+                _c("span", { staticClass: "fas fa-download" })
+              ])
+            ])
           ]
         )
-      ])
-    : _vm._e()
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

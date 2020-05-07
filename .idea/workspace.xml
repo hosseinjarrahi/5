@@ -3,13 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CommentRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CommentRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_24_192602_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_24_192602_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProductCourseItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProductCourseItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +270,7 @@
       <workItem from="1587910205585" duration="3182000" />
       <workItem from="1587967914967" duration="15904000" />
       <workItem from="1588687037087" duration="1598000" />
-      <workItem from="1588850037600" duration="7675000" />
+      <workItem from="1588850037600" duration="8914000" />
     </task>
     <servers />
   </component>
@@ -395,10 +394,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1588856871962" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1588856674654">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1588858972966">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1588856674654" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1588858972966" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
