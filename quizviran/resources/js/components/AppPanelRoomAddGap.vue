@@ -20,7 +20,7 @@
           <div class="row p-2">
 
               <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
-                <button type="button" class="btn bg-light">{{ file.file }}</button>
+                <button type="button" class="btn bg-light">{{ file.name }}</button>
                 <button type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
               </div>
 

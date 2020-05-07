@@ -45407,10 +45407,10 @@ var render = function() {
                             "a",
                             {
                               staticClass: "d-block p-2",
-                              attrs: { href: file.file }
+                              attrs: { href: "/file?hash=" + file.hash }
                             },
                             [
-                              _vm._v(_vm._s(index + 1) + " "),
+                              _vm._v(_vm._s(file.name) + " "),
                               _c("span", { staticClass: "fas fa-arrow-left" }),
                               _vm._v(" "),
                               _c("span", { staticClass: "fas fa-download" }),
@@ -47251,7 +47251,7 @@ var render = function() {
                             staticClass: "btn bg-light",
                             attrs: { type: "button" }
                           },
-                          [_vm._v(_vm._s(file.file))]
+                          [_vm._v(_vm._s(file.name))]
                         ),
                         _vm._v(" "),
                         _c(

@@ -14,8 +14,10 @@ class CreateFilesTable extends Migration
             $table->unsignedInteger('fileable_id')->nullable();
             $table->text('fileable_type')->nullable();
             $table->unsignedInteger('user_id');
-            $table->text('file');
-            $table->text('hash');
+            $table->text('path');
+            $table->string('hash',51)->unique();
+            $table->text('name');
+            $table->text('password')->nullable();
             $table->timestamp('extime')->nullable();
             $table->timestamps();
         });

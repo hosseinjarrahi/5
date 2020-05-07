@@ -3,42 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
-use App\Http\Upload;
+use Illuminate\Support\Str;
+use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadRequest;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
+    public function index(Request $request)
+    {
+        $file = File::where('hash',$request->hash)->firstOrFail();
+
+        return Storage::download($file->path,$file->name);
+    }
+
     public function store(UploadRequest $request)
     {
         $file = $this->createFile($request);
-        return response(['message' => 'با موفقیت ارسال شد.','file' => ['id' => $file->id , 'file' => $file->file]]);
-    }
-
-    private function uploadFile(UploadRequest &$request)
-    {
-        $file = $request->file('file');
-        $path = null;
-        if ($request->hasFile('file') && ! is_null($request->file)) {
-            $path = time() . random_int(10, 5000) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('upload'), $path);
-        }
-        return $path ? 'upload/' . $path : null;
+        return response(['message' => 'با موفقیت ارسال شد.','file' => ['id' => $file->id , 'name' => $file->name]]);
     }
 
     public function destroy(File $file)
     {
         if(!$file || !$file->isOwn())
             return response(['message' => 'چنین فایلی وجود ندارد.']);
-        \Illuminate\Support\Facades\File::delete($file->file);
+        \Illuminate\Support\Facades\File::delete($file->path);
         return response(['message' => 'با موفقیت حذف شد.']);
     }
 
-    private function createFile($request)
+    private function createFile(UploadRequest $request)
     {
+        $folder = Jalalian::forge(date('y-m-d'))->format('y-m');
+        $path = 'files/'. $folder;
+        $filename = Str::random(20) . '.' . $request->file->getClientOriginalExtension();
+
         return File::create([
             'user_id' => auth()->id(),
-            'file' => Upload::uploadFile(['file' => $request->file])['file']
+            'path' => $request->file->storeAs($path,$filename),
+            'hash' => Str::random(50),
+            'name' => $request->file->getClientOriginalName(),
+            'password' => $request->password
         ]);
     }
 }

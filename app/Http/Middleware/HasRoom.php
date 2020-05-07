@@ -7,12 +7,17 @@ use Quizviran\Repositories\RoomRepo;
 
 class HasRoom
 {
-    public function handle($request  , Closure $next)
+    public function handle($request, Closure $next)
     {
-        $room = RoomRepo::getFromLink($request->route()->room);
+        if ($request->route()->room) {
+            $room = RoomRepo::getFromLink($request->route()->room);
+        } else {
+            $room = RoomRepo::findOrFail($request->id);
+        }
 
-        if(auth()->user()->hasRoom($room))
+        if (auth()->user()->hasRoom($room)) {
             return $next($request);
+        }
 
         return abort(404);
     }

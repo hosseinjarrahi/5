@@ -37,7 +37,7 @@
             </app-modal>
 
             <div class="w-100 p-2 rounded my-2 bg-gray" v-if="comment.files.length > 0">
-              <a class="d-block p-2" :href="file.file" v-for="(file,index) in comment.files">{{index+1}} <span class="fas fa-arrow-left"></span> <span
+              <a class="d-block p-2" :href="`/file?hash=${file.hash}`" v-for="(file,index) in comment.files">{{ file.name }} <span class="fas fa-arrow-left"></span> <span
                 class="fas fa-download"></span> <span>دانلود فایل پیوست شده</span></a>
             </div>
 

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'قبلی' => '&laquo; قبلی',
-    'بعدی' => 'بعدی &raquo;',
+    'previous' => '&laquo; قبلی',
+    'next' => 'بعدی &raquo;',
 
 ];

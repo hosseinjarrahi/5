@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'تعداد درخواست های شما بیش از حد مجاز است لطفا :seconds ثانیه دیگر تلاش کنید.',
+    'failed' => 'اطلاعات وارد شده غلط میباشد.',
+    'throttle' => 'تعداد تلاش های ناموفق زیاد بود . لطفا بعد از :ثانیه ی دیگر تلاش کنید seconds.',
 
 ];
