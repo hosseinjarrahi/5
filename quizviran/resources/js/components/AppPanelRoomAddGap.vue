@@ -19,12 +19,12 @@
 
           <div class="row p-2">
 
-              <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
-                <button type="button" class="btn bg-light">{{ file.name }}</button>
-                <button type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
-              </div>
-
+            <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
+              <button type="button" class="btn bg-light">{{ file.name }}</button>
+              <button type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
             </div>
+
+          </div>
 
           <div class="row p-2">
             <span class="btn bg-gray text-light mx-2 btn-file2 pointer">
@@ -49,13 +49,13 @@
 
     export default {
         name: "AppPanelRoomAddGap",
-        props:['type','id'],
+        props: ['type', 'id'],
         data() {
             return {
                 open: false,
                 files: [],
                 complete: 0,
-                comment:''
+                comment: ''
             }
         },
         methods: {
@@ -93,36 +93,38 @@
                         this.closeLoad();
                     });
             },
-            deleteFile(id){
-                this.files = this.files.filter(val => {return val.id != id});
-                axios.delete('/file/'+id)
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+            deleteFile(id) {
+                this.files = this.files.filter(val => {
+                    return val.id != id
+                });
+                axios.delete('/file/' + id)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
             },
-            save(){
-                axios.post('/quiz/panel/room/comment',{
-                    files:this.files,
-                    comment:this.comment,
+            save() {
+                axios.post('/quiz/panel/room/comment', {
+                    files: this.files,
+                    comment: this.comment,
                     type: this.type,
                     id: this.id
                 })
-                .then(res => {
-                    Swal.fire({
-                        text: 'با موفقیت ارسال شد.',
-                        icon: 'success',
-                        confirmButtonText: 'بسیار خوب',
-                        timer: 5000
+                    .then(res => {
+                        Swal.fire({
+                            text: 'با موفقیت ارسال شد.',
+                            icon: 'success',
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
+                        window.location.reload();
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            text: 'مشکلی در ارسال به وجود آمده است.',
+                            icon: 'error',
+                            confirmButtonText: 'بسیار خوب',
+                            timer: 5000
+                        });
                     });
-                    window.location.reload();
-                })
-                .catch(err => {
-                    Swal.fire({
-                        text: 'مشکلی در ارسال به وجود آمده است.',
-                        icon: 'error',
-                        confirmButtonText: 'بسیار خوب',
-                        timer: 5000
-                    });
-                });
             },
         }
     }

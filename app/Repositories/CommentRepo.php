@@ -22,7 +22,7 @@ class CommentRepo
         return Comment::findOrFail($id);
     }
 
-    public function update($comment,$request)
+    public static function update($comment,$request)
     {
         $comment->comment = $request->comment;
         $comment->save();

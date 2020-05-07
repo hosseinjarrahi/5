@@ -2015,6 +2015,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2093,6 +2100,16 @@ __webpack_require__.r(__webpack_exports__);
     cancel: function cancel() {
       this.editing = !this.editing;
       this.text = this.comment.comment;
+    },
+    deleteFile: function deleteFile(id) {
+      this.comment.files = this.comment.files.filter(function (val) {
+        return val.id != id;
+      });
+      axios["delete"]('/file/' + id).then(function (res) {
+        return console.log(res);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   },
   computed: {
@@ -45286,7 +45303,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "my-3 p-3 bg-dark-gray rounded" },
+                { staticClass: "my-3 px-3 pt-3 bg-dark-gray rounded" },
                 [
                   _c("div", { staticClass: "px-2" }, [
                     !_vm.editing
@@ -45398,30 +45415,55 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.comment.files.length > 0
-                    ? _c(
-                        "div",
-                        { staticClass: "w-100 p-2 rounded my-2 bg-gray" },
-                        _vm._l(_vm.comment.files, function(file, index) {
-                          return _c(
-                            "a",
-                            {
-                              staticClass: "d-block p-2",
-                              attrs: { href: "/file?hash=" + file.hash }
-                            },
-                            [
-                              _vm._v(_vm._s(file.name) + " "),
-                              _c("span", { staticClass: "fas fa-arrow-left" }),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "fas fa-download" }),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("دانلود فایل پیوست شده")])
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    : _vm._e()
+                  _c("div", { staticClass: "row p-2" }, [
+                    _c(
+                      "div",
+                      { staticClass: "bg-gray p-2 col-12 rounded" },
+                      _vm._l(_vm.comment.files, function(file, index) {
+                        return _c(
+                          "div",
+                          { key: index, staticClass: "btn-group" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn bg-light",
+                                attrs: {
+                                  type: "button",
+                                  href: "/file?hash=" + file.hash
+                                }
+                              },
+                              [
+                                _c("span", { staticClass: "fas fa-download" }),
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(file.name) +
+                                    "\n                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            file.user_id == _vm.auth
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteFile(file.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("×")]
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ])
                 ],
                 1
               )

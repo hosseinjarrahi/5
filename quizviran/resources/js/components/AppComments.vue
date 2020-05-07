@@ -14,7 +14,7 @@
             style="overflow:hidden"
           >{{ comment.user.name }}</span>
 
-          <div class="my-3 p-3 bg-dark-gray rounded">
+          <div class="my-3 px-3 pt-3 bg-dark-gray rounded">
 
             <div class="px-2">
               <div v-if="!editing">{{ text }}</div>
@@ -36,9 +36,16 @@
               <button class="btn btn-primary" @click="deleteModal=false">خیر</button>
             </app-modal>
 
-            <div class="w-100 p-2 rounded my-2 bg-gray" v-if="comment.files.length > 0">
-              <a class="d-block p-2" :href="`/file?hash=${file.hash}`" v-for="(file,index) in comment.files">{{ file.name }} <span class="fas fa-arrow-left"></span> <span
-                class="fas fa-download"></span> <span>دانلود فایل پیوست شده</span></a>
+            <div class="row p-2">
+              <div class="bg-gray p-2 col-12 rounded">
+                <div class="btn-group" v-for="(file,index) in comment.files" :key="index">
+                  <a type="button" :href="`/file?hash=${file.hash}`" class="btn bg-light">
+                    <span class="fas fa-download"></span>
+                    {{ file.name }}
+                  </a>
+                  <button v-if="file.user_id == auth" type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -54,8 +61,12 @@
 
     export default {
         props: {
-            comment: {default: function(){ return {'comment' : ''}}},
-            type:{default:null}
+            comment: {
+                default: function () {
+                    return {'comment': ''}
+                }
+            },
+            type: {default: null}
         },
         data() {
             return {
@@ -118,7 +129,15 @@
             cancel() {
                 this.editing = !this.editing;
                 this.text = this.comment.comment;
-            }
+            },
+            deleteFile(id) {
+                this.comment.files = this.comment.files.filter(val => {
+                    return val.id != id
+                });
+                axios.delete('/file/' + id)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+            },
         },
         computed: {
             editable() {

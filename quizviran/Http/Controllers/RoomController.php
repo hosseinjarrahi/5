@@ -16,6 +16,8 @@ class RoomController extends Controller
         $this->middleware('has.room')->except([
             'create',
             'store',
+            'deleteComment',
+            'updateComment',
         ]);
     }
 
@@ -57,6 +59,10 @@ class RoomController extends Controller
 
     public function addComment(Request $request)
     {
+        $room =  RoomRepo::findOrFail($request->id);
+
+        if($room->gapLock) return response(['message' => 'گفت و گو قفل می باشد.'],400);
+
         $files = collect($request->post('files'));
 
         $files = File::find($files->pluck('id'));
@@ -114,7 +120,7 @@ class RoomController extends Controller
 
     public function lock($room)
     {
-        $room = RoomRepo::findOrFail($room);
+        $room = RoomRepo::findByLink($room);
 
         if (! auth()->user()->isTeacher()) {
             return back();
@@ -127,7 +133,7 @@ class RoomController extends Controller
 
     public function gapLock($room)
     {
-        $room = RoomRepo::findOrFail($room);
+        $room = RoomRepo::findByLink($room);
         if (! auth()->user()->isTeacher()) {
             return back();
         }

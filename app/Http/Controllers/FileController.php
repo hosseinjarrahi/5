@@ -8,11 +8,13 @@ use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class FileController extends Controller
 {
     public function index(Request $request)
     {
+        // todo : password check
         $file = File::where('hash',$request->hash)->firstOrFail();
 
         return Storage::download($file->path,$file->name);
@@ -26,9 +28,10 @@ class FileController extends Controller
 
     public function destroy(File $file)
     {
-        if(!$file || !$file->isOwn())
+        if(!($file && $file->isOwn()))
             return response(['message' => 'چنین فایلی وجود ندارد.']);
-        \Illuminate\Support\Facades\File::delete($file->path);
+        FileFacade::delete(storage_path('app/'.$file->path));
+        $file->delete();
         return response(['message' => 'با موفقیت حذف شد.']);
     }
 

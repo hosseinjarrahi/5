@@ -42,12 +42,12 @@
                                 <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
                                     @if($room->lock)
                                         <span class="fas fa-lock-open"></span>
-                                        <a href="{{ url("/quiz/panel/room/{$room->id}/lock") }}">
+                                        <a href="{{ url("/quiz/panel/room/{$room->link}/lock") }}">
                                             باز کردن کلاس
                                         </a>
                                     @else
                                         <span class="fas fa-lock"></span>
-                                        <a href="{{ url("/quiz/panel/room/{$room->id}/lock") }}">
+                                        <a href="{{ url("/quiz/panel/room/{$room->link}/lock") }}">
                                             قفل کردن کلاس
                                         </a>
                                         <span class="badge badge-light d-block">با قفل شدن کلاس دیگر کسی نمیتواند عضو شود</span>
@@ -58,12 +58,12 @@
                                 <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
                                     @if($room->gapLock)
                                         <span class="fas fa-lock-open"></span>
-                                        <a href="{{ url("/quiz/panel/room/{$room->id}/gap-lock") }}">
+                                        <a href="{{ url("/quiz/panel/room/{$room->link}/gap-lock") }}">
                                             باز کردن گفت و گو
                                         </a>
                                     @else
                                         <span class="fas fa-lock"></span>
-                                        <a href="{{ url("/quiz/panel/room/{$room->id}/gap-lock") }}">
+                                        <a href="{{ url("/quiz/panel/room/{$room->link}/gap-lock") }}">
                                             قفل کردن گفت و گو
                                         </a>
                                     @endif
@@ -127,7 +127,7 @@
 
                             <div class="col-12">
                                 <div class="mt-3">
-                                <app-content-border-box title="گفت و گوها" icon="comments">
+                                <app-content-border-box title="گفت و گو های عمومی" icon="comments">
                                     <div class="container">
                                         <div class="mt-3 row justify-content-center align-items-center">
                                             @if(!$room->comments->isEmpty())
