@@ -7,7 +7,6 @@ use App\Models\Profile;
 use Morilog\Jalali\Jalalian;
 use App\Events\ResetPasswordEvent;
 use App\Events\SendVerificationCode;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
@@ -126,9 +125,11 @@ class RegisterController extends Controller
         $user = auth()->user();
         $profile = $user->profile;
         $birth = $profile->birth;
-        if (! $birth) {
+
+        if ($birth) {
             $birth = Jalalian::fromFormat('Y/m/d H:i:s', $request->profile['birth'] . ' 00:00:00')->toCarbon();
         }
+
         $profile->update([
             'bio' => $request->profile['bio'],
             'birth' => $birth,

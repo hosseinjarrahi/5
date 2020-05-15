@@ -1,12 +1,11 @@
 <template>
   <div class="w-100">
 
-    <div class="alert alert-danger" v-for="error in errors">{{ error }}</div>
-
     <div class="form-group">
       <span class="fas fa-user"></span>
       <span>نام و نام خانوادگی :</span>
       <input class="form-control" v-model="form.name">
+      <span v-if="errors.name" class="text-danger figure-caption">{{ errors.name[0] }}</span>
     </div>
     <div class="form-group">
       <span class="fas fa-calendar"></span>
@@ -22,11 +21,13 @@
       <span class="fas fa-pen"></span>
       <span>درباره من :</span>
       <textarea rows="6" class="form-control" v-model="form.profile.bio"></textarea>
+      <span v-if="errors.bio" class="text-danger figure-caption">{{ errors.bio[0] }}</span>
     </div>
     <div class="form-group">
       <span class="fas fa-eye"></span>
       <span>تغییر رمز :</span>
-      <input v-model="form.password" class="form-control">
+      <input type="password" min="8" v-model="form.password" class="form-control">
+      <span v-if="errors.password" class="text-danger figure-caption">{{ errors.password[0] }}</span>
     </div>
     <button class="btn btn-primary" @click.prevent="editProfile">ویرایش اطلاعات</button>
   </div>
@@ -44,12 +45,20 @@
         data() {
             return {
                 form: this.user,
-                errors: [],
+                errors: {
+                    password: null,
+                    name: null,
+                    bio: null,
+                },
                 showDate:null
             }
         },
         methods: {
             editProfile() {
+                this.errors.password = null;
+                this.errors.bio = null;
+                this.errors.name = null;
+
                 this.load();
                 axios.post('/profile-change', this.form)
                     .then(res => {
@@ -60,8 +69,10 @@
                             timer: 5000
                         });
                     })
-                    .catch(error => {
-                        this.errors = error.response.data.errors;
+                    .catch(({ response }) => {
+                        this.errors.password = response.data.errors.password;
+                        this.errors.bio = response.data.errors.bio;
+                        this.errors.name = response.data.errors.name;
                     })
                 .then(()=>{
                     this.closeLoad();

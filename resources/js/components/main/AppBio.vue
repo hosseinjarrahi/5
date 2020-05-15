@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white bg-dark-gray shadow rounded position-relative" style="margin-top:60px;padding-top:50px;">
+  <div class="text-white bg-dark-gray shadow rounded position-relative" style="margin-top:60px;padding-top:50px;" v-if="teacher.profile">
     <div class="px-4" style="font-size:0.9rem">
         <div class="my-2 border-bottom-dark p-2 text-center">
           <span>{{ teacher.name }}</span>
@@ -12,7 +12,7 @@
 
     <slot name="avatar">
       <div class="avatar-parent">
-        <div class="avatar circle bg-dark-gray shadow" :style="{backgroundImage:`url(${teacher.profile.avatar})`}"></div>
+        <div class="avatar circle bg-dark-gray shadow" :style="{backgroundImage:`url(${avatar})`}"></div>
       </div>
     </slot>
   </div>
@@ -23,6 +23,13 @@ export default {
   name: "AppProductDesc",
     props:{
       teacher:{default:''}
+    },
+    computed:{
+      avatar(){
+          if(this.teacher.profile.avatar)
+              return this.teacher.profile.avatar;
+          return '/img/avatar.svg';
+      }
     }
 };
 </script>

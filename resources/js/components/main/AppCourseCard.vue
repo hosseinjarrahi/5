@@ -5,7 +5,7 @@
     @click="redirect"
   >
     <div class="offer" v-if="product.offer>0">
-      <img src="/img/offer.svg" class="img-fluid" alt="offer" />
+      <img src="/img/offer.svg" class="img-fluid" alt="offer"/>
     </div>
     <div
       class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card bg-light overflow-hidden"
@@ -16,9 +16,9 @@
         <h2 style="font-size:1rem" class="text-justify p-1 m-1 mb-3">{{ product.title }}</h2>
 
         <slot name="avatar">
-          <p class="pb-2">
+          <p class="pb-2" v-if="product.user.profile">
             <span style="font-size:0.8rem">
-              <img :src="product.pic" class="shadow avatar" :alt="product.title" />
+              <img :src="avatar" class="shadow avatar" :alt="product.user.name"/>
               <span>استاد:</span>
               <span>جعفری</span>
             </span>
@@ -51,53 +51,66 @@
 </template>
 
 <script>
-export default {
-  name: "AppCourseCard",
-  props: {
-    product: { default: null }
-  },
-  methods: {
-    redirect() {
-      return (window.location = this.product.url);
-    }
-  }
-};
+    export default {
+        name: "AppCourseCard",
+        props: {
+            product: {default: null}
+        },
+        methods: {
+            redirect() {
+                return (window.location = this.product.url);
+            }
+        },
+        computed:{
+            avatar(){
+                if(this.product.user.profile.avatar)
+                  return this.product.user.profile.avatar;
+                return '/img/avatar.svg';
+            }
+        }
+    };
 </script>
 
 <style scoped>
-.course-header {
-  padding-top: 50%;
-  background-position: center;
-  background-size: cover;
-}
-.course-card {
-  border: 1px dashed #2f3542;
-  color: #2f3542 !important;
-}
-.offer {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 40px;
-  height: 40px;
-}
-.avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-}
-.line-throgh {
-  text-decoration: line-through red;
-}
-.dark-top-border {
-  border-top: 1px #e2e2e2 solid;
-  padding-top: 10px;
-}
-.floating {
-  position: absolute;
-  top: -10px;
-  display: block;
-  text-align: center;
-  font-size: 0.8rem;
-}
+  .course-header {
+    padding-top: 50%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .course-card {
+    border: 1px dashed #2f3542;
+    color: #2f3542 !important;
+  }
+
+  .offer {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+
+  .line-throgh {
+    text-decoration: line-through red;
+  }
+
+  .dark-top-border {
+    border-top: 1px #e2e2e2 solid;
+    padding-top: 10px;
+  }
+
+  .floating {
+    position: absolute;
+    top: -10px;
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+  }
 </style>

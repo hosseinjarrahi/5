@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 <template>
   <div class="w-100 col-12 profile-header" style="margin-top:40px;">
     <div class="row justify-content-center position-relative">
@@ -26,7 +25,7 @@ import Swal from "sweetalert2";
         props: ['user'],
         data() {
             return {
-                avatar: this.user.profile.avatar
+                avatar: this.user.profile.avatar ? this.user.profile.avatar : '/img/avatar.svg'
             }
         },
         methods: {

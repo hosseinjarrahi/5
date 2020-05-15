@@ -6,7 +6,7 @@
           <div class="avatar-parent">
             <div
               class="avatar bg-light circle p-2 white-shadow"
-              :style="[comment.user.profile.avatar ? {backgroundImage: `url(${comment.user.profile.avatar})`} : '']"
+              :style="{backgroundImage: `url(${avatar})`}"
             ></div>
           </div>
           <span
@@ -106,6 +106,13 @@
                     this.deleteModal = false;
                 });
             },
+        },
+        computed:{
+            avatar(){
+                if(this.comment.user.profile.avatar)
+                    return this.comment.user.profile.avatar;
+                return '/img/avatar.svg';
+            }
         }
     };
 </script>

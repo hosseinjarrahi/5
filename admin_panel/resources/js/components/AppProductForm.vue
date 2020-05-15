@@ -46,7 +46,7 @@
     </div>
 
     <div class="form-group">
-      <span>نخفیف :</span>
+      <span>تخفیف :</span>
       <input name="offer" class="form-control">
     </div>
 
@@ -58,6 +58,11 @@
     <div class="form-group">
       <span>تصویر :</span>
       <input type="file" name="pic" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <span>ویدیو :</span>
+      <input type="file" name="video" class="form-control">
     </div>
 
     <div class="form-group">
@@ -90,10 +95,6 @@
         <div class="form-group">
           <input type="checkbox" :name="'courseFree' + item">
           <span>رایگان</span>
-        </div>
-        <div class="form-group">
-          <input type="checkbox" :name="'courseDemo' + item">
-          <span>پیش نمایش</span>
         </div>
         <hr>
       </div>

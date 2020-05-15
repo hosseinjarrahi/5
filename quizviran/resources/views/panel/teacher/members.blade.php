@@ -39,7 +39,7 @@
                             <div style="padding: 1px;border-radius: 100px;"
                                  class="d-flex p-2 bg-dark-gray flex-row mx-2 align-items-center">
                                 <div class="circle bg-cover bg-light"
-                                     :style="{width: '50px',height: '50px',backgroundImage: `url(${user.profile.avatar})`}"
+                                     :style="{width: '50px',height: '50px',backgroundImage: 'url('+ user.profile.avatar ? user.profile.avatar : '/img/avatar.svg' +')'}"
                                 ></div>
                                 <div class="d-flex flex-column">
                                     <div class="ml-1">

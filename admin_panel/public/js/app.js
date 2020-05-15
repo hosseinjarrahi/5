@@ -2097,6 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppProductForm",
@@ -2124,6 +2125,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-editor */ "./node_modules/vue2-editor/dist/vue2-editor.esm.js");
+//
 //
 //
 //
@@ -53842,6 +53844,8 @@ var render = function() {
     _vm._v(" "),
     _vm._m(10),
     _vm._v(" "),
+    _vm._m(11),
+    _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c("span", [_vm._v("دسته بندی :")]),
       _vm._v(" "),
@@ -53960,14 +53964,6 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("span", [_vm._v("رایگان")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("input", {
-                      attrs: { type: "checkbox", name: "courseDemo" + item }
-                    }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("پیش نمایش")])
                   ]),
                   _vm._v(" "),
                   _c("hr")
@@ -54217,7 +54213,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("span", [_vm._v("نخفیف :")]),
+      _c("span", [_vm._v("تخفیف :")]),
       _vm._v(" "),
       _c("input", { staticClass: "form-control", attrs: { name: "offer" } })
     ])
@@ -54242,6 +54238,19 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-control",
         attrs: { type: "file", name: "pic" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("ویدیو :")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "file", name: "video" }
       })
     ])
   }
@@ -54389,6 +54398,8 @@ var render = function() {
     ]),
     _vm._v(" "),
     _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
       _c("span", [_vm._v("دسته بندی :")]),
@@ -54563,14 +54574,6 @@ var render = function() {
                     _c("span", [_vm._v("رایگان")])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("input", {
-                      attrs: { type: "checkbox", name: "courseDemo" + item }
-                    }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("پیش نمایش")])
-                  ]),
-                  _vm._v(" "),
                   _c("hr")
                 ]
               )
@@ -54737,6 +54740,19 @@ var staticRenderFns = [
       _c("input", {
         staticClass: "form-control",
         attrs: { type: "file", name: "pic" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("span", [_vm._v("ویدیو :")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "file", name: "video" }
       })
     ])
   }

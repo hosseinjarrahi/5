@@ -56,6 +56,11 @@
     </div>
 
     <div class="form-group">
+      <span>ویدیو :</span>
+      <input type="file" name="video" class="form-control">
+    </div>
+
+    <div class="form-group">
       <span>دسته بندی :</span>
       <select multiple class="form-control" name="category">
         <option v-for="(category,index) in categories" :key="index" :value="category.id" :selected="isInCats(category)" v-text="category.name"></option>
@@ -94,10 +99,6 @@
         <div class="form-group">
           <input type="checkbox" :name="'courseFree' + item">
           <span>رایگان</span>
-        </div>
-        <div class="form-group">
-          <input type="checkbox" :name="'courseDemo' + item">
-          <span>پیش نمایش</span>
         </div>
         <hr>
       </div>

@@ -2042,7 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
       deleted: false,
       editing: false,
       text: this.comment.comment,
-      auth: window.EventBus.auth
+      auth: window.EventBus.auth,
+      avatar: this.comment.user.profile.avatar ? this.comment.user.profile.avatar : '/img/avatar.svg'
     };
   },
   methods: {
@@ -45280,14 +45281,7 @@ var render = function() {
               _c("div", { staticClass: "avatar-parent" }, [
                 _c("div", {
                   staticClass: "avatar bg-light circle p-2 white-shadow",
-                  style: [
-                    _vm.comment.user.profile.avatar
-                      ? {
-                          backgroundImage:
-                            "url(" + _vm.comment.user.profile.avatar + ")"
-                        }
-                      : ""
-                  ]
+                  style: { backgroundImage: "url(" + _vm.avatar + ")" }
                 })
               ]),
               _vm._v(" "),

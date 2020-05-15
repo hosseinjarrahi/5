@@ -16,9 +16,3 @@
         </div>
     </div>
 @endsection
-<script>
-    import AppProfileForm from "../../js/components/main/AppProfileForm";
-    export default {
-        components: {AppProfileForm}
-    }
-</script>
