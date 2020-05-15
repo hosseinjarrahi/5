@@ -3401,6 +3401,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPanelRoomAddGap",
@@ -3460,6 +3466,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     save: function save() {
+      if (this.comment == '') return;
       axios.post('/quiz/panel/room/comment', {
         files: this.files,
         comment: this.comment,
@@ -47216,164 +47223,159 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "bg-dark-gray p-1 rounded mb-5" },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "flex-row d-flex align-items-center",
-          on: {
-            click: function($event) {
-              _vm.open = !_vm.open
-            }
-          }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("form", { attrs: { action: "/" } }),
-          _vm._v(" "),
-          _c("span", { staticClass: "mx-2" }, [
-            _vm._v("یک گفت و گو ایجاد کنید ...")
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("transition", { attrs: { name: "drop", mode: "in-out" } }, [
-        _vm.open
-          ? _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "my-3" }, [
-                _vm._v("حداکثر حجم فایل قابل ارسال 50 مگابایت می باشد.")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "add-gap-back rounded p-2" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.comment,
-                        expression: "comment"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { cols: "30", rows: "10" },
-                    domProps: { value: _vm.comment },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.comment = $event.target.value
-                      }
+  return _c("div", { staticClass: "bg-dark-gray p-1 rounded mb-5" }, [
+    _c(
+      "div",
+      { staticClass: "flex-row d-flex align-items-center" },
+      [
+        _c("transition", { attrs: { name: "slide", mode: "out-in" } }, [
+          !_vm.open
+            ? _c(
+                "div",
+                {
+                  key: "one",
+                  staticClass: "flex-row d-flex align-items-center",
+                  on: {
+                    click: function($event) {
+                      _vm.open = !_vm.open
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row p-2" },
-                  _vm._l(_vm.files, function(file, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "btn-group m-2" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn bg-light",
-                            attrs: { type: "button" }
-                          },
-                          [_vm._v(_vm._s(file.name))]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteFile(file.id)
-                              }
-                            }
-                          },
-                          [_vm._v("×")]
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "row p-2" }, [
+                  }
+                },
+                [
                   _c(
                     "span",
                     {
                       staticClass:
-                        "btn bg-gray text-light mx-2 btn-file2 pointer"
+                        "bg-gray d-flex flex-row align-items-center  circle p-3",
+                      staticStyle: { width: "41px", height: "41px" }
                     },
-                    [
-                      _c("span", { staticClass: "fas fa-paperclip mx-2" }),
-                      _c("span", [_vm._v("پیوست فایل")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        ref: "file",
-                        attrs: { type: "file" },
-                        on: { change: _vm.uploadFile }
-                      })
-                    ]
+                    [_c("span", { staticClass: "fas fa-i-cursor" })]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg-gray text-light mx-2",
-                      on: { click: _vm.save }
-                    },
-                    [_vm._v("ارسال")]
-                  ),
+                  _c("form", { attrs: { action: "/" } }),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger ml-auto text-light",
+                  _c("span", { staticClass: "mx-2" }, [
+                    _vm._v("یک گفت و گو ایجاد کنید ...")
+                  ])
+                ]
+              )
+            : _c("div", { key: "tow", staticClass: "container" }, [
+                _c("div", { staticClass: "my-3" }, [
+                  _vm._v("حداکثر حجم فایل قابل ارسال 50 مگابایت می باشد.")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "add-gap-back rounded p-2" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.comment,
+                          expression: "comment"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { cols: "30", rows: "10" },
+                      domProps: { value: _vm.comment },
                       on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.open = false
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.comment = $event.target.value
                         }
                       }
-                    },
-                    [_vm._v("لغو")]
-                  )
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row p-2" },
+                    _vm._l(_vm.files, function(file, index) {
+                      return _c(
+                        "div",
+                        { key: index, staticClass: "btn-group m-2" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn bg-light",
+                              attrs: { type: "button" }
+                            },
+                            [_vm._v(_vm._s(file.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteFile(file.id)
+                                }
+                              }
+                            },
+                            [_vm._v("×")]
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row p-2" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "btn bg-gray text-light mx-2 btn-file2 pointer"
+                      },
+                      [
+                        _c("span", { staticClass: "fas fa-paperclip mx-2" }),
+                        _c("span", [_vm._v("پیوست فایل")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "file",
+                          attrs: { type: "file" },
+                          on: { change: _vm.uploadFile }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn bg-gray text-light mx-2",
+                        on: { click: _vm.save }
+                      },
+                      [_vm._v("ارسال")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger ml-auto text-light",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.open = false
+                          }
+                        }
+                      },
+                      [_vm._v("لغو")]
+                    )
+                  ])
                 ])
               ])
-            ])
-          : _vm._e()
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      {
-        staticClass: "bg-gray d-flex flex-row align-items-center  circle p-3",
-        staticStyle: { width: "41px", height: "41px" }
-      },
-      [_c("span", { staticClass: "fas fa-i-cursor" })]
+        ])
+      ],
+      1
     )
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

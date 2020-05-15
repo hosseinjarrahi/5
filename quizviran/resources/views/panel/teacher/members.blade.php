@@ -12,7 +12,6 @@
 
         <div class="row justify-content-center my-3">
             <div class="col-11 my-2 bg-dark-gray rounded">
-
                 <div class="d-flex p-2 flex-md-row flex-column text-center">
 
                     <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
@@ -25,27 +24,38 @@
                         <div class="dropdown-divider d-block d-md-none"></div>
                         <div class="mx-3"><span>ساخته شده در : </span><span>{{ $room->created_at->format('Y/m/d') }}</span></div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
-        <div class="row justify-content-center my-3">
+        <div class="row justify-content-center mt-3" style="margin-bottom: 150px;">
             <div class="col-11 my-2 rounded">
 
                 <app-content-border-box title="اعضاء کلاس">
                     <div class="row justify-content-center">
-                        <div :key="index" class="m-2" v-for="(user,index) in {{ $room->members->toJson() }}" >
+                        @if($room->members->isEmpty())
+                            <div class="col-11 col-md-8 d-flex flex-column text-center p-3 mt-3">
+                                <span class=" display-1">
+                                <span class="fas fa-user-alt-slash"></span>
+                                </span>
+                                <span class="blockquote ">تا کنون هیچ دانش آموزی در کلاس شما عضو نشده است!!</span>
+                            </div>
+                        @endif
+                        <div :key="index" class="m-2" v-for="(user,index) in {{ $room->members->toJson() }}">
                             <div style="padding: 1px;border-radius: 100px;"
                                  class="d-flex p-2 bg-dark-gray flex-row mx-2 align-items-center">
                                 <div class="circle bg-cover bg-light"
-                                     :style="{width: '50px',height: '50px',backgroundImage: 'url('+ user.profile.avatar ? user.profile.avatar : '/img/avatar.svg' +')'}"
+                                     :style="{
+                                     width: '50px',
+                                     height: '50px',
+                                     backgroundImage: `url(${ !!user.profile.avatar ? user.profile.avatar : '/img/avatar.svg' })`}"
                                 ></div>
                                 <div class="d-flex flex-column">
                                     <div class="ml-1">
                                         @{{ user.name }}
                                     </div>
-                                    <div class="ml-1">
+                                    <div class="ml-1 mt-1 figure-caption">
                                         <span>امتیاز:</span>
                                         <span>@{{ user.profile.point ? user.profile.point : 0}}</span>
                                     </div>

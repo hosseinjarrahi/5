@@ -42,7 +42,7 @@
                             </div>
                             <div class="my-5" v-if="{{ json_encode($product->course_items) }}">
                                 <app-title>سرفصل ها</app-title>
-                                <app-product-course-item v-for="(item,index) in {{ json_encode($product->course_items) }}" :item="item" :index="index+1"></app-product-course-item>
+                                <app-product-course-item v-for="(item,index) in {{ json_encode($product->course_items) }}" :key="index" :item="item" :index="index+1"></app-product-course-item>
                             </div>
                             @foreach($files as $file)
                             <div class="my-2 rounded " style="border:1px solid #f5f5f5">
@@ -51,16 +51,16 @@
                                         <span class="fas fa-download"></span>
                                         <a href="{{ url('file?hash='.$file->hash) }}"> دانلود </a>
                                     </span>
-{{--                                    <span class="m-2 p-2 text-white">--}}
-{{--                                    <span class="fas fa-file"></span>--}}
-{{--                                    <span> نوع فایل: </span>--}}
-{{--                                    <span> {{ pathinfo($file->file) }} </span>--}}
-{{--                                    </span>--}}
-{{--                                    <span class="m-2 p-2 text-white">--}}
-{{--                                        <span class="fas fa-box"></span>--}}
-{{--                                        <span> حجم: </span>--}}
-{{--                                        <span> {{ filesize(asset($file->file)) }} </span>--}}
-{{--                                    </span>--}}
+                                    <span class="m-2 p-2 text-white">
+                                    <span class="fas fa-file"></span>
+                                    <span> نوع فایل: </span>
+                                    <span> {{ pathinfo($file->file) }} </span>
+                                    </span>
+                                    <span class="m-2 p-2 text-white">
+                                        <span class="fas fa-box"></span>
+                                        <span> حجم: </span>
+                                        <span> {{ filesize(asset($file->file)) }} </span>
+                                    </span>
                                 </div>
                             </div>
                             @endforeach
@@ -72,7 +72,7 @@
                         <span class="fas fa-tags mx-1"></span>
                         <span class="mx-1">برچسب ها : </span>
 
-                        <app-tag v-for="tag in {{ $tags->toJson() }}" :link="tag.slug">@{{ tag.name }}</app-tag>
+                        <app-tag v-for="tag in {{ $tags->toJson() }}" :key="tag.slug" :link="tag.slug">@{{ tag.name }}</app-tag>
 
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class="rounded px-3">
                         <app-content-border-box title="پیشنهادها">
                             <div class="row justify-content-center align-items-stretch">
-                                <app-course-card  v-for="product in {{ $sames }}" :product="product"></app-course-card>
+                                <app-course-card  v-for="product in {{ $sames }}" :key="product.id" :product="product"></app-course-card>
                             </div>
                         </app-content-border-box>
                     </div>
@@ -93,7 +93,7 @@
                             <div class="container">
                                 <div class="mt-3 row justify-content-center align-items-center">
 
-                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :comment="comment"></app-comments>
+                                <app-comments class="mt-2" v-for="comment in {{ $comments->toJson() }}" :key="comment.id" :comment="comment"></app-comments>
 
                                 </div>
                             </div>

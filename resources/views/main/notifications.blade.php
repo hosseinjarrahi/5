@@ -15,11 +15,13 @@
 
                 @if(!json_decode($notifis))
                     <div class="p-3 shadow rounded bg-dark-gray d-flex justify-content-center align-items-center"
-                         style="height: 100px;margin-top: 100px; margin-bottom: 200px;">
-                        <h3 class="text-center">
-                            <span class="fas fa-bell-slash"></span>
-                            <span>پیامی برای خواندن وجود ندارد</span>
-                        </h3>
+                         style="height: 250px;margin-top: 50px; margin-bottom: 120px;">
+                        <div class="text-center d-flex flex-column">
+                            <div class="display-1">
+                                <span class="fas fa-bell-slash"></span>
+                            </div>
+                            <span class="blockquote mt-3">پیامی برای خواندن وجود ندارد !!</span>
+                        </div>
                     </div>
                 @endif
 

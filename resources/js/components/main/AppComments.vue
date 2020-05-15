@@ -130,7 +130,6 @@
     width: 50px;
     height: 50px;
     background-size: cover;
-    background-position: center;
     border: 2px solid #57606f;
     background-image: url('/img/avatar.png');
   }

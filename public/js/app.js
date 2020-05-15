@@ -1973,6 +1973,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2759,18 +2763,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["type", "id"],
+  props: ['type', 'id'],
   data: function data() {
     return {
-      comment: ""
+      comment: ''
     };
   },
   methods: {
     send: function send() {
       var _this = this;
 
+      if (this.comment == '') return;
       this.load();
-      axios.post("/comment", {
+      axios.post('/comment', {
         comment: this.comment,
         type: this.type,
         id: this.id
@@ -3751,7 +3756,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-gray {\n  background: #57606f;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg {\n  background-color: #57606f;\n}\n.add-comment-bg:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}\n.quiz-button {\n  border-radius: 10px !important;\n  box-shadow: -0.2px 3px 7px 0px rgba(0, 0, 0, 0.9) !important;\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
+exports.push([module.i, ".bg-gray {\n  background: #57606f;\n}\n.bg-red {\n  background: #df0000;\n  color: white;\n}\n.bg-dark-gray {\n  background: #2f3542;\n  color: white;\n}\n.fade-enter-active, .fade-leave-active {\n  transition: all 0.5s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n  transform: scale(2);\n}\n.slide-enter-active, .slide-leave-active {\n  transition: all 0.5s;\n}\n.slide-enter, .slide-leave-to {\n  transform: scale(0);\n  opacity: 0;\n}\n.pageLoader {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: #f85032;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #e73827, #f85032);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\nbody::-webkit-scrollbar {\n  width: 0.5em;\n}\nbody::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n}\nbody::-webkit-scrollbar-thumb {\n  background-color: #2f3542;\n  outline: 1px solid slategrey;\n}\n.admin-panel {\n  margin-top: 40px;\n}\n@media only screen and (max-width: 900px) {\n.admin-panel {\n    margin-top: 55px !important;\n}\n}\n@font-face {\n  font-family: vazir;\n  src: url(\"/fonts/Vazir.ttf\");\n}\n* {\n  font-family: vazir;\n  word-wrap: break-word;\n}\na:hover {\n  text-decoration: unset;\n}\na, a:hover, a:active {\n  color: unset;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.circle {\n  border-radius: 100%;\n}\n.white-shadow {\n  box-shadow: 0px 0px 20px #f5f5f5;\n}\n.app-border-box {\n  border: 1px solid #2f3542;\n}\n.pointer {\n  cursor: pointer;\n}\n.header-home {\n  padding: 100px 0px;\n  padding-bottom: 30px;\n}\n.add-comment-bg {\n  background-color: #57606f;\n}\n.add-comment-bg:focus {\n  background-color: #57606f !important;\n  border-color: #2f3542 !important;\n  box-shadow: 0px 2px 5px #2f3542;\n}\n.quiz-button {\n  border-radius: 10px !important;\n  box-shadow: -0.2px 3px 7px 0px rgba(0, 0, 0, 0.9) !important;\n}\n.sk-chase {\n  width: 40px;\n  height: 40px;\n  position: relative;\n  -webkit-animation: sk-chase 2.5s infinite linear both;\n          animation: sk-chase 2.5s infinite linear both;\n}\n.sk-chase-dot {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n  -webkit-animation: sk-chase-dot 2s infinite ease-in-out both;\n          animation: sk-chase-dot 2s infinite ease-in-out both;\n}\n.sk-chase-dot:before {\n  content: \"\";\n  display: block;\n  width: 25%;\n  height: 25%;\n  background-color: #fff;\n  border-radius: 100%;\n  -webkit-animation: sk-chase-dot-before 2s infinite ease-in-out both;\n          animation: sk-chase-dot-before 2s infinite ease-in-out both;\n}\n.sk-chase-dot:nth-child(1) {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.sk-chase-dot:nth-child(2) {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.sk-chase-dot:nth-child(3) {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.sk-chase-dot:nth-child(4) {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.sk-chase-dot:nth-child(5) {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.sk-chase-dot:nth-child(6) {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n.sk-chase-dot:nth-child(1):before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.sk-chase-dot:nth-child(2):before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.sk-chase-dot:nth-child(3):before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.sk-chase-dot:nth-child(4):before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.sk-chase-dot:nth-child(5):before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.sk-chase-dot:nth-child(6):before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n@-webkit-keyframes sk-chase {\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes sk-chase {\n100% {\n    transform: rotate(360deg);\n}\n}\n@-webkit-keyframes sk-chase-dot {\n80%, 100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes sk-chase-dot {\n80%, 100% {\n    transform: rotate(360deg);\n}\n}\n@-webkit-keyframes sk-chase-dot-before {\n50% {\n    transform: scale(0.4);\n}\n100%, 0% {\n    transform: scale(1);\n}\n}\n@keyframes sk-chase-dot-before {\n50% {\n    transform: scale(0.4);\n}\n100%, 0% {\n    transform: scale(1);\n}\n}\n.item {\n  transition: all 0.5s;\n}\n.item:hover {\n  background-color: #f5f5f5;\n  color: #2f3542 !important;\n}", ""]);
 
 // exports
 
@@ -3884,7 +3889,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  background-position: center;\n  border: 2px solid #57606f;\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
+exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  border: 2px solid #57606f;\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
 
 // exports
 
@@ -45461,7 +45466,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-100 p-1 bg-red mt-5 bg-dark-gray" }, [
+  return _c("div", { staticClass: "w-100 py-5 bg-red mt-5 bg-dark-gray" }, [
     _c("p", { staticClass: "text-center text-white" }, [_vm._t("default")], 2)
   ])
 }
@@ -47969,7 +47974,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-8" }, [
         _c(
           "div",
-          { staticClass: "bg-gray slider overflow-hidden quiz-button" },
+          { staticClass: "bg-gray slider overflow-hidden" },
           [
             _c(
               "transition",
@@ -48022,7 +48027,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-4" }, [
         _c("div", {
           staticClass:
-            "my-2 my-md-0 bg-dark-gray aside-slider h-md-auto pp overflow-hidden quiz-button ",
+            "my-2 my-md-0 bg-dark-gray aside-slider h-md-auto pp overflow-hidden",
           style: { backgroundImage: "url(" + _vm.event.body + ")" }
         })
       ])
