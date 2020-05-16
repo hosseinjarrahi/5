@@ -10,36 +10,16 @@
             </div>
         </div>
 
-        <div class="row justify-content-center my-1">
-            <div class="col-11 my-2 bg-dark-gray rounded">
-
-                <div class="d-flex p-2 flex-md-row flex-column text-center">
-
-                    <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
-                    <h2 class="p-0 m-0">{{ $room->name }}</h2>
-                    <div class="dropdown-divider d-block d-md-none"></div>
-                    <div class="d-flex ml-md-auto align-items-center flex-column flex-md-row ">
-                        @if(auth()->user()->type == 'teacher')
-                            <div class="mx-3"><span>کد عضویت : </span><span>{{ $room->code }}</span></div>
-                        @endif
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>تعداد اعضاء : </span><span>{{ $room->members()->count() }}</span></div>
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>ساخته شده در : </span><span>{{ $room->created_at->format('Y/m/d') }}</span></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <app-panel-room-info :room="{{ $room->toJson() }}" createdat="{{ $room->created_at->format('Y/m/d') }}"></app-panel-room-info>
 
         <div class="row justify-content-center">
             <div class="col-11">
                 <div class="row justify-content-center">
 
                     <div class="col-12 col-md-3">
-                        <div class="rounded bg-dark-gray p-3">
+                        <div class="rounded bg-dark-gray p-3" style="">
                             @if(auth()->user()->type == 'teacher')
-                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded py-1 link-hover m-0 text-center">
                                     @if($room->lock)
                                         <span class="fas fa-lock-open"></span>
                                         <a href="{{ url("/quiz/panel/room/{$room->link}/lock") }}">
@@ -50,12 +30,12 @@
                                         <a href="{{ url("/quiz/panel/room/{$room->link}/lock") }}">
                                             قفل کردن کلاس
                                         </a>
-                                        <span class="badge badge-light d-block">با قفل شدن کلاس دیگر کسی نمیتواند عضو شود</span>
+                                        <span style="font-size: 0.8rem" class="d-block text-muted">با قفل شدن کلاس دیگر کسی نمیتواند عضو شود</span>
                                     @endif
                                 </div>
                                 <div class="dropdown-divider"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded py-1 link-hover m-0 text-center">
                                     @if($room->gapLock)
                                         <span class="fas fa-lock-open"></span>
                                         <a href="{{ url("/quiz/panel/room/{$room->link}/gap-lock") }}">
@@ -70,17 +50,17 @@
                                 </div>
                                 <div class="dropdown-divider"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded py-1 link-hover m-0 text-center">
                                     <a href="{{ url("/quiz/panel/room/{$room->link}/exams") }}">ایجاد آزمون</a>
                                 </div>
                                 <div class="dropdown-divider"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded py-1 link-hover m-0 text-center">
                                     <a href="/quiz/panel/room/{{$room->link}}/members">اعضاء کلاس</a>
                                 </div>
                                 <div class="dropdown-divider"></div>
 
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center">
                                     <a>ایجاد تکلیف</a>
                                     <span class="badge badge-primary position-absolute"
                                           style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
@@ -88,7 +68,7 @@
                                 </div>
                                 <div class="dropdown-divider"></div>
 
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
+                                <div class="rounded position-relative py-1 link-hover m-0 text-center">
                                     <a>تکالیف ارسالی</a>
                                     <span class="badge badge-primary position-absolute"
                                           style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی

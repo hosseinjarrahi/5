@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-warning" @click.prevent="revival">تمدید</button>
+  <button class="btn btn-warning btn-sm dark-shadow" @click.prevent="revival">تمدید</button>
 </template>
 
 <script>

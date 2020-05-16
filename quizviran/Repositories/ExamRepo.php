@@ -41,7 +41,7 @@ class ExamRepo
         return $quiz;
     }
 
-    public static function toggleShow($quiz)
+    public static function toggleShow($exam)
     {
         $exam->show = ! $exam->show;
         $exam->save();
@@ -52,9 +52,10 @@ class ExamRepo
         return Quiz::with('questions')->findOrFail($exam);
     }
 
-    public static function addDuration5Min($quiz)
+    public static function addDuration($quiz,$duration = 5)
     {
-        $quiz->duration += 5;
+        $quiz->duration += $duration;
         $quiz->save();
     }
+
 }

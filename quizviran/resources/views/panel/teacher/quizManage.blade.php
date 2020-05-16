@@ -9,78 +9,62 @@
                 <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
             </div>
         </div>
-
-
-        <div class="row justify-content-center my-3">
-            <div class="col-11 my-2 bg-dark-gray rounded">
-
-                <div class="d-flex p-2 flex-md-row flex-column text-center">
-
-                    <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
-                    <h2 class="p-0 m-0">{{ $room->name }}</h2>
-                    <div class="dropdown-divider d-block d-md-none"></div>
-                    <div class="d-flex ml-md-auto align-items-center flex-column flex-md-row ">
-                        <div class="mx-3"><span>کد عضویت : </span><span>{{ $room->code }}</span></div>
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>تعداد اعضاء : </span><span>{{ $room->members()->count() }}</span></div>
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>ساخته شده در : </span><span>{{ $room->created_at->format('Y/m/d') }}</span></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
+{{-- todo --}}
+{{--        <app-panel-room-info :room="{{ $room->toJson() }}" createdat="{{ $room->created_at->format('Y/m/d') }}"></app-panel-room-info>--}}
 
         <div class="row px-2 px-md-5 justify-content-center mt-5">
-            <div class="alert alert-info">
-                آزمون ها با پسزمینه سبز تنها در سایت نمایش داده میشوند.
-                در صورت حذف آزمون ، آزمون موجود خواهد بود با این تفاوت که در سایت قابل نمایش نیست.
-            </div>
-            <div class="col-11 col-md-6 mb-5 shadow rounded p-3">
-                <app-quiz-make :room="{{ $room->id }}"></app-quiz-make>
+            <div class="col-11 col-md-6 mb-5 p-3">
+                <app-exam-make :room="{{ $room->id }}"></app-exam-make>
             </div>
             <div class="col-11">
-                <table class="text-center table table-responsive-sm table-striped table-hover">
-                    <tr>
-                        <td>نام آزمون</td>
-                        <td>افزودن سوال</td>
-                        <td>ویرایش</td>
-                        <td>مشاهده آزمون</td>
-                        <td>نتایج</td>
-                        <td>تمدید (5 دقیقه)</td>
-                        <td>حذف</td>
-                    </tr>
-                    @forelse($room->quizzes ?? [] as $quiz)
-                        <tr @if($quiz->show) class="bg-success text-white" @endif>
-                            <td class="col-12">{{ $quiz->name }}</td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/manage-questions') }}">افزودن سوال</a></td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/edit') }}">ویرایش</a></td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id) }}">مشاهده</a></td>
-                            <td class="col-1"><a class="btn btn-info" href="{{ url('/quiz/exam/'.$quiz->id.'/results') }}">جزییات</a></td>
-                            <td class="col-1">
-                                <app-revival-button exam="{{ $quiz->id }}"></app-revival-button>
-                            </td>
-                            <td class="col-1">
-                                <form method="post" action="{{ url('/quiz/exam/'.$quiz->id) }}">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger">
-                                        @if($quiz->show)
-                                            حذف
-                                        @else
-                                            نمایش
-                                        @endif
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @empty
+                <app-main-box :dark="true" title="آزمون های شما" icon="align-right">
+                    <div class="alert alert-info">
+                        آزمون هایی که پسزمینه آبی دارند برای دانش آموزان قابل نمایش هستند.
+                    </div>
+
+
+                    <table class="text-center table table-responsive-sm table-striped">
                         <tr>
-                            <td colspan="5">آزمونی وجود ندارد ...</td>
+                            <td>نام آزمون</td>
+                            <td><span class="fas fa-plus"></span> <span>افزودن سوال</span></td>
+                            <td><span class="fas fa-edit"></span> <span>ویرایش</span></td>
+                            <td><span class="fas fa-eye"></span> <span>مشاهده آزمون</span></td>
+                            <td><span class="fas fa-poll"></span> <span>نتایج</span></td>
+                            <td><span class="fas fa-stamp"></span> <span>تمدید (5 دقیقه)</span></td>
+                            <td><span class="fas fa-recycle"></span> <span>نمایش</span></td>
                         </tr>
-                    @endforelse
-                </table>
+                        @forelse($room->quizzes ?? [] as $quiz)
+                            <tr class="@if($quiz->show) bg-info @else bg-dark-gray @endif">
+                                <td>{{ $quiz->name }}</td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/manage-questions') }}">افزودن سوال</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/edit') }}">ویرایش</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id) }}">مشاهده</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/results') }}">جزییات</a></td>
+                                <td>
+                                    <app-revival-button exam="{{ $quiz->id }}"></app-revival-button>
+                                </td>
+                                <td>
+                                    <form method="post" action="{{ url('/quiz/exam/'.$quiz->id) }}">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="dark-shadow btn btn-sm btn-danger">
+                                            @if($quiz->show)
+                                                مخفی کردن
+                                            @else
+                                                ظاهر کردن
+                                            @endif
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7">آزمونی وجود ندارد ...</td>
+                            </tr>
+                        @endforelse
+                    </table>
+                </app-main-box>
+{{-- todo --}}
                 {{--                {{ $room->quizzes->links() }}--}}
             </div>
         </div>

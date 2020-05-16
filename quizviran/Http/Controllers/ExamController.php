@@ -78,11 +78,8 @@ class ExamController extends Controller
     public function destroy($exam)
     {
         $exam = ExamRepo::findOrFail($exam);
-        if (! auth()->user()->teacherHasExam($exam)) {
-            return back();
-        }
 
-        ExamRepo::toggleShow();
+        ExamRepo::toggleShow($exam);
 
         return back();
     }
@@ -161,11 +158,13 @@ class ExamController extends Controller
         return $pdf->stream('document.pdf');
     }
 
-    public function revival($exam)
+    public function revival($exam,Request $request)
     {
         $exam = ExamRepo::findOrFail($exam);
 
-        ExamRepo::addDuration5Min($exam);
+        $duration = $request->sub ? -5 : 5;
+
+        ExamRepo::addDuration($exam,$duration);
 
         return response(['message' => 'با موفقیت تمدید شد.']);
     }

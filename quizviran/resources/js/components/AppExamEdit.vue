@@ -9,11 +9,11 @@
       <input v-model="edit.desc" class="form-control">
     </div>
     <div class="form-group">
-      <label>زمان شروع مسابقه</label>
+      <label>زمان شروع آزمون</label>
       <date-picker locale="fa" format="YYYY/MM/DD HH:mm:ss" v-model="edit.start" type="datetime"/>
     </div>
     <div class="form-group">
-      <label>مدت زمان مسابقه به دقیقه</label>
+      <label>مدت زمان آزمون به دقیقه</label>
       <input class="form-control" v-model="edit.duration">
     </div>
     <button class="btn btn-primary btn-block" @click.prevent="update">ویرایش آزمون</button>
@@ -24,7 +24,7 @@
     import Swal from 'sweetalert2';
 
     export default {
-        name: "AppQuizMake",
+        name: "AppExamEdit",
         props: ['quiz'],
         data() {
             return {

@@ -3,22 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Models/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Room.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/QuizviranServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/QuizviranServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Repositories/ExamRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Repositories/ExamRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/members.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/members.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppCommentDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppCommentDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppComments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppSlider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppSlider.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/notifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/notifications.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/css/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/css/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuizEdit.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuizMake.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppRevivalButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppRevivalButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/questionsManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/quizManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/quiz.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/quiz.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +296,7 @@
       <workItem from="1588850037600" duration="8984000" />
       <workItem from="1589027703242" duration="788000" />
       <workItem from="1589368880417" duration="3690000" />
-      <workItem from="1589451574524" duration="13133000" />
+      <workItem from="1589451574524" duration="24781000" />
     </task>
     <servers />
   </component>
@@ -420,18 +420,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" width="1183" height="820" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1587106257214" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1589544331135">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1589556908727">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1589544331135" />
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1588856871962">
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1589556908727" />
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1589555285992">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1588856871962" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589549218872">
+    <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1589555285992" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589557530338">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589549218872" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589557530338" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
