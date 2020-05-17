@@ -40,7 +40,7 @@ class ExamController extends Controller
     {
         $quiz = ExamRepo::findOrFail($exam);
 
-        return view('Quizviran::panel.teacher.quizEdit', compact('quiz'));
+        return view('Quizviran::panel.teacher.exam.examEdit', compact('quiz'));
     }
 
     public function update($exam, Request $request)
@@ -134,7 +134,7 @@ class ExamController extends Controller
 
         $allQuestions = auth()->user()->questions;
 
-        return view('Quizviran::panel.teacher.questionsManage', compact('quiz', 'allQuestions'));
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('quiz', 'allQuestions'));
     }
 
     public function completeResult($exam)
@@ -143,7 +143,7 @@ class ExamController extends Controller
 
         $users = $quiz->getQuizUsersWithPivot();
 
-        return view('Quizviran::panel.teacher.results', compact('users', 'quiz'));
+        return view('Quizviran::panel.teacher.exam.results', compact('users', 'quiz'));
     }
     // TODO : pdf
     public function pdf($exam)
@@ -151,9 +151,9 @@ class ExamController extends Controller
         $quiz = ExamRepo::withQuestionsFindOrFail($exam);
         $users = $quiz->getQuizUsersWithPivot();
         if (request()->test) {
-            return view('Quizviran::panel.teacher.pdf', compact('quiz', 'users'));
+            return view('Quizviran::panel.teacher.exam.pdf', compact('quiz', 'users'));
         }
-        $pdf = Pdf::loadView('Quizviran::panel.teacher.pdf', compact('quiz', 'users'));
+        $pdf = Pdf::loadView('Quizviran::panel.teacher.exam.pdf', compact('quiz', 'users'));
 
         return $pdf->stream('document.pdf');
     }
@@ -177,7 +177,7 @@ class ExamController extends Controller
             return back();
         }
 
-        return view('Quizviran::panel.teacher.quizManage', compact('room'));
+        return view('Quizviran::panel.teacher.exam.examManage', compact('room'));
     }
 
     private function getNorm($data)

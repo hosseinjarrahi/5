@@ -6,9 +6,8 @@ import store from './store/store';
 import persianDatePicker from 'vue-persian-datetime-picker';
 Vue.component('date-picker', persianDatePicker);
 ////////////////////////////////////////////////
-Vue.component('app-menu',require('./components/AppMenu.vue').default);
-Vue.component('app-product-form',require('./components/AppProductForm.vue').default);
-Vue.component('app-product-form-edit',require('./components/AppProductFormEdit.vue').default);
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 ////////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);

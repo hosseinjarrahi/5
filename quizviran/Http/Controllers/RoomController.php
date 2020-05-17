@@ -8,6 +8,7 @@ use Morilog\Jalali\Jalalian;
 use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
+use function Quizviran\Http\Controllers\delete as FileAlias;
 
 class RoomController extends Controller
 {
@@ -23,7 +24,7 @@ class RoomController extends Controller
 
     public function create()
     {
-        return view('Quizviran::panel.teacher.roomCreate');
+        return view('Quizviran::panel.teacher.room.roomCreate');
     }
 
     public function show($room)
@@ -38,7 +39,7 @@ class RoomController extends Controller
 
         $room->quizzes = $room->quizzes()->orderByDesc('id')->paginate(10);
 
-        return view('Quizviran::panel.teacher.room', compact('room'));
+        return view('Quizviran::panel.teacher.room.room', compact('room'));
     }
 
     public function store(Request $request)
@@ -54,7 +55,7 @@ class RoomController extends Controller
 
         $room = RoomRepo::create($request->name, $link, $code);
 
-        return view('Quizviran::panel.teacher.roomCreated', compact('room'));
+        return view('Quizviran::panel.teacher.room.roomCreated', compact('room'));
     }
 
     public function addComment(Request $request)
@@ -96,7 +97,7 @@ class RoomController extends Controller
         $comment = CommentRepo::findOrFail($comment);
 
         if ($comment->isOwn() || $comment->isOwnMember()) {
-            \Illuminate\Support\Facades\File::delete(public_path($comment->files->pluck('file')));
+            FileAlias(public_path($comment->files->pluck('file')));
             $comment->delete();
 
             return response(['message' => 'با موفقیت حذف شد.']);
@@ -115,7 +116,7 @@ class RoomController extends Controller
             return abort(401);
         }
 
-        return view('Quizviran::panel.teacher.members', compact('room'));
+        return view('Quizviran::panel.teacher.room.members', compact('room'));
     }
 
     public function lock($room)

@@ -20,8 +20,13 @@
          class="img-fluid"
          style="max-width: 200px">
 
-    <div class="spinner-border text-white" role="status">
-        <span class="sr-only">Loading...</span>
+    <div class="sk-chase mt-5">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
     </div>
 </div>
 

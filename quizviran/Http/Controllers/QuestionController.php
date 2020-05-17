@@ -18,7 +18,7 @@ class QuestionController extends Controller
     {
         $question = QuestionRepo::findOrFail($question);
 
-        return view('Quizviran::panel.teacher.question', compact('question'));
+        return view('Quizviran::panel.teacher.question.question', compact('question'));
     }
 
     public function destroy()
@@ -30,7 +30,7 @@ class QuestionController extends Controller
     {
         $question = QuestionRepo::findOrFail($question);
 
-        return view('Quizviran::panel.teacher.questionEdit', compact('question'));
+        return view('Quizviran::panel.teacher.question.questionEdit', compact('question'));
     }
 
     public function update($question, Request $request)
@@ -53,11 +53,6 @@ class QuestionController extends Controller
         QuestionRepo::create($request);
 
         return back();
-    }
-
-    public function create()
-    {
-        return view('Quizviran::panel.teacher.questionAdd');
     }
 
     private function updateQuestion($request, $question)

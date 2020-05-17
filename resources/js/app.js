@@ -6,36 +6,10 @@ Vue.component('date-picker', persianDatePicker);
 
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);
-
-Vue.component('app-header', require('./components/AppHeader.vue').default);
-Vue.component('app-footer', require('./components/AppFooter.vue').default);
-Vue.component('app-login-modal', require('./components/AppLoginModal.vue').default);
-Vue.component('app-loading', require('./components/AppLoading.vue').default);
-
-//main
-Vue.component('app-slider', require('./components/main/AppSlider.vue').default);
-Vue.component('app-course', require('./components/main/AppCourse.vue').default);
-Vue.component('app-course-card', require('./components/main/AppCourseCard.vue').default);
-Vue.component('app-categories', require('./components/main/AppCategories.vue').default);
-Vue.component('app-product-desc', require('./components/main/AppProductDesc.vue').default);
-Vue.component('app-title', require('./components/main/AppTitle.vue').default);
-Vue.component('app-product-course-item', require('./components/main/AppProductCourseItem.vue').default);
-Vue.component('app-content-border-box', require('./components/main/AppContentBorderBox.vue').default);
-Vue.component('app-comments', require('./components/main/AppComments.vue').default);
-Vue.component('app-comment-dialog', require('./components/main/AppCommentDialog.vue').default);
-Vue.component('app-search-box', require('./components/main/AppSearchBox.vue').default);
-Vue.component('app-bio', require('./components/main/AppBio.vue').default);
-Vue.component('app-download-box', require('./components/main/AppDownloadBox.vue').default);
-Vue.component('app-buy-modal', require('./components/main/AppBuyModal.vue').default);
-Vue.component('app-modal', require('./components/AppModal.vue').default);
-Vue.component('app-tag', require('./components/AppTag.vue').default);
-Vue.component('app-error-list', require('./components/AppErrorList.vue').default);
-Vue.component('app-event', require('./components/AppEvent.vue').default);
-Vue.component('app-notification-box', require('./components/main/AppNotificationBox.vue').default);
-Vue.component('app-profile-header', require('./components/main/AppProfileHeader.vue').default);
-Vue.component('app-profile-form', require('./components/main/AppProfileForm.vue').default);
-
-
+///////////////
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+///////////////
 import globalMixin from './globalMixin';
 window.EventBus = new Vue({});
 

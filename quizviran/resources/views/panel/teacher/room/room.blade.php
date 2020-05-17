@@ -16,7 +16,7 @@
             <div class="col-11">
                 <div class="row justify-content-center">
 
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-lg-3">
                         <div class="rounded bg-dark-gray p-3" style="">
                             @if(auth()->user()->type == 'teacher')
                                 <div class="rounded py-1 link-hover m-0 text-center">
@@ -96,11 +96,11 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-7">
+                    <div class="col-12 col-lg-7">
                         <div class="row">
 
                             @if(!$room->gapLock)
-                                <div class="col-12 p-0 mt-5 my-md-0">
+                                <div class="col-12 p-0 mt-5 my-lg-0">
                                     <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
                                 </div>
                             @endif
@@ -124,19 +124,25 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-2 mt-5 mt-md-0">
-                        <div class="p-0 p-md-3">
-                            <app-content-border-box title="آزمون ها" icon="sticky-note">
-                                <div class="container" style="word-break: break-word">
+                    <div class="col-12 col-lg-2 mt-5 mt-lg-0">
+                        <div class="p-0 p-lg-3 w-100">
+                            <app-content-border-box style="word-break: break-all;" title="آزمون ها" icon="sticky-note">
+                                <div class="container-fluid p-2" style="word-break: break-word">
                                     @if(!$room->quizzes->isEmpty())
                                         @foreach($room->quizzes as $quiz)
-                                            <div class="mt-3 row flex-column justify-content-center align-items-center">
-                                                <div>{{ $quiz->name }}</div>
+                                            <div class="mt-3 text-center row flex-column justify-content-center align-items-center">
+                                                <b>
+                                                    <span class="fas fa-arrow-left"></span>
+                                                    {{ $quiz->name }}
+                                                </b>
+                                                <div class="dropdown-divider"></div>
                                                 <p class="text-justify">{{ $quiz->desc }}</p>
-                                                <div class="badge bg-dark-gray my-1">زمان شروع :
-                                                    <span>{{ \Morilog\Jalali\Jalalian::forge($quiz->start)->format('H:i Y/m/d') }}</span></div>
-                                                <div class="badge bg-dark-gray my-1">زمان آزمون :
-                                                    <span>{{ $quiz->duration }}</span> دقیقه
+                                                <div class="p-1 rounded figure-caption bg-dark-gray my-1">
+                                                    <span class="d-block bg-gray rounded mb-2">زمان شروع</span>
+                                                    <span class="d-block">{{ \Morilog\Jalali\Jalalian::forge($quiz->start)->format('H:i Y/m/d') }}</span></div>
+                                                <div class="p-1 rounded figure-caption bg-dark-gray my-1">
+                                                    <span class="d-block bg-gray rounded mb-2">مدت زمان آزمون</span>
+                                                    <span class="d-block">{{ $quiz->duration }} دقیقه </span>
                                                 </div>
                                                 @if(auth()->user()->type=='teacher' || ((auth())->user()->type=='student') && $quiz->isInTime())
                                                     <a href="{{ url('/quiz/exam',['exam' => $quiz->id]) }}" class="btn btn-primary py-0 text-light my-1">ورود به

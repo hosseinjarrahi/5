@@ -20,6 +20,8 @@
               <textarea v-model="comment" class="form-control" cols="30" rows="10"></textarea>
             </div>
 
+            <app-voice-record></app-voice-record>
+
             <div class="row p-2">
 
               <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
@@ -52,9 +54,11 @@
 
 <script>
     import Swal from 'sweetalert2';
+    import AppVoiceRecord from "./AppVoiceRecord";
 
     export default {
         name: "AppPanelRoomAddGap",
+        components: {AppVoiceRecord},
         props: ['type', 'id'],
         data() {
             return {
@@ -70,7 +74,6 @@
                 let load = this.load;
                 let formData = new FormData();
                 formData.append("file", this.file);
-
                 axios.post("/file", formData, {
                     headers: {"Content-Type": "multipart/form-data"},
                     onUploadProgress: function (progressEvent) {
@@ -134,6 +137,7 @@
                         });
                     });
             },
+
         }
     }
 </script>
