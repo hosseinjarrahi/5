@@ -162,7 +162,7 @@ class ExamController extends Controller
     {
         $exam = ExamRepo::findOrFail($exam);
 
-        $duration = $request->sub ? -5 : 5;
+        $duration = $request->sub == 'sub' ? -5 : 5;
 
         ExamRepo::addDuration($exam,$duration);
 

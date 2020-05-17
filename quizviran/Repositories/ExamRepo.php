@@ -16,7 +16,7 @@ class ExamRepo
         return Quiz::findOrFail($exam);
     }
 
-    public static function update($exam,$update)
+    public static function update($exam,$request)
     {
         $quiz = self::findOrFail($exam);
         $quiz->name = $request['name'];

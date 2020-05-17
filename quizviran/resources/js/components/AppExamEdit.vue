@@ -1,23 +1,25 @@
 <template>
-  <form>
-    <div class="form-group">
-      <label>عنوان آزمون</label>
-      <input v-model="edit.name" class="form-control">
-    </div>
-    <div class="form-group">
-      <label>توضیحات آزمون</label>
-      <input v-model="edit.desc" class="form-control">
-    </div>
-    <div class="form-group">
-      <label>زمان شروع آزمون</label>
-      <date-picker locale="fa" format="YYYY/MM/DD HH:mm:ss" v-model="edit.start" type="datetime"/>
-    </div>
-    <div class="form-group">
-      <label>مدت زمان آزمون به دقیقه</label>
-      <input class="form-control" v-model="edit.duration">
-    </div>
-    <button class="btn btn-primary btn-block" @click.prevent="update">ویرایش آزمون</button>
-  </form>
+  <app-main-box :dark="true" title="ویرایش آزمون" icon="edit">
+    <form>
+      <div class="form-group">
+        <label><span class="fas fa-heading"></span> <span>عنوان آزمون</span></label>
+        <input v-model="edit.name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label><span class="fas fa-align-justify"></span> <span>توضیحات آزمون</span></label>
+        <input v-model="edit.desc" class="form-control">
+      </div>
+      <div class="form-group">
+        <label><span class="fas fa-clock"></span> <span>زمان شروع آزمون</span></label>
+        <date-picker locale="fa" format="YYYY/MM/DD HH:mm:ss" v-model="edit.start" type="datetime"/>
+      </div>
+      <div class="form-group">
+        <label><span class="fas fa-clock"></span> <span>مدت زمان آزمون به دقیقه</span></label>
+        <input class="form-control" v-model="edit.duration">
+      </div>
+      <button class="btn btn-primary btn-block" @click.prevent="update">ویرایش آزمون</button>
+    </form>
+  </app-main-box>
 </template>
 
 <script>

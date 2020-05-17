@@ -25,7 +25,7 @@
 
                     <table class="text-center table table-responsive-sm table-striped">
                         <tr>
-                            <td>نام آزمون</td>
+                            <td>عنوان آزمون</td>
                             <td><span class="fas fa-plus"></span> <span>افزودن سوال</span></td>
                             <td><span class="fas fa-edit"></span> <span>ویرایش</span></td>
                             <td><span class="fas fa-eye"></span> <span>مشاهده آزمون</span></td>

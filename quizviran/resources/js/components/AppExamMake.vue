@@ -3,11 +3,11 @@
 
     <form>
       <div class="form-group">
-        <label><span class="fas fa-head"></span> <span>عنوان آزمون</span></label>
+        <label><span class="fas fa-heading"></span> <span>عنوان آزمون</span></label>
         <input v-model="quiz.name" class="form-control">
       </div>
       <div class="form-group">
-        <label><span class="fas fa-"></span> <span>توضیحات آزمون</span></label>
+        <label><span class="fas fa-align-justify"></span> <span>توضیحات آزمون</span></label>
         <input v-model="quiz.desc" class="form-control">
       </div>
       <div class="form-group">

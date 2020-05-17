@@ -2292,6 +2292,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2507,6 +2510,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
 //
 //
 //
@@ -3937,6 +3942,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['exam'],
@@ -3945,8 +3953,11 @@ __webpack_require__.r(__webpack_exports__);
     revival: function revival() {
       var _this = this;
 
+      var sub = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       this.load();
-      axios.post("/quiz/exam/" + this.exam + "/revival").then(function (res) {
+      axios.post("/quiz/exam/" + this.exam + "/revival", {
+        sub: sub
+      }).then(function (res) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
           text: 'با موفقیت انجام شد.',
           icon: 'success',
@@ -45766,24 +45777,24 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row justify-content-center" }, [
-          _c(
-            "div",
-            { staticClass: "col-11 col-md-6 p-3 bg-light shadow rounded my-2" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-block btn-primary",
-                  on: {
-                    click: function($event) {
-                      return _vm.complete()
-                    }
+          _c("div", { staticClass: "col-11 col-md-4 p-3 rounded my-2" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block shadow btn-primary",
+                on: {
+                  click: function($event) {
+                    return _vm.complete()
                   }
-                },
-                [_vm._v("اتمام")]
-              )
-            ]
-          )
+                }
+              },
+              [
+                _c("span", { staticClass: "fas fa-clipboard-check" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("اتمام")])
+              ]
+            )
+          ])
         ])
       ])
     ],
@@ -45973,120 +45984,142 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("عنوان آزمون")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.edit.name,
-            expression: "edit.name"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.edit.name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+  return _c(
+    "app-main-box",
+    { attrs: { dark: true, title: "ویرایش آزمون", icon: "edit" } },
+    [
+      _c("form", [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [
+            _c("span", { staticClass: "fas fa-heading" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("عنوان آزمون")])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.edit.name,
+                expression: "edit.name"
+              }
+            ],
+            staticClass: "form-control",
+            domProps: { value: _vm.edit.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.edit, "name", $event.target.value)
+              }
             }
-            _vm.$set(_vm.edit, "name", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("توضیحات آزمون")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.edit.desc,
-            expression: "edit.desc"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.edit.desc },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.edit, "desc", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "form-group" },
-      [
-        _c("label", [_vm._v("زمان شروع آزمون")]),
+          })
+        ]),
         _vm._v(" "),
-        _c("date-picker", {
-          attrs: {
-            locale: "fa",
-            format: "YYYY/MM/DD HH:mm:ss",
-            type: "datetime"
-          },
-          model: {
-            value: _vm.edit.start,
-            callback: function($$v) {
-              _vm.$set(_vm.edit, "start", $$v)
-            },
-            expression: "edit.start"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("مدت زمان آزمون به دقیقه")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.edit.duration,
-            expression: "edit.duration"
-          }
-        ],
-        staticClass: "form-control",
-        domProps: { value: _vm.edit.duration },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [
+            _c("span", { staticClass: "fas fa-align-justify" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("توضیحات آزمون")])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.edit.desc,
+                expression: "edit.desc"
+              }
+            ],
+            staticClass: "form-control",
+            domProps: { value: _vm.edit.desc },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.edit, "desc", $event.target.value)
+              }
             }
-            _vm.$set(_vm.edit, "duration", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary btn-block",
-        on: {
-          click: function($event) {
-            $event.preventDefault()
-            return _vm.update($event)
-          }
-        }
-      },
-      [_vm._v("ویرایش آزمون")]
-    )
-  ])
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-clock" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("زمان شروع آزمون")])
+            ]),
+            _vm._v(" "),
+            _c("date-picker", {
+              attrs: {
+                locale: "fa",
+                format: "YYYY/MM/DD HH:mm:ss",
+                type: "datetime"
+              },
+              model: {
+                value: _vm.edit.start,
+                callback: function($$v) {
+                  _vm.$set(_vm.edit, "start", $$v)
+                },
+                expression: "edit.start"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [
+            _c("span", { staticClass: "fas fa-clock" }),
+            _vm._v(" "),
+            _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.edit.duration,
+                expression: "edit.duration"
+              }
+            ],
+            staticClass: "form-control",
+            domProps: { value: _vm.edit.duration },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.edit, "duration", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary btn-block",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.update($event)
+              }
+            }
+          },
+          [_vm._v("ویرایش آزمون")]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -46117,7 +46150,7 @@ var render = function() {
       _c("form", [
         _c("div", { staticClass: "form-group" }, [
           _c("label", [
-            _c("span", { staticClass: "fas fa-head" }),
+            _c("span", { staticClass: "fas fa-heading" }),
             _vm._v(" "),
             _c("span", [_vm._v("عنوان آزمون")])
           ]),
@@ -46146,7 +46179,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", [
-            _c("span", { staticClass: "fas fa-" }),
+            _c("span", { staticClass: "fas fa-align-justify" }),
             _vm._v(" "),
             _c("span", [_vm._v("توضیحات آزمون")])
           ]),
@@ -48288,19 +48321,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "btn btn-warning btn-sm dark-shadow",
-      on: {
-        click: function($event) {
-          $event.preventDefault()
-          return _vm.revival($event)
+  return _c("span", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-warning btn-sm dark-shadow",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.revival($event)
+          }
         }
-      }
-    },
-    [_vm._v("تمدید")]
-  )
+      },
+      [_vm._v("تمدید")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary btn-sm dark-shadow",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.revival("sub")
+          }
+        }
+      },
+      [_vm._v("کاهش")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

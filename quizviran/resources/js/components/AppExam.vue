@@ -17,14 +17,17 @@
 
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-11 col-md-6 p-3 bg-light shadow rounded my-2">
+        <div class="col-11 col-md-4 p-3 rounded my-2">
 
 <!--          <span class="btn block-btn btn-block btn-file mb-5">-->
 <!--            ارسال فایل-->
 <!--            <input type="file" ref="file" @change="uploadFile"/>-->
 <!--          </span>-->
 
-          <button class="btn btn-block btn-primary" @click="complete()">اتمام</button>
+          <button class="btn btn-block shadow btn-primary" @click="complete()">
+            <span class="fas fa-clipboard-check"></span>
+            <span>اتمام</span>
+          </button>
         </div>
       </div>
     </div>

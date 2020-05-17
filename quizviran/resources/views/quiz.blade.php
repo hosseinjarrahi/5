@@ -5,12 +5,17 @@
     <div class="container-fluid mb-5" style="margin-top: 50px;">
         <div class="row justify-content-center">
 
-            <div class="p-2 shadow rounded my-5 d-flex flex-row border border-danger col-11 text-center">
-                <span class="fas fa-info-circle mr-auto"></span>
+            <div class="px-2 shadow text-danger align-items-center rounded my-5 d-flex flex-row border border-danger col-11 text-center">
+                <span class=" mt-1" style="font-size: 1.5rem">
+                    <span class="fas fa-info-circle"></span>
+                </span>
                 <span class="mx-auto"> قبل از به پایان رسیدن زمان مسابقه دکمه اتمام را کلیک نمایید.</span>
             </div>
 
-            <div class="p-2 px-4 shadow rounded my-2 bg-dark-gray col-11 col-md-4 text-center">{{ $quiz->name }}</div>
+            <div class="p-2 px-4 d-flex flex-column col-11 col-md-5 text-center">
+                <b>{{ $quiz->name }}</b>
+                <div style="padding: 1px" class="bg-dark-gray shadow rounded my-2"></div>
+            </div>
 
             <app-exam id="{{ $quiz->id }}" questions="{{ $questions }}"></app-exam>
 

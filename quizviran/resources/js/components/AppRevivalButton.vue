@@ -1,5 +1,8 @@
 <template>
+  <span>
   <button class="btn btn-warning btn-sm dark-shadow" @click.prevent="revival">تمدید</button>
+  <button class="btn btn-secondary btn-sm dark-shadow" @click.prevent="revival('sub')">کاهش</button>
+  </span>
 </template>
 
 <script>
@@ -9,9 +12,9 @@
         props:['exam'],
         name: "AppRevivalButton",
         methods: {
-            revival() {
+            revival(sub = '') {
                 this.load();
-                axios.post("/quiz/exam/" + this.exam + "/revival")
+                axios.post("/quiz/exam/" + this.exam + "/revival",{ sub: sub })
                     .then(res => {
                         Swal.fire({
                             text: 'با موفقیت انجام شد.',
