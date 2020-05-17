@@ -1945,44 +1945,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppAudioPlayer",
   mounted: function mounted() {
-    var _this2 = this;
+    var _this = this;
 
     window.EventBus.player = this.$refs.player;
-    var sliders = this.$refs.audioPlayer.querySelectorAll('.slider');
-    this.$refs.audioPlayer.addEventListener('mousedown', function (event) {
-      var _this = this;
-
-      if (!this.isDraggable(event.target)) return false;
-      this.currentlyDragged = event.target;
-      var handleMethod = this.currentlyDragged.dataset.method;
-      this.addEventListener('mousemove', window[handleMethod], false);
-      window.addEventListener('mouseup', function () {
-        _this.currentlyDragged = false;
-        window.removeEventListener('mousemove', window[handleMethod], false);
-      }, false);
-    });
     this.$refs.playpauseBtn.addEventListener('click', this.togglePlay);
     this.$refs.player.addEventListener('timeupdate', this.updateProgress);
-    this.$refs.player.addEventListener('loadedmetadata', function () {
-      _this2.$refs.totalTime.textContent = _this2.formatTime(_this2.$refs.player.duration);
+    this.$refs.player.addEventListener('loadedmetadata', function () {// this.$refs.totalTime.textContent = this.formatTime(this.$refs.player.duration);
     });
     this.$refs.player.addEventListener('canplay', this.makePlay);
-    this.$refs.player.addEventListener('ended', function () {
-      this.$refs.playPause.attributes.d.value = "M18 12L0 24V0";
-      this.$refs.player.currentTime = 0;
-    });
-    window.addEventListener('resize', this.directionAware);
-    this.sliders.forEach(function (slider) {
-      var pin = _this2.$refs.slider.querySelector('.pin');
 
-      _this2.$refs.slider.addEventListener('click', window[pin.dataset.method]);
-    });
+    this.$refs.player.onended = function () {
+      _this.$refs.playPause.attributes.d.value = "M18 12L0 24V0";
+      _this.$refs.player.currentTime = 0;
+    };
   },
   data: function data() {
     return {
@@ -1991,14 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    isDraggable: function isDraggable(el) {
-      var canDrag = false;
-      var classes = Array.from(el.classList);
-      this.$refs.draggableClasses.forEach(function (draggable) {
-        if (classes.indexOf(draggable) !== -1) canDrag = true;
-      });
-      return canDrag;
-    },
     inRange: function inRange(event) {
       var rangeBox = this.getRangeBox(event);
       var rect = rangeBox.getBoundingClientRect();
@@ -2038,26 +2008,9 @@ __webpack_require__.r(__webpack_exports__);
 
       return rangeBox;
     },
-    getCoefficient: function getCoefficient(event) {
-      var slider = this.getRangeBox(event);
-      var rect = this.$refs.slider.getBoundingClientRect();
-      var K = 0;
-
-      if (slider.dataset.direction == 'horizontal') {
-        var offsetX = event.clientX - slider.offsetLeft;
-        var width = slider.clientWidth;
-        K = offsetX / width;
-      } else if (slider.dataset.direction == 'vertical') {
-        var height = slider.clientHeight;
-        var offsetY = event.clientY - rect.top;
-        K = 1 - offsetY / height;
-      }
-
-      return K;
-    },
     rewind: function rewind(event) {
       if (this.inRange(event)) {
-        this.$refs.player.currentTime = this.$refs.player.duration * this.getCoefficient(event);
+        this.$refs.player.currentTime = this.$refs.player.duration;
       }
     },
     formatTime: function formatTime(time) {
@@ -2076,7 +2029,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     makePlay: function makePlay() {
       this.$refs.playpauseBtn.style.display = 'block';
-      this.$refs.loading.style.display = 'none';
     }
   }
 });
@@ -4129,6 +4081,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppVoiceRecord",
   created: function created() {
@@ -4148,10 +4106,17 @@ __webpack_require__.r(__webpack_exports__);
       audioChunks: [],
       rec: null,
       recording: false,
-      player: null
+      player: null,
+      blob: null,
+      complete: false
     };
   },
   methods: {
+    clear: function clear() {
+      this.complete = false;
+      this.blob = null;
+      this.player.src = '';
+    },
     handlerFunction: function handlerFunction(stream) {
       var _this2 = this;
 
@@ -4161,19 +4126,13 @@ __webpack_require__.r(__webpack_exports__);
         _this2.audioChunks.push(e.data);
 
         if (_this2.rec.state == "inactive") {
-          var blob = new Blob(_this2.audioChunks, {
+          _this2.blob = new Blob(_this2.audioChunks, {
             type: 'audio/mpeg-3'
           });
-          _this2.player.src = URL.createObjectURL(blob);
-          _this2.player.controls = true;
+          _this2.player.src = URL.createObjectURL(_this2.blob);
           _this2.player.autoplay = true;
-
-          _this2.sendData(blob);
         }
       };
-    },
-    sendData: function sendData(data) {
-      console.log(data);
     },
     record: function record() {
       this.recording = true;
@@ -4183,6 +4142,7 @@ __webpack_require__.r(__webpack_exports__);
     stopRecord: function stopRecord() {
       this.recording = false;
       this.rec.stop();
+      this.complete = true;
     }
   }
 });
@@ -45569,34 +45529,34 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "holder" }, [
     _c("div", { ref: "audioPlayer", staticClass: "audio green-audio-player" }, [
-      _c("div", { ref: "loading", staticClass: "loading" }, [
-        _c("div", { staticClass: "spinner" })
-      ]),
-      _vm._v(" "),
-      _c("div", { ref: "playpauseBtn", staticClass: "play-pause-btn" }, [
-        _c(
-          "svg",
-          {
-            attrs: {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "18",
-              height: "24",
-              viewBox: "0 0 18 24"
-            }
-          },
-          [
-            _c("path", {
-              ref: "playPause",
-              staticClass: "play-pause-icon",
+      _c(
+        "div",
+        { ref: "playpauseBtn", staticClass: "play-pause-btn d-block" },
+        [
+          _c(
+            "svg",
+            {
               attrs: {
-                fill: "#566574",
-                "fill-rule": "evenodd",
-                d: "M18 12L0 24V0"
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "18",
+                height: "24",
+                viewBox: "0 0 18 24"
               }
-            })
-          ]
-        )
-      ]),
+            },
+            [
+              _c("path", {
+                ref: "playPause",
+                staticClass: "play-pause-icon",
+                attrs: {
+                  fill: "#566574",
+                  "fill-rule": "evenodd",
+                  d: "M18 12L0 24V0"
+                }
+              })
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "controls" }, [
         _c("span", { ref: "currentTime", staticClass: "current-time" }, [
@@ -45615,11 +45575,7 @@ var render = function() {
               })
             ])
           ]
-        ),
-        _vm._v(" "),
-        _c("span", { ref: "totalTime", staticClass: "total-time" }, [
-          _vm._v("0:00")
-        ])
+        )
       ]),
       _vm._v(" "),
       _c("audio", { ref: "player", attrs: { crossorigin: "" } })
@@ -48619,7 +48575,7 @@ var render = function() {
                 staticStyle: { "font-size": "1.2rem" },
                 on: { click: _vm.record }
               },
-              [_c("span", { staticClass: "fas fa-microphone" })]
+              [_c("span", { staticClass: "px-2 fas fa-microphone" })]
             )
           : _c(
               "div",
@@ -48630,11 +48586,25 @@ var render = function() {
                 staticStyle: { "font-size": "1.2rem" },
                 on: { click: _vm.stopRecord }
               },
-              [_c("span", { staticClass: "fas fa-times" })]
+              [_c("span", { staticClass: "px-2 fas fa-pause-circle" })]
             )
       ]),
       _vm._v(" "),
-      _c("app-audio-player", { attrs: { player: _vm.player } })
+      _c("app-audio-player"),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade", mode: "out-in" } }, [
+        _vm.complete
+          ? _c(
+              "div",
+              {
+                staticClass: "btn bg-dark-gray text-light",
+                staticStyle: { "font-size": "1.2rem" },
+                on: { click: _vm.clear }
+              },
+              [_c("span", { staticClass: "px-2 fas fa-times" })]
+            )
+          : _vm._e()
+      ])
     ],
     1
   )

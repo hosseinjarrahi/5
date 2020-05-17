@@ -1,10 +1,7 @@
 <template>
   <div class="holder">
     <div class="audio green-audio-player" ref="audioPlayer">
-      <div class="loading" ref="loading">
-        <div class="spinner"></div>
-      </div>
-      <div class="play-pause-btn" ref="playpauseBtn">
+      <div class="play-pause-btn d-block" ref="playpauseBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
           <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" ref="playPause"/>
         </svg>
@@ -17,7 +14,7 @@
             <div class="pin" ref="draggableClasses" id="progress-pin" data-method="rewind"></div>
           </div>
         </div>
-        <span class="total-time" ref="totalTime">0:00</span>
+<!--        <span class="total-time" ref="totalTime">0:00</span>-->
       </div>
 
       <audio crossorigin ref="player"></audio>
@@ -32,40 +29,16 @@
         mounted() {
             window.EventBus.player = this.$refs.player;
 
-            let sliders = this.$refs.audioPlayer.querySelectorAll('.slider');
-            this.$refs.audioPlayer.addEventListener('mousedown', function (event) {
-
-                if (!this.isDraggable(event.target)) return false;
-
-                this.currentlyDragged = event.target;
-                let handleMethod = this.currentlyDragged.dataset.method;
-
-                this.addEventListener('mousemove', window[handleMethod], false);
-
-                window.addEventListener('mouseup', () => {
-                    this.currentlyDragged = false;
-                    window.removeEventListener('mousemove', window[handleMethod], false);
-                }, false);
-            });
-
-
             this.$refs.playpauseBtn.addEventListener('click', this.togglePlay);
             this.$refs.player.addEventListener('timeupdate', this.updateProgress);
             this.$refs.player.addEventListener('loadedmetadata', () => {
-                this.$refs.totalTime.textContent = this.formatTime(this.$refs.player.duration);
+                // this.$refs.totalTime.textContent = this.formatTime(this.$refs.player.duration);
             });
             this.$refs.player.addEventListener('canplay', this.makePlay);
-            this.$refs.player.addEventListener('ended', function () {
+            this.$refs.player.onended = () => {
                 this.$refs.playPause.attributes.d.value = "M18 12L0 24V0";
                 this.$refs.player.currentTime = 0;
-            });
-
-            window.addEventListener('resize', this.directionAware);
-
-            this.sliders.forEach(slider => {
-                let pin = this.$refs.slider.querySelector('.pin');
-                this.$refs.slider.addEventListener('click', window[pin.dataset.method]);
-            });
+            };
 
         },
         data() {
@@ -75,15 +48,6 @@
             }
         },
         methods: {
-            isDraggable(el) {
-                let canDrag = false;
-                let classes = Array.from(el.classList);
-                this.$refs.draggableClasses.forEach(draggable => {
-                    if (classes.indexOf(draggable) !== -1)
-                        canDrag = true;
-                })
-                return canDrag;
-            },
             inRange(event) {
                 let rangeBox = this.getRangeBox(event);
                 let rect = rangeBox.getBoundingClientRect();
@@ -117,28 +81,9 @@
                 }
                 return rangeBox;
             },
-            getCoefficient(event) {
-                let slider = this.getRangeBox(event);
-                let rect = this.$refs.slider.getBoundingClientRect();
-                let K = 0;
-                if (slider.dataset.direction == 'horizontal') {
-
-                    let offsetX = event.clientX - slider.offsetLeft;
-                    let width = slider.clientWidth;
-                    K = offsetX / width;
-
-                } else if (slider.dataset.direction == 'vertical') {
-
-                    let height = slider.clientHeight;
-                    let offsetY = event.clientY - rect.top;
-                    K = 1 - offsetY / height;
-
-                }
-                return K;
-            },
             rewind(event) {
                 if (this.inRange(event)) {
-                    this.$refs.player.currentTime = this.$refs.player.duration * this.getCoefficient(event);
+                    this.$refs.player.currentTime = this.$refs.player.duration;
                 }
             },
             formatTime(time) {
@@ -157,7 +102,6 @@
             },
             makePlay() {
                 this.$refs.playpauseBtn.style.display = 'block';
-                this.$refs.loading.style.display = 'none';
             }
         }
     }
