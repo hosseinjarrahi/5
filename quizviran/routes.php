@@ -12,7 +12,9 @@ Route::group(['prefix' => 'quiz','middleware' => ['auth']], function () {
 
     Route::resource('/question', 'QuestionController');
     Route::get('/question/{question}/add-to-exam', 'QuestionController@addToExam');
+    Route::post('/question/add-many-to-exam', 'QuestionController@addManyToExam');
     Route::get('/question/{question}/delete-from-exam', 'QuestionController@deleteFromExam');
+    Route::post('/question/delete-many-from-exam', 'QuestionController@deleteManyFromExam');
 
     Route::post('/complete', 'ExamController@complete');
     Route::get('/results/{exam}','ExamController@result');

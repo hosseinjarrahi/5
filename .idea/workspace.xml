@@ -4,20 +4,14 @@
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/files/99-01/158719645561.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Models/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Room.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppExamEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppExamEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppVoiceRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppVoiceRecord.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionAll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionAll.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionExam.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionAdd.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/routes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +294,7 @@
       <workItem from="1589368880417" duration="3690000" />
       <workItem from="1589451574524" duration="24818000" />
       <workItem from="1589692910123" duration="29640000" />
-      <workItem from="1589796936341" duration="3371000" />
+      <workItem from="1589796936341" duration="11480000" />
     </task>
     <servers />
   </component>
@@ -432,18 +426,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="13" width="1183" height="820" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1587106257214" />
-    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1589697701934">
+    <state x="463" y="149" width="611" height="536" key="find.popup" timestamp="1589814215231">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1589697701934" />
+    <state x="463" y="149" width="611" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1589814215231" />
     <state x="425" y="189" width="672" height="677" key="run.anything.popup" timestamp="1589725050199">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1589725050199" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589799750000">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589814609372">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589799750000" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589814609372" />
     <state x="491" y="329" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1589722465391">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

@@ -31,7 +31,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <lable><span class="fas fa-paragraph"></span>توضیحات </lable>
+                        <label><span class="fas fa-paragraph"></span>توضیحات </label>
                         <app-latex></app-latex>
                     </div>
                     <div class="form-group">

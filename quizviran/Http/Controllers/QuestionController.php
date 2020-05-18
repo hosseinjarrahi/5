@@ -11,7 +11,7 @@ class QuestionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['has.question'])->except(['store','create']);
+        $this->middleware(['has.question'])->except(['store','create','deleteManyFromExam','addManyToExam']);
     }
 
     public function show($question)
@@ -77,6 +77,7 @@ class QuestionController extends Controller
 
     public function deleteFromExam($question)
     {
+        // todo : check if exam is own
         $question = QuestionRepo::findOrFail($question);
 
         $exam = ExamRepo::findOrFail(request()->exam);
@@ -85,5 +86,34 @@ class QuestionController extends Controller
 
         return back();
     }
+
+    public function deleteManyFromExam(Request $request)
+    {
+        // todo check if exam and question is own
+        $exam = ExamRepo::findOrFail($request->exam);
+
+        $questions = QuestionRepo::findOrFail($request->questions);
+
+        $exam->questions()->detach($questions);
+
+        return response([
+            'message' => 'با موفقیت ثبت شد'
+        ]);
+    }
+
+
+    public function addManyToExam(Request $request)
+    {
+        $exam = ExamRepo::findOrFail(request()->exam);
+
+        $questions = QuestionRepo::findOrFail($request->questions);
+
+        $exam->questions()->sync($questions);
+
+        return response([
+            'message' => 'با موفقیت ثبت شد.'
+        ]);
+    }
+
 
 }

@@ -11,9 +11,7 @@
         </div>
 
         <div class="row px-5 my-3 justify-content-around justify-content-center">
-
             <div class="col-12 col-md-6">
-
                 <app-main-box :dark="true" title="ایجاد سوال" icon="plus">
 
                         <form method="post" enctype="multipart/form-data" action="{{ url('/quiz/question') }}">
@@ -25,7 +23,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <lable><span class="fas fa-paragraph"></span>توضیحات</lable>
+                                <label><span class="fas fa-paragraph"></span>توضیحات</label>
                                 <app-latex></app-latex>
                             </div>
                             <div class="form-group">
@@ -68,7 +66,6 @@
             </div>
 
             <div class="col-12 col-md-6" style="margin-top: 55px;">
-
                 <div class="px-1 my-4 px-md-5 col-12">
                     <app-question-exam :questions="{{ $quiz->questions->toJson() }}" id="{{ $quiz->id }}"></app-question-exam>
                 </div>
@@ -77,7 +74,6 @@
                     <app-question-all :questions="{{ $allQuestions->toJson() }}" id="{{ $quiz->id }}"></app-question-all>
                 </div>
             </div>
-
         </div>
 
 
@@ -85,10 +81,4 @@
 
 
 @endsection
-<script>
-    import AppQuestionExam from "../../../../js/components/AppQuestionExam";
-    import AppQuestionAll from "../../../../js/components/AppQuestionAll";
-    export default {
-        components: {AppQuestionAll, AppQuestionExam}
-    }
-</script>
+
