@@ -23,54 +23,59 @@
 </template>
 
 <script>
+  import Microm from 'microm';
+
     export default {
         name: "AppVoiceRecord",
-        created() {
-            navigator.mediaDevices.getUserMedia({audio: true})
-                .then(stream => {
-                    this.handlerFunction(stream)
-                })
-        },
         mounted() {
             this.player = window.EventBus.player;
         },
         data() {
             return {
-                audioChunks: [],
-                rec: null,
+                microm: new Microm(),
                 recording: false,
                 player: null,
                 blob: null,
-                complete:false
+                complete: false,
+                mp3:null
             }
         },
         methods: {
-            clear(){
-              this.complete = false;
-              this.blob = null;
-              this.player.src = '';
+
+            clear() {
+                this.complete = false;
+                this.blob = null;
+                this.player.src = '';
             },
-            handlerFunction(stream) {
-                this.rec = new MediaRecorder(stream);
-                this.rec.ondataavailable = e => {
-                    this.audioChunks.push(e.data);
-                    if (this.rec.state == "inactive") {
-                        this.blob = new Blob(this.audioChunks, {type: 'audio/mpeg-3'});
-                        this.player.src = URL.createObjectURL(this.blob);
-                        this.player.autoplay = true;
-                    }
-                }
-            },
+
             record() {
                 this.recording = true;
-                this.audioChunks = [];
-                this.rec.start();
+                this.microm.record();
             },
+
             stopRecord() {
+                this.microm.stop().then((result) => {
+                    this.mp3 = result;
+                    this.player.src = this.mp3.url;
+                    this.send();
+                });
+
                 this.recording = false;
-                this.rec.stop();
                 this.complete = true;
             },
+
+            send() {
+                this.microm.getBase64().then(base64 => {
+                    axios.post('/file', { base64: base64 })
+                    .then(res => {
+                      this.$emit('recorded',res.data);
+                    })
+                    .catch(err => {
+                      console.log(err)
+                    });
+                })
+            },
+
         }
     }
 </script>

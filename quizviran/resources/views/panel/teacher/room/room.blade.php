@@ -111,7 +111,7 @@
                                     <div class="container">
                                         <div class="mt-3 row justify-content-center align-items-center">
                                             @if(!$room->comments->isEmpty())
-                                                <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :comment="comment"
+                                                <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :key="comment.id" :comment="comment"
                                                               type="{{ auth()->user()->type }}"></app-comments>
                                             @else
                                                 <div class="d-block">گفت و گویی وجود ندارد ...</div>

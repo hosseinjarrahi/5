@@ -3,7 +3,7 @@
     <div class="audio green-audio-player" ref="audioPlayer">
       <div class="play-pause-btn d-block" ref="playpauseBtn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
-          <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" ref="playPause"/>
+          <path fill="white" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" ref="playPause"/>
         </svg>
       </div>
 
@@ -137,7 +137,6 @@
     border-radius: 4px;
     user-select: none;
     -webkit-user-select: none;
-    background-color: #fff;
 
     .play-pause-btn {
       display: none;
@@ -181,7 +180,6 @@
       font-family: 'Roboto', sans-serif;
       font-size: 16px;
       line-height: 18px;
-      color: #55606E;
       display: flex;
       flex-grow: 1;
       justify-content: space-between;
@@ -261,21 +259,6 @@
 
   svg, img {
     display: block;
-  }
-
-  html, body {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #F8FFAE;
-    background: -webkit-linear-gradient(-65deg, #43C6AC, #F8FFAE);
-    background: linear-gradient(-65deg, #43C6AC, #F8FFAE);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   @keyframes spin {

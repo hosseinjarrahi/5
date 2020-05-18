@@ -8,7 +8,7 @@ use App\Models\Comment;
 
 class Room extends Model
 {
-    protected $with = ['user','members.count'];
+    protected $with = ['user','members'];
     protected $guarded = ['id'];
 
     public function quizzes(){

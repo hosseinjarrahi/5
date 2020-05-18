@@ -9,7 +9,7 @@
         <label><span class="fas fa-align-justify"></span> <span>توضیحات آزمون</span></label>
         <input v-model="edit.desc" class="form-control">
       </div>
-      <div class="form-group">
+      <div class="form-group text-dark">
         <label><span class="fas fa-clock"></span> <span>زمان شروع آزمون</span></label>
         <date-picker locale="fa" format="YYYY/MM/DD HH:mm:ss" v-model="edit.start" type="datetime"/>
       </div>

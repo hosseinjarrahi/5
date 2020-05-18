@@ -20,7 +20,7 @@
               <textarea v-model="comment" class="form-control" cols="30" rows="10"></textarea>
             </div>
 
-            <app-voice-record></app-voice-record>
+            <app-voice-record @recorded="saveInfo"></app-voice-record>
 
             <div class="row p-2">
 
@@ -69,6 +69,9 @@
             }
         },
         methods: {
+            saveInfo(payload){
+                this.files.push(payload.file);
+            },
             uploadFile() {
                 this.file = this.$refs.file.files[0];
                 let load = this.load;

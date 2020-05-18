@@ -22,57 +22,60 @@
         </div>
 
         <div class="row justify-content-center mt-3">
-            <div class="col-12 col-md-8 shadow rounded p-2">
-                <form method="post" enctype="multipart/form-data" action="{{ url("/quiz/question/{$question->id}") }}">
-                    @csrf
-                    @method('put')
-                    <div class="form-group">
-                        <select name="type" class="form-control">
-                            <option value="test">تستی</option>
-                            {{--                            <option value="descriptive">تشریحی</option>--}}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <lable>توضیحات</lable>
-                        <app-latex input="{{ $question->desc }}"></app-latex>
-                    </div>
-                    <div class="form-group">
-                        <label>گزینه A</label>
-                        <input class="form-control" name="A" value="{{ $question->A }}">
-                    </div>
-                    <div class="form-group">
-                        <label>گزینه B</label>
-                        <input class="form-control" name="B" value="{{ $question->B }}">
-                    </div>
-                    <div class="form-group">
-                        <label>گزینه C</label>
-                        <input class="form-control" name="C" value="{{ $question->C }}">
-                    </div>
-                    <div class="form-group">
-                        <label>گزینه D</label>
-                        <input class="form-control" name="D" value="{{ $question->D }}">
-                    </div>
-                    <div class="form-group">
-                        <label>امتیاز سوال</label>
-                        <input required class="form-control" name="norm" value="{{ $question->norm }}">
-                    </div>
-                    <div class="form-group">
-                        <label>جواب</label>
-                        <select name="answer" class="form-control">
-                            <option value="A" @if($question->answer == 'A') selected @endif>A</option>
-                            <option value="B" @if($question->answer == 'B') selected @endif>B</option>
-                            <option value="C" @if($question->answer == 'C') selected @endif>C</option>
-                            <option value="D" @if($question->answer == 'D') selected @endif>D</option>
-                        </select>
-                    </div>
+            <div class="col-12 col-md-7 rounded p-2">
 
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">تصویر</label>
-                        <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
+                <app-main-box :dark="true" title="ویرایش سوال" icon="plus">
+                    <form method="post" enctype="multipart/form-data" action="{{ url("/quiz/question/{$question->id}") }}">
+                        @csrf
+                        @method('put')
+                        <div class="form-group">
+                            <select name="type" class="form-control">
+                                <option value="test">تستی</option>
+                                {{--                            <option value="descriptive">تشریحی</option>--}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                                <lable><span class="fas fa-paragraph"></span>توضیحات</lable>
+                            <app-latex input="{{ $question->desc }}"></app-latex>
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-check-square"></span> گزینه A </label>
+                            <input class="form-control" name="A" value="{{ $question->A }}">
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-check-square"></span> گزینه B </label>
+                            <input class="form-control" name="B" value="{{ $question->B }}">
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-check-square"></span> گزینه C </label>
+                            <input class="form-control" name="C" value="{{ $question->C }}">
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-check-square"></span> گزینه D </label>
+                            <input class="form-control" name="D" value="{{ $question->D }}">
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-star"></span> امتیاز سوال </label>
+                            <input required class="form-control" name="norm" value="{{ $question->norm }}">
+                        </div>
+                        <div class="form-group">
+                                <label><span class="fas fa-check"></span> جواب </label>
+                            <select name="answer" class="form-control">
+                                <option value="A" @if($question->answer == 'A') selected @endif>A</option>
+                                <option value="B" @if($question->answer == 'B') selected @endif>B</option>
+                                <option value="C" @if($question->answer == 'C') selected @endif>C</option>
+                                <option value="D" @if($question->answer == 'D') selected @endif>D</option>
+                            </select>
+                        </div>
 
-                    <button class="btn btn-primary btn-block">ویرایش سوال</button>
-                </form>
+                        <div class="form-group">
+                                <label for="exampleFormControlFile1"><span class="fas fa-image"></span> تصویر </label>
+                            <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+
+                        <button class="btn btn-primary btn-block">ویرایش سوال</button>
+                    </form>
+                </app-main-box>
             </div>
         </div>
     </div>
