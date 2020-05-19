@@ -1,5 +1,5 @@
 <template>
-  <app-content-border-box title="سوالات آزمون" icon="question">
+  <app-content-border-box :title="` سوالات  ${name}`" icon="question">
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
 
       <template v-for="(question,index) in questions">
@@ -43,7 +43,11 @@
 
     export default {
         name: "AppQuestionExam",
-        props: ['questions', 'id'],
+        props: {
+            'questions' : {default:''},
+            'id' : {default:''},
+            'name' : {default:''}
+        },
         components: {AppCheckBox},
         data() {
             return {

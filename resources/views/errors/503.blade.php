@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('errors::layout')
 
-@section('title', __('Service Unavailable'))
+@section('title','تیزویران | 503')
 @section('code', '503')
-@section('message', __($exception->getMessage() ?: 'Service Unavailable'))
+@section('message', 'در حال حاضر این سرویس از دسترس خارج است.')

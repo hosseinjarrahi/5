@@ -8,7 +8,7 @@ use Morilog\Jalali\Jalalian;
 use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
-use function Quizviran\Http\Controllers\delete as FileAlias;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class RoomController extends Controller
 {
@@ -97,7 +97,7 @@ class RoomController extends Controller
         $comment = CommentRepo::findOrFail($comment);
 
         if ($comment->isOwn() || $comment->isOwnMember()) {
-            FileAlias(public_path($comment->files->pluck('file')));
+            FileFacade::delete(public_path($comment->files->pluck('file')));
             $comment->delete();
 
             return response(['message' => 'با موفقیت حذف شد.']);

@@ -1,9 +1,9 @@
 @extends('Quizviran::layout')
-@section('title','نتایج مسابقه')
+@section('title','نتایج آزمون')
 
 @section('content')
-    .
-    <div class="container my-5">
+
+    <div class="container" style="margin-top: 100px;margin-bottom: 180px;">
         <div class="row justify-content-center">
             <div class="col-md-6 col-12">
                 <img src="{{ asset('img/results.png') }}"
@@ -29,7 +29,7 @@
 
 
                 <div class="container-fluid my-5">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center align-items-center">
                         <div class="col-12 col-5">
                             <table class="table shadow table-striped table-hover">
                                 <tr>
@@ -46,11 +46,16 @@
                                 @endforeach
                             </table>
                         </div>
+
+                        <div class="col-12 d-flex mt-5 justify-content-center">
+                            <a href="{{ route('room.show',['room' => $room->link]) }}" class="shadow btn btn-primary">بازگشت به کلاس</a>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-.
+
 @endsection

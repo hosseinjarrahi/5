@@ -14,6 +14,11 @@ class QuestionController extends Controller
         $this->middleware(['has.question'])->except(['store','create','deleteManyFromExam','addManyToExam']);
     }
 
+    public function create()
+    {
+        return abort(404);
+    }
+
     public function show($question)
     {
         $question = QuestionRepo::findOrFail($question);

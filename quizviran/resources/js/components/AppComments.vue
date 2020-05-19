@@ -38,13 +38,19 @@
 
             <div class="row p-2">
               <div class="bg-gray p-2 col-12 rounded">
-                <div class="btn-group" v-for="(file,index) in comment.files" :key="index">
+
+                <div class="d-block my-1 " v-for="(audio,index) in audios" :key="audio.id">
+                  <app-player :src="'/file?hash='+audio.hash" class="w-100"></app-player>
+                </div>
+
+                <div class="btn-group mx-1 my-1" v-for="(file,index) in files" :key="file.id">
                   <a type="button" :href="`/file?hash=${file.hash}`" class="btn bg-light">
                     <span class="fas fa-download"></span>
                     {{ file.name }}
                   </a>
                   <button v-if="file.user_id == auth" type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
                 </div>
+
               </div>
             </div>
 
@@ -58,8 +64,10 @@
 
 <script>
     import Swal from 'sweetalert2';
+    import AppAudioPlayer from "./AppAudioPlayer";
 
     export default {
+        components: {AppAudioPlayer},
         props: {
             comment: {
                 default: function () {
@@ -79,6 +87,9 @@
             }
         },
         methods: {
+            isMp3(filename) {
+                return (filename.split('.').pop() == 'mp3');
+            },
             edit() {
                 this.load();
                 axios.put('/quiz/panel/room/comment/' + this.comment.id, {comment: this.text})
@@ -143,6 +154,16 @@
         computed: {
             editable() {
                 return ((this.auth == this.comment.user_id) || this.type == 'teacher');
+            },
+            files() {
+                return this.comment.files.filter(val => {
+                    return !this.isMp3(val.name);
+                });
+            },
+            audios(){
+                return this.comment.files.filter(val => {
+                    return this.isMp3(val.name);
+                });
             }
         }
     };

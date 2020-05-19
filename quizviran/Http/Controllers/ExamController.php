@@ -88,8 +88,9 @@ class ExamController extends Controller
     {
         $quiz = ExamRepo::findOrFail($exam);
         $users = $quiz->getQuizUsersWithNorms();
+        $room = $quiz->rooms()->first();
 
-        return view('Quizviran::results', compact('users', 'user', 'quiz'));
+        return view('Quizviran::results', compact('users', 'user', 'quiz','room'));
     }
 
     public function complete(Request $request)
@@ -130,11 +131,13 @@ class ExamController extends Controller
 
     public function manageQuestions($exam)
     {
-        $quiz = ExamRepo::withQuestionsFindOrFail($exam);
+        $exam = ExamRepo::withQuestionsFindOrFail($exam);
 
         $allQuestions = auth()->user()->questions;
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('quiz', 'allQuestions'));
+        $room = $exam->rooms()->firstOrFail();
+
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('room','quiz', 'allQuestions','exam'));
     }
 
     public function completeResult($exam)

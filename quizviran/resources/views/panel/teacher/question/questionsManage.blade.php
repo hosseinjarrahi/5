@@ -9,9 +9,33 @@
                 <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
             </div>
         </div>
+        {{--   todo: make responsive     --}}
+        <div class="row flex-nowrap bg-gray px-lg-3 align-items-center figure-caption text-light"
+             style="height: 40px;overflow-x: auto;overflow-y: hidden;">
 
-        <div class="row px-5 my-3 justify-content-around justify-content-center">
-            <div class="col-12 col-md-6">
+            <a href="{{ route('panel') }}" class="p-2">
+                <span>پنل مدیریت</span>
+            </a>
+            <span class="fas fa-arrow-left"></span>
+
+            <a href="{{ route('room.show',['room' => $room->link]) }}" class="p-2">
+                <span>{{ $room->name }}</span>
+            </a>
+            <span class="fas fa-arrow-left"></span>
+
+            <a href="{{ route('exam.manage',['room' => $room->link]) }}" class="p-2">
+                <span>مدیریت آزمون ها</span>
+            </a>
+            <span class="fas fa-arrow-left"></span>
+
+            <span class="p-2">
+                <span>مدیریت سوالات</span>
+            </span>
+
+        </div>
+
+        <div class="row my-3 justify-content-around justify-content-center">
+            <div class="col-12 px-2 px-lg-5 col-lg-6">
                 <app-main-box :dark="true" title="ایجاد سوال" icon="plus">
 
                         <form method="post" enctype="multipart/form-data" action="{{ url('/quiz/question') }}">
@@ -66,12 +90,12 @@
             </div>
 
             <div class="col-12 col-md-6" style="margin-top: 55px;">
-                <div class="px-1 my-4 px-md-5 col-12">
-                    <app-question-exam :questions="{{ $quiz->questions->toJson() }}" id="{{ $quiz->id }}"></app-question-exam>
+                <div class="px-2 my-4 px-lg-5 col-12">
+                    <app-question-exam name="{{ $exam->name }}" :questions="{{ $exam->questions->toJson() }}" id="{{ $exam->id }}"></app-question-exam>
                 </div>
 
-                <div class="px-1 my-4 px-md-5 col-12 mt-5">
-                    <app-question-all :questions="{{ $allQuestions->toJson() }}" id="{{ $quiz->id }}"></app-question-all>
+                <div class="px-1 my-4 px-lg-5 col-12 mt-5">
+                    <app-question-all :questions="{{ $allQuestions->toJson() }}" id="{{ $exam->id }}"></app-question-all>
                 </div>
             </div>
         </div>

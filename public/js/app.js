@@ -45670,7 +45670,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-100 py-5 bg-red mt-5 bg-dark-gray" }, [
+  return _c("div", { staticClass: "w-100 py-1 bg-red mt-5 bg-dark-gray" }, [
     _c("p", { staticClass: "text-center text-white" }, [_vm._t("default")], 2)
   ])
 }

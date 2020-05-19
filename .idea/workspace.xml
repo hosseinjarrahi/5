@@ -2,16 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionAll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionAll.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppExam.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppQuestionExam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppVoiceRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppVoiceRecord.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/exam/examManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/exam/examManage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/results.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/401.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/401.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/403.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/403.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/404.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/419.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/419.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/429.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/429.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/500.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/500.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/503.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/illustrated-layout.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/errors/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/errors/minimal.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/files/99-02/8EKaU44qxjkTdY5.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/files/99-02/Kf4F65nu1p6qrTm.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,19 +218,19 @@
     <property name="ts.external.directory.path" value="D:\programs\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\web\bigBag\quiz\resources\views\main" />
+      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\exam" />
+      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\room" />
+      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\question" />
+      <recent name="E:\web\bigBag\quiz\app\Http\Controllers" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\web\bigBag\quiz\public\img" />
       <recent name="E:\web\bigBag\quiz\resources\lang" />
       <recent name="E:\web\bigBag\quiz\public\js" />
       <recent name="E:\web\bigBag\quiz\admin_panel\resources\views" />
       <recent name="E:\web\bigBag\quiz\admin_panel\Http\Controllers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\exam" />
-      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\room" />
-      <recent name="E:\web\bigBag\quiz\quizviran\resources\views\panel\teacher\question" />
-      <recent name="E:\web\bigBag\quiz\app\Http\Controllers" />
-      <recent name="E:\web\bigBag\quiz\public\img" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -223,9 +243,6 @@
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -294,12 +311,23 @@
       <workItem from="1589368880417" duration="3690000" />
       <workItem from="1589451574524" duration="24818000" />
       <workItem from="1589692910123" duration="29640000" />
-      <workItem from="1589796936341" duration="11480000" />
+      <workItem from="1589796936341" duration="12922000" />
+      <workItem from="1589852484339" duration="13248000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -329,11 +357,37 @@
             </State>
           </value>
         </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:E:/web/bigBag/quiz/resources/views/errors" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="OPEN_TABS">
       <set>
         <option value="1" />
+        <option value="2" />
       </set>
     </option>
   </component>
@@ -342,10 +396,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1589028071314" />
-    <state x="524" y="220" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589722959757">
+    <state x="524" y="220" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589871470280">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="524" y="220" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1589722959757" />
+    <state x="524" y="220" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1589871470280" />
     <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1587807104628">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -434,10 +488,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1589725050199" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589814609372">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1589877125703">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589814609372" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1589877125703" />
     <state x="491" y="329" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1589722465391">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

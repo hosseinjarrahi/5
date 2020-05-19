@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-12 col-md-8 d-flex flex-row justify-content-center">
                         <app-main-box title="آخرین مسابقات" icon="flag-checkered">
-                            <app-main-box-last-quiz v-for="quiz in {{ $quizzes->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
+                            <app-main-box-last-quiz :key="quiz.id" v-for="quiz in {{ $quizzes->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
                         </app-main-box>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                                 @if($bestStudents->isEmpty())
                                     <div class="d-flex flex-row justify-content-center align-items-center w-100">شما اولین نفر باشید.</div>
                                 @else
-                                    <app-best-users-item v-for="user in {{ $bestStudents->toJson() }}" :user="user"></app-best-users-item>
+                                    <app-best-users-item v-for="user in {{ $bestStudents->toJson() }}" :key="user.id" :user="user"></app-best-users-item>
                                 @endif
 
                             </div>
@@ -115,7 +115,7 @@
                                 </a>
                             @endif
                         @endif
-                        <app-main-box-last-classes v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
+                        <app-main-box-last-classes :key="room.id" v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
                     </app-main-box>
                 </div>
 

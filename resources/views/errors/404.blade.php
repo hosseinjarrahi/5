@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('errors::layout')
 
-@section('title', __('Forbidden'))
+@section('title','تیزویران | 404')
 @section('code', '404')
 @section('message', 'صفحه مورد نظر یافت نشد')

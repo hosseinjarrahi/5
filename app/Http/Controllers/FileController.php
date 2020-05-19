@@ -67,15 +67,17 @@ class FileController extends Controller
     {
         $name = Str::random(15) . '.mp3';
         $folder = $this->createFolder();
-        $path = "/files/{$folder}/{$name}";
+        $path = "files/{$folder}/{$name}";
+        $base64 = Str::of($base64)->after('data:audio/mp3;base64,');
+        $audio = base64_decode($base64,true);
 
-        file_put_contents("temp/{$name}", base64_decode($base64));
+        file_put_contents("temp/{$name}", $audio);
 
-        FileFacade::move(public_path("temp/{$name}"), storage_path($path));
+        FileFacade::move(public_path("temp/{$name}"), storage_path('app'.DIRECTORY_SEPARATOR.$path));
 
         return File::create([
             'user_id' => auth()->id(),
-            'path' => storage_path($path),
+            'path' => $path,
             'hash' => Str::random(50),
             'name' => $name,
         ]);

@@ -71,7 +71,7 @@
                       this.$emit('recorded',res.data);
                     })
                     .catch(err => {
-                      console.log(err)
+
                     });
                 })
             },

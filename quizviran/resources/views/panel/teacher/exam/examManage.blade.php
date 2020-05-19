@@ -9,8 +9,27 @@
                 <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
             </div>
         </div>
-{{-- todo --}}
-{{--        <app-panel-room-info :room="{{ $room->toJson() }}" createdat="{{ $room->created_at->format('Y/m/d') }}"></app-panel-room-info>--}}
+
+        {{--   todo: make responsive     --}}
+        <div class="row flex-nowrap bg-gray px-lg-3 align-items-center figure-caption text-light"
+             style="height: 40px;overflow-x: auto;overflow-y: hidden;">
+
+            <a href="{{ route('panel') }}" class="p-2">
+                <span>پنل مدیریت</span>
+            </a>
+            <span class="fas fa-arrow-left"></span>
+
+            <a href="{{ route('room.show',['room' => $room->link]) }}" class="p-2">
+                <span>{{ $room->name }}</span>
+            </a>
+            <span class="fas fa-arrow-left"></span>
+
+            <span class="p-2">
+                <span>مدیریت آزمون ها</span>
+            </span>
+
+
+        </div>
 
         <div class="row px-2 px-md-5 justify-content-center mt-5">
             <div class="col-11 col-md-6 mb-5 p-3">

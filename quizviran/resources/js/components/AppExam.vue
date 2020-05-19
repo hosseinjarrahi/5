@@ -67,7 +67,7 @@
                         });
                         setTimeout(() => {
                             window.location = `/quiz/results/${id}`;
-                        }, 3000);
+                        }, 2000);
                     })
                     .catch(function (error) {
                         console.log(error.message);

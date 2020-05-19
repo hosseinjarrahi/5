@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('errors::layout')
 
-@section('title', 'باید ثبت نام کنید')
-@section('code', '401')
+@section('title', 'تیزویران | 401')
+@section('code', '401 ')
 @section('message', 'برای دسترسی به این بخش باید ثبت نام کنید')

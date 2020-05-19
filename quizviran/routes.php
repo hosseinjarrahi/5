@@ -20,12 +20,12 @@ Route::group(['prefix' => 'quiz','middleware' => ['auth']], function () {
     Route::get('/results/{exam}','ExamController@result');
 
     Route::group(['prefix' => 'panel'], function () {
-        Route::get('/','PanelController@home');
+        Route::get('/','PanelController@home')->name('panel');
         Route::get('/rooms','PanelController@home');
         Route::resource('/room','RoomController');
 
         Route::get('/room/{room}/members','RoomController@members');
-        Route::get('/room/{room}/exams', 'ExamController@exams');
+        Route::get('/room/{room}/exams', 'ExamController@exams')->name('exam.manage');
         Route::get('/room/{room}/lock', 'RoomController@lock');
         Route::get('/room/{room}/gap-lock', 'RoomController@gapLock');
 
