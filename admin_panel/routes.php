@@ -15,4 +15,4 @@ Route::group(['prefix' => 'manager','middleware' => ['auth','admin']], function 
     Route::post('/product/upload', 'ProductController@upload');
 });
 
-Route::get('/assets/{folder}/{file}', 'HomeController@asset');
+Route::get('/assets/{path}', 'HomeController@asset')->where('path','.*');

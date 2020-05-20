@@ -2,6 +2,7 @@
 
 namespace Admin\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
@@ -11,15 +12,15 @@ class HomeController extends Controller
         return view('Admin::index');
     }
 
-    public function asset($folder,$file)
+    public function asset($path)
     {
-        $path = app_path("../admin_panel/public/$folder/$file");
+        $path = base_path("admin_panel/public/$path");
 
         if (!\File::exists($path)) {
             return response()->json(['not found'], 404);
         }
         if(\File::extension($path) == 'css')
             return response()->file($path,['Content-Type'=>'text/css']);
-        return response()->download($path, "$file");
+        return response()->download($path, Str::of($path)->afterLast('/'));
     }
 }
