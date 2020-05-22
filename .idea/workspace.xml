@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="396825e1-a8ef-4873-bb85-4f597029cbe8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/quiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quiz.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/AdminServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/AdminServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/public/css/sass.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/public/dist/css/custom-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/public/dist/css/custom-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/components/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/components/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/components/topNavigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/components/topNavigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/components/courseItems.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/components/courseItems.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +293,7 @@
       <workItem from="1589954415953" duration="6786000" />
       <workItem from="1590034266802" duration="3100000" />
       <workItem from="1590042807953" duration="46000" />
-      <workItem from="1590130770314" duration="34955000" />
+      <workItem from="1590130770314" duration="37306000" />
     </task>
     <servers />
   </component>
@@ -515,10 +499,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" width="672" height="677" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1589960820751" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590184226919">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590187114589">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590184226919" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590187114589" />
     <state x="491" y="329" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1589722465391">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
