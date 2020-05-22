@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        return view('Admin::index');
+        return view('Admin::home');
     }
 
     public function asset($path)

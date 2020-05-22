@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function home()
     {
         $slides = Slide::all()->toJson();
-        $boxes = HomeBox::all();
+        $boxes = HomeBox::whereHas('category')->get();
         $events = Event::all();
         $mainEvent = $events->where('type','main')->first() ?? new Event();
         return view('main.home', compact('slides', 'boxes','mainEvent'));

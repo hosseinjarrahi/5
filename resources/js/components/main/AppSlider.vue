@@ -4,7 +4,7 @@
 
       <div class="col-12 col-md-8">
 
-        <div class="bg-gray slider overflow-hidden">
+        <div class="bg-gray shadow slider overflow-hidden">
 
           <transition name="fade">
               <a
@@ -27,7 +27,7 @@
 
       <div class="col-12 col-md-4">
 
-        <div class="my-2 my-md-0 bg-dark-gray aside-slider h-md-auto pp overflow-hidden"
+        <div class="my-2 my-md-0 shadow bg-dark-gray aside-slider h-md-auto pp overflow-hidden"
         :style="{backgroundImage: `url(${event.body})`}">
         </div>
 

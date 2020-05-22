@@ -48211,7 +48211,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-8" }, [
         _c(
           "div",
-          { staticClass: "bg-gray slider overflow-hidden" },
+          { staticClass: "bg-gray shadow slider overflow-hidden" },
           [
             _c(
               "transition",
@@ -48264,7 +48264,7 @@ var render = function() {
       _c("div", { staticClass: "col-12 col-md-4" }, [
         _c("div", {
           staticClass:
-            "my-2 my-md-0 bg-dark-gray aside-slider h-md-auto pp overflow-hidden",
+            "my-2 my-md-0 shadow bg-dark-gray aside-slider h-md-auto pp overflow-hidden",
           style: { backgroundImage: "url(" + _vm.event.body + ")" }
         })
       ])

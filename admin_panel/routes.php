@@ -1,7 +1,7 @@
 <?php
 
-Route::group(['prefix' => 'manager','middleware' => ['auth','admin']], function () {
-    Route::get('/','HomeController@dashboard');
+Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admin']], function () {
+    Route::get('/','HomeController@dashboard')->name('home');
 
     Route::resource('/product', 'ProductController');
     Route::resource('/category', 'CategoryController');

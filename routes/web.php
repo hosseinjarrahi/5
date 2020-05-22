@@ -11,7 +11,7 @@ Route::get('/logout', 'RegisterController@logout')->name('logout')->middleware('
 Route::post('/reset-password', 'RegisterController@resetPassword')->middleware(['throttle:5,1440','guest']);
 Route::post('/register', 'RegisterController@register')->middleware(['throttle:10,1440','guest']);
 Route::post('/verify', 'RegisterController@verify')->middleware(['guest']);
-Route::post('/check-auth', 'RegisterController@checkAuth')->middleware(['auth']);
+Route::post('/check-auth', 'RegisterController@checkAuth');
 Route::get('/profile', 'RegisterController@profile')->middleware(['auth']);
 Route::post('/upload-avatar', 'RegisterController@uploadAvatar')->middleware(['auth']);
 Route::post('/profile-change', 'RegisterController@changeProfile')->middleware(['auth']);
