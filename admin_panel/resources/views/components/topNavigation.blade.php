@@ -25,13 +25,13 @@
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="fa fa-comments-o"></i>
+                <i class="fal fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
                 <a href="#" class="dropdown-item">
                     <div class="media">
-                        <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 ml-3 img-circle">
+                        <img src="" alt="User Avatar" class="img-size-50 ml-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 {{ auth()->user()->name }}
@@ -49,7 +49,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell-o"></i>
+                <i class="fal fa-bell"></i>
                 <span class="badge badge-warning navbar-badge">15</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
@@ -73,9 +73,6 @@
                 <a href="#" class="dropdown-item dropdown-footer">مشاهده همه نوتیفیکیشن</a>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-                        class="fa fa-th-large"></i></a>
-        </li>
+
     </ul>
 </nav>

@@ -1,5 +1,5 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" class="brand-link">
+<aside id="aside" class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="{{ route('admin.home') }}" class="brand-link">
         <img src="{{ asset('/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image"
              style="opacity: .8">
         <span class="brand-text font-weight-light">پنل مدیریت</span>
@@ -19,28 +19,54 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                    <li class="nav-item">
-                        <a href="{{ route('admin.home') }}" class="nav-link active">
-                            <i class="nav-icon fa fa-dashboard"></i>
-                            <p>
-                                داشبرد
-                                <i class="right fa fa-angle-left"></i>
-                            </p>
-                        </a>
-                    </li>
+                    <x-menu-item link="{{ route('admin.home') }}" icon="fas fa-tachometer-alt" label="داشبرد"></x-menu-item>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-th"></i>
-                            <p>
-                                لینک ساده
-                                <span class="right badge badge-danger">جدید</span>
-                            </p>
-                        </a>
-                    </li>
+                    <x-menu-item icon="fab fa-product-hunt" link="#" :root="true" label="محصولات">
+                        <ul class="nav nav-treeview">
+                            <x-menu-item icon="fas fa-plus-circle" link="{{ route('admin.product.create') }}" label="افزودن محصول"></x-menu-item>
+                            <x-menu-item icon="fa fa-ellipsis-h" link="{{ route('admin.product.index') }}" label="مدیریت محصول"></x-menu-item>
+                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.category.index') }}" label="مدیریت دسته بندی ها"></x-menu-item>
+                            <li class="dropdown-divider"></li>
+                        </ul>
+                    </x-menu-item>
+
+                    <x-menu-item icon="fa fa-eye" link="#" :root="true" label="نمایش">
+                        <ul class="nav nav-treeview">
+                            <x-menu-item icon="fa fa-plus-circle" link="{{ route('admin.event.create') }}" label="افزودن رویداد"></x-menu-item>
+                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.product.index') }}" label="مدیریت رویداد ها"></x-menu-item>
+                            <x-menu-item icon="fas fa-plus-circle" link="{{ route('admin.slide.create') }}" label="افزودن اسلاید"></x-menu-item>
+                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.slide.index') }}" label="مدیریت اسلایدها"></x-menu-item>
+                            <li class="dropdown-divider"></li>
+                        </ul>
+                    </x-menu-item>
+
+                    <x-menu-item icon="fa fa-users" link="#" :root="true" label="کاربران">
+                        <ul class="rounded nav nav-treeview">
+                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.user.index') }}" label="مدیریت کاربران"></x-menu-item>
+                            <x-menu-item icon="fas fa-universal-access" link="" label="دسترسی ها"></x-menu-item>
+                            <li class="dropdown-divider"></li>
+                        </ul>
+                    </x-menu-item>
+
+                    <x-menu-item icon="fas fa-cogs" link="#" label="تنظیمات"></x-menu-item>
+
+                    <x-menu-item icon="fas fa-eye" link="{{ route('admin.comment.index') }}" label="نظرات"></x-menu-item>
+
+                    <x-menu-item icon="fas fa-sign-out-alt" link="{{ route('logout') }}" label="خروج"></x-menu-item>
+
                 </ul>
             </nav>
         </div>
     </div>
+
+    <script>
+        let active  = aside.querySelector('.active');
+        let ulParent = active.parentElement.parentElement;
+        let liParent = ulParent.parentElement
+        ulParent.classList.add('menu-open');
+        liParent.classList.add('menu-open');
+        ulParent.style.display = 'block';
+        ulParent.previousElementSibling.classList.add('active')
+    </script>
 </aside>
 

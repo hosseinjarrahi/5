@@ -7,7 +7,7 @@ Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admi
     Route::resource('/category', 'CategoryController');
     Route::resource('/slide', 'SlideController');
     Route::resource('/event', 'EventController');
-    Route::resource('/comment', 'CommentController',['as' => 'admin']);
+    Route::resource('/comment', 'CommentController');
     Route::resource('/user', 'UserController');
     Route::resource('/setting', 'SlideController');
 

@@ -8,12 +8,14 @@
 
     <title>پنل مدیریت | @yield('title')</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/custom-style.css') }}">
-
+    @yield('head')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -29,12 +31,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">@yield('title')</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active">صفحه سریع</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,13 +39,6 @@
             @yield('content')
         </div>
     </div>
-
-    <aside class="control-sidebar control-sidebar-dark">
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-inline">
@@ -70,8 +59,11 @@
 <script src="{{ asset('/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('/assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('/assets/plugins/chartjs-old/Chart.min.js') }}"></script>
+<script src="{{ asset('/assets/plugins/select2/select2.full.min.js') }}"></script>
 
 <script src="{{ asset('/assets/dist/js/pages/dashboard2.js') }}"></script>
+
+@yield('script')
 
 </body>
 </html>

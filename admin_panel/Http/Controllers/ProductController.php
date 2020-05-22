@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
+use Conner\Tagging\Model\Tag;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 
@@ -23,8 +24,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('Admin::productAdd', compact('categories'));
+        return view('Admin::productAdd', compact('categories','tags'));
     }
 
     public function store(Request $request)

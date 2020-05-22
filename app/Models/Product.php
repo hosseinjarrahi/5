@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use Taggable;
+    use HasTrixRichText;
 
     protected $with = [
         'categories',
@@ -20,12 +21,12 @@ class Product extends Model
         'course_items' => 'Array',
         'meta' => 'Array',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function coupon()
     {
         return $this->hasMany(Coupon::class);
