@@ -6,9 +6,8 @@
 @endsection
 
 @section('content')
-    <form id="form" action="">
+    <form id="form" action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('put')
         <div class="row">
             <div class="col-md-8">
                 <x-card title="اطلاعات">
@@ -214,11 +213,16 @@
 @section('script')
     <script>
 
+        if (course.checked) {
+            courseList.classList.remove('d-none');
+            courseList.classList.add('d-block');
+        }
+
         course.onchange = function openCourse(e) {
-            console.log('a');
             if (e.target.checked) {
                 courseList.classList.remove('d-none');
                 courseList.classList.add('d-block');
+                generate();
                 return;
             }
             courseList.classList.add('d-none');

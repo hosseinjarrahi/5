@@ -6,13 +6,13 @@
 <div class="d-none">
     <span id="courseTemplate">
         <div class="form-group">
-            <input name="courseTitle[]" class="form-control" placeholder="عنوان">
+            <input name="" type="text" class="form-control" placeholder="عنوان">
         </div>
 
         <div class="form-row">
             <div class="col-10 mb-3">
                 <div class="custom-file">
-                    <input type="file" name="file[]" class="custom-file-input">
+                    <input type="file" name="" class="custom-file-input">
                     <label class="custom-file-label">فایل</label>
                 </div>
             </div>
@@ -28,11 +28,7 @@
             <div class="col-10">
                 <div class="form-group my-3">
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                        <input type="checkbox"
-                               name="free[]"
-                               class="custom-control-input"
-                               id="free-"
-                        >
+                        <input type="checkbox" name="free[]" class="custom-control-input" id="free-">
                         <label class="custom-control-label" for="free-">
                             رایگان
                         </label>
@@ -49,19 +45,27 @@
         </div>
 
         <div class="dropdown-divider"></div>
-        </span>
+    </span>
 </div>
 
 <script>
-    let template = courseTemplate;
+    let template = courseTemplate.cloneNode(true);
     let parent = courseItemsParent;
+    courseTemplate.remove();
 
     function generate() {
-        let random = Math.random(10);
+        let random = parseInt(Math.random(10) * 1000000);
 
         let item = template.cloneNode(true);
-        item.querySelector('.custom-checkbox').childNodes[1].id = random;
-        item.querySelector('.custom-checkbox').childNodes[3].id = random;
+        item.querySelector('.custom-checkbox').childNodes[1].id = 'free-' + random;
+        item.querySelector('.custom-checkbox').childNodes[3].setAttribute('for', 'free-' + random);
+        let checkbox = item.querySelector('[type = "checkbox"]');
+        let file = item.querySelector('[type = "file"]');
+        let title = item.querySelector('[type = "text"]');
+
+        checkbox.name = `courseCheckbox[${random}]`;
+        file.name = `courseFile[${random}]`;
+        title.name = `courseTitle[${random}]`;
 
         parent.appendChild(item);
     }
