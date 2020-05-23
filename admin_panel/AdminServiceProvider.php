@@ -5,6 +5,7 @@ namespace Admin;
 use Admin\ComponentControllers\Menu;
 use Admin\ComponentControllers\Card;
 use Admin\ComponentControllers\MenuItem;
+use Admin\ComponentControllers\FileItems;
 use Admin\ComponentControllers\CourseItems;
 use Admin\ComponentControllers\TopNavigation;
 
@@ -31,5 +32,6 @@ class AdminServiceProvider extends ServiceProvider
         Blade::component('menu-item', MenuItem::class);
         Blade::component('card', Card::class);
         Blade::component('course-items', CourseItems::class);
+        Blade::component('file-items', FileItems::class);
     }
 }

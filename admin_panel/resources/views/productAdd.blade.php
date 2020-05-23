@@ -107,42 +107,39 @@
                             <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                 <input type="checkbox"
                                        class="custom-control-input"
-                                       id="course"
+                                       id="courseCheckbox"
                                 >
-                                <label class="custom-control-label" for="course">
+                                <label class="custom-control-label" for="courseCheckbox">
                                     میخواهم دوره ایجاد کنم
                                 </label>
                             </div>
                         </div>
 
                         <div id="courseList" class="d-none">
-                            <x-card><x-course-items/></x-card>
+                            <x-card>
+                                <x-course-items/>
+                            </x-card>
                         </div>
-                        {{--                        <input type="hidden" v-model="items" name="courseCount">--}}
-                        {{--                        <input type="hidden" v-model="fileCount" name="fileCount">--}}
+
+                        <div class="form-group my-3">
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                <input type="checkbox"
+                                       class="custom-control-input"
+                                       id="fileCheckbox"
+                                >
+                                <label class="custom-control-label" for="fileCheckbox">
+                                    میخواهم فایل ایجاد کنم
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="fileList" class="d-none">
+                            <x-card>
+                                <x-file-items/>
+                            </x-card>
+                        </div>
 
 
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <input type="checkbox" v-model="fileCount">--}}
-                        {{--                            <span>میخواهم فایل ایجاد کنم</span>--}}
-                        {{--                        </div>--}}
-
-                        {{--                        <div v-if="fileCount > 0">--}}
-                        {{--                            <div class="btn btn-primary" @click="fileCount++">افزودن آیتم</div>--}}
-                        {{--                            <div class="btn btn-primary" @click="fileCount--" v-if="fileCount>0">حذف آخرین آیتم</div>--}}
-
-                        {{--                            <div v-for="(n,index) in fileCount" :key="index" class="bg-dark text-white p-3 my-2 rounded">--}}
-                        {{--                                #{{ n }}--}}
-
-                        {{--                                <div class="form-group">--}}
-                        {{--                                    <span>فایل :</span>--}}
-                        {{--                                    <input type="file" :name="'file' + n" class="form-control">--}}
-                        {{--                                </div>--}}
-
-                        {{--                                <hr>--}}
-                        {{--                            </div>--}}
-
-                        {{--                        </div>--}}
 
                         <button class="btn btn-block btn-primary my-2">ارسال</button>
                     </div>
@@ -213,12 +210,7 @@
 @section('script')
     <script>
 
-        if (course.checked) {
-            courseList.classList.remove('d-none');
-            courseList.classList.add('d-block');
-        }
-
-        course.onchange = function openCourse(e) {
+        courseCheckbox.onchange = function(e) {
             if (e.target.checked) {
                 courseList.classList.remove('d-none');
                 courseList.classList.add('d-block');
@@ -227,6 +219,17 @@
             }
             courseList.classList.add('d-none');
             courseList.classList.remove('d-block');
+        }
+
+        fileCheckbox.onchange = function(e) {
+            if (e.target.checked) {
+                fileList.classList.remove('d-none');
+                fileList.classList.add('d-block');
+                generateFileItem();
+                return;
+            }
+            fileList.classList.add('d-none');
+            fileList.classList.remove('d-block');
         }
 
         $(document).ready(function () {

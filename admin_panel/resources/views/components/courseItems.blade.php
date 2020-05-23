@@ -49,25 +49,24 @@
 </div>
 
 <script>
-    let template = courseTemplate.cloneNode(true);
-    let parent = courseItemsParent;
+    let cTemplate = courseTemplate.cloneNode(true);
+    let counter = 0;
     courseTemplate.remove();
 
     function generate() {
-        let random = parseInt(Math.random(10) * 1000000);
-
-        let item = template.cloneNode(true);
-        item.querySelector('.custom-checkbox').childNodes[1].id = 'free-' + random;
-        item.querySelector('.custom-checkbox').childNodes[3].setAttribute('for', 'free-' + random);
+        let item = cTemplate.cloneNode(true);
+        item.querySelector('.custom-checkbox').childNodes[1].id = 'free-' + counter;
+        item.querySelector('.custom-checkbox').childNodes[3].setAttribute('for', 'free-' + counter);
         let checkbox = item.querySelector('[type = "checkbox"]');
         let file = item.querySelector('[type = "file"]');
         let title = item.querySelector('[type = "text"]');
 
-        checkbox.name = `courseCheckbox[${random}]`;
-        file.name = `courseFile[${random}]`;
-        title.name = `courseTitle[${random}]`;
+        checkbox.name = `courseCheckbox[${counter}]`;
+        file.name = `courseFile[${counter}]`;
+        title.name = `courseTitle[${counter}]`;
 
-        parent.appendChild(item);
+        courseItemsParent.appendChild(item);
+        counter++;
     }
 
     function removeItem(ev) {
