@@ -69,8 +69,8 @@
         counter++;
     }
 
-    function removeItem(ev) {
-        let shouldRemove = ev.parentElement.parentElement.parentElement;
+    function removeItem(element) {
+        let shouldRemove = element.parentElement.parentElement.parentElement;
         shouldRemove.remove();
     }
 

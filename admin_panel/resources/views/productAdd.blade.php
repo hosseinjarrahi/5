@@ -14,7 +14,7 @@
                     <div>
                         <div class="form-group">
                             <label>عنوان :</label>
-                            <input name="title" class="form-control">
+                            <input onchange="generateSlug(this)" name="title" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -185,7 +185,7 @@
 
                             <div class="form-group">
                                 <label>عنوان صفحه :</label>
-                                <input name="pageTitle" class="form-control">
+                                <input id="pageTitle" name="pageTitle" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -195,7 +195,7 @@
 
                             <div class="form-group">
                                 <label>نامک :</label>
-                                <input name="slug" class="form-control">
+                                <input id="slug" name="slug" class="form-control">
                             </div>
 
                         </x-card>
@@ -209,6 +209,19 @@
 
 @section('script')
     <script>
+        function slugify(text)
+        {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           // Replace spaces with -
+                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                .replace(/^-+/, '')             // Trim - from start of text
+                .replace(/-+$/, '');            // Trim - from end of text
+        }
+
+        function generateSlug(item){
+            slug.value = slugify(item.value);
+            pageTitle.value = item.value;
+        }
 
         courseCheckbox.onchange = function(e) {
             if (e.target.checked) {
