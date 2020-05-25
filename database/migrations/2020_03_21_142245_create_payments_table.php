@@ -15,9 +15,9 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->nullableMorphs('model');
             $table->unsignedInteger('user_id');
             $table->string('trans_id');
-            $table->text('products')->nullable();
             $table->text('payload')->nullable();
             $table->enum('state',['processing','complete','error'])->default('processing');
             $table->timestamps();

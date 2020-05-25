@@ -3,8 +3,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@home')->name('home');
 
-Route::get('/complete', 'PaymentController@complete');
-Route::post('/complete/reply', 'PaymentController@reply');
+Route::get('/complete', 'PaymentController@complete')->name('payment.pay');
+Route::post('/complete/reply', 'PaymentController@reply')->name('payment.reply');
 
 Route::post('/login', 'RegisterController@login')->middleware(['guest']);
 Route::get('/logout', 'RegisterController@logout')->name('logout')->middleware('auth');

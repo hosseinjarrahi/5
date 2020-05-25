@@ -3,6 +3,7 @@
 namespace Quizviran\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
 use Quizviran\Repositories\ExamRepo;
@@ -38,7 +39,9 @@ class ExamController extends Controller
 
     public function edit($exam)
     {
+        // todo make type cast to jalalian
         $quiz = ExamRepo::findOrFail($exam);
+        $quiz->jalalyDate = $quiz->jalaly->format('Y-m-d H:i');
 
         return view('Quizviran::panel.teacher.exam.examEdit', compact('quiz'));
     }
@@ -48,7 +51,7 @@ class ExamController extends Controller
         ExamRepo::update($exam, $request->only([
             'name',
             'desc',
-            'start',
+            'jalalyDate',
             'duration',
         ]));
 
@@ -90,7 +93,7 @@ class ExamController extends Controller
         $users = $quiz->getQuizUsersWithNorms();
         $room = $quiz->rooms()->first();
 
-        return view('Quizviran::results', compact('users', 'user', 'quiz','room'));
+        return view('Quizviran::results', compact('users', 'user', 'quiz', 'room'));
     }
 
     public function complete(Request $request)
@@ -137,7 +140,7 @@ class ExamController extends Controller
 
         $room = $exam->rooms()->firstOrFail();
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('room','quiz', 'allQuestions','exam'));
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('room', 'quiz', 'allQuestions', 'exam'));
     }
 
     public function completeResult($exam)
@@ -148,6 +151,7 @@ class ExamController extends Controller
 
         return view('Quizviran::panel.teacher.exam.results', compact('users', 'quiz'));
     }
+
     // TODO : pdf
     public function pdf($exam)
     {
@@ -161,13 +165,13 @@ class ExamController extends Controller
         return $pdf->stream('document.pdf');
     }
 
-    public function revival($exam,Request $request)
+    public function revival($exam, Request $request)
     {
         $exam = ExamRepo::findOrFail($exam);
 
         $duration = $request->sub == 'sub' ? -5 : 5;
 
-        ExamRepo::addDuration($exam,$duration);
+        ExamRepo::addDuration($exam, $duration);
 
         return response(['message' => 'با موفقیت تمدید شد.']);
     }
@@ -201,5 +205,4 @@ class ExamController extends Controller
     {
         return ($quiz->isInTime() && auth()->user()->canComplete($quiz->id));
     }
-
 }

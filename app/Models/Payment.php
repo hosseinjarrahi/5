@@ -11,6 +11,15 @@ class Payment extends Model
         'id'
     ];
 
+    public $casts = [
+        'payload' => 'array'
+    ];
+
+    public function paymantable()
+    {
+        return $this->morphTo();
+    }
+
     public function user()
     {
         return $this->hasOne(User::class);

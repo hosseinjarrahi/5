@@ -4,6 +4,7 @@ namespace Quizviran\Models;
 
 use Carbon\Carbon;
 use App\Models\File;
+use Morilog\Jalali\Jalalian;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
@@ -73,6 +74,11 @@ class Quiz extends Model
     public function scopeShow($query)
     {
         return $query->where('show',1);
+    }
+
+    public function getJalalyAttribute()
+    {
+        return Jalalian::forge($this->getAttribute('start'));
     }
 //
 //    public function toArray()

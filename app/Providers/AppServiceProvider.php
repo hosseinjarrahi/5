@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
-use App\Facades\PayFacade;
+use App\Facades\Payment\Idpay;
+use App\Facades\Payment\PayFacade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength('190');
         Carbon::setLocale('fa');
+        PayFacade::choose(Idpay::class);
     }
 }

@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label><span class="fas fa-clock"></span> <span>زمان شروع آزمون</span></label>
-        <date-picker class="text-dark" locale="fa" format="YYYY/MM/DD HH:mm:ss" v-model="quiz.start" type="datetime"/>
+        <date-picker class="text-dark" locale="fa" format="jYYYY-jMM-jDD HH:mm:ss" v-model="quiz.start" type="datetime"/>
       </div>
       <div class="form-group">
         <label><span class="fas fa-clock"></span> <span>مدت زمان آزمون به دقیقه</span></label>

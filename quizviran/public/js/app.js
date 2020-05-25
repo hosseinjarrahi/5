@@ -70946,7 +70946,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "form-group text-dark" },
+          { staticClass: "form-group" },
           [
             _c("label", [
               _c("span", { staticClass: "fas fa-clock" }),
@@ -70955,17 +70955,18 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("date-picker", {
+              staticClass: "text-dark",
               attrs: {
                 locale: "fa",
-                format: "YYYY/MM/DD HH:mm:ss",
+                format: "jYYYY-jMM-jDD HH:mm:ss",
                 type: "datetime"
               },
               model: {
-                value: _vm.edit.start,
+                value: _vm.edit.jalalyDate,
                 callback: function($$v) {
-                  _vm.$set(_vm.edit, "start", $$v)
+                  _vm.$set(_vm.edit, "jalalyDate", $$v)
                 },
-                expression: "edit.start"
+                expression: "edit.jalalyDate"
               }
             })
           ],
@@ -71117,7 +71118,7 @@ var render = function() {
               staticClass: "text-dark",
               attrs: {
                 locale: "fa",
-                format: "YYYY/MM/DD HH:mm:ss",
+                format: "jYYYY-jMM-jDD HH:mm:ss",
                 type: "datetime"
               },
               model: {

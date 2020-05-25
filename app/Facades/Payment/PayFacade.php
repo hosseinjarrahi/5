@@ -1,5 +1,5 @@
 <?php
-namespace App\Facades;
+namespace App\Facades\Payment;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -7,10 +7,10 @@ class PayFacade extends Facade {
 
     protected static function getFacadeAccessor()
     {
-        return 'payFacade';
+        return 'PayFacade';
     }
 
-    public function choose($class){
+    public static function choose($class){
         app()->singleton(self::getFacadeAccessor(),$class);
     }
 }
