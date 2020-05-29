@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Conner\Tagging\Model\Tag;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -26,13 +27,12 @@ class ProductController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('Admin::productAdd', compact('categories','tags'));
+        return view('Admin::productAdd', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
     {
-        dd($request->all());
-        $tags = explode('-', $request->tags);
+        $tags = $request->tags;
 
         $meta = [
             'keywords' => $request->post('keywords', null),
@@ -40,8 +40,9 @@ class ProductController extends Controller
             'description' => $request->post('pageDescription', null),
         ];
 
-        $picPath = Upload::uploadFile(['pic' => $request->pic]);
-        $video = Upload::uploadFile(['video' => $request->video]);
+        $pic = $this->storeFile($request->file('pic'));
+        dd($pic);
+        $video = $request->file('video')->storeAs('public/post/' . Jalalian::now()->format('Y-m') , Str::random(20));
         $items = $this->createCourse($request);
 
         $product = Product::create([
@@ -53,7 +54,7 @@ class ProductController extends Controller
             'price' => $request->price ?? '',
             'offer' => $request->offer,
             'meta' => $meta,
-            'pic' => $picPath['pic'],
+            'pic' => $pic,
             'user_id' => auth()->id() ?? 1,
             'course_items' => $items,
             'video' => $video,
@@ -152,5 +153,11 @@ class ProductController extends Controller
         $product->delete();
 
         return back();
+    }
+
+    private function storeFile($file)
+    {
+        return Storage::disk('public')->putFile('posts', $file);
+//        return $file->storeAs('post/' . Jalalian::now()->format('Y-m') , Str::random(20) . '.' . $file->getClientOriginalExtension(),'public');
     }
 }

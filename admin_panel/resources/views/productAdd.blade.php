@@ -49,6 +49,7 @@
                             <div class="col-md-3 mb-3">
                                 <label>وضعیت :</label>
                                 <select name="status" class="form-control">
+                                    <option value="none" selected>بدون وضعیت</option>
                                     <option value="complete">تکمیل</option>
                                     <option value="making">در حال برگزاری</option>
                                     <option value="soon">به زودی</option>
@@ -153,7 +154,7 @@
                     <div class="col-12">
                         <x-card title="دسته بندی ها">
                             <div class="form-group">
-                                <select multiple class="select3 form-control" name="category[]">
+                                <select multiple class="select3 form-control" name="categories[]">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -167,16 +168,16 @@
 
                             <div class="form-group">
                                 <label>تگ ها</label>
-                                <select multiple class="select2 form-control" name="category[]">
+                                <select multiple class="select2 form-control" name="tags[]">
                                     @foreach($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label>کلید واژه ها</label>
-                                <select multiple class="select2 form-control" name="category[]">
+                                <select multiple class="select2 form-control" name="keywords[]">
                                     @foreach($tags as $tag)
                                         <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                     @endforeach

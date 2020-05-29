@@ -55,7 +55,7 @@
 
     function generate() {
         let item = cTemplate.cloneNode(true);
-        item.querySelector('.custom-checkbox').childNodes[1].id = 'free-' + counter;
+        item.querySelector('.custom-checkbox').childNodes[1].setAttribute('id','free-' + counter);
         item.querySelector('.custom-checkbox').childNodes[3].setAttribute('for', 'free-' + counter);
         let checkbox = item.querySelector('[type = "checkbox"]');
         let file = item.querySelector('[type = "file"]');
