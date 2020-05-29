@@ -16,6 +16,11 @@ class CommentController extends Controller
 
     public function store(CommentRequest $request)
     {
+        /** 
+         * @post('/comment')
+         * @name('comment.store')
+         * @middlewares(web, auth)
+         */
         Comment::create([
             'comment' => $request->comment,
             'commentable_id' => $request->id,
@@ -28,6 +33,12 @@ class CommentController extends Controller
 
     public function update(CommentRequest $request, Comment $comment)
     {
+        /** 
+         * @methods(PUT, PATCH)
+         * @uri('/comment/{comment}')
+         * @name('comment.update')
+         * @middlewares(web, auth)
+         */
         if($comment->isOwn())
         {
             $comment->comment = $request->comment;
@@ -41,6 +52,11 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        /** 
+         * @delete('/comment/{comment}')
+         * @name('comment.destroy')
+         * @middlewares(web, auth)
+         */
         if ($comment->isOwn()) {
             $comment->delete();
             return response(['message' => 'با موفقیت حذف شد.']);

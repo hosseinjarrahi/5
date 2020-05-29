@@ -11,6 +11,11 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        /** 
+         * @get('/manager/category')
+         * @name('admin.category.index')
+         * @middlewares(web, auth, admin)
+         */
         $categories = CategoryRepo::all();
         $edit = false;
 
@@ -19,6 +24,11 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        /** 
+         * @post('/manager/category')
+         * @name('admin.category.store')
+         * @middlewares(web, auth, admin)
+         */
         CategoryRepo::create($request->only([
             'pic',
             'slug',
@@ -31,6 +41,11 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
+        /** 
+         * @get('/manager/category/{category}/edit')
+         * @name('admin.category.edit')
+         * @middlewares(web, auth, admin)
+         */
         $categories = CategoryRepo::all();
         $edit = true;
 
@@ -39,6 +54,12 @@ class CategoryController extends Controller
 
     public function update(Category $category, Request $request)
     {
+        /** 
+         * @methods(PUT, PATCH)
+         * @uri('/manager/category/{category}')
+         * @name('admin.category.update')
+         * @middlewares(web, auth, admin)
+         */
         CategoryRepo::update($category,$request->only([
             'pic',
             'slug',
@@ -51,6 +72,11 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        /** 
+         * @delete('/manager/category/{category}')
+         * @name('admin.category.destroy')
+         * @middlewares(web, auth, admin)
+         */
         CategoryRepo::delete($category);
 
         return back();

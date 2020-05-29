@@ -63,4 +63,10 @@ class Product extends Model
         return $this->morphToMany(Category::class, 'model','categories_models');
     }
 
+    public function getMeta()
+    {
+        $value = $this->meta;
+        $value['keywords'] = collect($value['keywords'])->implode(',');
+        return $value;
+    }
 }

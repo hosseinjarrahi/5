@@ -22,7 +22,6 @@ function checkAuth(){
         .catch(err => console.log(err));
 }
 ///////////////////////////////////////////////
-
 function redirect(url){
     window.location = url;
 };

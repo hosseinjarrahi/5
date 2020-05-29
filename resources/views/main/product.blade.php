@@ -54,12 +54,12 @@
                                     <span class="m-2 p-2 text-white">
                                     <span class="fas fa-file"></span>
                                     <span> نوع فایل: </span>
-                                    <span> {{ pathinfo($file->file) }} </span>
+                                    <span> {{ $file->mime }} </span>
                                     </span>
                                     <span class="m-2 p-2 text-white">
                                         <span class="fas fa-box"></span>
                                         <span> حجم: </span>
-                                        <span> {{ filesize(asset($file->file)) }} </span>
+                                        <span> {{ $file->size }} </span>
                                     </span>
                                 </div>
                             </div>

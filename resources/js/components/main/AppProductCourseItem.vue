@@ -10,7 +10,7 @@
       </div>
       <div class="col-12 col-md-8 px-5 my-3 my-md-0">
         <span class="text-white">{{ item.title }}</span>
-        <span class="text-white bg-success p-1 rounded" v-if="item.free">رایگان</span>
+        <span class="text-white badge badge-success p-1 rounded" v-if="item.free">رایگان</span>
       </div>
       <div class="col-6 col-md-2 text-right" style="height:30px;overflow:auto;">
         <span class="fas fa-clock"></span>

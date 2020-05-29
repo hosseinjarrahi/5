@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
             $table->string('hash',51)->unique();
             $table->text('name');
             $table->text('password')->nullable();
+            $table->unsignedInteger('download')->default(0);
             $table->timestamp('extime')->nullable();
             $table->timestamps();
         });

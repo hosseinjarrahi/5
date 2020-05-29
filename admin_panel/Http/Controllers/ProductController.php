@@ -2,21 +2,26 @@
 
 namespace Admin\Http\Controllers;
 
-use App\Http\Upload;
+use App\Models\File;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use Conner\Tagging\Model\Tag;
+use Admin\repositories\FileRepo;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class ProductController extends Controller
 {
     public function index()
     {
+        /**
+         * @get('/manager/product')
+         * @name('admin.product.index')
+         * @middlewares(web, auth, admin)
+         */
         $products = Product::orderByDesc('id')->paginate(9);
 
         return view('Admin::products', compact('products'));
@@ -24,6 +29,11 @@ class ProductController extends Controller
 
     public function create()
     {
+        /**
+         * @get('/manager/product/create')
+         * @name('admin.product.create')
+         * @middlewares(web, auth, admin)
+         */
         $categories = Category::all();
         $tags = Tag::all();
 
@@ -32,6 +42,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        /**
+         * @post('/manager/product')
+         * @name('admin.product.store')
+         * @middlewares(web, auth, admin)
+         */
         $tags = $request->tags;
 
         $meta = [
@@ -40,9 +55,8 @@ class ProductController extends Controller
             'description' => $request->post('pageDescription', null),
         ];
 
-        $pic = $this->storeFile($request->file('pic'));
-        dd($pic);
-        $video = $request->file('video')->storeAs('public/post/' . Jalalian::now()->format('Y-m') , Str::random(20));
+        $pic = $this->storePublicFile($request->file('pic'));
+        $video = $this->storePublicFile($request->file('video'));
         $items = $this->createCourse($request);
 
         $product = Product::create([
@@ -50,45 +64,34 @@ class ProductController extends Controller
             'slug' => $request->slug ?? str_replace(' ', '-', $request->title),
             'title' => $request->title,
             'percentage' => $request->percentage,
-            'desc' => $request->desc ?? '',
-            'price' => $request->price ?? '',
+            'desc' => $request->desc,
+            'price' => $request->price,
             'offer' => $request->offer,
             'meta' => $meta,
             'pic' => $pic,
-            'user_id' => auth()->id() ?? 1,
+            'user_id' => auth()->id(),
             'course_items' => $items,
             'video' => $video,
         ]);
 
         $this->uploadFiles($request, $product);
 
-        $category = Category::findOrFail($request->category);
+        $category = Category::find($request->category);
 
         $product->tag($tags);
 
-        if ($category) {
-            $product->categories()->attach($category);
-        }
+        $product->categories()->attach($category);
 
         return back();
     }
 
-    private function uploadCourses($request)
+    private function uploadCourses($courseFiles)
     {
         $files = [];
-        $counts = (int)$request->courseCount;
-        if ($counts <= 0) {
-            return $files;
-        }
-        foreach (range(1, $counts) as $count) {
-            $file = new \App\Models\File();
-            $file->name = $request->file('courseFile' . $count)->getClientOriginalName();
-            $file->path = '/' . $request->file('courseFile' . $count)->storeAs('courses/' . Jalalian::forge(date('y-m-d'))->format('y-m'),
-                    time() . random_int(0, 100) . '.' . $request->file('courseFile' . $count)->extension());
-            $file->hash = Str::random(50);
-            $file->user_id = auth()->id();
-            $file->save();
-            $files['courseFile' . $count] = $file;
+        $path = 'courses/' . Jalalian::now()->format('y-m');
+
+        foreach ($courseFiles as $key => $courseFile) {
+            $files[$key] = FileRepo::create($courseFile, $path);
         }
 
         return $files;
@@ -96,37 +99,35 @@ class ProductController extends Controller
 
     private function uploadFiles($request, $product)
     {
-        $counts = (int)$request->fileCount;
-        if ($counts <= 0) {
-            return;
+        if ($request->makeFile != 'on') {
+            return null;
         }
-        $files = null;
-        foreach (range(1, $counts) as $count) {
-            $file = new File();
-            $file->file = $request->file('file' . $count)->storeAs('files/' . Jalalian::forge(date('y-m-d'))->format('y-m'),
-                time() . random_int(0, 100) . '.' . $request->file('file' . $count)->extension());
-            $files[] = \App\Models\File::create([
-                'file' => $file->file,
-                'user_id' => auth()->id() ?? 1,
-            ]);
+
+        $files = [];
+        $path = 'files/' . Jalalian::now()->format('y-m');
+
+        foreach ($request->file('files') as $uploadedFile) {
+            $files[] = FileRepo::create($uploadedFile, $path);
         }
+
         $product->files()->saveMany($files);
     }
 
     private function createCourse($request)
     {
-        if ($request->courseCount <= 0) {
-            return;
+        if ($request->makeCourse != 'on') {
+            return null;
         }
-        $coursePath = $this->uploadCourses($request);
+
+        $coursePath = $this->uploadCourses($request->file('courseFiles'));
 
         $items = [];
 
-        foreach (range(1, $request->courseCount) as $count) {
+        foreach ($request->courseTitles as $key => $title) {
             $items[] = [
-                'title' => $request->post('courseTitle' . $count),
-                'hash' => $coursePath['courseFile' . $count]->hash,
-                'free' => $request->post('courseFree' . $count) == 'on' ? true : false,
+                'title' => $title,
+                'hash' => $coursePath[$key] ? $coursePath[$key]->hash : null,
+                'free' => $request->courseFreeBoxes[$key] == 'on' ? true : false,
             ];
         }
 
@@ -135,6 +136,11 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        /**
+         * @get('/manager/product/{product}/edit')
+         * @name('admin.product.edit')
+         * @middlewares(web, auth, admin)
+         */
         $categories = Category::all();
 
         return view('Admin::productEdit', compact('categories', 'product'));
@@ -142,6 +148,12 @@ class ProductController extends Controller
 
     public function update()
     {
+        /**
+         * @methods(PUT, PATCH)
+         * @uri('/manager/product/{product}')
+         * @name('admin.product.update')
+         * @middlewares(web, auth, admin)
+         */
         $request = request();
 
         return back();
@@ -149,15 +161,20 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        File::delete(public_path($product->pic));
+        /**
+         * @delete('/manager/product/{product}')
+         * @name('admin.product.destroy')
+         * @middlewares(web, auth, admin)
+         */
+        FileFacade::delete(public_path($product->pic));
         $product->delete();
 
         return back();
     }
 
-    private function storeFile($file)
+    private function storePublicFile($file)
     {
-        return Storage::disk('public')->putFile('posts', $file);
-//        return $file->storeAs('post/' . Jalalian::now()->format('Y-m') , Str::random(20) . '.' . $file->getClientOriginalExtension(),'public');
+        return Str::of($file->store('public/posts/' . Jalalian::now()->format('Y-m')))
+            ->after('public/')->prepend('/storage/');
     }
 }

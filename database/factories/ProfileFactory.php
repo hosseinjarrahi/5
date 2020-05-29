@@ -10,6 +10,5 @@ $factory->define(Profile::class, function (Faker $faker) {
     return [
         'birth' => now(),
         'bio' => $faker->realText(100),
-        'avatar' => '/img/avatar.jpg',
     ];
 });

@@ -9,7 +9,7 @@
         <div class="form-row">
             <div class="col-9 mb-3">
                 <div class="custom-file">
-                    <input type="file" name="file[]" class="custom-file-input">
+                    <input type="file" name="files[]" class="custom-file-input">
                     <label class="custom-file-label">فایل</label>
                 </div>
             </div>

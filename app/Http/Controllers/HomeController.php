@@ -24,6 +24,11 @@ class HomeController extends Controller
 
     public function home()
     {
+        /**
+         * @get('//')
+         * @name('home')
+         * @middlewares(web)
+         */
         $slides = Slide::all()->toJson();
         $boxes = HomeBox::whereHas('category')->get();
         $events = Event::all();
@@ -33,6 +38,11 @@ class HomeController extends Controller
 
     public function category(Category $category)
     {
+        /**
+         * @get('/{category}')
+         * @name('')
+         * @middlewares(web)
+         */
         $products = $category->products()->orderByDesc('id')->paginate(9);
 
         $children = $category->children;
@@ -48,18 +58,27 @@ class HomeController extends Controller
 
     public function product($category, Product $product)
     {
+        /**
+         * @get('/{category}/{product}')
+         * @name('')
+         * @middlewares(web)
+         */
         $files = $product->files;
         $tags = $product->tags;
         $sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
-        $meta = $product->meta;
+        $meta = $product->getMeta();
         $release = Jalalian::forge($product->created_at)->format('Y/m/d');
         $comments = $product->comments()->where('show', true)->get();
-
         return view('main.product', compact('comments', 'product', 'files', 'sames', 'meta', 'tags', 'release'));
     }
 
     public function checkCoupon(CouponRequest $request)
     {
+        /**
+         * @post('/check-coupon')
+         * @name('')
+         * @middlewares(web)
+         */
         $coupon = Coupon::where('code', $request->coupon)->first();
         if (! $coupon || ! $coupon->valid($request->productId)) {
             return response(['message' => 'کد تخفیف نامعتبر است.'], 404);
@@ -73,6 +92,11 @@ class HomeController extends Controller
 
     public function tag($tag)
     {
+        /**
+         * @get('/tag/{tag}')
+         * @name('')
+         * @middlewares(web)
+         */
         $tag = Tag::where('slug', $tag)->first();
         $products = Product::with('tagged')->withAnyTag([$tag->name])->orderByDesc('id')->paginate(9);
         $links = $products->links();
@@ -85,6 +109,11 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        /**
+         * @get('/search')
+         * @name('')
+         * @middlewares(web)
+         */
         $search = $request->search;
         $products = Product::whereHas('categories')->without(['categories', 'user'])->where('title', 'LIKE', "%{$search}%");
 
@@ -101,6 +130,11 @@ class HomeController extends Controller
 
     public function notifications()
     {
+        /**
+         * @get('/notifications')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $notifications = auth()->user()->notifications()->orderByDesc('id')->paginate(10);
         auth()->user()->unreadNotifications->markAsRead();
         $links = $notifications->links();

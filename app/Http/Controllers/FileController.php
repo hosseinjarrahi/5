@@ -14,14 +14,26 @@ class FileController extends Controller
 {
     public function index(Request $request)
     {
+        /**
+         * @get('/file')
+         * @name('file.index')
+         * @middlewares(web)
+         */
         // todo : password check
         $file = File::where('hash', $request->hash)->firstOrFail();
+        $file->download++;
+        $file->save();
 
         return Storage::download($file->path, $file->name);
     }
 
     public function store(UploadRequest $request)
     {
+        /**
+         * @post('/file')
+         * @name('file.store')
+         * @middlewares(web)
+         */
         if ($request->base64) {
             $file = $this->saveMp3(request()->base64);
         } else {
@@ -39,6 +51,11 @@ class FileController extends Controller
 
     public function destroy(File $file)
     {
+        /**
+         * @delete('/file/{file}')
+         * @name('file.destroy')
+         * @middlewares(web)
+         */
         if (! ($file && $file->isOwn())) {
             return response(['message' => 'چنین فایلی وجود ندارد.']);
         }

@@ -40,5 +40,3 @@ Route::group(['prefix' => 'quiz','middleware' => ['auth']], function () {
     });
 
 });
-
-Route::get('/quiz/assets/{folder}/{file}', 'HomeController@asset');

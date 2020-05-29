@@ -73,32 +73,32 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="col-10 mb-3">
+                            <div class="col-8 col-md-10 mb-3">
                                 <div class="custom-file">
                                     <input type="file" name="pic" class="custom-file-input">
                                     <label class="custom-file-label">تصویر محصول</label>
                                 </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2 col-md-1">
                                 <div class="btn btn-primary btn-block"><span class="fas fa-hdd"></span></div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2 col-md-1">
                                 <div class="btn btn-primary btn-block"><span class="fas fa-link"></span></div>
                             </div>
                         </div>
 
 
                         <div class="form-row">
-                            <div class="col-10 mb-3">
+                            <div class="col-8 col-md-10 mb-3">
                                 <div class="custom-file">
                                     <input type="file" name="video" class="custom-file-input">
                                     <label class="custom-file-label">ویدیو دمو</label>
                                 </div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2 col-md-1">
                                 <div class="btn btn-primary btn-block"><span class="fas fa-hdd"></span></div>
                             </div>
-                            <div class="col-1">
+                            <div class="col-2 col-md-1">
                                 <div class="btn btn-primary btn-block"><span class="fas fa-link"></span></div>
                             </div>
                         </div>
@@ -109,6 +109,7 @@
                                 <input type="checkbox"
                                        class="custom-control-input"
                                        id="courseCheckbox"
+                                       name="makeCourse"
                                 >
                                 <label class="custom-control-label" for="courseCheckbox">
                                     میخواهم دوره ایجاد کنم
@@ -127,6 +128,7 @@
                                 <input type="checkbox"
                                        class="custom-control-input"
                                        id="fileCheckbox"
+                                       name="makeFile"
                                 >
                                 <label class="custom-control-label" for="fileCheckbox">
                                     میخواهم فایل ایجاد کنم

@@ -3457,6 +3457,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     buy: function buy() {}
+  },
+  computed: {
+    status: function status() {
+      switch (this.product.status) {
+        case 'complete':
+          return 'کامل';
+          break;
+
+        case 'making':
+          return 'در حال برگزاری';
+          break;
+
+        case 'soon':
+          return 'به زودی';
+          break;
+
+        default:
+          return null;
+      }
+    }
   }
 });
 
@@ -4115,7 +4135,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.avatar-parent[data-v-e3d29c0c] {\r\n  position: absolute;\r\n  top: -50px;\r\n  width: 100%;\r\n  display: flex;\r\n  left: 0;\r\n  right: 0;\r\n  justify-content: center;\n}\n.pic[data-v-e3d29c0c] {\r\n  width: 90%;\r\n  height: 200px;\r\n  background-image: url(\"/img/avatar.png\");\r\n  background-size: cover;\r\n  background-position: center;\r\n  border: 2px solid #57606f;\n}\n.border-bottom-dark[data-v-e3d29c0c] {\r\n  border-bottom: 2px solid #57606f;\n}\n.line-throgh[data-v-e3d29c0c]{\r\n  -webkit-text-decoration: red line-through;\r\n          text-decoration: red line-through;\n}\n.bg-cover[data-v-e3d29c0c]{\r\n  background-position:center;\r\n  background-size:cover;\n}\r\n", ""]);
+exports.push([module.i, "\n.avatar-parent[data-v-e3d29c0c] {\n  position: absolute;\n  top: -50px;\n  width: 100%;\n  display: flex;\n  left: 0;\n  right: 0;\n  justify-content: center;\n}\n.pic[data-v-e3d29c0c] {\n  width: 90%;\n  height: 200px;\n  background-image: url(\"/img/avatar.png\");\n  background-size: cover;\n  background-position: center;\n  border: 2px solid #57606f;\n}\n.border-bottom-dark[data-v-e3d29c0c] {\n  border-bottom: 2px solid #57606f;\n}\n.line-throgh[data-v-e3d29c0c] {\n  -webkit-text-decoration: red line-through;\n          text-decoration: red line-through;\n}\n.bg-cover[data-v-e3d29c0c] {\n  background-position: center;\n  background-size: cover;\n}\n", ""]);
 
 // exports
 
@@ -47567,9 +47587,11 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm.item.free
-            ? _c("span", { staticClass: "text-white bg-success p-1 rounded" }, [
-                _vm._v("رایگان")
-              ])
+            ? _c(
+                "span",
+                { staticClass: "text-white badge badge-success p-1 rounded" },
+                [_vm._v("رایگان")]
+              )
             : _vm._e()
         ]),
         _vm._v(" "),
@@ -47717,7 +47739,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", [_vm._v("وضعیت دوره :")]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.product.status))])
+                _c("span", [_vm._v(_vm._s(_vm.status))])
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -62926,8 +62948,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\web\bigBag\quiz\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\web\bigBag\quiz\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Hossein\Desktop\Tizviran\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Hossein\Desktop\Tizviran\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

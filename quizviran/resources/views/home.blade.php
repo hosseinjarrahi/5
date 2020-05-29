@@ -19,17 +19,17 @@
                         <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
                             @if(auth()->user()->type == 'teacher')
                                 <a href="/quiz/panel/room/create" class="mx-1">
-                                    <img src="{{ asset('quiz/assets/img/create-class.png') }}"
+                                    <img src="{{ asset('quiz-assets/img/create-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="create-class">
                                 </a>
                             @else
                                 <a href="/quiz/panel/join-room" class="mx-1">
-                                    <img src="{{ asset('quiz/assets/img/join-class.png') }}"
+                                    <img src="{{ asset('quiz-assets/img/join-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="join-room">
                                 </a>
                             @endif
                             <a href="/quiz/panel/rooms" class="mx-1">
-                                <img src="{{ asset('quiz/assets/img/dashboard.png') }}"
+                                <img src="{{ asset('quiz-assets/img/dashboard.png') }}"
                                      class="p-1 quiz-button img-fluid" alt="dashboard">
                             </a>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-3 d-flex flex-row justify-content-center px-3">
                             <div @click="EventBus.$emit('openSignUp')" class="mx-1">
-                                <img src="{{ asset('quiz/assets/img/signup.png') }}"
+                                <img src="{{ asset('quiz-assets/img/signup.png') }}"
                                      class="p-1 quiz-button img-fluid" alt="dashboard">
                             </div>
                         </div>
@@ -76,7 +76,7 @@
 
                             <div class="p-1 d-flex flex-row justify-content-start">
 
-                                <div><img src="/quiz/assets/img/medal.png"
+                                <div><img src="/quiz-assets/img/medal.png"
                                           alt="دانش آموزان ممتاز"
                                           style="height: 85px"
                                     >

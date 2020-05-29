@@ -24,11 +24,21 @@ class RoomController extends Controller
 
     public function create()
     {
+        /** 
+         * @get('/quiz/panel/room/create')
+         * @name('room.create')
+         * @middlewares(web, auth)
+         */
         return view('Quizviran::panel.teacher.room.roomCreate');
     }
 
     public function show($room)
     {
+        /** 
+         * @get('/quiz/panel/room/{room}')
+         * @name('room.show')
+         * @middlewares(web, auth, has.room)
+         */
         $room = RoomRepo::withCommentAndMemberCount($room);
 
         if (! auth()->user()->hasRoom($room)) {
@@ -44,6 +54,11 @@ class RoomController extends Controller
 
     public function store(Request $request)
     {
+        /** 
+         * @post('/quiz/panel/room')
+         * @name('room.store')
+         * @middlewares(web, auth)
+         */
         if (! auth()->user()->isTeacher()) {
             return back();
         }
@@ -60,6 +75,11 @@ class RoomController extends Controller
 
     public function addComment(Request $request)
     {
+        /** 
+         * @post('/quiz/panel/room/comment')
+         * @name('')
+         * @middlewares(web, auth, has.room)
+         */
         $room =  RoomRepo::findOrFail($request->id);
 
         if($room->gapLock) return response(['message' => 'گفت و گو قفل می باشد.'],400);
@@ -81,6 +101,11 @@ class RoomController extends Controller
 
     public function updateComment($comment, Request $request)
     {
+        /** 
+         * @put('/quiz/panel/room/comment/{comment}')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $comment = CommentRepo::findOrFail($comment);
 
         if (! $comment->isOwn()) {
@@ -94,6 +119,11 @@ class RoomController extends Controller
 
     public function deleteComment($comment)
     {
+        /** 
+         * @delete('/quiz/panel/room/comment/{comment}')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $comment = CommentRepo::findOrFail($comment);
 
         if ($comment->isOwn() || $comment->isOwnMember()) {
@@ -108,6 +138,11 @@ class RoomController extends Controller
 
     public function members($room)
     {
+        /** 
+         * @get('/quiz/panel/room/{room}/members')
+         * @name('')
+         * @middlewares(web, auth, has.room)
+         */
         $room = RoomRepo::withMembersBylink($room);
 
         $room->created_at = Jalalian::forge($room->created_at);
@@ -121,6 +156,11 @@ class RoomController extends Controller
 
     public function lock($room)
     {
+        /** 
+         * @get('/quiz/panel/room/{room}/lock')
+         * @name('')
+         * @middlewares(web, auth, has.room)
+         */
         $room = RoomRepo::findByLink($room);
 
         if (! auth()->user()->isTeacher()) {
@@ -134,6 +174,11 @@ class RoomController extends Controller
 
     public function gapLock($room)
     {
+        /** 
+         * @get('/quiz/panel/room/{room}/gap-lock')
+         * @name('')
+         * @middlewares(web, auth, has.room)
+         */
         $room = RoomRepo::findByLink($room);
         if (! auth()->user()->isTeacher()) {
             return back();

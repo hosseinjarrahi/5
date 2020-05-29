@@ -11,11 +11,21 @@ class StudentController extends Controller
 {
     public function join()
     {
+        /** 
+         * @get('/quiz/panel/join-room')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         return view('Quizviran::panel.student.join');
     }
 
     public function addStudent()
     {
+        /** 
+         * @post('/quiz/panel/join-room')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $request = request();
 
         $room = RoomRepo::findOpenedRoomWithCode($request->code);

@@ -21,11 +21,21 @@ class RegisterController extends Controller
 {
     public function checkAuth()
     {
-        return auth()->id();
+        /**
+         * @post('/check-auth')
+         * @name('')
+         * @middlewares(web)
+         */
+        return response()->json(auth()->check() ? auth()->id() : false);
     }
 
     public function login(LoginRequest $request)
     {
+        /**
+         * @post('/login')
+         * @name('')
+         * @middlewares(web, guest)
+         */
         $user = UserRepo::findByPhoneOrEmail($request->variable);
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.'], 400);
@@ -38,6 +48,11 @@ class RegisterController extends Controller
 
     public function logout()
     {
+        /**
+         * @get('/logout')
+         * @name('logout')
+         * @middlewares(web, auth)
+         */
         auth()->logout();
         session()->flush();
 
@@ -46,6 +61,11 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
+        /**
+         * @post('/register')
+         * @name('')
+         * @middlewares(web, throttle:10,1440, guest)
+         */
         $driver = $this->checkIsPhoneOrEmail($request->phone);
         if (UserRepo::findByPhoneOrEmail($request->phone)) {
             return response(['message' => 'کاربری با این شماره تلفن و یا ایمیل وجود دارد.'], 400);
@@ -58,6 +78,11 @@ class RegisterController extends Controller
 
     public function verify(Request $request)
     {
+        /**
+         * @post('/verify')
+         * @name('')
+         * @middlewares(web, guest)
+         */
         if ($request->verify != session('code')) {
             return response(['message' => 'کد وارده شده اشتباه است.'], 400);
         }
@@ -68,6 +93,11 @@ class RegisterController extends Controller
 
     public function resetPassword(RecoverRequest $request)
     {
+        /**
+         * @post('/reset-password')
+         * @name('')
+         * @middlewares(web, throttle:5,1440, guest)
+         */
         $user = UserRepo::findByPhoneOrEmail($request->phone);
         if (! $user) {
             return response(['message' => 'کاربری با این اطلاعات وجود ندارد.'], 400);
@@ -94,6 +124,11 @@ class RegisterController extends Controller
 
     public function profile()
     {
+        /**
+         * @get('/profile')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $user = auth()->user();
 
         $profile = $user->profile;
@@ -109,6 +144,11 @@ class RegisterController extends Controller
 
     public function uploadAvatar(AvatarRequest $request)
     {
+        /**
+         * @post('/upload-avatar')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $user = auth()->user();
         $avatar = Upload::uploadFile(['avatar' => $request->file]);
         File::delete(public_path($user->profile->avatar));
@@ -122,6 +162,11 @@ class RegisterController extends Controller
 
     public function changeProfile(ProfileRequest $request)
     {
+        /**
+         * @post('/profile-change')
+         * @name('')
+         * @middlewares(web, auth)
+         */
         $user = auth()->user();
         $profile = $user->profile;
         $birth = $profile->birth;

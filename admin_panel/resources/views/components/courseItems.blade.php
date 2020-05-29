@@ -10,22 +10,22 @@
         </div>
 
         <div class="form-row">
-            <div class="col-10 mb-3">
+            <div class="col-8 col-md-10 mb-3">
                 <div class="custom-file">
                     <input type="file" name="" class="custom-file-input">
                     <label class="custom-file-label">فایل</label>
                 </div>
             </div>
-            <div class="col-1">
+            <div class="col-2 col-md-1">
                 <div class="btn btn-primary btn-block"><span class="fas fa-hdd"></span></div>
             </div>
-            <div class="col-1">
+            <div class="col-2 col-md-1">
                 <div class="btn btn-primary btn-block"><span class="fas fa-link"></span></div>
             </div>
         </div>
 
-        <div class="form-row align-items-center">
-            <div class="col-10">
+        <div class="form-row justify-content-between align-items-center">
+            <div class="col-3 col-md-1">
                 <div class="form-group my-3">
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                         <input type="checkbox" name="free[]" class="custom-control-input" id="free-">
@@ -36,7 +36,14 @@
                 </div>
             </div>
 
-            <div class="col-2 d-flex align-items-start">
+            <div class="col-4 col-md-8">
+                <div class="input-group my-3">
+                    <div class="input-group-append"><span class="input-group-text">زمان</span></div>
+                    <input name="time[]" type="text" class="time form-control">
+                </div>
+            </div>
+
+            <div class="col-5 col-md-2 d-flex align-items-start">
                 <div class="btn mr-auto btn-danger btn-sm" onclick="removeItem(this)">
                     <span class="fas fa-times"></span>
                     <span>حذف آیتم</span>
@@ -55,15 +62,17 @@
 
     function generate() {
         let item = cTemplate.cloneNode(true);
-        item.querySelector('.custom-checkbox').childNodes[1].setAttribute('id','free-' + counter);
+        item.querySelector('.custom-checkbox').childNodes[1].setAttribute('id', 'free-' + counter);
         item.querySelector('.custom-checkbox').childNodes[3].setAttribute('for', 'free-' + counter);
         let checkbox = item.querySelector('[type = "checkbox"]');
+        let time = item.querySelector('.time');
         let file = item.querySelector('[type = "file"]');
         let title = item.querySelector('[type = "text"]');
 
-        checkbox.name = `courseCheckbox[${counter}]`;
-        file.name = `courseFile[${counter}]`;
-        title.name = `courseTitle[${counter}]`;
+        checkbox.name = `courseFreeBoxes[${counter}]`;
+        file.name = `courseFiles[${counter}]`;
+        title.name = `courseTitles[${counter}]`;
+        time.name = `courseTimes[${counter}]`;
 
         courseItemsParent.appendChild(item);
         counter++;

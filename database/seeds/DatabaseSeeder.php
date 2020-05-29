@@ -53,13 +53,13 @@ class DatabaseSeeder extends Seeder
         factory(HomeBox::class, 1)->create();
         factory(Comment::class, 100)->create();
         factory(Event::class, 1)->create();
-        factory(Question::class,10)->create();
-
-        factory(Quiz::class, 10)
-        ->create()
-        ->each(function ($quiz) {
-            $quiz->questions()->save(Question::first());
-        });
+//        factory(Question::class,10)->create();
+//
+//        factory(Quiz::class, 10)
+//        ->create()
+//        ->each(function ($quiz) {
+//            $quiz->questions()->save(Question::first());
+//        });
 
         Event::create([
             'body' => '/img/event.png',
@@ -68,11 +68,11 @@ class DatabaseSeeder extends Seeder
             'end' => now()
         ]);
 
-        factory(Room::class,1)->create()
-        ->create()
-        ->each(function ($room) {
-            $room->quizzes()->save(Quiz::first());
-        });
+//        factory(Room::class,1)->create()
+//        ->create()
+//        ->each(function ($room) {
+//            $room->quizzes()->save(Quiz::first());
+//        });
 
     }
 }

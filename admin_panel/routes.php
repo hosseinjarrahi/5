@@ -1,3 +1,4 @@
+
 <?php
 
 Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admin']], function () {
@@ -14,5 +15,3 @@ Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admi
     Route::post('/products', 'ProductController@give');
     Route::post('/product/upload', 'ProductController@upload');
 });
-
-Route::get('/assets/{path}', 'HomeController@asset')->where('path','.*');

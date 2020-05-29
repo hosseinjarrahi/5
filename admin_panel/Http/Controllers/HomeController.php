@@ -9,18 +9,11 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
+        /**
+         * @get('/manager')
+         * @name('admin.home')
+         * @middlewares(web, auth, admin)
+         */
         return view('Admin::home');
-    }
-
-    public function asset($path)
-    {
-        $path = base_path("admin_panel/public/$path");
-
-        if (!\File::exists($path)) {
-            return response()->json(['not found'], 404);
-        }
-        if(\File::extension($path) == 'css')
-            return response()->file($path,['Content-Type'=>'text/css']);
-        return response()->download($path, Str::of($path)->afterLast('/'));
     }
 }
