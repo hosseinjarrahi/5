@@ -174,7 +174,10 @@ class ProductController extends Controller
 
     private function storePublicFile($file)
     {
-        return Str::of($file->store('public/posts/' . Jalalian::now()->format('Y-m')))
-            ->after('public/')->prepend('/storage/');
+        if ($file) {
+            return Str::of($file->store('public/posts/' . Jalalian::now()->format('Y-m')))->after('public/')->prepend('/storage/');
+        }
+
+        return null;
     }
 }

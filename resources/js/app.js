@@ -29,7 +29,6 @@ async function init(){
             document.getElementById('pageLoader').classList.add('d-none');
         }
     });
-
 };
 
 init()

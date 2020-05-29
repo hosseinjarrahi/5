@@ -19,7 +19,7 @@
         "morilog/jalali": "^3.1",
         "niklasravnsborg/laravel-pdf": "^4.0",
         "rtconner/laravel-tagging": "^4.0",
-        "te7a-houdini/laravel-trix": "^2.0"
+        "unisharp/laravel-filemanager": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

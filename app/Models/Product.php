@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
-use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class Product extends Model
 {
     use Taggable;
-    use HasTrixRichText;
 
     protected $with = [
         'categories',
@@ -69,4 +67,5 @@ class Product extends Model
         $value['keywords'] = collect($value['keywords'])->implode(',');
         return $value;
     }
+
 }

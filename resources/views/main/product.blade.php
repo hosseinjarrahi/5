@@ -30,7 +30,7 @@
                         <div class="container-fluid bg-dark-gray shadow rounded py-2 px-3">
 
                             @if($product->video)
-                                <video src="https://www.radiantmediaplayer.com/media/bbb-360p.mp4"
+                                <video src="{{ asset($product->video) }}"
                                        controls
                                        class="w-100">
                                 </video>
@@ -38,7 +38,7 @@
 
                             <div style="margin-bottom:50px;margin-top:50px">
                                 <app-title>توضیحات</app-title>
-                                <p class="p-2 text-justify w-100" style="white-space:pre-wrap;">{{ $product->desc }}</p>
+                                <p class="p-2 text-justify w-100" style="white-space:pre-wrap;">{!! $product->desc !!}</p>
                             </div>
                             <div class="my-5" v-if="{{ json_encode($product->course_items) }}">
                                 <app-title>سرفصل ها</app-title>
