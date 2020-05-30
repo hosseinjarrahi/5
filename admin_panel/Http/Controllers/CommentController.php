@@ -2,46 +2,51 @@
 
 namespace Admin\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Comment;
 use Illuminate\Routing\Controller;
+use Admin\repositories\CommentRepo;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
     public function index()
     {
-        /** 
+        /**
          * @get('/manager/comment')
          * @name('admin.comment.index')
          * @middlewares(web, auth, admin)
          */
-        $comments = Comment::orderByDesc('id')->with('user')->paginate(9);
-        return view('Admin::comments',compact('comments'));
+        $comments = CommentRepo::withUser(9);
+
+        return view('Admin::comments', compact('comments'));
     }
 
-    public function update(Comment $comment)
+    public function update(Comment $comment,Request $request)
     {
-        /** 
+        /**
          * @methods(PUT, PATCH)
          * @uri('/manager/comment/{comment}')
          * @name('admin.comment.update')
          * @middlewares(web, auth, admin)
          */
-        if(!$comment->isOwn)
+        if (! $comment->isOwn) {
             return response(['message' => 'امکان ویرایش این نظر برای شما فراهم نیست.']);
-        $comment->show = !$comment->show;
-        $comment->save();
+        }
+
+        CommentRepo::update($comment,$request->only(['comment']));
+
         return back(['message' => 'با موفقیت انجام شد']);
     }
 
     public function destroy(Comment $comment)
     {
-        /** 
+        /**
          * @delete('/manager/comment/{comment}')
          * @name('admin.comment.destroy')
          * @middlewares(web, auth, admin)
          */
         $comment->delete();
+
         return back();
     }
 }

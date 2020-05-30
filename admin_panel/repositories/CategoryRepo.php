@@ -2,7 +2,6 @@
 
 namespace Admin\repositories;
 
-use App\Http\Upload;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 
@@ -13,28 +12,38 @@ class CategoryRepo
         return Category::all();
     }
 
-    public static function create($request)
+    public static function find($category)
     {
-        $c = new Category;
-        $c->name = $request['name'];
-        $c->pic = isset($request['pic']) ? Upload::uploadFile(['pic' => $request['pic']])['pic'] : null;
-        $c->slug = $request['slug'];
-        $c->parent_id = $request['parent_id'] == -1 ? null : $request['parent_id'];
-        $c->save();
+        return Category::find($category);
     }
 
-    public static function update($category,$request)
+    public static function create($request)
+    {
+        $category = new Category;
+
+        return self::update($category, $request);
+    }
+
+    public static function update($category, $request)
     {
         $category->name = $request['name'];
-        $category->pic = ($request['pic']) ? Upload::uploadFile(['pic' => $request['pic']])['pic'] : $category->pic;
+        $category->pic = $request['pic'] ?? null;
         $category->slug = $request['slug'];
         $category->parent_id = ($request['parent_id'] == -1) ? null : $request['parent_id'];
-        $category->save();
+
+        return $category->save();
     }
 
     public static function delete($category)
     {
+        self::deleteImage($category->pic);
+
+        return $category->delete();
+    }
+
+    public static function deleteImage($category)
+    {
         File::delete(public_path($category->pic));
-        $category->delete();
+        return $category->update(['pic' => null]);
     }
 }

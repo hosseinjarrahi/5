@@ -6,6 +6,7 @@ Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admi
 
     Route::resource('/product', 'ProductController');
     Route::resource('/category', 'CategoryController');
+    Route::delete('/category/{category}/delete-image', 'CategoryController@deleteImage')->name('category.delete.image');
     Route::resource('/slide', 'SlideController');
     Route::resource('/event', 'EventController');
     Route::resource('/comment', 'CommentController');

@@ -4,47 +4,56 @@ namespace Admin\Http\Controllers;
 
 use App\Http\Upload;
 use App\Models\Slide;
+use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
+use Admin\repositories\SlideRepo;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
 
 class SlideController extends Controller
 {
+    private $slidePath;
+
+    public function __construct()
+    {
+        $this->slidePath = 'slides/' . Jalalian::now()->format('Y-m');
+    }
+
     public function index()
     {
-        /** 
+        /**
          * @get('/manager/setting')
          * @name('admin.setting.index')
          * @middlewares(web, auth, admin)
          */
-        $slides = Slide::all();
-        return view('Admin::slide',compact('slides'));
+        $slides = SlideRepo::all();
+
+        return view('Admin::slide', compact('slides'));
     }
 
     public function destroy(Slide $slide)
     {
-        /** 
+        /**
          * @delete('/manager/setting/{setting}')
          * @name('admin.setting.destroy')
          * @middlewares(web, auth, admin)
          */
-        File::delete(public_path($slide->pic));
-        $slide->delete();
+        SlideRepo::delete($slide);
+
         return back();
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        /** 
+        /**
          * @post('/manager/setting')
          * @name('admin.setting.store')
          * @middlewares(web, auth, admin)
          */
-        $request = request();
-        $pic = Upload::uploadFile(['pic' => $request->file('pic')]);
-        Slide::create([
-            'pic' => $pic['pic'],
-            'link' => $request->link
-        ]);
+        $pic = '/storage/' . $request->file('pic')->store($this->slidePath, 'public');
+
+        SlideRepo::create($pic, $request->link);
+
         return back();
     }
 }

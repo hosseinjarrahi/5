@@ -2,19 +2,31 @@
 
 namespace Admin\Http\Controllers;
 
-use App\Models\File;
 use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Support\Str;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
-use Conner\Tagging\Model\Tag;
+use Admin\repositories\TagRepo;
 use Admin\repositories\FileRepo;
 use Illuminate\Routing\Controller;
+use Admin\repositories\ProductRepo;
+use Admin\repositories\CategoryRepo;
 use Illuminate\Support\Facades\File as FileFacade;
 
 class ProductController extends Controller
 {
+    private $coursesPath;
+
+    private $filesPath;
+
+    private $postPath;
+
+    public function __construct()
+    {
+        $this->coursesPath = 'courses/' . Jalalian::now()->format('y-m');
+        $this->filesPath = 'files/' . Jalalian::now()->format('y-m');
+        $this->postPath = 'public/posts/' . Jalalian::now()->format('Y-m');
+    }
+
     public function index()
     {
         /**
@@ -22,7 +34,7 @@ class ProductController extends Controller
          * @name('admin.product.index')
          * @middlewares(web, auth, admin)
          */
-        $products = Product::orderByDesc('id')->paginate(9);
+        $products = ProductRepo::latest(9);
 
         return view('Admin::products', compact('products'));
     }
@@ -34,8 +46,8 @@ class ProductController extends Controller
          * @name('admin.product.create')
          * @middlewares(web, auth, admin)
          */
-        $categories = Category::all();
-        $tags = Tag::all();
+        $categories = CategoryRepo::all();
+        $tags = TagRepo::all();
 
         return view('Admin::productAdd', compact('categories', 'tags'));
     }
@@ -57,26 +69,21 @@ class ProductController extends Controller
 
         $pic = $this->storePublicFile($request->file('pic'));
         $video = $this->storePublicFile($request->file('video'));
-        $items = $this->createCourse($request);
+        $items = $this->courseMaker($request);
 
-        $product = Product::create([
-            'status' => $request->status,
-            'slug' => $request->slug ?? str_replace(' ', '-', $request->title),
-            'title' => $request->title,
-            'percentage' => $request->percentage,
-            'desc' => $request->desc,
-            'price' => $request->price,
-            'offer' => $request->offer,
-            'meta' => $meta,
-            'pic' => $pic,
-            'user_id' => auth()->id(),
-            'course_items' => $items,
-            'video' => $video,
-        ]);
+        $product = ProductRepo::create($request->only([
+            'status',
+            'slug',
+            'title',
+            'percentage',
+            'desc',
+            'price',
+            'offer',
+        ]), $meta, $pic, $video, $items);
 
-        $this->uploadFiles($request, $product);
+        $this->fileUploader($request, $product);
 
-        $category = Category::find($request->category);
+        $category = CategoryRepo::find($request->category);
 
         $product->tag($tags);
 
@@ -85,41 +92,76 @@ class ProductController extends Controller
         return back();
     }
 
-    private function uploadCourses($courseFiles)
+    public function edit(Product $product)
+    {
+        /**
+         * @get('/manager/product/{product}/edit')
+         * @name('admin.product.edit')
+         * @middlewares(web, auth, admin)
+         */
+        $categories = CategoryRepo::all();
+
+        return view('Admin::productEdit', compact('categories', 'product'));
+    }
+
+    public function update(Request $request)
+    {
+        /**
+         * @methods(PUT, PATCH)
+         * @uri('/manager/product/{product}')
+         * @name('admin.product.update')
+         * @middlewares(web, auth, admin)
+         */
+
+        return back();
+    }
+
+    public function destroy(Product $product)
+    {
+        /**
+         * @delete('/manager/product/{product}')
+         * @name('admin.product.destroy')
+         * @middlewares(web, auth, admin)
+         */
+        FileFacade::delete(public_path($product->pic));
+        ProductRepo::delete($product);
+
+        return back();
+    }
+
+    private function courseUploader($courseFiles)
     {
         $files = [];
-        $path = 'courses/' . Jalalian::now()->format('y-m');
 
         foreach ($courseFiles as $key => $courseFile) {
-            $files[$key] = FileRepo::create($courseFile, $path);
+            $files[$key] = FileRepo::create($courseFile, $this->coursesPath);
         }
 
         return $files;
     }
 
-    private function uploadFiles($request, $product)
+    private function fileUploader($request, $product)
     {
         if ($request->makeFile != 'on') {
             return null;
         }
 
         $files = [];
-        $path = 'files/' . Jalalian::now()->format('y-m');
 
         foreach ($request->file('files') as $uploadedFile) {
-            $files[] = FileRepo::create($uploadedFile, $path);
+            $files[] = FileRepo::create($uploadedFile, $this->filesPath);
         }
 
         $product->files()->saveMany($files);
     }
 
-    private function createCourse($request)
+    private function courseMaker($request)
     {
         if ($request->makeCourse != 'on') {
             return null;
         }
 
-        $coursePath = $this->uploadCourses($request->file('courseFiles'));
+        $coursePath = $this->courseUploader($request->file('courseFiles'));
 
         $items = [];
 
@@ -134,48 +176,11 @@ class ProductController extends Controller
         return $items;
     }
 
-    public function edit(Product $product)
-    {
-        /**
-         * @get('/manager/product/{product}/edit')
-         * @name('admin.product.edit')
-         * @middlewares(web, auth, admin)
-         */
-        $categories = Category::all();
-
-        return view('Admin::productEdit', compact('categories', 'product'));
-    }
-
-    public function update()
-    {
-        /**
-         * @methods(PUT, PATCH)
-         * @uri('/manager/product/{product}')
-         * @name('admin.product.update')
-         * @middlewares(web, auth, admin)
-         */
-        $request = request();
-
-        return back();
-    }
-
-    public function destroy(Product $product)
-    {
-        /**
-         * @delete('/manager/product/{product}')
-         * @name('admin.product.destroy')
-         * @middlewares(web, auth, admin)
-         */
-        FileFacade::delete(public_path($product->pic));
-        $product->delete();
-
-        return back();
-    }
-
     private function storePublicFile($file)
     {
         if ($file) {
-            return Str::of($file->store('public/posts/' . Jalalian::now()->format('Y-m')))->after('public/')->prepend('/storage/');
+            $path = $file->store($this->postPath,'public');
+            return '/storage/' . $path;
         }
 
         return null;

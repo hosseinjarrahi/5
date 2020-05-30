@@ -1,10 +1,9 @@
 <template>
 
-  <div class="row justify-content-center my-3">
+  <div class="row justify-content-center my-3 px-3">
     <div class="col-11 my-2 bg-dark-gray rounded">
 
       <div class="d-flex p-2 flex-md-row flex-column text-center">
-
         <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
         <h4 class="p-0 m-0">{{ room.name }}</h4>
         <div class="dropdown-divider d-block d-md-none"></div>
@@ -26,8 +25,8 @@
     export default {
         name: "AppPanelRoomInfo",
         props: {
-            room: {default:null},
-            createdat:{default:''}
+            room: {default: null},
+            createdat: {default: ''}
         }
     }
 </script>

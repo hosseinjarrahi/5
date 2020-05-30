@@ -2,21 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Tizviran.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tizviran.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/SlideController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/SlideController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/repositories/CategoryRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/repositories/CategoryRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/repositories/ProductRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/repositories/ProductRepo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/productAdd.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laravel-trix.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_23_005041_create_trix_rich_texts_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/slide.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/slide.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/temp/cp8EEPB4bUsKkDl.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/temp/fHV6XMOxPKPBIKm.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/99-03/15907752922643.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +205,8 @@
       <updated>1590733544152</updated>
       <workItem from="1590733550901" duration="1211000" />
       <workItem from="1590734907906" duration="14725000" />
-      <workItem from="1590753152465" duration="13967000" />
+      <workItem from="1590753152465" duration="14184000" />
+      <workItem from="1590814780332" duration="10125000" />
     </task>
     <servers />
   </component>
@@ -210,29 +214,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590743711063">
+    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590822427396">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590743711063" />
-    <state x="507" y="232" key="NewPhpClassDialog" timestamp="1590743684032">
+    <state x="499" y="172" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590822427396" />
+    <state x="507" y="232" key="NewPhpClassDialog" timestamp="1590820220452">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="507" y="232" key="NewPhpClassDialog/0.0.1536.834@0.0.1536.834" timestamp="1590743684032" />
-    <state x="595" y="128" key="RollbackChangesDialog" timestamp="1590737829788">
+    <state x="507" y="232" key="NewPhpClassDialog/0.0.1536.834@0.0.1536.834" timestamp="1590820220452" />
+    <state x="604" y="341" key="NewPhpFileDialog" timestamp="1590820215909">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="595" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590737829788" />
+    <state x="604" y="341" key="NewPhpFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1590820215909" />
+    <state x="595" y="128" key="RollbackChangesDialog" timestamp="1590819968117">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="595" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590819968117" />
     <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590737863328">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.834@0.0.1536.834" timestamp="1590737863328" />
-    <state x="463" y="149" width="609" height="536" key="find.popup" timestamp="1590752081337">
+    <state x="463" y="149" width="609" height="536" key="find.popup" timestamp="1590819275454">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="609" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1590752081337" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590774787301">
+    <state x="463" y="149" width="609" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1590819275454" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590825658418">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590774787301" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590825658418" />
   </component>
 </project>
