@@ -20,8 +20,7 @@ class ExamRepo
     public static function update($exam, $request)
     {
         // todo : remove jalalydate and use start
-        $start = Jalalian::fromFormat('Y-m-d H:i:s', $request['jalalyDate'])->toCarbon();
-
+        $start = Jalalian::fromFormat('Y-m-d H:i', toStandardDatetime($request['jalalyDate']))->toCarbon();
         $exam = self::findOrFail($exam);
         $exam->name = $request['name'];
         $exam->desc = $request['desc'];
@@ -32,7 +31,7 @@ class ExamRepo
 
     public static function create($request)
     {
-        $start = Jalalian::fromFormat('Y-m-d H:i:s', $request['start'])->toCarbon();
+        $start = Jalalian::fromFormat('Y-m-d H:i', toStandardDatetime($request['start']))->toCarbon();
 
         $exam = new Exam();
         $exam->name = $request['name'];

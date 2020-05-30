@@ -2,9 +2,6 @@
 
 namespace Quizviran\Http\Controllers;
 
-use App\Models\User;
-use Quizviran\Models\Exam;
-use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\ExamRepo;
 use App\Repositories\UserRepo;
@@ -16,7 +13,7 @@ class HomeController extends Controller
     {
         /**
          * @get('/quiz')
-         * @name('')
+         * @name('quizviran.home')
          * @middlewares(web, auth)
          */
         $exams = ExamRepo::publicShow();

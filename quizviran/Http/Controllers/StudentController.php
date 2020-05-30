@@ -13,7 +13,7 @@ class StudentController extends Controller
     {
         /** 
          * @get('/quiz/panel/join-room')
-         * @name('')
+         * @name('quizviran.room.join.page')
          * @middlewares(web, auth)
          */
         return view('Quizviran::panel.student.join');
@@ -23,7 +23,7 @@ class StudentController extends Controller
     {
         /** 
          * @post('/quiz/panel/join-room')
-         * @name('')
+         * @name('quizviran.room.join')
          * @middlewares(web, auth)
          */
         $request = request();

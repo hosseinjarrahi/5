@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function exams()
     {
-        return $this->belongsToMany(Exam::class, 'quiz_user', 'user_id', 'quiz_id')->withPivot('norm', 'answers');
+        return $this->belongsToMany(Exam::class, 'exam_user', 'user_id', 'exam_id')->withPivot('norm', 'answers');
     }
 
     public function questions()
@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        if ($this->type == 'teacher') {
+        if ($this->isTeacher()) {
             return $this->hasMany(Room::class);
         }
 
@@ -118,7 +118,7 @@ class User extends Authenticatable
 
     public function hasRoom($room)
     {
-        if ($this->type == 'teacher') {
+        if ($this->isTeacher()) {
             return $this->id == $room->user_id;
         }
 

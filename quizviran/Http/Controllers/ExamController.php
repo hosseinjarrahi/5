@@ -25,7 +25,7 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/exam/{exam}')
-         * @name('exam.show')
+         * @name('quizviran.exam.show')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
@@ -45,7 +45,7 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/exam/{exam}/edit')
-         * @name('exam.edit')
+         * @name('quizviran.exam.edit')
          * @middlewares(web, auth, has.exam)
          */
         // todo make type cast to jalalian
@@ -60,7 +60,7 @@ class ExamController extends Controller
         /**
          * @methods(PUT, PATCH)
          * @uri('/quiz/exam/{exam}')
-         * @name('exam.update')
+         * @name('quizviran.exam.update')
          * @middlewares(web, auth, has.exam)
          */
         ExamRepo::update($exam, $request->only([
@@ -77,7 +77,7 @@ class ExamController extends Controller
     {
         /**
          * @post('/quiz/exam')
-         * @name('exam.store')
+         * @name('quizviran.exam.store')
          * @middlewares(web, auth)
          */
         $room = RoomRepo::withUserFindOrFail($request->room);
@@ -102,7 +102,7 @@ class ExamController extends Controller
     {
         /**
          * @delete('/quiz/exam/{exam}')
-         * @name('exam.destroy')
+         * @name('quizviran.exam.destroy')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
@@ -116,7 +116,7 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/results/{exam}')
-         * @name('')
+         * @name('quizviran.exam.result.student')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
@@ -130,7 +130,7 @@ class ExamController extends Controller
     {
         /**
          * @post('/quiz/complete')
-         * @name('')
+         * @name('quizviran.exam.complete')
          * @middlewares(web, auth)
          */
         if (auth()->user()->isTeacher()) {
@@ -171,7 +171,7 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/exam/{exam}/manage-questions')
-         * @name('')
+         * @name('quizviran.questions.manage')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
@@ -187,14 +187,14 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/exam/{exam}/results')
-         * @name('')
+         * @name('quizviran.exam.result.teacher')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
 
         $users = $exam->getQuizUsersWithPivot();
 
-        return view('Quizviran::panel.teacher.exam.results', compact('users', 'quiz'));
+        return view('Quizviran::panel.teacher.exam.results', compact('users', 'exam'));
     }
 
     // TODO : pdf
@@ -202,15 +202,15 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/exam/{exam}/pdf')
-         * @name('')
+         * @name('quizviran.exam.pdf')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
         $users = $exam->getExamUsersWithPivot();
         if (request()->test) {
-            return view('Quizviran::panel.teacher.exam.pdf', compact('quiz', 'users'));
+            return view('Quizviran::panel.teacher.exam.pdf', compact('exam', 'users'));
         }
-        $pdf = Pdf::loadView('Quizviran::panel.teacher.exam.pdf', compact('quiz', 'users'));
+        $pdf = Pdf::loadView('Quizviran::panel.teacher.exam.pdf', compact('exam', 'users'));
 
         return $pdf->stream('document.pdf');
     }
@@ -219,7 +219,7 @@ class ExamController extends Controller
     {
         /**
          * @post('/quiz/exam/{exam}/revival')
-         * @name('')
+         * @name('quizviran.exam.revival')
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
@@ -235,7 +235,7 @@ class ExamController extends Controller
     {
         /**
          * @get('/quiz/panel/room/{room}/exams')
-         * @name('exam.manage')
+         * @name('quizviran.exam.manage')
          * @middlewares(web, auth)
          */
         $room = RoomRepo::getWithExams($room);

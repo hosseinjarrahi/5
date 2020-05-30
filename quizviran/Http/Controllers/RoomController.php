@@ -24,9 +24,9 @@ class RoomController extends Controller
 
     public function create()
     {
-        /**
+        /** 
          * @get('/quiz/panel/room/create')
-         * @name('room.create')
+         * @name('quizviran.room.create')
          * @middlewares(web, auth)
          */
         return view('Quizviran::panel.teacher.room.roomCreate');
@@ -34,9 +34,9 @@ class RoomController extends Controller
 
     public function show($room)
     {
-        /**
+        /** 
          * @get('/quiz/panel/room/{room}')
-         * @name('room.show')
+         * @name('quizviran.room.show')
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::withCommentAndMemberCount($room);
@@ -52,9 +52,9 @@ class RoomController extends Controller
 
     public function store(Request $request)
     {
-        /**
+        /** 
          * @post('/quiz/panel/room')
-         * @name('room.store')
+         * @name('quizviran.room.store')
          * @middlewares(web, auth)
          */
         if (! auth()->user()->isTeacher()) {
@@ -73,9 +73,9 @@ class RoomController extends Controller
 
     public function addComment(Request $request)
     {
-        /**
+        /** 
          * @post('/quiz/panel/room/comment')
-         * @name('')
+         * @name('quizviran.room.add.comment')
          * @middlewares(web, auth, has.room)
          */
         $room =  RoomRepo::findOrFail($request->id);
@@ -99,9 +99,9 @@ class RoomController extends Controller
 
     public function updateComment($comment, Request $request)
     {
-        /**
+        /** 
          * @put('/quiz/panel/room/comment/{comment}')
-         * @name('')
+         * @name('quizviran.room.update.comment')
          * @middlewares(web, auth)
          */
         $comment = CommentRepo::findOrFail($comment);
@@ -117,9 +117,9 @@ class RoomController extends Controller
 
     public function deleteComment($comment)
     {
-        /**
+        /** 
          * @delete('/quiz/panel/room/comment/{comment}')
-         * @name('')
+         * @name('quizviran.room.delete.comment')
          * @middlewares(web, auth)
          */
         $comment = CommentRepo::findOrFail($comment);
@@ -136,9 +136,9 @@ class RoomController extends Controller
 
     public function members($room)
     {
-        /**
+        /** 
          * @get('/quiz/panel/room/{room}/members')
-         * @name('')
+         * @name('quizviran.room.members')
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::withMembersBylink($room);
@@ -154,9 +154,9 @@ class RoomController extends Controller
 
     public function lock($room)
     {
-        /**
+        /** 
          * @get('/quiz/panel/room/{room}/lock')
-         * @name('')
+         * @name('quizviran.room.lock')
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::findByLink($room);
@@ -172,9 +172,9 @@ class RoomController extends Controller
 
     public function gapLock($room)
     {
-        /**
+        /** 
          * @get('/quiz/panel/room/{room}/gap-lock')
-         * @name('')
+         * @name('quizviran.room.gapLock')
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::findByLink($room);

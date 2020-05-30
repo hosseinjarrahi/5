@@ -28,7 +28,7 @@ class Exam extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'quiz_user', 'quiz_id', 'user_id')->withPivot('norm', 'answers');
+        return $this->belongsToMany(User::class, 'exam_user', 'exam_id', 'user_id')->withPivot('norm', 'answers');
     }
 
     public function isInTime()
