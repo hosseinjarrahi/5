@@ -51,12 +51,12 @@ class Exam extends Model
         return $this->showable() || auth()->user()->isTeacher();
     }
 
-    public function getQuizUsersWithNorms()
+    public function getExamUsersWithNorms()
     {
         return $this->users()->withPivot('norm')->get()->sortByDesc('pivot.norm');
     }
 
-    public function getQuizUsersWithPivot()
+    public function getExamUsersWithPivot()
     {
         return $this->users()->withPivot([
             'norm',

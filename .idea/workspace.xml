@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/components/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/components/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/resources/views/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/resources/views/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ExamResourse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ExamResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laravel-categorizable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CouponFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CouponFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Models/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Exam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/results.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +160,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/admin_panel/public/js" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -200,7 +191,7 @@
       <workItem from="1590733550901" duration="1211000" />
       <workItem from="1590734907906" duration="14725000" />
       <workItem from="1590753152465" duration="14184000" />
-      <workItem from="1590814780332" duration="32124000" />
+      <workItem from="1590814780332" duration="32305000" />
     </task>
     <servers />
   </component>
@@ -228,6 +219,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="595" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1590819968117" />
+    <state x="277" y="60" key="SettingsEditor" timestamp="1590854443368">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="277" y="60" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1590854443368" />
     <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590737863328">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -240,9 +235,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1590841303978" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590854068198">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590854535330">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590854068198" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590854535330" />
   </component>
 </project>
