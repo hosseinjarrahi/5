@@ -3,7 +3,7 @@
 namespace Quizviran\Http\Controllers;
 
 use App\Models\User;
-use Quizviran\Models\Quiz;
+use Quizviran\Models\Exam;
 use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\ExamRepo;
@@ -19,8 +19,8 @@ class HomeController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $quizzes = ExamRepo::publicShow();
-        $quizzes = QuizResourse::collection($quizzes);
+        $exams = ExamRepo::publicShow();
+        $exams = QuizResourse::collection($exams);
         $bestStudents = UserRepo::bestStudents();
 
         $rooms = collect([]);
@@ -28,6 +28,6 @@ class HomeController extends Controller
             $rooms = auth()->user()->rooms;
         }
 
-        return view('Quizviran::home', compact('quizzes', 'bestStudents', 'rooms'));
+        return view('Quizviran::home', compact('exams', 'bestStudents', 'rooms'));
     }
 }

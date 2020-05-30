@@ -6,9 +6,9 @@ use Quizviran\Models\Room;
 
 class RoomRepo
 {
-    public static function getWithQuizzes($link)
+    public static function getWithExams($link)
     {
-        return Room::with(['quizzes'])->where('link', $link)->first();
+        return Room::with(['exams'])->where('link', $link)->first();
     }
 
     public static function withUserFindOrFail($room)

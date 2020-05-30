@@ -5,7 +5,7 @@ namespace App\Models;
 use Quizviran\Models\Question;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Quizviran\Models\Quiz;
+use Quizviran\Models\Exam;
 use Quizviran\Models\Room;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -13,16 +13,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public $with = [
         'profile',
     ];
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $guarded = [
+        'id',
     ];
 
     protected $hidden = [
@@ -31,12 +29,12 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'verified_at' => 'datetime',
     ];
 
-    public function quizzes()
+    public function exams()
     {
-        return $this->belongsToMany(Quiz::class, 'quiz_user', 'user_id', 'quiz_id')->withPivot('norm', 'answers');
+        return $this->belongsToMany(Exam::class, 'quiz_user', 'user_id', 'quiz_id')->withPivot('norm', 'answers');
     }
 
     public function questions()
@@ -46,12 +44,12 @@ class User extends Authenticatable
 
     public function checkForQuiz($id)
     {
-        return ! $this->query()->quizzes()->has();
+        return ! $this->query()->exams()->has();
     }
 
-    public function canComplete($quizId)
+    public function canComplete($examId)
     {
-        return $this->quizzes()->where('id', $quizId)->get()->isEmpty();
+        return $this->exams()->where('id', $examId)->get()->isEmpty();
     }
 
     public function isAdmin()
@@ -63,10 +61,10 @@ class User extends Authenticatable
         return false;
     }
 
-    public function fileInQuiz($quiz_id)
+    public function fileInExam($examId)
     {
         return $this->files()->where([
-            'fileable_id' => $quiz_id,
+            'fileable_id' => $examId,
             'fileable_type' => 'quiz',
         ]);
     }
@@ -98,7 +96,7 @@ class User extends Authenticatable
     public function hasQuiz()
     {
         // todo
-        return $this->hasOneThrough(Quiz::class, Room::class);
+        return $this->hasOneThrough(Exam::class, Room::class);
     }
 
     public function scopeStudents($query)

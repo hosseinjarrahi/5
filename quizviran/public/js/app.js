@@ -3977,7 +3977,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPanelRoomInfo",
   props: {
@@ -4673,7 +4672,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  background-position: center;\n  border: 2px solid #57606f;\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
+exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  border: 2px solid #57606f;\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
 
 // exports
 
@@ -72806,7 +72805,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center my-3" }, [
+  return _c("div", { staticClass: "row justify-content-center my-3 px-3" }, [
     _c("div", { staticClass: "col-11 my-2 bg-dark-gray rounded" }, [
       _c(
         "div",

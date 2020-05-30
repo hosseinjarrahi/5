@@ -1,0 +1,17 @@
+<?php
+
+function jalalyFolder(){
+    return jalalyNow()->format('Y-m');
+}
+
+function JalalyYMD($timestamp){
+    return jalaly($timestamp)->format('Y/m/d');
+}
+
+function jalaly($timestamp){
+    return \Morilog\Jalali\Jalalian::forge($timestamp);
+}
+
+function jalalyNow(){
+    return \Morilog\Jalali\Jalalian::now();
+}

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizUserTable extends Migration
+class CreateExamUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateQuizUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('quiz_user', function (Blueprint $table) {
-            $table->unsignedInteger('quiz_id');
+        Schema::create('exam_user', function (Blueprint $table) {
+            $table->unsignedInteger('exam_id');
             $table->unsignedInteger('user_id');
             $table->longText('answers')->nullable();
             $table->text('norm')->nullable();
@@ -28,6 +28,6 @@ class CreateQuizUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quiz_user');
+        Schema::dropIfExists('exam_user');
     }
 }

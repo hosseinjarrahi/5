@@ -4,9 +4,9 @@
 
 use Carbon\Carbon;
 use Faker\Generator as Faker;
-use Quizviran\Models\Quiz;
+use Quizviran\Models\Exam;
 
-$factory->define(Quiz::class, function (Faker $faker) {
+$factory->define(Exam::class, function (Faker $faker) {
     return [
         'name' => ' آزمون شماره '.random_int(1,100).'ریاضی',
         'start' => Carbon::now(),

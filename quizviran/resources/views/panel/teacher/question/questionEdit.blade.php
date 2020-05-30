@@ -25,7 +25,7 @@
             <div class="col-12 col-md-7 rounded p-2">
 
                 <app-main-box :dark="true" title="ویرایش سوال" icon="plus">
-                    <form method="post" enctype="multipart/form-data" action="{{ url("/quiz/question/{$question->id}") }}">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('quizviran.question.update',['question' => $question->id]) }}">
                         @csrf
                         @method('put')
                         <div class="form-group">

@@ -22,7 +22,7 @@
 
         <div class="row justify-content-center mt-3">
             <div class="col-12 col-md-8">
-                <form method="post" enctype="multipart/form-data" action="{{ url('/quiz/question') }}">
+                <form method="post" enctype="multipart/form-data" action="{{ route('quizviran.question.store') }}">
                     @csrf
                     <div class="form-group">
                         <select name="type" class="form-control">

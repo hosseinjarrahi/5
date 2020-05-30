@@ -17,7 +17,7 @@
                         <div class="p-3 text-center my-2">
                             تا کنون کلاسی توسط شما ساخته نشده است.
                         </div>
-                        <a href="{{ url('/quiz/panel/room/create') }}" class="btn btn-outline-light btn-block">
+                        <a href="{{ route('quizviran.room.create') }}" class="btn btn-outline-light btn-block">
                             <span class="fas fa-plus"></span>
                             <span>ایجاد کلاس</span>
                         </a>

@@ -20,9 +20,9 @@
                         <td>امتیاز آزمون</td>
                     </tr>
                     <tr>
-                        <td>{{ $quiz->name }}</td>
-                        <td>{{ $quiz->users()->count() }}</td>
-                        <td>{{ $quiz->questions->sum('norm') }}</td>
+                        <td>{{ $exam->name }}</td>
+                        <td>{{ $exam->users()->count() }}</td>
+                        <td>{{ $exam->questions->sum('norm') }}</td>
                     </tr>
                 </table>
 
@@ -31,7 +31,7 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-5">
 {{--                            <a href="pdf" class="btn btn-primary btn-block py-0 mb-2 shadow">دریافت نتایج به صورت pdf</a>--}}
-                            <app-result-list :users="{{ $users->toJson() }}" :questions="{{ $quiz->questions }}"></app-result-list>
+                            <app-result-list :users="{{ $users->toJson() }}" :questions="{{ $exam->questions }}"></app-result-list>
                         </div>
                     </div>
                 </div>

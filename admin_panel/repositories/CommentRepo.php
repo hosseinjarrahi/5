@@ -14,9 +14,9 @@ class CommentRepo
 
     public static function update($comment,$request)
     {
-        $comment->comment = $request['comment'];
-        $comment->show = ! $comment->show;
-        $comment->save();
+        $comment->comment = $request['comment'] ?? $comment->comment;
+        $comment->show = auth()->user()->isAdmin() ? $comment->show : !$comment->show;
+        return $comment->save();
     }
 
     public static function delete($comment)

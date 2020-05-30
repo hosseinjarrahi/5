@@ -11,9 +11,9 @@ class Question extends Model
 {
     use SoftDeletes;
 
-    public function quizzes()
+    public function exams()
     {
-        return $this->belongsToMany(Quiz::class);
+        return $this->belongsToMany(Exam::class);
     }
 
     public function user()

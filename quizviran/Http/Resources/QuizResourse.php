@@ -12,7 +12,7 @@ class QuizResourse extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'link' => url("/quiz/exam/{$this->id}"),
+            'link' => route('quizviran.exam.show',['exam' => $this->id]),
             'desc' => $this->desc,
             'start' => $this->start->diffForHumans(),
             'duration' => $this->duration - Carbon::now()->diffInMinutes($this->start),

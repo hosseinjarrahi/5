@@ -3,7 +3,6 @@
 namespace Quizviran\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Morilog\Jalali\Jalalian;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
 use Quizviran\Repositories\ExamRepo;
@@ -24,41 +23,41 @@ class ExamController extends Controller
 
     public function show($exam)
     {
-        /** 
+        /**
          * @get('/quiz/exam/{exam}')
          * @name('exam.show')
          * @middlewares(web, auth, has.exam)
          */
-        $quiz = ExamRepo::findOrFail($exam);
-        if (! $quiz->showableForMembers()) {
+        $exam = ExamRepo::findOrFail($exam);
+        if (! $exam->showableForMembers()) {
             return back();
         }
 
-        $questions = $quiz->questions;
+        $questions = $exam->questions;
         $questions = $questions->shuffle();
-        $quiz = new QuizResourse($quiz);
-        $quiz = json_decode($quiz->toJson());
+        $exam = new QuizResourse($exam);
+        $exam = json_decode($exam->toJson());
 
-        return view('Quizviran::quiz', compact('quiz', 'questions'));
+        return view('Quizviran::quiz', compact('exam', 'questions'));
     }
 
     public function edit($exam)
     {
-        /** 
+        /**
          * @get('/quiz/exam/{exam}/edit')
          * @name('exam.edit')
          * @middlewares(web, auth, has.exam)
          */
         // todo make type cast to jalalian
-        $quiz = ExamRepo::findOrFail($exam);
-        $quiz->jalalyDate = $quiz->jalaly->format('Y-m-d H:i');
+        $exam = ExamRepo::findOrFail($exam);
+        $exam->jalalyDate = $exam->jalaly->format('Y-m-d H:i');
 
-        return view('Quizviran::panel.teacher.exam.examEdit', compact('quiz'));
+        return view('Quizviran::panel.teacher.exam.examEdit', compact('exam'));
     }
 
     public function update($exam, Request $request)
     {
-        /** 
+        /**
          * @methods(PUT, PATCH)
          * @uri('/quiz/exam/{exam}')
          * @name('exam.update')
@@ -76,7 +75,7 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        /** 
+        /**
          * @post('/quiz/exam')
          * @name('exam.store')
          * @middlewares(web, auth)
@@ -87,21 +86,21 @@ class ExamController extends Controller
             return abort(404);
         }
 
-        $quiz = ExamRepo::create($request->only([
+        $exam = ExamRepo::create($request->only([
             'name',
             'desc',
             'start',
             'duration',
         ]));
 
-        $room->quizzes()->attach($quiz);
+        $room->exams()->attach($exam);
 
         return response(['ok']);
     }
 
     public function destroy($exam)
     {
-        /** 
+        /**
          * @delete('/quiz/exam/{exam}')
          * @name('exam.destroy')
          * @middlewares(web, auth, has.exam)
@@ -115,21 +114,21 @@ class ExamController extends Controller
 
     public function result($exam)
     {
-        /** 
+        /**
          * @get('/quiz/results/{exam}')
          * @name('')
          * @middlewares(web, auth, has.exam)
          */
-        $quiz = ExamRepo::findOrFail($exam);
-        $users = $quiz->getQuizUsersWithNorms();
-        $room = $quiz->rooms()->first();
+        $exam = ExamRepo::findOrFail($exam);
+        $users = $exam->getQuizUsersWithNorms();
+        $room = $exam->rooms()->first();
 
-        return view('Quizviran::results', compact('users', 'user', 'quiz', 'room'));
+        return view('Quizviran::results', compact('users', 'user', 'exam', 'room'));
     }
 
     public function complete(Request $request)
     {
-        /** 
+        /**
          * @post('/quiz/complete')
          * @name('')
          * @middlewares(web, auth)
@@ -138,10 +137,10 @@ class ExamController extends Controller
             return response(['message' => 'شما به عنوان معلم نمی توانید امتیازی ثبت کنید. ']);
         }
 
-        $quiz = ExamRepo::findOrFail($request->id);
+        $exam = ExamRepo::findOrFail($request->id);
         $user = auth()->user();
 
-        if (! $this->userCanCompleteQuiz($quiz)) {
+        if (! $this->userCanCompleteExam($exam)) {
             return response([
                 'message' => 'زمان به اتمام رسیده است و یا یک بار در این مسابقه شرکت کرده اید.',
                 'type' => 'error',
@@ -150,8 +149,8 @@ class ExamController extends Controller
 
         $data = $request->data;
         $norm = $this->getNorm($data);
-        if ($user->quizzes()->save($quiz)) {
-            $user->quizzes()->updateExistingPivot($quiz->id, [
+        if ($user->exams()->save($exam)) {
+            $user->exams()->updateExistingPivot($exam->id, [
                 'norm' => $norm,
                 'answers' => json_encode($data),
             ]);
@@ -170,7 +169,7 @@ class ExamController extends Controller
 
     public function manageQuestions($exam)
     {
-        /** 
+        /**
          * @get('/quiz/exam/{exam}/manage-questions')
          * @name('')
          * @middlewares(web, auth, has.exam)
@@ -186,14 +185,14 @@ class ExamController extends Controller
 
     public function completeResult($exam)
     {
-        /** 
+        /**
          * @get('/quiz/exam/{exam}/results')
          * @name('')
          * @middlewares(web, auth, has.exam)
          */
-        $quiz = ExamRepo::withQuestionsFindOrFail($exam);
+        $exam = ExamRepo::withQuestionsFindOrFail($exam);
 
-        $users = $quiz->getQuizUsersWithPivot();
+        $users = $exam->getQuizUsersWithPivot();
 
         return view('Quizviran::panel.teacher.exam.results', compact('users', 'quiz'));
     }
@@ -201,13 +200,13 @@ class ExamController extends Controller
     // TODO : pdf
     public function pdf($exam)
     {
-        /** 
+        /**
          * @get('/quiz/exam/{exam}/pdf')
          * @name('')
          * @middlewares(web, auth, has.exam)
          */
-        $quiz = ExamRepo::withQuestionsFindOrFail($exam);
-        $users = $quiz->getQuizUsersWithPivot();
+        $exam = ExamRepo::withQuestionsFindOrFail($exam);
+        $users = $exam->getExamUsersWithPivot();
         if (request()->test) {
             return view('Quizviran::panel.teacher.exam.pdf', compact('quiz', 'users'));
         }
@@ -218,7 +217,7 @@ class ExamController extends Controller
 
     public function revival($exam, Request $request)
     {
-        /** 
+        /**
          * @post('/quiz/exam/{exam}/revival')
          * @name('')
          * @middlewares(web, auth, has.exam)
@@ -234,12 +233,12 @@ class ExamController extends Controller
 
     public function exams($room)
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/{room}/exams')
          * @name('exam.manage')
          * @middlewares(web, auth)
          */
-        $room = RoomRepo::getWithQuizzes($room);
+        $room = RoomRepo::getWithExams($room);
 
         if (! auth()->user()->teacherHasRoom($room)) {
             return back();
@@ -262,8 +261,8 @@ class ExamController extends Controller
         return $norm;
     }
 
-    private function userCanCompleteQuiz($quiz): bool
+    private function userCanCompleteQuiz($exam): bool
     {
-        return ($quiz->isInTime() && auth()->user()->canComplete($quiz->id));
+        return ($exam->isInTime() && auth()->user()->canComplete($exam->id));
     }
 }

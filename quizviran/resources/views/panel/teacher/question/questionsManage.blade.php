@@ -13,17 +13,17 @@
         <div class="row flex-nowrap bg-gray px-lg-3 align-items-center figure-caption text-light"
              style="height: 40px;overflow-x: auto;overflow-y: hidden;">
 
-            <a href="{{ route('panel') }}" class="p-2">
+            <a href="{{ route('quizviran.panel') }}" class="p-2">
                 <span>پنل مدیریت</span>
             </a>
             <span class="fas fa-arrow-left"></span>
 
-            <a href="{{ route('room.show',['room' => $room->link]) }}" class="p-2">
+            <a href="{{ route('quizviran.room.show',['room' => $room->link]) }}" class="p-2">
                 <span>{{ $room->name }}</span>
             </a>
             <span class="fas fa-arrow-left"></span>
 
-            <a href="{{ route('exam.manage',['room' => $room->link]) }}" class="p-2">
+            <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}" class="p-2">
                 <span>مدیریت آزمون ها</span>
             </a>
             <span class="fas fa-arrow-left"></span>
@@ -38,7 +38,7 @@
             <div class="col-12 px-2 px-lg-5 col-lg-6">
                 <app-main-box :dark="true" title="ایجاد سوال" icon="plus">
 
-                        <form method="post" enctype="multipart/form-data" action="{{ url('/quiz/question') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ route('quizviran.question.store') }}">
                             @csrf
                             <div class="form-group">
                                 <select name="type" class="form-control">

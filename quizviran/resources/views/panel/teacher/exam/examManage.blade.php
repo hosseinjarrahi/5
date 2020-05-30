@@ -14,12 +14,12 @@
         <div class="row flex-nowrap bg-gray px-lg-3 align-items-center figure-caption text-light"
              style="height: 40px;overflow-x: auto;overflow-y: hidden;">
 
-            <a href="{{ route('panel') }}" class="p-2">
+            <a href="{{ route('quizviran.panel') }}" class="p-2">
                 <span>پنل مدیریت</span>
             </a>
             <span class="fas fa-arrow-left"></span>
 
-            <a href="{{ route('room.show',['room' => $room->link]) }}" class="p-2">
+            <a href="{{ route('quizviran.room.show',['room' => $room->link]) }}" class="p-2">
                 <span>{{ $room->name }}</span>
             </a>
             <span class="fas fa-arrow-left"></span>
@@ -52,22 +52,22 @@
                             <td><span class="fas fa-stamp"></span> <span>تمدید (5 دقیقه)</span></td>
                             <td><span class="fas fa-recycle"></span> <span>نمایش</span></td>
                         </tr>
-                        @forelse($room->quizzes ?? [] as $quiz)
-                            <tr class="@if($quiz->show) bg-info @else bg-dark-gray @endif">
-                                <td>{{ $quiz->name }}</td>
-                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/manage-questions') }}">افزودن سوال</a></td>
-                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/edit') }}">ویرایش</a></td>
-                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id) }}">مشاهده</a></td>
-                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ url('/quiz/exam/'.$quiz->id.'/results') }}">جزییات</a></td>
+                        @forelse($room->exams ?? [] as $exam)
+                            <tr class="@if($exam->show) bg-info @else bg-dark-gray @endif">
+                                <td>{{ $exam->name }}</td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.questions.manage',['exam' => $exam->id]) }}">افزودن سوال</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.exam.edit',['exam' => $exam->id]) }}">ویرایش</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.exam.show',['exam' => $exam->id]) }}">مشاهده</a></td>
+                                <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.exam.result.teacher',['exam' => $exam->id]) }}">جزییات</a></td>
                                 <td>
-                                    <app-revival-button exam="{{ $quiz->id }}"></app-revival-button>
+                                    <app-revival-button exam="{{ $exam->id }}"></app-revival-button>
                                 </td>
                                 <td>
-                                    <form method="post" action="{{ url('/quiz/exam/'.$quiz->id) }}">
+                                    <form method="post" action="{{ route('quizviran.exam.destroy',['exam' => $exam->id]) }}">
                                         @csrf
                                         @method('delete')
                                         <button class="dark-shadow btn btn-sm btn-danger">
-                                            @if($quiz->show)
+                                            @if($exam->show)
                                                 مخفی کردن
                                             @else
                                                 ظاهر کردن
@@ -84,7 +84,7 @@
                     </table>
                 </app-main-box>
 {{-- todo --}}
-                {{--                {{ $room->quizzes->links() }}--}}
+                {{--                {{ $room->exams->links() }}--}}
             </div>
         </div>
     </div>

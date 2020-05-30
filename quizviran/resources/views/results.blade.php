@@ -20,9 +20,9 @@
                         <td>امتیاز آزمون</td>
                     </tr>
                     <tr>
-                        <td>{{ $quiz->name }}</td>
-                        <td>{{ $quiz->users()->count() }}</td>
-                        <td>{{ $quiz->questions->sum('norm') }}</td>
+                        <td>{{ $exam->name }}</td>
+                        <td>{{ $exam->users()->count() }}</td>
+                        <td>{{ $exam->questions->sum('norm') }}</td>
                     </tr>
                 </table>
 

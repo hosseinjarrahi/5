@@ -8,7 +8,7 @@ use Morilog\Jalali\Jalalian;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Quiz extends Model
+class Exam extends Model
 {
     protected $guarded = ['id'];
 

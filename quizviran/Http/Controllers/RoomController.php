@@ -24,7 +24,7 @@ class RoomController extends Controller
 
     public function create()
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/create')
          * @name('room.create')
          * @middlewares(web, auth)
@@ -34,7 +34,7 @@ class RoomController extends Controller
 
     public function show($room)
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/{room}')
          * @name('room.show')
          * @middlewares(web, auth, has.room)
@@ -45,16 +45,14 @@ class RoomController extends Controller
             return abort(401);
         }
 
-        $room->created_at = Jalalian::forge($room->created_at);
-
-        $room->quizzes = $room->quizzes()->orderByDesc('id')->paginate(10);
+        $room->exams = $room->exams()->orderByDesc('id')->paginate(10);
 
         return view('Quizviran::panel.teacher.room.room', compact('room'));
     }
 
     public function store(Request $request)
     {
-        /** 
+        /**
          * @post('/quiz/panel/room')
          * @name('room.store')
          * @middlewares(web, auth)
@@ -75,7 +73,7 @@ class RoomController extends Controller
 
     public function addComment(Request $request)
     {
-        /** 
+        /**
          * @post('/quiz/panel/room/comment')
          * @name('')
          * @middlewares(web, auth, has.room)
@@ -101,7 +99,7 @@ class RoomController extends Controller
 
     public function updateComment($comment, Request $request)
     {
-        /** 
+        /**
          * @put('/quiz/panel/room/comment/{comment}')
          * @name('')
          * @middlewares(web, auth)
@@ -119,7 +117,7 @@ class RoomController extends Controller
 
     public function deleteComment($comment)
     {
-        /** 
+        /**
          * @delete('/quiz/panel/room/comment/{comment}')
          * @name('')
          * @middlewares(web, auth)
@@ -138,7 +136,7 @@ class RoomController extends Controller
 
     public function members($room)
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/{room}/members')
          * @name('')
          * @middlewares(web, auth, has.room)
@@ -156,7 +154,7 @@ class RoomController extends Controller
 
     public function lock($room)
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/{room}/lock')
          * @name('')
          * @middlewares(web, auth, has.room)
@@ -174,7 +172,7 @@ class RoomController extends Controller
 
     public function gapLock($room)
     {
-        /** 
+        /**
          * @get('/quiz/panel/room/{room}/gap-lock')
          * @name('')
          * @middlewares(web, auth, has.room)

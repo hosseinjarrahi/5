@@ -29,13 +29,13 @@ class CommentController extends Controller
          * @name('admin.comment.update')
          * @middlewares(web, auth, admin)
          */
-        if (! $comment->isOwn) {
+        if (! $comment->isOwn() && !auth()->user()->isAdmin()) {
             return response(['message' => 'امکان ویرایش این نظر برای شما فراهم نیست.']);
         }
 
         CommentRepo::update($comment,$request->only(['comment']));
 
-        return back(['message' => 'با موفقیت انجام شد']);
+        return back();
     }
 
     public function destroy(Comment $comment)

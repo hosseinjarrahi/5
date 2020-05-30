@@ -72,11 +72,12 @@
 
         </div>
     </div>
-
-    <form id="deleteImageForm" action="{{ route('admin.category.delete.image',['category' => $category->id]) }}" method="post">
-        @csrf
-        @method('delete')
-    </form>
+    @if($edit)
+        <form id="deleteImageForm" action="{{ route('admin.category.delete.image',['category' => $category->id]) }}" method="post">
+            @csrf
+            @method('delete')
+        </form>
+    @endif
 @endsection
 
 @section('script')
@@ -84,7 +85,8 @@
         function generateSlug(item) {
             slug.value = slugify(item.value);
         }
-        function deleteImage(){
+
+        function deleteImage() {
             deleteImageForm.submit();
         }
     </script>

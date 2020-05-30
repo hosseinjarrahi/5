@@ -36,7 +36,7 @@
 
 <div class="rounded bg-dark p text-white text-center">
     <span>نام آزمون : </span>
-    <span>{{ $quiz->name }}</span>
+    <span>{{ $exam->name }}</span>
 </div>
 
 @foreach($users as $user)

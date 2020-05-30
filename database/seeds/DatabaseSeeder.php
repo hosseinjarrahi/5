@@ -10,7 +10,7 @@ use App\Models\Slide;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Quizviran\Models\Question;
-use Quizviran\Models\Quiz;
+use Quizviran\Models\Exam;
 use Quizviran\Models\Room;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Quiz::truncate();
+        Exam::truncate();
         Question::truncate();
         Room::truncate();
         Product::truncate();
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         Comment::truncate();
         Slide::truncate();
         Event::truncate();
-        // factory(Quiz::class,5)->create();
+        // factory(Exam::class,5)->create();
         factory(Category::class, 1)->create();
         factory(Product::class, 50)->create();
         factory(User::class, 5)
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
         factory(Event::class, 1)->create();
 //        factory(Question::class,10)->create();
 //
-//        factory(Quiz::class, 10)
+//        factory(Exam::class, 10)
 //        ->create()
 //        ->each(function ($quiz) {
 //            $quiz->questions()->save(Question::first());
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
 //        factory(Room::class,1)->create()
 //        ->create()
 //        ->each(function ($room) {
-//            $room->quizzes()->save(Quiz::first());
+//            $room->exams()->save(Exam::first());
 //        });
 
     }

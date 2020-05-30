@@ -27,7 +27,7 @@
                         <td>{{ $user->pivot->norm }}</td>
                         <td>
                             <a class="btn btn-block btn-primary"
-                               href="{{ url($user->fileInQuiz($quiz->id)->get()[0]->file ?? '' ) }}">
+                               href="{{ url($user->fileInQuiz($exam->id)->get()[0]->file ?? '' ) }}">
                                 دانلود
                             </a>
                         </td>

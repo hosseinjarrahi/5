@@ -1,5 +1,5 @@
 @extends('Quizviran::layout')
-@section('title',$quiz->name)
+@section('title',$exam->name)
 
 @section('content')
     <div class="container-fluid mb-5" style="margin-top: 50px;">
@@ -13,13 +13,13 @@
             </div>
 
             <div class="p-2 px-4 d-flex flex-column col-11 col-md-5 text-center">
-                <b>{{ $quiz->name }}</b>
+                <b>{{ $exam->name }}</b>
                 <div style="padding: 1px" class="bg-dark-gray shadow rounded my-2"></div>
             </div>
 
-            <app-exam id="{{ $quiz->id }}" questions="{{ $questions }}"></app-exam>
+            <app-exam id="{{ $exam->id }}" questions="{{ $questions }}"></app-exam>
 
         </div>
-        <app-count-down min="{{ $quiz->duration }}"></app-count-down>
+        <app-count-down min="{{ $exam->duration }}"></app-count-down>
     </div>
 @endsection
