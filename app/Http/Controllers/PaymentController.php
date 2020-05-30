@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Payment\Idpay;
 use Illuminate\Http\Request;
 use App\Facades\Payment\PayFacade;
 
 class PaymentController extends Controller
 {
     public function complete(){
-        /** 
+        /**
          * @get('/complete')
          * @name('payment.pay')
          * @middlewares(web)
@@ -19,7 +18,7 @@ class PaymentController extends Controller
 
     public function reply(Request $request)
     {
-        /** 
+        /**
          * @post('/complete/reply')
          * @name('payment.reply')
          * @middlewares(web)

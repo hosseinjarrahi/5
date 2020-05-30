@@ -32,9 +32,7 @@
 
                     <x-menu-item icon="fa fa-eye" link="#" :root="true" label="نمایش">
                         <ul class="nav nav-treeview">
-                            <x-menu-item icon="fa fa-plus-circle" link="{{ route('admin.event.create') }}" label="افزودن رویداد"></x-menu-item>
-                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.product.index') }}" label="مدیریت رویداد ها"></x-menu-item>
-                            <x-menu-item icon="fas fa-plus-circle" link="{{ route('admin.slide.create') }}" label="افزودن اسلاید"></x-menu-item>
+                            <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.event.index') }}" label="مدیریت رویداد ها"></x-menu-item>
                             <x-menu-item icon="fas fa-ellipsis-h" link="{{ route('admin.slide.index') }}" label="مدیریت اسلایدها"></x-menu-item>
                             <li class="dropdown-divider"></li>
                         </ul>

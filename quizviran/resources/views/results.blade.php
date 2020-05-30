@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="col-12 d-flex mt-5 justify-content-center">
-                            <a href="{{ route('room.show',['room' => $room->link]) }}" class="shadow btn btn-primary">بازگشت به کلاس</a>
+                            <a href="{{ route('quizviran.room.show',['room' => $room->link]) }}" class="shadow btn btn-primary">بازگشت به کلاس</a>
                         </div>
 
                     </div>

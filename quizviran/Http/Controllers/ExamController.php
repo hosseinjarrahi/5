@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
 use Quizviran\Repositories\ExamRepo;
+use App\Http\Resources\ExamResource;
 use Quizviran\Repositories\QuestionRepo;
-use Quizviran\Http\Resources\QuizResourse;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class ExamController extends Controller
@@ -35,10 +35,10 @@ class ExamController extends Controller
 
         $questions = $exam->questions;
         $questions = $questions->shuffle();
-        $exam = new QuizResourse($exam);
+        $exam = new ExamResource($exam);
         $exam = json_decode($exam->toJson());
 
-        return view('Quizviran::quiz', compact('exam', 'questions'));
+        return view('Quizviran::exam', compact('exam', 'questions'));
     }
 
     public function edit($exam)
@@ -120,7 +120,7 @@ class ExamController extends Controller
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
-        $users = $exam->getQuizUsersWithNorms();
+        $users = $exam->getExamUsersWithNorms();
         $room = $exam->rooms()->first();
 
         return view('Quizviran::results', compact('users', 'user', 'exam', 'room'));
@@ -192,7 +192,7 @@ class ExamController extends Controller
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
 
-        $users = $exam->getQuizUsersWithPivot();
+        $users = $exam->getExamUsersWithPivot();
 
         return view('Quizviran::panel.teacher.exam.results', compact('users', 'exam'));
     }
@@ -261,7 +261,7 @@ class ExamController extends Controller
         return $norm;
     }
 
-    private function userCanCompleteQuiz($exam): bool
+    private function userCanCompleteExam($exam): bool
     {
         return ($exam->isInTime() && auth()->user()->canComplete($exam->id));
     }

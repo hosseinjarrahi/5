@@ -58,7 +58,10 @@ class Exam extends Model
 
     public function getQuizUsersWithPivot()
     {
-        return $this->users()->withPivot(['norm','answers'])->get()->sortByDesc('pivot.norm');
+        return $this->users()->withPivot([
+            'norm',
+            'answers',
+        ])->get()->sortByDesc('pivot.norm');
     }
 
     public function files()
@@ -68,29 +71,16 @@ class Exam extends Model
 
     public function scopePublic($query)
     {
-        return $query->where('type','public');
+        return $query->where('type', 'public');
     }
 
     public function scopeShow($query)
     {
-        return $query->where('show',1);
+        return $query->where('show', 1);
     }
 
     public function getJalalyAttribute()
     {
         return Jalalian::forge($this->getAttribute('start'));
     }
-//
-//    public function toArray()
-//    {
-//        return [
-//            'id' => $this->id,
-//            'name' => $this->name,
-//            'link' => url("/quiz/exam/{$this->id}"),
-//            'desc' => $this->desc,
-//            'start' => $this->start->diffForHumans(),
-//            'duration' => $this->duration - Carbon::now()->diffInMinutes($this->start),
-//            'time' => $this->duration
-//        ];
-//    }
 }
