@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Support\Str;
-use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
+use App\Repositories\FileRepo;
 use App\Http\Requests\UploadRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File as FileFacade;
@@ -20,9 +20,8 @@ class FileController extends Controller
          * @middlewares(web)
          */
         // todo : password check
-        $file = File::where('hash', $request->hash)->firstOrFail();
-        $file->download++;
-        $file->save();
+        $file = FileRepo::findByHash($request->hash);
+        FileRepo::downloadIncrement($file);
 
         return Storage::download($file->path, $file->name);
     }
@@ -59,49 +58,31 @@ class FileController extends Controller
         if (! ($file && $file->isOwn())) {
             return response(['message' => 'چنین فایلی وجود ندارد.']);
         }
-        FileFacade::delete(storage_path('app/' . $file->path));
-        $file->delete();
+        FileRepo::delete($file);
 
         return response(['message' => 'با موفقیت حذف شد.']);
     }
 
     private function createFile(UploadRequest $request)
     {
-        $folder = $this->createFolder();
-        $path = 'files/' . $folder;
-        $filename = Str::random(20) . '.' . $request->file->getClientOriginalExtension();
+        $filePath = $request->file('file')->store('files/' . jalalyFolder());
 
-        return File::create([
-            'user_id' => auth()->id(),
-            'path' => $request->file->storeAs($path, $filename),
-            'hash' => Str::random(50),
-            'name' => $request->file->getClientOriginalName(),
-            'password' => $request->password,
-        ]);
+        return FileRepo::create($request->file('file')->getClientOriginalName(), $filePath);
     }
 
     private function saveMp3($base64)
     {
+        $path = 'voices/' . auth()->id();
         $name = Str::random(15) . '.mp3';
-        $folder = $this->createFolder();
-        $path = "files/{$folder}/{$name}";
         $base64 = Str::of($base64)->after('data:audio/mp3;base64,');
-        $audio = base64_decode($base64,true);
+        $audio = base64_decode($base64, true);
 
         file_put_contents("temp/{$name}", $audio);
 
-        FileFacade::move(public_path("temp/{$name}"), storage_path('app'.DIRECTORY_SEPARATOR.$path));
+        FileFacade::ensureDirectoryExists(storage_path("app/{$path}"));
 
-        return File::create([
-            'user_id' => auth()->id(),
-            'path' => $path,
-            'hash' => Str::random(50),
-            'name' => $name,
-        ]);
-    }
+        FileFacade::move(public_path("temp\\{$name}"), storage_path("app/{$path}/{$name}"));
 
-    private function createFolder()
-    {
-        return Jalalian::forge(date('y-m-d'))->format('y-m');
+        return FileRepo::create($name, "{$path}/{$name}");
     }
 }

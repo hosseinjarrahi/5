@@ -10,6 +10,13 @@ use App\Models\Slide;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Conner\Tagging\Model\Tag;
+use App\Repositories\TagRepo;
+use App\Repositories\SlideRepo;
+use App\Repositories\EventRepo;
+use App\Repositories\CouponRepo;
+use App\Repositories\HomeboxRepo;
+use App\Repositories\ProductRepo;
+use App\Repositories\CategoryRepo;
 use App\Http\Requests\CouponRequest;
 use App\Http\Resources\ProductResource;
 use Morilog\Jalali\Jalalian;
@@ -29,9 +36,9 @@ class HomeController extends Controller
          * @name('home')
          * @middlewares(web)
          */
-        $slides = Slide::all()->toJson();
-        $boxes = HomeBox::whereHas('category')->get();
-        $events = Event::all();
+        $slides    = SlideRepo::all()->toJson();
+        $boxes     = HomeboxRepo::hasCategory();
+        $events    = EventRepo::all();
         $mainEvent = $events->where('type','main')->first() ?? new Event();
         return view('main.home', compact('slides', 'boxes','mainEvent'));
     }
@@ -43,7 +50,7 @@ class HomeController extends Controller
          * @name('')
          * @middlewares(web)
          */
-        $products = $category->products()->orderByDesc('id')->paginate(9);
+        $products = CategoryRepo::latestProducts($category);
 
         $children = $category->children;
 
@@ -67,8 +74,8 @@ class HomeController extends Controller
         $tags = $product->tags;
         $sames = ProductResource::collection(Product::randomByCategory($category))->toJson();
         $meta = $product->getMeta();
-        $release = Jalalian::forge($product->created_at)->format('Y/m/d');
-        $comments = $product->comments()->where('show', true)->get();
+        $release = jalaly($product->created_at)->format('Y/m/d');
+        $comments = ProductRepo::showableComments($product);
         return view('main.product', compact('comments', 'product', 'files', 'sames', 'meta', 'tags', 'release'));
     }
 
@@ -79,7 +86,7 @@ class HomeController extends Controller
          * @name('')
          * @middlewares(web)
          */
-        $coupon = Coupon::where('code', $request->coupon)->first();
+        $coupon = CouponRepo::findByCode($request->code);
         if (! $coupon || ! $coupon->valid($request->productId)) {
             return response(['message' => 'کد تخفیف نامعتبر است.'], 404);
         }
@@ -97,8 +104,8 @@ class HomeController extends Controller
          * @name('')
          * @middlewares(web)
          */
-        $tag = Tag::where('slug', $tag)->first();
-        $products = Product::with('tagged')->withAnyTag([$tag->name])->orderByDesc('id')->paginate(9);
+        $tag = TagRepo::findBySlug($tag);
+        $products = ProductRepo::withTags($tag);
         $links = $products->links();
         $relatedTags = $products->pluck('tags');
         $products = ProductResource::collection($products)->toJson();
@@ -115,7 +122,7 @@ class HomeController extends Controller
          * @middlewares(web)
          */
         $search = $request->search;
-        $products = Product::whereHas('categories')->without(['categories', 'user'])->where('title', 'LIKE', "%{$search}%");
+        $products = ProductRepo::searchInTitlesQuery($search);
 
         if ($request->view) {
             $products = $products->paginate(9);

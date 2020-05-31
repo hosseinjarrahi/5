@@ -1,7 +1,7 @@
 <?php
 
 function jalalyFolder(){
-    return jalalyNow()->format('Y-m');
+    return jalalyNow()->format('y-m');
 }
 
 function JalalyYMD($timestamp){

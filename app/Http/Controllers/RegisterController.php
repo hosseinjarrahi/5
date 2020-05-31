@@ -150,13 +150,13 @@ class RegisterController extends Controller
          * @middlewares(web, auth)
          */
         $user = auth()->user();
-        $avatar = Upload::uploadFile(['avatar' => $request->file]);
+        $avatar = '/storage/' . $request->file('file')->store('avatars', 'public');
         File::delete(public_path($user->profile->avatar));
-        $user->profile()->update(['avatar' => $avatar['avatar']]);
+        $user->profile()->update(['avatar' => $avatar]);
 
         return response([
             'message' => 'با موفقیت تغییر یافت.',
-            'avatar' => $avatar['avatar'],
+            'avatar' => $avatar,
         ]);
     }
 
