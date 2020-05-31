@@ -7,6 +7,7 @@ use Quizviran\Models\Question;
 
 class QuestionRepo
 {
+    // todo : refactore $request
     public static function find($ids)
     {
       return Question::find($ids);
@@ -19,7 +20,7 @@ class QuestionRepo
 
     public static function create($request)
     {
-        $pic = Upload::uploadFile(['pic' => $request->img]);
+        $pic = $request->file('img')->store();
         $pic = $pic ? $pic['pic'] : null;
         $question = new Question;
         $question->A = $request->A;
