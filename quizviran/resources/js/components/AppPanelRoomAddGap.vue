@@ -13,7 +13,7 @@
         </div>
 
 
-        <div class="container" v-else key="tow">
+        <div class="container-fluid" v-else key="tow">
           <div class="my-3">حداکثر حجم فایل قابل ارسال 50 مگابایت می باشد.</div>
           <div class="add-gap-back rounded p-2">
             <div class="form-group">

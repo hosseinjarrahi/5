@@ -17,77 +17,81 @@
                 <div class="row justify-content-center">
 
                     <div class="col-12 col-lg-3">
-                        <div class="rounded bg-dark-gray p-3" style="">
+                        <div class="rounded bg-dark-gray" style="">
                             @if(auth()->user()->isTeacher())
-                                <div class="rounded py-1 link-hover m-0 text-center">
+                                <div class="rounded p-2 link-hover m-0 ">
                                     @if($room->lock)
-                                        <span class="fas fa-lock-open"></span>
+                                        <span class="fas fa-lock-open fa-fw"></span>
                                         <a href="{{ route('quizviran.room.lock',['room' => $room->link]) }}">
                                             باز کردن کلاس
                                         </a>
                                     @else
-                                        <span class="fas fa-lock"></span>
-                                        <a href="{{ route('quizviran.room.lock',['room' => $room->link]) }}">
+                                        <span class="fas fa-lock fa-fw"></span>
+                                        <a href="{{ route('quizviran.room.lock',['room' => $room->link]) }}"
+                                           data-toggle="tooltip" data-placement="top" title="با قفل شدن کلاس دیگر کسی نمیتواند عضو شود">
                                             قفل کردن کلاس
                                         </a>
-                                        <span style="font-size: 0.8rem" class="d-block text-muted">با قفل شدن کلاس دیگر کسی نمیتواند عضو شود</span>
                                     @endif
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center">
+                                <div class="rounded p-2 link-hover m-0">
                                     @if($room->gapLock)
-                                        <span class="fas fa-lock-open"></span>
+                                        <span class="fas fa-lock-open fa-fw"></span>
                                         <a href="{{ route('quizviran.room.gapLock',['room' => $room->link]) }}">
                                             باز کردن گفت و گو
                                         </a>
                                     @else
-                                        <span class="fas fa-lock"></span>
+                                        <span class="fas fa-lock fa-fw"></span>
                                         <a href="{{ route('quizviran.room.gapLock',['room' => $room->link]) }}">
                                             قفل کردن گفت و گو
                                         </a>
                                     @endif
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center">
-                                    <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}">ایجاد آزمون</a>
+                                <div class="rounded p-2 link-hover m-0 ">
+                                    <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}">
+                                        <span class="fas fa-plus fa-fw"></span>
+                                        <span>ایجاد آزمون</span>
+                                    </a>
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded py-1 link-hover m-0 text-center">
-                                    <a href="{{ route('quizviran.room.members',['room' => $room->link]) }}">اعضاء کلاس</a>
+                                <div class="rounded p-2 link-hover m-0 ">
+                                    <a href="{{ route('quizviran.room.members',['room' => $room->link]) }}">
+                                        <span class="fas fa-users fa-fw"></span> <span>اعضاء کلاس</span>
+                                    </a>
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center">
-                                    <a>ایجاد تکلیف</a>
-                                    <span class="badge badge-primary position-absolute"
-                                          style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
+                                <div class="rounded position-relative p-2 link-hover m-0">
+                                    <a><span class="fas fa-plus fa-fw"></span> <span>ایجاد تکلیف</span></a>
+                                    <span class="badge bg-gray position-absolute"
+                                          style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی
                                 </span>
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center">
-                                    <a>تکالیف ارسالی</a>
-                                    <span class="badge badge-primary position-absolute"
+                                <div class="rounded position-relative p-2 link-hover m-0">
+                                    <a><span class="fas fa-paper-plane fa-fw"></span> <span>تکالیف ارسالی</span></a>
+                                    <span class="badge bg-gray position-absolute"
                                           style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                     </span>
                                 </div>
 
                             @else
 
-
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                    <a>تکالیف</a>
-                                    <span class="badge badge-primary position-absolute"
+                                <div class="rounded position-relative p-2 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a><span class="fas fa-box-open fa-fw"></span> <span>تکالیف</span></a>
+                                    <span class="badge bg-gray position-absolute"
                                           style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                 </span>
                                 </div>
-                                <div class="dropdown-divider"></div>
+                                <div class="divider my-1"></div>
 
-                                <div class="rounded position-relative py-1 link-hover m-0 text-center" style="font-size:1.2rem">
-                                    <a>لیگ</a>
+                                <div class="rounded position-relative p-2 link-hover m-0 text-center" style="font-size:1.2rem">
+                                    <a><span class="fas fa-flag-checkered fa-fw"></span><span>لیگ</span></a>
                                     <span class="badge badge-primary position-absolute"
                                           style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                     </span>
@@ -136,7 +140,7 @@
                                                     <span class="fas fa-arrow-left"></span>
                                                     {{ $exam->name }}
                                                 </b>
-                                                <div class="dropdown-divider"></div>
+                                                <div class="divider my-1"></div>
                                                 <p class="text-justify">{{ $exam->desc }}</p>
                                                 <div class="p-1 rounded figure-caption bg-dark-gray my-1">
                                                     <span class="d-block bg-gray rounded mb-2">زمان شروع</span>

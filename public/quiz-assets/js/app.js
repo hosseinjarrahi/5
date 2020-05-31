@@ -3977,6 +3977,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPanelRoomInfo",
   props: {
@@ -72660,7 +72665,7 @@ var render = function() {
                   ])
                 ]
               )
-            : _c("div", { key: "tow", staticClass: "container" }, [
+            : _c("div", { key: "tow", staticClass: "container-fluid" }, [
                 _c("div", { staticClass: "my-3" }, [
                   _vm._v("حداکثر حجم فایل قابل ارسال 50 مگابایت می باشد.")
                 ]),
@@ -72805,28 +72810,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center my-3 px-3" }, [
-    _c("div", { staticClass: "col-11 my-2 bg-dark-gray rounded" }, [
+  return _c("div", { staticClass: "row justify-content-center mb-3" }, [
+    _c("div", { staticClass: "d-block w-100 divider" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-12 bg-dark-gray py-2 py-lg-0" }, [
       _c(
         "div",
-        { staticClass: "d-flex p-2 flex-md-row flex-column text-center" },
+        {
+          staticClass:
+            "d-flex p-2 align-items-lg-center flex-md-row flex-column"
+        },
         [
-          _c("div", {
-            staticClass: "p-1 bg-light mx-2 rounded d-none d-md-flex"
-          }),
-          _vm._v(" "),
-          _c("h4", { staticClass: "p-0 m-0" }, [_vm._v(_vm._s(_vm.room.name))]),
+          _c(
+            "div",
+            {
+              staticClass: "p-0 mx-2 my-0",
+              staticStyle: { "font-size": "1.2rem" }
+            },
+            [
+              _c("span", { staticClass: "fas fa-chalkboard-teacher fa-fw" }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(_vm.room.name))])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
           _vm._v(" "),
           _c(
             "div",
             {
-              staticClass:
-                "d-flex ml-md-auto align-items-center flex-column flex-md-row "
+              staticClass: "d-flex ml-md-auto flex-column flex-md-row ",
+              staticStyle: { "font-size": "0.9rem" }
             },
             [
               _c("div", { staticClass: "mx-3" }, [
+                _c("span", { staticClass: "fas fa-key fa-fw mx-2" }),
                 _c("span", [_vm._v("کد عضویت : ")]),
                 _c("span", [_vm._v(_vm._s(_vm.room.code))])
               ]),
@@ -72834,6 +72852,7 @@ var render = function() {
               _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
               _vm._v(" "),
               _c("div", { staticClass: "mx-3" }, [
+                _c("span", { staticClass: "fas fa-users fa-fw mx-2" }),
                 _c("span", [_vm._v("تعداد اعضاء : ")]),
                 _c("span", [_vm._v(_vm._s(_vm.room.members.length))])
               ]),
@@ -72841,6 +72860,7 @@ var render = function() {
               _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
               _vm._v(" "),
               _c("div", { staticClass: "mx-3" }, [
+                _c("span", { staticClass: "fas fa-calendar-check mx-2 fa-fw" }),
                 _c("span", [_vm._v("ساخته شده در : ")]),
                 _c("span", [_vm._v(_vm._s(_vm.createdat))])
               ])

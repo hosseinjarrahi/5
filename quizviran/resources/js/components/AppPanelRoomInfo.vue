@@ -1,22 +1,27 @@
 <template>
 
-  <div class="row justify-content-center my-3 px-3">
-    <div class="col-11 my-2 bg-dark-gray rounded">
+  <div class="row justify-content-center mb-3">
+    <div class="d-block w-100 divider"></div>
 
-      <div class="d-flex p-2 flex-md-row flex-column text-center">
-        <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
-        <h4 class="p-0 m-0">{{ room.name }}</h4>
+    <div class="col-12 bg-dark-gray py-2 py-lg-0">
+      <div class="d-flex p-2 align-items-lg-center flex-md-row flex-column">
+
+        <div class="p-0 mx-2 my-0" style="font-size:1.2rem">
+          <span class="fas fa-chalkboard-teacher fa-fw"></span>
+          <span>{{ room.name }}</span>
+        </div>
+
         <div class="dropdown-divider d-block d-md-none"></div>
-        <div class="d-flex ml-md-auto align-items-center flex-column flex-md-row ">
-          <div class="mx-3"><span>کد عضویت : </span><span>{{ room.code }}</span></div>
+        <div class="d-flex ml-md-auto flex-column flex-md-row " style="font-size:0.9rem">
+          <div class="mx-3"><span class="fas fa-key fa-fw mx-2"></span><span>کد عضویت : </span><span>{{ room.code }}</span></div>
           <div class="dropdown-divider d-block d-md-none"></div>
-          <div class="mx-3"><span>تعداد اعضاء : </span><span>{{ room.members.length }}</span></div>
+          <div class="mx-3"><span class="fas fa-users fa-fw mx-2"></span><span>تعداد اعضاء : </span><span>{{ room.members.length }}</span></div>
           <div class="dropdown-divider d-block d-md-none"></div>
-          <div class="mx-3"><span>ساخته شده در : </span><span>{{ createdat }}</span></div>
+          <div class="mx-3"><span class="fas fa-calendar-check mx-2 fa-fw"></span><span>ساخته شده در : </span><span>{{ createdat }}</span></div>
         </div>
       </div>
-
     </div>
+
   </div>
 
 </template>
