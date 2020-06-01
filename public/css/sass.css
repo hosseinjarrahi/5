@@ -265,6 +265,7 @@ body {
 
 .divider {
   border-bottom: 1px solid #181e2a;
+  width: 100%;
 }
 
 .neu {

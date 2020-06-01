@@ -96,7 +96,7 @@
                 <div class="row">
 
                     @if(!$room->gapLock)
-                        <div class="col-12 p-0 mt-5 my-lg-0">
+                        <div class="col-12 p-0 mt-3 my-lg-0">
                             <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
                         </div>
                     @endif
@@ -104,7 +104,7 @@
                     <div class="col-12">
                         <div class="mt-3">
                             <app-content-border-box title="گفت و گو های عمومی" icon="comments">
-                                <div class="container">
+                                <div class="container-fluid px-0 px-lg-1">
                                     <div class="mt-3 row justify-content-center align-items-center">
                                         @if(!$room->comments->isEmpty())
                                             <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :key="comment.id"
@@ -133,11 +133,12 @@
                                             {{ $exam->name }}
                                         </b>
                                         <p class="text-justify">{{ $exam->desc }}</p>
-                                        <div class="w-100 rounded overflow-hidden figure-caption bg-dark-gray">
-                                            <span class="p-2 d-block bg-gray mb-2">زمان شروع</span>
-                                            <span class="p-2 d-block">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i m/d') }}</span>
-                                            <span class="p-2 d-block bg-gray mb-2">مدت زمان آزمون</span>
-                                            <span class="p-2 d-block">{{ $exam->duration }} دقیقه </span>
+                                        <div class="d-flex flex-row flex-wrap rounded overflow-hidden figure-caption bg-dark-gray">
+                                            <span class="p-2 col-6 col-lg-12">زمان شروع</span>
+                                            <span class="p-2 col-6 col-lg-12">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i m/d') }}</span>
+                                            <div class="divider"></div>
+                                            <span class="p-2 col-6 col-lg-12">مدت زمان آزمون</span>
+                                            <span class="p-2 col-6 col-lg-12">{{ $exam->duration }} دقیقه </span>
                                             @if(auth()->user()->isTeacher() || (!auth()->user()->isTeacher() && $exam->isInTime()))
                                                 <a href="{{ route('quizviran.exam.show',['exam' => $exam->id]) }}"
                                                    class="btn btn-block btn-primary">
