@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark-gray p-1 rounded mb-5">
+  <div class="bg-dark-gray p-1 mb-5 rounded" >
 
     <div class="flex-row d-flex align-items-center">
       <transition name="slide" mode="out-in">

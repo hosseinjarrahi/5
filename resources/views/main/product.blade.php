@@ -19,9 +19,9 @@
 
                     <div class="col-12 mb-2">
                         <div class="bg-dark-gray shadow rounded py-2 px-3">
-                            <h2 style="font-size:1.3rem;display:inline-block;">
-                                <span class="fas fa-angle-double-left"></span>
-                                {{ $product->title }}
+                            <h2 class="d-flex flex-row my-0 align-items-center" style="font-size:1.1rem">
+                                <span class="mr-2 fas fa-angle-double-left"></span>
+                                <span>{{ $product->title }}</span>
                             </h2>
                         </div>
                     </div>

@@ -2244,6 +2244,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4026,26 +4032,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPlayer",
   props: ['src'],
@@ -4060,62 +4046,21 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     playerInit: function playerInit() {
       this.$refs.Player__control__playing.addEventListener('click', this.playerPlayControl, false);
-      this.$refs.Player__control__volumn.addEventListener('click', this.playerVolumnControl, false);
-      this.$refs.Player__control__seek.addEventListener('change', this.playerChangeSeekControl, false);
       this.$refs.Player__audio.addEventListener('ended', this.playerEndingControl, false);
-      this.$refs.Player__audio.addEventListener('loadedmetadata', this.playerLoadMetadata, false);
     },
     playerPlayControl: function playerPlayControl() {
       this.$refs.Player__control__playing.classList.toggle('is-playing');
 
       if (this.$refs.Player__audio.paused) {
         this.$refs.Player__audio.play();
-        this.timeInterval = setInterval(this.playerTimeUpdate, 100);
-        this.$refs.Player__control__seek.addEventListener('change', this.playerSeekControl, false);
       } else {
         this.$refs.Player__audio.pause();
-        clearInterval(this.timeInterval);
       }
-    },
-    playerSeekControl: function playerSeekControl() {
-      this.$refs.Player__audio.currentTime = this.$refs.Player__control__seek.value;
-    },
-    playerVolumnControl: function playerVolumnControl() {
-      this.$refs.Player__control__volumn.classList.toggle('is-muted');
-
-      if (this.$refs.Player__audio.muted) {
-        this.$refs.Player__audio.muted = false;
-      } else {
-        this.$refs.Player__audio.muted = true;
-      }
-    },
-    playerTimeUpdate: function playerTimeUpdate() {
-      this.$refs.Player__control__remaining_time.innerHTML = this.s2m(this.$refs.Player__audio.duration - this.$refs.Player__audio.currentTime);
-      this.$refs.Player__control__seek.max = this.$refs.Player__audio.duration;
-      this.$refs.Player__control__seek.value = this.$refs.Player__audio.currentTime;
-    },
-    playerLoadMetadata: function playerLoadMetadata() {
-      this.$refs.Player__control__remaining_time.innerHTML = this.s2m(this.$refs.Player__audio.duration);
-    },
-    playerChangeSeekControl: function playerChangeSeekControl() {
-      this.$refs.Player__control__seek.max = this.$refs.Player__audio.duration;
-      this.$refs.Player__audio.currentTime = this.$refs.Player__control__seek.value;
     },
     playerEndingControl: function playerEndingControl() {
       this.$refs.Player__audio.pause();
       this.$refs.Player__audio.currentTime = 0;
       this.$refs.Player__control__playing.classList.remove('is-playing');
-    },
-    s2m: function s2m(seconds) {
-      var m = Math.floor(seconds % 31536000 % 86400 % 3600 / 60);
-      var s = seconds % 3153600 % 86400 % 3600 % 60;
-      m = m >= 10 ? m : '0' + m;
-
-      if (s >= 10) {
-        return m + ':' + Math.round(s);
-      } else {
-        return m + ':0' + Math.round(s);
-      }
     }
   }
 });
@@ -4639,7 +4584,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "body[data-v-7d0f69a1] {\n  margin: 0;\n}\n.holder[data-v-7d0f69a1] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n}\n.holder .get-it-on-github[data-v-7d0f69a1] {\n  margin-top: 24px;\n  margin-bottom: 24px;\n  font-family: \"Roboto\";\n  color: #55606E;\n}\n.audio.green-audio-player[data-v-7d0f69a1] {\n  width: 100%;\n  height: 40px;\n  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.07);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-right: 24px;\n  border-radius: 4px;\n  -moz-user-select: none;\n   -ms-user-select: none;\n       user-select: none;\n  -webkit-user-select: none;\n}\n.audio.green-audio-player .play-pause-btn[data-v-7d0f69a1] {\n  display: none;\n  cursor: pointer;\n}\n.audio.green-audio-player .spinner[data-v-7d0f69a1] {\n  width: 18px;\n  height: 18px;\n  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/loading.png);\n  background-size: cover;\n  background-repeat: no-repeat;\n  -webkit-animation: spin-data-v-7d0f69a1 0.4s linear infinite;\n          animation: spin-data-v-7d0f69a1 0.4s linear infinite;\n}\n.audio.green-audio-player .slider[data-v-7d0f69a1] {\n  flex-grow: 1;\n  background-color: #D8D8D8;\n  cursor: pointer;\n  position: relative;\n}\n.audio.green-audio-player .slider .progress[data-v-7d0f69a1] {\n  background-color: #44BFA3;\n  border-radius: inherit;\n  position: absolute;\n  pointer-events: none;\n}\n.audio.green-audio-player .slider .progress .pin[data-v-7d0f69a1] {\n  height: 16px;\n  width: 16px;\n  border-radius: 8px;\n  background-color: #44BFA3;\n  position: absolute;\n  pointer-events: all;\n  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.32);\n}\n.audio.green-audio-player .controls[data-v-7d0f69a1] {\n  font-family: \"Roboto\", sans-serif;\n  font-size: 16px;\n  line-height: 18px;\n  display: flex;\n  flex-grow: 1;\n  justify-content: space-between;\n  align-items: center;\n  margin-left: 24px;\n  margin-right: 24px;\n}\n.audio.green-audio-player .controls .slider[data-v-7d0f69a1] {\n  margin-left: 16px;\n  margin-right: 16px;\n  border-radius: 2px;\n  height: 4px;\n}\n.audio.green-audio-player .controls .slider .progress[data-v-7d0f69a1] {\n  width: 0;\n  height: 100%;\n}\n.audio.green-audio-player .controls .slider .progress .pin[data-v-7d0f69a1] {\n  right: -8px;\n  top: -6px;\n}\n.audio.green-audio-player .controls span[data-v-7d0f69a1] {\n  cursor: default;\n}\n.audio.green-audio-player .volume[data-v-7d0f69a1] {\n  position: relative;\n}\n.audio.green-audio-player .volume .volume-btn[data-v-7d0f69a1] {\n  cursor: pointer;\n}\n.audio.green-audio-player .volume .volume-btn.open path[data-v-7d0f69a1] {\n  fill: #44BFA3;\n}\n.audio.green-audio-player .volume .volume-controls[data-v-7d0f69a1] {\n  width: 30px;\n  height: 135px;\n  background-color: rgba(0, 0, 0, 0.62);\n  border-radius: 7px;\n  position: absolute;\n  left: -3px;\n  bottom: 52px;\n  flex-direction: column;\n  align-items: center;\n  display: flex;\n}\n.audio.green-audio-player .volume .volume-controls.hidden[data-v-7d0f69a1] {\n  display: none;\n}\n.audio.green-audio-player .volume .volume-controls .slider[data-v-7d0f69a1] {\n  margin-top: 12px;\n  margin-bottom: 12px;\n  width: 6px;\n  border-radius: 3px;\n}\n.audio.green-audio-player .volume .volume-controls .slider .progress[data-v-7d0f69a1] {\n  bottom: 0;\n  height: 100%;\n  width: 6px;\n}\n.audio.green-audio-player .volume .volume-controls .slider .progress .pin[data-v-7d0f69a1] {\n  left: -5px;\n  top: -8px;\n}\nsvg[data-v-7d0f69a1], img[data-v-7d0f69a1] {\n  display: block;\n}\n@-webkit-keyframes spin-data-v-7d0f69a1 {\nfrom {\n    transform: rotateZ(0);\n}\nto {\n    transform: rotateZ(1turn);\n}\n}\n@keyframes spin-data-v-7d0f69a1 {\nfrom {\n    transform: rotateZ(0);\n}\nto {\n    transform: rotateZ(1turn);\n}\n}", ""]);
+exports.push([module.i, "body[data-v-7d0f69a1] {\n  margin: 0;\n}\n.holder[data-v-7d0f69a1] {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  align-items: center;\n}\n.audio.green-audio-player[data-v-7d0f69a1] {\n  width: 100%;\n  height: 40px;\n  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.07);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-right: 24px;\n  border-radius: 4px;\n  -moz-user-select: none;\n   -ms-user-select: none;\n       user-select: none;\n  -webkit-user-select: none;\n}\n.audio.green-audio-player .play-pause-btn[data-v-7d0f69a1] {\n  display: none;\n  cursor: pointer;\n}\n.audio.green-audio-player .spinner[data-v-7d0f69a1] {\n  width: 18px;\n  height: 18px;\n  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/loading.png);\n  background-size: cover;\n  background-repeat: no-repeat;\n  -webkit-animation: spin-data-v-7d0f69a1 0.4s linear infinite;\n          animation: spin-data-v-7d0f69a1 0.4s linear infinite;\n}\n.audio.green-audio-player .slider[data-v-7d0f69a1] {\n  flex-grow: 1;\n  background-color: #D8D8D8;\n  cursor: pointer;\n  position: relative;\n}\n.audio.green-audio-player .slider .progress[data-v-7d0f69a1] {\n  background-color: #44BFA3;\n  border-radius: inherit;\n  position: absolute;\n  pointer-events: none;\n}\n.audio.green-audio-player .slider .progress .pin[data-v-7d0f69a1] {\n  height: 16px;\n  width: 16px;\n  border-radius: 8px;\n  background-color: #44BFA3;\n  position: absolute;\n  pointer-events: all;\n  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.32);\n}\n.audio.green-audio-player .controls[data-v-7d0f69a1] {\n  font-family: \"Roboto\", sans-serif;\n  font-size: 16px;\n  line-height: 18px;\n  display: flex;\n  flex-grow: 1;\n  justify-content: space-between;\n  align-items: center;\n  margin-left: 24px;\n  margin-right: 24px;\n}\n.audio.green-audio-player .controls .slider[data-v-7d0f69a1] {\n  margin-left: 16px;\n  margin-right: 16px;\n  border-radius: 2px;\n  height: 4px;\n}\n.audio.green-audio-player .controls .slider .progress[data-v-7d0f69a1] {\n  width: 0;\n  height: 100%;\n}\n.audio.green-audio-player .controls .slider .progress .pin[data-v-7d0f69a1] {\n  right: -8px;\n  top: -6px;\n}\n.audio.green-audio-player .controls span[data-v-7d0f69a1] {\n  cursor: default;\n}\n.audio.green-audio-player .volume[data-v-7d0f69a1] {\n  position: relative;\n}\n.audio.green-audio-player .volume .volume-btn[data-v-7d0f69a1] {\n  cursor: pointer;\n}\n.audio.green-audio-player .volume .volume-btn.open path[data-v-7d0f69a1] {\n  fill: #44BFA3;\n}\n.audio.green-audio-player .volume .volume-controls[data-v-7d0f69a1] {\n  width: 30px;\n  height: 135px;\n  background-color: rgba(0, 0, 0, 0.62);\n  border-radius: 7px;\n  position: absolute;\n  left: -3px;\n  bottom: 52px;\n  flex-direction: column;\n  align-items: center;\n  display: flex;\n}\n.audio.green-audio-player .volume .volume-controls.hidden[data-v-7d0f69a1] {\n  display: none;\n}\n.audio.green-audio-player .volume .volume-controls .slider[data-v-7d0f69a1] {\n  margin-top: 12px;\n  margin-bottom: 12px;\n  width: 6px;\n  border-radius: 3px;\n}\n.audio.green-audio-player .volume .volume-controls .slider .progress[data-v-7d0f69a1] {\n  bottom: 0;\n  height: 100%;\n  width: 6px;\n}\n.audio.green-audio-player .volume .volume-controls .slider .progress .pin[data-v-7d0f69a1] {\n  left: -5px;\n  top: -8px;\n}\nsvg[data-v-7d0f69a1], img[data-v-7d0f69a1] {\n  display: block;\n}\n@-webkit-keyframes spin-data-v-7d0f69a1 {\nfrom {\n    transform: rotateZ(0);\n}\nto {\n    transform: rotateZ(1turn);\n}\n}\n@keyframes spin-data-v-7d0f69a1 {\nfrom {\n    transform: rotateZ(0);\n}\nto {\n    transform: rotateZ(1turn);\n}\n}", ""]);
 
 // exports
 
@@ -4867,7 +4812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.Player[data-v-02e4cd87] {\n  background: #47a3da;\n  border: 1px solid #47a3da;\n  color: #fff;\n  width: 30em;\n  height: 3em;\n}\n.Player__controlbar[data-v-02e4cd87] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-02e4cd87] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-02e4cd87] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-02e4cd87],\n.Player__control--volumn[data-v-02e4cd87] {\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--play[data-v-02e4cd87],\n.Player__control--volumn .Player__control--volumn-min[data-v-02e4cd87],\n.Player__control--volumn.is-muted .Player__control--volumn-max[data-v-02e4cd87] {\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--paused[data-v-02e4cd87],\n.Player__control--volumn .Player__control--volumn-max[data-v-02e4cd87],\n.Player__control--volumn.is-muted .Player__control--volumn-min[data-v-02e4cd87] {\n  opacity: 1;\n}\n.Player__control--process[data-v-02e4cd87] {\n  flex: auto;\n  padding: 0 1em;\n}\n.Player__control--seek[data-v-02e4cd87] {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  height: 2px;\n  width: 100%;\n  vertical-align: middle;\n  display: inline-block;\n  box-shadow: 0 1px 10px 0 rgba(255, 255, 255, .8);\n}\n.Player__control--seek[data-v-02e4cd87]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n          appearance: none;\n  background: #fff;\n  width: 1em;\n  height: 1em;\n  border-radius: 100%;\n  border: 1px solid transparent;\n  box-shadow: 0 1px 10px 0 rgba(255, 255, 255, .8);\n  z-index: 1;\n}\n.Player__control--remaining-time[data-v-02e4cd87] {\n  width: 4em;\n}\n", ""]);
+exports.push([module.i, "\n.Player[data-v-02e4cd87] {\n  color: #fff;\n  width: auto !important;\n  height: 3em;\n}\n.Player__controlbar[data-v-02e4cd87] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-02e4cd87] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-02e4cd87] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-02e4cd87]{\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--play[data-v-02e4cd87]{\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--paused[data-v-02e4cd87] {\n  opacity: 1;\n}\n\n", ""]);
 
 // exports
 
@@ -70323,7 +70268,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _vm.editable && !_vm.editing
-                    ? _c("div", { staticClass: "tool-box" }, [
+                    ? _c("div", { staticClass: "tool-box my-2" }, [
                         _c("span", {
                           staticClass: "pointer fas fa-edit p-1 mx-1",
                           on: {
@@ -70346,7 +70291,7 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.editable && _vm.editing
-                    ? _c("div", { staticClass: "tool-box" }, [
+                    ? _c("div", { staticClass: "tool-box my-2" }, [
                         _c("span", {
                           staticClass:
                             "pointer fas fa-times text-danger p-1 mx-1",
@@ -70402,24 +70347,29 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row p-2" }, [
+                  _c("div", { staticClass: "row justify-content-center" }, [
                     _c(
                       "div",
-                      { staticClass: "bg-gray p-2 col-12 rounded" },
+                      {
+                        staticClass:
+                          "bg-gray mt-2 p-0 text-center col-12 rounded"
+                      },
                       [
-                        _vm._l(_vm.audios, function(audio, index) {
-                          return _c(
-                            "div",
-                            { key: audio.id, staticClass: "d-block my-1 " },
-                            [
-                              _c("app-player", {
-                                staticClass: "w-100",
-                                attrs: { src: "/file?hash=" + audio.hash }
-                              })
-                            ],
-                            1
-                          )
-                        }),
+                        _c(
+                          "div",
+                          { staticClass: "d-flex flex-row my-1" },
+                          [
+                            _vm._l(_vm.audios, function(audio) {
+                              return [
+                                _c("app-player", {
+                                  staticClass: "mx-1",
+                                  attrs: { src: "/file?hash=" + audio.hash }
+                                })
+                              ]
+                            })
+                          ],
+                          2
+                        ),
                         _vm._v(" "),
                         _vm._l(_vm.files, function(file, index) {
                           return _c(
@@ -72629,7 +72579,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-dark-gray p-1 rounded mb-5" }, [
+  return _c("div", { staticClass: "bg-dark-gray p-1 mb-5 rounded" }, [
     _c(
       "div",
       { staticClass: "flex-row d-flex align-items-center" },
@@ -72895,7 +72845,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "player", staticClass: "Player", attrs: { id: "player" } },
+    {
+      ref: "player",
+      staticClass: "Player rounded bg-dark-gray",
+      attrs: { id: "player" }
+    },
     [
       _c(
         "audio",
@@ -72947,92 +72901,6 @@ var render = function() {
               [
                 _c("path", {
                   attrs: { fill: "#fff", d: "M2 2h5v12h-5zM9 2h5v12h-5z" }
-                })
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "Player__control Player__control--process" }, [
-          _c("input", {
-            ref: "Player__control__seek",
-            staticClass: "Player__control Player__control--seek",
-            attrs: { id: "seek", type: "range", min: "0", value: "0" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          ref: "Player__control__remaining_time",
-          staticClass: "Player__control Player__control--remaining-time"
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            ref: "Player__control__volumn",
-            staticClass: "Player__control Player__control--volumn"
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass: "Player__control--volumn-max",
-                attrs: {
-                  version: "1.1",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                  width: "17",
-                  height: "16",
-                  viewBox: "0 0 17 16"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    fill: "#fff",
-                    d:
-                      "M13.907 14.407c-0.192 0-0.384-0.073-0.53-0.22-0.293-0.293-0.293-0.768 0-1.061 1.369-1.369 2.123-3.19 2.123-5.127s-0.754-3.757-2.123-5.127c-0.293-0.293-0.293-0.768 0-1.061s0.768-0.293 1.061 0c1.653 1.653 2.563 3.85 2.563 6.187s-0.91 4.534-2.563 6.187c-0.146 0.146-0.338 0.22-0.53 0.22zM11.243 12.993c-0.192 0-0.384-0.073-0.53-0.22-0.293-0.293-0.293-0.768 0-1.061 2.047-2.047 2.047-5.378 0-7.425-0.293-0.293-0.293-0.768 0-1.061s0.768-0.293 1.061 0c1.275 1.275 1.977 2.97 1.977 4.773s-0.702 3.498-1.977 4.773c-0.146 0.146-0.338 0.22-0.53 0.22v0zM8.578 11.578c-0.192 0-0.384-0.073-0.53-0.22-0.293-0.293-0.293-0.768 0-1.061 1.267-1.267 1.267-3.329 0-4.596-0.293-0.293-0.293-0.768 0-1.061s0.768-0.293 1.061 0c1.852 1.852 1.852 4.865 0 6.718-0.146 0.146-0.338 0.22-0.53 0.22z"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    fill: "#fff",
-                    d:
-                      "M6.5 15c-0.13 0-0.258-0.051-0.354-0.146l-3.854-3.854h-1.793c-0.276 0-0.5-0.224-0.5-0.5v-5c0-0.276 0.224-0.5 0.5-0.5h1.793l3.854-3.854c0.143-0.143 0.358-0.186 0.545-0.108s0.309 0.26 0.309 0.462v13c0 0.202-0.122 0.385-0.309 0.462-0.062 0.026-0.127 0.038-0.191 0.038z"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "svg",
-              {
-                staticClass: "Player__control--volumn-min",
-                attrs: {
-                  version: "1.1",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                  width: "16",
-                  height: "16",
-                  viewBox: "0 0 16 16"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    fill: "#fff",
-                    d:
-                      "M15 9.674v1.326h-1.326l-1.674-1.674-1.674 1.674h-1.326v-1.326l1.674-1.674-1.674-1.674v-1.326h1.326l1.674 1.674 1.674-1.674h1.326v1.326l-1.674 1.674 1.674 1.674z"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    fill: "#fff",
-                    d:
-                      "M6.5 15c-0.13 0-0.258-0.051-0.354-0.146l-3.854-3.854h-1.793c-0.276 0-0.5-0.224-0.5-0.5v-5c0-0.276 0.224-0.5 0.5-0.5h1.793l3.854-3.854c0.143-0.143 0.358-0.186 0.545-0.108s0.309 0.26 0.309 0.462v13c0 0.202-0.122 0.385-0.309 0.462-0.062 0.026-0.127 0.038-0.191 0.038z"
-                  }
                 })
               ]
             )

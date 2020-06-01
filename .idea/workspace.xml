@@ -7,23 +7,15 @@
       <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/6LTXaymaBpxKxay.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/D658IyiN2jXUfor.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/Erxdila254eChnU.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/HBnCFSe9vAe0CEJ.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/Kl0LWDXr9lPI55Q.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/PIt3ds1Iw0JBxkQ.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/Sc5TazhKQEwpDr2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/TJSCSQhZAKAF5ub.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/o6mWFWD9Pv9H4Vz.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/oYKNqKVLIXSnIUY.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/uu0txjo18Vz8bJh.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/temp/vhiZ8nHKcnwLFxs.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppContentBorderBox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppContentBorderBox.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPlayer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +205,8 @@
       <workItem from="1590753152465" duration="14184000" />
       <workItem from="1590814780332" duration="32374000" />
       <workItem from="1590905315665" duration="2102000" />
-      <workItem from="1590939185595" duration="10966000" />
+      <workItem from="1590939185595" duration="11090000" />
+      <workItem from="1590990308373" duration="7149000" />
     </task>
     <servers />
   </component>
@@ -249,17 +242,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.834@0.0.1536.834" timestamp="1590737863328" />
-    <state x="463" y="149" width="805" height="536" key="find.popup" timestamp="1590945248844">
+    <state x="463" y="149" width="805" height="536" key="find.popup" timestamp="1590993980392">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="805" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1590945248844" />
+    <state x="463" y="149" width="805" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1590993980392" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1590841303978">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1590841303978" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590951732446">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590997475553">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590951732446" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590997475553" />
   </component>
 </project>

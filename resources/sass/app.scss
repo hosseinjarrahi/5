@@ -96,7 +96,7 @@ body{
 }
 
 .app-border-box{
-  border:1px solid #2f3542;
+  border:1px dashed #2f3542;
 }
 
 .pointer{
@@ -180,4 +180,16 @@ body{
 
 .divider{
   border-bottom:1px solid #181e2a
+}
+
+.neu{
+  border-radius: 18px;
+  background: linear-gradient(145deg, #dddddd, #ffffff);
+  box-shadow:  11px 11px 16px #bababa,
+  -11px -11px 16px #ffffff;
+  padding:5px;
+}
+
+.rounded{
+  border-radius:25px !important;
 }

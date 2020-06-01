@@ -117,13 +117,6 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-
-    .get-it-on-github {
-      margin-top: 24px;
-      margin-bottom: 24px;
-      font-family: 'Roboto';
-      color: #55606E;
-    }
   }
 
   .audio.green-audio-player {

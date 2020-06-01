@@ -21,12 +21,12 @@
               <textarea class="form-control" rows="5" v-if="editing" v-model="text"></textarea>
             </div>
 
-            <div class="tool-box" v-if="editable && !editing">
+            <div class="tool-box my-2" v-if="editable && !editing">
               <span class="pointer fas fa-edit p-1 mx-1" @click="editing = !editing"></span>
               <span class="pointer text-danger fas fa-trash p-1 mx-1" @click="deleteModal = true"></span>
             </div>
 
-            <div class="tool-box" v-if="editable && editing">
+            <div class="tool-box my-2" v-if="editable && editing">
               <span class="pointer fas fa-times text-danger p-1 mx-1" @click="cancel"></span>
               <span class="pointer text-success fas fa-check-circle p-1 mx-1" @click="edit"></span>
             </div>
@@ -36,12 +36,17 @@
               <button class="btn btn-primary" @click="deleteModal=false">خیر</button>
             </app-modal>
 
-            <div class="row p-2">
-              <div class="bg-gray p-2 col-12 rounded">
+            <div class="row justify-content-center">
 
-                <div class="d-block my-1 " v-for="(audio,index) in audios" :key="audio.id">
-                  <app-player :src="'/file?hash='+audio.hash" class="w-100"></app-player>
+              <div class="bg-gray mt-2 p-0 text-center col-12 rounded">
+
+                <div class="d-flex flex-row my-1">
+                  <template v-for="audio in audios">
+                    <app-player :src="'/file?hash='+audio.hash" class="mx-1"></app-player>
+                  </template>
                 </div>
+
+                <!--                  <span class="fas fa-paperclip mx-2"></span><span>پیوست ها</span>-->
 
                 <div class="btn-group mx-1 my-1" v-for="(file,index) in files" :key="file.id">
                   <a type="button" :href="`/file?hash=${file.hash}`" class="btn bg-light">
@@ -50,6 +55,7 @@
                   </a>
                   <button v-if="file.user_id == auth" type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
                 </div>
+
 
               </div>
             </div>
@@ -160,7 +166,7 @@
                     return !this.isMp3(val.name);
                 });
             },
-            audios(){
+            audios() {
                 return this.comment.files.filter(val => {
                     return this.isMp3(val.name);
                 });
