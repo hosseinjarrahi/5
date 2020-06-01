@@ -169,10 +169,10 @@ class RegisterController extends Controller
          */
         $user = auth()->user();
         $profile = $user->profile;
-        $birth = $profile->birth;
+        $birth = $profile['birth'];
 
-        if ($birth) {
-            $birth = Jalalian::fromFormat('Y/m/d H:i:s', $request->profile['birth'] . ' 00:00:00')->toCarbon();
+        if (!$birth) {
+            $birth = Jalalian::fromFormat('Y/m/d', $request->profile['birth'])->toCarbon();
         }
 
         $profile->update([

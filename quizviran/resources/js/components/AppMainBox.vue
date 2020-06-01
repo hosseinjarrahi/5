@@ -2,7 +2,7 @@
   <div class="col-12">
 
     <div :class="['row flex-column mt-3 ', dark ? '' : 'text-danger' ]">
-      <div class="col-12 ">
+      <div class="d-flex flex-column px-5">
         <h2 class="text-center">
           <span :class="[`fas fa-${icon}`]"></span>
           <span>{{ title }}</span>

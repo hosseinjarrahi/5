@@ -32,7 +32,8 @@
                             @endif
                         </div>
 
-                        <div class="rounded p-2 link-hover m-0">
+                        <div class="divider"></div>
+                        <div class=" p-2 link-hover m-0">
                             @if($room->gapLock)
                                 <span class="fas fa-lock-open fa-fw"></span>
                                 <a href="{{ route('quizviran.room.gapLock',['room' => $room->link]) }}">
@@ -46,14 +47,16 @@
                             @endif
                         </div>
 
-                        <div class="rounded p-2 link-hover m-0 ">
+                        <div class="divider"></div>
+                        <div class=" p-2 link-hover m-0 ">
                             <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}">
                                 <span class="fas fa-plus fa-fw"></span>
                                 <span>ایجاد آزمون</span>
                             </a>
                         </div>
 
-                        <div class="rounded p-2 link-hover m-0 ">
+                        <div class="divider"></div>
+                        <div class=" p-2 link-hover m-0 ">
                             <a href="{{ route('quizviran.room.members',['room' => $room->link]) }}">
                                 <span class="fas fa-users fa-fw"></span> <span>اعضاء کلاس</span>
                             </a>
@@ -82,6 +85,7 @@
                                 </span>
                         </div>
 
+                        <div class="divider"></div>
                         <div class="rounded position-relative p-2 link-hover m-0 text-center" style="font-size:1.2rem">
                             <a><span class="fas fa-flag-checkered fa-fw"></span><span>لیگ</span></a>
                             <span class="badge badge-primary position-absolute"
@@ -92,11 +96,11 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-8 px-lg-5 ">
+            <div class="col-12 col-lg-8 px-lg-4 ">
                 <div class="row">
 
                     @if(!$room->gapLock)
-                        <div class="col-12 p-0 mt-3 my-lg-0">
+                        <div class="col-12 p-0 mt-3 mb-4">
                             <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
                         </div>
                     @endif
@@ -128,12 +132,11 @@
                             @if(!$room->exams->isEmpty())
                                 @foreach($room->exams as $exam)
                                     <div class="mt-3 text-center row flex-column justify-content-center align-items-center">
-                                        <b>
-                                            <span class="fas fa-arrow-left"></span>
-                                            {{ $exam->name }}
-                                        </b>
-                                        <p class="text-justify">{{ $exam->desc }}</p>
+
                                         <div class="d-flex flex-row flex-wrap rounded overflow-hidden figure-caption bg-dark-gray">
+                                            <b class="p-2 col-12">{{ $exam->name }}</b>
+                                            <p class="p-2 col-12 text-justify">{{ $exam->desc }}</p>
+                                            <div class="divider"></div>
                                             <span class="p-2 col-6 col-lg-12">زمان شروع</span>
                                             <span class="p-2 col-6 col-lg-12">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i m/d') }}</span>
                                             <div class="divider"></div>
@@ -152,7 +155,7 @@
                                 @endforeach
                                 @if(auth()->user()->isTeacher())
                                     <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}"
-                                       class="d-block my-2 btn bg-dark-gray py-0 text-center">مدیریت آزمون ها</a>
+                                       class="d-block my-2 btn rounded bg-dark-gray py-0 text-center">مدیریت آزمون ها</a>
                                 @endif
                             @else
                                 <div class="d-block text-center">آزمونی وجود ندارد...</div>
