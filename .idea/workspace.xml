@@ -3,19 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppAudioPlayer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppComments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppContentBorderBox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppContentBorderBox.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomAddGap.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPanelRoomInfo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/AppPlayer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppCommentDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppCommentDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppProductDesc.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +201,7 @@
       <workItem from="1590814780332" duration="32374000" />
       <workItem from="1590905315665" duration="2102000" />
       <workItem from="1590939185595" duration="11090000" />
-      <workItem from="1590990308373" duration="7149000" />
+      <workItem from="1590990308373" duration="10205000" />
     </task>
     <servers />
   </component>
@@ -250,9 +245,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1590841303978" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1590997475553">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1591000417297">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1590997475553" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1591000417297" />
   </component>
 </project>

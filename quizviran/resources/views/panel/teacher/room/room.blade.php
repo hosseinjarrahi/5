@@ -14,10 +14,10 @@
 
         <div class="row justify-content-center px-2 px-lg-0">
 
-            <div class="col-12 col-lg-2">
+            <div class="col-12 p-0 p-lg-2 col-lg-2">
                 <div class="rounded bg-dark-gray shadow" style="border:1px white dashed">
                     @if(auth()->user()->isTeacher())
-                        <div class="rounded p-2 link-hover m-0 ">
+                        <div class="p-2 link-hover m-0 ">
                             @if($room->lock)
                                 <span class="fas fa-lock-open fa-fw"></span>
                                 <a href="{{ route('quizviran.room.lock',['room' => $room->link]) }}">
@@ -59,19 +59,19 @@
                             </a>
                         </div>
 
-{{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
-{{--                            <a><span class="fas fa-plus fa-fw"></span> <span>ایجاد تکلیف</span></a>--}}
-{{--                            <span class="badge bg-gray position-absolute"--}}
-{{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
-{{--                                </span>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
+                        {{--                            <a><span class="fas fa-plus fa-fw"></span> <span>ایجاد تکلیف</span></a>--}}
+                        {{--                            <span class="badge bg-gray position-absolute"--}}
+                        {{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
+                        {{--                                </span>--}}
+                        {{--                        </div>--}}
 
-{{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
-{{--                            <a><span class="fas fa-paper-plane fa-fw"></span> <span>تکالیف ارسالی</span></a>--}}
-{{--                            <span class="badge bg-gray position-absolute"--}}
-{{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
-{{--                                    </span>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
+                        {{--                            <a><span class="fas fa-paper-plane fa-fw"></span> <span>تکالیف ارسالی</span></a>--}}
+                        {{--                            <span class="badge bg-gray position-absolute"--}}
+                        {{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
+                        {{--                                    </span>--}}
+                        {{--                        </div>--}}
 
                     @else
 
@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-8 px-lg-5 ">
                 <div class="row">
 
                     @if(!$room->gapLock)
@@ -133,18 +133,19 @@
                                             {{ $exam->name }}
                                         </b>
                                         <p class="text-justify">{{ $exam->desc }}</p>
-                                        <div class="p-1 rounded figure-caption bg-dark-gray my-1">
-                                            <span class="d-block bg-gray rounded mb-2">زمان شروع</span>
-                                            <span class="d-block">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i Y/m/d') }}</span></div>
-                                        <div class="p-1 rounded figure-caption bg-dark-gray my-1">
-                                            <span class="d-block bg-gray rounded mb-2">مدت زمان آزمون</span>
-                                            <span class="d-block">{{ $exam->duration }} دقیقه </span>
+                                        <div class="w-100 rounded overflow-hidden figure-caption bg-dark-gray">
+                                            <span class="p-2 d-block bg-gray mb-2">زمان شروع</span>
+                                            <span class="p-2 d-block">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i m/d') }}</span>
+                                            <span class="p-2 d-block bg-gray mb-2">مدت زمان آزمون</span>
+                                            <span class="p-2 d-block">{{ $exam->duration }} دقیقه </span>
+                                            @if(auth()->user()->isTeacher() || (!auth()->user()->isTeacher() && $exam->isInTime()))
+                                                <a href="{{ route('quizviran.exam.show',['exam' => $exam->id]) }}"
+                                                   class="btn btn-block btn-primary">
+                                                    ورود به آزمون
+                                                </a>
+                                            @endif
+
                                         </div>
-                                        @if(auth()->user()->type=='teacher' || ((auth())->user()->type=='student') && $exam->isInTime())
-                                            <a href="{{ route('quizviran.exam.show',['exam' => $exam->id]) }}" class="btn btn-primary py-0 text-light my-1">ورود
-                                                به
-                                                آزمون</a>
-                                        @endif
                                     </div>
                                     <hr>
                                 @endforeach

@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 mt-5">
-    <textarea class="form-control bg-gray" v-model="comment" rows="10"></textarea>
-    <span class="btn bg-dark-gray my-2" @click="send">افزودن نظر</span>
+    <textarea class="form-control rounded bg-gray" v-model="comment" rows="10"></textarea>
+    <span class="btn bg-dark-gray rounded my-2" @click="send">افزودن نظر</span>
   </div>
 </template>
 

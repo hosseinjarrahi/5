@@ -1,5 +1,5 @@
 <template>
-  <div class="Player rounded bg-dark-gray" id="player" ref="player">
+  <div class="Player rounded d-flex align-items-center bg-dark-gray" id="player" ref="player">
     <audio preload :src="src" class="Player__audio" ref="Player__audio">
       <p>مرورگر شما از پخش صدا پشتیبانی نمیکند.</p>
     </audio>
@@ -62,7 +62,7 @@
   .Player {
     color: #fff;
     width: auto !important;
-    height: 3em;
+    height: 2em;
   }
 
   .Player__controlbar {

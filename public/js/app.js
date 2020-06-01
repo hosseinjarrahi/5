@@ -46953,7 +46953,7 @@ var render = function() {
           expression: "comment"
         }
       ],
-      staticClass: "form-control bg-gray",
+      staticClass: "form-control rounded bg-gray",
       attrs: { rows: "10" },
       domProps: { value: _vm.comment },
       on: {
@@ -46968,7 +46968,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "span",
-      { staticClass: "btn bg-dark-gray my-2", on: { click: _vm.send } },
+      { staticClass: "btn bg-dark-gray rounded my-2", on: { click: _vm.send } },
       [_vm._v("افزودن نظر")]
     )
   ])
@@ -47733,7 +47733,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.product.status
+          _vm.status
             ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
                 _c("span", { staticClass: "fas fa-spinner" }),
                 _vm._v(" "),
@@ -47762,32 +47762,32 @@ var render = function() {
                   ])
                 ])
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.product.price > 0
-            ? _c("div", { staticClass: "my-2 border-bottom-dark p-2" }, [
-                _c("span", { staticClass: "my-2" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "btn btn-block btn-success shadow",
-                      on: {
-                        click: function($event) {
-                          _vm.buyModal = true
-                        }
-                      }
-                    },
-                    [
-                      _c("span", { staticClass: "fas fa-shopping-bag" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("خرید دوره")])
-                    ]
-                  )
-                ])
-              ])
             : _vm._e()
         ]
       ),
+      _vm._v(" "),
+      _vm.product.price > 0
+        ? _c("div", { staticClass: "mt-4" }, [
+            _c("span", { staticClass: "my-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "btn rounded btn-block btn-success shadow",
+                  on: {
+                    click: function($event) {
+                      _vm.buyModal = true
+                    }
+                  }
+                },
+                [
+                  _c("span", { staticClass: "fas fa-shopping-bag" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("خرید")])
+                ]
+              )
+            ])
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.product.pic
         ? _c("div", { staticClass: "avatar-parent" }, [

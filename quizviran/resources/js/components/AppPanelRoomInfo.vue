@@ -3,7 +3,7 @@
   <div class="row justify-content-center mb-3">
     <div class="d-block w-100 divider"></div>
 
-    <div class="col-12 bg-dark-gray py-2 py-lg-0">
+    <div class="col-12 bg-dark-gray py-2 py-lg-0" style="border-radius:0px 0px 25px 25px">
       <div class="d-flex p-2 align-items-lg-center flex-md-row flex-column">
 
         <div class="p-0 mx-2 my-0" style="font-size:1.2rem">

@@ -45,7 +45,7 @@
         <span>نفر</span>
       </div>
 
-      <div class="my-2 border-bottom-dark p-2" v-if="product.status">
+      <div class="my-2 border-bottom-dark p-2" v-if="status">
         <span class="fas fa-spinner"></span>
         <span>وضعیت دوره :</span>
         <span>{{ status }}</span>
@@ -60,15 +60,15 @@
             </div>
           </span>
       </div>
+    </div>
 
-      <div class="my-2 border-bottom-dark p-2" v-if="product.price > 0">
-          <span class="my-2">
-            <div class="btn btn-block btn-success shadow" @click="buyModal = true">
-              <span class="fas fa-shopping-bag"></span>
-              <span>خرید دوره</span>
-            </div>
-          </span>
-      </div>
+    <div class="mt-4" v-if="product.price > 0">
+      <span class="my-2">
+        <div class="btn rounded btn-block btn-success shadow" @click="buyModal = true">
+          <span class="fas fa-shopping-bag"></span>
+          <span>خرید</span>
+        </div>
+      </span>
     </div>
 
     <div class="avatar-parent" v-if="product.pic">

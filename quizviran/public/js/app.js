@@ -4812,7 +4812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.Player[data-v-02e4cd87] {\n  color: #fff;\n  width: auto !important;\n  height: 3em;\n}\n.Player__controlbar[data-v-02e4cd87] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-02e4cd87] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-02e4cd87] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-02e4cd87]{\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--play[data-v-02e4cd87]{\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--paused[data-v-02e4cd87] {\n  opacity: 1;\n}\n\n", ""]);
+exports.push([module.i, "\n.Player[data-v-02e4cd87] {\n  color: #fff;\n  width: auto !important;\n  height: 2em;\n}\n.Player__controlbar[data-v-02e4cd87] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-02e4cd87] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-02e4cd87] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-02e4cd87]{\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--play[data-v-02e4cd87]{\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-02e4cd87],\n.Player__control--playing.is-playing .Player__control--paused[data-v-02e4cd87] {\n  opacity: 1;\n}\n\n", ""]);
 
 // exports
 
@@ -72763,62 +72763,75 @@ var render = function() {
   return _c("div", { staticClass: "row justify-content-center mb-3" }, [
     _c("div", { staticClass: "d-block w-100 divider" }),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12 bg-dark-gray py-2 py-lg-0" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "d-flex p-2 align-items-lg-center flex-md-row flex-column"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "p-0 mx-2 my-0",
-              staticStyle: { "font-size": "1.2rem" }
-            },
-            [
-              _c("span", { staticClass: "fas fa-chalkboard-teacher fa-fw" }),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.room.name))])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "d-flex ml-md-auto flex-column flex-md-row ",
-              staticStyle: { "font-size": "0.9rem" }
-            },
-            [
-              _c("div", { staticClass: "mx-3" }, [
-                _c("span", { staticClass: "fas fa-key fa-fw mx-2" }),
-                _c("span", [_vm._v("کد عضویت : ")]),
-                _c("span", [_vm._v(_vm._s(_vm.room.code))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "mx-3" }, [
-                _c("span", { staticClass: "fas fa-users fa-fw mx-2" }),
-                _c("span", [_vm._v("تعداد اعضاء : ")]),
-                _c("span", [_vm._v(_vm._s(_vm.room.members.length))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "mx-3" }, [
-                _c("span", { staticClass: "fas fa-calendar-check mx-2 fa-fw" }),
-                _c("span", [_vm._v("ساخته شده در : ")]),
-                _c("span", [_vm._v(_vm._s(_vm.createdat))])
-              ])
-            ]
-          )
-        ]
-      )
-    ])
+    _c(
+      "div",
+      {
+        staticClass: "col-12 bg-dark-gray py-2 py-lg-0",
+        staticStyle: { "border-radius": "0px 0px 25px 25px" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-flex p-2 align-items-lg-center flex-md-row flex-column"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "p-0 mx-2 my-0",
+                staticStyle: { "font-size": "1.2rem" }
+              },
+              [
+                _c("span", { staticClass: "fas fa-chalkboard-teacher fa-fw" }),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.room.name))])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-divider d-block d-md-none" }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex ml-md-auto flex-column flex-md-row ",
+                staticStyle: { "font-size": "0.9rem" }
+              },
+              [
+                _c("div", { staticClass: "mx-3" }, [
+                  _c("span", { staticClass: "fas fa-key fa-fw mx-2" }),
+                  _c("span", [_vm._v("کد عضویت : ")]),
+                  _c("span", [_vm._v(_vm._s(_vm.room.code))])
+                ]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "dropdown-divider d-block d-md-none"
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-3" }, [
+                  _c("span", { staticClass: "fas fa-users fa-fw mx-2" }),
+                  _c("span", [_vm._v("تعداد اعضاء : ")]),
+                  _c("span", [_vm._v(_vm._s(_vm.room.members.length))])
+                ]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "dropdown-divider d-block d-md-none"
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-3" }, [
+                  _c("span", {
+                    staticClass: "fas fa-calendar-check mx-2 fa-fw"
+                  }),
+                  _c("span", [_vm._v("ساخته شده در : ")]),
+                  _c("span", [_vm._v(_vm._s(_vm.createdat))])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -72847,7 +72860,7 @@ var render = function() {
     "div",
     {
       ref: "player",
-      staticClass: "Player rounded bg-dark-gray",
+      staticClass: "Player rounded d-flex align-items-center bg-dark-gray",
       attrs: { id: "player" }
     },
     [
