@@ -8,7 +8,9 @@ class RoomRepo
 {
     public static function getWithExams($link)
     {
-        return Room::with(['exams'])->where('link', $link)->first();
+        return Room::with(['exams' => function($query){
+            $query->latest();
+        }])->where('link', $link)->first();
     }
 
     public static function withUserFindOrFail($room)

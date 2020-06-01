@@ -42,9 +42,10 @@
                     </div>
 
 
-                    <table class="text-center table table-responsive-sm table-striped">
+                    <table class="text-center table table-responsive-sm table-responsive-lg table-responsive-md table-striped">
                         <tr>
                             <td>عنوان آزمون</td>
+                            <td>کلاس</td>
                             <td><span class="fas fa-plus"></span> <span>افزودن سوال</span></td>
                             <td><span class="fas fa-edit"></span> <span>ویرایش</span></td>
                             <td><span class="fas fa-eye"></span> <span>مشاهده آزمون</span></td>
@@ -55,6 +56,7 @@
                         @forelse($room->exams ?? [] as $exam)
                             <tr class="@if($exam->show) bg-info @else bg-dark-gray @endif">
                                 <td>{{ $exam->name }}</td>
+                                <td>{{ $exam->rooms()->first()->name }}</td>
                                 <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.questions.manage',['exam' => $exam->id]) }}">افزودن سوال</a></td>
                                 <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.exam.edit',['exam' => $exam->id]) }}">ویرایش</a></td>
                                 <td><a class="btn btn-sm dark-shadow btn-light" href="{{ route('quizviran.exam.show',['exam' => $exam->id]) }}">مشاهده</a></td>
