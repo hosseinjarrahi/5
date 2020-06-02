@@ -6,10 +6,10 @@
     <div class="col-12 border-sm bg-dark-gray py-2 py-lg-0">
       <div class="d-flex p-2 align-items-lg-center flex-md-row flex-column">
 
-        <div class="p-0 mx-2 my-0" style="font-size:1.2rem">
+        <a :href="`/quiz/panel/room/${room.link}`" class="p-0 mx-2 my-0" style="font-size:1.2rem">
           <span class="fas fa-chalkboard-teacher fa-fw"></span>
           <span>{{ room.name }}</span>
-        </div>
+        </a>
 
         <div class="dropdown-divider d-block d-md-none"></div>
         <div class="d-flex ml-md-auto flex-column flex-md-row " style="font-size:0.9rem">

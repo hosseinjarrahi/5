@@ -10,7 +10,7 @@
       <label><span class="fas fa-paragraph"></span>توضیحات</label>
 
       <textarea v-model="question.formula" name="desc" class="mb-5 form-control" cols="30" rows="10"></textarea>
-      <app-content-border-box class="mx-auto" style="width: 90%" title="پیش نمایش سوال">
+      <app-content-border-box class="mx-auto" style="width: 90%" title="پیش نمایش سوال" v-if="!!question.formula">
         <vue-mathjax style="white-space: pre-wrap" :formula="question.formula"></vue-mathjax>
       </app-content-border-box>
 
@@ -49,6 +49,14 @@
       <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
     </div>
 
+    <div class="form-group">
+      <label><span class="fas fa-book fa-fw"></span> <span>دسته بندی سوال</span></label>
+      <select model="question.category" class="form-control">
+        <option value="0" selected>بدون دسته بندی</option>
+        <option v-for="category in categories" :key="'select'+category.id" :value="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+
     <button class="btn btn-primary btn-block">افزودن سوال</button>
   </div>
 </template>
@@ -56,16 +64,20 @@
 <script>
     export default {
         name: "AppQuestionAddForm",
-        data(){
-            return{
-                question:{
-                    A:'',
-                    B:'',
-                    C:'',
-                    D:'',
-                    norm:0,
-                    answer:'A',
-                    formula:'',
+        props: {
+            categories: {default: []}
+        },
+        data() {
+            return {
+                question: {
+                    A: '',
+                    B: '',
+                    C: '',
+                    D: '',
+                    norm: 0,
+                    answer: 'A',
+                    formula: '',
+                    category: null
                 }
             }
         }

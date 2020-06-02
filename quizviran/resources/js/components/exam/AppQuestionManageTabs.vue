@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 rounded overflow-hidden bg-dark-gray p-2">
+      <div class="col-12 rounded overflow-hidden bg-dark-gray p-2 big-shadow">
         <transition name="blur" mode="out-in">
           <div class="w-100" v-if="selected('question')" key="one-tab">
             <slot name="question"></slot>

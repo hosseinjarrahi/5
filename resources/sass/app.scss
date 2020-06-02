@@ -95,6 +95,12 @@ body{
   box-shadow: 0px 0px 20px $backgroundColor;
 }
 
+.app-border-box-hidden-bottom{
+  border-top:1px dashed #2f3542;
+  border-left:1px dashed #2f3542;
+  border-right:1px dashed #2f3542;
+}
+
 .app-border-box{
   border:1px dashed #2f3542;
 }
@@ -217,7 +223,7 @@ input,select,textarea,.btn{
   border-radius: 25px !important;
 }
 
-input,textarea,.btn-inset{
+input:not(.no-shadow),textarea,.btn-inset{
   box-shadow: inset 3px 0px 5px black;
 }
 
@@ -226,4 +232,10 @@ input,textarea,.btn-inset{
 }
 input.search,.left-horizon{
   border-radius: 0px 25px 25px 0px !important;
+}
+.bottom-horizon{
+  border-radius: 25px 25px 0px 0px !important;
+}
+.big-shadow{
+  box-shadow:1px 5px 4px black;
 }

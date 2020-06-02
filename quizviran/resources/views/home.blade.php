@@ -2,11 +2,11 @@
 @section('title','تیزویران | کلاس ها')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-lg-5">
 
         <div class="row justify-content-center">
 
-            <div class="col-12 mt-5 mb-2">
+            <div class="col-12 mt-5 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-11 col-md-4 d-flex justify-content-center">
                         <img src="{{ asset('img/quizviran.png') }}" alt="لوگو-کوییزویران" class="img-fluid" style="margin-top: 38px">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             @if(auth()->check())
-                <div class="col-12 my-2">
+                <div class="col-12 my-3">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
                             @if(auth()->user()->type == 'teacher')
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             @else
-                <div class="col-12 my-2">
+                <div class="col-12 my-3">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-3 d-flex flex-row justify-content-center px-3">
                             <div @click="EventBus.$emit('openSignUp')" class="mx-1">
@@ -49,57 +49,49 @@
             @endif
         </div>
 
-        <div class="row justify-content-center align-items-center">
-            <div class="col-11 my-2">
-                <div class="row p-0 justify-content-center">
-                    <div class="col-12 col-md-4 d-flex flex-row justify-content-center">
-                        <app-main-box title="چالش ها" icon="dice-six">
-                            <app-under-hand></app-under-hand>
-                        </app-main-box>
-                    </div>
-                    <div class="col-12 col-md-8 d-flex flex-row justify-content-center">
-                        <app-main-box title="آخرین مسابقات" icon="flag-checkered">
-                            <app-main-box-last-quiz :key="quiz.id" v-for="quiz in {{ $exams->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
-                        </app-main-box>
-                    </div>
-                </div>
+        <div class="row justify-content-center my-3">
+            <div class="col-12 col-md-8 d-flex flex-row justify-content-center">
+                <app-main-box title="آخرین مسابقات" icon="flag-checkered">
+                    <app-main-box-last-quiz :key="quiz.id" v-for="quiz in {{ $exams->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
+                </app-main-box>
+            </div>
+            <div class="col-12 col-md-4 d-flex flex-row justify-content-center">
+                <app-main-box title="چالش ها" icon="dice-six">
+                    <app-under-hand></app-under-hand>
+                </app-main-box>
             </div>
         </div>
 
-        <div class="row justify-content-center align-items-center">
-            <div class="col-11 my-2">
-                <div class="row p-0 justify-content-center">
-                    <div class="col-12 d-flex flex-row position-relative justify-content-center">
-                        <div class="gray-gradient rounded h-100"></div>
-                        <div class="w-100  bg-dark-gray p-1 rounded"
-                             style="height: 100px;overflow-x: auto;overflow-y: hidden">
+        <div class="row justify-content-center my-3">
+            <div class="col-12 d-flex flex-row position-relative justify-content-center">
+                <div class="gray-gradient rounded h-100"></div>
+                <div class="w-100  bg-dark-gray big-shadow p-1 rounded"
+                     style="height: 100px;overflow-x: auto;overflow-y: hidden">
 
-                            <div class="p-1 d-flex flex-row justify-content-start">
+                    <div class="p-1 d-flex flex-row justify-content-start">
 
-                                <div><img src="/quiz-assets/img/medal.png"
-                                          alt="دانش آموزان ممتاز"
-                                          style="height: 85px"
-                                    >
-                                </div>
-
-                                <div style="padding: 1px" class="bg-light mx-2 rounded"></div>
-                                @if($bestStudents->isEmpty())
-                                    <div class="d-flex flex-row justify-content-center align-items-center w-100">شما اولین نفر باشید.</div>
-                                @else
-                                    <app-best-users-item v-for="user in {{ $bestStudents->toJson() }}" :key="user.id" :user="user"></app-best-users-item>
-                                @endif
-
-                            </div>
-
-
+                        <div><img src="/quiz-assets/img/medal.png"
+                                  alt="دانش آموزان ممتاز"
+                                  style="height: 85px"
+                            >
                         </div>
+
+                        <div style="padding: 1px" class="bg-light mx-2 rounded"></div>
+                        @if($bestStudents->isEmpty())
+                            <div class="d-flex flex-row justify-content-center align-items-center w-100">شما اولین نفر باشید.</div>
+                        @else
+                            <app-best-users-item v-for="user in {{ $bestStudents->toJson() }}" :key="user.id" :user="user"></app-best-users-item>
+                        @endif
+
                     </div>
+
+
                 </div>
             </div>
         </div>
         @if(auth()->check())
-            <div class="row px-2 px-md-5 justify-content-center">
-                <div class="col-md-6 col-12 my-2 position-relative">
+            <div class="row justify-content-center my-3">
+                <div class="col-lg-6 col-12 my-2 position-relative">
                     <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
                         @if($rooms->isEmpty())
                             @if(auth()->user()->type == 'teacher')
@@ -119,7 +111,7 @@
                     </app-main-box>
                 </div>
 
-                <div class="col-md-6 col-12 my-2">
+                <div class="col-md-6 col-12 my-3">
                     <app-main-box :dark="true" title="تکالیف" icon="scroll" color="">
                         <app-under-hand></app-under-hand>
                     </app-main-box>

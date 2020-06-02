@@ -5,7 +5,7 @@
       <div class="p-2">
         <div class="form-group">
           <div class="input-group">
-            <div class="input-group-prepend"><span class="bg-dark-gray   border border-light p-1 rounded left-horizon">موضوع</span></div>
+            <div class="input-group-prepend"><span class="bg-dark-gray border border-light p-1 rounded left-horizon">موضوع</span></div>
             <input type="text" class="right-horizon form-control" v-model="name">
           </div>
         </div>
@@ -22,7 +22,7 @@
 
       <div
         v-for="category in cats" :key="'category-' + category.id"
-        class="my-1 d-flex p-2 rounded flex-row align-items-center justify-content-between bg-gray w-100">
+        class="my-1 d-flex p-1 rounded flex-row align-items-center justify-content-between bg-gray w-100">
         <span>{{ category.name }}</span>
         <div>
           <a @click="openEditForm(category)" class="btn btn-sm rounded btn-primary"><span>ویرایش</span></a>

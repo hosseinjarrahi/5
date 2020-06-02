@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark-gray p-1 rounded" >
+  <div class="bg-dark-gray big-shadow p-1 rounded" >
 
     <div class="flex-row d-flex align-items-center">
       <transition name="slide" mode="out-in">
@@ -25,8 +25,8 @@
             <div class="row p-2">
 
               <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
-                <button type="button" class="right-horizon btn bg-light">{{ file.name }}</button>
-                <button type="button" class="left-horizon btn btn-danger" @click="deleteFile(file.id)">&times;</button>
+                <button type="button" class="left-horizon btn bg-light">{{ file.name }}</button>
+                <button type="button" class="right-horizon btn btn-danger" @click="deleteFile(file.id)">&times;</button>
               </div>
 
             </div>
@@ -37,7 +37,7 @@
               <input type="file" ref="file" @change="uploadFile"/>
             </span>
 
-              <button class="btn btn-secondary btn-inset bg-gray text-light mx-2" @click="save">ارسال</button>
+              <button class="btn btn-primary btn-inset text-light mx-2" @click="save">ارسال</button>
 
               <button class="btn btn-inset btn-danger ml-auto text-light" @click.prevent="open = false">لغو</button>
             </div>

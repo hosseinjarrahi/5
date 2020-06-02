@@ -62,7 +62,7 @@
   .Player {
     color: #fff;
     width: auto !important;
-    height: 2em;
+    height: 2.4em;
   }
 
   .Player__controlbar {

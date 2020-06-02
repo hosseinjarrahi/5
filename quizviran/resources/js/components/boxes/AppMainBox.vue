@@ -12,7 +12,7 @@
     </div>
 
     <div class="row mt-2">
-      <div class="col-12 bg-dark-gray py-3 rounded">
+      <div class="col-12 bg-dark-gray py-3 rounded big-shadow">
 
         <slot></slot>
 

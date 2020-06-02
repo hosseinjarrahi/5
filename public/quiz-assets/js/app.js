@@ -3470,8 +3470,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppQuestionAddForm",
+  props: {
+    categories: {
+      "default": []
+    }
+  },
   data: function data() {
     return {
       question: {
@@ -3481,7 +3494,8 @@ __webpack_require__.r(__webpack_exports__);
         D: '',
         norm: 0,
         answer: 'A',
-        formula: ''
+        formula: '',
+        category: null
       }
     };
   }
@@ -5145,7 +5159,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.Player[data-v-e1fdba2e] {\n  color: #fff;\n  width: auto !important;\n  height: 2em;\n}\n.Player__controlbar[data-v-e1fdba2e] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-e1fdba2e] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-e1fdba2e] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-e1fdba2e]{\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-e1fdba2e],\n.Player__control--playing.is-playing .Player__control--play[data-v-e1fdba2e]{\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-e1fdba2e],\n.Player__control--playing.is-playing .Player__control--paused[data-v-e1fdba2e] {\n  opacity: 1;\n}\n\n", ""]);
+exports.push([module.i, "\n.Player[data-v-e1fdba2e] {\n  color: #fff;\n  width: auto !important;\n  height: 2.4em;\n}\n.Player__controlbar[data-v-e1fdba2e] {\n  display: flex;\n  position: relative;\n}\n.Player__control[data-v-e1fdba2e] {\n  position: relative;\n  text-align: center;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  flex: none;\n}\n.Player__control svg[data-v-e1fdba2e] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.Player__control--playing[data-v-e1fdba2e]{\n  cursor: pointer;\n}\n.Player__control--playing .Player__control--paused[data-v-e1fdba2e],\n.Player__control--playing.is-playing .Player__control--play[data-v-e1fdba2e]{\n  opacity: 0;\n}\n.Player__control--playing .Player__control--play[data-v-e1fdba2e],\n.Player__control--playing.is-playing .Player__control--paused[data-v-e1fdba2e] {\n  opacity: 1;\n}\n\n", ""]);
 
 // exports
 
@@ -71713,7 +71727,7 @@ var render = function() {
     _c("div", { staticClass: "row mt-2" }, [
       _c(
         "div",
-        { staticClass: "col-12 bg-dark-gray py-3 rounded" },
+        { staticClass: "col-12 bg-dark-gray py-3 rounded big-shadow" },
         [_vm._t("default")],
         2
       )
@@ -72600,21 +72614,23 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c(
-          "app-content-border-box",
-          {
-            staticClass: "mx-auto",
-            staticStyle: { width: "90%" },
-            attrs: { title: "پیش نمایش سوال" }
-          },
-          [
-            _c("vue-mathjax", {
-              staticStyle: { "white-space": "pre-wrap" },
-              attrs: { formula: _vm.question.formula }
-            })
-          ],
-          1
-        )
+        !!_vm.question.formula
+          ? _c(
+              "app-content-border-box",
+              {
+                staticClass: "mx-auto",
+                staticStyle: { width: "90%" },
+                attrs: { title: "پیش نمایش سوال" }
+              },
+              [
+                _c("vue-mathjax", {
+                  staticStyle: { "white-space": "pre-wrap" },
+                  attrs: { formula: _vm.question.formula }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ],
       1
     ),
@@ -72792,6 +72808,29 @@ var render = function() {
     _vm._v(" "),
     _vm._m(8),
     _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _vm._m(9),
+      _vm._v(" "),
+      _c(
+        "select",
+        { staticClass: "form-control", attrs: { model: "question.category" } },
+        [
+          _c("option", { attrs: { value: "0", selected: "" } }, [
+            _vm._v("بدون دسته بندی")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.categories, function(category) {
+            return _c(
+              "option",
+              { key: "select" + category.id, domProps: { value: category.id } },
+              [_vm._v(_vm._s(category.name))]
+            )
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
     _c("button", { staticClass: "btn btn-primary btn-block" }, [
       _vm._v("افزودن سوال")
     ])
@@ -72887,6 +72926,16 @@ var staticRenderFns = [
         staticClass: "form-control-file",
         attrs: { type: "file", name: "img", id: "exampleFormControlFile1" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _c("span", { staticClass: "fas fa-book fa-fw" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("دسته بندی سوال")])
     ])
   }
 ]
@@ -73083,7 +73132,7 @@ var render = function() {
               {
                 key: "category-" + category.id,
                 staticClass:
-                  "my-1 d-flex p-2 rounded flex-row align-items-center justify-content-between bg-gray w-100"
+                  "my-1 d-flex p-1 rounded flex-row align-items-center justify-content-between bg-gray w-100"
               },
               [
                 _c("span", [_vm._v(_vm._s(category.name))]),
@@ -73255,7 +73304,7 @@ var staticRenderFns = [
         "span",
         {
           staticClass:
-            "bg-dark-gray   border border-light p-1 rounded left-horizon"
+            "bg-dark-gray border border-light p-1 rounded left-horizon"
         },
         [_vm._v("موضوع")]
       )
@@ -73447,7 +73496,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-12 rounded overflow-hidden bg-dark-gray p-2" },
+        {
+          staticClass:
+            "col-12 rounded overflow-hidden bg-dark-gray p-2 big-shadow"
+        },
         [
           _c("transition", { attrs: { name: "blur", mode: "out-in" } }, [
             _vm.selected("question")
@@ -73825,7 +73877,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-dark-gray p-1 rounded" }, [
+  return _c("div", { staticClass: "bg-dark-gray big-shadow p-1 rounded" }, [
     _c(
       "div",
       { staticClass: "flex-row d-flex align-items-center" },
@@ -73907,7 +73959,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "right-horizon btn bg-light",
+                                staticClass: "left-horizon btn bg-light",
                                 attrs: { type: "button" }
                               },
                               [_vm._v(_vm._s(file.name))]
@@ -73916,7 +73968,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "left-horizon btn btn-danger",
+                                staticClass: "right-horizon btn btn-danger",
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
@@ -73955,7 +74007,7 @@ var render = function() {
                         "button",
                         {
                           staticClass:
-                            "btn btn-secondary btn-inset bg-gray text-light mx-2",
+                            "btn btn-primary btn-inset text-light mx-2",
                           on: { click: _vm.save }
                         },
                         [_vm._v("ارسال")]
@@ -74020,10 +74072,11 @@ var render = function() {
         },
         [
           _c(
-            "div",
+            "a",
             {
               staticClass: "p-0 mx-2 my-0",
-              staticStyle: { "font-size": "1.2rem" }
+              staticStyle: { "font-size": "1.2rem" },
+              attrs: { href: "/quiz/panel/room/" + _vm.room.link }
             },
             [
               _c("span", { staticClass: "fas fa-chalkboard-teacher fa-fw" }),

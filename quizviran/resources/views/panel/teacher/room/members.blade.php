@@ -10,26 +10,9 @@
             </div>
         </div>
 
-        <div class="row justify-content-center my-3">
-            <div class="col-11 my-2 bg-dark-gray rounded">
-                <div class="d-flex p-2 flex-md-row flex-column text-center">
+        <app-panel-room-info :room="{{ $room->toJson() }}" createdat="{{ jalalyYMD($room->created_at) }}"></app-panel-room-info>
 
-                    <div class="p-1 bg-light mx-2 rounded d-none d-md-flex"></div>
-                    <h2 class="p-0 m-0">{{ $room->name }}</h2>
-                    <div class="dropdown-divider d-block d-md-none"></div>
-                    <div class="d-flex ml-md-auto align-items-center flex-column flex-md-row ">
-                        <div class="mx-3"><span>کد عضویت : </span><span>{{ $room->code }}</span></div>
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>تعداد اعضاء : </span><span>{{ $room->members()->count() }}</span></div>
-                        <div class="dropdown-divider d-block d-md-none"></div>
-                        <div class="mx-3"><span>ساخته شده در : </span><span>{{ $room->created_at->format('Y/m/d') }}</span></div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-3" style="margin-bottom: 150px;">
+        <div class="row justify-content-center mt-5" style="margin-bottom: 150px;">
             <div class="col-11 my-2 rounded">
 
                 <app-content-border-box title="اعضاء کلاس">
@@ -70,3 +53,9 @@
 
     </div>
 @endsection
+<script>
+    import AppPanelRoomInfo from "../../../../js/components/room/AppPanelRoomInfo";
+    export default {
+        components: {AppPanelRoomInfo}
+    }
+</script>
