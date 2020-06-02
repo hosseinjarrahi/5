@@ -1,10 +1,9 @@
 <template>
   <div class="w-100">
     <div class="input-group my-3 shadow position-relative" style="border-radius:50px;">
-      <input @keyup.enter="find" v-model="search" type="text" class="form-control" style="border-radius:0px 50px 50px 0px;padding:20px !important"
-             placeholder="جست و جو...">
+      <input @keyup.enter="find" v-model="search" type="text" class="p-2 search form-control" placeholder="جست و جو...">
       <div class="input-group-append" @click="find">
-        <span class="input-group-text text-white pointer" style="border-radius:50px 0px 0px 50px;background:#e20"><span class="fas fa-search"></span></span>
+        <span class="input-group-text text-white pointer" style="border-radius:25px 0px 0px 25px;background:#e20"><span class="fas fa-search"></span></span>
       </div>
 
       <div class="row justify-content-center droper">

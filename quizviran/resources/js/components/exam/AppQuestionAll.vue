@@ -9,7 +9,7 @@
             <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
           </app-check-box>
 
-          <div class="d-flex flex-row justify-content-center mt-3 bg-gray rounded align-items-center py-1">
+          <div class="d-flex flex-row justify-content-center mt-3 bg-gray align-items-center py-1">
 
             <a class="mx-1 badge badge-info"
                :href="`/quiz/question/${question.id}/edit`"> ویرایش
@@ -20,10 +20,6 @@
             </a>
 
           </div>
-
-          <a class="btn py-0 bg-light btn-block"
-             :href="`/quiz/question/${question.id}/add-to-exam?exam=${id}`">افزودن به آزمون
-          </a>
 
         </div>
         <div class="dropdown-divider"></div>
@@ -39,11 +35,9 @@
 </template>
 
 <script>
-    import AppCheckBox from "./AppCheckBox";
     import Swal from 'sweetalert2';
 
     export default {
-        components: {AppCheckBox},
         props: ['id', 'questions'],
         name: "AppQuestionAll",
         data() {

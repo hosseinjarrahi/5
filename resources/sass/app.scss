@@ -183,6 +183,14 @@ body{
   width: 100%;
 }
 
+.bg-darkest{
+  background-color: #181e2a;
+}
+
+.horizon{
+  border-left:1px solid #181e2a;
+}
+
 .neu{
   border-radius: 18px;
   background: linear-gradient(145deg, #dddddd, #ffffff);
@@ -193,4 +201,29 @@ body{
 
 .rounded{
   border-radius:25px !important;
+}
+
+.border-dark-gray{
+  border: 2px solid $darkGray;
+  transition: all 0.5s;
+}
+
+.border-dark-gray.hoverable:hover{
+  background-color: $darkGray;
+  color:white !important;
+}
+
+input,select,textarea,.btn{
+  border-radius: 25px !important;
+}
+
+input,textarea,.btn-inset{
+  box-shadow: inset 3px 0px 5px black;
+}
+
+.vpd-input-group > input,.right-horizon {
+  border-radius: 25px 0px 0px 25px !important;
+}
+input.search,.left-horizon{
+  border-radius: 0px 25px 25px 0px !important;
 }

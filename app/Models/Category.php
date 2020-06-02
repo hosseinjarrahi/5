@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $guarded = ['id'];
+    protected $hidden = ['user_id'];
+
     public function products()
     {
         return $this->morphedByMany(Product::class, 'model','categories_models');
@@ -20,5 +22,10 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(Category::class,'parent_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

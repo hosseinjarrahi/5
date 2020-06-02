@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center px-2 px-lg-0">
 
-            <div class="col-12 p-0 p-lg-2 col-lg-2">
+            <div class="col-12 p-0 p-lg-2 col-lg-2 mt-2">
                 <div class="rounded bg-dark-gray shadow" style="border:1px white dashed">
                     @if(auth()->user()->isTeacher())
                         <div class="p-2 link-hover m-0 ">
@@ -131,11 +131,11 @@
                         <div class="container-fluid p-2" style="word-break: break-word">
                             @if(!$room->exams->isEmpty())
                                 @foreach($room->exams as $exam)
-                                    <div class="mt-3 text-center row flex-column justify-content-center align-items-center">
+                                    <div class="text-center row flex-column justify-content-center align-items-center">
 
                                         <div class="d-flex flex-row flex-wrap rounded overflow-hidden figure-caption bg-dark-gray">
                                             <b class="p-2 col-12">{{ $exam->name }}</b>
-                                            <p class="p-2 col-12 text-justify">{{ $exam->desc }}</p>
+                                            <p class="p-2 col-12 text-center figure-caption">{{ $exam->desc }}</p>
                                             <div class="divider"></div>
                                             <span class="p-2 col-6 col-lg-12">زمان شروع</span>
                                             <span class="p-2 col-6 col-lg-12">{{ \Morilog\Jalali\Jalalian::forge($exam->start)->format('H:i m/d') }}</span>

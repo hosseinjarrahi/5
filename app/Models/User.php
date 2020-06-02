@@ -156,4 +156,9 @@ class User extends Authenticatable
     {
         return $this->hasRoom($room) && $this->isTeacher();
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

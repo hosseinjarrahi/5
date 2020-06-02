@@ -25,21 +25,21 @@
             <div class="row p-2">
 
               <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
-                <button type="button" class="btn bg-light">{{ file.name }}</button>
-                <button type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
+                <button type="button" class="right-horizon btn bg-light">{{ file.name }}</button>
+                <button type="button" class="left-horizon btn btn-danger" @click="deleteFile(file.id)">&times;</button>
               </div>
 
             </div>
 
             <div class="row p-2">
-            <span class="btn bg-gray text-light mx-2 btn-file2 pointer">
+            <span class="btn bg-gray btn-inset text-light mx-2 btn-file2 pointer">
               <span class="fas fa-paperclip mx-2"></span><span>پیوست فایل</span>
               <input type="file" ref="file" @change="uploadFile"/>
             </span>
 
-              <button class="btn bg-gray text-light mx-2" @click="save">ارسال</button>
+              <button class="btn btn-secondary btn-inset bg-gray text-light mx-2" @click="save">ارسال</button>
 
-              <button class="btn btn-danger ml-auto text-light" @click.prevent="open = false">لغو</button>
+              <button class="btn btn-inset btn-danger ml-auto text-light" @click.prevent="open = false">لغو</button>
             </div>
 
           </div>
@@ -54,11 +54,9 @@
 
 <script>
     import Swal from 'sweetalert2';
-    import AppVoiceRecord from "./AppVoiceRecord";
 
     export default {
         name: "AppPanelRoomAddGap",
-        components: {AppVoiceRecord},
         props: ['type', 'id'],
         data() {
             return {
@@ -175,7 +173,6 @@
     position: relative;
     overflow: hidden;
     font-weight: bold;
-    border: 2px solid #2a476b;
   }
 
   .btn-file2:hover {

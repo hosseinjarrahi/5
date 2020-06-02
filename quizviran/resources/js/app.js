@@ -11,7 +11,6 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 ///////////////////////////////////////////////
 import VueMathjax from 'vue-mathjax';
 Vue.use(VueMathjax);
-Vue.component('app-latex', require('./components/AppLatex.vue').default);
 ///////////////////////////////////////////////
 window.EventBus = new Vue({});
 import globalMixin from './globalMixin';

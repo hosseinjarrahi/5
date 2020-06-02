@@ -40,21 +40,24 @@
 
               <div class="bg-gray mt-2 p-0 text-center col-12 rounded">
 
-                <div class="d-flex flex-row my-1">
+                <div class="d-flex flex-row my-1 align-items-center">
                   <template v-for="audio in audios">
                     <app-player :src="'/file?hash='+audio.hash" class="mx-1"></app-player>
                   </template>
+
+                  <div class="btn-group mx-1" v-for="(file,index) in files" :key="file.id">
+                    <a type="button" :href="`/file?hash=${file.hash}`" :class="['btn bg-light',{'left-horizon':file.user_id == auth}]">
+                      <span class="fas fa-download"></span>
+                      {{ file.name }}
+                    </a>
+                    <button v-if="file.user_id == auth" type="button" class="right-horizon btn btn-danger" @click="deleteFile(file.id)">&times;</button>
+                  </div>
+
                 </div>
 
                 <!--                  <span class="fas fa-paperclip mx-2"></span><span>پیوست ها</span>-->
 
-                <div class="btn-group mx-1 my-1" v-for="(file,index) in files" :key="file.id">
-                  <a type="button" :href="`/file?hash=${file.hash}`" class="btn bg-light">
-                    <span class="fas fa-download"></span>
-                    {{ file.name }}
-                  </a>
-                  <button v-if="file.user_id == auth" type="button" class="btn btn-danger" @click="deleteFile(file.id)">&times;</button>
-                </div>
+
 
 
               </div>
@@ -70,10 +73,8 @@
 
 <script>
     import Swal from 'sweetalert2';
-    import AppAudioPlayer from "./AppAudioPlayer";
 
     export default {
-        components: {AppAudioPlayer},
         props: {
             comment: {
                 default: function () {

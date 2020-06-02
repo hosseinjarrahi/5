@@ -15,7 +15,7 @@
 
         <p class="text-justify p-3">
           <span>{{ number }}-</span>
-          <vue-mathjax :formula="desc"></vue-mathjax>
+          <vue-mathjax :formula="desc" style="white-space: pre-wrap"></vue-mathjax>
         </p>
 
         <ul class="list-group" ref="ul" v-if="type == 'test'">

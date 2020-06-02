@@ -21,6 +21,9 @@ Route::group(['prefix' => 'quiz','as' => 'quizviran.','middleware' => ['auth']],
 
     Route::group(['prefix' => 'panel'], function () {
         Route::get('/','PanelController@home')->name('panel');
+
+        Route::resource('/category','CategoryController');
+
         Route::get('/rooms','PanelController@home')->name('rooms');
         Route::resource('/room','RoomController');
 

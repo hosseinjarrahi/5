@@ -40,3 +40,15 @@ body {
   box-shadow: 0px 2px 5px #003d5c;
 }
 
+.blur-enter,
+.blur-leave-to {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+  opacity: 0;
+}
+
+.blur-enter-active,
+.blur-leave-active {
+  transition: all 0.3s;
+}
+
