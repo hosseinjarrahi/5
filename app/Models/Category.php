@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Quizviran\Models\Question;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -12,6 +13,11 @@ class Category extends Model
     public function products()
     {
         return $this->morphedByMany(Product::class, 'model','categories_models');
+    }
+
+    public function questions()
+    {
+        return $this->morphedByMany(Question::class, 'model','categories_models');
     }
 
     public function parent()

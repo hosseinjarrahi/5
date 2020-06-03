@@ -61,6 +61,7 @@
       <label for="exampleFormControlFile1"><span class="fas fa-image"></span> تصویر </label>
       <input type="file" @change="toBase64" name="img" class="form-control-file" id="exampleFormControlFile1">
       <app-errors :errors="errors.pic"></app-errors>
+      <img v-if="pic" style="max-height:300px;" :src="pic" class="rounded mx-auto d-block img-fluid my-2">
     </div>
 
     <div class="form-group">
@@ -79,10 +80,21 @@
     import Swal from 'sweetalert2';
 
     export default {
-        name: "AppQuestionAddForm",
+        name: "AppQuestionEditForm",
         props: {
             categories: {default: () => []},
             route: {default: ''},
+            input: {
+                default: () => {
+                }
+            }
+        },
+        mounted() {
+            this.question = Object.assign(this.input);
+            this.question.formula = this.input.desc;
+            this.question.category = this.input.categories[0] ? this.input.categories[0].id : 0;
+            this.pic = this.question.pic;
+            this.question.pic = null;
         },
         data() {
             return {
@@ -97,8 +109,9 @@
                     type: 'test',
                     category: 0,
                     pic: '',
-                    level: 'easy',
+                    level: '',
                 },
+                pic: null,
                 errors: []
             }
         },
@@ -118,7 +131,7 @@
             },
             makeQuestion() {
                 this.load();
-                axios.post(this.route, this.question)
+                axios.patch(this.route, this.question)
                     .then(({data}) => {
                         Swal.fire({
                             text: 'با موفقیت انجام شد.',
@@ -126,11 +139,10 @@
                             confirmButtonText: 'بسیار خوب',
                             timer: 5000,
                         });
-                        window.EventBus.$emit('addQuestion', data.question);
                     })
                     .catch(({response}) => {
                         Swal.fire({
-                            text: 'مشکلی در افزودن سوال رخ داده است.',
+                            text: 'مشکلی در ویرایش سوال رخ داده است.',
                             icon: 'error',
                             confirmButtonText: 'بسیار خوب',
                             timer: 5000,

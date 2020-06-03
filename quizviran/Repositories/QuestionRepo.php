@@ -3,6 +3,7 @@
 namespace Quizviran\Repositories;
 
 use App\Http\Upload;
+use App\Models\Category;
 use Quizviran\Models\Question;
 
 class QuestionRepo
@@ -10,48 +11,47 @@ class QuestionRepo
     // todo : refactore $request
     public static function find($ids)
     {
-      return Question::find($ids);
+        return Question::find($ids);
     }
 
     public static function findOrFail($question)
     {
-      return Question::findOrFail($question);
+        return Question::findOrFail($question);
     }
 
-    public static function create($request)
+    public static function create($request, $pic)
     {
-        $pic = $request->file('img')->store();
-        $pic = $pic ? $pic['pic'] : null;
         $question = new Question;
-        $question->A = $request->A;
-        $question->B = $request->B;
-        $question->D = $request->D;
-        $question->C = $request->C;
-        $question->answer = $request->answer;
-        $question->desc = $request->desc;
-        $question->type = $request->type;
-        $question->norm = $request->norm;
-        $question->pic = $pic;
+
+        self::setValues($question, $request, $pic);
+
         $question->user_id = auth()->id();
 
         $question->save();
+
+        return $question;
     }
 
-    public static function update($request,$question)
+    public static function update($request, $question, $pic)
     {
-        $pic = Upload::uploadFile(['pic' => $request->pic]);
-        $pic = $pic ? $pic : null;
-
-        $question->A = $request->A;
-        $question->B = $request->B;
-        $question->D = $request->D;
-        $question->C = $request->C;
-        $question->answer = $request->answer;
-        $question->desc = $request->desc;
-        $question->type = $request->type;
-        $question->norm = $request->norm;
-        $question->pic = $pic ?? $question->pic;
+        self::setValues($question, $request, $pic);
 
         $question->save();
+
+        return $question;
+    }
+
+    private static function setValues(&$question, $request, $pic)
+    {
+        $question->A = $request['A'];
+        $question->B = $request['B'];
+        $question->D = $request['D'];
+        $question->C = $request['C'];
+        $question->answer = $request['answer'];
+        $question->desc = $request['formula'];
+        $question->type = $request['type'];
+        $question->norm = $request['norm'];
+        $question->level = $request['level'];
+        $question->pic = $pic;
     }
 }

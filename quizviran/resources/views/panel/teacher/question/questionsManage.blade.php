@@ -42,11 +42,11 @@
 
                 <app-question-manage-tabs>
                     <template #question>
-                        <app-question-add-form route="{{ route('quizviran.question.store') }}"></app-question-add-form>
+                        <app-question-add-form :categories="{{ $categories->toJson() }}" route="{{ route('quizviran.question.store') }}"></app-question-add-form>
                     </template>
 
                     <template #category>
-                        <app-question-category-tab :categories="{{ auth()->user()->categories->toJson() }}" route="{{ route('quizviran.category.store') }}"></app-question-category-tab>
+                        <app-question-category-tab :categories="{{ $categories->toJson() }}" route="{{ route('quizviran.category.store') }}"></app-question-category-tab>
                     </template>
                 </app-question-manage-tabs>
 
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="px-1 my-4 px-lg-5 col-12 mt-5">
-                    <app-question-all :questions="{{ $allQuestions->toJson() }}" id="{{ $exam->id }}"></app-question-all>
+                    <app-question-all :categories="{{ $categories->toJson() }}" :questions="{{ $allQuestions->toJson() }}" id="{{ $exam->id }}"></app-question-all>
                 </div>
             </div>
         </div>

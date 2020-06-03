@@ -31,7 +31,7 @@
                   </a>
 <!--                  <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>-->
                   <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
-                  <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
+                  <a class="dropdown-item text-danger" @click="logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
                 </div>
               </div>
             </transition>
@@ -91,7 +91,12 @@
                 ]
             };
         },
-        methods: {},
+        methods: {
+            logout(){
+                localStorage.clear();
+                window.location = '/logout';
+            }
+        },
     };
 </script>
 

@@ -2,28 +2,69 @@
   <app-content-border-box title="تمامی سوالات شما" icon="question-circle">
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
 
-      <template v-for="(question,index) in questions">
-        <div>
+      <app-accordion-item
+        class="my-1"
+        v-for="category in categories"
+        :key="'accordion' + category.id"
+        :title="category.name"
+      >
+        <template v-for="(question,index) in category.questions">
+          <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
 
-          <app-check-box @change="handleSelecting" :qid="question.id">
-            <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
-          </app-check-box>
+            <app-check-box @change="handleSelecting" :qid="question.id">
+              <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
+            </app-check-box>
 
-          <div class="d-flex flex-row justify-content-center mt-3 bg-gray align-items-center py-1">
+            <div class="d-flex rounded flex-row justify-content-end mt-3 align-items-center py-1">
 
-            <a class="mx-1 badge badge-info"
-               :href="`/quiz/question/${question.id}/edit`"> ویرایش
-            </a>
+              <a class="mx-1 btn btn-sm bg-dark-gray"
+                 :href="`/quiz/question/${question.id}/edit`">
+                <span class="fas fa-edit"></span>
+                <span>ویرایش</span>
+              </a>
 
-            <a class="mx-1 badge badge-light"
-               :href="`/quiz/question/${question.id}`">مشاهده سوال
-            </a>
+              <a class="mx-1 btn btn-sm bg-dark-gray"
+                 :href="`/quiz/question/${question.id}`">
+                <span class="fas fa-eye"></span>
+                <span>مشاهده</span>
+              </a>
+
+            </div>
 
           </div>
+        </template>
 
-        </div>
-        <div class="dropdown-divider"></div>
-      </template>
+      </app-accordion-item>
+
+      <app-accordion-item title="همه سوالات">
+
+        <template v-for="(question,index) in questions">
+          <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
+
+            <app-check-box @change="handleSelecting" :qid="question.id">
+              <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
+            </app-check-box>
+
+            <div class="d-flex rounded flex-row justify-content-end mt-3 align-items-center py-1">
+
+              <a class="mx-1 btn btn-sm bg-dark-gray"
+                 :href="`/quiz/question/${question.id}/edit`">
+                <span class="fas fa-edit"></span>
+                <span>ویرایش</span>
+              </a>
+
+              <a class="mx-1 btn btn-sm bg-dark-gray"
+                 :href="`/quiz/question/${question.id}`">
+                <span class="fas fa-eye"></span>
+                <span>مشاهده</span>
+              </a>
+
+            </div>
+
+          </div>
+        </template>
+
+      </app-accordion-item>
 
     </div>
 
@@ -38,7 +79,7 @@
     import Swal from 'sweetalert2';
 
     export default {
-        props: ['id', 'questions'],
+        props: ['id', 'questions', 'categories'],
         name: "AppQuestionAll",
         data() {
             return {

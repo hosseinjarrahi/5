@@ -29,9 +29,9 @@
                       <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
                     </span>اعلانات
                   </a>
-                  <!-- <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a> -->
+<!--                  <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>-->
                   <a class="dropdown-item" href="/profile"><span class="fas fa-user-alt mr-1"></span>پروفایل</a>
-                  <a class="dropdown-item text-danger" href="/logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
+                  <a class="dropdown-item text-danger" @click="logout"><span class="fas fa-door-open mr-1"></span>خروج</a>
                 </div>
               </div>
             </transition>
@@ -72,6 +72,11 @@
             notifications: {default: 0},
             event: {default: 0},
         },
+        created() {
+            EventBus.$on('openSignUp',()=>{
+                this.openModal = true;
+            });
+        },
         data() {
             return {
                 opened: false,
@@ -81,12 +86,17 @@
                 links: [
                     {to: '/', title: 'خانه'},
                     {to: '/quiz', title: 'کوییزویران'},
-                    {to: '/shop', title: 'فروشگاه'},
+                    {to: '/فروشگاه', title: 'فروشگاه'},
                     {to: 'http://forum.tizviran.com', title: 'انجمن'},
                 ]
             };
         },
-        methods: {},
+        methods: {
+            logout(){
+                localStorage.clear();
+                window.location = '/logout';
+            }
+        },
     };
 </script>
 
@@ -108,5 +118,13 @@
     top: 0;
     left: 0;
     z-index: 5;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: scale(2);
   }
 </style>

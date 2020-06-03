@@ -8,7 +8,7 @@
       <img src="/img/offer.svg" class="img-fluid" alt="offer"/>
     </div>
     <div
-      class="my-2 rounded shadow h-100 d-flex flex-column justify-content-between course-card bg-light overflow-hidden"
+      class="my-2 rounded light-shadow h-100 d-flex flex-column justify-content-between course-card bg-light overflow-hidden"
     >
       <div class="course-header shadow" :style="{backgroundImage:`url('${product.pic}')`}"></div>
 
@@ -20,7 +20,7 @@
             <span style="font-size:0.8rem">
               <img :src="avatar" class="shadow avatar" :alt="product.user.name"/>
               <span>استاد:</span>
-              <span>جعفری</span>
+              <span>{{ product.user.name }}</span>
             </span>
           </p>
         </slot>
@@ -31,11 +31,11 @@
               class="dark-top-border w-100 position-relative d-flex justify-content-center  "
             >
               <span class="d-flex flex-row justify-content-center">
-                <span class="btn btn-success py-0" v-if="product.offer > 0">
+                <span class="btn btn-inset btn-success py-0" v-if="product.offer > 0">
                   <span>{{ product.offer }} تومان</span>
                 </span>
                 <span
-                  :class="['py-0',{'floating':product.offer > 0,'btn bg-dark-gray':product.offer <= 0}]"
+                  :class="['py-0',{'floating':product.offer > 0,'btn btn-inset bg-dark-gray':product.offer <= 0}]"
                 >
                   <span
                     :class="[{'line-throgh text-muted':product.offer > 0}]"

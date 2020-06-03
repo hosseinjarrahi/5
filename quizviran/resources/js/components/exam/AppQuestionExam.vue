@@ -2,31 +2,37 @@
   <app-content-border-box :title="` سوالات  ${name}`" icon="question">
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
 
+
       <template v-for="(question,index) in questions">
-        <div>
+        <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
 
           <app-check-box @change="handleSelecting" :qid="question.id">
-            <vue-mathjax :formula="`${index+1} - ${question.desc}`"></vue-mathjax>
+            <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
           </app-check-box>
 
-          <div class="d-flex flex-row justify-content-center mt-3 bg-gray align-items-center py-1">
+          <div class="d-flex rounded flex-row justify-content-around justify-content-md-end mt-3 align-items-center py-1">
 
-            <a class="badge mx-1 badge-info btn btn-primary"
-               :href="`/quiz/question/${question.id}/edit`">ویرایش
+            <a class="mx-1 btn btn-sm bg-dark-gray"
+               :href="`/quiz/question/${question.id}/edit`">
+              <span class="fas fa-edit"></span>
+              <span>ویرایش</span>
             </a>
 
-            <a class="mx-1 badge badge-light"
-               :href="`/quiz/question/${question.id}`">مشاهده سوال
+            <a class="btn btn-sm bg-dark-gray"
+               :href="`/quiz/question/${question.id}/delete-from-exam?exam=${id}`">
+              <span class="fas fa-trash"></span>
+              <span>حذف از آزمون</span>
             </a>
 
-            <a class="badge badge-danger"
-               :href="`/quiz/question/${question.id}/delete-from-exam?exam=${id}`">حذف از آزمون
+            <a class="mx-1 btn btn-sm bg-dark-gray"
+               :href="`/quiz/question/${question.id}`">
+              <span class="fas fa-eye"></span>
+              <span>مشاهده</span>
             </a>
 
           </div>
 
         </div>
-        <div class="dropdown-divider"></div>
       </template>
 
     </div>

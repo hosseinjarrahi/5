@@ -176,11 +176,13 @@ class ExamController extends Controller
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
 
-        $allQuestions = auth()->user()->questions;
+        $allQuestions = auth()->user()->questions()->whereDoesntHave('categories')->get();
 
         $room = $exam->rooms()->firstOrFail();
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('room', 'quiz', 'allQuestions', 'exam'));
+        $categories = auth()->user()->categories()->with('questions')->get();
+
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories','room', 'quiz', 'allQuestions', 'exam'));
     }
 
     public function completeResult($exam)

@@ -1,8 +1,8 @@
 <template>
   <div class="modaler">
     <div class="modal-dialog" style="overflow: hidden" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
+      <div class="modal-content border-0 ">
+        <div class="modal-header bg-dark-gray">
           <transition name="fade" v-if="!auth">
             <h5 class="modal-title" key="a" v-if="loginer">فرم ورود</h5>
 
@@ -13,7 +13,7 @@
             <h5 class="modal-title" key="d" v-else-if="recoveryCode">کد تایید</h5>
           </transition>
 
-          <button type="button" class="close" @click="close">
+          <button type="button" class="text-white close" @click="close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -26,20 +26,20 @@
               <form>
                 <div class="form-group">
                   <span class="fas fa-user"></span>
-                  <span>شماره تلفن و یا ایمیل:</span>
-                  <input v-model="login.variable" type="text" class="form-control"/>
+                  <span>تلفن و یا ایمیل:</span>
+                  <input v-model="login.variable" type="text" class="no-shadow form-control"/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
                   <span>رمز عبور:</span>
-                  <input v-model="login.password" type="password" class="form-control"/>
+                  <input v-model="login.password" type="password" class="no-shadow form-control"/>
                 </div>
                 <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">
                   <span class="fas fa-question"></span>
                   <span>فراموشی رمز عبور</span>
                 </a>
                 <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin()">
-                  <span class="fas fa-door-open"></span>
+                  <span class="fas fa-sign-in-alt"></span>
                   <span>ورود</span>
                 </button>
               </form>
@@ -65,7 +65,7 @@
                   <span>و یا ایمیل</span>
                   <input
                     v-model="registerForm.phone"
-                    class="form-control"
+                    class="no-shadow form-control"
                     type="text"
                     required
                     min="10"
@@ -74,14 +74,14 @@
                 <div class="form-group">
                   <span class="fas fa-pen"></span>
                   <span>نام و نام خانوادگی</span>
-                  <input v-model="registerForm.name" class="form-control" type="text" required/>
+                  <input v-model="registerForm.name" class="no-shadow form-control" type="text" required/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
                   <span>رمز عبور</span>
                   <input
                     v-model="registerForm.password"
-                    class="form-control"
+                    class="no-shadow form-control"
                     type="password"
                     required
                     min="8"
@@ -93,7 +93,7 @@
                   <span>تکرار رمز عبور</span>
                   <input
                     v-model="registerForm.confirm"
-                    class="form-control"
+                    class="no-shadow form-control"
                     type="password"
                     required
                     min="8"
@@ -135,7 +135,7 @@
                 <div class="form-group">
                   <span class="fas fa-check-circle"></span>
                   <span>کد تایید</span>
-                  <input v-model="verifyCode" class="form-control" type="text" required/>
+                  <input v-model="verifyCode" class="no-shadow form-control" type="text" required/>
                 </div>
                 <button @click.prevent="verify" class="btn btn-primary">ارسال کد تایید</button>
               </form>
@@ -148,7 +148,7 @@
                   <hr/>
                   <span class="fas fa-phone"></span>
                   <span>تلفن همراه و یا ایمیل:</span>
-                  <input v-model="phone" type="text" class="form-control"/>
+                  <input v-model="phone" type="text" class="no-shadow form-control"/>
                 </div>
                 <button class="btn btn-primary btn-block my-2" @click.prevent="sendCode">ارسال کد</button>
               </form>
@@ -195,32 +195,35 @@
             close() {
                 this.$emit("close");
             },
+            sweetAlert(text,icon){
+                return Swal.fire({
+                    text: text,
+                    icon: icon,
+                    confirmButtonText: "بسیار خوب",
+                    timer: 5000
+                });
+            },
+            successAlert(text = 'با موفقیت انجام شد'){
+                return this.sweetAlert(text,'success');
+            },
+            errorAlert(text = 'مشکلی رخ داده است'){
+                return this.sweetAlert(text,'error');
+            },
             doLogin() {
                 this.errors = [];
                 this.load();
                 axios.post("/login", this.login)
                     .then(response => {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: "بسیار خوب",
-                            timer: 5000
-                        });
-                        location.reload();
+                        this.successAlert();
+                        window.location.reload();
                     })
                     .catch(err => {
                         this.errors = err.response.data.errors;
-                        console.log();
                         if (!!!this.errors) {
-                            Swal.fire({
-                                text: err.response.data.message,
-                                icon: 'error',
-                                confirmButtonText: "بسیار خوب",
-                                timer: 5000
-                            });
+                            this.errorAlert();
                         }
                     })
-                    .then( () => {
+                    .finally( () => {
                         this.closeLoad();
                     });
             },
@@ -230,28 +233,18 @@
                 axios
                     .post("/register", this.registerForm)
                     .then(response => {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: "بسیار خوب",
-                            timer: 5000
-                        });
+                        this.successAlert();
                         this.changeState("registerCode");
                         this.registerForm = {phone: "", name: "", type: "", password: "", confirm: ""};
                     })
                     .catch(err => {
                             this.errors = err.response.data.errors;
                             if (err.response.data.message) {
-                                Swal.fire({
-                                    text: err.response.data.message,
-                                    icon: 'error',
-                                    confirmButtonText: "بسیار خوب",
-                                    timer: 5000
-                                });
+                                this.errorAlert();
                             }
                         }
                     )
-                    .then( () => {
+                    .finally( () => {
                         this.closeLoad();
                     });
             },
@@ -261,25 +254,14 @@
                 axios
                     .post("/verify", {verify: this.verifyCode})
                     .then(response => {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: "بسیار خوب",
-                            timer: 5000
-                        });
-
+                        this.successAlert();
                         this.changeState("login");
                         setTimeout(()=>{window.location.reload();},1000);
                     })
                     .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی رخ داده است',
-                            icon: 'error',
-                            confirmButtonText: "بسیار خوب",
-                            timer: 5000
-                        });
+                        this.errorAlert();
                     })
-                    .then( () => {
+                    .finally( () => {
                         this.closeLoad();
                     });
             },
@@ -289,13 +271,7 @@
                 axios
                     .post("/reset-password", {phone: this.phone})
                     .then(res => {
-                        Swal.fire({
-                            text:
-                                "اگر شماره تلفن و یا ایمیل را درست وارد کرده باشید کد برای شما ارسال شده است.",
-                            icon: "success",
-                            confirmButtonText: "بسیار خوب",
-                            timer: 5000
-                        });
+                        this.successAlert('اگر شماره تلفن و یا ایمیل را درست وارد کرده باشید کد برای شما ارسال شده است');
                         this.$emit("close");
                     })
                     .catch(err => {
@@ -305,14 +281,11 @@
                                 "تعداد درخواست های شما بیش از حد مجاز است.";
                         this.errors = err.response.data.errors;
                         if (!this.errors)
-                            Swal.fire({
-                                text: message,
-                                icon: "error",
-                                confirmButtonText: "بسیار خوب",
-                                timer: 5000
-                            });
+                        {
+                            this.errorAlert(message);
+                        }
                     })
-                    .then( () => {
+                    .finally( () => {
                         this.closeLoad();
                     });
             },

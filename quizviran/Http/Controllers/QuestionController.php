@@ -2,18 +2,29 @@
 
 namespace Quizviran\Http\Controllers;
 
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\ExamRepo;
 use Quizviran\Repositories\QuestionRepo;
+use Quizviran\Http\Requests\QuestionRequest;
+use Illuminate\Support\Facades\File as FileFacade;
 
 class QuestionController extends Controller
 {
+    private $picPath;
+
     public function __construct()
     {
-        $this
-            ->middleware(['has.question'])
-            ->except(['store','create','deleteManyFromExam','addManyToExam']);
+        $this->middleware(['has.question'])->except([
+            'store',
+            'create',
+            'deleteManyFromExam',
+            'addManyToExam',
+        ]);
+
+        $this->picPath = 'public/quiz-pics/' . jalalyFolder();
     }
 
     public function create()
@@ -45,7 +56,6 @@ class QuestionController extends Controller
          * @name('quizviran.question.destroy')
          * @middlewares(web, auth, has.question)
          */
-
     }
 
     public function edit($question)
@@ -60,7 +70,7 @@ class QuestionController extends Controller
         return view('Quizviran::panel.teacher.question.questionEdit', compact('question'));
     }
 
-    public function update($question, Request $request)
+    public function update($question, QuestionRequest $request)
     {
         /**
          * @methods(PUT, PATCH)
@@ -69,35 +79,64 @@ class QuestionController extends Controller
          * @middlewares(web, auth, has.question)
          */
         // todo : change validate for better ui
-        $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
-
         $question = QuestionRepo::findOrFail($question);
 
-        $this->updateQuestion($request, $question);
+        $pic = $this->storePic($request->pic);
 
+        $pic = $pic ? $pic : $question->pic;
+
+        $question = QuestionRepo::update($request->only([
+            'A',
+            'B',
+            'D',
+            'C',
+            'answer',
+            'formula',
+            'type',
+            'norm',
+            'level',
+            'category',
+        ]), $question, $pic);
+        // todo : check if user has this category
+        $category = $request['category'] ? Category::findOrfail($request['category']) : null;
+
+        if ($category) {
+            $question->categories()->sync($category);
+        }
+
+        return response(['message' => 'با موفقیت ویرایش شد.']);
         return back();
     }
 
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
         /**
          * @post('/quiz/question')
          * @name('quizviran.question.store')
          * @middlewares(web, auth)
          */
-        // todo : this
-        $request->validate(['img' => 'mimes:jpg,png,jpeg,gif']);
+        $pic = $this->storePic($request->pic);
 
-        QuestionRepo::create($request);
+        $question = QuestionRepo::create($request->only([
+            'A',
+            'B',
+            'D',
+            'C',
+            'answer',
+            'formula',
+            'type',
+            'level',
+            'norm',
+            'category',
+        ]), $pic);
 
-        return back();
-    }
+        $category = $request['category'] ? Category::findOrfail($request['category']) : null;
+        // todo : check if user has this category
+        if ($category) {
+            $question->categories()->sync($category);
+        }
 
-    private function updateQuestion($request, $question)
-    {
-        QuestionRepo::update($request,$question);
-
-        return back();
+        return response(['message' => 'با موفقیت ایجاد شد.']);
     }
 
     public function addToExam($question)
@@ -111,7 +150,7 @@ class QuestionController extends Controller
 
         $exam = ExamRepo::findOrFail(request()->exam);
 
-        if (!$exam->questions->contains($question->id)) {
+        if (! $exam->questions->contains($question->id)) {
             $exam->questions()->attach($question);
         }
 
@@ -150,10 +189,9 @@ class QuestionController extends Controller
         $exam->questions()->detach($questions);
 
         return response([
-            'message' => 'با موفقیت ثبت شد'
+            'message' => 'با موفقیت ثبت شد',
         ]);
     }
-
 
     public function addManyToExam(Request $request)
     {
@@ -166,12 +204,31 @@ class QuestionController extends Controller
 
         $questions = QuestionRepo::findOrFail($request->questions);
 
-        $exam->questions()->sync($questions);
+        $exam->questions()->syncWithoutDetaching($questions);
 
         return response([
-            'message' => 'با موفقیت ثبت شد.'
+            'message' => 'با موفقیت ثبت شد.',
         ]);
     }
 
+    private function storePic($pic)
+    {
+        if (! $pic) {
+            return null;
+        }
 
+        $mime = Str::of($pic)->before(';base64')->after('image/');
+        $pic = base64_decode(Str::of($pic)->after('base64,'), true);
+
+        if (! $pic) {
+            return null;
+        }
+
+        $name = Str::random(15) . ".{$mime}";
+        file_put_contents("temp/{$name}", $pic);
+        FileFacade::ensureDirectoryExists(storage_path("app/{$this->picPath}"));
+        FileFacade::move(public_path("temp\\{$name}"), storage_path("app/{$this->picPath}/{$name}"));
+
+        return '/storage/' . ltrim($this->picPath, 'public/') . "/{$name}";
+    }
 }

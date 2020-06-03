@@ -6,7 +6,7 @@
         {{ title }}
       </div>
     </div>
-    <div class="pt-3 container">
+    <div class="pt-3 container-fluid">
       <slot></slot>
     </div>
   </div>
