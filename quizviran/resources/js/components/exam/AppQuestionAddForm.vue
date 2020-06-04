@@ -127,6 +127,7 @@
                             timer: 5000,
                         });
                         window.EventBus.$emit('addQuestion', data.question);
+                        window.location.reload();
                     })
                     .catch(({response}) => {
                         Swal.fire({

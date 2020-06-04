@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\DbServiceProvider::class,
         App\Providers\NotificationServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
         Admin\AdminServiceProvider::class,
         Quizviran\QuizviranServiceProvider::class,
     ],

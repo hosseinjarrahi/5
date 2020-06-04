@@ -93,7 +93,6 @@
         },
         methods: {
             logout(){
-                localStorage.clear();
                 window.location = '/logout';
             }
         },

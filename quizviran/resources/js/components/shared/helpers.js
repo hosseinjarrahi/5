@@ -1,12 +1,8 @@
 function checkAuth() {
-    let H = localStorage.getItem('H');
-    if (H && H != 'false') return H;
-    return axios.post('/check-auth')
-        .then(res => {
-            localStorage.setItem('H', res.data);
-            return res.data;
-        })
-        .catch(err => console.log(err));
+    let authEl = document.querySelector('#authEl');
+    let auth = authEl.getAttribute('value');
+    authEl.remove();
+    return auth ? auth : null;
 }
 
 function redirect(url) {

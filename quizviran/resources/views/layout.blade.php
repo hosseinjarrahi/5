@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
+    @authEl
     <meta charset="utf-8">
     <meta name="keywords" content="@yield('keywords','')">
     <meta name="description" content="@yield('description','')">
@@ -9,7 +10,6 @@
     <link rel="icon" href="/img/favicon.png" type="image/png" sizes="50x50">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('quiz-assets/css/app.css') }}">
-
     <title>@yield('title')</title>
 </head>
 <body style="direction: rtl !important;">

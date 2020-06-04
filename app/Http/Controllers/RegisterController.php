@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Upload;
 use App\Models\Profile;
 use Morilog\Jalali\Jalalian;
 use App\Events\ResetPasswordEvent;
@@ -10,7 +9,7 @@ use App\Events\SendVerificationCode;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\QuestionRequest;
+use Quizviran\Http\Requests\QuestionRequest;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\RecoverRequest;
 use App\Http\Requests\ProfileRequest;

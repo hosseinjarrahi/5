@@ -2,52 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/base64validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/temp/6TLxSeHVJyjOdXu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/temp/Xd4kXTM4LvOUDkS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quizviran/Http/Requests/QuestionRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionEditForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/AppErrors.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/shared/AppErrors.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/shared/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/shared/layout/AppFooter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quizviran/Http/Middleware/HasExam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Tizviran.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tizviran.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Hossein.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/SlideController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/SlideController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/HasExam.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/HasQuestion.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/HasRoom.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Upload.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/quiz-assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Models/Question.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/Repositories/QuestionRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Repositories/QuestionRepo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/shared/AppLoginModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/boxes/AppContentBorderBox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/boxes/AppContentBorderBox.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAddForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAddForm.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAll.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionExam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/layout/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/layout/AppFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/layout/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionEdit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppFooter.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/shared/layout/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppLoginModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/AppLoginModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/main/AppCourseCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main/AppCourseCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/shared/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/shared/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared/layout/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/shared/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/shared/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/shared/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/shared/layout/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +175,11 @@
       <path value="$PROJECT_DIR$/vendor/unisharp/laravel-filemanager" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/crazybooot/base64-validation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
     </include_path>
   </component>
   <component name="ProjectId" id="1cZQGycTooGsTEVhbD1XAjtxRRw" />
@@ -216,18 +200,18 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Dockerfile" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\Http\Middlewares" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\shared" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\components\shared" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\exam" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\boxes" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\exam" />
       <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\Http\Requests" />
       <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\Http\Controllers" />
       <recent name="C:\Users\Hossein\Desktop\Tizviran\admin_panel\public\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\shared" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\components\shared" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\exam" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\boxes" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components\utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -255,7 +239,8 @@
       <workItem from="1590990308373" duration="22072000" />
       <workItem from="1591081506052" duration="894000" />
       <workItem from="1591098952013" duration="18416000" />
-      <workItem from="1591185925570" duration="24223000" />
+      <workItem from="1591185925570" duration="24354000" />
+      <workItem from="1591262709996" duration="4405000" />
     </task>
     <servers />
   </component>
@@ -299,9 +284,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1591206212290" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1591213391069">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1591266783612">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1591213391069" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1591266783612" />
   </component>
 </project>

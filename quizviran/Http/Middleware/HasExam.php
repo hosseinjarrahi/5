@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Quizviran\Http\Middleware;
 
 use Closure;
 use Quizviran\Repositories\ExamRepo;

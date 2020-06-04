@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
+    @authEl
     <meta charset="utf-8">
     <meta name="keywords" content="@yield('keywords','تیزویران - آموزن ساز , آموزش رایگان هفتم هشتم نهم , بهترین سایت آموزش دروس متوسطه')">
     <meta name="description" content="@yield('description','تیزویران - آموزن ساز , آموزش رایگان هفتم هشتم نهم , بهترین سایت آموزش دروس متوسطه')">

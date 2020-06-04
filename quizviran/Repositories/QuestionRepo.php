@@ -2,8 +2,6 @@
 
 namespace Quizviran\Repositories;
 
-use App\Http\Upload;
-use App\Models\Category;
 use Quizviran\Models\Question;
 
 class QuestionRepo

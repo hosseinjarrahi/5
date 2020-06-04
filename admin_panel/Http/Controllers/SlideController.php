@@ -2,13 +2,11 @@
 
 namespace Admin\Http\Controllers;
 
-use App\Http\Upload;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use Admin\repositories\SlideRepo;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\File;
 
 class SlideController extends Controller
 {
