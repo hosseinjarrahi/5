@@ -111,7 +111,6 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request)
     {
-        return response($request->all(),400);
         /**
          * @post('/quiz/question')
          * @name('quizviran.question.store')
@@ -119,13 +118,12 @@ class QuestionController extends Controller
          */
         $pic = $this->storePic($request->pic);
 
-        $matched = Str::of($request->desc)->match('/<[^>]*script/');
+        $hasScript = preg_match('/<[^>]*script/',$request->desc);
 
-        if ($matched) {
+        if ($hasScript) {
             return response([
-                'message' => 'اطلاعات وارد شده شامل کاراکتر های غیر مجاز است.',
-                400,
-            ]);
+                'message' => 'اطلاعات وارد شده شامل کاراکتر های غیر مجاز است.'
+            ],400);
         }
 
         $question = QuestionRepo::create($request->only([

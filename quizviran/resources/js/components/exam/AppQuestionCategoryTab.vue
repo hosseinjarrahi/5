@@ -25,8 +25,8 @@
         class="my-1 d-flex p-1 rounded flex-row align-items-center justify-content-between bg-gray w-100">
         <span class="dots">{{ category.name }}</span>
         <div>
-          <a @click="openEditForm(category)" class="btn btn-sm rounded btn-primary"><span>ویرایش</span></a>
-          <a @click="openDeleteForm(category)" class="btn btn-sm rounded btn-danger"><span>حذف</span></a>
+          <a @click="openEditForm(category)" class="btn btn-sm btn-primary rounded "><span class="fas fa-edit fa-fw"></span></a>
+          <a @click="openDeleteForm(category)" class="btn btn-sm btn-danger rounded "><span class="fas fa-trash fa-fw"></span></a>
         </div>
       </div>
 
@@ -37,33 +37,37 @@
 
     </div>
 
-    <app-modal v-if="openEditModal" @close="openEditModal = false" title="ویرایش موضوع">
-      <div class="p-2">
-        <div class="form-group">
-          <label>موضوع:</label>
-          <input type="text" name="name" class="form-control" v-model="editName">
+    <transition mode="out-in" name="fade">
+      <app-modal v-if="openEditModal" @close="openEditModal = false" title="ویرایش موضوع">
+        <div class="p-2">
+          <div class="form-group">
+            <label>موضوع:</label>
+            <input type="text" name="name" class="form-control" v-model="editName">
+          </div>
+          <button @click="updateCategory" class="btn btn-primary btn-sm">
+            <span class="fas fa-edit mx-2"></span><span>ویرایش</span>
+          </button>
         </div>
-        <button @click="updateCategory" class="btn btn-primary btn-sm">
-          <span class="fas fa-edit mx-2"></span><span>ویرایش</span>
-        </button>
-      </div>
-    </app-modal>
+      </app-modal>
+    </transition>
 
-    <app-modal v-if="openDeleteModal" @close="openDeleteModal = false" title="حذف موضوع">
-      <div class="p-2">
-        <div class="form-group">
-          <span>آیا از حذف موضوع</span>
-          <span class="bg-dark-gray px-2 py-0 rounded">{{ deleteCategory.name }}</span>
-          <span>اطمینان دارید؟</span>
+    <transition mode="out-in" name="fade">
+      <app-modal v-if="openDeleteModal" @close="openDeleteModal = false" title="حذف موضوع">
+        <div class="p-2">
+          <div class="form-group">
+            <span>آیا از حذف موضوع</span>
+            <span class="bg-dark-gray px-2 py-0 rounded">{{ deleteCategory.name }}</span>
+            <span>اطمینان دارید؟</span>
+          </div>
+          <button @click="destroyCategory" class="btn btn-danger mx-1 btn-sm">
+            <span class="fas fa-check-circle mr-2"></span><span>بله</span>
+          </button>
+          <button @click="openDeleteModal = false" class="btn btn-primary mx-1 btn-sm">
+            <span class="fas fa-times-circle mr-2"></span><span>خیر</span>
+          </button>
         </div>
-        <button @click="destroyCategory" class="btn btn-danger mx-1 btn-sm">
-          <span class="fas fa-check-circle mr-2"></span><span>بله</span>
-        </button>
-        <button @click="openDeleteModal = false" class="btn btn-primary mx-1 btn-sm">
-          <span class="fas fa-times-circle mr-2"></span><span>خیر</span>
-        </button>
-      </div>
-    </app-modal>
+      </app-modal>
+    </transition>
 
   </div>
 </template>
@@ -89,6 +93,20 @@
             }
         },
         methods: {
+            sweetAlert(text, icon) {
+                return Swal.fire({
+                    text: text,
+                    icon: icon,
+                    confirmButtonText: "بسیار خوب",
+                    timer: 5000
+                });
+            },
+            successAlert(text = 'با موفقیت انجام شد') {
+                return this.sweetAlert(text, 'success');
+            },
+            errorAlert(text = 'مشکلی رخ داده است') {
+                return this.sweetAlert(text, 'error');
+            },
             openEditForm(category) {
                 this.openEditModal = true;
                 this.editCategory = category;
@@ -103,13 +121,7 @@
                 this.load();
                 axios.delete(this.route + `/${this.deleteCategory.id}`)
                     .then(response => {
-                        Swal.fire({
-                            text: 'با موفقیت حذف شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-
+                        this.successAlert();
                         this.cats.forEach((val, index) => {
                             if (val.id == this.deleteCategory.id) {
                                 this.cats.splice(index, 1);
@@ -118,12 +130,7 @@
 
                     })
                     .catch(error => {
-                        Swal.fire({
-                            text: 'مشکلی در حذف رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
+                        this.errorAlert();
                     })
                     .finally(() => {
                         this.closeLoad();
@@ -137,12 +144,7 @@
                 this.load();
                 axios.patch(this.route + `/${this.editCategory.id}`, {name: this.editName})
                     .then(response => {
-                        Swal.fire({
-                            text: 'با موفقیت ویرایش شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
+                        this.successAlert();
 
                         this.cats.forEach((val, index) => {
                             if (val.id == this.editCategory.id) {
@@ -152,13 +154,7 @@
 
                     })
                     .catch(error => {
-                        console.log(error.response);
-                        Swal.fire({
-                            text: 'مشکلی در ویرایش رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
+                        this.errorAlert();
                     })
                     .finally(() => {
                         this.closeLoad();
@@ -172,23 +168,12 @@
                 this.load();
                 axios.post(this.route, {name: this.name})
                     .then(response => {
-                        Swal.fire({
-                            text: 'با موفقیت اضافه شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-
+                        this.successAlert();
                         this.cats.push(response.data.category);
                         this.name = '';
                     })
                     .catch(error => {
-                        Swal.fire({
-                            text: 'مشکلی در افزودن رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
+                        this.errorAlert();
                     })
                     .finally(() => {
                         this.closeLoad();
@@ -199,10 +184,10 @@
 </script>
 
 <style scoped>
-.dots{
-  text-overflow: ellipsis;
-  max-width: 120px;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  .dots {
+    text-overflow: ellipsis;
+    max-width: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 </style>

@@ -12,14 +12,14 @@
         </div>
       </div>
       <div class="col-12 rounded overflow-hidden bg-dark-gray p-2 big-shadow">
-        <transition name="blur" mode="out-in">
-          <div class="w-100" v-if="selected('question')" key="one-tab">
+        <transition-group name="blur" mode="out-in">
+          <div class="w-100" v-show="selected('question')" key="one-tab">
             <slot name="question"></slot>
           </div>
-          <div class="w-100" v-else-if="selected('category')" key="tow-tab">
+          <div class="w-100" v-show="selected('category')" key="tow-tab">
             <slot name="category"></slot>
           </div>
-        </transition>
+        </transition-group>
       </div>
     </div>
   </div>

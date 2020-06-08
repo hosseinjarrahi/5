@@ -10,31 +10,34 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware(['has.category'])->except(['store']);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $category = Category::create([
-            'name'=>$request->name,
-            'user_id'=>auth()->id()
+            'name' => $request->name,
+            'user_id' => auth()->id(),
         ]);
 
-        return response(['message' => 'با موفقیت انجام شد.','category' => $category]);
+        return response([
+            'message' => 'با موفقیت انجام شد.',
+            'category' => $category,
+        ]);
     }
 
-    public function update(Category $category,Request $request)
+    public function update(Category $category, Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $category->update([
-            'name'=>$request->name
+            'name' => $request->name,
         ]);
 
         return response(['message' => 'با موفقیت انجام شد.']);
@@ -46,5 +49,4 @@ class CategoryController extends Controller
 
         return response(['message' => 'با موفقیت انجام شد.']);
     }
-
 }

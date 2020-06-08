@@ -161,4 +161,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Category::class);
     }
+
+    public function hasCategory($categoryUserId)
+    {
+        return $this->isTeacher() && ($this->id == $categoryUserId);
+    }
 }

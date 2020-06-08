@@ -10,26 +10,17 @@
             </div>
         </div>
 
-        {{--   todo: make responsive     --}}
-        <div class="row flex-nowrap bg-gray px-lg-3 align-items-center figure-caption text-light"
-             style="height: 40px;overflow-x: auto;overflow-y: hidden;">
-
-            <a href="{{ route('quizviran.panel') }}" class="p-2">
-                <span>پنل مدیریت</span>
-            </a>
-            <span class="fas fa-arrow-left"></span>
-
-            <a href="{{ route('quizviran.room.show',['room' => $room->link]) }}" class="p-2">
-                <span>{{ $room->name }}</span>
-            </a>
-            <span class="fas fa-arrow-left"></span>
-
-            <span class="p-2">
-                <span>مدیریت آزمون ها</span>
-            </span>
-
-
-        </div>
+        <app-breadcrumb>
+            <app-breadcrumb-item route="{{ route('quizviran.panel') }}">
+                پنل مدیریت
+            </app-breadcrumb-item>
+            <app-breadcrumb-item route="{{ route('quizviran.room.show',['room' => $room->link]) }}">
+                {{ $room->name }}
+            </app-breadcrumb-item>
+            <app-breadcrumb-item :active="true">
+                مدیریت آزمون ها
+            </app-breadcrumb-item>
+        </app-breadcrumb>
 
         <div class="row px-2 px-md-5 justify-content-center mt-5">
             <div class="col-11 col-md-6 mb-5 p-3">

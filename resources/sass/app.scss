@@ -3,6 +3,10 @@ $gray: #57606f;
 $darkGray: #2f3542;
 $backgroundColor: #f5f5f5;
 
+.text-dark{
+  color:$darkGray !important;
+}
+
 .bg-gray
 {
   background: $gray;
@@ -14,7 +18,7 @@ $backgroundColor: #f5f5f5;
   color: white;
 }
 
-.bg-dark-gray
+.bg-dark-gray:not(.ck)
 {
   background: $darkGray;
   color: white;
@@ -241,4 +245,10 @@ input.search,.left-horizon{
 }
 .light-shadow{
   box-shadow:1px 4px 4px rgba(0,0,0,0.7)
+}
+.rtl{
+  direction: rtl !important;
+}
+.ltr{
+  direction: ltr !important;
 }

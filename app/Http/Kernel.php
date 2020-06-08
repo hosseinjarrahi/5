@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'has.room' => \Quizviran\Http\Middleware\HasRoom::class,
         'has.exam' => \Quizviran\Http\Middleware\HasExam::class,
         'has.question' => \Quizviran\Http\Middleware\HasQuestion::class,
+        'has.category' => \Quizviran\Http\Middleware\HasCategory::class,
     ];
 }

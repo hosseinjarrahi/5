@@ -1,3 +1,7 @@
+.text-dark {
+  color: #2f3542 !important;
+}
+
 .bg-gray {
   background: #57606f;
 }
@@ -7,7 +11,7 @@
   color: white;
 }
 
-.bg-dark-gray {
+.bg-dark-gray:not(.ck) {
   background: #2f3542;
   color: white;
 }
@@ -336,5 +340,13 @@ input.search,
 
 .light-shadow {
   box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+.rtl {
+  direction: rtl !important;
+}
+
+.ltr {
+  direction: ltr !important;
 }
 

@@ -36,7 +36,7 @@
 
       </app-accordion-item>
 
-      <app-accordion-item title="همه سوالات">
+      <app-accordion-item title="بدون دسته بندی">
 
         <template v-for="(question,index) in questions">
           <div class="w-100 border-light border rounded p-2 overflow-hidden my-1">
@@ -81,6 +81,9 @@
     export default {
         props: ['id', 'questions', 'categories'],
         name: "AppQuestionAll",
+        mounted() {
+
+        },
         data() {
             return {
                 selected: []
