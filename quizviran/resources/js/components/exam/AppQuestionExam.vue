@@ -3,11 +3,16 @@
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
 
 
+      <div class="d-flex flex-column w-100 p-2 justify-content-center align-items-center" v-if="!questions.length">
+        <span class="my-2 fas fa-diagnoses fa-4x"></span>
+        <span class="my-2">آزمون شما فاقد سوال است.</span>
+      </div>
+
       <template v-for="(question,index) in questions">
         <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
 
           <app-check-box @change="handleSelecting" :qid="question.id">
-            <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
+            <div v-html="question.desc"></div>
           </app-check-box>
 
           <div class="d-flex rounded flex-row justify-content-around justify-content-md-end mt-3 align-items-center py-1">

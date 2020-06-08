@@ -1,6 +1,10 @@
 @extends('Quizviran::layout')
 @section('title','تیزویران | مدیریت سوالات آزمون')
 
+@section('head')
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+@endsection
+
 @section('content')
     <div class="container-fluid">
 
@@ -52,7 +56,7 @@
 
             </div>
 
-            <div class="my-3 col-12 col-md-6">
+            <div class="my-3 col-12 col-lg-6">
                 <div class="px-2 my-4 px-lg-5 col-12">
                     <app-question-exam name="{{ $exam->name }}" :questions="{{ $exam->questions->toJson() }}" id="{{ $exam->id }}"></app-question-exam>
                 </div>
@@ -67,4 +71,43 @@
     </div>
 
 
+@endsection
+
+@section('script')
+    <script>
+        let editor_config = {
+            external_plugins: {
+                'mathSymbols': '/quiz-assets/js/math.js',
+                'graphTinymcePlugin': '/quiz-assets/js/graph.js',
+            },
+            menubar: false,
+            directionality: 'rtl',
+            // language: 'fa_IR',
+            // language_url : '/assets/js/fa_IR.js',
+            selector: "#editor",
+            plugins: [
+                "advlist lists charmap preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime nonbreaking table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern"
+            ],
+            toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | mathSymbols graphTinymcePlugin",
+
+            graph_uploader: function (file, cb) {
+                // Here is your uploader logic, start to upload you image here like that:
+
+                // yourUploader.sendIMG(file.blob)
+                //   .then(function(url){
+                //      // Take a look at "class='tinymce-graph'" and "graph-data='" + file.graphData + "'", it is really important to keep it in the tag - that's way you able to edit your graph.
+                //      cb("<img class='tinymce-graph' graph-data='" + file.graphData + "' width='" + file.width + "' height='" + file.height + "' src='" + url + "' />");
+                //   });
+
+                // or just put SVG-html into your content. Example:
+                cb(file.html);
+            }
+
+        };
+
+        tinymce.init(editor_config);
+    </script>
 @endsection

@@ -10,6 +10,7 @@
     <link rel="icon" href="/img/favicon.png" type="image/png" sizes="50x50">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('quiz-assets/css/app.css') }}">
+    @yield('head')
     <title>@yield('title')</title>
 </head>
 <body style="direction: rtl !important;">
@@ -48,5 +49,6 @@
 </body>
 
 <script src="{{ asset('quiz-assets/js/app.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+@yield('script')
 </html>

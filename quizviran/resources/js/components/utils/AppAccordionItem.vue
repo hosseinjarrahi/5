@@ -6,7 +6,7 @@
         <span :class="['fas float-right px-2 py-1','fa-arrow-alt-circle-' + arrow]"></span>
       </p>
       <transition name="slide" mode="out-in">
-        <div class="mt-2 w-100 rounded p-2 " v-if="open">
+        <div class="mt-2 w-100 rounded p-2 " v-show="open">
           <slot></slot>
         </div>
       </transition>

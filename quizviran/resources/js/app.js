@@ -10,9 +10,6 @@ Vue.component('date-picker', persianDatePicker);
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import VueMathjax from 'vue-mathjax';
-Vue.use(VueMathjax);
-
 import globalMixin from './globalMixin';
 
 init(Vue,globalMixin,store);

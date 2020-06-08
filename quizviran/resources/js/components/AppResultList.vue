@@ -26,7 +26,7 @@
           {{ index+1 }}
           <span class="fas fa-arrow-left"></span>
           <span> سوال: </span>
-          <vue-mathjax :formula="question.desc"></vue-mathjax>
+          <div v-html="question.desc"></div>
         </div>
 
         <div class="col-12">
@@ -37,16 +37,16 @@
               <span> پاسخ ها: </span>
             </div>
             <div class="shadow my-2 rounded col-12 col-md-2 mx-2">1 :
-              <vue-mathjax :formula="question.A"></vue-mathjax>
+              <div v-html="question.A"></div>
             </div>
             <div class="shadow my-2 rounded col-12 col-md-2 mx-2">2 :
-              <vue-mathjax :formula="question.B"></vue-mathjax>
+              <div v-html="question.B"></div>
             </div>
             <div class="shadow my-2 rounded col-12 col-md-2 mx-2">3 :
-              <vue-mathjax :formula="question.C"></vue-mathjax>
+              <div v-html="question.C"></div>
             </div>
             <div class="shadow my-2 rounded col-12 col-md-2 mx-2">4 :
-              <vue-mathjax :formula="question.D"></vue-mathjax>
+              <div v-html="question.D"></div>
             </div>
           </div>
 

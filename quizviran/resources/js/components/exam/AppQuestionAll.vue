@@ -12,7 +12,7 @@
           <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
 
             <app-check-box @change="handleSelecting" :qid="question.id">
-              <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
+              <div v-html="question.desc"></div>
             </app-check-box>
 
             <div class="d-flex rounded flex-row justify-content-end mt-3 align-items-center py-1">
@@ -39,10 +39,10 @@
       <app-accordion-item title="همه سوالات">
 
         <template v-for="(question,index) in questions">
-          <div class="w-100  border-light border rounded p-2 overflow-hidden my-1">
+          <div class="w-100 border-light border rounded p-2 overflow-hidden my-1">
 
             <app-check-box @change="handleSelecting" :qid="question.id">
-              <vue-mathjax :formula="`${index+1} - ${question.desc} `"></vue-mathjax>
+              <div v-html="question.desc"></div>
             </app-check-box>
 
             <div class="d-flex rounded flex-row justify-content-end mt-3 align-items-center py-1">

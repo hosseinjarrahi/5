@@ -46,7 +46,7 @@ class QuestionRepo
         $question->D = $request['D'];
         $question->C = $request['C'];
         $question->answer = $request['answer'];
-        $question->desc = $request['formula'];
+        $question->desc = $request['desc'];
         $question->type = $request['type'];
         $question->norm = $request['norm'];
         $question->level = $request['level'];

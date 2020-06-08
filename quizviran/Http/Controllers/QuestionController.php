@@ -91,7 +91,7 @@ class QuestionController extends Controller
             'D',
             'C',
             'answer',
-            'formula',
+            'desc',
             'type',
             'norm',
             'level',
@@ -105,11 +105,13 @@ class QuestionController extends Controller
         }
 
         return response(['message' => 'با موفقیت ویرایش شد.']);
+
         return back();
     }
 
     public function store(QuestionRequest $request)
     {
+        return response($request->all(),400);
         /**
          * @post('/quiz/question')
          * @name('quizviran.question.store')
@@ -117,13 +119,22 @@ class QuestionController extends Controller
          */
         $pic = $this->storePic($request->pic);
 
+        $matched = Str::of($request->desc)->match('/<[^>]*script/');
+
+        if ($matched) {
+            return response([
+                'message' => 'اطلاعات وارد شده شامل کاراکتر های غیر مجاز است.',
+                400,
+            ]);
+        }
+
         $question = QuestionRepo::create($request->only([
             'A',
             'B',
             'D',
             'C',
             'answer',
-            'formula',
+            'desc',
             'type',
             'level',
             'norm',

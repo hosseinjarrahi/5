@@ -10,15 +10,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="px-5 text-right bg-gray col-12 py-2">
-                <a href="{{ url()->previous() }}" class="w-100 text-light">
-                    <span>بازگشت</span>
-                    <span class="fas fa-arrow-left"></span>
-                </a>
-            </div>
-        </div>
-
+        <app-back route="{{ url()->previous() }}"></app-back>
 
         <div class="row justify-content-center my-2">
             <div class="col-12">
@@ -31,6 +23,16 @@
                         type="{{ $question->type }}"
                         desc="{{ $question->desc }}"
                 ></app-exam-card>
+            </div>
+            <div class="col-12 col-lg-6">
+                <a href="{{ route('quizviran.question.edit',['question' => $question->id ]) }}" class="btn-sm mx-1 btn btn-primary">
+                    <span class="fas fa-edit"></span>
+                    <span>ویرایش</span>
+                </a>
+{{--                <div class="btn-sm mx-1 btn btn-danger">--}}
+{{--                    <span class="fas fa-trash"></span>--}}
+{{--                    <span>حذف</span>--}}
+{{--                </div>--}}
             </div>
         </div>
 

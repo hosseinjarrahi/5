@@ -14,14 +14,14 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'pic' => 'base64image|nullable|base64mimes:jpg,png,gif,jpeg|base64max:3000kb',
+            'pic' => 'nullable|base64image|base64mimes:jpg,png,gif,jpeg|base64max:3000kb',
             'A' => 'nullable',
             'B' => 'nullable',
             'C' => 'nullable',
             'D' => 'nullable',
             'answer' => 'nullable',
             'category' => 'nullable',
-            'formula' => 'required',
+            'desc' => 'required',
         ];
     }
 

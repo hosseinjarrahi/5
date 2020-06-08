@@ -9,13 +9,12 @@
     <div class="form-group">
       <label><span class="fas fa-paragraph"></span>توضیحات</label>
 
-      <textarea v-model="question.formula" name="desc" :class="['form-control', { 'is-invalid' : errors.formula && !question.formula.length } ]" cols="30"
-                rows="10"></textarea>
-      <app-errors :errors="errors.formula">وارد کردن توضیحات الزامی است</app-errors>
-
-      <app-content-border-box class="mt-5 mx-auto" title="پیش نمایش سوال" v-if="!!question.formula">
-        <vue-mathjax style="white-space: pre-wrap" :formula="question.formula"></vue-mathjax>
-      </app-content-border-box>
+      <textarea id="editor"
+                :class="['form-control', { 'is-invalid' : errors.desc && !q.desc.length } ]"
+                cols="30"
+                rows="10"
+      >
+      </textarea>
 
     </div>
     <div class="form-group">
@@ -79,6 +78,15 @@
     import Swal from 'sweetalert2';
 
     export default {
+        mounted() {
+            setTimeout(() => {
+                let iframe = document.getElementById("editor_ifr");
+                let tinymce = iframe.contentWindow.document.getElementById("tinymce");
+                setInterval(() => {
+                    this.question.desc = tinymce.innerHTML;
+                }, 500);
+            }, 1000);
+        },
         name: "AppQuestionAddForm",
         props: {
             categories: {default: () => []},
@@ -93,7 +101,7 @@
                     D: '',
                     norm: 0,
                     answer: 'A',
-                    formula: '',
+                    desc: '',
                     type: 'test',
                     category: 0,
                     pic: '',

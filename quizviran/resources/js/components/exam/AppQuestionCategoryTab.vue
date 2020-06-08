@@ -23,7 +23,7 @@
       <div
         v-for="category in cats" :key="'category-' + category.id"
         class="my-1 d-flex p-1 rounded flex-row align-items-center justify-content-between bg-gray w-100">
-        <span>{{ category.name }}</span>
+        <span class="dots">{{ category.name }}</span>
         <div>
           <a @click="openEditForm(category)" class="btn btn-sm rounded btn-primary"><span>ویرایش</span></a>
           <a @click="openDeleteForm(category)" class="btn btn-sm rounded btn-danger"><span>حذف</span></a>
@@ -199,5 +199,10 @@
 </script>
 
 <style scoped>
-
+.dots{
+  text-overflow: ellipsis;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+}
 </style>
