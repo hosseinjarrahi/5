@@ -8473,6 +8473,8 @@ __webpack_require__.r(__webpack_exports__);
             _this.cats.splice(index, 1);
           }
         });
+
+        window.location.reload();
       })["catch"](function (error) {
         _this.errorAlert();
       })["finally"](function () {
@@ -8496,6 +8498,8 @@ __webpack_require__.r(__webpack_exports__);
             _this2.cats[index].name = _this2.editName;
           }
         });
+
+        window.location.reload();
       })["catch"](function (error) {
         _this2.errorAlert();
       })["finally"](function () {
@@ -8517,6 +8521,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.cats.push(response.data.category);
 
         _this3.name = '';
+        window.location.reload();
       })["catch"](function (error) {
         _this3.errorAlert();
       })["finally"](function () {

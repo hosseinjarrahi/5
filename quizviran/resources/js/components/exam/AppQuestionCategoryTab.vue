@@ -127,7 +127,7 @@
                                 this.cats.splice(index, 1);
                             }
                         });
-
+                        window.location.reload();
                     })
                     .catch(error => {
                         this.errorAlert();
@@ -152,6 +152,7 @@
                             }
                         });
 
+                        window.location.reload();
                     })
                     .catch(error => {
                         this.errorAlert();
@@ -171,6 +172,7 @@
                         this.successAlert();
                         this.cats.push(response.data.category);
                         this.name = '';
+                        window.location.reload();
                     })
                     .catch(error => {
                         this.errorAlert();
