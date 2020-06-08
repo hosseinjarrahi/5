@@ -24,13 +24,6 @@ async function init(Vue, globalMixin, store = {'null': 'null'}) {
         mounted() {
             document.getElementById('pageLoader').classList.remove('d-flex');
             document.getElementById('pageLoader').classList.add('d-none');
-            // let docs = document.getElementsByClassName('tinymce-mathText');
-            // console.log(docs);
-            // docs.forEach((doc) => {
-            //     let svg = doc.querySelector('svg');
-            //     svg.setAttribute('height', '100%');
-            //     svg.setAttribute('width', '100%');
-            // });
         }
     });
 };

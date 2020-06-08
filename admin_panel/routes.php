@@ -1,6 +1,4 @@
-
 <?php
-
 Route::group(['prefix' => 'manager','as'=>'admin.','middleware' => ['auth','admin']], function () {
     Route::get('/','HomeController@dashboard')->name('home');
 

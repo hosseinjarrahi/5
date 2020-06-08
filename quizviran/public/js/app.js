@@ -4227,13 +4227,7 @@ function _init() {
               store: store,
               mounted: function mounted() {
                 document.getElementById('pageLoader').classList.remove('d-flex');
-                document.getElementById('pageLoader').classList.add('d-none'); // let docs = document.getElementsByClassName('tinymce-mathText');
-                // console.log(docs);
-                // docs.forEach((doc) => {
-                //     let svg = doc.querySelector('svg');
-                //     svg.setAttribute('height', '100%');
-                //     svg.setAttribute('width', '100%');
-                // });
+                document.getElementById('pageLoader').classList.add('d-none');
               }
             });
 
@@ -79778,7 +79772,7 @@ var render = function() {
       "div",
       { class: ["row flex-column mt-3 ", _vm.dark ? "" : "text-danger"] },
       [
-        _c("div", { staticClass: "d-flex flex-column px-5" }, [
+        _c("div", { staticClass: "d-flex flex-column px-4" }, [
           _c("h2", { staticClass: "text-center" }, [
             _c("span", { class: ["fas fa-" + _vm.icon] }),
             _vm._v(" "),
