@@ -6,13 +6,13 @@
       <div class="bg-light p-1 rounded"></div>
       <div class="d-flex flex-column ml-4 justify-content-center">
         <div class="row">
-          <h3>{{ quiz.name }}</h3>
+          <h3>{{ exam.name }}</h3>
         </div>
         <div class="row">
           <!--          <span class="badge badge-light mx-1">پایه هشتم</span>-->
           <span class="badge badge-light mx-1">
             <span>زمان آزمون: </span>
-            <span>{{ quiz.time }}</span>
+            <span>{{ exam.time }}</span>
             <span>دقیقه</span>
           </span>
         </div>
@@ -22,11 +22,11 @@
 
     <div class="col-md-3 d-flex flex-column mt-2 mt-md-0">
 
-      <a :href="quiz.link" class="text-dark py-0 btn my-1 btn-light" v-if="quiz.isInTime">ورود به آزمون</a>
-      <a :href="'/quiz/results/' + quiz.id" class="text-dark py-0 btn my-1 btn-light">نتایج</a>
+      <a :href="exam.link" class="text-dark py-0 btn my-1 btn-light" v-if="exam.isInTime">ورود به آزمون</a>
+      <a :href="exam.resultLink" class="text-dark py-0 btn my-1 btn-light">نتایج</a>
       <div class="my-1 border-light text-center rounded" style="border-bottom:2px solid">
         <span>زمان شروع:</span>
-        <span>{{ quiz.start }}</span>
+        <span>{{ exam.startJalaly }}</span>
       </div>
 
     </div>
@@ -40,7 +40,7 @@
     export default {
         name: "AppMainBoxLastQuiz",
         props: {
-            quiz: {default: ''}
+            exam: {default: ''}
         }
     }
 </script>

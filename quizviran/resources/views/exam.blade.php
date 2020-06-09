@@ -20,6 +20,6 @@
             <app-exam id="{{ $exam->id }}" questions="{{ $questions }}"></app-exam>
 
         </div>
-        <app-count-down min="{{ $exam->duration }}"></app-count-down>
+        <app-count-down min="{{ $exam->remainedTime }}"></app-count-down>
     </div>
 @endsection

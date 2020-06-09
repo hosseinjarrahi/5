@@ -92,12 +92,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-
-    public function hasQuiz()
-    {
-        // todo
-        return $this->hasOneThrough(Exam::class, Room::class);
-    }
+//
+//    public function hasQuiz()
+//    {
+//        // todo
+//        return $this->hasOneThrough(Exam::class, Room::class);
+//    }
 
     public function scopeStudents($query)
     {

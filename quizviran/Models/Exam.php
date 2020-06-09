@@ -81,6 +81,43 @@ class Exam extends Model
 
     public function getJalalyAttribute()
     {
-        return Jalalian::forge($this->getAttribute('start'));
+        return jalaly($this->getAttribute('start'))->format('H:i m/d');
+    }
+
+    public function getLinkAttribute()
+    {
+        return route('quizviran.exam.show',['exam' => $this->id]);
+    }
+
+    public function getResultLinkAttribute()
+    {
+        return route('quizviran.exam.result.student',['exam' => $this->id]);
+    }
+
+    public function getStartForHumansAttribute()
+    {
+        return $this->start->diffForHumans();
+    }
+
+    public function getRemainedTimeAttribute()
+    {
+        return $this->duration - Carbon::now()->diffInMinutes($this->start);
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'link' => $this->link,
+            'resultLink' => $this->resultLink,
+            'desc' => $this->desc,
+            'startForHumans' => $this->startForHumans,
+            'startJalaly' => $this->jalaly,
+            'start' => $this->start,
+            'duration' => $this->remainedTime,
+            'time' => $this->duration,
+            'isInTime' => $this->isInTime(),
+        ];
     }
 }

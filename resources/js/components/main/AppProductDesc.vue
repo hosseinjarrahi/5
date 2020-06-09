@@ -137,9 +137,6 @@
   .pic {
     width: 90%;
     height: 200px;
-    background-image: url("/img/avatar.png");
-    background-size: cover;
-    background-position: center;
     border: 2px solid #57606f;
   }
 

@@ -50,6 +50,7 @@ export default {
   background-size: cover;
   background-position: center;
   border: 2px solid #57606f;
+  background-repeat: no-repeat;
 }
 .border-bottom-dark {
   border-bottom: 2px solid #57606f;

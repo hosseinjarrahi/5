@@ -52,7 +52,7 @@
         <div class="row justify-content-center my-3">
             <div class="col-12 col-md-8 d-flex flex-row justify-content-center">
                 <app-main-box title="آخرین مسابقات" icon="flag-checkered">
-                    <app-main-box-last-quiz :key="quiz.id" v-for="quiz in {{ $exams->toJson() }}" :quiz="quiz"></app-main-box-last-quiz>
+                    <app-main-box-last-exam :key="'exam' + exam.id" v-for="exam in {{ $exams->toJson() }}" :exam="exam"></app-main-box-last-exam>
                 </app-main-box>
             </div>
             <div class="col-12 col-md-4 d-flex flex-row justify-content-center">

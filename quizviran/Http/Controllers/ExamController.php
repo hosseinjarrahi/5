@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
 use Quizviran\Repositories\ExamRepo;
-use App\Http\Resources\ExamResource;
 use Quizviran\Repositories\QuestionRepo;
+use Quizviran\Http\Requests\ExamRequest;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class ExamController extends Controller
@@ -35,8 +35,6 @@ class ExamController extends Controller
 
         $questions = $exam->questions;
         $questions = $questions->shuffle();
-        $exam = new ExamResource($exam);
-        $exam = json_decode($exam->toJson());
 
         return view('Quizviran::exam', compact('exam', 'questions'));
     }
@@ -48,14 +46,13 @@ class ExamController extends Controller
          * @name('quizviran.exam.edit')
          * @middlewares(web, auth, has.exam)
          */
-        // todo make type cast to jalalian
         $exam = ExamRepo::findOrFail($exam);
         $exam->jalalyDate = $exam->jalaly->format('Y-m-d H:i');
 
         return view('Quizviran::panel.teacher.exam.examEdit', compact('exam'));
     }
 
-    public function update($exam, Request $request)
+    public function update($exam, ExamRequest $request)
     {
         /**
          * @methods(PUT, PATCH)
@@ -73,7 +70,7 @@ class ExamController extends Controller
         return response(['message' => 'با موفقیت ویرایش شد.']);
     }
 
-    public function store(Request $request)
+    public function store(ExamRequest $request)
     {
         /**
          * @post('/quiz/exam')
@@ -182,7 +179,7 @@ class ExamController extends Controller
 
         $categories = auth()->user()->categories()->with('questions')->get();
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories','room', 'quiz', 'allQuestions', 'exam'));
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'quiz', 'allQuestions', 'exam'));
     }
 
     public function completeResult($exam)

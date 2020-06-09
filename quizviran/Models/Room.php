@@ -34,4 +34,9 @@ class Room extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function getLinkAttribute()
+    {
+        return route('quizviran.room.show',['room' => $this->attributes['link']]);
+    }
 }

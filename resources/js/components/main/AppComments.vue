@@ -131,7 +131,6 @@
     height: 50px;
     background-size: cover;
     border: 2px solid #57606f;
-    background-image: url('/img/avatar.png');
   }
 
   .tool-box {

@@ -3,8 +3,9 @@
 namespace Quizviran\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Quizviran\Repositories\CategoryRepo;
+use Quizviran\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,16 +14,9 @@ class CategoryController extends Controller
         $this->middleware(['has.category'])->except(['store']);
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        $category = Category::create([
-            'name' => $request->name,
-            'user_id' => auth()->id(),
-        ]);
+        $category = CategoryRepo::create($request->name);
 
         return response([
             'message' => 'با موفقیت انجام شد.',
@@ -30,22 +24,16 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function update(Category $category, Request $request)
+    public function update(Category $category, CategoryRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        $category->update([
-            'name' => $request->name,
-        ]);
+        CategoryRepo::update($category,$request->name);
 
         return response(['message' => 'با موفقیت انجام شد.']);
     }
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        CategoryRepo::update($category);
 
         return response(['message' => 'با موفقیت انجام شد.']);
     }

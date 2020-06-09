@@ -346,6 +346,6 @@
   }
 
   .active {
-    background-color: #e20;
+    background-color: #e20 !important;
   }
 </style>
