@@ -6,7 +6,7 @@
     <div class="col-12 border-sm bg-dark-gray py-2 py-lg-0">
       <div class="d-flex p-2 align-items-lg-center flex-md-row flex-column">
 
-        <a :href="`/quiz/panel/room/${room.link}`" class="p-0 mx-2 my-0" style="font-size:1.2rem">
+        <a :href="room.url" class="p-0 mx-2 my-0" style="font-size:1.2rem">
           <span class="fas fa-chalkboard-teacher fa-fw"></span>
           <span>{{ room.name }}</span>
         </a>
@@ -17,7 +17,7 @@
           <div class="dropdown-divider d-block d-md-none"></div>
           <div class="mx-3"><span class="fas fa-users fa-fw mx-2"></span><span>تعداد اعضاء : </span><span>{{ room.members.length }}</span></div>
           <div class="dropdown-divider d-block d-md-none"></div>
-          <div class="mx-3"><span class="fas fa-calendar-check mx-2 fa-fw"></span><span>ساخته شده در : </span><span>{{ createdat }}</span></div>
+          <div class="mx-3"><span class="fas fa-calendar-check mx-2 fa-fw"></span><span>ساخته شده در : </span><span>{{ room.jalalyCreatedAt }}</span></div>
         </div>
       </div>
     </div>
@@ -30,8 +30,7 @@
     export default {
         name: "AppPanelRoomInfo",
         props: {
-            room: {default: null},
-            createdat: {default: ''}
+            room: {default: null}
         }
     }
 </script>

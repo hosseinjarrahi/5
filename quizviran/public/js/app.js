@@ -9180,9 +9180,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     room: {
       "default": null
-    },
-    createdat: {
-      "default": ''
     }
   }
 });
@@ -78758,7 +78755,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-100 p-1 bg-red mt-5 bg-dark-gray" }, [
+  return _c("div", { staticClass: "w-100 p-1 mt-5 bg-dark-gray" }, [
     _c("p", { staticClass: "text-center text-white" }, [_vm._t("default")], 2)
   ])
 }
@@ -79896,7 +79893,7 @@ var render = function() {
           {
             staticClass: "btn my-1 btn-light btn-block py-0",
             staticStyle: { color: "#2f3542 !important" },
-            attrs: { href: _vm.room.link }
+            attrs: { href: _vm.room.url }
           },
           [_vm._v("ورود به کلاس")]
         )
@@ -82535,7 +82532,7 @@ var render = function() {
             {
               staticClass: "p-0 mx-2 my-0",
               staticStyle: { "font-size": "1.2rem" },
-              attrs: { href: "/quiz/panel/room/" + _vm.room.link }
+              attrs: { href: _vm.room.url }
             },
             [
               _c("span", { staticClass: "fas fa-chalkboard-teacher fa-fw" }),
@@ -82572,7 +82569,7 @@ var render = function() {
               _c("div", { staticClass: "mx-3" }, [
                 _c("span", { staticClass: "fas fa-calendar-check mx-2 fa-fw" }),
                 _c("span", [_vm._v("ساخته شده در : ")]),
-                _c("span", [_vm._v(_vm._s(_vm.createdat))])
+                _c("span", [_vm._v(_vm._s(_vm.room.jalalyCreatedAt))])
               ])
             ]
           )

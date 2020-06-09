@@ -17,7 +17,7 @@
                     <span>کلاس مورد نظر با موفقیت ایجاد شد.جهت عضویت دانش آموزان در کلاس کد</span> <span class="badge bg-gray">{{ $room->code }}</span> را
                     <span>به دانش آموزانتان تحویل دهید و از آن ها بخواهید پس از عضویت در سایت از بخش عضویت در کلاس کد داده شده را وارد نمایند.</span>
                 </p>
-                <a class="btn btn-block btn-primary py-0" href="{{ route('quizviran.room.show',['room' => $room->link]) }}">ورود به کلاس</a>
+                <a class="btn btn-block btn-primary py-0" href="{{ $room->url }}">ورود به کلاس</a>
             </div>
         </div>
 

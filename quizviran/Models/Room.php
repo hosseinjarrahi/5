@@ -35,8 +35,23 @@ class Room extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
-    public function getLinkAttribute()
+    public function getUrlAttribute()
     {
-        return route('quizviran.room.show',['room' => $this->attributes['link']]);
+        return route('quizviran.room.show', ['room' => $this->link]);
+    }
+
+    public function getJalalyCreatedAtAttribute()
+    {
+        return jalalyYMD($this->created_at);
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+
+        return array_merge($array, [
+            'url' => $this->url,
+            'jalalyCreatedAt' => $this->jalalyCreatedAt,
+        ]);
     }
 }

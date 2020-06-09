@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <app-panel-room-info :room="{{ $room->toJson() }}" createdat="{{ jalalyYMD($room->created_at) }}"></app-panel-room-info>
+        <app-panel-room-info :room="{{ $room->toJson() }}"></app-panel-room-info>
 
         <div class="row justify-content-center px-2 px-lg-0">
 
@@ -111,11 +111,17 @@
                                 <div class="container-fluid px-0 px-lg-1">
                                     <div class="mt-3 row justify-content-center align-items-center">
                                         @if(!$room->comments->isEmpty())
-                                            <app-comments class="mt-2" v-for="comment in {{ $room->comments->toJson() }}" :key="comment.id"
+                                            <app-comments class="mt-2"
+                                                          v-for="comment in {{ $room->comments->toJson() }}"
+                                                          :key="comment.id"
                                                           :comment="comment"
-                                                          type="{{ auth()->user()->type }}"></app-comments>
+                                                          type="{{ auth()->user()->type }}">
+                                            </app-comments>
                                         @else
-                                            <div class="d-block">گفت و گویی وجود ندارد ...</div>
+                                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                                <span class="fas fa-comment-slash fa-4x my-2"></span>
+                                                <span>گفت و گویی وجود ندارد ...</span>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

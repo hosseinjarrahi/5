@@ -106,18 +106,16 @@ class Exam extends Model
 
     public function toArray()
     {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'link' => $this->link,
+        $array = parent::toArray();
+
+        return array_merge($array,[
             'resultLink' => $this->resultLink,
-            'desc' => $this->desc,
             'startForHumans' => $this->startForHumans,
             'startJalaly' => $this->jalaly,
-            'start' => $this->start,
-            'duration' => $this->remainedTime,
-            'time' => $this->duration,
             'isInTime' => $this->isInTime(),
-        ];
+            'duration' => $this->duration,
+            'remainedTime' => $this->remainedTime,
+            'link' => $this->link,
+        ]);
     }
 }
