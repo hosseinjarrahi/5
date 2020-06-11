@@ -10,25 +10,22 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-//        PayFacade::choose(Invoice::class);
+
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
         Schema::defaultStringLength('190');
         Carbon::setLocale('fa');
         PayFacade::choose(Idpay::class);
+        if ($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
+
+        view()->composer('*', function ($view) {
+            $view->with('user', cache('user'));
+        });
     }
 }

@@ -1,9 +1,14 @@
 <template>
 
     <div class="loading" v-if="loading">
-        <div class="spinner-border text-light" role="status">
+
+        <div class="spinner-border my-2 text-light" role="status">
             <span class="sr-only">Loading...</span>
         </div>
+        <div class="progress w-75 w-md-50 my-2 " v-if="complete">
+            <div class="progress-bar" :style="`width: ${complete}%;`">{{ complete }}%</div>
+        </div>
+
     </div>
 
 </template>
@@ -11,17 +16,22 @@
 <script>
     export default {
         name: "AppLoading",
+        props:{
+          complete:{default:null}
+        },
         data(){
             return{
                 loading:false
             }
         },
         created() {
-            window.EventBus.$on('loading',()=>{
+            window.EventBus.$on('loading',(complete)=>{
                 this.loading = true;
+                this.complete = complete;
             });
             window.EventBus.$on('notLoading',()=>{
                 this.loading = false;
+                this.complete = false;
             });
         }
     }
@@ -39,6 +49,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 99999999999999;
 }
 </style>

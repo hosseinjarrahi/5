@@ -24,6 +24,8 @@ Route::group(['prefix' => 'quiz','as' => 'quizviran.','middleware' => ['auth']],
 
         Route::resource('/category','CategoryController');
 
+        Route::post('/room/{room}/comments/paginate','CommentController@paginate')->name('comment.paginate');
+
         Route::get('/rooms','PanelController@home')->name('rooms');
         Route::resource('/room','RoomController');
 

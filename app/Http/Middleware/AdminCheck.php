@@ -4,11 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class admin
+class AdminCheck
 {
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->isAdmin())
+        if(cache('user')->isAdmin())
             return $next($request);
         return abort(404);
     }

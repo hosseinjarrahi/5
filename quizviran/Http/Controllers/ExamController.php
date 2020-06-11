@@ -47,7 +47,6 @@ class ExamController extends Controller
          * @middlewares(web, auth, has.exam)
          */
         $exam = ExamRepo::findOrFail($exam);
-        $exam->jalalyDate = $exam->jalaly->format('Y-m-d H:i');
 
         return view('Quizviran::panel.teacher.exam.examEdit', compact('exam'));
     }
@@ -60,10 +59,12 @@ class ExamController extends Controller
          * @name('quizviran.exam.update')
          * @middlewares(web, auth, has.exam)
          */
+        $exam = ExamRepo::findOrFail($exam);
+
         ExamRepo::update($exam, $request->only([
             'name',
             'desc',
-            'jalalyDate',
+            'start',
             'duration',
         ]));
 
@@ -79,7 +80,7 @@ class ExamController extends Controller
          */
         $room = RoomRepo::withUserFindOrFail($request->room);
 
-        if (! auth()->user()->teacherHasRoom($room)) {
+        if (! cache('user')->teacherHasRoom($room)) {
             return abort(404);
         }
 
@@ -92,7 +93,7 @@ class ExamController extends Controller
 
         $room->exams()->attach($exam);
 
-        return response(['ok']);
+        return response(['message' => 'با موفقیت اضافه شد.']);
     }
 
     public function destroy($exam)
@@ -130,16 +131,17 @@ class ExamController extends Controller
          * @name('quizviran.exam.complete')
          * @middlewares(web, auth)
          */
-        if (auth()->user()->isTeacher()) {
+        $user = cache('user');
+
+        if ($user->isTeacher()) {
             return response(['message' => 'شما به عنوان معلم نمی توانید امتیازی ثبت کنید. ']);
         }
 
         $exam = ExamRepo::findOrFail($request->id);
-        $user = auth()->user();
 
         if (! $this->userCanCompleteExam($exam)) {
             return response([
-                'message' => 'زمان به اتمام رسیده است و یا یک بار در این مسابقه شرکت کرده اید.',
+                'message' => 'زمان به اتمام رسیده است و یا یک بار در این آزمون شرکت کرده اید.',
                 'type' => 'error',
             ], 200);
         }
@@ -171,15 +173,15 @@ class ExamController extends Controller
          * @name('quizviran.questions.manage')
          * @middlewares(web, auth, has.exam)
          */
-        $exam = ExamRepo::withQuestionsFindOrFail($exam);
+        $exam = ExamRepo::withQuestionsAndRoom($exam);
 
-        $allQuestions = auth()->user()->questions()->whereDoesntHave('categories')->get();
+        $questionsWithoutCategory = cache('user')->questions()->whereDoesntHave('categories')->get();
 
-        $room = $exam->rooms()->firstOrFail();
+        $room = $exam->rooms->first();
 
-        $categories = auth()->user()->categories()->with('questions')->get();
+        $categories = cache('user')->categories()->with('questions')->get();
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'quiz', 'allQuestions', 'exam'));
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'quiz', 'questionsWithoutCategory', 'exam'));
     }
 
     public function completeResult($exam)
@@ -189,7 +191,7 @@ class ExamController extends Controller
          * @name('quizviran.exam.result.teacher')
          * @middlewares(web, auth, has.exam)
          */
-        $exam = ExamRepo::withQuestionsFindOrFail($exam);
+        $exam = ExamRepo::withQuestionsAndRoom($exam);
 
         $users = $exam->getExamUsersWithPivot();
 
@@ -239,7 +241,7 @@ class ExamController extends Controller
          */
         $room = RoomRepo::getWithExams($room);
 
-        if (! auth()->user()->teacherHasRoom($room)) {
+        if (! cache('user')->teacherHasRoom($room)) {
             return back();
         }
 
@@ -262,6 +264,6 @@ class ExamController extends Controller
 
     private function userCanCompleteExam($exam): bool
     {
-        return ($exam->isInTime() && auth()->user()->canComplete($exam->id));
+        return ($exam->isInTime() && cache('user')->canComplete($exam->id));
     }
 }

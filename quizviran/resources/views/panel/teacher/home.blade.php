@@ -22,7 +22,11 @@
                             <span>ایجاد کلاس</span>
                         </a>
                     @endif
-                    <app-main-box-last-classes v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
+                    <app-main-box-last-classes
+                        :key="'room'+index"
+                        v-for="(room,index) in {{ $rooms->toJson() }}"
+                        :room="room">
+                    </app-main-box-last-classes>
                 </app-main-box>
             </div>
         </div>

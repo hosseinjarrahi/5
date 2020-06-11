@@ -8,9 +8,11 @@ class RoomRepo
 {
     public static function getWithExams($link)
     {
-        return Room::with(['exams' => function($query){
-            $query->latest();
-        }])->where('link', $link)->first();
+        return Room::with([
+            'exams' => function ($query) {
+                $query->latest();
+            },
+        ])->where('link', $link)->first();
     }
 
     public static function withUserFindOrFail($room)
@@ -20,18 +22,15 @@ class RoomRepo
 
     public static function getFromLink($link)
     {
-        return Room::where('link',$link)->firstOrFail();
+        return Room::where('link', $link)->firstOrFail();
     }
 
-    public static function withCommentAndMemberCount($link)
+    public static function withMemberCount($link)
     {
-        return Room::where('link', $link)->with([
-            'comments',
-            'comments.files',
-        ])->withCount('members')->firstOrFail();
+        return Room::where('link', $link)->withCount('members')->firstOrFail();
     }
 
-    public static function create($name,$link,$code)
+    public static function create($name, $link, $code)
     {
         return Room::create([
             'name' => $name,
@@ -53,7 +52,7 @@ class RoomRepo
 
     public static function withMembersBylink($link)
     {
-        return Room::where('link', $link)->with('members')->firstOrFail();
+        return Room::where('link', $link)->with('members')->withCount('members')->firstOrFail();
     }
 
     public static function findOrFail($id)
@@ -75,6 +74,6 @@ class RoomRepo
 
     public static function findOpenedRoomWithCode($code)
     {
-        return Room::where('lock',false)->where('code',$code)->first();
+        return Room::where('lock', false)->where('code', $code)->first();
     }
 }

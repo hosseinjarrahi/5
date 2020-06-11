@@ -39,15 +39,17 @@ class RoomController extends Controller
          * @name('quizviran.room.show')
          * @middlewares(web, auth, has.room)
          */
-        $room = RoomRepo::withCommentAndMemberCount($room);
+        $room = RoomRepo::withMemberCount($room);
 
-        if (! auth()->user()->hasRoom($room)) {
+        $comments = $room->comments()->orderByDesc('id')->with(['files','user'])->paginate(10);
+
+        if (! cache('user')->hasRoom($room)) {
             return abort(401);
         }
 
         $room->exams = $room->exams()->orderByDesc('id')->paginate(10);
 
-        return view('Quizviran::panel.teacher.room.room', compact('room'));
+        return view('Quizviran::panel.teacher.room.room', compact('room','comments'));
     }
 
     public function store(Request $request)
@@ -57,7 +59,7 @@ class RoomController extends Controller
          * @name('quizviran.room.store')
          * @middlewares(web, auth)
          */
-        if (! auth()->user()->isTeacher()) {
+        if (! cache('user')->isTeacher()) {
             return back();
         }
 
@@ -78,9 +80,11 @@ class RoomController extends Controller
          * @name('quizviran.room.add.comment')
          * @middlewares(web, auth, has.room)
          */
-        $room =  RoomRepo::findOrFail($request->id);
+        $room = RoomRepo::findOrFail($request->id);
 
-        if($room->gapLock) return response(['message' => 'گفت و گو قفل می باشد.'],400);
+        if ($room->gapLock) {
+            return response(['message' => 'گفت و گو قفل می باشد.'], 400);
+        }
 
         $files = collect($request->post('files'));
 
@@ -89,7 +93,7 @@ class RoomController extends Controller
         $comment = CommentRepo::create($request->only([
             'comment',
             'type',
-            'id'
+            'id',
         ]));
 
         $comment->files()->saveMany($files);
@@ -110,7 +114,7 @@ class RoomController extends Controller
             return response(['message' => 'این نظر قابل ویرایش نیست.'], 400);
         }
 
-        CommentRepo::update($comment,$request);
+        CommentRepo::update($comment, $request);
 
         return response(['message' => 'با موفقیت انجام شد.']);
     }
@@ -143,7 +147,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::withMembersBylink($room);
 
-        if (! auth()->user()->isTeacher()) {
+        if (! cache('user')->isTeacher()) {
             return abort(401);
         }
 
@@ -159,7 +163,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::findByLink($room);
 
-        if (! auth()->user()->isTeacher()) {
+        if (! cache('user')->isTeacher()) {
             return back();
         }
 
@@ -176,7 +180,7 @@ class RoomController extends Controller
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::findByLink($room);
-        if (! auth()->user()->isTeacher()) {
+        if (! cache('user')->isTeacher()) {
             return back();
         }
 

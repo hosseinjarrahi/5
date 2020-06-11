@@ -11,7 +11,7 @@
 
         <div class="row justify-content-center">
             <div class="bg-dark-gray col-12" style="padding-top: 100px;">
-                <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
+                <app-panel-links-header type="{{ $user->type }}"></app-panel-links-header>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <div class="col-12 col-lg-7 rounded p-2">
                 <app-main-box :dark="true" title="ویرایش سوال" icon="edit">
                     <app-question-edit-form
-                            :categories="{{ auth()->user()->categories->toJson() }}"
+                            :categories="{{ $user->categories->toJson() }}"
                             route="{{ route('quizviran.question.update',['question' => $question->id]) }}"
                             :question="{{ $question->toJson() }}"
                     ></app-question-edit-form>

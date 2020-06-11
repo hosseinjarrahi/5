@@ -11,7 +11,7 @@ class StudentController extends Controller
 {
     public function join()
     {
-        /** 
+        /**
          * @get('/quiz/panel/join-room')
          * @name('quizviran.room.join.page')
          * @middlewares(web, auth)
@@ -21,7 +21,7 @@ class StudentController extends Controller
 
     public function addStudent()
     {
-        /** 
+        /**
          * @post('/quiz/panel/join-room')
          * @name('quizviran.room.join')
          * @middlewares(web, auth)
@@ -34,8 +34,8 @@ class StudentController extends Controller
             return back()->with(['message' => 'کلاس مورد یافت نشد و یا قفل شده است.']);
         }
 
-        if (! auth()->user()->hasRoom($room)) {
-            auth()->user()->rooms()->save($room);
+        if (! cache('user')->hasRoom($room)) {
+           cache('user')->rooms()->save($room);
         }
 
         return redirect(url('/quiz/panel/room', ['room' => $room->link]));

@@ -3,7 +3,6 @@
 namespace Quizviran\Repositories;
 
 use Quizviran\Models\Exam;
-use Morilog\Jalali\Jalalian;
 
 class ExamRepo
 {
@@ -19,31 +18,31 @@ class ExamRepo
 
     public static function update($exam, $request)
     {
-        // todo : remove jalalydate and use start
-        $start = Jalalian::fromFormat('Y-m-d H:i', toStandardDatetime($request['jalalyDate']))->toCarbon();
-        $exam = self::findOrFail($exam);
-        $exam->name = $request['name'];
-        $exam->desc = $request['desc'];
-        $exam->start = $start;
-        $exam->duration = $request['duration'];
+        $start = standardJalalyToCarbon($request);
+
+        $exam->update([
+            'name' => $request['name'],
+            'desc' => $request['desc'],
+            'start' => $start,
+            'duration' => $request['duration'],
+        ]);
+
         $exam->save();
     }
 
     public static function create($request)
     {
-        $start = Jalalian::fromFormat('Y-m-d H:i', toStandardDatetime($request['start']))->toCarbon();
+        $start = standardJalalyToCarbon($request);
 
-        $exam = new Exam();
-        $exam->name = $request['name'];
-        $exam->duration = $request['duration'];
-        $exam->start = $start;
-        $exam->desc = $request['desc'];
-        $exam->type = 'private';
-        $exam->show = 1;
-        $exam->user_id = auth()->id();
-        $exam->save();
-
-        return $exam;
+        return Exam::create([
+            'name' => $request['name'],
+            'desc' => $request['desc'],
+            'start' => $start,
+            'duration' => $request['duration'],
+            'type' => 'private',
+            'show' => 1,
+            'user_id' => auth()->id(),
+        ]);
     }
 
     public static function toggleShow($exam)
@@ -52,9 +51,9 @@ class ExamRepo
         $exam->save();
     }
 
-    public static function withQuestionsFindOrFail($exam)
+    public static function withQuestionsAndRoom($exam)
     {
-        return Exam::with('questions')->findOrFail($exam);
+        return Exam::with(['questions','rooms'])->findOrFail($exam);
     }
 
     public static function addDuration($exam, $duration = 5)
@@ -62,4 +61,5 @@ class ExamRepo
         $exam->duration += $duration;
         $exam->save();
     }
+
 }

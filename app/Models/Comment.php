@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
-use Quizviran\Models\Room;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
     protected $guarded = ['id'];
 
-    protected $with = ['user'];
-
-    protected $perPage = 20;
+    protected $with = ['user','files'];
 
     public function commentable()
     {
@@ -35,7 +32,7 @@ class Comment extends Model
 
     public function isOwnMember()
     {
-        if(!auth()->user()->isTeacher())
+        if(!cache('user')->isTeacher())
             return false;
         return true;
     }

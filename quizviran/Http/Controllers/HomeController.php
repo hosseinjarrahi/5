@@ -21,7 +21,7 @@ class HomeController extends Controller
 
         $rooms = collect([]);
         if (auth()->check()) {
-            $rooms = auth()->user()->rooms;
+            $rooms = cache('user')->rooms;
         }
 
         return view('Quizviran::home', compact('exams', 'bestStudents', 'rooms'));

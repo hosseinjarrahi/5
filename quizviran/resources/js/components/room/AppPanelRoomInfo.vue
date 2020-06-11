@@ -15,7 +15,7 @@
         <div class="d-flex ml-md-auto flex-column flex-md-row " style="font-size:0.9rem">
           <div class="mx-3"><span class="fas fa-key fa-fw mx-2"></span><span>کد عضویت : </span><span>{{ room.code }}</span></div>
           <div class="dropdown-divider d-block d-md-none"></div>
-          <div class="mx-3"><span class="fas fa-users fa-fw mx-2"></span><span>تعداد اعضاء : </span><span>{{ room.members.length }}</span></div>
+          <div class="mx-3"><span class="fas fa-users fa-fw mx-2"></span><span>تعداد اعضاء : </span><span>{{ room.members_count }}</span></div>
           <div class="dropdown-divider d-block d-md-none"></div>
           <div class="mx-3"><span class="fas fa-calendar-check mx-2 fa-fw"></span><span>ساخته شده در : </span><span>{{ room.jalalyCreatedAt }}</span></div>
         </div>

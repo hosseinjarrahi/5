@@ -13,7 +13,8 @@ class PanelController extends Controller
          * @name('quizviran.rooms')
          * @middlewares(web, auth)
          */
-        $rooms = auth()->user()->rooms;
+        $rooms = cache('user')->rooms()->with('user')->get();
+
         return view('Quizviran::panel.teacher.home',compact('rooms'));
     }
 

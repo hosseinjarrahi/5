@@ -6,7 +6,7 @@
 
         <div class="row justify-content-center">
             <div class="bg-dark-gray col-12" style="padding-top: 120px;">
-                <app-panel-links-header type="{{ auth()->user()->type }}"></app-panel-links-header>
+                <app-panel-links-header type="{{ $user->type }}"></app-panel-links-header>
             </div>
         </div>
 

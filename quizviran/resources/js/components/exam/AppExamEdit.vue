@@ -11,7 +11,7 @@
       </div>
       <div class="form-group">
         <label><span class="fas fa-clock"></span> <span>زمان شروع آزمون</span></label>
-        <date-picker class="text-dark" locale="fa" format="jYYYY-jMM-jDD HH:mm:ss" v-model="edit.jalalyDate" type="datetime"/>
+        <date-picker class="text-dark" locale="fa" format="jYYYY-jMM-jDD HH:mm:ss" v-model="edit.start" type="datetime"/>
       </div>
       <div class="form-group">
         <label><span class="fas fa-clock"></span> <span>مدت زمان آزمون به دقیقه</span></label>
@@ -27,10 +27,13 @@
 
     export default {
         name: "AppExamEdit",
-        props: ['quiz'],
+        props: ['exam'],
+        mounted() {
+          this.edit.start = this.exam.startForEdit;
+        },
         data() {
             return {
-                edit: this.quiz,
+                edit: Object.assign(this.exam),
             }
         },
         methods: {

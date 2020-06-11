@@ -17,7 +17,7 @@
                 <div class="col-12 my-3">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
-                            @if(auth()->user()->type == 'teacher')
+                            @if($user->isTeacher())
                                 <a href="/quiz/panel/room/create" class="mx-1">
                                     <img src="{{ asset('quiz-assets/img/create-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="create-class">
@@ -94,7 +94,7 @@
                 <div class="col-lg-6 col-12 my-2 position-relative">
                     <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
                         @if($rooms->isEmpty())
-                            @if(auth()->user()->type == 'teacher')
+                            @if($user->isTeacher())
                                 <a href="/quiz/panel/room/create" class="btn btn-outline-light btn-block">
                                     <span class="fas fa-plus"></span>
                                     <span>ایجاد کلاس</span>
@@ -107,7 +107,10 @@
                                 </a>
                             @endif
                         @endif
-                        <app-main-box-last-classes :key="room.id" v-for="room in {{ $rooms->toJson() }}" :room="room"></app-main-box-last-classes>
+                        <app-main-box-last-classes :key="room.id"
+                                                   v-for="room in {{ $rooms->toJson() }}"
+                                                   :room="room">
+                        </app-main-box-last-classes>
                     </app-main-box>
                 </div>
 

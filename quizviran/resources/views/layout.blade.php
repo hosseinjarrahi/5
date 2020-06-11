@@ -3,6 +3,7 @@
 <head>
     @authEl
     <meta charset="utf-8">
+    <meta name="theme-color" content="#2f3542">
     <meta name="keywords" content="@yield('keywords','')">
     <meta name="description" content="@yield('description','')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,18 +33,22 @@
 </div>
 
 <div id="app">
+
     <app-loading></app-loading>
 
-    @if(auth()->check() && auth()->user()->isAdmin())
+    @if(auth()->check() && $user->isAdmin())
         <a class="d-block text-white bg-gray p-1 text-center" style="position:fixed;bottom: 10px;left: 10px;"
            href="{{ url('/manager') }}">مدیریت</a>
     @endif
 
-    <app-header :event="{{ $topEvent->toJson() }}" :notifications="{{ $notifications }}"></app-header>
+    <x-header></x-header>
+
     @yield('content')
+
     <app-footer>
         تمامی حقوق سایت متعلق به تیزویران می باشد.
     </app-footer>
+
 </div>
 
 </body>

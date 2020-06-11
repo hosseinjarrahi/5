@@ -15,7 +15,9 @@ class HasRoom
             $room = RoomRepo::findOrFail($request->id);
         }
 
-        if (auth()->user()->hasRoom($room)) {
+        cache()->set('room',$room);
+
+        if (cache('user')->hasRoom($room)) {
             return $next($request);
         }
 

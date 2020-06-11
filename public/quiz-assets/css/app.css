@@ -42,8 +42,6 @@ body {
 
 .blur-enter,
 .blur-leave-to {
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
   opacity: 0;
 }
 

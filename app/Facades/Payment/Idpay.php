@@ -28,9 +28,9 @@ class Idpay
         $params = [
             'order_id' => $this->payment->id,
             'amount' => $amount,
-            'name' => auth()->user()->name,
-            'phone' => auth()->user()->phone,
-            'mail' => auth()->user()->email,
+            'name' => cache('user')->name,
+            'phone' => cache('user')->phone,
+            'mail' => cache('user')->email,
             'desc' => $desc,
             'callback' => $this->callback,
             'reseller' => null,

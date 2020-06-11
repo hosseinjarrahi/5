@@ -54,6 +54,7 @@ class RegisterController extends Controller
          */
         auth()->logout();
         session()->flush();
+        cache()->clear();
 
         return redirect('/');
     }
@@ -128,7 +129,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = auth()->user();
+        $user = cache('user');
 
         $profile = $user->profile;
         if (! $profile) {
@@ -148,7 +149,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = auth()->user();
+        $user = cache('user');
         $avatar = '/storage/' . $request->file('file')->store('avatars', 'public');
         File::delete(public_path($user->profile->avatar));
         $user->profile()->update(['avatar' => $avatar]);
@@ -166,7 +167,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = auth()->user();
+        $user = cache('user');
         $profile = $user->profile;
         $birth = $profile['birth'];
 

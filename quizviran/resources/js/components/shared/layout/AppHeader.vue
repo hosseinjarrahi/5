@@ -1,11 +1,12 @@
 <template>
   <header class="container-fluid p-0 fix">
 
-    <app-event v-if="event.show" v-html="event.body"></app-event>
+<!--    <app-event v-if="event.show" v-html="event.body"></app-event>-->
 
     <transition name="fade">
       <app-login-modal v-if="openModal && !auth" @close="openModal = false"></app-login-modal>
     </transition>
+
     <div class="container-fluid head-color">
       <nav class="container navbar navbar-expand text-center navbar-light py-md-0 py-2">
         <div
@@ -21,12 +22,13 @@
               class="d-inline-block"
               alt="user avatar"
             />
+
             <transition name="slide">
               <div class="dropdown" v-if="openModal && auth">
                 <div class="dropdown-menu d-block" style="left:-50px">
                   <a class="dropdown-item" href="/notifications">
                     <span class="fas fa-bell mr-1 position-relative">
-                      <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notifications }}</span>
+                      <span class="position-absolute badge badge-info" style="top: -10px;right:-5px;font-size:0.6rem">{{ notificationCount }}</span>
                     </span>اعلانات
                   </a>
 <!--                  <a class="dropdown-item" href="/purchases"><span class="fas fa-shopping-bag mr-1"></span>خرید ها</a>-->
@@ -35,6 +37,7 @@
                 </div>
               </div>
             </transition>
+
           </a>
 
           <div
@@ -46,7 +49,7 @@
           </div>
 
           <a class="navbar-brand" href="/">
-            <img src="/img/logo.png" height="30" class="d-inline-block align-top" alt/>
+            <img src="/img/logo.png" height="30" class="d-inline-block align-top" alt="logo"/>
           </a>
 
           <ul class="navbar-nav d-none d-md-flex align-items-center">
@@ -69,8 +72,8 @@
 <script>
     export default {
         props: {
-            notifications: {default: 0},
-            event: {default: 0},
+            notificationCount: {default: 0},
+            // event: {default: 0},
         },
         created() {
             EventBus.$on('openSignUp',()=>{

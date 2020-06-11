@@ -11,7 +11,7 @@ class HasExam
     {
         $exam = ExamRepo::findOrFail($request->route()->exam);
 
-        if (auth()->user()->hasExam($exam) || $exam->isPublic()) {
+        if (cache('user')->hasExam($exam) || $exam->isPublic()) {
             return $next($request);
         }
 

@@ -48,7 +48,7 @@ class Exam extends Model
 
     public function showableForMembers()
     {
-        return $this->showable() || auth()->user()->isTeacher();
+        return $this->showable() || cache('user')->isTeacher();
     }
 
     public function getExamUsersWithNorms()
@@ -112,6 +112,7 @@ class Exam extends Model
             'resultLink' => $this->resultLink,
             'startForHumans' => $this->startForHumans,
             'startJalaly' => $this->jalaly,
+            'startForEdit' => jalaly($this->start)->format('Y-m-d H:i'),
             'isInTime' => $this->isInTime(),
             'duration' => $this->duration,
             'remainedTime' => $this->remainedTime,

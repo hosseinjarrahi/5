@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-;
+
 use Illuminate\Support\ServiceProvider;
 
 class DbServiceProvider extends ServiceProvider

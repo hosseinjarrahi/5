@@ -3,7 +3,9 @@
 namespace Quizviran;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Quizviran\ComponentControllers\Header;
 
 class QuizviranServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,6 @@ class QuizviranServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        Blade::component('header',Header::class);
     }
 }

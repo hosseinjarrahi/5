@@ -11,7 +11,7 @@ class HasQuestion
     {
         $question = QuestionRepo::findOrFail($request->route()->question);
 
-        if(auth()->user()->hasQuestion($question->user_id))
+        if(cache('user')->hasQuestion($question->user_id))
             return $next($request);
 
         return abort(404);

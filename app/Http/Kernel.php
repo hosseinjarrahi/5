@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\CacheUser::class,
         ],
 
         'api' => [
@@ -62,7 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => \App\Http\Middleware\admin::class,
+        'admin' => \App\Http\Middleware\AdminCheck::class,
         'has.room' => \Quizviran\Http\Middleware\HasRoom::class,
         'has.exam' => \Quizviran\Http\Middleware\HasExam::class,
         'has.question' => \Quizviran\Http\Middleware\HasQuestion::class,

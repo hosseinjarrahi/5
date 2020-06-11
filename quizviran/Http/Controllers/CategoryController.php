@@ -2,6 +2,7 @@
 
 namespace Quizviran\Http\Controllers;
 
+use http\Env\Request;
 use App\Models\Category;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\CategoryRepo;
