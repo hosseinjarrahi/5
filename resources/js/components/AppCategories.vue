@@ -8,25 +8,27 @@
        v-text="cat.name">
     </a>
 
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-    props:{
-        categories:{default:[]}
+  export default {
+    props: {
+      categories: {default: []}
     }
-}
+  }
 </script>
 
 <style lang="scss">
-  @import "./../../../sass/app.scss";
-.item{
-  transition: all 0.5s;
-}
-.item:hover{
-  background-color: $backgroundColor;
-  color: $darkGray !important;
-}
+  @import "@sass/app.scss";
+
+  .item {
+    transition: all 0.5s;
+  }
+
+  .item:hover {
+    background-color: $backgroundColor;
+    color: $darkGray !important;
+  }
 
 </style>

@@ -24,24 +24,26 @@
 </template>
 
 <script>
+  import {mapMutations} from 'vuex';
+
   export default {
     name: "AppPaginator",
     props: ['paginator', 'route'],
     methods: {
+      ...mapMutations(['loadOff', 'loadOn']),
       paginate(page) {
-        if(!(this.currentPage != page && page >= 1 && page <= this.paginator.last_page))
+        if (!(this.currentPage != page && page >= 1 && page <= this.paginator.last_page))
           return;
-        this.load();
+        this.loadOn();
         axios.post(`${this.route}?page=${page}`)
           .then(({data}) => {
             this.$emit('response', data);
             this.currentPage = page;
           })
           .catch(error => {
-            console.log(this.error);
           })
           .finally(() => {
-            this.closeLoad();
+            this.loadOff();
           });
       }
     },

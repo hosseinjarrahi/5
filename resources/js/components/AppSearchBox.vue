@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import {mapActions} from "vuex";
+
     export default {
         data() {
             return {
@@ -40,14 +42,16 @@
             }
         },
         methods: {
-            find() {
+          ...mapActions(['loadOff', 'loadOn']),
+
+          find() {
                 if(this.search == '')
                     return;
-                this.load();
+                this.loadOn();
                 axios.get('/search?search=' + this.search)
                     .then(res => this.results = res.data)
                     .then(() => {
-                        this.closeLoad();
+                        this.loadOff();
                     });
             }
         }

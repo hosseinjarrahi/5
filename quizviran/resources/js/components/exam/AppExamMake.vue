@@ -24,45 +24,38 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        name: "AppExamMake",
-        props: ['room'],
-        data() {
-            return {
-                quiz: {
-                    start: '',
-                    name: '',
-                    duration: '',
-                    desc: ''
-                },
-            }
+  export default {
+    name: "AppExamMake",
+    props: ['room'],
+    data() {
+      return {
+        quiz: {
+          start: '',
+          name: '',
+          duration: '',
+          desc: ''
         },
-        methods: {
-            make() {
-                this.load();
-                axios.post('/quiz/exam', {room: this.room, ...this.quiz})
-                    .then(res => {
-                        if (res.data == 'ok')
-                            return location.reload();
-                    })
-                    .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی رخ داده',
-                            icon: 'error',
-                            timer: 3000
-                        });
-                    })
-                    .then(() => {
-                        this.closeLoad();
-                    });
-
-            }
-        }
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert', 'reload']),
+      ...mapMutations(['loadOn', 'loadOff']),
+      make() {
+        this.loadOn();
+        axios.post('/quiz/exam', {room: this.room, ...this.quiz})
+          .then(res => {
+            if (res.data == 'ok')
+              return this.reload();
+          })
+          .catch(err => {
+            this.errorAlert();
+          })
+          .then(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
-
-<style scoped>
-
-</style>

@@ -76,59 +76,50 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
 
-    export default {
-        props: ['id', 'questions', 'categories'],
-        name: "AppQuestionAll",
-        mounted() {
+  import {mapActions, mapMutations} from "vuex";
 
-        },
-        data() {
-            return {
-                selected: []
-            }
-        },
-        methods: {
-            handleSelecting() {
-                let flag = true;
-                this.selected.forEach((val, index) => {
-                    if (val == arguments[0].selected) {
-                        this.selected.splice(index, 1);
-                        flag = false;
-                    }
-                });
+  export default {
+    props: ['id', 'questions', 'categories'],
+    name: "AppQuestionAll",
+    data() {
+      return {
+        selected: []
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert', 'reload']),
+      ...mapMutations(['loadOn', 'loadOff']),
 
-                flag && this.selected.push(arguments[0].selected);
-            },
-            AddToExam() {
-                this.load();
-                axios.post('/quiz/question/add-many-to-exam?exam=' + this.id, {
-                    questions: this.selected
-                })
-                    .then(res => {
-                        Swal.fire({
-                            text: 'با موفقیت اضافه شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 3000
-                        });
-                        window.location.reload();
-                    })
-                    .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی در ثبت رخ داده است',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 3000
-                        });
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                    });
-            }
-        }
+      handleSelecting() {
+        let flag = true;
+        this.selected.forEach((val, index) => {
+          if (val == arguments[0].selected) {
+            this.selected.splice(index, 1);
+            flag = false;
+          }
+        });
+
+        flag && this.selected.push(arguments[0].selected);
+      },
+      AddToExam() {
+        this.loadOn();
+        axios.post('/quiz/question/add-many-to-exam?exam=' + this.id, {
+          questions: this.selected
+        })
+          .then(res => {
+            this.successAlert();
+            this.reload();
+          })
+          .catch(err => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

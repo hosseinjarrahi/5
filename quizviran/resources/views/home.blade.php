@@ -18,17 +18,17 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4 d-flex flex-row justify-content-center px-3">
                             @if($user->isTeacher())
-                                <a href="/quiz/panel/room/create" class="mx-1">
+                                <a href="{{ route('quizviran.room.create') }}" class="mx-1">
                                     <img src="{{ asset('quiz-assets/img/create-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="create-class">
                                 </a>
                             @else
-                                <a href="/quiz/panel/join-room" class="mx-1">
+                                <a href="{{ route('quizviran.room.join.page') }}" class="mx-1">
                                     <img src="{{ asset('quiz-assets/img/join-class.png') }}"
                                          class="p-1 quiz-button img-fluid" alt="join-room">
                                 </a>
                             @endif
-                            <a href="/quiz/panel/rooms" class="mx-1">
+                            <a href="{{ route('quizviran.panel') }}" class="mx-1">
                                 <img src="{{ asset('quiz-assets/img/dashboard.png') }}"
                                      class="p-1 quiz-button img-fluid" alt="dashboard">
                             </a>
@@ -95,13 +95,13 @@
                     <app-main-box :dark="true" title="کلاس های من" icon="chalkboard-teacher">
                         @if($rooms->isEmpty())
                             @if($user->isTeacher())
-                                <a href="/quiz/panel/room/create" class="btn btn-outline-light btn-block">
+                                <a href="{{ route('quizviran.room.create') }}" class="btn btn-outline-light btn-block">
                                     <span class="fas fa-plus"></span>
                                     <span>ایجاد کلاس</span>
                                 </a>
 
                             @else
-                                <a href="/quiz/panel/join-room" class="btn btn-outline-light btn-block">
+                                <a href="{{ route('quizviran.room.join.page') }}" class="btn btn-outline-light btn-block">
                                     <span class="fas fa-plus"></span>
                                     <span>عضویت در کلاس</span>
                                 </a>

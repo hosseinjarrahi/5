@@ -18,53 +18,46 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from "vuex";
 
-    export default {
-        name: "AppProfileHeader",
-        props: ['user'],
-        data() {
-            return {
-                avatar: this.user.profile.avatar ? this.user.profile.avatar : '/img/avatar.svg'
-            }
-        },
-        methods: {
-            uploadAvatar() {
-                this.load();
-                this.file = this.$refs.file.files[0];
+  export default {
+    name: "AppProfileHeader",
+    props: ['user'],
+    data() {
+      return {
+        avatar: this.user.profile.avatar ? this.user.profile.avatar : '/img/avatar.svg'
+      }
+    },
+    methods: {
+      ...mapActions(['loadOff', 'loadOn']),
+      ...mapMutations(['errorAlert', 'successAlert']),
 
-                let formData = new FormData();
-                formData.append("file", this.file);
+      uploadAvatar() {
+        this.loadOn();
+        this.file = this.$refs.file.files[0];
 
-                axios.post("/upload-avatar", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    }
-                })
-                    .then(function (response) {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                        return response.data.avatar;
-                    })
-                    .catch(function (error) {
-                        Swal.fire({
-                            text: error.response.data.errors.file || error.response.data.errors.max,
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                    })
-                    .then(avatar => {
-                        this.avatar = avatar ? avatar : this.avatar;
-                        this.closeLoad();
-                    });
-            }
-        }
+        let formData = new FormData();
+        formData.append("file", this.file);
+
+        axios.post("/upload-avatar", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then(function (response) {
+            this.successAlert(response.data.message);
+            return response.data.avatar;
+          })
+          .catch(function (error) {
+            this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
+          })
+          .then(avatar => {
+            this.avatar = avatar ? avatar : this.avatar;
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

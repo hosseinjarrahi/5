@@ -19,10 +19,10 @@
       <div class="row justify-content-center">
         <div class="col-11 col-md-4 p-3 rounded my-2">
 
-<!--          <span class="btn block-btn btn-block btn-file mb-5">-->
-<!--            ارسال فایل-->
-<!--            <input type="file" ref="file" @change="uploadFile"/>-->
-<!--          </span>-->
+          <!--          <span class="btn block-btn btn-block btn-file mb-5">-->
+          <!--            ارسال فایل-->
+          <!--            <input type="file" ref="file" @change="uploadFile"/>-->
+          <!--          </span>-->
 
           <button class="btn btn-block shadow btn-primary" @click="complete()">
             <span class="fas fa-clipboard-check"></span>
@@ -35,94 +35,90 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        data() {
-            return {
-                selected: [],
-            };
-        },
-        props: {
-            id: {default: ""},
-            questions: {default: ""}
-        },
-        computed: {
-            quests() {
-                return JSON.parse(this.questions);
-            }
-        },
-        methods: {
-            complete() {
-                this.load();
-                let id = this.id;
-                axios.post("/quiz/complete", {data: this.selected, id: this.id})
-                    .then(function (response) {
-                        Swal.fire({
-                            // title: 'Error!',
-                            text: response.data.message,
-                            icon: response.data.type,
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                        setTimeout(() => {
-                            window.location = `/quiz/results/${id}`;
-                        }, 2000);
-                    })
-                    .catch(function (error) {
-                        console.log(error.message);
-                        Swal.fire({
-                            // title: 'Error!',
-                            text: error.message,
-                            icon: error.type,
-                            confirmButtonText: 'بسیار خوب',
+  export default {
+    data() {
+      return {
+        selected: [],
+      };
+    },
+    props: {
+      id: {default: ""},
+      questions: {default: ""}
+    },
+    computed: {
+      quests() {
+        return JSON.parse(this.questions);
+      }
+    },
+    methods: {
+      ...mapMutations(['loadOff', 'loadOn']),
+      ...mapActions(['sweetAlert', 'redirect']),
+      complete() {
+        this.loadOff();
+        let id = this.id;
+        axios.post("/quiz/complete", {data: this.selected, id: this.id})
+          .then(function (response) {
 
-                            timer: 5000
-                        });
-                    })
-                    .then(() => {
-                        this.closeLoad();
-                    });
-            },
-            handleSelecting() {
-                this.selected.forEach((val, index) => {
-                    if (val.id == arguments[0].id) this.selected.splice(index, 1);
-                });
-                this.selected.push(arguments[0]);
-            },
-            uploadFile() {
-                this.load();
-                this.file = this.$refs.file.files[0];
+            this.sweetAlert({
+              text: response.data.message,
+              icon: response.data.type,
+            });
 
-                let formData = new FormData();
-                formData.append("file", this.file);
-                formData.append("id", this.id);
+            this.redirect({
+              url: `/quiz/results/${id}`,
+              timer: 2000
+            });
 
-                axios.post("/file", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    }
-                })
-                    .then(function (response) {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                    })
-                    .catch(function (error) {
-                        Swal.fire({
-                            text: error.response.data.errors.file || error.response.data.errors.max,
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                    });
-                this.closeLoad();
-            }
-        }
-    };
+          })
+          .catch(function (error) {
+            this.sweetAlert({
+              text: error.message,
+              icon: error.type,
+            });
+          })
+          .then(() => {
+            this.loadOff();
+          });
+      },
+      handleSelecting() {
+        this.selected.forEach((val, index) => {
+          if (val.id == arguments[0].id) this.selected.splice(index, 1);
+        });
+        this.selected.push(arguments[0]);
+      },
+      uploadFile() {
+        this.load();
+        this.file = this.$refs.file.files[0];
+
+        let formData = new FormData();
+        formData.append("file", this.file);
+        formData.append("id", this.id);
+
+        axios.post("/file", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then(function (response) {
+            this.sweetAlert({
+              text: response.data.message,
+              icon: 'success',
+            });
+          })
+          .catch(function (error) {
+            this.sweetAlert({
+              text: error.response.data.errors.file || error.response.data.errors.max,
+              icon: 'error',
+            });
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
+    }
+  };
 </script>
 
 <style>

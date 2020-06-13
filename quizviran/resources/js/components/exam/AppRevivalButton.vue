@@ -6,39 +6,29 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2'
 
-    export default {
-        props:['exam'],
-        name: "AppRevivalButton",
-        methods: {
-            revival(sub = '') {
-                this.load();
-                axios.post("/quiz/exam/" + this.exam + "/revival",{ sub: sub })
-                    .then(res => {
-                        Swal.fire({
-                            text: 'با موفقیت انجام شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 2000
-                        });
-                    })
-                    .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 2000
-                        });
-                    })
-                .then(()=>{
-                    this.closeLoad();
-                });
-            }
-        }
+  import {mapActions, mapMutations} from "vuex";
+
+  export default {
+    props: ['exam'],
+    name: "AppRevivalButton",
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
+
+      revival(sub = '') {
+        this.loadOn();
+        axios.post("/quiz/exam/" + this.exam + "/revival", {sub: sub})
+          .then(res => {
+            this.successAlert();
+          })
+          .catch(err => {
+            this.errorAlert();
+          })
+          .then(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
-
-<style scoped>
-
-</style>

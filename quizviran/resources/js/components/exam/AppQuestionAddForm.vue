@@ -75,83 +75,75 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        mounted() {
-            setTimeout(() => {
-                let iframe = document.getElementById("editor_ifr");
-                let tinymce = iframe.contentWindow.document.getElementById("tinymce");
-                setInterval(() => {
-                    this.question.desc = tinymce.innerHTML;
-                }, 500);
-            }, 1000);
+  export default {
+    mounted() {
+      setTimeout(() => {
+        let iframe = document.getElementById("editor_ifr");
+        let tinymce = iframe.contentWindow.document.getElementById("tinymce");
+        setInterval(() => {
+          this.question.desc = tinymce.innerHTML;
+        }, 500);
+      }, 1000);
+    },
+    name: "AppQuestionAddForm",
+    props: {
+      categories: {default: () => []},
+      route: {default: ''},
+    },
+    data() {
+      return {
+        question: {
+          A: '',
+          B: '',
+          C: '',
+          D: '',
+          norm: 0,
+          answer: 'A',
+          desc: '',
+          type: 'test',
+          category: 0,
+          pic: '',
+          level: 'easy',
         },
-        name: "AppQuestionAddForm",
-        props: {
-            categories: {default: () => []},
-            route: {default: ''},
-        },
-        data() {
-            return {
-                question: {
-                    A: '',
-                    B: '',
-                    C: '',
-                    D: '',
-                    norm: 0,
-                    answer: 'A',
-                    desc: '',
-                    type: 'test',
-                    category: 0,
-                    pic: '',
-                    level: 'easy',
-                },
-                errors: []
-            }
-        },
-        methods: {
-            toBase64(val) {
-                let files = val.target.files;
-                if (files && files[0]) {
+        errors: []
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert', 'reload']),
+      ...mapMutations(['loadOn', 'loadOff']),
+      toBase64(val) {
+        let files = val.target.files;
+        if (files && files[0]) {
 
-                    let FR = new FileReader();
+          let FR = new FileReader();
 
-                    FR.addEventListener("load", (e) => {
-                        this.question.pic = e.target.result;
-                    });
+          FR.addEventListener("load", (e) => {
+            this.question.pic = e.target.result;
+          });
 
-                    FR.readAsDataURL(files[0]);
-                }
-            },
-            makeQuestion() {
-                this.load();
-                axios.post(this.route, this.question)
-                    .then(({data}) => {
-                        Swal.fire({
-                            text: 'با موفقیت انجام شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-                        window.EventBus.$emit('addQuestion', data.question);
-                        window.location.reload();
-                    })
-                    .catch(({response}) => {
-                        Swal.fire({
-                            text: 'مشکلی در افزودن سوال رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-                        this.errors = response.data.errors;
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                    });
-            }
+          FR.readAsDataURL(files[0]);
         }
+      },
+      makeQuestion() {
+        this.loadOn();
+        axios.post(this.route, this.question)
+          .then(({data}) => {
+            this.successAlert();
+            window.EventBus.$emit('addQuestion', data.question);
+            this.reload();
+          })
+          .catch(({response}) => {
+            this.errorAlert();
+            this.errors = response.data.errors;
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

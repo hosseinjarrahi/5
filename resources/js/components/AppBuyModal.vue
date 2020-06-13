@@ -40,41 +40,43 @@
 </template>
 
 <script>
+  import {mapActions} from "vuex";
 
-    export default {
-        props: ['productId', 'price', 'showCouponBox'],
-        data() {
-            return {
-                coupon: null,
-                offer: 0,
-                message: null,
-            };
-        },
-        methods: {
-            checkCoupon() {
-                this.load();
-                this.message = null;
-                axios
-                    .post("/check-coupon", {
-                        coupon: this.coupon,
-                        productId: this.productId
-                    })
-                    .then(res => {
-                        this.offer = res.data.offer;
-                        this.message = res.data.message;
-                    })
-                    .catch(err => this.message = err.response.data.message)
-                    .then(() => {
-                        this.closeLoad();
-                    });
-            }
-        },
-        computed: {
-            final() {
-                return this.price * (100 - this.offer) / 100;
-            }
-        }
-    };
+  export default {
+    props: ['productId', 'price', 'showCouponBox'],
+    data() {
+      return {
+        coupon: null,
+        offer: 0,
+        message: null,
+      };
+    },
+    methods: {
+      ...mapActions(['loadOff', 'loadOn']),
+
+      checkCoupon() {
+        this.loadOn();
+        this.message = null;
+        axios.post("/check-coupon", {
+          coupon: this.coupon,
+          productId: this.productId
+        })
+          .then(response => {
+            this.offer = response.data.offer;
+            this.message = response.data.message;
+          })
+          .catch(error => this.message = error.response.data.message)
+          .then(() => {
+            this.loadOff();
+          });
+      }
+    },
+    computed: {
+      final() {
+        return this.price * (100 - this.offer) / 100;
+      }
+    }
+  };
 </script>
 
 <style>

@@ -49,61 +49,54 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        name: "AppQuestionExam",
-        props: {
-            'questions' : {default:''},
-            'id' : {default:''},
-            'name' : {default:''}
-        },
-        data() {
-            return {
-                selected: []
-            }
-        },
-        methods: {
-            handleSelecting() {
-                let flag = true;
-                this.selected.forEach((val,index) => {
-                    if (val == arguments[0].selected) {
-                        this.selected.splice(index, 1);
-                        flag = false;
-                    }
-                });
+  export default {
+    name: "AppQuestionExam",
+    props: {
+      'questions': {default: ''},
+      'id': {default: ''},
+      'name': {default: ''}
+    },
+    data() {
+      return {
+        selected: []
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
 
-                flag && this.selected.push(arguments[0].selected);
-            },
-            deleteFromExam(){
-                this.load();
-                axios.post('/quiz/question/delete-many-from-exam?exam=' + this.id,{
-                    questions:this.selected
-                })
-                .then(res => {
-                    Swal.fire({
-                        text: 'با موفقیت حذف شد.',
-                        icon: 'success',
-                        confirmButtonText: 'بسیار خوب',
-                        timer: 3000
-                    });
-                    this.questions = this.questions.filter(val => this.selected.indexOf(val.id) === -1);
-                    this.selected = [];
-                })
-                .catch(err => {
-                    Swal.fire({
-                        text: 'مشکلی در ثبت رخ داده است',
-                        icon: 'error',
-                        confirmButtonText: 'بسیار خوب',
-                        timer: 3000
-                    });
-                })
-                .finally(()=>{
-                    this.closeLoad();
-                });
-            }
-        }
+      handleSelecting() {
+        let flag = true;
+        this.selected.forEach((val, index) => {
+          if (val == arguments[0].selected) {
+            this.selected.splice(index, 1);
+            flag = false;
+          }
+        });
+
+        flag && this.selected.push(arguments[0].selected);
+      },
+      deleteFromExam() {
+        this.loadOn();
+        axios.post('/quiz/question/delete-many-from-exam?exam=' + this.id, {
+          questions: this.selected
+        })
+          .then(res => {
+            this.successAlert();
+            this.questions = this.questions.filter(val => this.selected.indexOf(val.id) === -1);
+            this.selected = [];
+          })
+          .catch(err => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

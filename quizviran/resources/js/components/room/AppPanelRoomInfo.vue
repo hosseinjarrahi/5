@@ -38,7 +38,7 @@
 <style scoped>
   @media only screen and (max-width: 992px) {
     .border-sm{
-      border-radius:0px 0px 25px 25px !important;
+      border-radius:0px 0px 50px 50px !important;
     }
   }
 </style>

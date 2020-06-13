@@ -6,13 +6,7 @@ const state = () => ({
   loadComplete: null,
   userMenu: false,
   loginModal: false,
-  status: {
-    login: true,
-    register: false,
-    recovery: false,
-    registerCode: false,
-    recoveryCode: false,
-  },
+  
 });
 
 const getters = {
@@ -71,8 +65,13 @@ const actions = {
   errorAlert({dispatch}, payload = 'مشکلی رخ داده است') {
     return dispatch('sweetAlert', {text: payload, icon: 'error'});
   },
-  reload(timer = 0) {
+  reload(context, timer = 0) {
     return setTimeout(() => window.location.reload(), timer);
+  },
+  redirect(context, payload = {url: '', timer: 0}) {
+    return setTimeout(() => {
+      window.location = payload.url;
+    }, payload.timer);
   },
 };
 

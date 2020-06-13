@@ -23,44 +23,38 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        name: "AppExamEdit",
-        props: ['exam'],
-        mounted() {
-          this.edit.start = this.exam.startForEdit;
-        },
-        data() {
-            return {
-                edit: Object.assign(this.exam),
-            }
-        },
-        methods: {
-            update() {
-                this.load();
-                axios.put('/quiz/exam/' + this.edit.id, this.edit)
-                    .then(res => {
-                        Swal.fire({
-                            text: res.data.message,
-                            icon: 'success',
-                            timer: 3000
-                        });
-                    })
-                    .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی رخ داده',
-                            icon: 'error',
-                            timer: 3000
-                        });
-                    })
-                    .then(() => {
-                        this.closeLoad();
-                    });
+  export default {
+    name: "AppExamEdit",
+    props: ['exam'],
+    mounted() {
+      this.edit.start = this.exam.startForEdit;
+    },
+    data() {
+      return {
+        edit: Object.assign(this.exam),
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
+      update() {
+        this.loadOn();
+        axios.put('/quiz/exam/' + this.edit.id, this.edit)
+          .then(res => {
+            this.successAlert(res.data.message);
+          })
+          .catch(err => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+          });
 
-            }
-        }
+      }
     }
+  }
 </script>
 
 <style scoped>

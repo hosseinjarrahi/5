@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+    import {mapActions, mapMutations} from "vuex";
 
     export default {
         name: "AppProfileForm",
@@ -54,20 +54,17 @@
             }
         },
         methods: {
-            editProfile() {
+          ...mapActions(['loadOff', 'loadOn']),
+          ...mapMutations(['errorAlert', 'successAlert']),
+          editProfile() {
                 this.errors.password = null;
                 this.errors.bio = null;
                 this.errors.name = null;
 
-                this.load();
+                this.loadOn();
                 axios.post('/profile-change', this.form)
                     .then(res => {
-                        Swal.fire({
-                            text: res.data.message,
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
+                        this.successAlert(res.data.message);
                     })
                     .catch(({ response }) => {
                         this.errors.password = response.data.errors.password;
@@ -75,13 +72,9 @@
                         this.errors.name = response.data.errors.name;
                     })
                 .then(()=>{
-                    this.closeLoad();
+                    this.loadOff();
                 });
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

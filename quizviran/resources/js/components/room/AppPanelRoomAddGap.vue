@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark-gray big-shadow p-1 rounded" >
+  <div class="bg-dark-gray big-shadow p-1 rounded">
 
     <div class="flex-row d-flex align-items-center">
       <transition name="slide" mode="out-in">
@@ -53,94 +53,78 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
-    export default {
-        name: "AppPanelRoomAddGap",
-        props: ['type', 'id'],
-        data() {
-            return {
-                open: false,
-                files: [],
-                complete: 0,
-                comment: ''
-            }
-        },
-        methods: {
-            saveInfo(payload){
-                this.files.push(payload.file);
-            },
-            uploadFile() {
-                this.file = this.$refs.file.files[0];
-                let load = this.load;
-                let formData = new FormData();
-                formData.append("file", this.file);
-                axios.post("/file", formData, {
-                    headers: {"Content-Type": "multipart/form-data"},
-                    onUploadProgress: function (progressEvent) {
-                        load(parseInt((progressEvent.loaded / progressEvent.total) * 100));
-                    },
-                })
-                    .then(function (response) {
-                        Swal.fire({
-                            text: response.data.message,
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                        return response.data.file;
-                    })
-                    .catch(function (error) {
-                        Swal.fire({
-                            text: error.response.data.errors.file || error.response.data.errors.max,
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                    })
-                    .then((file) => {
-                        this.files.push(file);
-                        this.closeLoad();
-                    });
-            },
-            deleteFile(id) {
-                this.files = this.files.filter(val => {
-                    return val.id != id
-                });
-                axios.delete('/file/' + id)
-                    .then(res => console.log(res))
-                    .catch(err => console.log(err));
-            },
-            save() {
-                if (this.comment == '')
-                    return;
-                axios.post('/quiz/panel/room/comment', {
-                    files: this.files,
-                    comment: this.comment,
-                    type: this.type,
-                    id: this.id
-                })
-                    .then(res => {
-                        Swal.fire({
-                            text: 'با موفقیت ارسال شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                        window.location.reload();
-                    })
-                    .catch(err => {
-                        Swal.fire({
-                            text: 'مشکلی در ارسال به وجود آمده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000
-                        });
-                    });
-            },
+  export default {
+    name: "AppPanelRoomAddGap",
+    props: ['type', 'id'],
+    data() {
+      return {
+        open: false,
+        files: [],
+        complete: 0,
+        comment: ''
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
 
-        }
+      saveInfo(payload) {
+        this.files.push(payload.file);
+      },
+      uploadFile() {
+        this.file = this.$refs.file.files[0];
+        let load = this.loadOn;
+        let formData = new FormData();
+        formData.append("file", this.file);
+        axios.post("/file", formData, {
+          headers: {"Content-Type": "multipart/form-data"},
+          onUploadProgress: function (progressEvent) {
+            load(parseInt((progressEvent.loaded / progressEvent.total) * 100));
+          },
+        })
+          .then((response) => {
+            this.successAlert(response.data.message);
+            return response.data.file;
+          })
+          .catch((error) => {
+            this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
+          })
+          .then((file) => {
+            this.files.push(file);
+            this.loadOff();
+          });
+      },
+      deleteFile(id) {
+        this.files = this.files.filter(val => {
+          return val.id != id
+        });
+        axios.delete('/file/' + id)
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
+      },
+      save() {
+        if (this.comment == '')
+          return;
+
+        axios.post('/quiz/panel/room/comment', {
+          files: this.files,
+          comment: this.comment,
+          type: this.type,
+          id: this.id
+        })
+          .then(ressponse => {
+            this.successAlert();
+            window.location.reload();
+          })
+          .catch(error => {
+            this.errorAlert();
+          });
+      },
+
     }
+  }
 </script>
 
 <style scoped>

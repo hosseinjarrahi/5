@@ -85,77 +85,73 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
 
-    export default {
-        mounted() {
-            setTimeout(() => {
-                let iframe = document.getElementById("editor_ifr");
-                let tinymce = iframe.contentWindow.document.getElementById("tinymce");
-                tinymce.innerHTML = this.question.desc;
+  import {mapActions, mapMutations} from "vuex";
 
-                this.q.category = this.question.categories[0].id;
-                setInterval(() => {
-                    this.q.desc = tinymce.innerHTML;
-                }, 500);
-            }, 1000);
+  export default {
+    mounted() {
+      setTimeout(() => {
+        let iframe = document.getElementById("editor_ifr");
+        let tinymce = iframe.contentWindow.document.getElementById("tinymce");
+        tinymce.innerHTML = this.question.desc;
 
-            this.question.pic = null;
-        },
-        name: "AppQuestionEditForm",
-        props: {
-            categories: {default: () => []},
-            route: {default: ''},
-            question: {default: () => {}}
-        },
-        data() {
-            return {
-                pic: this.question.pic,
-                q: Object.assign(this.question),
-                errors: []
-            }
-        },
-        methods: {
-            toBase64(val) {
-                let files = val.target.files;
-                if (files && files[0]) {
+        this.q.category = this.question.categories[0].id;
+        setInterval(() => {
+          this.q.desc = tinymce.innerHTML;
+        }, 500);
+      }, 1000);
 
-                    let FR = new FileReader();
-
-                    FR.addEventListener("load", (e) => {
-                        this.question.pic = e.target.result;
-                    });
-
-                    FR.readAsDataURL(files[0]);
-                }
-            }
-            ,
-            makeQuestion() {
-                this.load();
-                axios.patch(this.route, this.q)
-                    .then(({data}) => {
-                        Swal.fire({
-                            text: 'با موفقیت انجام شد.',
-                            icon: 'success',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-                    })
-                    .catch(({response}) => {
-                        Swal.fire({
-                            text: 'مشکلی در ویرایش سوال رخ داده است.',
-                            icon: 'error',
-                            confirmButtonText: 'بسیار خوب',
-                            timer: 5000,
-                        });
-                        this.errors = response.data.errors;
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                    });
-            }
+      this.question.pic = null;
+    },
+    name: "AppQuestionEditForm",
+    props: {
+      categories: {default: () => []},
+      route: {default: ''},
+      question: {
+        default: () => {
         }
+      }
+    },
+    data() {
+      return {
+        pic: this.question.pic,
+        q: Object.assign(this.question),
+        errors: []
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
+      toBase64(val) {
+        let files = val.target.files;
+        if (files && files[0]) {
+
+          let FR = new FileReader();
+
+          FR.addEventListener("load", (e) => {
+            this.question.pic = e.target.result;
+          });
+
+          FR.readAsDataURL(files[0]);
+        }
+      }
+      ,
+      makeQuestion() {
+        this.loadOn();
+        axios.patch(this.route, this.q)
+          .then(({data}) => {
+            this.successAlert();
+          })
+          .catch(({response}) => {
+            this.errorAlert();
+            this.errors = response.data.errors;
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

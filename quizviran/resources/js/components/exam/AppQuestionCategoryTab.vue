@@ -73,116 +73,102 @@
 </template>
 
 <script>
-    import Swal from 'sweetalert2';
 
-    export default {
-        name: "AppQuestionCategoryTab",
-        props: {
-            categories: {default: []},
-            route: {default: '/'}
-        },
-        data() {
-            return {
-                cats: Object.assign(this.categories),
-                openEditModal: false,
-                openDeleteModal: false,
-                editCategory: null,
-                deleteCategory: null,
-                name: '',
-                editName: ''
-            }
-        },
-        methods: {
-            sweetAlert(text, icon) {
-                return Swal.fire({
-                    text: text,
-                    icon: icon,
-                    confirmButtonText: "بسیار خوب",
-                    timer: 5000
-                });
-            },
-            successAlert(text = 'با موفقیت انجام شد') {
-                return this.sweetAlert(text, 'success');
-            },
-            errorAlert(text = 'مشکلی رخ داده است') {
-                return this.sweetAlert(text, 'error');
-            },
-            openEditForm(category) {
-                this.openEditModal = true;
-                this.editCategory = category;
-                this.editName = category.name;
-            },
-            openDeleteForm(category) {
-                this.openDeleteModal = true;
-                this.deleteCategory = category;
+  import {mapActions, mapMutations} from "vuex";
 
-            },
-            destroyCategory() {
-                this.load();
-                axios.delete(this.route + `/${this.deleteCategory.id}`)
-                    .then(response => {
-                        this.successAlert();
-                        this.cats.forEach((val, index) => {
-                            if (val.id == this.deleteCategory.id) {
-                                this.cats.splice(index, 1);
-                            }
-                        });
-                        window.location.reload();
-                    })
-                    .catch(error => {
-                        this.errorAlert();
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                        this.openDeleteModal = false;
-                    });
-            },
-            updateCategory() {
-                if (this.editName == '')
-                    return;
+  export default {
+    name: "AppQuestionCategoryTab",
+    props: {
+      categories: {default: []},
+      route: {default: '/'}
+    },
+    data() {
+      return {
+        cats: Object.assign(this.categories),
+        openEditModal: false,
+        openDeleteModal: false,
+        editCategory: null,
+        deleteCategory: null,
+        name: '',
+        editName: ''
+      }
+    },
+    methods: {
+      ...mapActions(['successAlert', 'errorAlert']),
+      ...mapMutations(['loadOn', 'loadOff', 'reload']),
+      openEditForm(category) {
+        this.openEditModal = true;
+        this.editCategory = category;
+        this.editName = category.name;
+      },
+      openDeleteForm(category) {
+        this.openDeleteModal = true;
+        this.deleteCategory = category;
+      },
+      destroyCategory() {
+        this.load();
+        axios.delete(this.route + `/${this.deleteCategory.id}`)
+          .then(response => {
+            this.successAlert();
+            this.cats.forEach((val, index) => {
+              if (val.id == this.deleteCategory.id) {
+                this.cats.splice(index, 1);
+              }
+            });
+            this.reload();
+          })
+          .catch(error => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+            this.openDeleteModal = false;
+          });
+      },
+      updateCategory() {
+        if (this.editName == '')
+          return;
 
-                this.load();
-                axios.patch(this.route + `/${this.editCategory.id}`, {name: this.editName})
-                    .then(response => {
-                        this.successAlert();
+        this.loadOn();
+        axios.patch(this.route + `/${this.editCategory.id}`, {name: this.editName})
+          .then(response => {
+            this.successAlert();
+            this.cats.forEach((val, index) => {
+              if (val.id == this.editCategory.id) {
+                this.cats[index].name = this.editName;
+              }
+            });
+            this.reload();
+          })
+          .catch(error => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+            this.openEditModal = false;
+          });
+      },
+      addCategory() {
+        if (this.name == '')
+          return;
 
-                        this.cats.forEach((val, index) => {
-                            if (val.id == this.editCategory.id) {
-                                this.cats[index].name = this.editName;
-                            }
-                        });
-
-                        window.location.reload();
-                    })
-                    .catch(error => {
-                        this.errorAlert();
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                        this.openEditModal = false;
-                    });
-            },
-            addCategory() {
-                if (this.name == '')
-                    return;
-
-                this.load();
-                axios.post(this.route, {name: this.name})
-                    .then(response => {
-                        this.successAlert();
-                        this.cats.push(response.data.category);
-                        this.name = '';
-                        window.location.reload();
-                    })
-                    .catch(error => {
-                        this.errorAlert();
-                    })
-                    .finally(() => {
-                        this.closeLoad();
-                    });
-            }
-        }
+        this.loadOn();
+        axios.post(this.route, {name: this.name})
+          .then(response => {
+            this.successAlert();
+            this.cats.push(response.data.category);
+            this.name = '';
+            this.reload();
+          })
+          .catch(error => {
+            this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff();
+          });
+      }
     }
+  }
 </script>
 
 <style scoped>

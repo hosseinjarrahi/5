@@ -56,11 +56,6 @@
         props: {
             product: {default: null}
         },
-        methods: {
-            redirect() {
-                return (window.location = this.product.url);
-            }
-        },
         computed:{
             avatar(){
                 if(this.product.user.profile.avatar)

@@ -69,7 +69,7 @@
 </template>
 
 <script>
-  import Swal from 'sweetalert2';
+  import {mapActions, mapMutations} from 'vuex';
 
   export default {
     props: {
@@ -93,30 +93,22 @@
       }
     },
     methods: {
+      ...mapMutations(['loadOn','loadOff']),
+      ...mapActions(['errorAlert','successAlert']),
       isMp3(filename) {
         return (filename.split('.').pop() == 'mp3');
       },
       edit() {
-        this.load();
+        this.loadOn();
         axios.put('/quiz/panel/room/comment/' + this.comment.id, {comment: this.text})
           .then(res => {
-            Swal.fire({
-              text: res.data.message,
-              icon: 'success',
-              timer: 5000,
-              confirmButtonText: 'بسیار خوب'
-            });
+            this.successAlert(res.data.message);
           })
           .catch(err => {
-            Swal.fire({
-              text: "مشکلی در ثبت اطلاعات وجود دارد.",
-              icon: 'error',
-              timer: 5000,
-              confirmButtonText: 'بسیار خوب'
-            });
+            this.errorAlert();
           })
           .then(() => {
-            this.closeLoad();
+            this.loadOff();
             this.editing = false;
           });
       },
@@ -124,23 +116,13 @@
         this.load();
         axios.delete('/quiz/panel/room/comment/' + this.comment.id)
           .then(res => {
-            Swal.fire({
-              text: res.data.message,
-              icon: 'success',
-              timer: 5000,
-              confirmButtonText: 'بسیار خوب'
-            });
+            this.successAlert(res.data.message);
             this.deleted = true;
           })
           .catch(err => {
-            Swal.fire({
-              text: err.response.data.message,
-              icon: 'error',
-              timer: 5000,
-              confirmButtonText: 'بسیار خوب'
-            });
+            this.errorAlert(err.response.data.message);
           }).then(() => {
-          this.closeLoad();
+          this.loadOff();
           this.deleteModal = false;
         });
       },
