@@ -4,41 +4,48 @@
       <div class="modal-content border-0 ">
         <div class="modal-header bg-dark-gray">
           <transition name="fade" v-if="!auth">
-            <h5 class="modal-title" key="a" v-if="loginer">فرم ورود</h5>
+            <h5 class="modal-title" key="a" v-if="status.login">فرم ورود</h5>
 
-            <h5 class="modal-title" key="b" v-else-if="register">فرم ثبت نام</h5>
+            <h5 class="modal-title" key="b" v-else-if="status.register">فرم ثبت نام</h5>
 
-            <h5 class="modal-title" key="c" v-else-if="recovery">فرم بازیابی</h5>
+            <h5 class="modal-title" key="c" v-else-if="status.recovery">فرم بازیابی</h5>
 
-            <h5 class="modal-title" key="d" v-else-if="recoveryCode">کد تایید</h5>
+            <h5 class="modal-title" key="d" v-else-if="status.recoveryCode">کد تایید</h5>
           </transition>
 
-          <button type="button" class="text-white close" @click="close">
+          <button type="button" class="text-white close" @click="toggleLoginModal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
+          <transition name="fade" mode="out-in">
+            <div v-if="!status.login" @click="changeState('login')" class="pointer d-flex w-100 flex-row align-items-center justify-content-end">
+              <span>بازگشت</span>
+              <span class="mx-1 fas fa-arrow-left"></span>
+            </div>
+          </transition>
+
           <app-error-list :errors="errors"/>
 
           <transition name="fade" mode="out-in" v-if="!auth">
-            <div v-if="loginer" key="login">
+            <div v-if="status.login" key="login">
               <form>
                 <div class="form-group">
                   <span class="fas fa-user"></span>
                   <span>تلفن و یا ایمیل:</span>
-                  <input v-model="login.variable" type="text" class="no-shadow form-control"/>
+                  <input v-model="loginForm.variable" type="text" class="no-shadow form-control"/>
                 </div>
                 <div class="form-group">
                   <span class="fas fa-eye"></span>
                   <span>رمز عبور:</span>
-                  <input v-model="login.password" type="password" class="no-shadow form-control"/>
+                  <input v-model="loginForm.password" type="password" class="no-shadow form-control"/>
                 </div>
                 <a href class="forget password p-2 mb-2" @click.prevent="changeState('recovery')">
                   <span class="fas fa-question"></span>
                   <span>فراموشی رمز عبور</span>
                 </a>
-                <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin()">
+                <button class="btn btn-primary btn-block my-2" @click.prevent="doLogin(loginForm)">
                   <span class="fas fa-sign-in-alt"></span>
                   <span>ورود</span>
                 </button>
@@ -57,7 +64,7 @@
               </div>
             </div>
 
-            <div v-if="register" key="register">
+            <div v-if="status.register" key="register">
               <form>
                 <div class="form-group">
                   <span class="fas fa-phone"></span>
@@ -121,11 +128,11 @@
                     <span>دانش آموز هستم</span>
                   </div>
                 </div>
-                <button class="btn btn-primary btn-block" @click.prevent="doRegister">ارسال کد تایید</button>
+                <button class="btn btn-primary btn-block" @click.prevent="doRegister(registerForm)">ارسال کد تایید</button>
               </form>
             </div>
 
-            <div v-if="registerCode" key="registerCode">
+            <div v-if="status.registerCode" key="registerCode">
               <form>
                 <p class="text-center">
                   <span>کد ارسال شده به </span>
@@ -137,11 +144,11 @@
                   <span>کد تایید</span>
                   <input v-model="verifyCode" class="no-shadow form-control" type="text" required/>
                 </div>
-                <button @click.prevent="verify" class="btn btn-primary">ارسال کد تایید</button>
+                <button @click.prevent="verify(verifyCode)" class="btn btn-primary">ارسال کد تایید</button>
               </form>
             </div>
 
-            <div v-if="recovery" key="recovery">
+            <div v-if="status.recovery" key="recovery">
               <form>
                 <div class="form-group">
                   <b>در هر روز تنها یکبار از طریق تلفن امکان بازیابی وجود دارد.</b>
@@ -150,7 +157,7 @@
                   <span>تلفن همراه و یا ایمیل:</span>
                   <input v-model="phone" type="text" class="no-shadow form-control"/>
                 </div>
-                <button class="btn btn-primary btn-block my-2" @click.prevent="sendCode">ارسال کد</button>
+                <button class="btn btn-primary btn-block my-2" @click.prevent="sendCode(phone)">ارسال کد</button>
               </form>
             </div>
           </transition>
@@ -161,176 +168,52 @@
 </template>
 
 <script>
-    import Swal from "sweetalert2";
+  import {mapMutations} from 'vuex';
+  import {mapActions} from 'vuex';
+  import {mapGetters} from 'vuex';
 
-    export default {
-        created() {
-            this.auth = window.EventBus.auth;
+  export default {
+    created() {
+      this.auth = window.EventBus.auth;
+    },
+    data() {
+      return {
+        auth: null,
+        verifyCode: "",
+        phone: "",
+        registerForm: {
+          phone: "",
+          name: "",
+          type: "",
+          password: "",
+          confirm: ""
         },
-        data() {
-            return {
-                auth: null,
-                loginer: true,
-                register: false,
-                recovery: false,
-                registerCode: false,
-                recoveryCode: false,
-                verifyCode: "",
-                phone: "",
-                registerForm: {
-                    phone: "",
-                    name: "",
-                    type: "",
-                    password: "",
-                    confirm: ""
-                },
-                login: {
-                    variable: "",
-                    password: ""
-                },
-                errors: []
-            };
+        loginForm: {
+          variable: "",
+          password: ""
         },
-        methods: {
-            close() {
-                this.$emit("close");
-            },
-            sweetAlert(text,icon){
-                return Swal.fire({
-                    text: text,
-                    icon: icon,
-                    confirmButtonText: "بسیار خوب",
-                    timer: 5000
-                });
-            },
-            successAlert(text = 'با موفقیت انجام شد'){
-                return this.sweetAlert(text,'success');
-            },
-            errorAlert(text = 'مشکلی رخ داده است'){
-                return this.sweetAlert(text,'error');
-            },
-            doLogin() {
-                this.errors = [];
-                this.load();
-                axios.post("/login", this.login)
-                    .then(response => {
-                        this.successAlert();
-                        window.location.reload();
-                    })
-                    .catch(err => {
-                        this.errors = err.response.data.errors;
-                        if (!!!this.errors) {
-                            this.errorAlert();
-                        }
-                    })
-                    .finally( () => {
-                        this.closeLoad();
-                    });
-            },
-            doRegister() {
-                this.errors = [];
-                this.load();
-                axios
-                    .post("/register", this.registerForm)
-                    .then(response => {
-                        this.successAlert();
-                        this.changeState("registerCode");
-                        this.registerForm = {phone: "", name: "", type: "", password: "", confirm: ""};
-                    })
-                    .catch(err => {
-                            this.errors = err.response.data.errors;
-                            if (err.response.data.message) {
-                                this.errorAlert();
-                            }
-                        }
-                    )
-                    .finally( () => {
-                        this.closeLoad();
-                    });
-            },
-            verify() {
-                this.errors = [];
-                this.load();
-                axios
-                    .post("/verify", {verify: this.verifyCode})
-                    .then(response => {
-                        this.successAlert();
-                        this.changeState("login");
-                        setTimeout(()=>{window.location.reload();},1000);
-                    })
-                    .catch(err => {
-                        this.errorAlert();
-                    })
-                    .finally( () => {
-                        this.closeLoad();
-                    });
-            },
-            sendCode() {
-                this.errors = [];
-                this.load();
-                axios
-                    .post("/reset-password", {phone: this.phone})
-                    .then(res => {
-                        this.successAlert('اگر شماره تلفن و یا ایمیل را درست وارد کرده باشید کد برای شما ارسال شده است');
-                        this.$emit("close");
-                    })
-                    .catch(err => {
-                        let message =
-                            err.response.data.message ?
-                                err.response.data.message :
-                                "تعداد درخواست های شما بیش از حد مجاز است.";
-                        this.errors = err.response.data.errors;
-                        if (!this.errors)
-                        {
-                            this.errorAlert(message);
-                        }
-                    })
-                    .finally( () => {
-                        this.closeLoad();
-                    });
-            },
-            changeState(s) {
-                this.errors = [];
-                switch (s) {
-                    case "login":
-                        this.loginer = true;
-                        this.register = false;
-                        this.recovery = false;
-                        this.registerCode = false;
-                        this.recoveryCode = false;
-                        break;
-                    case "register":
-                        this.loginer = false;
-                        this.register = true;
-                        this.recovery = false;
-                        this.registerCode = false;
-                        this.recoveryCode = false;
-                        break;
-                    case "recovery":
-                        this.loginer = false;
-                        this.register = false;
-                        this.recovery = true;
-                        this.registerCode = false;
-                        this.recoveryCode = false;
-                        break;
-                    case "registerCode":
-                        this.loginer = false;
-                        this.register = false;
-                        this.recovery = false;
-                        this.registerCode = true;
-                        this.recoveryCode = false;
-                        break;
-                    case "recoveryCode":
-                        this.loginer = false;
-                        this.register = false;
-                        this.recovery = false;
-                        this.registerCode = false;
-                        this.recoveryCode = true;
-                        break;
-                }
-            }
-        }
-    };
+      };
+    },
+    computed: {
+      ...mapGetters({
+        errors: 'registerErrors',
+        status: 'status',
+      })
+    },
+    methods: {
+      ...mapMutations([
+        'toggleLoginModal',
+        'setRegisterErrors'
+      ]),
+      ...mapActions([
+        'changeState',
+        'doLogin',
+        'doRegister',
+        'verify',
+        'sendCode',
+      ])
+    }
+  };
 </script>
 
 <style scoped>

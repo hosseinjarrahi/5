@@ -83,6 +83,7 @@ return [
         public_path('assets') => base_path('admin_panel/public'),
 
         base_path('quizviran/resources/js/components/shared') => resource_path('js/components/shared'),
+        base_path('quizviran/resources/js/store/modules/shared') => resource_path('js/store/modules/shared'),
     ],
 
 ];

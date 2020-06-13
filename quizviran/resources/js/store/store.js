@@ -1,29 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import common from './modules/common';
+import register from './modules/register';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state:{
-    drawer:true,
-    load:true
-  },
-  getters:{
-    getDraw(state){
-      return state.drawer;
-    },
-    load(state){
-      return state.load;
-    }
-  },
-  mutations:{
-    toggleDrawer(state){
-      state.drawer = !state.drawer;
-    },
-    loadOff(state){
-      state.load = false;
-    }
-  },
-  actions:{
-
+  modules: {
+    common,
+    register
   }
 });

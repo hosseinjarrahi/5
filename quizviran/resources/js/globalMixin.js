@@ -1,10 +1,6 @@
+import Swal from 'sweetalert2';
+import { mapMutations } from 'vuex';
+
 export default {
-    methods:{
-        load(complete){
-            window.EventBus.$emit('loading',complete);
-        },
-        closeLoad(){
-            window.EventBus.$emit('notLoading');
-        }
-    }
+
 }

@@ -9,10 +9,9 @@ function redirect(url) {
     window.location = url;
 };
 
-async function init(Vue, globalMixin, store = {'null': 'null'}) {
+async function init(Vue, store = {'null': 'null'}) {
     let EventBus = window.EventBus = new Vue({});
     window.EventBus.auth = await checkAuth();
-    Vue.mixin(globalMixin);
     const app = new Vue({
         data() {
             return {

@@ -2,10 +2,8 @@
 
 namespace Quizviran\Http\Controllers;
 
-use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Pagination\Paginator;
 
 class CommentController extends Controller
 {

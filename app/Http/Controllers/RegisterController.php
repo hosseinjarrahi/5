@@ -142,7 +142,7 @@ class RegisterController extends Controller
         return view('main.profile', compact('user'));
     }
 
-    public function uploadAvatar(QuestionRequest $request)
+    public function uploadAvatar(Request $request)
     {
         /**
          * @post('/upload-avatar')

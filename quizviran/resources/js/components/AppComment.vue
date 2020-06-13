@@ -14,7 +14,7 @@
             style="overflow:hidden"
           >{{ comment.user.name }}</span>
 
-          <div class="my-3 px-3 pt-3 bg-dark-gray rounded">
+          <div class="my-3 px-3 pt-3 bg-dark-gray overflow-hidden rounded">
 
             <div class="px-2">
               <div v-if="!editing">{{ text }}</div>

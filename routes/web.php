@@ -12,8 +12,8 @@ Route::post('/complete/reply', 'PaymentController@reply')->name('payment.reply')
 
 Route::post('/login', 'RegisterController@login')->middleware(['guest']);
 Route::get('/logout', 'RegisterController@logout')->name('logout')->middleware('auth');
-Route::post('/reset-password', 'RegisterController@resetPassword')->middleware(['throttle:5,1440','guest']);
-Route::post('/register', 'RegisterController@register')->middleware(['throttle:10,1440','guest']);
+Route::post('/reset-password', 'RegisterController@resetPassword')->middleware(['throttle:500,1440','guest']);
+Route::post('/register', 'RegisterController@register')->middleware(['throttle:1000,1440','guest']);
 Route::post('/verify', 'RegisterController@verify')->middleware(['guest']);
 Route::post('/check-auth', 'RegisterController@checkAuth');
 Route::get('/profile', 'RegisterController@profile')->middleware(['auth']);

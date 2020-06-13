@@ -1,12 +1,12 @@
 <template>
 
-    <div class="loading" v-if="loading">
+    <div class="loading" v-if="load">
 
         <div class="spinner-border my-2 text-light" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-        <div class="progress w-75 w-md-50 my-2 " v-if="complete">
-            <div class="progress-bar" :style="`width: ${complete}%;`">{{ complete }}%</div>
+        <div class="progress w-75 w-md-50 my-2 " v-if="loadComplete">
+            <div class="progress-bar" :style="`width: ${loadComplete}%;`">{{ loadComplete }}%</div>
         </div>
 
     </div>
@@ -14,25 +14,15 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         name: "AppLoading",
-        props:{
-          complete:{default:null}
-        },
-        data(){
-            return{
-                loading:false
-            }
-        },
-        created() {
-            window.EventBus.$on('loading',(complete)=>{
-                this.loading = true;
-                this.complete = complete;
-            });
-            window.EventBus.$on('notLoading',()=>{
-                this.loading = false;
-                this.complete = false;
-            });
+        computed:{
+            ...mapGetters([
+              'load',
+              'loadComplete'
+            ])
         }
     }
 </script>
