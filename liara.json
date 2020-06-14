@@ -2,19 +2,19 @@
   "laravel": {
     "buildAssets": false,
     "postBuildCommands": [
-      "rm -r public/quiz-assets",
-      "rm -r public/storage",
-      "rm -r public/assets",
-      "rm -r quizviran/resources/js/components/shared",
-      "rm -r quizviran/resources/js/store/modules/shared",
-      "php artisan storage:link",
-      "npm install",
-      "npm run production",
-      "cd quizviran",
-      "npm install",
-      "npm run production",
-      "cd ..",
-      "php artisan optimize"
+      "rm -r public/quiz-assets ",
+      "rm -r public/storage ",
+      "rm -r public/assets ",
+      "rm -r quizviran/resources/js/components/shared ",
+      "rm -r quizviran/resources/js/store/modules/shared ",
+      "php artisan storage:link ",
+      "npm install ",
+      "npm run production ",
+      "cd quizviran ",
+      "npm install ",
+      "npm run production ",
+      "cd .. ",
+      "php artisan optimize "
     ]
   }
 }

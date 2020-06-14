@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/liara.json" beforeDir="false" afterPath="$PROJECT_DIR$/liara.json" afterDir="false" />
     </list>
@@ -255,7 +256,7 @@
       <workItem from="1591795468104" duration="4242000" />
       <workItem from="1591847570322" duration="30735000" />
       <workItem from="1591971849400" duration="37746000" />
-      <workItem from="1592127666626" duration="2838000" />
+      <workItem from="1592127666626" duration="4898000" />
     </task>
     <servers />
   </component>
@@ -362,9 +363,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1592041053994" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1592133738329">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1592136516834">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1592133738329" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1592136516834" />
   </component>
 </project>
