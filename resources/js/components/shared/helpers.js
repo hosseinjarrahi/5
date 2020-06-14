@@ -5,10 +5,6 @@ function checkAuth() {
     return auth ? auth : null;
 }
 
-function redirect(url) {
-    window.location = url;
-};
-
 async function init(Vue, store = {'null': 'null'}) {
     let EventBus = window.EventBus = new Vue({});
     window.EventBus.auth = await checkAuth();

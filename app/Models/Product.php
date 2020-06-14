@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class Product extends Model
 {
@@ -11,7 +12,7 @@ class Product extends Model
 
     protected $with = [
         'categories',
-        'user'
+        'user',
     ];
 
     protected $guarded = ['id'];
@@ -28,7 +29,7 @@ class Product extends Model
 
     public function payments()
     {
-        return $this->morphMany(Payment::class,'model');
+        return $this->morphMany(Payment::class, 'model');
     }
 
     public function coupon()
@@ -38,34 +39,45 @@ class Product extends Model
 
     public function files()
     {
-        return $this->morphMany(File::class,'fileable');
+        return $this->morphMany(File::class, 'fileable');
     }
 
     public function comments()
     {
-        return $this->morphMany(Comment::class,'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
-    public static function lastThreeProductWith(Category $category){
+    public static function lastThreeProductWith(Category $category)
+    {
         return $category->products()->orderByDesc('id')->limit('3')->get();
     }
 
     public static function randomByCategory($category)
     {
-        $category = Category::where('slug',$category)->firstOrFail();
+        $category = Category::where('slug', $category)->firstOrFail();
+
         return $category->products()->inRandomOrder()->limit(3)->get();
     }
 
     public function categories()
     {
-        return $this->morphToMany(Category::class, 'model','categories_models');
+        return $this->morphToMany(Category::class, 'model', 'categories_models');
     }
 
     public function getMeta()
     {
         $value = $this->meta;
         $value['keywords'] = collect($value['keywords'])->implode(',');
+
         return $value;
     }
-
+//
+//    public function toArray()
+//    {
+//        $array = parent::toArray();
+//        $category
+//        return $array + [
+//            'url' => route('admin.product.show',['product' => $this->slug])
+//        ];
+//    }
 }

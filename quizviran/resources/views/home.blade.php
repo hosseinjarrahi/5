@@ -114,7 +114,7 @@
                     </app-main-box>
                 </div>
 
-                <div class="col-md-6 col-12 my-3">
+                <div class="col-md-6 col-12 my-2">
                     <app-main-box :dark="true" title="تکالیف" icon="scroll" color="">
                         <app-under-hand></app-under-hand>
                     </app-main-box>

@@ -1,4 +1,4 @@
 <app-header
 {{--  :event="{{ $topEvent->toJson() }}"--}}
-  :notificationCount="{{ $notificationCount }}">
+  :notification-count="{{ $notificationCount }}">
 </app-header>

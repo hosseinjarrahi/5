@@ -84,8 +84,8 @@
         links: [
           {to: '/', title: 'خانه'},
           {to: '/quiz', title: 'کوییزویران'},
-          {to: '/فروشگاه', title: 'فروشگاه'},
-          {to: 'http://forum.tizviran.com', title: 'انجمن'},
+          // {to: '/فروشگاه', title: 'فروشگاه'},
+          // {to: 'http://forum.tizviran.com', title: 'انجمن'},
         ]
       };
     },

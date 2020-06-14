@@ -2696,6 +2696,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -2748,6 +2749,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppCourseCard",
   props: {
@@ -2755,6 +2757,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": null
     }
   },
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['redirect']),
   computed: {
     avatar: function avatar() {
       if (this.product.user.profile.avatar) return this.product.user.profile.avatar;
@@ -3056,7 +3059,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       showDate: null
     };
   },
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['loadOff', 'loadOn'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['errorAlert', 'successAlert'])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOff', 'loadOn'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['errorAlert', 'successAlert'])), {}, {
     editProfile: function editProfile() {
       var _this = this;
 
@@ -3124,7 +3127,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       avatar: this.user.profile.avatar ? this.user.profile.avatar : '/img/avatar.svg'
     };
   },
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['loadOff', 'loadOn'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['errorAlert', 'successAlert'])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOff', 'loadOn'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['errorAlert', 'successAlert'])), {}, {
     uploadAvatar: function uploadAvatar() {
       var _this = this;
 
@@ -3137,10 +3140,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           "Content-Type": "multipart/form-data"
         }
       }).then(function (response) {
-        this.successAlert(response.data.message);
+        _this.successAlert(response.data.message);
+
         return response.data.avatar;
       })["catch"](function (error) {
-        this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
+        _this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
       }).then(function (avatar) {
         _this.avatar = avatar ? avatar : _this.avatar;
 
@@ -3527,13 +3531,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         to: '/quiz',
         title: 'کوییزویران'
-      }, {
-        to: '/فروشگاه',
-        title: 'فروشگاه'
-      }, {
-        to: 'http://forum.tizviran.com',
-        title: 'انجمن'
-      }]
+      } // {to: '/فروشگاه', title: 'فروشگاه'},
+      // {to: 'http://forum.tizviran.com', title: 'انجمن'},
+      ]
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
@@ -50003,7 +50003,11 @@ var render = function() {
       staticClass:
         "col-12 col-md-4 p-2 w-100 position-relative d-flex flex-column",
       staticStyle: { cursor: "pointer" },
-      on: { click: _vm.redirect }
+      on: {
+        click: function($event) {
+          return _vm.redirect({ url: _vm.product.url, timer: 0 })
+        }
+      }
     },
     [
       _vm.product.offer > 0
@@ -67100,12 +67104,6 @@ function checkAuth() {
   authEl.remove();
   return auth ? auth : null;
 }
-
-function redirect(url) {
-  window.location = url;
-}
-
-;
 
 function init(_x) {
   return _init.apply(this, arguments);

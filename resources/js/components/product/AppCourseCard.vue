@@ -2,7 +2,7 @@
   <div
     class="col-12 col-md-4 p-2 w-100 position-relative d-flex flex-column"
     style="cursor: pointer"
-    @click="redirect"
+    @click="redirect({url:product.url,timer:0})"
   >
     <div class="offer" v-if="product.offer>0">
       <img src="/img/offer.svg" class="img-fluid" alt="offer"/>
@@ -51,19 +51,22 @@
 </template>
 
 <script>
-    export default {
-        name: "AppCourseCard",
-        props: {
-            product: {default: null}
-        },
-        computed:{
-            avatar(){
-                if(this.product.user.profile.avatar)
-                  return this.product.user.profile.avatar;
-                return '/img/avatar.svg';
-            }
-        }
-    };
+  import {mapActions} from 'vuex';
+
+  export default {
+    name: "AppCourseCard",
+    props: {
+      product: {default: null}
+    },
+    methods: mapActions(['redirect']),
+    computed: {
+      avatar() {
+        if (this.product.user.profile.avatar)
+          return this.product.user.profile.avatar;
+        return '/img/avatar.svg';
+      }
+    }
+  };
 </script>
 
 <style scoped>

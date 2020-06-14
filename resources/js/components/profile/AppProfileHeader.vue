@@ -29,8 +29,8 @@
       }
     },
     methods: {
-      ...mapActions(['loadOff', 'loadOn']),
-      ...mapMutations(['errorAlert', 'successAlert']),
+      ...mapMutations(['loadOff', 'loadOn']),
+      ...mapActions(['errorAlert', 'successAlert']),
 
       uploadAvatar() {
         this.loadOn();
@@ -44,11 +44,11 @@
             "Content-Type": "multipart/form-data"
           }
         })
-          .then(function (response) {
+          .then((response) => {
             this.successAlert(response.data.message);
             return response.data.avatar;
           })
-          .catch(function (error) {
+          .catch((error) => {
             this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
           })
           .then(avatar => {

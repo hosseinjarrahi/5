@@ -5300,12 +5300,6 @@ function checkAuth() {
   return auth ? auth : null;
 }
 
-function redirect(url) {
-  window.location = url;
-}
-
-;
-
 function init(_x) {
   return _init.apply(this, arguments);
 }
@@ -8286,13 +8280,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         to: '/quiz',
         title: 'کوییزویران'
-      }, {
-        to: '/فروشگاه',
-        title: 'فروشگاه'
-      }, {
-        to: 'http://forum.tizviran.com',
-        title: 'انجمن'
-      }]
+      } // {to: '/فروشگاه', title: 'فروشگاه'},
+      // {to: 'http://forum.tizviran.com', title: 'انجمن'},
+      ]
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
@@ -9298,16 +9288,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         data: this.selected,
         id: this.id
       }).then(function (response) {
-        this.sweetAlert({
+        _this.sweetAlert({
           text: response.data.message,
           icon: response.data.type
         });
-        this.redirect({
+
+        _this.redirect({
           url: "/quiz/results/".concat(id),
           timer: 2000
         });
       })["catch"](function (error) {
-        this.sweetAlert({
+        _this.sweetAlert({
           text: error.message,
           icon: error.type
         });

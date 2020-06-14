@@ -9,6 +9,7 @@ use App\Events\SendVerificationCode;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AvatarRequest;
 use Quizviran\Http\Requests\QuestionRequest;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\RecoverRequest;
@@ -142,7 +143,7 @@ class RegisterController extends Controller
         return view('main.profile', compact('user'));
     }
 
-    public function uploadAvatar(Request $request)
+    public function uploadAvatar(AvatarRequest $request)
     {
         /**
          * @post('/upload-avatar')

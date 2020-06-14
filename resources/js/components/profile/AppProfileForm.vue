@@ -54,8 +54,8 @@
             }
         },
         methods: {
-          ...mapActions(['loadOff', 'loadOn']),
-          ...mapMutations(['errorAlert', 'successAlert']),
+          ...mapMutations(['loadOff', 'loadOn']),
+          ...mapActions(['errorAlert', 'successAlert']),
           editProfile() {
                 this.errors.password = null;
                 this.errors.bio = null;

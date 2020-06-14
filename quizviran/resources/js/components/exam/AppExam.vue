@@ -59,20 +59,17 @@
         this.loadOff();
         let id = this.id;
         axios.post("/quiz/complete", {data: this.selected, id: this.id})
-          .then(function (response) {
-
+          .then((response) => {
             this.sweetAlert({
               text: response.data.message,
               icon: response.data.type,
             });
-
             this.redirect({
               url: `/quiz/results/${id}`,
               timer: 2000
             });
-
           })
-          .catch(function (error) {
+          .catch((error) => {
             this.sweetAlert({
               text: error.message,
               icon: error.type,

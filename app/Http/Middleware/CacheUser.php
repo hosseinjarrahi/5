@@ -8,7 +8,7 @@ class CacheUser
 {
     public function handle($request, Closure $next)
     {
-        cache()->remember('user', 60 * 5, function () {
+        cache()->remember('user', 1, function () {
             return auth()->user();
         });
 

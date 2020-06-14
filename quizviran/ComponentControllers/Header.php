@@ -22,9 +22,12 @@ class Header extends Component
 
     private function cache()
     {
-        $count = cache()->remember('notification_count', 30, function () {
-            return cache('user') ? auth()->user()->unReadNotifications()->count() : 0;
-        });
+        $count = 0;
+        if (auth()->check()) {
+            $count = cache()->remember('notification_count', 30, function () {
+                return cache('user') ? auth()->user()->unReadNotifications()->count() : 0;
+            });
+        }
 
         return [
             $count,
