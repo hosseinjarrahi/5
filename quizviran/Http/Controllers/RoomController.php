@@ -43,7 +43,7 @@ class RoomController extends Controller
 
         $comments = $room->comments()->orderByDesc('id')->with(['files','user'])->paginate(10);
 
-        if (! cache('user')->hasRoom($room)) {
+        if (! auth()->user()->hasRoom($room)) {
             return abort(401);
         }
 
@@ -59,7 +59,7 @@ class RoomController extends Controller
          * @name('quizviran.room.store')
          * @middlewares(web, auth)
          */
-        if (! cache('user')->isTeacher()) {
+        if (! auth()->user()->isTeacher()) {
             return back();
         }
 
@@ -147,7 +147,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::withMembersBylink($room);
 
-        if (! cache('user')->isTeacher()) {
+        if (! auth()->user()->isTeacher()) {
             return abort(401);
         }
 
@@ -163,7 +163,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::findByLink($room);
 
-        if (! cache('user')->isTeacher()) {
+        if (! auth()->user()->isTeacher()) {
             return back();
         }
 
@@ -180,7 +180,7 @@ class RoomController extends Controller
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::findByLink($room);
-        if (! cache('user')->isTeacher()) {
+        if (! auth()->user()->isTeacher()) {
             return back();
         }
 

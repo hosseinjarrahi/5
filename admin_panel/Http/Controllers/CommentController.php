@@ -29,7 +29,7 @@ class CommentController extends Controller
          * @name('admin.comment.update')
          * @middlewares(web, auth, admin)
          */
-        if (! $comment->isOwn() && !cache('user')->isAdmin()) {
+        if (! $comment->isOwn() && !auth()->user()->isAdmin()) {
             return response(['message' => 'امکان ویرایش این نظر برای شما فراهم نیست.']);
         }
 

@@ -25,7 +25,7 @@ class Header extends Component
         $count = 0;
         if (auth()->check()) {
             $count = cache()->remember('notification_count', 30, function () {
-                return cache('user') ? auth()->user()->unReadNotifications()->count() : 0;
+                return auth()->user() ? auth()->user()->unReadNotifications()->count() : 0;
             });
         }
 

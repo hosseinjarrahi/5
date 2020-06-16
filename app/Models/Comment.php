@@ -32,7 +32,7 @@ class Comment extends Model
 
     public function isOwnMember()
     {
-        if(!cache('user')->isTeacher())
+        if(!auth()->user()->isTeacher())
             return false;
         return true;
     }

@@ -17,7 +17,7 @@ class HasRoom
 
         cache()->set('room',$room);
 
-        if (cache('user')->hasRoom($room)) {
+        if (auth()->user()->hasRoom($room)) {
             return $next($request);
         }
 

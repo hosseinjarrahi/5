@@ -130,7 +130,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = cache('user');
+        $user = auth()->user();
 
         $profile = $user->profile;
         if (! $profile) {
@@ -150,7 +150,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = cache('user');
+        $user = auth()->user();
         $avatar = '/storage/' . $request->file('file')->store('avatars', 'public');
         File::delete(public_path($user->profile->avatar));
         $user->profile()->update(['avatar' => $avatar]);
@@ -168,7 +168,7 @@ class RegisterController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $user = cache('user');
+        $user = auth()->user();
         $profile = $user->profile;
         $birth = $profile['birth'];
 

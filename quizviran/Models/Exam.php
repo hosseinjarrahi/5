@@ -48,7 +48,7 @@ class Exam extends Model
 
     public function showableForMembers()
     {
-        return $this->showable() || cache('user')->isTeacher();
+        return $this->showable() || auth()->user()->isTeacher();
     }
 
     public function getExamUsersWithNorms()

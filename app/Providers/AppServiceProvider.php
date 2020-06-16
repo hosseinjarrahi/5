@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         view()->composer('*', function ($view) {
-            $view->with('user', cache('user'));
+            $view->with('user', auth()->user());
         });
     }
 }

@@ -80,7 +80,7 @@ class ExamController extends Controller
          */
         $room = RoomRepo::withUserFindOrFail($request->room);
 
-        if (! cache('user')->teacherHasRoom($room)) {
+        if (! auth()->user()->teacherHasRoom($room)) {
             return abort(404);
         }
 
@@ -131,7 +131,7 @@ class ExamController extends Controller
          * @name('quizviran.exam.complete')
          * @middlewares(web, auth)
          */
-        $user = cache('user');
+        $user = auth()->user();
 
         if ($user->isTeacher()) {
             return response(['message' => 'شما به عنوان معلم نمی توانید امتیازی ثبت کنید. ']);
@@ -175,11 +175,11 @@ class ExamController extends Controller
          */
         $exam = ExamRepo::withQuestionsAndRoom($exam);
 
-        $questionsWithoutCategory = cache('user')->questions()->whereDoesntHave('categories')->get();
+        $questionsWithoutCategory = auth()->user()->questions()->whereDoesntHave('categories')->get();
 
         $room = $exam->rooms->first();
 
-        $categories = cache('user')->categories()->with('questions')->get();
+        $categories = auth()->user()->categories()->with('questions')->get();
 
         return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'quiz', 'questionsWithoutCategory', 'exam'));
     }
@@ -241,7 +241,7 @@ class ExamController extends Controller
          */
         $room = RoomRepo::getWithExams($room);
 
-        if (! cache('user')->teacherHasRoom($room)) {
+        if (! auth()->user()->teacherHasRoom($room)) {
             return back();
         }
 
@@ -264,6 +264,6 @@ class ExamController extends Controller
 
     private function userCanCompleteExam($exam): bool
     {
-        return ($exam->isInTime() && cache('user')->canComplete($exam->id));
+        return ($exam->isInTime() && auth()->user()->canComplete($exam->id));
     }
 }

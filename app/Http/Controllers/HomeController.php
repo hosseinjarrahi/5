@@ -142,8 +142,8 @@ class HomeController extends Controller
          * @name('')
          * @middlewares(web, auth)
          */
-        $notifications = cache('user')->notifications()->orderByDesc('id')->paginate(10);
-        cache('user')->unreadNotifications->markAsRead();
+        $notifications = auth()->user()->notifications()->orderByDesc('id')->paginate(10);
+        auth()->user()->unreadNotifications->markAsRead();
         $links = $notifications->links();
         $notifis = NotificationResource::collection($notifications)->toJson();
         return view('main.notifications',compact('notifis','links'));

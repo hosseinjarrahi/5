@@ -34,8 +34,8 @@ class StudentController extends Controller
             return back()->with(['message' => 'کلاس مورد یافت نشد و یا قفل شده است.']);
         }
 
-        if (! cache('user')->hasRoom($room)) {
-           cache('user')->rooms()->save($room);
+        if (! auth()->user()->hasRoom($room)) {
+            auth()->user()->rooms()->save($room);
         }
 
         return redirect(url('/quiz/panel/room', ['room' => $room->link]));
