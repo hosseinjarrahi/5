@@ -75,9 +75,9 @@ const actions = {
         commit('resetRegisterForm');
         dispatch('successAlert');
       })
-      .catch(err => {
-        commit('setRegisterErrors', error.response.data.errors);
+      .catch(error => {
         dispatch('errorAlert');
+        commit('setRegisterErrors', error.response.data.errors);
       })
       .finally(() => {
         commit('loadOff');

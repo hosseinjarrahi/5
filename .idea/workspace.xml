@@ -3,36 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/Http/Controllers/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/repositories/CommentRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/repositories/CommentRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Facades/Payment/Idpay.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facades/Payment/Idpay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminCheck.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminCheck.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CacheUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CacheUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/liara.json" beforeDir="false" afterPath="$PROJECT_DIR$/liara.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sass.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/quiz-assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/quiz-assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/ComponentControllers/Header.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/ComponentControllers/Header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/ExamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/PanelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/PanelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Middleware/HasCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Middleware/HasCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Middleware/HasExam.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Middleware/HasExam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Middleware/HasQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Middleware/HasQuestion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/Http/Middleware/HasRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/Http/Middleware/HasRoom.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/room/room.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/store/modules/shared/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/store/modules/shared/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store/modules/shared/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/modules/shared/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +266,8 @@
       <workItem from="1591847570322" duration="30735000" />
       <workItem from="1591971849400" duration="37746000" />
       <workItem from="1592127666626" duration="5506000" />
-      <workItem from="1592292133664" duration="1037000" />
+      <workItem from="1592292133664" duration="1767000" />
+      <workItem from="1592373790164" duration="629000" />
     </task>
     <servers />
   </component>
@@ -384,17 +366,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="231" y="7" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1591609248497" />
-    <state x="463" y="149" width="805" height="536" key="find.popup" timestamp="1592293003530">
+    <state x="463" y="149" width="805" height="536" key="find.popup" timestamp="1592293311686">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="463" y="149" width="805" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1592293003530" />
+    <state x="463" y="149" width="805" height="536" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1592293311686" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1592041053994">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1592041053994" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1592292984512">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1592374410638">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1592292984512" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1592374410638" />
   </component>
 </project>
