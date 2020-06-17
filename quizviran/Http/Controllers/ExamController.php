@@ -107,7 +107,7 @@ class ExamController extends Controller
 
         ExamRepo::toggleShow($exam);
 
-        return back();
+        return response(['message' => 'با موفقیت انجام شد.']);
     }
 
     public function result($exam)

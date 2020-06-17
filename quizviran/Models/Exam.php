@@ -86,12 +86,12 @@ class Exam extends Model
 
     public function getLinkAttribute()
     {
-        return route('quizviran.exam.show',['exam' => $this->id]);
+        return route('quizviran.exam.show', ['exam' => $this->id]);
     }
 
     public function getResultLinkAttribute()
     {
-        return route('quizviran.exam.result.student',['exam' => $this->id]);
+        return route('quizviran.exam.result.student', ['exam' => $this->id]);
     }
 
     public function getStartForHumansAttribute()
@@ -108,7 +108,7 @@ class Exam extends Model
     {
         $array = parent::toArray();
 
-        return array_merge($array,[
+        return array_merge($array, [
             'resultLink' => $this->resultLink,
             'startForHumans' => $this->startForHumans,
             'startJalaly' => $this->jalaly,
@@ -117,6 +117,11 @@ class Exam extends Model
             'duration' => $this->duration,
             'remainedTime' => $this->remainedTime,
             'link' => $this->link,
+            'editLink' => route('quizviran.exam.edit', ['exam' => $this->id]),
+            'addQuestionLink' => route('quizviran.questions.manage', ['exam' => $this->id]),
+            'detailLink' => route('quizviran.exam.result.teacher', ['exam' => $this->id]),
+            'deleteLink' => route('quizviran.exam.destroy',['exam' => $this->id]),
+            'revivalLink' => route('quizviran.exam.revival',['exam' => $this->id]),
         ]);
     }
 }

@@ -53,9 +53,3 @@
 
     </div>
 @endsection
-<script>
-    import AppPanelRoomInfo from "../../../../js/components/room/AppPanelRoomInfo";
-    export default {
-        components: {AppPanelRoomInfo}
-    }
-</script>
