@@ -17,8 +17,8 @@
           <div class="my-3 px-3 pt-3 bg-dark-gray overflow-hidden rounded">
 
             <div class="px-2">
-              <div v-if="!editing">{{ text }}</div>
-              <textarea class="form-control" rows="5" v-if="editing" v-model="text"></textarea>
+              <div v-if="!editing">{{ comment.comment }}</div>
+              <textarea class="form-control" rows="5" v-if="editing" v-model="comment.comment"></textarea>
             </div>
 
             <div class="tool-box my-2" v-if="editable && !editing">
@@ -80,31 +80,27 @@
       },
       type: {default: null}
     },
-    updated() {
-      this.text = this.comment.comment;
-    },
     data() {
       return {
         deleteModal: false,
         deleted: false,
         editing: false,
-        text: this.comment.comment,
         auth: window.EventBus.auth
       }
     },
     methods: {
-      ...mapMutations(['loadOn','loadOff']),
-      ...mapActions(['errorAlert','successAlert']),
+      ...mapMutations(['loadOn', 'loadOff']),
+      ...mapActions(['errorAlert', 'successAlert']),
       isMp3(filename) {
         return (filename.split('.').pop() == 'mp3');
       },
       edit() {
         this.loadOn();
-        axios.put('/quiz/panel/room/comment/' + this.comment.id, {comment: this.text})
-          .then(res => {
-            this.successAlert(res.data.message);
+        axios.put('/quiz/panel/room/comment/' + this.comment.id, {comment: this.comment.comment})
+          .then(response => {
+            this.successAlert(response.data.message);
           })
-          .catch(err => {
+          .catch(error => {
             this.errorAlert();
           })
           .then(() => {
@@ -115,12 +111,12 @@
       deleteComment() {
         this.loadOn();
         axios.delete('/quiz/panel/room/comment/' + this.comment.id)
-          .then(res => {
-            this.successAlert(res.data.message);
+          .then(response => {
+            this.successAlert(response.data.message);
             this.deleted = true;
           })
-          .catch(err => {
-            this.errorAlert(err.response.data.message);
+          .catch(({response}) => {
+            this.errorAlert(response.data.message);
           }).then(() => {
           this.loadOff();
           this.deleteModal = false;
@@ -128,7 +124,6 @@
       },
       cancel() {
         this.editing = !this.editing;
-        this.text = this.comment.comment;
       },
       deleteFile(id) {
         this.comment.files = this.comment.files.filter(val => {
