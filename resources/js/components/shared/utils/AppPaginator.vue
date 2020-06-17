@@ -7,9 +7,9 @@
       </li>
 
       <template v-for="n in pageNumber">
-        <li :class="{pointer:currentPage != n}">
-          <span :class="['py-2 px-3',(currentPage == n) ? 'bg-gray' : 'bg-dark-gray']"
-                @click="paginate(currentPage + n -1)">
+        <li :class="{pointer:currentPage != n + currentPage - 1}">
+          <span :class="['py-2 px-3',(currentPage == n + currentPage - 1) ? 'bg-gray' : 'bg-dark-gray']"
+                @click="paginate(currentPage + n - 1)">
             {{ currentPage + n - 1 }}
           </span>
         </li>

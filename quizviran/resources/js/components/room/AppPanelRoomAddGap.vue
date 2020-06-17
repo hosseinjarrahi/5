@@ -75,13 +75,12 @@
       },
       uploadFile() {
         this.file = this.$refs.file.files[0];
-        let load = this.loadOn;
         let formData = new FormData();
         formData.append("file", this.file);
         axios.post("/file", formData, {
           headers: {"Content-Type": "multipart/form-data"},
-          onUploadProgress: function (progressEvent) {
-            load(parseInt((progressEvent.loaded / progressEvent.total) * 100));
+          onUploadProgress: (progressEvent) => {
+            this.loadOn(parseInt((progressEvent.loaded / progressEvent.total) * 100));
           },
         })
           .then((response) => {
@@ -108,6 +107,7 @@
         if (this.comment == '')
           return;
 
+        this.loadOn();
         axios.post('/quiz/panel/room/comment', {
           files: this.files,
           comment: this.comment,
@@ -120,6 +120,9 @@
           })
           .catch(error => {
             this.errorAlert();
+          })
+          .finally(() => {
+            this.loadOff()
           });
       },
 
