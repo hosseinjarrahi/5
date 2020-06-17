@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/liara.json" beforeDir="false" afterPath="$PROJECT_DIR$/liara.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -257,7 +258,7 @@
       <workItem from="1592127666626" duration="5506000" />
       <workItem from="1592292133664" duration="1767000" />
       <workItem from="1592373790164" duration="15180000" />
-      <workItem from="1592396730846" duration="8410000" />
+      <workItem from="1592396730846" duration="8867000" />
     </task>
     <servers />
   </component>
