@@ -3,7 +3,7 @@
     <div class="modal-dialog" style="overflow: hidden" role="document">
       <div class="modal-content border-0 ">
         <div class="modal-header bg-dark-gray">
-          <transition name="fade" v-if="!auth">
+          <transition name="fade" mode="out-in" v-if="!auth">
             <h5 class="modal-title" key="a" v-if="status.login">فرم ورود</h5>
 
             <h5 class="modal-title" key="b" v-else-if="status.register">فرم ثبت نام</h5>

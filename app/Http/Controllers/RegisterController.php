@@ -38,7 +38,7 @@ class RegisterController extends Controller
          */
         $user = UserRepo::findByPhoneOrEmail($request->variable);
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response(['message' => 'نام کاربری و یا رمز عبور اشتباه است.'], 400);
+            return response(['errors' => ['variable' => ['نام کاربری و یا رمز عبور اشتباه است.']]], 400);
         }
 
         auth()->login($user);
@@ -69,7 +69,7 @@ class RegisterController extends Controller
          */
         $driver = $this->checkIsPhoneOrEmail($request->phone);
         if (UserRepo::findByPhoneOrEmail($request->phone)) {
-            return response(['message' => 'کاربری با این شماره تلفن و یا ایمیل وجود دارد.'], 400);
+            return response(['errors' => ['variable' => ['کاربری با این شماره تلفن و یا ایمیل وجود دارد.']]], 400);
         }
 
         event(new SendVerificationCode($request, $driver));
@@ -172,7 +172,7 @@ class RegisterController extends Controller
         $profile = $user->profile;
         $birth = $profile['birth'];
 
-        if (!$birth) {
+        if (! $birth) {
             $birth = Jalalian::fromFormat('Y/m/d', $request->profile['birth'])->toCarbon();
         }
 
