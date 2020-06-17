@@ -106,7 +106,7 @@
         this.deleteCategory = category;
       },
       destroyCategory() {
-        this.load();
+        this.loadOn();
         axios.delete(this.route + `/${this.deleteCategory.id}`)
           .then(response => {
             this.successAlert();

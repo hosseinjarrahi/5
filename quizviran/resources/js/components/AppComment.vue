@@ -113,7 +113,7 @@
           });
       },
       deleteComment() {
-        this.load();
+        this.loadOn();
         axios.delete('/quiz/panel/room/comment/' + this.comment.id)
           .then(res => {
             this.successAlert(res.data.message);

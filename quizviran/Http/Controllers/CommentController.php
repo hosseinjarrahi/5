@@ -14,7 +14,7 @@ class CommentController extends Controller
 
     public function paginate(Request $request)
     {
-        $room = cache('room');
+        $room = session('room');
         $comments = $room->comments()->orderByDesc('id')->paginate(10);
 
         return response(['comments' => $comments]);

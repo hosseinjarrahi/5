@@ -86,7 +86,7 @@
         this.selected.push(arguments[0]);
       },
       uploadFile() {
-        this.load();
+        this.loadOn();
         this.file = this.$refs.file.files[0];
 
         let formData = new FormData();
