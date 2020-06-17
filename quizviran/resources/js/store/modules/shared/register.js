@@ -66,7 +66,7 @@ const actions = {
       });
   },
   
-  doRegister({commit, dispatch},payload) {
+  doRegister({commit, dispatch}, payload) {
     commit('loadOn', null);
     commit('setRegisterErrors', []);
     axios.post("/register", payload)
@@ -75,9 +75,10 @@ const actions = {
         commit('resetRegisterForm');
         dispatch('successAlert');
       })
-      .catch(error => {
+      .catch(({response}) => {
         dispatch('errorAlert');
-        commit('setRegisterErrors', error.response.data.errors);
+        console.log(response.data.errors);
+        commit('setRegisterErrors', response.data.errors);
       })
       .finally(() => {
         commit('loadOff');
