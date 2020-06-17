@@ -1,7 +1,7 @@
 {
   "disks": [
     {
-      "name": "tizviran_disk",
+      "name": "tizviranDisk",
       "mountTo": "storage"
     }
   ],
