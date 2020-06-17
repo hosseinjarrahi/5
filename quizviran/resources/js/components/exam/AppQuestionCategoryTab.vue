@@ -94,8 +94,8 @@
       }
     },
     methods: {
-      ...mapActions(['successAlert', 'errorAlert']),
-      ...mapMutations(['loadOn', 'loadOff', 'reload']),
+      ...mapActions(['successAlert', 'errorAlert','reload']),
+      ...mapMutations(['loadOn', 'loadOff']),
       openEditForm(category) {
         this.openEditModal = true;
         this.editCategory = category;
@@ -110,12 +110,12 @@
         axios.delete(this.route + `/${this.deleteCategory.id}`)
           .then(response => {
             this.successAlert();
+            this.reload();
             this.cats.forEach((val, index) => {
               if (val.id == this.deleteCategory.id) {
                 this.cats.splice(index, 1);
               }
             });
-            this.reload();
           })
           .catch(error => {
             this.errorAlert();

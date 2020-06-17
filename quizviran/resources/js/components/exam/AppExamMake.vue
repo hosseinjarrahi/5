@@ -46,8 +46,8 @@
         this.loadOn();
         axios.post('/quiz/exam', {room: this.room, ...this.quiz})
           .then(res => {
-            if (res.data == 'ok')
-              return this.reload();
+            this.successAlert();
+            this.reload();
           })
           .catch(err => {
             this.errorAlert();
