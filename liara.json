@@ -1,4 +1,10 @@
 {
+  "disks": [
+    {
+      "name": "tizviran_disk",
+      "mountTo": "storage"
+    }
+  ],
   "laravel": {
     "buildAssets": false,
     "postBuildCommands": [
