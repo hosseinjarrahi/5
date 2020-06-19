@@ -9551,7 +9551,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.setExams(this.exams);
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setExams']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['revival', 'toggleShowExam'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setExams', 'loadOn', 'loadOff']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['revival', 'toggleShowExam', 'switchToEditExam']), {
+    switchToEditMode: function switchToEditMode(exam) {
+      var _this = this;
+
+      this.loadOn();
+      this.switchToEditExam(exam);
+      setTimeout(function () {
+        document.querySelector('#editExam').scrollIntoView({
+          behavior: 'smooth'
+        });
+
+        _this.loadOff();
+      }, 1000);
+    }
+  }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     examList: 'exams'
   }))
@@ -9597,6 +9611,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppExamMake",
@@ -9611,7 +9651,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert', 'reload', 'createExam']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['createExam', 'updateExam']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['resetEditExam'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    edit: 'editingExam'
+  }))
 });
 
 /***/ }),
@@ -78956,8 +78999,12 @@ var render = function() {
                   _c(
                     "a",
                     {
-                      staticClass: "btn btn-sm dark-shadow btn-light",
-                      attrs: { href: exam.editLink }
+                      staticClass: "btn btn-sm dark-shadow btn-light text-dark",
+                      on: {
+                        click: function($event) {
+                          return _vm.switchToEditMode(exam)
+                        }
+                      }
                     },
                     [_vm._v("ویرایش")]
                   )
@@ -79108,139 +79155,323 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "app-main-box",
-    { attrs: { dark: true, title: "ایجاد آزمون", icon: "file-alt" } },
+    "transition-group",
+    { staticClass: "w-100", attrs: { name: "slide", mode: "out-in" } },
     [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [
-          _c("span", { staticClass: "fas fa-heading" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("عنوان آزمون")])
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.quiz.name,
-              expression: "quiz.name"
-            }
-          ],
-          staticClass: "form-control",
-          domProps: { value: _vm.quiz.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.quiz, "name", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [
-          _c("span", { staticClass: "fas fa-align-justify" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("توضیحات آزمون")])
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.quiz.desc,
-              expression: "quiz.desc"
-            }
-          ],
-          staticClass: "form-control",
-          domProps: { value: _vm.quiz.desc },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.quiz, "desc", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
       _c(
-        "div",
-        { staticClass: "form-group" },
+        "app-main-box",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.edit,
+              expression: "!edit"
+            }
+          ],
+          key: "one",
+          attrs: { dark: true, title: "ایجاد آزمون", icon: "file-alt" }
+        },
         [
-          _c("label", [
-            _c("span", { staticClass: "fas fa-clock" }),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-heading" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("عنوان آزمون")])
+            ]),
             _vm._v(" "),
-            _c("span", [_vm._v("زمان شروع آزمون")])
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.quiz.name,
+                  expression: "quiz.name"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.quiz.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.quiz, "name", $event.target.value)
+                }
+              }
+            })
           ]),
           _vm._v(" "),
-          _c("date-picker", {
-            staticClass: "text-dark",
-            attrs: {
-              locale: "fa",
-              format: "jYYYY-jMM-jDD HH:mm:ss",
-              type: "datetime"
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-align-justify" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("توضیحات آزمون")])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.quiz.desc,
+                  expression: "quiz.desc"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.quiz.desc },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.quiz, "desc", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [
+                _c("span", { staticClass: "fas fa-clock" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("زمان شروع آزمون")])
+              ]),
+              _vm._v(" "),
+              _c("date-picker", {
+                staticClass: "text-dark",
+                attrs: {
+                  locale: "fa",
+                  format: "jYYYY-jMM-jDD HH:mm:ss",
+                  type: "datetime"
+                },
+                model: {
+                  value: _vm.quiz.start,
+                  callback: function($$v) {
+                    _vm.$set(_vm.quiz, "start", $$v)
+                  },
+                  expression: "quiz.start"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-clock" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.quiz.duration,
+                  expression: "quiz.duration"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.quiz.duration },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.quiz, "duration", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn py-0 btn-primary btn-block",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.createExam({ room: _vm.room, quiz: _vm.quiz })
+                }
+              }
             },
-            model: {
-              value: _vm.quiz.start,
-              callback: function($$v) {
-                _vm.$set(_vm.quiz, "start", $$v)
-              },
-              expression: "quiz.start"
-            }
-          })
-        ],
-        1
+            [_vm._v("ساخت آزمون")]
+          )
+        ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [
-          _c("span", { staticClass: "fas fa-clock" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
-        ]),
-        _vm._v(" "),
-        _c("input", {
+      _c(
+        "app-main-box",
+        {
           directives: [
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.quiz.duration,
-              expression: "quiz.duration"
+              name: "show",
+              rawName: "v-show",
+              value: _vm.edit,
+              expression: "edit"
             }
           ],
-          staticClass: "form-control",
-          domProps: { value: _vm.quiz.duration },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.quiz, "duration", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn py-0 btn-primary btn-block",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.createExam({ room: _vm.room, quiz: _vm.quiz })
-            }
+          key: "tow",
+          attrs: {
+            id: "editExam",
+            dark: true,
+            title: "ویرایش آزمون",
+            icon: "edit"
           }
         },
-        [_vm._v("ساخت آزمون")]
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "pointer d-flex flex-row align-items-center justify-content-end",
+              on: { click: _vm.resetEditExam }
+            },
+            [
+              _c("span", [_vm._v("بازگشت به ایجاد آزمون")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "fas fa-arrow-left mx-1" })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-heading" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("عنوان آزمون")])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.edit.name,
+                  expression: "edit.name"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.edit.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.edit, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-align-justify" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("توضیحات آزمون")])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.edit.desc,
+                  expression: "edit.desc"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.edit.desc },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.edit, "desc", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [
+                _c("span", { staticClass: "fas fa-clock" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("زمان شروع آزمون")])
+              ]),
+              _vm._v(" "),
+              _c("date-picker", {
+                staticClass: "text-dark",
+                attrs: {
+                  locale: "fa",
+                  format: "jYYYY-jMM-jDD HH:mm:ss",
+                  type: "datetime"
+                },
+                model: {
+                  value: _vm.edit.start,
+                  callback: function($$v) {
+                    _vm.$set(_vm.edit, "start", $$v)
+                  },
+                  expression: "edit.start"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [
+              _c("span", { staticClass: "fas fa-clock" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.edit.duration,
+                  expression: "edit.duration"
+                }
+              ],
+              staticClass: "form-control",
+              domProps: { value: _vm.edit.duration },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.edit, "duration", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-block",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.updateExam(_vm.edit)
+                }
+              }
+            },
+            [_vm._v("ویرایش آزمون")]
+          )
+        ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -97745,13 +97976,21 @@ __webpack_require__.r(__webpack_exports__);
 var state = function state() {
   return {
     deleteModal: false,
-    commentForDelete: false
+    commentForDelete: false,
+    comments: [],
+    files: []
   };
 };
 
 var getters = {
   deleteModal: function deleteModal(state) {
     return state.deleteModal;
+  },
+  roomComments: function roomComments(state) {
+    return state.comments;
+  },
+  files: function files(state) {
+    return state.files;
   }
 };
 var mutations = {
@@ -97759,6 +97998,31 @@ var mutations = {
     var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     state.commentForDelete = payload;
     state.deleteModal = !state.deleteModal;
+  },
+  setComments: function setComments(state, payload) {
+    state.comments = payload;
+  },
+  pushToComments: function pushToComments(state, payload) {
+    state.comments.unshift(payload);
+  },
+  removeFromComments: function removeFromComments(state, payload) {
+    state.comments = state.comments.filter(function (val) {
+      return val.id != payload.id;
+    });
+  },
+  setFiles: function setFiles(state, payload) {
+    state.files = payload;
+  },
+  pushToFiles: function pushToFiles(state, payload) {
+    state.files.unshift(payload);
+  },
+  removeFile: function removeFile(state, payload) {
+    state.files = state.files.filter(function (val) {
+      return val.id != payload;
+    });
+  },
+  resetGap: function resetGap(state) {
+    state.files = [];
   }
 };
 var actions = {
@@ -97806,6 +98070,58 @@ var actions = {
     })["catch"](function (err) {
       return console.log(err);
     });
+  },
+  createRoomComment: function createRoomComment(_ref5, payload) {
+    var dispatch = _ref5.dispatch,
+        commit = _ref5.commit;
+    if (payload.comment == '') return;
+    commit('loadOn');
+    axios.post('/quiz/panel/room/comment', {
+      files: payload.files,
+      comment: payload.comment,
+      type: payload.type,
+      id: payload.id
+    }).then(function (response) {
+      dispatch('successAlert');
+      console.log(response.data.comment);
+      commit('pushToComments', response.data.comment);
+      commit('resetGap');
+    })["catch"](function (error) {
+      dispatch('errorAlert');
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  uploadGapFile: function uploadGapFile(_ref6, file) {
+    var dispatch = _ref6.dispatch,
+        commit = _ref6.commit;
+    var formData = new FormData();
+    formData.append("file", file);
+    axios.post("/file", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      },
+      onUploadProgress: function onUploadProgress(progressEvent) {
+        commit('loadOn', parseInt(progressEvent.loaded / progressEvent.total * 100));
+      }
+    }).then(function (response) {
+      dispatch('successAlert', response.data.message);
+      commit('pushToFiles', response.data.file);
+    })["catch"](function (error) {
+      dispatch('errorAlert', error.response.data.errors.file || error.response.data.errors.max);
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  deleteGapFile: function deleteGapFile(_ref7, id) {
+    var commit = _ref7.commit,
+        dispatch = _ref7.dispatch;
+    commit('removeFile', id);
+    axios["delete"]('/file/' + id).then(function (response) {
+      return console.log(response);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -97834,13 +98150,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var state = function state() {
   return {
-    exams: []
+    exams: [],
+    editingExam: false
   };
 };
 
 var getters = {
   exams: function exams(state) {
     return state.exams;
+  },
+  editingExam: function editingExam(state) {
+    return state.editingExam;
   }
 };
 var mutations = {
@@ -97852,12 +98172,24 @@ var mutations = {
   },
   pushToExams: function pushToExams(state, payload) {
     state.exams.unshift(payload);
+  },
+  resetEditExam: function resetEditExam(state) {
+    state.editingExam = false;
+  },
+  setEditingExam: function setEditingExam(state, payload) {
+    state.editingExam = payload;
   }
 };
 var actions = {
-  revival: function revival(_ref, payload) {
+  switchToEditExam: function switchToEditExam(_ref, payload) {
     var dispatch = _ref.dispatch,
         commit = _ref.commit;
+    payload.start = payload.startForEdit;
+    commit('setEditingExam', payload);
+  },
+  revival: function revival(_ref2, payload) {
+    var dispatch = _ref2.dispatch,
+        commit = _ref2.commit;
     commit('loadOn');
     axios.post(payload.exam.revivalLink, {
       sub: payload.sub
@@ -97869,9 +98201,9 @@ var actions = {
       commit('loadOff');
     });
   },
-  toggleShowExam: function toggleShowExam(_ref2, payload) {
-    var dispatch = _ref2.dispatch,
-        commit = _ref2.commit;
+  toggleShowExam: function toggleShowExam(_ref3, payload) {
+    var dispatch = _ref3.dispatch,
+        commit = _ref3.commit;
     commit('loadOn');
     axios["delete"](payload.exam.deleteLink).then(function (response) {
       dispatch('successAlert');
@@ -97882,9 +98214,9 @@ var actions = {
       commit('loadOff');
     });
   },
-  createExam: function createExam(_ref3, payload) {
-    var dispatch = _ref3.dispatch,
-        commit = _ref3.commit;
+  createExam: function createExam(_ref4, payload) {
+    var dispatch = _ref4.dispatch,
+        commit = _ref4.commit;
     commit('loadOn');
     axios.post('/quiz/exam', _objectSpread({
       room: payload.room
@@ -97894,6 +98226,24 @@ var actions = {
     })["catch"](function (error) {
       dispatch('errorAlert');
     }).then(function () {
+      commit('loadOff');
+    });
+  },
+  editExam: function editExam(_ref5, payload) {
+    var dispatch = _ref5.dispatch,
+        commit = _ref5.commit;
+    commit('setEditingExam', payload);
+  },
+  updateExam: function updateExam(_ref6, payload) {
+    var dispatch = _ref6.dispatch,
+        commit = _ref6.commit,
+        state = _ref6.state;
+    commit('loadOn');
+    axios.put(state.editingExam.link, payload).then(function (response) {
+      commit('successAlert', res.data.message);
+    })["catch"](function (error) {
+      dispatch('errorAlert');
+    })["finally"](function () {
       commit('loadOff');
     });
   }
@@ -97917,101 +98267,12 @@ var actions = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var state = function state() {
-  return {
-    comments: [],
-    files: []
-  };
+  return {};
 };
 
-var getters = {
-  roomComments: function roomComments(state) {
-    return state.comments;
-  },
-  files: function files(state) {
-    return state.files;
-  }
-};
-var mutations = {
-  setComments: function setComments(state, payload) {
-    state.comments = payload;
-  },
-  pushToComments: function pushToComments(state, payload) {
-    state.comments.unshift(payload);
-  },
-  removeFromComments: function removeFromComments(state, payload) {
-    state.comments = state.comments.filter(function (val) {
-      return val.id != payload.id;
-    });
-  },
-  setFiles: function setFiles(state, payload) {
-    state.files = payload;
-  },
-  pushToFiles: function pushToFiles(state, payload) {
-    state.files.unshift(payload);
-  },
-  removeFile: function removeFile(state, payload) {
-    state.files = state.files.filter(function (val) {
-      return val.id != payload;
-    });
-  },
-  resetGap: function resetGap(state) {
-    state.files = [];
-  }
-};
-var actions = {
-  createRoomComment: function createRoomComment(_ref, payload) {
-    var dispatch = _ref.dispatch,
-        commit = _ref.commit;
-    if (payload.comment == '') return;
-    commit('loadOn');
-    axios.post('/quiz/panel/room/comment', {
-      files: payload.files,
-      comment: payload.comment,
-      type: payload.type,
-      id: payload.id
-    }).then(function (response) {
-      dispatch('successAlert');
-      console.log(response.data.comment);
-      commit('pushToComments', response.data.comment);
-      commit('resetGap');
-    })["catch"](function (error) {
-      dispatch('errorAlert');
-    })["finally"](function () {
-      commit('loadOff');
-    });
-  },
-  uploadGapFile: function uploadGapFile(_ref2, file) {
-    var dispatch = _ref2.dispatch,
-        commit = _ref2.commit;
-    var formData = new FormData();
-    formData.append("file", file);
-    axios.post("/file", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      onUploadProgress: function onUploadProgress(progressEvent) {
-        commit('loadOn', parseInt(progressEvent.loaded / progressEvent.total * 100));
-      }
-    }).then(function (response) {
-      dispatch('successAlert', response.data.message);
-      commit('pushToFiles', response.data.file);
-    })["catch"](function (error) {
-      dispatch('errorAlert', error.response.data.errors.file || error.response.data.errors.max);
-    })["finally"](function () {
-      commit('loadOff');
-    });
-  },
-  deleteGapFile: function deleteGapFile(_ref3, id) {
-    var commit = _ref3.commit,
-        dispatch = _ref3.dispatch;
-    commit('removeFile', id);
-    axios["delete"]('/file/' + id).then(function (response) {
-      return console.log(response);
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-  }
-};
+var getters = {};
+var mutations = {};
+var actions = {};
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: getters,

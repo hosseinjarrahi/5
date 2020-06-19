@@ -18,7 +18,7 @@
       <tr v-if="exams.length" v-for="(exam,index) in examList" :class="[exam.show ? 'bg-info' : 'bg-dark-gray']">
         <td>{{ exam.name }}</td>
         <td><a class="btn btn-sm dark-shadow btn-light" :href="exam.addQuestionLink">افزودن سوال</a></td>
-        <td><a class="btn btn-sm dark-shadow btn-light" :href="exam.editLink">ویرایش</a></td>
+        <td><a class="btn btn-sm dark-shadow btn-light text-dark" @click="switchToEditMode(exam)">ویرایش</a></td>
         <td><a class="btn btn-sm dark-shadow btn-light" :href="exam.link">مشاهده</a></td>
         <td><a class="btn btn-sm dark-shadow btn-light" :href="exam.detailLink">جزییات</a></td>
         <td>
@@ -45,17 +45,30 @@
 
   export default {
     name: "AppExamList",
+
     props: {
       exams: {default: []}
     },
+
     created() {
       this.setExams(this.exams);
     },
-    methods: {
-      ...mapMutations(['setExams']),
-      ...mapActions(['revival','toggleShowExam']),
 
+    methods: {
+      ...mapMutations(['setExams','loadOn','loadOff']),
+      ...mapActions(['revival', 'toggleShowExam', 'switchToEditExam']),
+      switchToEditMode(exam) {
+        this.loadOn();
+        this.switchToEditExam(exam);
+        setTimeout(() => {
+          document.querySelector('#editExam').scrollIntoView({
+            behavior: 'smooth'
+          });
+          this.loadOff();
+        }, 1000);
+      }
     },
+
     computed: {
       ...mapGetters({
         examList: 'exams'

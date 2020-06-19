@@ -22,11 +22,11 @@
       </app-breadcrumb-item>
     </app-breadcrumb>
     
-    <div class="row px-2 px-md-5 justify-content-center mt-5">
-      <div class="col-11 col-lg-6 mb-5 p-3">
+    <div class="row px-md-5 justify-content-center mt-5">
+      <div class="col-12 col-lg-6 mb-5 p-3">
         <app-exam-make :room="{{ $room->id }}"></app-exam-make>
       </div>
-      <div class="col-11">
+      <div class="col-12">
         <app-main-box :dark="true" title="آزمون های شما" icon="align-right">
           <app-exam-list
               :exams="{{ $room->exams->toJson() }}"
