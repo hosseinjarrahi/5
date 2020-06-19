@@ -1,6 +1,6 @@
 <template>
-  <transition-group name="slide" mode="out-in" class="w-100">
-    <app-main-box key="one" v-show="!edit" :dark="true" title="ایجاد آزمون" icon="file-alt">
+  <transition name="smooth" mode="out-in" class="w-100">
+    <app-main-box key="one" v-if="!edit" :dark="true" title="ایجاد آزمون" icon="file-alt">
       <div class="form-group">
         <label><span class="fas fa-heading"></span> <span>عنوان آزمون</span></label>
         <input v-model="quiz.name" class="form-control">
@@ -20,7 +20,7 @@
       <button class="btn py-0 btn-primary btn-block" @click.prevent="createExam({room,quiz})">ساخت آزمون</button>
     </app-main-box>
 
-    <app-main-box id="editExam" key="tow" v-show="edit" :dark="true" title="ویرایش آزمون" icon="edit">
+    <app-main-box id="editExam" v-else :dark="true" title="ویرایش آزمون" icon="edit">
       <div @click="resetEditExam" class="pointer d-flex flex-row align-items-center justify-content-end">
         <span>بازگشت به ایجاد آزمون</span>
         <span class="fas fa-arrow-left mx-1"></span>
@@ -43,7 +43,7 @@
       </div>
       <button class="btn btn-primary btn-block" @click.prevent="updateExam(edit)">ویرایش آزمون</button>
     </app-main-box>
-  </transition-group>
+  </transition>
 </template>
 
 <script>

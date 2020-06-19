@@ -86,9 +86,10 @@ const actions = {
   
   updateExam({dispatch, commit, state}, payload) {
     commit('loadOn');
+    console.log(state.editingExam.link, payload);
     axios.put(state.editingExam.link, payload)
       .then(response => {
-        commit('successAlert', res.data.message);
+        dispatch('successAlert', response.data.message);
       })
       .catch(error => {
         dispatch('errorAlert');
