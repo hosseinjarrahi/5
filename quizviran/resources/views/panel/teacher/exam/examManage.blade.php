@@ -23,7 +23,7 @@
     </app-breadcrumb>
     
     <div class="row px-2 px-md-5 justify-content-center mt-5">
-      <div class="col-11 col-md-6 mb-5 p-3">
+      <div class="col-11 col-lg-6 mb-5 p-3">
         <app-exam-make :room="{{ $room->id }}"></app-exam-make>
       </div>
       <div class="col-11">
@@ -34,5 +34,6 @@
         </app-main-box>
       </div>
     </div>
+    
   </div>
 @endsection

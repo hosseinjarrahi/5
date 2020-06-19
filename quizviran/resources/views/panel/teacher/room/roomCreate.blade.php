@@ -11,7 +11,7 @@
         </div>
 
         <div class="row px-2 px-md-5 justify-content-center"  style="margin-top: 50px;margin-bottom: 250px;">
-            <div class="col-md-6 col-12 my-2 position-relative">
+            <div class="col-lg-6 col-12 my-2 position-relative">
                 <app-main-box :dark="true" title="ایجاد کلاس" icon="chalkboard-teacher">
                     <form action="/quiz/panel/room" method="post">
                         @csrf

@@ -20,7 +20,7 @@
               <textarea v-model="comment" class="form-control" cols="30" rows="10"></textarea>
             </div>
 
-            <app-voice-record @recorded="saveInfo"></app-voice-record>
+            <app-voice-record @recorded="pushToFiles($event.file)"></app-voice-record>
 
             <div class="row p-2">
 
@@ -34,10 +34,10 @@
             <div class="row p-2">
             <span class="btn bg-gray btn-inset text-light mx-2 btn-file2 pointer">
               <span class="fas fa-paperclip mx-2"></span><span>پیوست فایل</span>
-              <input type="file" ref="file" @change="uploadFile"/>
+              <input type="file" ref="file" @change="uploadGapFile($refs.file.files[0])"/>
             </span>
 
-              <button class="btn btn-primary btn-inset text-light mx-2" @click="save">ارسال</button>
+              <button class="btn btn-primary btn-inset text-light mx-2" @click="createRoomComment(fields)">ارسال</button>
 
               <button class="btn btn-inset btn-danger ml-auto text-light" @click.prevent="open = false">لغو</button>
             </div>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-  import {mapActions, mapMutations} from 'vuex';
+  import {mapActions, mapMutations, mapGetters} from 'vuex';
 
   export default {
     name: "AppPanelRoomAddGap",
@@ -61,71 +61,24 @@
     data() {
       return {
         open: false,
-        files: [],
         complete: 0,
         comment: ''
       }
     },
     methods: {
-      ...mapActions(['successAlert', 'errorAlert']),
-      ...mapMutations(['loadOn', 'loadOff']),
-
-      saveInfo(payload) {
-        this.files.push(payload.file);
-      },
-      uploadFile() {
-        this.file = this.$refs.file.files[0];
-        let formData = new FormData();
-        formData.append("file", this.file);
-        axios.post("/file", formData, {
-          headers: {"Content-Type": "multipart/form-data"},
-          onUploadProgress: (progressEvent) => {
-            this.loadOn(parseInt((progressEvent.loaded / progressEvent.total) * 100));
-          },
-        })
-          .then((response) => {
-            this.successAlert(response.data.message);
-            return response.data.file;
-          })
-          .catch((error) => {
-            this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
-          })
-          .then((file) => {
-            this.files.push(file);
-            this.loadOff();
-          });
-      },
-      deleteFile(id) {
-        this.files = this.files.filter(val => {
-          return val.id != id
-        });
-        axios.delete('/file/' + id)
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
-      },
-      save() {
-        if (this.comment == '')
-          return;
-
-        this.loadOn();
-        axios.post('/quiz/panel/room/comment', {
+      ...mapActions(['createRoomComment', 'uploadGapFile', 'deleteGapFile']),
+      ...mapMutations(['pushToFiles']),
+    },
+    computed: {
+      ...mapGetters(['files']),
+      fields() {
+        return {
           files: this.files,
           comment: this.comment,
           type: this.type,
           id: this.id
-        })
-          .then(ressponse => {
-            this.successAlert();
-            window.location.reload();
-          })
-          .catch(error => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff()
-          });
-      },
-
+        };
+      }
     }
   }
 </script>

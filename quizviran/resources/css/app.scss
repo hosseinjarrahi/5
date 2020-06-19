@@ -8,44 +8,53 @@
   tap: 0;
   left: 15px;
   position: absolute;
-  background: -moz-linear-gradient(to right,#2f3542,rgba(0,0,0,0));
-  background: linear-gradient(to right,#2f3542,rgba(0,0,0,0));
+  background: -moz-linear-gradient(to right, #2f3542, rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, #2f3542, rgba(0, 0, 0, 0));
 }
 
-body{
-  color:#2f3542;
+body {
+  color: #2f3542;
 }
 
-.text-dark{
-  color:#2f3542 !important;
+.text-dark {
+  color: #2f3542 !important;
 }
 
-.link-hover{
-  transition:all 0.3s;
+.link-hover {
+  transition: all 0.3s;
 }
 
-.link-hover:hover{
+.link-hover:hover {
   background-color: rgba(245, 245, 245, 0.5);
 }
 
-.selected-link{
+.selected-link {
   border-bottom: 2px solid #f5f5f5;
 }
 
-.bg-cover{
+.bg-cover {
   background-position: center;
   background-size: cover;
 }
 
-.dark-shadow{
+.dark-shadow {
   box-shadow: 0px 2px 5px #003d5c;
 }
+
 // todo : change blur animation name to another name related
-.blur-enter,.blur-leave-to{
-  opacity:0;
+.blur-enter, .blur-leave-to {
+  opacity: 0;
 }
 
-.blur-enter-active,.blur-leave-active{
+.blur-enter-active, .blur-leave-active {
+  transition: all 0.3s;
+}
+
+.scale-enter, .scale-leave-to {
+  transform: scaleX(0);
+}
+
+.scale-enter-active, .scale-leave-active {
   transition: all 0.3s;
 }
 

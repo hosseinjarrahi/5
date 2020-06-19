@@ -32,31 +32,31 @@
 </template>
 
 <script>
-    import {mapActions} from "vuex";
+  import {mapActions} from "vuex";
 
-    export default {
-        data() {
-            return {
-                results: [],
-                search: ''
-            }
-        },
-        methods: {
-          ...mapActions(['loadOff', 'loadOn']),
+  export default {
+    data() {
+      return {
+        results: [],
+        search: ''
+      }
+    },
+    methods: {
+      ...mapActions(['loadOff', 'loadOn']),
 
-          find() {
-                if(this.search == '')
-                    return;
-                this.loadOn();
-                axios.get('/search?search=' + this.search)
-                    .then(res => this.results = res.data)
-                    .then(() => {
-                        this.loadOff();
-                    });
-            }
-        }
-
+      find() {
+        if (this.search == '')
+          return;
+        this.loadOn();
+        axios.get('/search?search=' + this.search)
+          .then(res => this.results = res.data)
+          .then(() => {
+            this.loadOff();
+          });
+      }
     }
+
+  }
 </script>
 
 <style>

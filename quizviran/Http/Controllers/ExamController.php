@@ -93,7 +93,7 @@ class ExamController extends Controller
 
         $room->exams()->attach($exam);
 
-        return response(['message' => 'با موفقیت اضافه شد.']);
+        return response(['message' => 'با موفقیت اضافه شد.','exam' => $exam]);
     }
 
     public function destroy($exam)

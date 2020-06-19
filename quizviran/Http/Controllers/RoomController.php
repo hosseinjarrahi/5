@@ -4,7 +4,6 @@ namespace Quizviran\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
-use Morilog\Jalali\Jalalian;
 use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
 use Quizviran\Repositories\RoomRepo;
@@ -41,15 +40,18 @@ class RoomController extends Controller
          */
         $room = RoomRepo::withMemberCount($room);
 
-        $comments = $room->comments()->orderByDesc('id')->with(['files','user'])->paginate(10);
+        $comments = $room->comments()->orderByDesc('id')->with([
+            'files',
+            'user',
+        ])->paginate(10);
 
         if (! auth()->user()->hasRoom($room)) {
             return abort(401);
         }
 
-        $room->exams = $room->exams()->orderByDesc('id')->paginate(10);
+        $room->exams = $room->exams()->show()->orderByDesc('id')->paginate(10);
 
-        return view('Quizviran::panel.teacher.room.room', compact('room','comments'));
+        return view('Quizviran::panel.teacher.room.room', compact('room', 'comments'));
     }
 
     public function store(Request $request)
@@ -98,7 +100,12 @@ class RoomController extends Controller
 
         $comment->files()->saveMany($files);
 
-        return response(['message' => 'با موفقیت اضافه شد']);
+        $comment->load(['user','files']);
+
+        return response([
+            'message' => 'با موفقیت اضافه شد',
+            'comment' => $comment,
+        ]);
     }
 
     public function updateComment($comment, Request $request)

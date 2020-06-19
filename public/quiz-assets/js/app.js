@@ -8945,6 +8945,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -8971,10 +8978,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     'comments': {
@@ -8987,18 +8991,17 @@ __webpack_require__.r(__webpack_exports__);
       "default": 'student'
     }
   },
-  data: function data() {
-    return {
-      allComments: Object.assign(this.comments.data)
-    };
+  created: function created() {
+    this.setComments(Object.assign(this.comments.data));
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setComments']), {
     loadComments: function loadComments(response) {
-      this.allComments = response.comments.data; //
-
-      this.$forceUpdate();
+      this.setComments(response.comments.data);
     }
-  }
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    allComments: 'roomComments'
+  }))
 });
 
 /***/ }),
@@ -9641,9 +9644,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppExamMake",
@@ -9658,24 +9658,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert', 'reload']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']), {
-    make: function make() {
-      var _this = this;
-
-      this.loadOn();
-      axios.post('/quiz/exam', _objectSpread({
-        room: this.room
-      }, this.quiz)).then(function (res) {
-        _this.successAlert();
-
-        _this.reload();
-      })["catch"](function (err) {
-        _this.errorAlert();
-      }).then(function () {
-        _this.loadOff();
-      });
-    }
-  })
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert', 'reload', 'createExam']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']))
 });
 
 /***/ }),
@@ -10620,69 +10603,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       open: false,
-      files: [],
       complete: 0,
       comment: ''
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']), {
-    saveInfo: function saveInfo(payload) {
-      this.files.push(payload.file);
-    },
-    uploadFile: function uploadFile() {
-      var _this = this;
-
-      this.file = this.$refs.file.files[0];
-      var formData = new FormData();
-      formData.append("file", this.file);
-      axios.post("/file", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        onUploadProgress: function onUploadProgress(progressEvent) {
-          _this.loadOn(parseInt(progressEvent.loaded / progressEvent.total * 100));
-        }
-      }).then(function (response) {
-        _this.successAlert(response.data.message);
-
-        return response.data.file;
-      })["catch"](function (error) {
-        _this.errorAlert(error.response.data.errors.file || error.response.data.errors.max);
-      }).then(function (file) {
-        _this.files.push(file);
-
-        _this.loadOff();
-      });
-    },
-    deleteFile: function deleteFile(id) {
-      this.files = this.files.filter(function (val) {
-        return val.id != id;
-      });
-      axios["delete"]('/file/' + id).then(function (res) {
-        return console.log(res);
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    },
-    save: function save() {
-      var _this2 = this;
-
-      if (this.comment == '') return;
-      this.loadOn();
-      axios.post('/quiz/panel/room/comment', {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['createRoomComment', 'uploadGapFile', 'deleteGapFile']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['pushToFiles'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['files']), {
+    fields: function fields() {
+      return {
         files: this.files,
         comment: this.comment,
         type: this.type,
         id: this.id
-      }).then(function (ressponse) {
-        _this2.successAlert();
-
-        window.location.reload();
-      })["catch"](function (error) {
-        _this2.errorAlert();
-      })["finally"](function () {
-        _this2.loadOff();
-      });
+      };
     }
   })
 });
@@ -78318,11 +78251,16 @@ var render = function() {
     "app-content-border-box",
     { attrs: { title: "گفت و گو های عمومی", icon: "comments" } },
     [
-      _c("div", { staticClass: "container-fluid px-0 px-lg-1" }, [
-        _c(
-          "div",
-          { staticClass: "mt-3 row justify-content-center align-items-center" },
-          [
+      _c(
+        "div",
+        { staticClass: "container-fluid px-0 px-lg-1" },
+        [
+          _c(
+            "transition-group",
+            {
+              staticClass: "mt-3 row justify-content-center align-items-center",
+              attrs: { name: "scale", mode: "in-out" }
+            },
             [
               _vm._l(_vm.allComments, function(comment, index) {
                 return _c("app-comment", {
@@ -78348,11 +78286,12 @@ var render = function() {
                     ]
                   )
                 : _vm._e()
-            ]
-          ],
-          2
-        )
-      ]),
+            ],
+            2
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -79223,137 +79162,135 @@ var render = function() {
     "app-main-box",
     { attrs: { dark: true, title: "ایجاد آزمون", icon: "file-alt" } },
     [
-      _c("form", [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [
-            _c("span", { staticClass: "fas fa-heading" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("عنوان آزمون")])
-          ]),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [
+          _c("span", { staticClass: "fas fa-heading" }),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.quiz.name,
-                expression: "quiz.name"
-              }
-            ],
-            staticClass: "form-control",
-            domProps: { value: _vm.quiz.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.quiz, "name", $event.target.value)
-              }
-            }
-          })
+          _c("span", [_vm._v("عنوان آزمون")])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [
-            _c("span", { staticClass: "fas fa-align-justify" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("توضیحات آزمون")])
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.quiz.desc,
-                expression: "quiz.desc"
-              }
-            ],
-            staticClass: "form-control",
-            domProps: { value: _vm.quiz.desc },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.quiz, "desc", $event.target.value)
-              }
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.quiz.name,
+              expression: "quiz.name"
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("label", [
-              _c("span", { staticClass: "fas fa-clock" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("زمان شروع آزمون")])
-            ]),
-            _vm._v(" "),
-            _c("date-picker", {
-              staticClass: "text-dark",
-              attrs: {
-                locale: "fa",
-                format: "jYYYY-jMM-jDD HH:mm:ss",
-                type: "datetime"
-              },
-              model: {
-                value: _vm.quiz.start,
-                callback: function($$v) {
-                  _vm.$set(_vm.quiz, "start", $$v)
-                },
-                expression: "quiz.start"
-              }
-            })
           ],
-          1
-        ),
+          staticClass: "form-control",
+          domProps: { value: _vm.quiz.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.quiz, "name", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [
+          _c("span", { staticClass: "fas fa-align-justify" }),
+          _vm._v(" "),
+          _c("span", [_vm._v("توضیحات آزمون")])
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.quiz.desc,
+              expression: "quiz.desc"
+            }
+          ],
+          staticClass: "form-control",
+          domProps: { value: _vm.quiz.desc },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.quiz, "desc", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
           _c("label", [
             _c("span", { staticClass: "fas fa-clock" }),
             _vm._v(" "),
-            _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
+            _c("span", [_vm._v("زمان شروع آزمون")])
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.quiz.duration,
-                expression: "quiz.duration"
-              }
-            ],
-            staticClass: "form-control",
-            domProps: { value: _vm.quiz.duration },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.quiz, "duration", $event.target.value)
-              }
+          _c("date-picker", {
+            staticClass: "text-dark",
+            attrs: {
+              locale: "fa",
+              format: "jYYYY-jMM-jDD HH:mm:ss",
+              type: "datetime"
+            },
+            model: {
+              value: _vm.quiz.start,
+              callback: function($$v) {
+                _vm.$set(_vm.quiz, "start", $$v)
+              },
+              expression: "quiz.start"
             }
           })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [
+          _c("span", { staticClass: "fas fa-clock" }),
+          _vm._v(" "),
+          _c("span", [_vm._v("مدت زمان آزمون به دقیقه")])
         ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn py-0 btn-primary btn-block",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.make($event)
-              }
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.quiz.duration,
+              expression: "quiz.duration"
             }
-          },
-          [_vm._v("ساخت آزمون")]
-        )
-      ])
+          ],
+          staticClass: "form-control",
+          domProps: { value: _vm.quiz.duration },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.quiz, "duration", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn py-0 btn-primary btn-block",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.createExam({ room: _vm.room, quiz: _vm.quiz })
+            }
+          }
+        },
+        [_vm._v("ساخت آزمون")]
+      )
     ]
   )
 }
@@ -81121,7 +81058,13 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _c("app-voice-record", { on: { recorded: _vm.saveInfo } }),
+                    _c("app-voice-record", {
+                      on: {
+                        recorded: function($event) {
+                          return _vm.pushToFiles($event.file)
+                        }
+                      }
+                    }),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -81173,7 +81116,13 @@ var render = function() {
                           _c("input", {
                             ref: "file",
                             attrs: { type: "file" },
-                            on: { change: _vm.uploadFile }
+                            on: {
+                              change: function($event) {
+                                return _vm.uploadGapFile(
+                                  _vm.$refs.file.files[0]
+                                )
+                              }
+                            }
                           })
                         ]
                       ),
@@ -81183,7 +81132,11 @@ var render = function() {
                         {
                           staticClass:
                             "btn btn-primary btn-inset text-light mx-2",
-                          on: { click: _vm.save }
+                          on: {
+                            click: function($event) {
+                              return _vm.createRoomComment(_vm.fields)
+                            }
+                          }
                         },
                         [_vm._v("ارسال")]
                       ),
@@ -97836,6 +97789,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var state = function state() {
   return {
     exams: []
@@ -97853,6 +97812,9 @@ var mutations = {
   },
   toggleShow: function toggleShow(state, payload) {
     state.exams[payload].show = !state.exams[payload].show;
+  },
+  pushToExams: function pushToExams(state, payload) {
+    state.exams.unshift(payload);
   }
 };
 var actions = {
@@ -97882,6 +97844,130 @@ var actions = {
     })["finally"](function () {
       commit('loadOff');
     });
+  },
+  createExam: function createExam(_ref3, payload) {
+    var dispatch = _ref3.dispatch,
+        commit = _ref3.commit;
+    commit('loadOn');
+    axios.post('/quiz/exam', _objectSpread({
+      room: payload.room
+    }, payload.quiz)).then(function (response) {
+      dispatch('successAlert');
+      commit('pushToExams', response.data.exam);
+    })["catch"](function (error) {
+      dispatch('errorAlert');
+    }).then(function () {
+      commit('loadOff');
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/room.js":
+/*!********************************************!*\
+  !*** ./resources/js/store/modules/room.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = function state() {
+  return {
+    comments: [],
+    files: []
+  };
+};
+
+var getters = {
+  roomComments: function roomComments(state) {
+    return state.comments;
+  },
+  files: function files(state) {
+    return state.files;
+  }
+};
+var mutations = {
+  setComments: function setComments(state, payload) {
+    state.comments = payload;
+  },
+  pushToComments: function pushToComments(state, payload) {
+    state.comments.unshift(payload);
+  },
+  setFiles: function setFiles(state, payload) {
+    state.files = payload;
+  },
+  pushToFiles: function pushToFiles(state, payload) {
+    state.files.unshift(payload);
+  },
+  removeFile: function removeFile(state, payload) {
+    state.files = state.files.filter(function (val) {
+      return val.id != payload;
+    });
+  },
+  resetGap: function resetGap(state) {
+    state.files = [];
+  }
+};
+var actions = {
+  createRoomComment: function createRoomComment(_ref, payload) {
+    var dispatch = _ref.dispatch,
+        commit = _ref.commit;
+    if (payload.comment == '') return;
+    commit('loadOn');
+    axios.post('/quiz/panel/room/comment', {
+      files: payload.files,
+      comment: payload.comment,
+      type: payload.type,
+      id: payload.id
+    }).then(function (response) {
+      dispatch('successAlert');
+      console.log(response.data.comment);
+      commit('pushToComments', response.data.comment);
+      commit('resetGap');
+    })["catch"](function (error) {
+      dispatch('errorAlert');
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  uploadGapFile: function uploadGapFile(_ref2, file) {
+    var dispatch = _ref2.dispatch,
+        commit = _ref2.commit;
+    var formData = new FormData();
+    formData.append("file", file);
+    axios.post("/file", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      },
+      onUploadProgress: function onUploadProgress(progressEvent) {
+        commit('loadOn', parseInt(progressEvent.loaded / progressEvent.total * 100));
+      }
+    }).then(function (response) {
+      dispatch('successAlert', response.data.message);
+      commit('pushToFiles', response.data.file);
+    })["catch"](function (error) {
+      dispatch('errorAlert', error.response.data.errors.file || error.response.data.errors.max);
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  deleteGapFile: function deleteGapFile(_ref3, id) {
+    var commit = _ref3.commit,
+        dispatch = _ref3.dispatch;
+    commit('removeFile', id);
+    axios["delete"]('/file/' + id).then(function (response) {
+      return console.log(response);
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -97908,6 +97994,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_shared_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/shared/common */ "../resources/js/store/modules/shared/common.js");
 /* harmony import */ var _modules_shared_register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/shared/register */ "../resources/js/store/modules/shared/register.js");
 /* harmony import */ var _modules_exam__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/exam */ "./resources/js/store/modules/exam.js");
+/* harmony import */ var _modules_room__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/room */ "./resources/js/store/modules/room.js");
+
 
 
 
@@ -97918,7 +98006,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   modules: {
     common: _modules_shared_common__WEBPACK_IMPORTED_MODULE_2__["default"],
     register: _modules_shared_register__WEBPACK_IMPORTED_MODULE_3__["default"],
-    exam: _modules_exam__WEBPACK_IMPORTED_MODULE_4__["default"]
+    exam: _modules_exam__WEBPACK_IMPORTED_MODULE_4__["default"],
+    room: _modules_room__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }));
 

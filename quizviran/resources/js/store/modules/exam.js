@@ -14,6 +14,9 @@ const mutations = {
   },
   toggleShow(state, payload) {
     state.exams[payload].show = !state.exams[payload].show;
+  },
+  pushToExams(state, payload){
+    state.exams.unshift(payload);
   }
 };
 
@@ -44,6 +47,20 @@ const actions = {
       .finally(() => {
         commit('loadOff');
       })
+  },
+  createExam({dispatch, commit}, payload) {
+    commit('loadOn');
+    axios.post('/quiz/exam', {room: payload.room, ...payload.quiz})
+      .then(response => {
+        dispatch('successAlert');
+        commit('pushToExams',response.data.exam)
+      })
+      .catch(error => {
+        dispatch('errorAlert');
+      })
+      .then(() => {
+        commit('loadOff');
+      });
   }
 };
 

@@ -50,3 +50,13 @@ body {
   transition: all 0.3s;
 }
 
+.scale-enter,
+.scale-leave-to {
+  transform: scaleX(0);
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.3s;
+}
+

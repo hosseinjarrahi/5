@@ -1791,16 +1791,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.5.4",
+            "version": "3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "1d0deef692f66dae5d70663caee2867d0971306b"
+                "reference": "dec9fc5ecfca93f45cd6121f8e6f14457dff372c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/1d0deef692f66dae5d70663caee2867d0971306b",
-                "reference": "1d0deef692f66dae5d70663caee2867d0971306b",
+                "url": "https://api.github.com/repos/opis/closure/zipball/dec9fc5ecfca93f45cd6121f8e6f14457dff372c",
+                "reference": "dec9fc5ecfca93f45cd6121f8e6f14457dff372c",
                 "shasum": ""
             },
             "require": {
@@ -1848,7 +1848,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2020-06-07T11:41:29+00:00"
+            "time": "2020-06-17T14:59:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5182,16 +5182,16 @@
         },
         {
             "name": "imanghafoori/laravel-microscope",
-            "version": "v1.0.103",
+            "version": "v1.0.105",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/laravel-microscope.git",
-                "reference": "c795167e21caa8a7823d6684c60b42f7b545c861"
+                "reference": "62179f12a9a1120528679321101b3205e98d163e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/c795167e21caa8a7823d6684c60b42f7b545c861",
-                "reference": "c795167e21caa8a7823d6684c60b42f7b545c861",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/62179f12a9a1120528679321101b3205e98d163e",
+                "reference": "62179f12a9a1120528679321101b3205e98d163e",
                 "shasum": ""
             },
             "require": {
@@ -5234,7 +5234,7 @@
                 "laravel-microscope",
                 "laravel-testing"
             ],
-            "time": "2020-06-16T14:13:22+00:00"
+            "time": "2020-06-19T00:26:53+00:00"
         },
         {
             "name": "maximebf/debugbar",
