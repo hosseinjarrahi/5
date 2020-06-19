@@ -8664,15 +8664,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8689,84 +8680,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      deleteModal: false,
-      deleted: false,
       editing: false,
       auth: window.EventBus.auth
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['errorAlert', 'successAlert']), {
-    isMp3: function isMp3(filename) {
-      return filename.split('.').pop() == 'mp3';
-    },
-    edit: function edit() {
-      var _this = this;
-
-      this.loadOn();
-      axios.put('/quiz/panel/room/comment/' + this.comment.id, {
-        comment: this.comment.comment
-      }).then(function (response) {
-        _this.successAlert(response.data.message);
-      })["catch"](function (error) {
-        _this.errorAlert();
-      }).then(function () {
-        _this.loadOff();
-
-        _this.editing = false;
-      });
-    },
-    deleteComment: function deleteComment() {
-      var _this2 = this;
-
-      this.loadOn();
-      axios["delete"]('/quiz/panel/room/comment/' + this.comment.id).then(function (response) {
-        _this2.successAlert(response.data.message);
-
-        _this2.deleted = true;
-      })["catch"](function (_ref) {
-        var response = _ref.response;
-
-        _this2.errorAlert(response.data.message);
-      }).then(function () {
-        _this2.loadOff();
-
-        _this2.deleteModal = false;
-      });
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['updateComment', 'deleteCommentFile']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['toggleDeleteModal']), {
+    updateGap: function updateGap(comment) {
+      this.editing = false;
+      this.updateComment(comment);
     },
     cancel: function cancel() {
       this.editing = !this.editing;
     },
-    deleteFile: function deleteFile(id) {
-      this.comment.files = this.comment.files.filter(function (val) {
-        return val.id != id;
-      });
-      axios["delete"]('/file/' + id).then(function (res) {
-        return console.log(res);
-      })["catch"](function (err) {
-        return console.log(err);
-      });
+    isMp3: function isMp3(filename) {
+      return filename.split('.').pop() == 'mp3';
     }
   }),
   computed: {
-    editable: function editable() {
-      return this.auth == this.comment.user_id || this.type == 'teacher';
-    },
     files: function files() {
-      var _this3 = this;
+      var _this = this;
 
       return this.comment.files.filter(function (val) {
-        return !_this3.isMp3(val.name);
+        return !_this.isMp3(val.name);
       });
     },
     audios: function audios() {
-      var _this4 = this;
+      var _this2 = this;
 
       return this.comment.files.filter(function (val) {
-        return _this4.isMp3(val.name);
+        return _this2.isMp3(val.name);
       });
     },
-    avatar: function avatar() {
-      return this.comment.user.profile.avatar ? this.comment.user.profile.avatar : '/img/avatar.svg';
+    editable: function editable() {
+      return this.auth == this.comment.user_id || this.type == 'teacher';
     }
   }
 });
@@ -8978,6 +8924,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8994,13 +8946,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.setComments(Object.assign(this.comments.data));
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setComments']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setComments', 'toggleDeleteModal']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['deleteComment']), {
     loadComments: function loadComments(response) {
       this.setComments(response.comments.data);
     }
   }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
-    allComments: 'roomComments'
+    allComments: 'roomComments',
+    deleteModal: 'deleteModal'
   }))
 });
 
@@ -10595,7 +10548,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppPanelRoomAddGap",
@@ -11340,7 +11292,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  border: 2px solid #57606f;\n  background-image: url('/img/avatar.png');\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
+exports.push([module.i, "\n.avatar-parent {\n  position: absolute;\n  top: -15px;\n  left: -5px;\n  width: 100%;\n  display: flex;\n}\n.avatar {\n  width: 50px;\n  height: 50px;\n  background-size: cover;\n  border: 2px solid #57606f;\n}\n.tool-box {\n  width: 100%;\n  display: flex;\n  justify-content: flex-end;\n}\n", ""]);
 
 // exports
 
@@ -11454,7 +11406,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.add-gap-back[data-v-489d11cc] {\n  width: 100%;\n  height: 100%;\n}\n.drop-enter-active[data-v-489d11cc], .drop-leave-active[data-v-489d11cc] {\n  transition: all .5s;\n}\n.drop-enter[data-v-489d11cc], .drop-leave-to[data-v-489d11cc] {\n  transform: scale(0);\n}\n.btn-file2 input[type=\"file\"][data-v-489d11cc] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  opacity: 0;\n  outline: none;\n  cursor: pointer;\n  display: block;\n}\n.btn-file2[data-v-489d11cc] {\n  position: relative;\n  overflow: hidden;\n  font-weight: bold;\n}\n.btn-file2[data-v-489d11cc]:hover {\n  background: #2a476b;\n  color: #ffffff;\n}\n", ""]);
+exports.push([module.i, "\n.add-gap-back[data-v-489d11cc] {\n  width: 100%;\n  height: 100%;\n}\n.btn-file2 input[type=\"file\"][data-v-489d11cc] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  min-width: 100%;\n  min-height: 100%;\n  opacity: 0;\n  outline: none;\n  cursor: pointer;\n  display: block;\n}\n.btn-file2[data-v-489d11cc] {\n  position: relative;\n  overflow: hidden;\n  font-weight: bold;\n}\n.btn-file2[data-v-489d11cc]:hover {\n  background: #2a476b;\n  color: #ffffff;\n}\n", ""]);
 
 // exports
 
@@ -77671,238 +77623,197 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !_vm.deleted
-    ? _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "w-100" }, [
-              _c("div", { staticClass: "avatar-parent" }, [
-                _c("div", {
-                  staticClass: "avatar bg-light circle p-2 white-shadow",
-                  style: { backgroundImage: "url(" + _vm.avatar + ")" }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto",
-                  staticStyle: { overflow: "hidden" }
-                },
-                [_vm._v(_vm._s(_vm.comment.user.name))]
-              ),
-              _vm._v(" "),
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "w-100" }, [
+          _c("div", { staticClass: "avatar-parent" }, [
+            _c("div", {
+              staticClass: "avatar bg-light circle p-2 white-shadow",
+              style: {
+                backgroundImage: "url(" + _vm.comment.user.profile.avatar + ")"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "pl-5 pr-2 py-1 bg-dark-gray rounded w-100 w-md-auto",
+            staticStyle: { overflow: "hidden" },
+            domProps: { textContent: _vm._s(_vm.comment.user.name) }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "my-3 px-3 pt-3 bg-dark-gray overflow-hidden rounded"
+            },
+            [
               _c(
                 "div",
                 {
-                  staticClass:
-                    "my-3 px-3 pt-3 bg-dark-gray overflow-hidden rounded"
+                  staticClass: "px-2",
+                  staticStyle: { "white-space": "pre-wrap" }
                 },
                 [
-                  _c("div", { staticClass: "px-2" }, [
-                    !_vm.editing
-                      ? _c("div", [_vm._v(_vm._s(_vm.comment.comment))])
-                      : _vm._e(),
+                  !_vm.editing
+                    ? _c("div", {
+                        domProps: { innerHTML: _vm._s(_vm.comment.comment) }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.editing
+                    ? _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.comment.comment,
+                            expression: "comment.comment"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { rows: "5" },
+                        domProps: { value: _vm.comment.comment },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.comment,
+                              "comment",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _vm.editable && !_vm.editing
+                ? _c("div", { staticClass: "tool-box my-2" }, [
+                    _c("span", {
+                      staticClass: "pointer fas fa-edit p-1 mx-1",
+                      on: {
+                        click: function($event) {
+                          _vm.editing = !_vm.editing
+                        }
+                      }
+                    }),
                     _vm._v(" "),
-                    _vm.editing
-                      ? _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.comment.comment,
-                              expression: "comment.comment"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { rows: "5" },
-                          domProps: { value: _vm.comment.comment },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.comment,
-                                "comment",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _vm.editable && !_vm.editing
-                    ? _c("div", { staticClass: "tool-box my-2" }, [
-                        _c("span", {
-                          staticClass: "pointer fas fa-edit p-1 mx-1",
-                          on: {
-                            click: function($event) {
-                              _vm.editing = !_vm.editing
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", {
-                          staticClass:
-                            "pointer text-danger fas fa-trash p-1 mx-1",
-                          on: {
-                            click: function($event) {
-                              _vm.deleteModal = true
-                            }
-                          }
-                        })
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.editable && _vm.editing
-                    ? _c("div", { staticClass: "tool-box my-2" }, [
-                        _c("span", {
-                          staticClass:
-                            "pointer fas fa-times text-danger p-1 mx-1",
-                          on: { click: _vm.cancel }
-                        }),
-                        _vm._v(" "),
-                        _c("span", {
-                          staticClass:
-                            "pointer text-success fas fa-check-circle p-1 mx-1",
-                          on: { click: _vm.edit }
-                        })
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.deleteModal
-                    ? _c(
-                        "app-modal",
-                        {
-                          attrs: { title: "آیا از حذف نظر خود مطمئن هستید؟" },
-                          on: {
-                            close: function($event) {
-                              _vm.deleteModal = false
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteComment()
-                                }
-                              }
-                            },
-                            [_vm._v("بله")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              on: {
-                                click: function($event) {
-                                  _vm.deleteModal = false
-                                }
-                              }
-                            },
-                            [_vm._v("خیر")]
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _c("span", {
+                      staticClass: "pointer text-danger fas fa-trash p-1 mx-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.toggleDeleteModal(_vm.comment)
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.editable && _vm.editing
+                ? _c("div", { staticClass: "tool-box my-2" }, [
+                    _c("span", {
+                      staticClass: "pointer fas fa-times text-danger p-1 mx-1",
+                      on: { click: _vm.cancel }
+                    }),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass:
+                        "pointer text-success fas fa-check-circle p-1 mx-1",
+                      on: {
+                        click: function($event) {
+                          return _vm.updateGap(_vm.comment)
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "bg-gray mt-2 p-0 text-center col-12 rounded"
+                  },
+                  [
                     _c(
                       "div",
                       {
-                        staticClass:
-                          "bg-gray mt-2 p-0 text-center col-12 rounded"
+                        staticClass: "d-flex flex-row my-1 align-items-center"
                       },
                       [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "d-flex flex-row my-1 align-items-center"
-                          },
-                          [
-                            _vm._l(_vm.audios, function(audio) {
-                              return [
-                                _c("app-player", {
-                                  staticClass: "mx-1",
-                                  attrs: { src: "/file?hash=" + audio.hash }
-                                })
-                              ]
-                            }),
-                            _vm._v(" "),
-                            _vm._l(_vm.files, function(file, index) {
-                              return _c(
-                                "div",
-                                { key: file.id, staticClass: "btn-group mx-1" },
+                        _vm._l(_vm.audios, function(audio) {
+                          return [
+                            _c("app-player", {
+                              staticClass: "mx-1",
+                              attrs: { src: "/file?hash=" + audio.hash }
+                            })
+                          ]
+                        }),
+                        _vm._v(" "),
+                        _vm._l(_vm.files, function(file, index) {
+                          return _c(
+                            "div",
+                            { key: file.id, staticClass: "btn-group mx-1" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  class: [
+                                    "btn bg-light",
+                                    { "left-horizon": file.user_id == _vm.auth }
+                                  ],
+                                  attrs: {
+                                    type: "button",
+                                    href: "/file?hash=" + file.hash
+                                  }
+                                },
                                 [
-                                  _c(
-                                    "a",
+                                  _c("span", {
+                                    staticClass: "fas fa-download"
+                                  }),
+                                  _vm._v(
+                                    "\n                    " +
+                                      _vm._s(file.name) +
+                                      "\n                  "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              file.user_id == _vm.auth
+                                ? _c(
+                                    "button",
                                     {
-                                      class: [
-                                        "btn bg-light",
-                                        {
-                                          "left-horizon":
-                                            file.user_id == _vm.auth
+                                      staticClass:
+                                        "right-horizon btn btn-danger",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteCommentFile(file.id)
                                         }
-                                      ],
-                                      attrs: {
-                                        type: "button",
-                                        href: "/file?hash=" + file.hash
                                       }
                                     },
-                                    [
-                                      _c("span", {
-                                        staticClass: "fas fa-download"
-                                      }),
-                                      _vm._v(
-                                        "\n                    " +
-                                          _vm._s(file.name) +
-                                          "\n                  "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  file.user_id == _vm.auth
-                                    ? _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "right-horizon btn btn-danger",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.deleteFile(file.id)
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("×")]
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      ]
+                                    [_vm._v("×")]
+                                  )
+                                : _vm._e()
+                            ]
+                          )
+                        })
+                      ],
+                      2
                     )
-                  ])
-                ],
-                1
-              )
-            ])
-          ])
+                  ]
+                )
+              ])
+            ]
+          )
         ])
       ])
-    : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -78270,10 +78181,11 @@ var render = function() {
                 })
               }),
               _vm._v(" "),
-              !this.comments.total
+              !_vm.allComments.length
                 ? _c(
                     "div",
                     {
+                      key: "noComment",
                       staticClass:
                         "d-flex flex-column justify-content-center align-items-center"
                     },
@@ -78303,8 +78215,45 @@ var render = function() {
           })
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade", mode: "out-in" } },
+        [
+          _vm.deleteModal
+            ? _c(
+                "app-modal",
+                {
+                  attrs: { title: "آیا از حذف نظر خود مطمئن هستید؟" },
+                  on: { close: _vm.toggleDeleteModal }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      on: { click: _vm.deleteComment }
+                    },
+                    [_vm._v("بله")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.toggleDeleteModal }
+                    },
+                    [_vm._v("خیر")]
+                  )
+                ]
+              )
+            : _vm._e()
+        ],
+        1
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -81039,20 +80988,24 @@ var render = function() {
                         directives: [
                           {
                             name: "model",
-                            rawName: "v-model",
+                            rawName: "v-model.trim",
                             value: _vm.comment,
-                            expression: "comment"
+                            expression: "comment",
+                            modifiers: { trim: true }
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { cols: "30", rows: "10" },
+                        attrs: { autofocus: "", cols: "30", rows: "5" },
                         domProps: { value: _vm.comment },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.comment = $event.target.value
+                            _vm.comment = $event.target.value.trim()
+                          },
+                          blur: function($event) {
+                            return _vm.$forceUpdate()
                           }
                         }
                       })
@@ -97780,6 +97733,90 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/store/modules/comment.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/comment.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = function state() {
+  return {
+    deleteModal: false,
+    commentForDelete: false
+  };
+};
+
+var getters = {
+  deleteModal: function deleteModal(state) {
+    return state.deleteModal;
+  }
+};
+var mutations = {
+  toggleDeleteModal: function toggleDeleteModal(state) {
+    var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    state.commentForDelete = payload;
+    state.deleteModal = !state.deleteModal;
+  }
+};
+var actions = {
+  updateComment: function updateComment(_ref, payload) {
+    var _this = this;
+
+    var commit = _ref.commit,
+        dispatch = _ref.dispatch;
+    commit('loadOn');
+    axios.put(payload.updateLink, {
+      comment: payload.comment
+    }).then(function (response) {
+      dispatch('successAlert');
+    })["catch"](function (error) {
+      dispatch('errorAlert');
+    }).then(function () {
+      commit('loadOff');
+      _this.editing = false;
+    });
+  },
+  deleteComment: function deleteComment(_ref2) {
+    var commit = _ref2.commit,
+        dispatch = _ref2.dispatch,
+        state = _ref2.state;
+    commit('loadOn');
+    axios["delete"](state.commentForDelete.deleteLink).then(function (response) {
+      dispatch('successAlert', response.data.message);
+      commit('removeFromComments', state.commentForDelete);
+      commit('toggleDeleteModal');
+    })["catch"](function (_ref3) {
+      var response = _ref3.response;
+      dispatch('errorAlert', response.data.message);
+    }).then(function () {
+      commit('loadOff');
+    });
+  },
+  deleteCommentFile: function deleteCommentFile(_ref4, id) {
+    var commit = _ref4.commit,
+        dispatch = _ref4.dispatch;
+    this.comment.files = this.comment.files.filter(function (val) {
+      return val.id != id;
+    });
+    axios["delete"]('/file/' + id).then(function (res) {
+      return console.log(res);
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/modules/exam.js":
 /*!********************************************!*\
   !*** ./resources/js/store/modules/exam.js ***!
@@ -97901,6 +97938,11 @@ var mutations = {
   pushToComments: function pushToComments(state, payload) {
     state.comments.unshift(payload);
   },
+  removeFromComments: function removeFromComments(state, payload) {
+    state.comments = state.comments.filter(function (val) {
+      return val.id != payload.id;
+    });
+  },
   setFiles: function setFiles(state, payload) {
     state.files = payload;
   },
@@ -97995,6 +98037,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_shared_register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/shared/register */ "../resources/js/store/modules/shared/register.js");
 /* harmony import */ var _modules_exam__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/exam */ "./resources/js/store/modules/exam.js");
 /* harmony import */ var _modules_room__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/room */ "./resources/js/store/modules/room.js");
+/* harmony import */ var _modules_comment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/comment */ "./resources/js/store/modules/comment.js");
+
 
 
 
@@ -98007,6 +98051,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     common: _modules_shared_common__WEBPACK_IMPORTED_MODULE_2__["default"],
     register: _modules_shared_register__WEBPACK_IMPORTED_MODULE_3__["default"],
     exam: _modules_exam__WEBPACK_IMPORTED_MODULE_4__["default"],
+    comment: _modules_comment__WEBPACK_IMPORTED_MODULE_6__["default"],
     room: _modules_room__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }));

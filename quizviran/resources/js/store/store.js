@@ -4,6 +4,7 @@ import common from './modules/shared/common';
 import register from './modules/shared/register';
 import exam from './modules/exam';
 import room from './modules/room';
+import comment from './modules/comment';
 
 Vue.use(Vuex);
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     common,
     register,
     exam,
+    comment,
     room,
   }
 });

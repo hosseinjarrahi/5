@@ -17,7 +17,7 @@
           <div class="my-3">حداکثر حجم فایل قابل ارسال 50 مگابایت می باشد.</div>
           <div class="add-gap-back rounded p-2">
             <div class="form-group">
-              <textarea v-model="comment" class="form-control" cols="30" rows="10"></textarea>
+              <textarea autofocus v-model.trim="comment" class="form-control" cols="30" rows="5"></textarea>
             </div>
 
             <app-voice-record @recorded="pushToFiles($event.file)"></app-voice-record>
@@ -44,10 +44,9 @@
 
           </div>
         </div>
+
       </transition>
-
     </div>
-
 
   </div>
 </template>
@@ -87,14 +86,6 @@
   .add-gap-back {
     width: 100%;
     height: 100%;
-  }
-
-  .drop-enter-active, .drop-leave-active {
-    transition: all .5s;
-  }
-
-  .drop-enter, .drop-leave-to {
-    transform: scale(0);
   }
 
   .btn-file2 input[type="file"] {

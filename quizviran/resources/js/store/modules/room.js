@@ -19,6 +19,11 @@ const mutations = {
   pushToComments(state, payload) {
     state.comments.unshift(payload);
   },
+  removeFromComments(state, payload) {
+    state.comments = state.comments.filter(val => {
+      return val.id != payload.id
+    });
+  },
   setFiles(state, payload) {
     state.files = payload;
   },

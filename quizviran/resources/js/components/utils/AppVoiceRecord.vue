@@ -25,59 +25,59 @@
 <script>
   import Microm from 'microm';
 
-    export default {
-        name: "AppVoiceRecord",
-        mounted() {
-            this.player = window.EventBus.player;
-        },
-        data() {
-            return {
-                microm: new Microm(),
-                recording: false,
-                player: null,
-                blob: null,
-                complete: false,
-                mp3:null
-            }
-        },
-        methods: {
+  export default {
+    name: "AppVoiceRecord",
+    mounted() {
+      this.player = window.EventBus.player;
+    },
+    data() {
+      return {
+        microm: new Microm(),
+        recording: false,
+        player: null,
+        blob: null,
+        complete: false,
+        mp3: null
+      }
+    },
+    methods: {
 
-            clear() {
-                this.complete = false;
-                this.blob = null;
-                this.player.src = '';
-            },
+      clear() {
+        this.complete = false;
+        this.blob = null;
+        this.player.src = '';
+      },
 
-            record() {
-                this.recording = true;
-                this.microm.record();
-            },
+      record() {
+        this.recording = true;
+        this.microm.record();
+      },
 
-            stopRecord() {
-                this.microm.stop().then((result) => {
-                    this.mp3 = result;
-                    this.player.src = this.mp3.url;
-                    this.send();
-                });
+      stopRecord() {
+        this.microm.stop().then((result) => {
+          this.mp3 = result;
+          this.player.src = this.mp3.url;
+          this.send();
+        });
 
-                this.recording = false;
-                this.complete = true;
-            },
+        this.recording = false;
+        this.complete = true;
+      },
 
-            send() {
-                this.microm.getBase64().then(base64 => {
-                    axios.post('/file', { base64: base64 })
-                    .then(res => {
-                      this.$emit('recorded',res.data);
-                    })
-                    .catch(err => {
+      send() {
+        this.microm.getBase64().then(base64 => {
+          axios.post('/file', {base64: base64})
+            .then(res => {
+              this.$emit('recorded', res.data);
+            })
+            .catch(err => {
 
-                    });
-                })
-            },
+            });
+        })
+      },
 
-        }
     }
+  }
 </script>
 
 <style scoped>

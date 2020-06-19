@@ -40,9 +40,6 @@
 <script>
     export default {
         name: "AppSlider",
-        created(){
-          console.log(this.event);
-        },
         props:{
           slides:{default:[]},
             event:{default: ''}

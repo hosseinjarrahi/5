@@ -2235,10 +2235,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _name$created$props$d;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2278,11 +2274,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = (_name$created$props$d = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppSlider",
-  created: function created() {
-    console.log(this.event);
-  },
   props: {
     slides: {
       "default": []
@@ -2297,30 +2290,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       timer: null,
       duration: 5
     };
-  }
-}, _defineProperty(_name$created$props$d, "created", function created() {
-  this.initSlider();
-}), _defineProperty(_name$created$props$d, "methods", {
-  next: function next() {
-    if (this.selected == this.slides.length - 1) this.selected = 0;else this.selected++;
-    this.resetTimer();
   },
-  previous: function previous() {
-    if (this.selected == 0) this.selected = this.slides.length - 1;else this.selected--;
-    this.resetTimer();
-  },
-  initSlider: function initSlider() {
-    var _this = this;
-
-    this.timer = setInterval(function () {
-      _this.next();
-    }, this.duration * 1000);
-  },
-  resetTimer: function resetTimer() {
-    clearInterval(this.timer);
+  created: function created() {
     this.initSlider();
+  },
+  methods: {
+    next: function next() {
+      if (this.selected == this.slides.length - 1) this.selected = 0;else this.selected++;
+      this.resetTimer();
+    },
+    previous: function previous() {
+      if (this.selected == 0) this.selected = this.slides.length - 1;else this.selected--;
+      this.resetTimer();
+    },
+    initSlider: function initSlider() {
+      var _this = this;
+
+      this.timer = setInterval(function () {
+        _this.next();
+      }, this.duration * 1000);
+    },
+    resetTimer: function resetTimer() {
+      clearInterval(this.timer);
+      this.initSlider();
+    }
   }
-}), _name$created$props$d);
+});
 
 /***/ }),
 
