@@ -26,7 +26,7 @@
 
               <div class="btn-group m-2" v-for="(file,index) in files" :key="index">
                 <button type="button" class="left-horizon btn bg-light">{{ file.name }}</button>
-                <button type="button" class="right-horizon btn btn-danger" @click="deleteFile(file.id)">&times;</button>
+                <button type="button" class="right-horizon btn btn-danger" @click="deleteGapFile(file.id)">&times;</button>
               </div>
 
             </div>

@@ -7,7 +7,6 @@
     <meta name="keywords" content="@yield('keywords','')">
     <meta name="description" content="@yield('description','')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme" color="red">
     <link rel="icon" href="/img/favicon.png" type="image/png" sizes="50x50">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('quiz-assets/css/app.css?version-4') }}">

@@ -10,6 +10,8 @@ class File extends Model
 {
     protected $guarded = ['id'];
 
+    protected $hidden = ['password'];
+
     public function fileable()
     {
         return $this->morphTo();
