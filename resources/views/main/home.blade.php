@@ -38,6 +38,19 @@
         </div>
       </div>
       {{-- <div class="w-100 bg-dark-gray p-3 mb-5"></div> --}}
+      <div class="container my-5">
+        <div class="col-12 w-100">
+          <app-content-border-box title="سوالات شبیه ساز تیزهوشان">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <p class="text-center">سوالات فوق تخصصی شبیه ساز تیزهوشان استاد محمد خانی بزرگوار</p>
+              <a href="{{ asset('img/shabihsaz.pdf') }}" class="btn mx-auto btn-primary">
+                <span class="fas fa-file-pdf ml-1"></span>
+                <span>دانلود</span>
+              </a>
+            </div>
+          </app-content-border-box>
+        </div>
+      </div>
       
       <div class="col-12 w-100">
         <app-slider :slides="{{ $slides }}" :event="{{ $mainEvent->toJson() }}"></app-slider>
@@ -57,3 +70,10 @@
     </div>
   </div>
 @endsection
+<script>
+  import AppContentBorderBox from "../../../quizviran/resources/js/components/shared/utils/AppContentBorderBox";
+  
+  export default {
+    components: {AppContentBorderBox}
+  }
+</script>
