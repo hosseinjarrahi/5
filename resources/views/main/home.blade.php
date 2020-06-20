@@ -20,10 +20,16 @@
           </div>
           
           <div class="col-12 my-2">
-            <div class="row justify-content-center">
-              <div class="col-10 col-md-3 d-flex flex-row justify-content-center px-3">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-10 my-1 col-lg-3 d-flex flex-row justify-content-center px-3">
                 <a href="/quiz" class="mx-1">
                   <img src="{{ asset('img/go-to-quizviran.png') }}" class="p-1 quiz-button img-fluid" alt="dashboard">
+                </a>
+              </div>
+              <div class="col-10 my-1 col-lg-3 d-flex flex-row justify-content-center px-3">
+                <a href="{{ route('donate') }}" class="mx-1">
+                  <img src="{{ asset('img/donate.jpg') }}"
+                       class="p-1 quiz-button img-fluid" alt="join-room">
                 </a>
               </div>
             </div>

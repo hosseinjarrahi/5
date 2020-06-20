@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@home')->name('home');
 
-Route::view('/donate', 'donate');
+Route::view('/donate', 'donate')->name('donate');
 
 Route::get('/complete', 'PaymentController@complete')->name('payment.pay');
 Route::post('/complete/reply', 'PaymentController@reply')->name('payment.reply');

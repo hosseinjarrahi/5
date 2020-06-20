@@ -38,10 +38,16 @@
       @else
         <div class="col-12 my-3">
           <div class="row justify-content-center">
-            <div class="col-10 col-lg-3 d-flex flex-row justify-content-center px-3">
+            <div class="col-10 my-1 col-lg-3 d-flex flex-row justify-content-center px-3">
               <div @click="EventBus.$emit('openSignUp')" class="mx-1">
                 <img src="{{ asset('quiz-assets/img/signup.png') }}" class="p-1 quiz-button img-fluid" alt="dashboard">
               </div>
+            </div>
+            <div class="col-10 my-1 col-lg-3 d-flex flex-row justify-content-center px-3">
+              <a href="{{ route('donate') }}" class="mx-1">
+                <img src="{{ asset('img/donate.jpg') }}"
+                     class="p-1 quiz-button img-fluid" alt="join-room">
+              </a>
             </div>
           </div>
         </div>
