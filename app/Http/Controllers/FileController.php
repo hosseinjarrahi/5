@@ -81,7 +81,7 @@ class FileController extends Controller
 
         FileFacade::ensureDirectoryExists(storage_path("app/{$path}"));
 
-        FileFacade::move(public_path("temp\\{$name}"), storage_path("app/{$path}/{$name}"));
+        FileFacade::move(public_path("temp/{$name}"), storage_path("app/{$path}/{$name}"));
 
         return FileRepo::create($name, "{$path}/{$name}");
     }
