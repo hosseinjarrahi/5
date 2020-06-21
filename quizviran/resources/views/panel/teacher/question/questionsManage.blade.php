@@ -31,19 +31,7 @@
     
     <div class="row my-5 justify-content-around justify-content-center">
       <div class="col-12 px-2 px-lg-5 col-lg-6">
-        {{-- todo : convert tabs to component swithing --}}
-        <app-question-manage-tabs>
-          <template #question>
-            <app-question-add-form :categories="{{ $categories->toJson() }}"
-                                   route="{{ route('quizviran.question.store') }}"></app-question-add-form>
-          </template>
-          
-          <template #category>
-            <app-question-category-tab :categories="{{ $categories->toJson() }}"
-                                       route="{{ route('quizviran.category.store') }}"></app-question-category-tab>
-          </template>
-        </app-question-manage-tabs>
-      
+        <app-question-manage-tabs :categories="{{ $categories->toJson() }}"></app-question-manage-tabs>
       </div>
       
       <div class="my-3 col-12 col-lg-6">

@@ -1,3 +1,4 @@
+
 <template>
   <app-content-border-box :title="` سوالات  ${name}`" icon="question">
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">

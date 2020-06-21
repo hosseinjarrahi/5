@@ -14,10 +14,10 @@
       <div class="col-12 rounded overflow-hidden bg-dark-gray p-2 big-shadow">
         <transition-group name="blur" mode="out-in">
           <div class="w-100" v-show="selected('question')" key="one-tab">
-            <slot name="question"></slot>
+            <app-question-add-form></app-question-add-form>
           </div>
           <div class="w-100" v-show="selected('category')" key="tow-tab">
-            <slot name="category"></slot>
+            <app-question-category-tab></app-question-category-tab>
           </div>
         </transition-group>
       </div>
@@ -26,27 +26,44 @@
 </template>
 
 <script>
-    export default {
-        name: "AppQuestionManageTabs",
-        data() {
-            return {
-                choosed: 'question'
-            }
-        },
-        methods: {
-            selected(choice) {
-                return choice == this.choosed;
-            },
-            select(choice) {
-                this.choosed = choice;
-            }
-        }
+  import {mapMutations} from 'vuex';
+
+  export default {
+    name: "AppQuestionManageTabs",
+
+    props: {
+      categories: {
+        default: () => []
+      }
+    },
+
+    created() {
+      this.setUserCategories(this.categories);
+    },
+
+    data() {
+      return {
+        choosed: 'question'
+      }
+    },
+
+    methods: {
+      ...mapMutations(['setUserCategories']),
+
+      selected(choice) {
+        return choice == this.choosed;
+      },
+
+      select(choice) {
+        this.choosed = choice;
+      }
     }
+  }
 </script>
 
 <style scoped>
-  .bg-dark-gray.hoverable{
-    transform:translateY(-5px);
-    box-shadow:0px 5px 2px black;
+  .bg-dark-gray.hoverable {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 2px black;
   }
 </style>

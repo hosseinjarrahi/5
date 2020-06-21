@@ -70,10 +70,3 @@
     </div>
   </div>
 @endsection
-<script>
-  import AppContentBorderBox from "../../../quizviran/resources/js/components/shared/utils/AppContentBorderBox";
-  
-  export default {
-    components: {AppContentBorderBox}
-  }
-</script>

@@ -9,7 +9,7 @@
             <input type="text" class="right-horizon form-control" v-model="name">
           </div>
         </div>
-        <button @click="addCategory" class="btn btn-primary btn-block btn-sm">
+        <button @click="createCategory(name)" class="btn btn-primary btn-block btn-sm">
           <span class="fas fa-plus mx-2"></span><span>افزودن</span>
         </button>
       </div>
@@ -38,13 +38,13 @@
     </div>
 
     <transition mode="out-in" name="fade">
-      <app-modal v-if="openEditModal" @close="openEditModal = false" title="ویرایش موضوع">
+      <app-modal v-if="openEditModal" @close="toggleEditCategoryModal" title="ویرایش موضوع">
         <div class="p-2">
           <div class="form-group">
             <label>موضوع:</label>
             <input type="text" name="name" class="form-control" v-model="editName">
           </div>
-          <button @click="updateCategory" class="btn btn-primary btn-sm">
+          <button @click="updateCategory({editName:editName,category:editCategory})" class="btn btn-primary btn-sm">
             <span class="fas fa-edit mx-2"></span><span>ویرایش</span>
           </button>
         </div>
@@ -52,17 +52,17 @@
     </transition>
 
     <transition mode="out-in" name="fade">
-      <app-modal v-if="openDeleteModal" @close="openDeleteModal = false" title="حذف موضوع">
+      <app-modal v-if="openDeleteModal" @close="toggleDeleteCategoryModal" title="حذف موضوع">
         <div class="p-2">
           <div class="form-group">
             <span>آیا از حذف موضوع</span>
             <span class="bg-dark-gray px-2 py-0 rounded">{{ deleteCategory.name }}</span>
             <span>اطمینان دارید؟</span>
           </div>
-          <button @click="destroyCategory" class="btn btn-danger mx-1 btn-sm">
+          <button @click="destroyCategory(deleteCategory)" class="btn btn-danger mx-1 btn-sm">
             <span class="fas fa-check-circle mr-2"></span><span>بله</span>
           </button>
-          <button @click="openDeleteModal = false" class="btn btn-primary mx-1 btn-sm">
+          <button @click="toggleDeleteCategoryModal" class="btn btn-primary mx-1 btn-sm">
             <span class="fas fa-times-circle mr-2"></span><span>خیر</span>
           </button>
         </div>
@@ -74,100 +74,44 @@
 
 <script>
 
-  import {mapActions, mapMutations} from "vuex";
+  import {mapActions, mapMutations, mapGetters} from "vuex";
 
   export default {
     name: "AppQuestionCategoryTab",
-    props: {
-      categories: {default: []},
-      route: {default: '/'}
-    },
+
     data() {
       return {
-        cats: Object.assign(this.categories),
-        openEditModal: false,
-        openDeleteModal: false,
         editCategory: null,
         deleteCategory: null,
         name: '',
         editName: ''
       }
     },
+
     methods: {
-      ...mapActions(['successAlert', 'errorAlert','reload']),
-      ...mapMutations(['loadOn', 'loadOff']),
+      ...mapActions(['destroyCategory','createCategory','updateCategory']),
+      ...mapMutations(['toggleEditCategoryModal', 'toggleDeleteCategoryModal']),
+
       openEditForm(category) {
-        this.openEditModal = true;
+        this.toggleEditCategoryModal();
         this.editCategory = category;
         this.editName = category.name;
       },
+
       openDeleteForm(category) {
-        this.openDeleteModal = true;
+        this.toggleDeleteCategoryModal();
         this.deleteCategory = category;
       },
-      destroyCategory() {
-        this.loadOn();
-        axios.delete(this.route + `/${this.deleteCategory.id}`)
-          .then(response => {
-            this.successAlert();
-            this.reload();
-            this.cats.forEach((val, index) => {
-              if (val.id == this.deleteCategory.id) {
-                this.cats.splice(index, 1);
-              }
-            });
-          })
-          .catch(error => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff();
-            this.openDeleteModal = false;
-          });
-      },
-      updateCategory() {
-        if (this.editName == '')
-          return;
+    },
 
-        this.loadOn();
-        axios.patch(this.route + `/${this.editCategory.id}`, {name: this.editName})
-          .then(response => {
-            this.successAlert();
-            this.cats.forEach((val, index) => {
-              if (val.id == this.editCategory.id) {
-                this.cats[index].name = this.editName;
-              }
-            });
-            this.reload();
-          })
-          .catch(error => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff();
-            this.openEditModal = false;
-          });
-      },
-      addCategory() {
-        if (this.name == '')
-          return;
-
-        this.loadOn();
-        axios.post(this.route, {name: this.name})
-          .then(response => {
-            this.successAlert();
-            this.cats.push(response.data.category);
-            this.name = '';
-            this.reload();
-          })
-          .catch(error => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff();
-          });
-      }
+    computed: {
+      ...mapGetters({
+        openEditModal: 'editCategoryModal',
+        openDeleteModal: 'deleteCategoryModal',
+        cats: 'userCategories',
+      })
     }
+
   }
 </script>
 
