@@ -9900,14 +9900,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'questions', 'categories'],
+  props: ['id'],
   name: "AppQuestionAll",
   data: function data() {
     return {
       selected: []
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert', 'reload']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['AddQuestionToExam']), {
     handleSelecting: function handleSelecting() {
       var _arguments = arguments,
           _this = this;
@@ -9921,24 +9921,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
       flag && this.selected.push(arguments[0].selected);
-    },
-    AddToExam: function AddToExam() {
-      var _this2 = this;
-
-      this.loadOn();
-      axios.post('/quiz/question/add-many-to-exam?exam=' + this.id, {
-        questions: this.selected
-      }).then(function (res) {
-        _this2.successAlert();
-
-        _this2.reload();
-      })["catch"](function (err) {
-        _this2.errorAlert();
-      })["finally"](function () {
-        _this2.loadOff();
-      });
     }
-  })
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    categories: 'userCategories',
+    questions: 'questionsHasNoCategory'
+  }))
 });
 
 /***/ }),
@@ -10306,18 +10294,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppQuestionExam",
   props: {
-    'questions': {
-      "default": ''
-    },
-    'id': {
-      "default": ''
-    },
-    'name': {
+    'exam': {
       "default": ''
     }
   },
@@ -10326,7 +10307,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       selected: []
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['successAlert', 'errorAlert']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['loadOn', 'loadOff']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['removeQuestionFromExam']), {
+    deleteFromExam: function deleteFromExam() {
+      this.removeQuestionFromExam(this.selected);
+      this.selected = [];
+    },
     handleSelecting: function handleSelecting() {
       var _arguments = arguments,
           _this = this;
@@ -10340,27 +10325,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
       flag && this.selected.push(arguments[0].selected);
-    },
-    deleteFromExam: function deleteFromExam() {
-      var _this2 = this;
-
-      this.loadOn();
-      axios.post('/quiz/question/delete-many-from-exam?exam=' + this.id, {
-        questions: this.selected
-      }).then(function (res) {
-        _this2.successAlert();
-
-        _this2.questions = _this2.questions.filter(function (val) {
-          return _this2.selected.indexOf(val.id) === -1;
-        });
-        _this2.selected = [];
-      })["catch"](function (err) {
-        _this2.errorAlert();
-      })["finally"](function () {
-        _this2.loadOff();
-      });
     }
-  })
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    questions: 'examQuestions'
+  }))
 });
 
 /***/ }),
@@ -80018,7 +79987,14 @@ var render = function() {
               "div",
               {
                 staticClass: "rounded btn btn-info btn-block",
-                on: { click: _vm.AddToExam }
+                on: {
+                  click: function($event) {
+                    return _vm.AddQuestionToExam({
+                      selected: _vm.selected,
+                      id: _vm.id
+                    })
+                  }
+                }
               },
               [_vm._v("افزودن به آزمون")]
             )
@@ -80809,7 +80785,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "app-content-border-box",
-    { attrs: { title: " سوالات  " + _vm.name, icon: "question" } },
+    { attrs: { title: " سوالات  " + _vm.exam.name, icon: "question" } },
     [
       _c(
         "div",
@@ -80885,7 +80861,7 @@ var render = function() {
                               "/quiz/question/" +
                               question.id +
                               "/delete-from-exam?exam=" +
-                              _vm.id
+                              _vm.exam.id
                           }
                         },
                         [
@@ -98291,26 +98267,85 @@ var actions = {
 __webpack_require__.r(__webpack_exports__);
 var state = function state() {
   return {
-    questionErrors: []
+    questionErrors: [],
+    userQuestions: [],
+    examQuestions: []
   };
 };
 
-var getters = {};
+var getters = {
+  questionsHasNoCategory: function questionsHasNoCategory(state) {
+    return state.userQuestions.filter(function (question) {
+      return !!question.categories[0];
+    });
+  },
+  examQuestions: function examQuestions(state) {
+    return state.examQuestions;
+  }
+};
 var mutations = {
   setQuestionErrors: function setQuestionErrors(state, payload) {
     state.questionErrors = payload;
+  },
+  setExamQuestions: function setExamQuestions(state, payload) {
+    state.examQuestions = payload;
+  },
+  setUserQuestions: function setUserQuestions(state, payload) {
+    state.userQuestions = payload;
+  },
+  pushToExamQuestions: function pushToExamQuestions(state, payload) {
+    state.examQuestions.push(payload);
+  },
+  pushToUserQuestions: function pushToUserQuestions(state, payload) {
+    state.userQuestions.push(payload);
+  },
+  deleteFromExamQuestion: function deleteFromExamQuestion(state, payload) {
+    state.examQuestions = state.examQuestions.filter(function (val) {
+      return payload.indexOf(val.id) === -1;
+    });
   }
 };
 var actions = {
-  createQuestion: function createQuestion(_ref, payload) {
+  AddQuestionToExam: function AddQuestionToExam(_ref, payload) {
     var commit = _ref.commit,
         dispatch = _ref.dispatch;
     commit('loadOn');
-    axios.post('/quiz/question', payload).then(function (_ref2) {
+    axios.post('/quiz/question/add-many-to-exam?exam=' + payload.id, {
+      questions: payload.selected
+    }).then(function (_ref2) {
       var data = _ref2.data;
       dispatch('successAlert');
     })["catch"](function (_ref3) {
       var response = _ref3.response;
+      dispatch('errorAlert');
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  removeQuestionFromExam: function removeQuestionFromExam(_ref4, payload) {
+    var commit = _ref4.commit,
+        dispatch = _ref4.dispatch;
+    commit('loadOn');
+    axios.post('/quiz/question/delete-many-from-exam?exam=' + this.id, {
+      questions: payload
+    }).then(function (res) {
+      dispatch('successAlert');
+      commit('deleteFromExamQuestion', payload);
+    })["catch"](function (err) {
+      dispatch('errorAlert');
+    })["finally"](function () {
+      commit('loadOff');
+    });
+  },
+  createQuestion: function createQuestion(_ref5, payload) {
+    var commit = _ref5.commit,
+        dispatch = _ref5.dispatch;
+    commit('loadOn');
+    axios.post('/quiz/question', payload).then(function (_ref6) {
+      var data = _ref6.data;
+      dispatch('successAlert');
+    })["catch"](function (_ref7) {
+      var response = _ref7.response;
       dispatch('errorAlert');
       commit('setQuestionErrors', response.data.errors);
     })["finally"](function () {

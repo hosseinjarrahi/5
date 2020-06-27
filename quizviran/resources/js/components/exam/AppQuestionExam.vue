@@ -1,6 +1,5 @@
-
 <template>
-  <app-content-border-box :title="` سوالات  ${name}`" icon="question">
+  <app-content-border-box :title="` سوالات  ${exam.name}`" icon="question">
     <div class="bg-dark-gray p-2 p-md-3 my-2 rounded">
 
 
@@ -25,7 +24,7 @@
             </a>
 
             <a class="btn btn-sm bg-dark-gray"
-               :href="`/quiz/question/${question.id}/delete-from-exam?exam=${id}`">
+               :href="`/quiz/question/${question.id}/delete-from-exam?exam=${exam.id}`">
               <span class="fas fa-trash"></span>
               <span>حذف از آزمون</span>
             </a>
@@ -50,14 +49,12 @@
 </template>
 
 <script>
-  import {mapActions, mapMutations} from 'vuex';
+  import {mapActions, mapGetters} from 'vuex';
 
   export default {
     name: "AppQuestionExam",
     props: {
-      'questions': {default: ''},
-      'id': {default: ''},
-      'name': {default: ''}
+      'exam': {default: ''},
     },
     data() {
       return {
@@ -65,8 +62,12 @@
       }
     },
     methods: {
-      ...mapActions(['successAlert', 'errorAlert']),
-      ...mapMutations(['loadOn', 'loadOff']),
+      ...mapActions(['removeQuestionFromExam']),
+
+      deleteFromExam() {
+        this.removeQuestionFromExam(this.selected);
+        this.selected = [];
+      },
 
       handleSelecting() {
         let flag = true;
@@ -79,23 +80,12 @@
 
         flag && this.selected.push(arguments[0].selected);
       },
-      deleteFromExam() {
-        this.loadOn();
-        axios.post('/quiz/question/delete-many-from-exam?exam=' + this.id, {
-          questions: this.selected
-        })
-          .then(res => {
-            this.successAlert();
-            this.questions = this.questions.filter(val => this.selected.indexOf(val.id) === -1);
-            this.selected = [];
-          })
-          .catch(err => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff();
-          });
-      }
+    },
+
+    computed: {
+      ...mapGetters({
+        questions: 'examQuestions'
+      })
     }
   }
 </script>
