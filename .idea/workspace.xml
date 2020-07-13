@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="57e9e299-d523-4079-a0fd-64110d05bcc0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/quiz-assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionAll.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionExam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/exam/AppQuestionExam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/js/store/modules/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/store/modules/question.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/views/panel/teacher/question/questionsManage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,23 +30,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,6 +50,9 @@
         <option value="https://github.com/hosseinjarrahi/tehran.git" />
       </set>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -178,11 +178,11 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -191,18 +191,12 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/quizviran/resources/js/store/modules" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\store\modules" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\public\img" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\store" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\Http\Controllers" />
-      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\components" />
       <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\components\main\product" />
@@ -210,24 +204,19 @@
       <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\components\main\comment" />
       <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\store\modules\shared" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\store\modules" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\public\img" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\resources\js\store" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\Http\Controllers" />
+      <recent name="C:\Users\Hossein\Desktop\Tizviran\quizviran\resources\js\components" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -269,11 +258,17 @@
       <workItem from="1592635678710" duration="23044000" />
       <workItem from="1593000250719" duration="25000" />
       <workItem from="1593275756545" duration="642000" />
+      <workItem from="1594551862001" duration="58000" />
+      <workItem from="1594555132027" duration="162000" />
+      <workItem from="1594555913827" duration="414000" />
+      <workItem from="1594556405654" duration="3704000" />
+      <workItem from="1594618329431" duration="5844000" />
+      <workItem from="1594632773020" duration="2096000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -290,23 +285,22 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="76" key="#Deployment" timestamp="1591614635680">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="76" key="#Deployment/0.0.1536.834@0.0.1536.834" timestamp="1591614635680" />
-    <state x="538" y="220" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591709403733">
+    <state x="538" y="220" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594556051245">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="538" y="220" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1591709403733" />
+    <state x="538" y="220" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1594556051245" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591852792373">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -319,6 +313,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="510" y="0" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method1/0.0.1536.834@0.0.1536.834" timestamp="1591850010013" />
+    <state x="635" y="78" key="EnvironmentVariablesDialog" timestamp="1594556962993">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="635" y="78" key="EnvironmentVariablesDialog/0.0.1536.834@0.0.1536.834" timestamp="1594556962993" />
+    <state x="548" y="156" key="FileChooserDialogImpl" timestamp="1594556865149">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="548" y="156" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1594556865149" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1591386148341">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -347,14 +349,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="584" y="351" key="ReplaceDuplicatesPrompt/0.0.1536.834@0.0.1536.834" timestamp="1591850016835" />
-    <state x="595" y="128" key="RollbackChangesDialog" timestamp="1591711897517">
+    <state x="595" y="108" key="RollbackChangesDialog" timestamp="1594618679464">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="595" y="128" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1591711897517" />
-    <state x="277" y="60" key="SettingsEditor" timestamp="1591871619427">
+    <state x="595" y="108" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1594618679464" />
+    <state x="277" y="60" key="SettingsEditor" timestamp="1594556964484">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="277" y="60" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1591871619427" />
+    <state x="277" y="60" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1594556964484" />
     <state width="495" height="446" key="SwitcherDM" timestamp="1591342136891">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -375,10 +377,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1592739857557" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1592739929850">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1594619083508">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1592739929850" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1594619083508" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
