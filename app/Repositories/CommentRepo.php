@@ -12,7 +12,7 @@ class CommentRepo
             'comment' => $request['comment'],
             'commentable_type' => $request['type'],
             'commentable_id' => $request['id'],
-            'show' => true,
+            'show' => false,
             'user_id' => auth()->id(),
         ]);
     }

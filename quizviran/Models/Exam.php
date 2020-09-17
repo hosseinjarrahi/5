@@ -122,6 +122,7 @@ class Exam extends Model
             'detailLink' => route('quizviran.exam.result.teacher', ['exam' => $this->id]),
             'deleteLink' => route('quizviran.exam.destroy',['exam' => $this->id]),
             'revivalLink' => route('quizviran.exam.revival',['exam' => $this->id]),
+            'pdf' => route('quizviran.exam.pdf',['exam' => $this->id]),
         ]);
     }
 }

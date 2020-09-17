@@ -6,6 +6,8 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use App\Repositories\CommentRepo;
 use Illuminate\Routing\Controller;
+use Quizviran\Models\Comment;
+use Quizviran\Models\Room;
 use Quizviran\Repositories\RoomRepo;
 use Illuminate\Support\Facades\File as FileFacade;
 
@@ -18,6 +20,9 @@ class RoomController extends Controller
             'store',
             'deleteComment',
             'updateComment',
+            'okComments',
+            'ok',
+            'deleteC',
         ]);
     }
 
@@ -31,6 +36,29 @@ class RoomController extends Controller
         return view('Quizviran::panel.teacher.room.roomCreate');
     }
 
+    public function deleteC(Comment $comment)
+    {
+        $comment->delete();
+
+        return back();
+    }
+
+    public function ok(Comment $comment)
+    {
+        $comment->update(['show' => true]);
+
+        return back();
+    }
+
+    public function okComments($room)
+    {
+        $room = RoomRepo::findByLink($room);
+
+        $comments = $room->comments()->with(['user'])->where('show', false)->get();
+
+        return view('Quizviran::panel.teacher.room.okComments',compact('comments','room'));
+    }
+
     public function show($room)
     {
         /**
@@ -40,12 +68,12 @@ class RoomController extends Controller
          */
         $room = RoomRepo::withMemberCount($room);
 
-        $comments = $room->comments()->orderByDesc('id')->with([
+        $comments = $room->comments()->where(['show' => true])->orderByDesc('id')->with([
             'files',
             'user',
         ])->paginate(10);
 
-        if (! auth()->user()->hasRoom($room)) {
+        if (!auth()->user()->hasRoom($room)) {
             return abort(401);
         }
 
@@ -61,7 +89,7 @@ class RoomController extends Controller
          * @name('quizviran.room.store')
          * @middlewares(web, auth)
          */
-        if (! auth()->user()->isTeacher()) {
+        if (!auth()->user()->isTeacher()) {
             return back();
         }
 
@@ -100,7 +128,7 @@ class RoomController extends Controller
 
         $comment->files()->saveMany($files);
 
-        $comment->load(['user','files']);
+        $comment->load(['user', 'files']);
 
         return response([
             'message' => 'با موفقیت اضافه شد',
@@ -117,7 +145,7 @@ class RoomController extends Controller
          */
         $comment = CommentRepo::findOrFail($comment);
 
-        if (! $comment->isOwn()) {
+        if (!$comment->isOwn()) {
             return response(['message' => 'این نظر قابل ویرایش نیست.'], 400);
         }
 
@@ -154,7 +182,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::withMembersBylink($room);
 
-        if (! auth()->user()->isTeacher()) {
+        if (!auth()->user()->isTeacher()) {
             return abort(401);
         }
 
@@ -170,7 +198,7 @@ class RoomController extends Controller
          */
         $room = RoomRepo::findByLink($room);
 
-        if (! auth()->user()->isTeacher()) {
+        if (!auth()->user()->isTeacher()) {
             return back();
         }
 
@@ -187,7 +215,7 @@ class RoomController extends Controller
          * @middlewares(web, auth, has.room)
          */
         $room = RoomRepo::findByLink($room);
-        if (! auth()->user()->isTeacher()) {
+        if (!auth()->user()->isTeacher()) {
             return back();
         }
 

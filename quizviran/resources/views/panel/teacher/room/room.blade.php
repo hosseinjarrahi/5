@@ -3,17 +3,17 @@
 
 @section('content')
   <div class="container-fluid" style="margin-bottom: 300px;">
-    
+
     <div class="row justify-content-center">
       <div class="bg-dark-gray col-12" style="padding-top: 100px;">
         <app-panel-links-header type="{{ $user->type ?? 'teacher' }}"></app-panel-links-header>
       </div>
     </div>
-    
+
     <app-panel-room-info :room="{{ $room->toJson() }}"></app-panel-room-info>
-    
+
     <div class="row justify-content-center px-2 px-lg-0">
-      
+
       <div class="col-12 p-0 p-lg-2 col-lg-2 mt-2">
         <div class="rounded bg-dark-gray shadow" style="border:1px white dashed">
           @if($user->isTeacher())
@@ -31,7 +31,7 @@
                 </a>
               @endif
             </div>
-            
+
             <div class="divider"></div>
             <div class=" p-2 link-hover m-0">
               @if($room->gapLock)
@@ -46,7 +46,7 @@
                 </a>
               @endif
             </div>
-            
+
             <div class="divider"></div>
             <div class=" p-2 link-hover m-0 ">
               <a href="{{ route('quizviran.exam.manage',['room' => $room->link]) }}">
@@ -54,37 +54,45 @@
                 <span>ایجاد آزمون</span>
               </a>
             </div>
-            
+
+            <div class="divider"></div>
+            <div class=" p-2 link-hover m-0 ">
+              <a href="{{ route('quizviran.ok.comments.page',['room' => $room->link]) }}">
+                <span class="fas fa-plus fa-fw"></span>
+                <span>تایید نظرات</span>
+              </a>
+            </div>
+
             <div class="divider"></div>
             <div class=" p-2 link-hover m-0 ">
               <a href="{{ route('quizviran.room.members',['room' => $room->link]) }}">
                 <span class="fas fa-users fa-fw"></span> <span>اعضاء کلاس</span>
               </a>
             </div>
-            
+
             {{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
             {{--                            <a><span class="fas fa-plus fa-fw"></span> <span>ایجاد تکلیف</span></a>--}}
             {{--                            <span class="badge bg-gray position-absolute"--}}
             {{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
             {{--                                </span>--}}
             {{--                        </div>--}}
-            
+
             {{--                        <div class="rounded position-relative p-2 link-hover m-0">--}}
             {{--                            <a><span class="fas fa-paper-plane fa-fw"></span> <span>تکالیف ارسالی</span></a>--}}
             {{--                            <span class="badge bg-gray position-absolute"--}}
             {{--                                  style="top: 8px;left: 0px;transform: rotate(-90deg)">به زودی--}}
             {{--                                    </span>--}}
             {{--                        </div>--}}
-          
+
           @else
-            
+
             <div class="rounded position-relative p-2 link-hover m-0 text-center" style="font-size:1.2rem">
               <a><span class="fas fa-box-open fa-fw"></span> <span>تکالیف</span></a>
               <span class="badge bg-gray position-absolute"
                     style="top: 8px;left: 0px;transform: rotate(-30deg)">به زودی
                                 </span>
             </div>
-            
+
             <div class="divider"></div>
             <div class="rounded position-relative p-2 link-hover m-0 text-center" style="font-size:1.2rem">
               <a><span class="fas fa-flag-checkered fa-fw"></span><span>لیگ</span></a>
@@ -95,16 +103,16 @@
           @endif
         </div>
       </div>
-      
+
       <div class="col-12 col-lg-8 px-lg-4 ">
         <div class="row">
-          
+
           @if(!$room->gapLock)
             <div class="col-12 p-0 mt-3 mb-4">
               <app-panel-room-add-gap id="{{ $room->id }}" type="{{ get_class($room) }}"></app-panel-room-add-gap>
             </div>
           @endif
-          
+
           <div class="col-12">
             <div class="mt-3">
               <app-room-comments
@@ -117,7 +125,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-12 col-lg-2 mt-5 mt-lg-0">
         <div class="p-0 p-lg-3 w-100">
           <app-content-border-box style="word-break: break-all;" title="آزمون ها" icon="sticky-note">
@@ -125,7 +133,7 @@
               @if(!$room->exams->isEmpty())
                 @foreach($room->exams as $exam)
                   <div class="text-center row flex-column justify-content-center align-items-center">
-                    
+
                     <div class="d-flex w-100 flex-row flex-wrap rounded overflow-hidden figure-caption bg-dark-gray">
                       <b class="p-2 col-12">{{ $exam->name }}</b>
                       <p class="p-2 col-12 text-center figure-caption">{{ $exam->desc }}</p>
@@ -141,7 +149,7 @@
                           ورود به آزمون
                         </a>
                       @endif
-                    
+
                     </div>
                   </div>
                   <hr>
@@ -161,8 +169,8 @@
           </app-content-border-box>
         </div>
       </div>
-    
+
     </div>
-  
+
   </div>
 @endsection

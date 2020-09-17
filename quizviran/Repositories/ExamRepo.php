@@ -62,4 +62,8 @@ class ExamRepo
         $exam->save();
     }
 
+    public static function withQuestionsFindOrFail($exam)
+    {
+        return Exam::with(['questions'])->findOrFail($exam);
+    }
 }

@@ -29,6 +29,9 @@ Route::group(['prefix' => 'quiz','as' => 'quizviran.','middleware' => ['auth']],
         Route::get('/rooms','PanelController@home')->name('rooms');
         Route::resource('/room','RoomController');
 
+        Route::get('/room/{room}/ok-comments','RoomController@okComments')->name('ok.comments.page');
+        Route::get('/{comment}/ok-comments','RoomController@ok')->name('ok.comments');
+        Route::get('/{comment}/delete','RoomController@deleteC')->name('deleteC');
         Route::get('/room/{room}/members','RoomController@members')->name('room.members');
         Route::get('/room/{room}/exams', 'ExamController@exams')->name('exam.manage');
         Route::get('/room/{room}/lock', 'RoomController@lock')->name('room.lock');

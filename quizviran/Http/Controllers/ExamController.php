@@ -181,7 +181,7 @@ class ExamController extends Controller
 
         $categories = auth()->user()->categories()->with('questions')->get();
 
-        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'quiz', 'questionsWithoutCategory', 'exam'));
+        return view('Quizviran::panel.teacher.question.questionsManage', compact('categories', 'room', 'questionsWithoutCategory', 'exam'));
     }
 
     public function completeResult($exam)
@@ -208,9 +208,15 @@ class ExamController extends Controller
          */
         $exam = ExamRepo::withQuestionsFindOrFail($exam);
         $users = $exam->getExamUsersWithPivot();
+
         if (request()->test) {
             return view('Quizviran::panel.teacher.exam.pdf', compact('exam', 'users'));
         }
+
+        $pdf = PDF::loadView('Quizviran::panel.teacher.exam.pdf', compact('exam', 'users'));
+        return $pdf->download('invoice.pdf');
+
+
         $pdf = Pdf::loadView('Quizviran::panel.teacher.exam.pdf', compact('exam', 'users'));
 
         return $pdf->stream('document.pdf');

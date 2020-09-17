@@ -131,7 +131,6 @@
         axios.post(this.route, this.question)
           .then(({data}) => {
             this.successAlert();
-            window.EventBus.$emit('addQuestion', data.question);
             this.reload();
           })
           .catch(({response}) => {
