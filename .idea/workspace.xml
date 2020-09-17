@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="96cc21e8-4dc9-4674-b1ff-63f7e02f2cb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/public/assets" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/quiz-assets" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/quiz-assets~HEAD" beforeDir="false" afterPath="$PROJECT_DIR$/public/quiz-assets~HEAD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/components/shared" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/components/shared" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizviran/resources/js/store/modules/shared" beforeDir="false" afterPath="$PROJECT_DIR$/quizviran/resources/js/store/modules/shared" afterDir="false" />
     </list>
@@ -206,7 +206,7 @@
       <workItem from="1594819300913" duration="5533000" />
       <workItem from="1594873618427" duration="51000" />
       <workItem from="1600361517136" duration="4470000" />
-      <workItem from="1600366227586" duration="774000" />
+      <workItem from="1600366227586" duration="1705000" />
     </task>
     <servers />
   </component>
@@ -238,13 +238,17 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="349" y="152" key="IDE.errors.dialog/0.0.1536.834@0.0.1536.834" timestamp="1594822398881" />
+    <state x="580" y="36" key="RollbackChangesDialog" timestamp="1600367921504">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="580" y="36" key="RollbackChangesDialog/0.0.1536.834@0.0.1536.834" timestamp="1600367921504" />
     <state x="277" y="62" key="SettingsEditor" timestamp="1594649300956">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1594649300956" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1600366996725">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1600367836251">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1600366996725" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1600367836251" />
   </component>
 </project>
