@@ -34,4 +34,14 @@ class Category extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+
+        return array_merge($array,[
+            'storeLink' => route('quizviran.category.store'),
+            'updateLink' => route('quizviran.category.update',['category' => $this->id]),
+        ]);
+    }
 }

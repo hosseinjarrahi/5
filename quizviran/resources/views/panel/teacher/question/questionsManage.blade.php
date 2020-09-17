@@ -49,16 +49,12 @@
       <div class="my-3 col-12 col-lg-6">
 
         <div class="px-2 my-4 px-lg-5 col-12">
-          <app-question-exam name="{{ $exam->name }}"
-                             :questions="{{ $exam->questions->toJson() }}"
-                             id="{{ $exam->id }}">
+          <app-question-exam :exam="{{ $exam->toJson() }}" :questions="{{ $exam->questions->toJson() }}">
           </app-question-exam>
         </div>
 
         <div class="px-1 my-4 px-lg-5 col-12 mt-5">
-          <app-question-all :categories="{{ $categories->toJson() }}"
-                            :questions="{{ $questionsWithoutCategory->toJson() }}"
-                            id="{{ $exam->id }}">
+          <app-question-all id="{{ $exam->id }}" :questions="{{ $questionsWithoutCategory->toJson() }}">
           </app-question-all>
         </div>
 

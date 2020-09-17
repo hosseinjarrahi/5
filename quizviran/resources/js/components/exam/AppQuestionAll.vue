@@ -69,7 +69,7 @@
     </div>
 
     <div class="d-flex flex-row" v-if="selected.length > 0">
-      <div class="rounded btn btn-info btn-block" @click="AddToExam">افزودن به آزمون</div>
+      <div class="rounded btn btn-info btn-block" @click="AddQuestionToExam({selected,id})">افزودن به آزمون</div>
     </div>
 
   </app-content-border-box>
@@ -77,19 +77,21 @@
 
 <script>
 
-  import {mapActions, mapMutations} from "vuex";
+  import {mapActions, mapGetters} from "vuex";
 
   export default {
-    props: ['id', 'questions', 'categories'],
+    props: ['id'],
+
     name: "AppQuestionAll",
+
     data() {
       return {
         selected: []
       }
     },
+
     methods: {
-      ...mapActions(['successAlert', 'errorAlert', 'reload']),
-      ...mapMutations(['loadOn', 'loadOff']),
+      ...mapActions(['AddQuestionToExam']),
 
       handleSelecting() {
         let flag = true;
@@ -102,22 +104,13 @@
 
         flag && this.selected.push(arguments[0].selected);
       },
-      AddToExam() {
-        this.loadOn();
-        axios.post('/quiz/question/add-many-to-exam?exam=' + this.id, {
-          questions: this.selected
-        })
-          .then(res => {
-            this.successAlert();
-            this.reload();
-          })
-          .catch(err => {
-            this.errorAlert();
-          })
-          .finally(() => {
-            this.loadOff();
-          });
-      }
+    },
+
+    computed:{
+      ...mapGetters({
+        categories: 'userCategories',
+        questions : 'questionsHasNoCategory'
+      })
     }
   }
 </script>

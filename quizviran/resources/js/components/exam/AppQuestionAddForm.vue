@@ -70,12 +70,12 @@
       </select>
     </div>
 
-    <button class="btn btn-primary btn-block" @click.prevent="makeQuestion">افزودن سوال</button>
+    <button class="btn btn-primary btn-block" @click.prevent="createQuestion(question)">افزودن سوال</button>
   </div>
 </template>
 
 <script>
-  import {mapActions, mapMutations} from 'vuex';
+  import {mapActions,mapGetters} from 'vuex';
 
   export default {
     mounted() {
@@ -87,11 +87,9 @@
         }, 500);
       }, 1000);
     },
+
     name: "AppQuestionAddForm",
-    props: {
-      categories: {default: () => []},
-      route: {default: ''},
-    },
+
     data() {
       return {
         question: {
@@ -110,9 +108,9 @@
         errors: []
       }
     },
+
     methods: {
-      ...mapActions(['successAlert', 'errorAlert', 'reload']),
-      ...mapMutations(['loadOn', 'loadOff']),
+      ...mapActions(['createQuestion']),
       toBase64(val) {
         let files = val.target.files;
         if (files && files[0]) {
@@ -141,6 +139,7 @@
             this.loadOff();
           });
       }
+
     }
   }
 </script>
