@@ -7,14 +7,7 @@
   ],
   "laravel": {
     "buildAssets": false,
-    "postBuildCommands": [
-      "rm -r public/quiz-assets ",
-      "rm -r public/storage ",
-      "rm -r public/assets ",
-      "rm -r quizviran/resources/js/components/shared ",
-      "rm -r quizviran/resources/js/store/modules/shared ",
-      "php artisan storage:link ",
-      "php artisan optimize "
-    ]
+      "configCache": true,
+      "routeCache": true
   }
 }

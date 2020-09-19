@@ -21,6 +21,7 @@
         "morilog/jalali": "^3.1",
         "niklasravnsborg/laravel-pdf": "^4.0",
         "rtconner/laravel-tagging": "^4.0",
+        "symfony/filesystem": "^5.1",
         "unisharp/laravel-filemanager": "^2.1"
     },
     "require-dev": {
